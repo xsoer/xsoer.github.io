@@ -137,6 +137,7 @@
 - 目前市场上所有Linux容器项目都包含以上组件。
 
 >## 0x02、Cgroups
+
 - Cgroup是control group的简写，属于Linux内核提供的一个特性，用于限制和隔离一组进程对系统资源的使用，也就是做资源QoS，这些资源主要包括CPU、内存、block I/O和网络带宽。
 - 从实现的角度来看，Cgroup实现了一个通用的进程分组的框架，而不同资源的具体管理则是由各个Cgroup子系统实现的。
 - Cgroup中实现的子系统及其作用如下：
@@ -182,6 +183,7 @@
 
 
 >## 0x03、Namespace
+
 - Namespace是将内核的全局资源做封装，使得每个Namespace都有一份独立的资源，因此不同的进程在各自的Namespace内对同一种资源的使用不会互相干扰
 - 目前Linux内核总共实现了6种Namespace：
   - IPC：隔离System V IPC和POSIX消息队列。
@@ -211,6 +213,7 @@
 
 
 >## 0x04、Images
+
 - 是启动融资的rootfs,只读模版
 
 #### 一、基本概念
@@ -318,9 +321,11 @@ docker search ubuntu
 
 
 >## 0x07、容器卷管理
+
 - 可以把本地文件目录挂载到容器内
 
 >## 0x08、DockerAPI
+
 - Docker Remote API
 - Docker Registry API
 - Docker Hub API
@@ -375,9 +380,11 @@ docker search ubuntu
 - 容器引擎：一种驱动和管理容器生命周期的runtime工具
 
 >## 0x11、Docker实战
+
 - 部署web服务
 
 >## 0x12、Docker集群
+
 - Compose
 - Machine
 - Swarm
