@@ -1,3 +1,10 @@
+---
+layout: post
+title:  "人工只能!"
+date:   2019-04-09 14:53:45 +0800
+categories: jekyll update
+---
+
 # 人工智能学习路线
 - 作者：codehackfox@gmail.com
 - 时间：2019-03-10 18:17:19
