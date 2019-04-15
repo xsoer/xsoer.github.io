@@ -13,3 +13,14 @@ categories: jekyll update
 > ### 0x00、整体比较
 
 - 数据整体
+
+
+> ### 0x01、Kudu
+
+
+> ### 0x02、Impala
+
+
+> ### 0x03、PostgreSQL
+
+- 标准的结构化数据库 
