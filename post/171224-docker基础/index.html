@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    <link rel="dns-prefetch" href="https://o243f9mnq.qnssl.com/" />
+    <link rel="dns-prefetch" href="//cdn.bootcss.com" />
+    <link rel="dns-prefetch" href="//secure.gravatar.com" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    
+    <link rel="shortcut icon" href="http://xsoer.github.io/images/favicon.png">
+    <link rel="apple-touch-icon" href="http://xsoer.github.io/images/apple-touch-icon.png">
+    <title>
+        
+        Docker基础 - hackfox
+        
+    </title>
+    <meta name="keywords" content=" " />
+    <meta name="description" content=" " />
+    <link href="//cdn.bootcss.com/highlight.js/9.10.0/styles/xcode.min.css" rel="stylesheet">
+    <link href="http://xsoer.github.io/css/style.min.css?20170331" rel="stylesheet">
+    
+</head>
+
+
+<body class="bg-white" gtools_scp_screen_capture_injected="true">
+    
+    <header id="header" class="header bg-white">
+        <div class="navbar-container">
+            <a href="http://xsoer.github.io" class="navbar-logo" style="color: #5f5f5f">hackfox</a>
+            <div class="navbar-menu">
+            
+                <a href="http://xsoer.github.io/post/">Archives</a>  
+            
+                <a href="http://xsoer.github.io/tags/">Tags</a>  
+            
+                <a href="http://xsoer.github.io/about">About</a>  
+            
+            </div>
+            
+            <div class="navbar-mobile-menu" onclick=""> 
+                <span class="icon-menu cross"><span class="middle"></span></span>
+                <ul>
+                
+                <li><a href="http://xsoer.github.io/post/">Archives</a></li> 
+                
+                <li><a href="http://xsoer.github.io/tags/">Tags</a></li> 
+                
+                <li><a href="http://xsoer.github.io/about">About</a></li> 
+                
+                </ul>
+            </div>
+        </div>
+    </header>
+    <article class="main-content page-page">
+        <div class="post-header">
+            <h1 class="post-title" itemprop="name headline">
+                Docker基础
+            </h1>
+            <div class="post-data">
+                Published on Dec 24, 2017 ,4 min reading time
+            </div>
+        </div>
+        <div id="post-content" class="post-content">
+            
+<p class="post-tags"> 
+	
+	<a href="http://xsoer.github.io/tags/docker">docker</a>
+	
+</p>
+
+ 
+
+<h3 id="命令">命令</h3>
+
+<ul>
+<li><p>Management Commands:</p>
+
+<ul>
+<li>config      Manage Docker configs</li>
+<li>container   Manage containers</li>
+<li>image       Manage images</li>
+<li>network     Manage networks</li>
+<li>node        Manage Swarm nodes</li>
+<li>plugin      Manage plugins</li>
+<li>secret      Manage Docker secrets</li>
+<li>service     Manage services</li>
+<li>stack       Manage Docker stacks</li>
+<li>swarm       Manage Swarm</li>
+<li>system      Manage Docker</li>
+<li>volume      Manage volumes</li>
+</ul></li>
+
+<li><p>Commands:</p>
+
+<ul>
+<li>attach      Attach local standard input, output, and error streams to a running container</li>
+<li>build       Build an image from a Dockerfile</li>
+<li>commit      Create a new image from a container&rsquo;s changes</li>
+<li>cp          Copy files/folders between a container and the local filesystem</li>
+<li>create      Create a new container</li>
+<li>diff        Inspect changes to files or directories on a container&rsquo;s filesystem</li>
+<li>events      Get real time events from the server</li>
+<li>exec        Run a command in a running container</li>
+<li>export      Export a container&rsquo;s filesystem as a tar archive</li>
+<li>history     Show the history of an image</li>
+<li>images      List images</li>
+<li>import      Import the contents from a tarball to create a filesystem image</li>
+<li>info        Display system-wide information</li>
+<li>inspect     Return low-level information on Docker objects</li>
+<li>kill        Kill one or more running containers</li>
+<li>load        Load an image from a tar archive or STDIN</li>
+<li>login       Log in to a Docker registry</li>
+<li>logout      Log out from a Docker registry</li>
+<li>logs        Fetch the logs of a container</li>
+<li>pause       Pause all processes within one or more containers</li>
+<li>port        List port mappings or a specific mapping for the container</li>
+<li>ps          List containers</li>
+<li>pull        Pull an image or a repository from a registry</li>
+<li>push        Push an image or a repository to a registry</li>
+<li>rename      Rename a container</li>
+<li>restart     Restart one or more containers</li>
+<li>rm          Remove one or more containers</li>
+<li>rmi         Remove one or more images</li>
+<li>run         Run a command in a new container</li>
+<li>save        Save one or more images to a tar archive (streamed to STDOUT by default)</li>
+<li>search      Search the Docker Hub for images</li>
+<li>start       Start one or more stopped containers</li>
+<li>stats       Display a live stream of container(s) resource usage statistics</li>
+<li>stop        Stop one or more running containers</li>
+<li>tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE</li>
+<li>top         Display the running processes of a container</li>
+<li>unpause     Unpause all processes within one or more containers</li>
+<li>update      Update configuration of one or more containers</li>
+<li>version     Show the Docker version information</li>
+<li>wait        Block until one or more containers stop, then print their exit codes</li>
+</ul></li>
+
+<li><p>docker images      // 查看存在多少镜像</p></li>
+
+<li><p>docker ps         // 查看镜像运行情况</p></li>
+
+<li><p>docker run -t -i  // 运行镜像。并进行交互模式。</p></li>
+
+<li><p>docker stop     // 停止运行镜像，后边跟镜像ID或name</p></li>
+
+<li><p>docker search   // 搜索镜像仓库</p></li>
+
+<li><p>docker pull     // 拉取镜像</p></li>
+
+<li><p>docker inspect  // 查看镜像的json文件，即全部详细信息</p></li>
+
+<li><p>docker port     // 查看docker与宿主机的端口映射关系</p></li>
+
+<li><p>docker commit   // 用来生成新的版本</p></li>
+
+<li><p>docker build    // 用docker file来创建镜像</p></li>
+
+<li><p>docker tag      // 设置镜像标签</p></li>
+</ul>
+
+<blockquote>
+<p>容器生命周期管理·</p>
+</blockquote>
+
+<ul>
+<li>run</li>
+<li>start/stop/restart</li>
+<li>kill</li>
+<li>rm</li>
+<li>pause/unpause·</li>
+<li>create</li>
+<li>exec</li>
+</ul>
+
+<blockquote>
+<p>容器操作</p>
+</blockquote>
+
+<ul>
+<li>ps</li>
+<li>inspect</li>
+<li>top</li>
+<li>attach</li>
+<li>events</li>
+<li>logs</li>
+<li>wait</li>
+<li>export</li>
+<li>port</li>
+</ul>
+
+<blockquote>
+<p>容器rootfs命令</p>
+</blockquote>
+
+<ul>
+<li>commit</li>
+<li>cp</li>
+<li>diff</li>
+</ul>
+
+<blockquote>
+<p>镜像仓库</p>
+</blockquote>
+
+<ul>
+<li>login</li>
+<li>pull</li>
+<li>push</li>
+<li>search</li>
+</ul>
+
+<blockquote>
+<p>本地镜像管理</p>
+</blockquote>
+
+<ul>
+<li>images</li>
+<li>rmi</li>
+<li>tag</li>
+<li>build</li>
+<li>history</li>
+<li>save</li>
+<li>import</li>
+</ul>
+
+<blockquote>
+<p>info|version</p>
+</blockquote>
+
+<ul>
+<li>info</li>
+<li>version</li>
+</ul>
+
+<h3 id="链接映射">链接映射</h3>
+
+<ul>
+<li>docker有一个连接系统允许将多个容器连接在一起，共享连接信息。docker连接会创建一个父子关系，其中父容器可以看到子容器的信息。·</li>
+</ul>
+
+<h3 id="容器与虚拟机是互补的">容器与虚拟机是互补的。</h3>
+
+<ul>
+<li>虚拟机是用来进行硬件资源划分的完美解决方案，它利用了硬件虚拟化技术，例如VT-x、AMD-V或者privilege level（权限等级）会同时通过一个hypervisor层来实现对资源的彻底隔离；而容器则是操作系统级别的虚拟化，利用的是内核的Cgroup和Namespace特性，此功能完全通过软件来实现，仅仅是进程本身就可以与其他进程隔离开，不需要任何辅助。</li>
+<li>Docker容器与主机共享操作系统内核，不同的容器之间可以共享部分系统资源，因此容器更加轻量级，消耗的资源也更少。而虚拟机会独占分配给自己的资源，几乎不存在资源共享，各个虚拟机实例之间近乎完全隔离，因此虚拟机更加重量级，也会消耗更多的资源。<br /></li>
+</ul>
+
+<h3 id="最小组成">最小组成</h3>
+
+<ul>
+<li>对于Linux容器的最小组成，可以由以下公式来表示：
+容器=cgroup+namespace+rootfs+容器引擎（用户态工具）</li>
+<li>其中各项的功能分别为：
+
+<ul>
+<li>Cgroup：资源控制。</li>
+<li>Namespace：访问隔离。</li>
+<li>rootfs：文件系统隔离。</li>
+<li>容器引擎：生命周期控制。</li>
+</ul></li>
+<li>目前市场上所有Linux容器项目都包含以上组件。</li>
+</ul>
+
+<h3 id="cgroups">Cgroups</h3>
+
+<ul>
+<li>Cgroup是control group的简写，属于Linux内核提供的一个特性，用于限制和隔离一组进程对系统资源的使用，也就是做资源QoS，这些资源主要包括CPU、内存、block I/O和网络带宽。</li>
+<li>从实现的角度来看，Cgroup实现了一个通用的进程分组的框架，而不同资源的具体管理则是由各个Cgroup子系统实现的。</li>
+<li>Cgroup中实现的子系统及其作用如下：
+
+<ul>
+<li>devices：设备权限控制。</li>
+<li>cpuset：分配指定的CPU和内存节点。</li>
+<li>cpu：控制CPU占用率。</li>
+<li>cpuacct：统计CPU使用情况。</li>
+<li>memory：限制内存的使用上限。</li>
+<li>freezer：冻结（暂停）Cgroup中的进程。</li>
+<li>net_cls：配合tc（traffic controller）限制网络带宽。</li>
+<li>net_prio：设置进程的网络流量优先级。</li>
+<li>huge_tlb：限制HugeTLB的使用。</li>
+<li>perf_event：允许Perf工具基于Cgroup分组<br /></li>
+<li>做性能监测。</li>
+</ul></li>
+</ul>
+
+<h4 id="cgroups子系统">Cgroups子系统</h4>
+
+<blockquote>
+<p>cpuset子系统</p>
+</blockquote>
+
+<ul>
+<li>cpuset可以为一组进程分配指定的CPU和内存节点。</li>
+</ul>
+
+<blockquote>
+<p>cpu子系统</p>
+</blockquote>
+
+<ul>
+<li>子系统用于限制进程的CPU占用率。实际上它有三个功能，分别通过不同的接口来提供。
+
+<ul>
+<li>CPU比重分配。这个特性使用的接口是cpu.shares。</li>
+<li>CPU带宽限制。这个特性使用的接口是cpu.cfs_period_us和cpu.cfs_quota_us，这两个接口的单位是微秒</li>
+<li>实时进程的CPU带宽限制。以上两个特性都只能限制普通进程，若要限制实时进程，就要使用cpu.rt_period_us和cpu.rt_runtime_us这两个接口了。使用方法和上面类似。</li>
+</ul></li>
+</ul>
+
+<blockquote>
+<p>cpuacct子系统</p>
+</blockquote>
+
+<ul>
+<li>cpuacct子系统用来统计各个Cgroup的CPU使用情况</li>
+</ul>
+
+<blockquote>
+<p>memory子系统</p>
+</blockquote>
+
+<ul>
+<li>memory子系统用来限制Cgroup所能使用的内存上限</li>
+</ul>
+
+<blockquote>
+<p>blkio子系统</p>
+</blockquote>
+
+<ul>
+<li>blkio子系统用来限制Cgroup的block I/O带宽</li>
+</ul>
+
+<blockquote>
+<p>devices子系统</p>
+</blockquote>
+
+<ul>
+<li>devices子系统用来控制Cgroup的进程对哪些设备有访问权限</li>
+</ul>
+
+<h3 id="namespace">Namespace</h3>
+
+<ul>
+<li>Namespace是将内核的全局资源做封装，使得每个Namespace都有一份独立的资源，因此不同的进程在各自的Namespace内对同一种资源的使用不会互相干扰</li>
+<li>目前Linux内核总共实现了6种Namespace：
+
+<ul>
+<li>IPC：隔离System V IPC和POSIX消息队列。</li>
+<li>Network：隔离网络资源。</li>
+<li>Mount：隔离文件系统挂载点。</li>
+<li>PID：隔离进程ID。</li>
+<li>UTS：隔离主机名和域名。</li>
+<li>User：隔离用户ID和组ID。</li>
+</ul></li>
+<li>对Namespace的操作，主要是通过clone、setns和unshare这3个系统调用来完成的。</li>
+</ul>
+
+<blockquote>
+<p>子命名空间</p>
+</blockquote>
+
+<ul>
+<li>1.UTS Namespace
+
+<ul>
+<li>UTS Namespace用于对主机名和域名进行隔离，也就是uname系统调用使用的结构体struct utsname里的nodename和domainname这两个字段，UTS这个名字也是由此而来的。</li>
+</ul></li>
+<li>2.IPC Namespace
+
+<ul>
+<li>IPC是Inter-Process Communication的简写，也就是进程间通信。Linux提供了很多种进程间通信的机制，IPC Namespace针对的是SystemV IPC和Posix消息队列。</li>
+</ul></li>
+<li>3.PID Namespace
+
+<ul>
+<li>PID Namespace用于隔离进程PID号，这样一来，不同的Namespace里的进程PID号就可以是一样的了。</li>
+</ul></li>
+<li>4.Mount Namespace
+
+<ul>
+<li>Mount Namespace用来隔离文件系统挂载点，每个进程能看到的文件系统都记录在/proc/$$/mounts里。</li>
+</ul></li>
+<li>5.Network Namespace
+
+<ul>
+<li>这个Namespace会对网络相关的系统资源进行隔离，每个Network Namespace都有自己的网络设备、IP地址、路由表、/proc/net目录、端口号等。</li>
+</ul></li>
+
+<li><p>6.User Namespace</p>
+
+<ul>
+<li>User Namespace用来隔离用户和组ID，也就是说一个进程在Namespace里的用户和组ID与它在host里的ID可以不一样，这样说可能读者还不理解有什么实际的用处。</li>
+</ul></li>
+
+<li><p>Namespace和Cgroup的使用是很灵活的，同时这里面又有不少需要注意的地方，因此直接操作Namespace和Cgroup并不是很容易。正是因为这些原因，Docker通过Libcontainer来处理这些底层的事情。这样一来，Docker只需要简单地调用Libcontainer的API，就能将完整的容器搭建起来</p></li>
+</ul>
+
+<h2 id="images">Images</h2>
+
+<ul>
+<li>是启动融资的rootfs,只读模版</li>
+</ul>
+
+<h4 id="一-基本概念">一、基本概念</h4>
+
+<blockquote>
+<p>创建镜像</p>
+</blockquote>
+
+<ul>
+<li>1.直接下载镜像
+<code>
+docker pull centos
+</code></li>
+<li>2.导入镜像
+<code>
+docker save -o centos.tar centos
+docker load -i centos.tar
+</code></li>
+<li>3.制作新镜像
+
+<ul>
+<li>docker import 用于导入包含根文件系统的归档，并将之变成docker镜像</li>
+<li>docker commit 可以增量的生成镜像，可以把容器保存为一个镜像</li>
+<li>docker build 可以用Dockerfile来制作镜像</li>
+</ul></li>
+</ul>
+
+<blockquote>
+<p>传输镜像</p>
+</blockquote>
+
+<ul>
+<li>1.用Docker镜像仓库做中转</li>
+<li>2.docker export/docker save生成tar包</li>
+<li>3.Dockerfile文件</li>
+</ul>
+
+<blockquote>
+<p>运行镜像</p>
+</blockquote>
+
+<ul>
+<li>docker run 来运营一个镜像成为容器</li>
+</ul>
+
+<h4 id="二-组织结构">二、组织结构</h4>
+
+<blockquote>
+<p>数据内容</p>
+</blockquote>
+
+<ul>
+<li>包含着数据和元数据。
+
+<ul>
+<li>数据有一层一层的image layer组成，元数据则是一些JSON文件，用来描述数据之间的关系和容器配置信息。</li>
+</ul></li>
+<li>Docker对数据进行来完整性校验，这种完整性对凭证是有镜像仓库提供的。</li>
+</ul>
+
+<pre><code class="language-shell">ll /var/lab/docker
+</code></pre>
+
+<ul>
+<li>1.总体信息
+
+<ul>
+<li>从repositories-overlay文件可以看到该存储目录下的所有image以及其对应的layer ID.</li>
+</ul></li>
+<li>2.数据和元数据
+
+<ul>
+<li>graph和overlay目录包含本地镜像库中所有元数据和数据信息</li>
+<li>对于不同的存储驱动，数据的存储位置和存储结构是不同的。</li>
+<li>元数据包含json和layersize两个文件，其中json包含来必要的层次和配置信息，layersize文件包含来该层的大小。</li>
+<li>先通过repositories-overlay获取image对应的layer ID；在根据layer对应的元数据梳理出image包含的所有层，以及层之间的关系；在使用联合挂载技术还原出容器启动所需要的rootfs和一些基本配置信息。</li>
+</ul></li>
+<li>3.数据组织
+<code>
+docker inspect dockerID
+</code></li>
+</ul>
+
+<blockquote>
+<p>扩展知识</p>
+</blockquote>
+
+<ul>
+<li>docker引入的联合挂载(Union mount)使镜像分层成为可能；而git式管理，使基础镜像复用成为可能。</li>
+<li>1.联合挂载
+
+<ul>
+<li>把多个目录挂载到同一个目录，对外呈现这些目录的联合。·</li>
+</ul></li>
+<li>2.写时复制</li>
+</ul>
+
+<h2 id="仓库进阶">仓库进阶</h2>
+
+<h4 id="什么是仓库">什么是仓库</h4>
+
+<blockquote>
+<p>仓库的组成</p>
+</blockquote>
+
+<ul>
+<li>仓库的名字通常有两部分组成，中间以斜线分隔。前边是用户名，后边是镜像名。</li>
+<li>仓库有镜像存储系统和账户管理系统</li>
+</ul>
+
+<pre><code class="language-shell">docker login -u &lt;user_name&gt; -p &lt;password&gt; -e &lt;email&gt; &lt;registry domain&gt;
+
+</code></pre>
+
+<blockquote>
+<p>仓库镜像</p>
+</blockquote>
+
+<ul>
+<li>仓库下面包含一组镜像，彼此之间用标签(tag)区分。一个完整的镜像地址通常有 服务器地址、仓库名称和标签组成。</li>
+<li>1.上传镜像：push</li>
+</ul>
+
+<pre><code class="language-shell">// 表示向本地私有仓库上传镜像。如果不写服务器地址，默认上传到官方Docker Hub。一般需要先登陆在上传。
+docker push localhost::5000/official/ubuntu:14.04
+</code></pre>
+
+<ul>
+<li>2.下载镜像：pull</li>
+</ul>
+
+<pre><code class="language-shell">docker pull ubuntu:14.04
+</code></pre>
+
+<ul>
+<li>3.搜索镜像：search</li>
+</ul>
+
+<pre><code class="language-shell">docker search ubuntu
+</code></pre>
+
+<ul>
+<li>注：在上传、下载过程中是逐层进行的。下载和搜索不需要登陆</li>
+</ul>
+
+<blockquote>
+<p>restfulApi介绍</p>
+
+<p>上传、下载、鉴权原理</p>
+
+<p>私有仓库搭建</p>
+</blockquote>
+
+<h2 id="docker网络">docker网络</h2>
+
+<h2 id="容器卷管理">容器卷管理</h2>
+
+<ul>
+<li>可以把本地文件目录挂载到容器内</li>
+</ul>
+
+<h2 id="dockerapi">DockerAPI</h2>
+
+<ul>
+<li>Docker Remote API</li>
+<li>Docker Registry API</li>
+<li>Docker Hub API</li>
+</ul>
+
+<h2 id="docker安全">Docker安全</h2>
+
+<blockquote>
+<p>包含内容</p>
+</blockquote>
+
+<ul>
+<li>容器的安全性</li>
+<li>镜像的安全性</li>
+<li>Docker daemon的安全性</li>
+</ul>
+
+<blockquote>
+<p>容器安全</p>
+</blockquote>
+
+<ul>
+<li>Cgroup
+
+<ul>
+<li>限制CPU：指定CPU权重、使用上限</li>
+<li>限制内存</li>
+<li>限制块设备I/O</li>
+</ul></li>
+<li>ulimit
+
+<ul>
+<li>core dump文件大小</li>
+<li>进程数据段大小</li>
+<li>可创建文件大小</li>
+<li>常驻内存集大小</li>
+<li>打开文件数量</li>
+<li>进程栈的大小</li>
+<li>CPU时间</li>
+<li>单个用户的最大进程数</li>
+<li>进程的最大虚拟内存</li>
+</ul></li>
+<li>容器组网
+
+<ul>
+<li>将容器隔离在不同的网络内</li>
+</ul></li>
+<li>容器+虚拟化</li>
+<li>镜像签名</li>
+<li>日志审计</li>
+<li>监控</li>
+<li>文件系统级保护</li>
+<li>capability
+
+<ul>
+<li>可以作用在进程上；也可以作用在程序文件上</li>
+<li>与sudo不同，sudo可以配置某个用户可以执行某个命令或更改某个文件；而capablity则是让某个程序拥有某种能力</li>
+<li>每个进程有三个和能力有关的位图：Inheritable(I)、Permitted(P)和Effective(E)</li>
+</ul></li>
+<li>SELinux</li>
+<li>APPArmor</li>
+<li>Seccomp</li>
+<li>grsecurity</li>
+</ul>
+
+<blockquote>
+<p>安全加固</p>
+
+<p>安全遗留问题</p>
+</blockquote>
+
+<h2 id="libcontainer">Libcontainer</h2>
+
+<ul>
+<li>容器引擎：一种驱动和管理容器生命周期的runtime工具</li>
+</ul>
+
+<h2 id="docker实战">Docker实战</h2>
+
+<ul>
+<li>部署web服务</li>
+</ul>
+
+<h2 id="docker集群">Docker集群</h2>
+
+<ul>
+<li>Compose</li>
+<li>Machine</li>
+<li>Swarm</li>
+</ul>
+
+<h2 id="docker生态圈">Docker生态圈</h2>
+
+            <p class="post-info">
+                本文由
+                
+                <a href=""> 
+                    hackfox
+                </a> 创作，采用
+                <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a>                
+                国际许可协议进行许可，转载请注明出处！<br>
+            </p>
+        </div>
+    </article>
+
+    <div id="post-bottom-bar" class="post-bottom-bar">
+        <div class="bottom-bar-inner">
+            <div class="bottom-bar-items social-share left">
+                <span class="bottom-bar-item">Share : </span>
+                <span class="bottom-bar-item bottom-bar-facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fxsoer.github.io%2fpost%2f171224-docker%25E5%259F%25BA%25E7%25A1%2580%2f" target="_blank" title="Docker基础" rel="nofollow">Facebook</a></span>
+                <span class="bottom-bar-item bottom-bar-twitter"><a href="https://twitter.com/intent/tweet?url=http%3a%2f%2fxsoer.github.io%2fpost%2f171224-docker%25E5%259F%25BA%25E7%25A1%2580%2f&text=Docker%e5%9f%ba%e7%a1%80" target="_blank" title="Docker基础" rel="nofollow">Twitter</a></span>
+                <span class="bottom-bar-item bottom-bar-weibo"><a href="http://service.weibo.com/share/share.php?url=http%3a%2f%2fxsoer.github.io%2fpost%2f171224-docker%25E5%259F%25BA%25E7%25A1%2580%2f&amp;title=Docker%e5%9f%ba%e7%a1%80" target="_blank" title="Docker基础" rel="nofollow">Weibo</a></span>
+                <span class="bottom-bar-item bottom-bar-qrcode"><a href="//pan.baidu.com/share/qrcode?w=300&amp;h=300&amp;url=http%3a%2f%2fxsoer.github.io%2fpost%2f171224-docker%25E5%259F%25BA%25E7%25A1%2580%2f" target="_blank" rel="nofollow">QRcode</a></span>
+            </div>
+
+            <div class="bottom-bar-items right">
+                
+                <span class="bottom-bar-item"><a href="http://xsoer.github.io/post/171001-es6%E6%A0%87%E5%87%86%E6%A6%82%E8%A7%88/" title="ES6标准预览">←</a></span> 
+                
+                <span class="bottom-bar-item"><a href="http://xsoer.github.io/post/180110-laravel%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/" title="Laravel定时任务">→</a></span> 
+                <span class="bottom-bar-item"></span> <span class="bottom-bar-item"><a href="#footer">↓</a></span>
+                <span class="bottom-bar-item"><a href="#">↑</a></span>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+ <footer id="footer" class="footer bg-white">
+    <div class="footer-social">
+        <div class="footer-container clearfix">
+            <div class="social-list">
+                
+                
+                <a class="social" target="blank" href="mailto:codehackfox@gmail.com">Email</a>  
+                
+                <a class="social" target="blank" href="https://github.com/xsoer">Github</a>  
+                
+                <a class="social" target="blank" href="http://xsoer.github.io/index.xml">RSS</a>  
+            </div>
+        </div>
+    </div>
+    <div class="footer-meta">
+        <div class="footer-container">
+            <div class="meta-item meta-copyright">
+                <div class="meta-copyright-info">
+                    <br>
+                    <div class="info-text">
+                        <p id="chakhsu"> </p>
+                        <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="nofollow">Hugo</a>.
+                            <a href="https://golang.org/" target="_blank" rel="nofollow">#golang</a>.
+                        </p>
+                        <p> &copy; 2019 <a href="http://xsoer.github.io">Hackfox</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="meta-item meta-comments">
+                <h3 class="meta-title">CATEGORIES</h3>
+                <li><a href="http://xsoer.github.io/categories/development">Development</a>(21)</li>
+                <li><a href="http://xsoer.github.io/categories/linux">Linux</a>(2)</li>
+                <li><a href="http://xsoer.github.io/categories/mysql">Mysql</a>(2)</li>
+                <li><a href="http://xsoer.github.io/categories/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93">数据仓库</a>(1)</li>
+                <li><a href="http://xsoer.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA">计算机</a>(2)</li>
+            </div>
+            <div class="meta-item meta-posts">
+                <h3 class="meta-title">RECENT POSTS</h3>
+                   
+                <li><a href="http://xsoer.github.io/post/180827-%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/">数据仓库模型</a></li>
+                  
+                <li><a href="http://xsoer.github.io/post/180228-laravel%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">Laravel的异常处理</a></li>
+                  
+                <li><a href="http://xsoer.github.io/post/180226-laravel%E7%9A%84%E6%8B%BC%E6%8E%A5sql%E9%97%AE%E9%A2%98/">Laravel的拼接sql问题</a></li>
+                  
+                <li><a href="http://xsoer.github.io/post/180224-atom%E5%8E%9F%E7%90%86/">Atom原理</a></li>
+                  
+                <li><a href="http://xsoer.github.io/post/180224-vue%E9%A1%B9%E7%9B%AE%E5%8D%87%E7%BA%A7%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7/">Vue项目升级打包工具</a></li>
+                  
+                <li><a href="http://xsoer.github.io/post/180112-csrf-token%E5%8E%9F%E7%90%86/">CSRF TOKEN原理</a></li>
+                 
+
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+
+ 
+    <div id="directory-content" class="directory-content">
+        <div id="directory"></div>
+    </div>
+    <script>
+    var postDirectoryBuild = function() {
+        var postChildren = function children(childNodes, reg) {
+                var result = [],
+                    isReg = typeof reg === 'object',
+                    isStr = typeof reg === 'string',
+                    node, i, len;
+                for (i = 0, len = childNodes.length; i < len; i++) {
+                    node = childNodes[i];
+                    if ((node.nodeType === 1 || node.nodeType === 9) && (!reg || isReg && reg.test(node.tagName.toLowerCase()) || isStr && node.tagName.toLowerCase() === reg)) {
+                        result.push(node);
+                    }
+                }
+                return result;
+            },
+            createPostDirectory = function(article, directory, isDirNum) {
+                var contentArr = [],
+                    titleId = [],
+                    levelArr, root, level, currentList, list, li, link, i, len;
+                levelArr = (function(article, contentArr, titleId) {
+                    var titleElem = postChildren(article.childNodes, /^h\d$/),
+                        levelArr = [],
+                        lastNum = 1,
+                        lastRevNum = 1,
+                        count = 0,
+                        guid = 1,
+                        id = 'directory' + (Math.random() + '').replace(/\D/, ''),
+                        lastRevNum, num, elem;
+                    while (titleElem.length) {
+                        elem = titleElem.shift();
+                        contentArr.push(elem.innerHTML);
+                        num = +elem.tagName.match(/\d/)[0];
+                        if (num > lastNum) {
+                            levelArr.push(1);
+                            lastRevNum += 1;
+                        } else if (num === lastRevNum || num > lastRevNum && num <= lastNum) {
+                            levelArr.push(0);
+                            lastRevNum = lastRevNum;
+                        } else if (num < lastRevNum) {
+                            levelArr.push(num - lastRevNum);
+                            lastRevNum = num;
+                        }
+                        count += levelArr[levelArr.length - 1];
+                        lastNum = num;
+                        elem.id = elem.id || (id + guid++);
+                        titleId.push(elem.id);
+                    }
+                    if (count !== 0 && levelArr[0] === 1) levelArr[0] = 0;
+                    return levelArr;
+                })(article, contentArr, titleId);
+                currentList = root = document.createElement('ul');
+                dirNum = [0];
+                for (i = 0, len = levelArr.length; i < len; i++) {
+                    level = levelArr[i];
+                    if (level === 1) {
+                        list = document.createElement('ul');
+                        if (!currentList.lastElementChild) {
+                            currentList.appendChild(document.createElement('li'));
+                        }
+                        currentList.lastElementChild.appendChild(list);
+                        currentList = list;
+                        dirNum.push(0);
+                    } else if (level < 0) {
+                        level *= 2;
+                        while (level++) {
+                            if (level % 2) dirNum.pop();
+                            currentList = currentList.parentNode;
+                        }
+                    }
+                    dirNum[dirNum.length - 1]++;
+                    li = document.createElement('li');
+                    link = document.createElement('a');
+                    link.href = '#' + titleId[i];
+                    link.innerHTML = !isDirNum ? contentArr[i] : dirNum.join('.') + ' ' + contentArr[i];
+                    li.appendChild(link);
+                    currentList.appendChild(li);
+                }
+                directory.appendChild(root);
+            };
+        createPostDirectory(document.getElementById('post-content'), document.getElementById('directory'), true);
+    };
+    postDirectoryBuild();
+    </script> 
+
+
+<script src="//cdn.bootcss.com/headroom/0.9.1/headroom.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.10.0/highlight.min.js"></script>
+<script src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+<script>
+
+
+    var postDirectory = new Headroom(document.getElementById("directory-content"), {
+        tolerance: 0,
+        offset: 90,
+        classes: {
+            initial: "initial",
+            pinned: "pinned",
+            unpinned: "unpinned"
+        }
+    });
+    postDirectory.init();
+
+
+     var postSharer = new Headroom(document.getElementById("post-bottom-bar"), {
+        tolerance: 0,
+        offset: 70,
+        classes: {
+            initial: "animated",
+            pinned: "pinned",
+            unpinned: "unpinned"
+        }
+    });
+    postSharer.init();
+
+
+
+
+    var header = new Headroom(document.getElementById("header"), {
+        tolerance: 0,
+        offset: 70,
+        classes: {
+            initial: "animated",
+            pinned: "slideDown",
+            unpinned: "slideUp"
+        }
+    });
+    header.init();
+    var chakhsu = function (r) {
+        function t() {
+            return b[Math.floor(Math.random() * b.length)]
+        }
+
+        function e() {
+            return String.fromCharCode(94 * Math.random() + 33)
+        }
+
+        function n(r) {
+            for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
+                var l = document.createElement("span");
+                l.textContent = e(), l.style.color = t(), n.appendChild(l)
+            }
+            return n
+        }
+
+        function i() {
+            var t = o[c.skillI];
+            c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
+        }
+        var l = "",
+            o = ["I am a Developer","I am happy"].map(function (r) {
+                return r + "."
+            }),
+            a = 2,
+            g = 1,
+            s = 5,
+            d = 75,
+            b = ["rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", "rgb(198,214,60)", "rgb(175,240,91)", "rgb(127,246,88)", "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", "rgb(76,110,219)", "rgb(96,84,200)"],
+            c = {
+                text: "",
+                prefixP: -s,
+                skillI: 0,
+                skillP: 0,
+                direction: "forward",
+                delay: a,
+                step: g
+            };
+        i()
+    };
+    chakhsu(document.getElementById('chakhsu'));
+    if ('addEventListener' in document) {
+        document.addEventListener('DOMContentLoaded', function () {
+            FastClick.attach(document.body);
+        }, false);
+    }
+
+</script>
+<script type="text/x-mathjax-config"> MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none", extensions: ["tex2jax.js"], jax: ["input/TeX",
+    "output/HTML-CSS"], tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'], ignoreClass:"comment-content" }, "HTML-CSS":
+    { availableFonts: ["STIX","TeX"], showMathMenu: false } }); MathJax.Hub.Queue(["Typeset",MathJax.Hub]); </script>
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-114671402-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+</body>
+
+</html>
