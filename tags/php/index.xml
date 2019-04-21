@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PHP on hackfox</title>
+    <link>http://hackfox.vip/tags/php/</link>
+    <description>Recent content in PHP on hackfox</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 28 Feb 2018 18:30:10 +0000</lastBuildDate>
+    
+	<atom:link href="http://hackfox.vip/tags/php/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Laravel的异常处理</title>
+      <link>http://hackfox.vip/post/180228-laravel%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</link>
+      <pubDate>Wed, 28 Feb 2018 18:30:10 +0000</pubDate>
+      
+      <guid>http://hackfox.vip/post/180228-laravel%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</guid>
+      <description>在进行项目操作时，
+// class A文件 public function a() { try{ logger(111); (new \App\Business\B)-&amp;gt;b(); }catch(BusinessException $e) { logger(444) $this-&amp;gt;rollBackOrder(); throw new BusinessException($e-&amp;gt;getMessage().&#39;请联系管理员处理&#39;, 21000); } } public function rollBackOrder() { // some code } // class B文件 public function b() { try{ $i = 1; if ($i != 0) { logger(222) throw new KrException(&#39;错误了，回滚回滚&#39;, 500); } }catch (KrException $e) { logger(333) throw new KrException($e-&amp;gt;getMessage(), 500); } }  以上代码打印结果为:
+111 222 333  可以看到最后A内的rollBackOrder方法未执行</description>
+    </item>
+    
+    <item>
+      <title>Laravel的拼接sql问题</title>
+      <link>http://hackfox.vip/post/180226-laravel%E7%9A%84%E6%8B%BC%E6%8E%A5sql%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Mon, 26 Feb 2018 17:46:28 +0000</pubDate>
+      
+      <guid>http://hackfox.vip/post/180226-laravel%E7%9A%84%E6%8B%BC%E6%8E%A5sql%E9%97%AE%E9%A2%98/</guid>
+      <description>laravel的原始sql语句在输入数据查询时，需要注意传入的字符，否则很容易出问题。例如：
+$query-&amp;gt;whereRaw(&amp;quot;(fund_name like %{$wd}% or fund_fullname like %{$wd}%)&amp;quot;);  在传入：siggi&amp;rsquo;s,或者siggi&amp;rdquo;s时，在sql执行时会报错。 需要修改为一下
+$query-&amp;gt;where( function ($q) use ($wd) { $q-&amp;gt;where(&#39;fund_name&#39;, &#39;like&#39;, &amp;quot;%{$wd}%&amp;quot;); $q-&amp;gt;orWhere(&#39;fund_fullname&#39;, &#39;like&#39;, &amp;quot;%{$wd}%&amp;quot;); } );  利用larvel自带的ORM进行转义就没有问题。</description>
+    </item>
+    
+    <item>
+      <title>CSRF TOKEN原理</title>
+      <link>http://hackfox.vip/post/180112-csrf-token%E5%8E%9F%E7%90%86/</link>
+      <pubDate>Fri, 12 Jan 2018 19:28:21 +0000</pubDate>
+      
+      <guid>http://hackfox.vip/post/180112-csrf-token%E5%8E%9F%E7%90%86/</guid>
+      <description>用处  在Kernel文件内引入的VerifyCsrfToken文件，如果不需要就注释掉 传统Form表单提交，在form表单内添加  &amp;lt;input name=&amp;quot;_token&amp;quot; type=&amp;quot;hidden&amp;quot; value=&amp;quot;{{ csrf_token() }}&amp;quot; /&amp;gt;   在Ajax，用 X-CSRF-TOKEN或者X-XSRF-TOKEN.在公共父页面添加  &amp;lt;meta name=&amp;quot;csrf-token&amp;quot; content=&amp;quot;{{csrf_token()}}&amp;quot; /&amp;gt; $.ajaxSetup({ headers: { &#39;X-CSRF-TOKEN&#39;: $(&#39;meta[name=&amp;quot;csrf-token&amp;quot;]&#39;).attr(&#39;content&#39;) } });   判断及添加token源码,在Illuminate\Foundation\Http\Middleware\VerifyCsrfToken文件内  public function handle($request, Closure $next) { if ( $this-&amp;gt;isReading($request) || $this-&amp;gt;runningUnitTests() || $this-&amp;gt;shouldPassThrough($request) || $this-&amp;gt;tokensMatch($request) ) { return $this-&amp;gt;addCookieToResponse($request, $next($request)); } throw new TokenMismatchException; } protected function tokensMatch($request) { $sessionToken = $request-&amp;gt;session()-&amp;gt;token(); $token = $request-&amp;gt;input(&#39;_token&#39;) ?: $request-&amp;gt;header(&#39;X-CSRF-TOKEN&#39;); if (!</description>
+    </item>
+    
+    <item>
+      <title>Laravel定时任务</title>
+      <link>http://hackfox.vip/post/180110-laravel%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/</link>
+      <pubDate>Wed, 10 Jan 2018 19:31:08 +0000</pubDate>
+      
+      <guid>http://hackfox.vip/post/180110-laravel%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/</guid>
+      <description>定时任务传入参数和选择值方法  param为必填 option为可选项·   &amp;lt;?php namespace App\Console\Commands; use Illuminate\Console\Command; class TestDemo extends Command { /** * 控制台命令名称 * * @var string */ protected $signature = &#39;test {param1} {--param2=}&#39;; /** * 控制台命令描述 * * @var string */ protected $description = &#39;test&#39;; /** * 创建新的命令实例 * * @param DripEmailer $drip * @return void */ public function __construct(DripEmailer $drip) { parent::__construct(); } /** * 执行控制台命令 * * @return mixed */ public function handle() { //参数调用方法 $param1 = $this-&amp;gt;argument(&#39;param1&#39;); $param2 = $this-&amp;gt;option(&#39;param2&#39;); $this-&amp;gt;info($param1); $this-&amp;gt;info($param2); } }   依赖的服务要注入  &amp;lt;?</description>
+    </item>
+    
+    <item>
+      <title>PHP字符串操作</title>
+      <link>http://hackfox.vip/post/150705-php%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Sun, 05 Jul 2015 08:32:19 +0000</pubDate>
+      
+      <guid>http://hackfox.vip/post/150705-php%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/</guid>
+      <description> 1.print 有返回值、只能输出一个、可以用在表达式中
+ echo 无返回值、能输出多个、不能用于表达式中  2.trim($strs) //去除两边的空格
+ rtrim($strs) //去除右边的空格 ltrim($strs) //去除左边的空格  3.点链接字符串(.)
+ 4.strlen($strs) //求字符串长度
+ 5.explode(&amp;lsquo;,&amp;rsquo;,$strs) //分割字符串为数组
+ 6.implode(&amp;lsquo;,&amp;rsquo;,$arr) //分割数组为字符串
+ 7.strtoupper($strs),strtolower($strs) //转换字符串大小写
+ 8.!=、== //比较两个对象是否相等
+ 9.!== 、=== //比较两个对象及值是否相等
+ 10.strcmp($str1,$str2) //区分大小写比较字符串，前者大于后者返回大于零的数，小于返回小于零的数，相等则返回零
+ 11.strcasecmp($str1,$str2) //不区分大小写比较字符串
+ 12.strncmp($str1,$str2,n) //区分大小写比较前n个字符串
+ 13.strncasecmp($str1,$str2,n) //不区分大小写比较前n个字符串
+ 14.str_replace($oldstr,$newstr,$strs) //区分大小写替换字符串内的字符
+ 15.strstr($strs,$findstr) //字符串查找
+ 16.htmlspecialchars($str) //将字符串内特殊的字符转换为html内的字符
+ 17.md5($str) //md5加密
+ 18.strrev($str) //反转字符串
+  </description>
+    </item>
+    
+    <item>
+      <title>PHP数组函数</title>
+      <link>http://hackfox.vip/post/150705-php%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0/</link>
+      <pubDate>Sun, 05 Jul 2015 01:53:37 +0000</pubDate>
+      
+      <guid>http://hackfox.vip/post/150705-php%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0/</guid>
+      <description>1.array() [] //生成数组
+ 2.isset($arr[$i])//判断该值是否存在
+ 3.is_array($arr) //判断是否是数组
+ 4.array_push($arr,$a) //从尾部往数组内添加值
+ 5.array_unshift //从头部往数组内插入
+ 6.array_pop //弹出数组最后一个
+ 7.array_shift //弹出数组第一个
+ 8.range(0,6) //产生一个从0到6的数组
+ 9.in_array($a,$arr) //检验是否在数组内
+ 10.array_keys() //返回数组的所有键值
+ 11.array_change_key_case($arr1,CASE_UPPER) //改变键值为大写 或者CASE_LOWER 小写
+ 12.array_merge() //合并两个或多个数组
+ 13.sort($arr) //给数组排序，升序
+ 14.count() //查询数组内元素的个数
+ 15.array_filter($arr,$fun) //用一个函数过滤数组
+ 16.print_r() //输出数组
+ 17.foreach($arr as $k) //遍历数组
+ 18.while(list($key,$value)==each($arr)) //list遍历数组
+ 19.explode(&amp;lsquo;,&amp;rsquo;,$arr) //去除字符串中的逗号，转为数组
+ 20.implode(&amp;lsquo;,&amp;rsquo;,$arr) //将数组转为字符串
+ 21.ksort() //按键排序
+ 22.asort() //按值排序</description>
+    </item>
+    
+  </channel>
+</rss>

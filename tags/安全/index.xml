@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>安全 on hackfox</title>
+    <link>http://hackfox.vip/tags/%E5%AE%89%E5%85%A8/</link>
+    <description>Recent content in 安全 on hackfox</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 12 Jan 2018 19:28:21 +0000</lastBuildDate>
+    
+	<atom:link href="http://hackfox.vip/tags/%E5%AE%89%E5%85%A8/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>CSRF TOKEN原理</title>
+      <link>http://hackfox.vip/post/180112-csrf-token%E5%8E%9F%E7%90%86/</link>
+      <pubDate>Fri, 12 Jan 2018 19:28:21 +0000</pubDate>
+      
+      <guid>http://hackfox.vip/post/180112-csrf-token%E5%8E%9F%E7%90%86/</guid>
+      <description>用处  在Kernel文件内引入的VerifyCsrfToken文件，如果不需要就注释掉 传统Form表单提交，在form表单内添加  &amp;lt;input name=&amp;quot;_token&amp;quot; type=&amp;quot;hidden&amp;quot; value=&amp;quot;{{ csrf_token() }}&amp;quot; /&amp;gt;   在Ajax，用 X-CSRF-TOKEN或者X-XSRF-TOKEN.在公共父页面添加  &amp;lt;meta name=&amp;quot;csrf-token&amp;quot; content=&amp;quot;{{csrf_token()}}&amp;quot; /&amp;gt; $.ajaxSetup({ headers: { &#39;X-CSRF-TOKEN&#39;: $(&#39;meta[name=&amp;quot;csrf-token&amp;quot;]&#39;).attr(&#39;content&#39;) } });   判断及添加token源码,在Illuminate\Foundation\Http\Middleware\VerifyCsrfToken文件内  public function handle($request, Closure $next) { if ( $this-&amp;gt;isReading($request) || $this-&amp;gt;runningUnitTests() || $this-&amp;gt;shouldPassThrough($request) || $this-&amp;gt;tokensMatch($request) ) { return $this-&amp;gt;addCookieToResponse($request, $next($request)); } throw new TokenMismatchException; } protected function tokensMatch($request) { $sessionToken = $request-&amp;gt;session()-&amp;gt;token(); $token = $request-&amp;gt;input(&#39;_token&#39;) ?: $request-&amp;gt;header(&#39;X-CSRF-TOKEN&#39;); if (!</description>
+    </item>
+    
+  </channel>
+</rss>

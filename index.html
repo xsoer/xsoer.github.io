@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="generator" content="Hugo 0.55.3" />
+    <meta charset="UTF-8">
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    <link rel="dns-prefetch" href="https://o243f9mnq.qnssl.com/" />
+    <link rel="dns-prefetch" href="//cdn.bootcss.com" />
+    <link rel="dns-prefetch" href="//secure.gravatar.com" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    
+    <link href="http://hackfox.vip/index.xml" rel="alternate" type="application/rss+xml" title="hackfox" /> 
+    
+    <link rel="shortcut icon" href="http://hackfox.vip/images/favicon.png">
+    <link rel="apple-touch-icon" href="http://hackfox.vip/images/apple-touch-icon.png">
+    <title>
+        
+        hackfox
+        
+    </title>
+    <meta name="keywords" content=" " />
+    <meta name="description" content=" " />
+    <link href="//cdn.bootcss.com/highlight.js/9.10.0/styles/xcode.min.css" rel="stylesheet">
+    <link href="http://hackfox.vip/css/style.min.css?20170331" rel="stylesheet">
+    
+</head>
+
+
+<body class="bg-grey" gtools_scp_screen_capture_injected="true">
+
+    <header id="header" class="header bg-white">
+        <div class="navbar-container">
+            <a href="http://hackfox.vip" class="navbar-logo" style="color: #5f5f5f">hackfox</a>
+            <div class="navbar-menu">
+            
+                <a href="http://hackfox.vip/post/">Archives</a>  
+            
+                <a href="http://hackfox.vip/tags/">Tags</a>  
+            
+                <a href="http://hackfox.vip/about">About</a>  
+            
+            </div>
+            
+            <div class="navbar-mobile-menu" onclick=""> 
+                <span class="icon-menu cross"><span class="middle"></span></span>
+                <ul>
+                
+                <li><a href="http://hackfox.vip/post/">Archives</a></li> 
+                
+                <li><a href="http://hackfox.vip/tags/">Tags</a></li> 
+                
+                <li><a href="http://hackfox.vip/about">About</a></li> 
+                
+                </ul>
+            </div>
+        </div>
+    </header>
+<div class="main-content index-page clearfix ">
+    <div class="post-lists">
+        <div class="post-lists-body">
+        
+        
+        <div class="post-list-item">
+    <div class="post-list-item-container">
+        
+            
+            
+                        
+
+                <div class="item-thumb bg-deepgrey" style="background-image:url(/images/thumbs/49.jpg);"></div>
+            
+            
+        <a href="http://hackfox.vip/post/180827-%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/">
+            <div class="item-desc">
+                <p>数据模型   为什么要建模
+ 定义如何存储信息，如何操作信息，以及信息的完整性等约束功能 影响了数据的形态和使用方式 需要满足不同的业务场景需要 联机事务处理(OLTP):满足业务线需要，频繁的维护更新数据，强一致性 联机分析处理(OLAP):满足决策层需要，更多纬度的视角查询，满足统计决策   定义数据如何存储
+ 数据模型是定义数据如何输入和输出的一种模型。其主要作用是为信息系统提供数据的定义和格式。
+ 数据模型是数据库系统的核心和基础，现有的数据库系统都是基于某种数据模型而建立起来的。
+ 三要素
+ 数据结构：储存在数据库中对象类型的集合，作用是描述数据库组成对象以及对象之间的联系。 比如结构化存储、非结构化存储 关联关系型，KV型 数据操作：指对数据库中各种对象实例允许执行的操作的集合，包括操作及其相关的操作规则。 关系操作的select及其join、 group by、order by,insert,update, delete等 关系型数据库：oracle,SQLServer,DB2,Mysql。面向对象化 键值数据库：redis,mongodb,hbase等。存储非结构化，缓存等 时间序列数据库:InfluxDB，confluenceDB，Elasticsearch等。 存储日志类型，便于分析 流式数据库:MQ，Spark，Kafka。存储消息类型，不做永久性存储。发布-订阅型、消息队列、消息中间件 数据完整性约束条件：指在给定的数据模型中，数据及其联系所遵守的一组通用的完整性规则，它能保证数据的正确性和一致性。[1]    数据建模   建模过程中的主要活动包括：  确定数据及其相关过程（如实地销售人员需要查看在线产品目录并提交新客户订单）。 定义数据（如数据类型、大小和默认值）。 确保数据的完整性（使用业务规则和验证检查）。 定义操作过程（如安全检查和备份）。 选择数据存储技术（如关系、分层或索引存储技术）。  数据建模大致分为三个阶段，概念建模阶段，逻辑建模阶段和物理建模阶段。其中概念建模和逻辑建模阶段与数据库厂商毫无关系，换言之，与MySQL，SQL Server，Oracle没有关系。物理建模阶段和数据库厂商存在很大的联系，因为不同厂商对同一功能的支持方式不同，如高可用性，读写分离，甚至是索引，分区等。   数据存储历史   历史发展  无库时代 ：没有专门的数据库，数据大多以文件形式存放 层次状数据库 ：使用层次状模型进行数据库设计和存放 网状数据库 ：使用网状模型进行数据库设计和存放 关系型数据库 ：使用关系型模型进行数据库设计和存放 非关系型数据库：为适应水平扩展性和处理超大量的数据环境，近几年发展非常迅速的发展，衍生类型非常多。 数据集市 数据仓库    层次模型    一种用树形结构描述实体及其之间关系的数据模型。在这种结构中，每一个记录类型都是用节点表示，记录类型之间的联系则用结点之间的有向线段来表示。每一个双亲结点可以有多个子节点但是每一个子节点只能有一个双亲结点。这种结构决定了采用层次模型作为数系组织方式的层次数据库系统只能处理一对多的实体联系。 层次模型是最早用于商品数据库管理系统的数据模型。 层次数据模型中最基本的数据关系是基本层次关系，它代表两个记录型之间一对多的关系，也叫做双亲子女关系（PCR）。 举例   一个教师学生层次模型。该层次模型有4个记录类型，即实体。分别是： （1）记录型（实体）系是根结点，由系编号、系名、地点3个属性（字段）组成。它有两个子结点，分别是教研室实体和学生实体。 （2）记录型（实体）教研室是系的子结点，同时又是教师实体的双亲结点。它由教研室编号和教研室名两个属性（字段）组成。 （3）记录型（实体）学生由学号、姓名、成绩3个属性（字段）组成。 （4）记录型（实体）教师由教师号、姓名、研究方向3个属性（字段）组成。学生与教师是叶子结点，他们没有子结点。由系到教研室、教研室到教师、系到学生都是一对多的联系。  特征。在一个层次模型中的限制条件是：  （1）有且仅有一个节点，无父节点，它为树的根；（有且仅有一个结点没有双亲，该节点就是根结点。） （2）其他节点有且仅有一个父节点。（根以外的其他结点有且仅有一个双亲结点 ）这就使得层次数据库系统只能直接处理一对多的实体关系。 （3）任何一个给定的记录值只有按照其路径查看时，才能显出它的全部意义，没有一个子女记录值能够脱离双亲记录值而独立存在。 因而层次模型只能表示“1一M”关系，而不能直接表示“M—M”关系。在层次模型中，一个结点称为一个记录型，用来描述实体集。每个记录型可以有一个或多个记录值，上层一个记录值对应下层一个或多个记录值，而下层每个记录值只能对应上层一个记录值。例如，系记录型有：计算机系、电信系等记录值。而计算机系的下层记录值有软件、结构、应用等研究室和数据结构、操作系统、数据库等课程，软件研究室下层又有员工和项目记录值，如图所示:  关于层次模型中实体集之间多对多的联系的处理，解决的方法是引入冗余结点。例如，学生和课程之间的多对多的联系，引入学生和课程的冗余结点，转换为两棵树：一棵树的根是学生，子结点是课程，它表现了一个学生可以选多门课程；一棵树的根是课程，子结点是学生，它反映了一门课程可以被多个学生选。至于冗余结点可以用虚拟结点实现：在冗余结点处仅存放一个指针，指向实际结点。  数据完整性约束。层次模型的数据操纵主要有查询、插入、删除和更新。进行插入、删除、更新操作时要满足层次模型的完整性约束条件。具体如下：  （1）进行插入数据时，如果没有相应的双亲结点值就不能插入它的子结点值。例如，在上图层次数据库中，如果新调入一名教师，但尚未分配到某个教研室，这时就不能将新的教师插入到数据库中。 （2）进行删除数据时，如果删除双亲结点值，则相应的子结点值也被同时删除。例如，在上图中的层次数据库中，如果删除网络教研室，则该教研室的所有教师的数据将全部丢失。 （3）进行修改数据时，进行更新操作时，应更新所有相应记录，以保证数据的一致性。 [2]  优缺点  优点:  层次模型的数据结构比较简单，只需要几条命令就能操纵数据库，比较容易使用。 结构清晰，结点间联系简单，只要知道每个结点的双亲结点，就可以知道整个模型结构。现实世界中许多实体间联系本来就是呈现出一种很自然的层次关系，如表示行政层次，家族关系很关系  缺点:  （1）现实世界中很多联系是非层次性的，如多对多联系、一个结点具有多个双亲等。层次模型表示这类联系的方法很不灵活，不能直接表示两个以上的实体型间的的复杂的联系和实体型间的多对多联系。只能通过引入冗余数据或建非自然的数据组织如创建虚拟节点的方法来解决，易产生不一致性。 （2）对数据的插入和删除的操作限制太多。 （3）查询子女结点必须通过双亲结点，因为层次模型对任一结点的所有子树都规定了先后次序，这一限制隐含了对数据库存取路径的控制。树中父子结点之间只存在一种联系，因此，对树中的任一结点，只有一条自根结点到达它的路径。 （4）树结点中任何记录的属性只能是不可再分的简单数据类型。 （5）由于结构严密，层次命令趋于程序化。   层次模型的物理存储有两种实现方法：  顺序法：按照层次顺序把所有的记录邻接存放，即通过物理空间的位置相邻来实现层次顺序。 指针法：各个记录存放时不是按层次顺序，而是用指针按层次顺序把它们链接起来。  1969由IBM公司的IMS（Information Management System），这是IBM公司研制的最早的大型数据库系统程序产品   网状模型   定义  用有向图结构表示实体类型及实体间联系的数据结构模型称为网状模型（Network Model）。 网状模型取消了层次模型的不能表示非树状结构的限制，两个或两个以上的结点都可以有多个双亲结点，则此时有向树变成了有向图，该有向图描述了网状模型。  特征。网状模型的数据结构主要有以下两个特征:  (1)允许有一个以上的节点无双亲。 (2)至少有一个节点可以有多于一个的双亲。 网状模型中每个结点表示一个记录型（实体），每个记录型可包含若干个字段（实体的属性），结点间的连线表示记录类型（实体）间的父子关系。  示例   课程（实体）的父节点由专业、教研室、学生。以课程和学生之间的关系来说，他们是一种m:n的关系，也就是说一个学生能够选修多门课程，一门课程也可以被多个学生同时选修。  网状与层级数据库的区别  层次模型中子结点与双亲结点的联系是唯一的，在网状模型中这种联系可以不唯一。 层次模型可以看作网状模型的特例 因此，在网状模型中要为每个联系命名，并指出与该联系有关的双亲记录和子记录。  数据操作与完整性约束  网状模型的数据操作主要包括查询、插入、删除和更新。具体如下：  (1)进行插入操作时，允许插入尚未确定双亲结点值的子结点值。如可增加一名尚未分配到某个教研室的新老师，也可增加一些刚来报到还未分配宿舍的学生。 (2)进行删除操作时，只允许删除双亲结点值。如可删除一个教研室，而该科研室所有教师的信息仍保留在数据库中。 (3)修改数据时，可直接表示非树状结构，而无须像层次模型那样增加冗余结点，因此修改操作时只需要指定更新记录即可。  进行更新操作时只需更新指定记录即可。因此，一般来说，网状模型没有层次模型那样严格的完整性约束条件，但具体的网状数据库系统(如DBTG)对数据操作都加了一些限制，提供了一定的完整性约束。 [3] DBTG在模式DDL中提供了定义DBTG数据库完整性的若干概念和语句，主要有：  (1)支持记录码的概念，码是唯一标识记录的数据项的集合。 (2)保证一个联系中双亲记录和子记录之间是一对多的联系。 (3)可以支持双亲记录和子记录之间某些约束条件。如有些子记录要求双亲记录存在才能插入，双亲记录删除时也连同删除。   优缺点  优点  能够更为直接地描述现实客观世界。可表示实体间的多种复杂联系。 修改网状数据模型时，没有层次状数据模型的那么多的严格限制，可以删除一个节点的父节点而依旧保留该节点；也允许插入一个没有任何父节点的节点，这样的插入在层次状数据模型中是不被允许的，除非是首先插入的是根节点； 实体之间的关系在底层中可以借由指针指针实现。具有良好的性能，存取效率较高。  缺点  结构比较复杂，其数据定义语言(DDL)、数据操作语言(DML)复杂，用户不容易使用。而且应用环境越大，数据库的结构就变得越复杂，不利于最终用户掌握。 数据独立性差，由于实体间的联系本质上是通过存取路径表示的，因此应用程序在访问数据时要指定存取路径。 网状数据模型数据之间的彼此关联比较大，该模型其实一种导航式的数据模型结构，不仅要说明要对数据做些什么，还说明操作的记录的路径；     关系模型   网状数据库和层次数据库已经很好地解决了数据的集中和共享问题 但是在数据独立性和抽象级别上仍有很大欠缺。用户在对这两种数据库进行存取时，仍然需要明确数据的存储结构，指出存取路径。 1970年，IBM的研究员E. </p>
+            </div>
+        </a>
+        <div class="item-slant reverse-slant bg-deepgrey"></div>
+        <div class="item-slant"></div>
+        <div class="item-label">
+            <div class="item-title"><a href="http://hackfox.vip/post/180827-%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/">数据仓库模型</a></div>
+            <div class="item-meta clearfix">
+                
+                 
+                
+                <div class="item-meta-ico bg-ico-lock" style="background: url(http://hackfox.vip/images/bg-ico.png) no-repeat;background-size: 40px auto;"></div>
+                 
+                
+                <div class="item-meta-cat"><a href="http://hackfox.vip/categories/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93">数据仓库</a></div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        <div class="post-list-item">
+    <div class="post-list-item-container">
+        
+            
+            
+                        
+
+                <div class="item-thumb bg-deepgrey" style="background-image:url(/images/thumbs/47.jpg);"></div>
+            
+            
+        <a href="http://hackfox.vip/post/180228-laravel%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">
+            <div class="item-desc">
+                <p>在进行项目操作时，
+// class A文件 public function a() { try{ logger(111); (new \App\Business\B)-&gt;b(); }catch(BusinessException $e) { logger(444) $this-&gt;rollBackOrder(); throw new BusinessException($e-&gt;getMessage().'请联系管理员处理', 21000); } } public function rollBackOrder() { // some code } // class B文件 public function b() { try{ $i = 1; if ($i != 0) { logger(222) throw new KrException('错误了，回滚回滚', 500); } }catch (KrException $e) { logger(333) throw new KrException($e-&gt;getMessage(), 500); } }  以上代码打印结果为:
+111 222 333  可以看到最后A内的rollBackOrder方法未执行 </p>
+            </div>
+        </a>
+        <div class="item-slant reverse-slant bg-deepgrey"></div>
+        <div class="item-slant"></div>
+        <div class="item-label">
+            <div class="item-title"><a href="http://hackfox.vip/post/180228-laravel%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">Laravel的异常处理</a></div>
+            <div class="item-meta clearfix">
+                
+                 
+                
+                <div class="item-meta-ico bg-ico-note" style="background: url(http://hackfox.vip/images/bg-ico.png) no-repeat;background-size: 40px auto;"></div>
+                 
+                
+                <div class="item-meta-cat"><a href="http://hackfox.vip/categories/development">Development</a></div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        <div class="post-list-item">
+    <div class="post-list-item-container">
+        
+            
+            
+                        
+
+                <div class="item-thumb bg-deepgrey" style="background-image:url(/images/thumbs/79.jpg);"></div>
+            
+            
+        <a href="http://hackfox.vip/post/180226-laravel%E7%9A%84%E6%8B%BC%E6%8E%A5sql%E9%97%AE%E9%A2%98/">
+            <div class="item-desc">
+                <p>laravel的原始sql语句在输入数据查询时，需要注意传入的字符，否则很容易出问题。例如：
+$query-&gt;whereRaw(&quot;(fund_name like %{$wd}% or fund_fullname like %{$wd}%)&quot;);  在传入：siggi&rsquo;s,或者siggi&rdquo;s时，在sql执行时会报错。 需要修改为一下
+$query-&gt;where( function ($q) use ($wd) { $q-&gt;where('fund_name', 'like', &quot;%{$wd}%&quot;); $q-&gt;orWhere('fund_fullname', 'like', &quot;%{$wd}%&quot;); } );  利用larvel自带的ORM进行转义就没有问题。 </p>
+            </div>
+        </a>
+        <div class="item-slant reverse-slant bg-deepgrey"></div>
+        <div class="item-slant"></div>
+        <div class="item-label">
+            <div class="item-title"><a href="http://hackfox.vip/post/180226-laravel%E7%9A%84%E6%8B%BC%E6%8E%A5sql%E9%97%AE%E9%A2%98/">Laravel的拼接sql问题</a></div>
+            <div class="item-meta clearfix">
+                
+                 
+                
+                <div class="item-meta-ico bg-ico-code" style="background: url(http://hackfox.vip/images/bg-ico.png) no-repeat;background-size: 40px auto;"></div>
+                 
+                
+                <div class="item-meta-cat"><a href="http://hackfox.vip/categories/development">Development</a></div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        <div class="post-list-item">
+    <div class="post-list-item-container">
+        
+            
+            
+                        
+
+                <div class="item-thumb bg-deepgrey" style="background-image:url(/images/thumbs/78.jpg);"></div>
+            
+            
+        <a href="http://hackfox.vip/post/180224-atom%E5%8E%9F%E7%90%86/">
+            <div class="item-desc">
+                <p>atom基于electron来构建，可以跨平台、开源。 什么是electron呢？  a framework for building cross platform apps using web technologies   Electron  简介
+  一个基于Node、chromium、V8集成的跨平台的用web技术开发桌面程序的工具。   如何集成的？
+  分为一个主进程和渲染进程。 主进程。package.json里的main函数就是主进程， 运行在主进程中的脚本将以创建 web 页面的方式显示一个 GUI。 渲染进程。由于 Electron 使用 Chromium 来显示 web 页面，所以 Chromium 的多进程架构也是可用的。 每个 Electron 中的 web 页面运行在它的叫渲染进程的进程中。在通常的浏览器内，网页通常运行在一个沙盒的环境挡住并且不能够使用原生的资源。 然而 Electron 的用户在 Node.js 的 API 支持下可以在页面中和操作系统进行一些低级别的交互。 两者区别。  主进程使用 BrowserWindow 实例创建页面。 每个 BrowserWindow 实例都在自己的渲染进程里运行页面。 当一个 BrowserWindow 实例被销毁后，相应的渲染进程也会被终止。 主进程管理所有页面和与之对应的渲染进程。每个渲染进程都是相互独立的，并且只关心他们自己的页面。 由于在页面里管理原生 GUI 资源是非常危险而且容易造成资源泄露，所以在页面调用 GUI 相关的 APIs 是不被允许的。 如果你想在网页里使用 GUI 操作，其对应的渲染进程必须与主进程进行通讯，请求主进程进行相关的 GUI 操作。 在 Electron，我们提供几种方法用于主进程和渲染进程之间的通讯。 像 ipcRenderer 和 ipcMain 模块用于发送消息， remote 模块用于 RPC 方式通讯。 这些内容都可以在一个 FAQ 中查看 如何在两个页面之间共享数据。    如何涉及API？有哪些方面的API？使用了chromium的哪些技术? </p>
+            </div>
+        </a>
+        <div class="item-slant reverse-slant bg-deepgrey"></div>
+        <div class="item-slant"></div>
+        <div class="item-label">
+            <div class="item-title"><a href="http://hackfox.vip/post/180224-atom%E5%8E%9F%E7%90%86/">Atom原理</a></div>
+            <div class="item-meta clearfix">
+                
+                 
+                
+                <div class="item-meta-ico bg-ico-image" style="background: url(http://hackfox.vip/images/bg-ico.png) no-repeat;background-size: 40px auto;"></div>
+                 
+                
+                <div class="item-meta-cat"><a href="http://hackfox.vip/categories/development">Development</a></div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        <div class="post-list-item">
+    <div class="post-list-item-container">
+        
+            
+            
+                        
+
+                <div class="item-thumb bg-deepgrey" style="background-image:url(/images/thumbs/21.jpg);"></div>
+            
+            
+        <a href="http://hackfox.vip/post/180224-vue%E9%A1%B9%E7%9B%AE%E5%8D%87%E7%BA%A7%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7/">
+            <div class="item-desc">
+                <p> 原因
+  由于早起的项目是一年前用vue-cli工具生成的，当时的打包工具是webpack1.0版本的，现在的项目越来越大，打包速度越来越慢；并且配套的校验、压缩等工具也已老旧，所以打算升级。   步骤
+  1.用最新版的vue-cli脚手架工具来安装一个项目。 升级vue-cli工具  nmp update vue-cli -g   2.执行一下命令来生成最新的vue项目  vue init webpack my-project  3.把原项目内的src文件保留，其余的全部替换为新项目的文件。此处应该把老项目内引用的相关依赖加入新项目的package.json内，然后执行安装。
+ 注意
+  1.新升级后的项目安装的eslint校验比较严格，此处可以先不安装eslint.当把所有的文件都升级到最新项目并且运行无误后，在单独安装eslint. 2.安装最新的eslint后，需要添加.eslintrc.js和.eslintignore两个文件，并且需要修改webpack.basic.conf.js文件来添加eslint功能。 3.添加后，在package.json内添加执行eslint的命令。执行一下命令来查看项目的校验情况。  npm run lint   4.如果有问题，可以执行一下命令来自动修复文件。  eslint --fix file-name   5.如果不能自动修复的，那就根据提示来做调整。如果不想要校验规则，可以在.eslintre.js内做修改。
+ 6.校验规则分为三级：
+ off或0 表示关闭； warn或1 表示开启并使用警告级别（触发后程序不会退出 error或2 表示开启并使用错误级别（触发后程序会退出）。    </p>
+            </div>
+        </a>
+        <div class="item-slant reverse-slant bg-deepgrey"></div>
+        <div class="item-slant"></div>
+        <div class="item-label">
+            <div class="item-title"><a href="http://hackfox.vip/post/180224-vue%E9%A1%B9%E7%9B%AE%E5%8D%87%E7%BA%A7%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7/">Vue项目升级打包工具</a></div>
+            <div class="item-meta clearfix">
+                
+                 
+                
+                <div class="item-meta-ico bg-ico-link" style="background: url(http://hackfox.vip/images/bg-ico.png) no-repeat;background-size: 40px auto;"></div>
+                 
+                
+                <div class="item-meta-cat"><a href="http://hackfox.vip/categories/development">Development</a></div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        <div class="post-list-item">
+    <div class="post-list-item-container">
+        
+            
+            
+                        
+
+                <div class="item-thumb bg-deepgrey" style="background-image:url(/images/thumbs/9.jpg);"></div>
+            
+            
+        <a href="http://hackfox.vip/post/180112-csrf-token%E5%8E%9F%E7%90%86/">
+            <div class="item-desc">
+                <p>用处  在Kernel文件内引入的VerifyCsrfToken文件，如果不需要就注释掉 传统Form表单提交，在form表单内添加  &lt;input name=&quot;_token&quot; type=&quot;hidden&quot; value=&quot;{{ csrf_token() }}&quot; /&gt;   在Ajax，用 X-CSRF-TOKEN或者X-XSRF-TOKEN.在公共父页面添加  &lt;meta name=&quot;csrf-token&quot; content=&quot;{{csrf_token()}}&quot; /&gt; $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name=&quot;csrf-token&quot;]').attr('content') } });   判断及添加token源码,在Illuminate\Foundation\Http\Middleware\VerifyCsrfToken文件内  public function handle($request, Closure $next) { if ( $this-&gt;isReading($request) || $this-&gt;runningUnitTests() || $this-&gt;shouldPassThrough($request) || $this-&gt;tokensMatch($request) ) { return $this-&gt;addCookieToResponse($request, $next($request)); } throw new TokenMismatchException; } protected function tokensMatch($request) { $sessionToken = $request-&gt;session()-&gt;token(); $token = $request-&gt;input('_token') ?: $request-&gt;header('X-CSRF-TOKEN'); if (! </p>
+            </div>
+        </a>
+        <div class="item-slant reverse-slant bg-deepgrey"></div>
+        <div class="item-slant"></div>
+        <div class="item-label">
+            <div class="item-title"><a href="http://hackfox.vip/post/180112-csrf-token%E5%8E%9F%E7%90%86/">CSRF TOKEN原理</a></div>
+            <div class="item-meta clearfix">
+                
+                 
+                
+                <div class="item-meta-ico bg-ico-link" style="background: url(http://hackfox.vip/images/bg-ico.png) no-repeat;background-size: 40px auto;"></div>
+                 
+                
+                <div class="item-meta-cat"><a href="http://hackfox.vip/categories/development">Development</a></div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        <div class="post-list-item">
+    <div class="post-list-item-container">
+        
+            
+            
+                        
+
+                <div class="item-thumb bg-deepgrey" style="background-image:url(/images/thumbs/53.jpg);"></div>
+            
+            
+        <a href="http://hackfox.vip/post/180110-laravel%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/">
+            <div class="item-desc">
+                <p>定时任务传入参数和选择值方法  param为必填 option为可选项·   &lt;?php namespace App\Console\Commands; use Illuminate\Console\Command; class TestDemo extends Command { /** * 控制台命令名称 * * @var string */ protected $signature = 'test {param1} {--param2=}'; /** * 控制台命令描述 * * @var string */ protected $description = 'test'; /** * 创建新的命令实例 * * @param DripEmailer $drip * @return void */ public function __construct(DripEmailer $drip) { parent::__construct(); } /** * 执行控制台命令 * * @return mixed */ public function handle() { //参数调用方法 $param1 = $this-&gt;argument('param1'); $param2 = $this-&gt;option('param2'); $this-&gt;info($param1); $this-&gt;info($param2); } }   依赖的服务要注入  &lt;? </p>
+            </div>
+        </a>
+        <div class="item-slant reverse-slant bg-deepgrey"></div>
+        <div class="item-slant"></div>
+        <div class="item-label">
+            <div class="item-title"><a href="http://hackfox.vip/post/180110-laravel%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/">Laravel定时任务</a></div>
+            <div class="item-meta clearfix">
+                
+                 
+                
+                <div class="item-meta-ico bg-ico-image" style="background: url(http://hackfox.vip/images/bg-ico.png) no-repeat;background-size: 40px auto;"></div>
+                 
+                
+                <div class="item-meta-cat"><a href="http://hackfox.vip/categories/development">Development</a></div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        <div class="post-list-item">
+    <div class="post-list-item-container">
+        
+            
+            
+                        
+
+                <div class="item-thumb bg-deepgrey" style="background-image:url(/images/thumbs/49.jpg);"></div>
+            
+            
+        <a href="http://hackfox.vip/post/171224-docker%E5%9F%BA%E7%A1%80/">
+            <div class="item-desc">
+                <p>命令  Management Commands:
+ config Manage Docker configs container Manage containers image Manage images network Manage networks node Manage Swarm nodes plugin Manage plugins secret Manage Docker secrets service Manage services stack Manage Docker stacks swarm Manage Swarm system Manage Docker volume Manage volumes  Commands:
+ attach Attach local standard input, output, and error streams to a running container build Build an image from a Dockerfile commit Create a new image from a container&rsquo;s changes cp Copy files/folders between a container and the local filesystem create Create a new container diff Inspect changes to files or directories on a container&rsquo;s filesystem events Get real time events from the server exec Run a command in a running container export Export a container&rsquo;s filesystem as a tar archive history Show the history of an image images List images import Import the contents from a tarball to create a filesystem image info Display system-wide information inspect Return low-level information on Docker objects kill Kill one or more running containers load Load an image from a tar archive or STDIN login Log in to a Docker registry logout Log out from a Docker registry logs Fetch the logs of a container pause Pause all processes within one or more containers port List port mappings or a specific mapping for the container ps List containers pull Pull an image or a repository from a registry push Push an image or a repository to a registry rename Rename a container restart Restart one or more containers rm Remove one or more containers rmi Remove one or more images run Run a command in a new container save Save one or more images to a tar archive (streamed to STDOUT by default) search Search the Docker Hub for images start Start one or more stopped containers stats Display a live stream of container(s) resource usage statistics stop Stop one or more running containers tag Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE top Display the running processes of a container unpause Unpause all processes within one or more containers update Update configuration of one or more containers version Show the Docker version information wait Block until one or more containers stop, then print their exit codes  docker images // 查看存在多少镜像 </p>
+            </div>
+        </a>
+        <div class="item-slant reverse-slant bg-deepgrey"></div>
+        <div class="item-slant"></div>
+        <div class="item-label">
+            <div class="item-title"><a href="http://hackfox.vip/post/171224-docker%E5%9F%BA%E7%A1%80/">Docker基础</a></div>
+            <div class="item-meta clearfix">
+                
+                 
+                
+                <div class="item-meta-ico bg-ico-note" style="background: url(http://hackfox.vip/images/bg-ico.png) no-repeat;background-size: 40px auto;"></div>
+                 
+                
+                <div class="item-meta-cat"><a href="http://hackfox.vip/categories/development">Development</a></div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        <div class="post-list-item">
+    <div class="post-list-item-container">
+        
+            
+            
+                        
+
+                <div class="item-thumb bg-deepgrey" style="background-image:url(/images/thumbs/61.jpg);"></div>
+            
+            
+        <a href="http://hackfox.vip/post/171001-es6%E6%A0%87%E5%87%86%E6%A6%82%E8%A7%88/">
+            <div class="item-desc">
+                <p>一、变量  新增两个关键字：let、const
+  let与var的区别
+ 作用域不同() 变量是否可以提升不  contst：只读不可改，声明即赋值 其所声明的对象的属性是可以改变的。
+  二、箭头函数 三、字符串  模版字符串(``) 新增几个方法  'my string'.startsWith('my'); //true 'my string'.endsWith('my'); // false 'my string'.includes('str'); // true 'my '.repeat(3); // 'my my my '  四、数组  Array 对象增加了一些新的静态方法，Array 原型上也增加了一些新方法
+  from 从类数组和可遍历对象中创建 Array 的实例 find 返回回调返回 true 的第一个元素。  [9, 2, 10, 8].find(n =&gt; n === 10) // 10   findIndex 返回回调函数返回 true的第一个元素的下标。  [5, 1, 10, 8]. </p>
+            </div>
+        </a>
+        <div class="item-slant reverse-slant bg-deepgrey"></div>
+        <div class="item-slant"></div>
+        <div class="item-label">
+            <div class="item-title"><a href="http://hackfox.vip/post/171001-es6%E6%A0%87%E5%87%86%E6%A6%82%E8%A7%88/">ES6标准预览</a></div>
+            <div class="item-meta clearfix">
+                
+                 
+                
+                <div class="item-meta-ico bg-ico-image" style="background: url(http://hackfox.vip/images/bg-ico.png) no-repeat;background-size: 40px auto;"></div>
+                 
+                
+                <div class="item-meta-cat"><a href="http://hackfox.vip/categories/development">Development</a></div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        <div class="post-list-item">
+    <div class="post-list-item-container">
+        
+            
+            
+                        
+
+                <div class="item-thumb bg-deepgrey" style="background-image:url(/images/thumbs/5.jpg);"></div>
+            
+            
+        <a href="http://hackfox.vip/post/170928-%E5%BC%80%E6%9C%BA%E8%87%AA%E6%A3%80/">
+            <div class="item-desc">
+                <p> 关于开机自动检测硬盘的原因：
+  第一种：是你非法关机造成的，比如直接断电的情况。
+ 第二种：是和硬盘的分区格式有关，FAT32格式在非法关机后会在开机时要求检测硬盘，而且必须检测完毕才不会在下次启动时重新检测。系统有一个文件中记录了检测是否结束的信息，有时即使检测完成了也会因为这个文件没有更新而在下次开机时重新检测。
+ 第三种：当硬盘出现坏道也会出现开机自动检测硬盘。
+   关于取消开机自动检测硬盘的方法：
+  方法一： 如果分区是FAT32格式，将其转换成NTFS，方法是在命令提示符下输入：convert X: /fs:ntfs
+ 方法二： 如果是非正常的关机，然后开机检测时又跳过了，每一次都会运行的。如果不是这个原因的话，您就要检查一下D盘状态是否正常，修正一下硬盘的错误。方法为 &ldquo;开始&rdquo;→&rdquo;运行&rdquo;，在窗口中输入&rdquo;chkdskX:/f&rdquo;(x为盘符)，这个命令可以检查文件系统中的逻辑错误，并进行修复；然后启动&rdquo;磁盘碎片整理&rdquo; 对相应的磁盘进行碎片整理，可以消除再次的磁盘扫描。如果还是不行，就可能是硬盘出现了坏道，最简单的方法是把D盘的数据备份一下，然后格式化D盘，就可 以正常使用了。
+ 方法三：打开&rdquo;我的电脑&rdquo;－右键点击X盘选择&rdquo;属性&rdquo;－选择&rdquo;工具&rdquo;－&rdquo;查错&rdquo;中点&rdquo;开始检查&rdquo;－选中&rdquo;自动修复文件系统错误&rdquo;和&rdquo;扫描并试图恢复坏扇区&rdquo;，然后点&rdquo;开始&rdquo;。
+ 方法四：我们知道系统之所以要对磁盘进行扫描是因为在注册表中设置了&rdquo;脏&rdquo;字节。在注册表中找到以下分支:
+ 方法五：如果是硬盘出现坏道，请使用磁盘修复工具进行修复，如使用HDDRegenerate等。
+ 方法六：一定是你在BIOS设置中选择了每次开机都要检测硬盘,所以才这样,和你的电脑配置是没有关系的。解决方法在开机后按DEL进入BIOS选 择Quick Power On Self Test（快速加电自检测），你的一定设为了Enabled了,选择Disabled，将其关闭就行了。
+   </p>
+            </div>
+        </a>
+        <div class="item-slant reverse-slant bg-deepgrey"></div>
+        <div class="item-slant"></div>
+        <div class="item-label">
+            <div class="item-title"><a href="http://hackfox.vip/post/170928-%E5%BC%80%E6%9C%BA%E8%87%AA%E6%A3%80/">开机自检</a></div>
+            <div class="item-meta clearfix">
+                
+                 
+                
+                <div class="item-meta-ico bg-ico-book" style="background: url(http://hackfox.vip/images/bg-ico.png) no-repeat;background-size: 40px auto;"></div>
+                 
+                
+                <div class="item-meta-cat"><a href="http://hackfox.vip/categories/development">Development</a></div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        <div class="post-list-item">
+    <div class="post-list-item-container">
+        
+            
+            
+                        
+
+                <div class="item-thumb bg-deepgrey" style="background-image:url(/images/thumbs/43.jpg);"></div>
+            
+            
+        <a href="http://hackfox.vip/post/161224-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+            <div class="item-desc">
+                <p>git init #git 初始化仓库 git clone remote_url #git 克隆远程库 git add * #git 添加所有文件 git commit -m &quot;批注&quot; #git 提交 git push &lt;remoteName&gt; &lt;localName&gt; #git推送至远程 git remote add origin &lt;server&gt; #远程没有创建仓库，将本地推送到远程仓库 git checkout -b branch_name #创建分支，并切换到分支 git checkout master #切换到主分支 git branch -d &lt;branch_name&gt; #删除分支 git pull &lt;remoteName&gt; &lt;localName&gt; #将本地仓库更新至最新 git merge branch_name #将其他分支合并到本地主分支 git diff &lt;sourch_branch&gt; &lt;target_branch&gt; #比对分支 git tag &lt;tag_name&gt; #创建标签 git show # git status #查看当前状态 git fetch #合并 git config --list #查看配置信息 git rm &lt;file_name&gt; #删除文件 git mv &lt;old_name&gt; &lt;new_name&gt; #重命名文件 git log #查看日志 git rebase HEAD &lt;file_name&gt; #重置 git remote -v #查看远程仓库 git remote rm &lt;file_name&gt; #删除远程仓库 git branch #查看本地分支 git branch -r #查看远程分支 git branch &lt;branch_name&gt; #创建本地分支 git config --global user. </p>
+            </div>
+        </a>
+        <div class="item-slant reverse-slant bg-deepgrey"></div>
+        <div class="item-slant"></div>
+        <div class="item-label">
+            <div class="item-title"><a href="http://hackfox.vip/post/161224-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">Git常用命令</a></div>
+            <div class="item-meta clearfix">
+                
+                 
+                
+                <div class="item-meta-ico bg-ico-image" style="background: url(http://hackfox.vip/images/bg-ico.png) no-repeat;background-size: 40px auto;"></div>
+                 
+                
+                <div class="item-meta-cat"><a href="http://hackfox.vip/categories/development">Development</a></div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        <div class="post-list-item">
+    <div class="post-list-item-container">
+        
+            
+            
+                        
+
+                <div class="item-thumb bg-deepgrey" style="background-image:url(/images/thumbs/37.jpg);"></div>
+            
+            
+        <a href="http://hackfox.vip/post/161024-mysql%E4%BC%98%E5%8C%96%E5%BB%BA%E8%AE%AE/">
+            <div class="item-desc">
+                <p> 1.为查询缓存优化你的查询(curdata(),rand(),no()无法进行优化)； 2.explain你的查询； 3.当只要一行数据时使用limit 1； 4.为搜索字段建立索引； 5.在join表的时候使用相当类型的列，并将其索引 6.千万不要order by rand(); 7.避免select *； 8.用于为每张表设置一个id，尽量为unsigned int类型； 9.使用enum而不是varchar; 10.从procedure analyse()取得建议； 11.尽可能的使用not null; 12.Prepared Statements; 13.把ip地址存成UNSIGNED INT 14.固定长度表会更快； 15.垂直分割； 16.拆分大的delete或insert语句； 17.越小的列会越快； 18.选择正确的存储引擎； 19.使用一个对象关系映射器（ORM）； 20.小心“永久链接”；   </p>
+            </div>
+        </a>
+        <div class="item-slant reverse-slant bg-deepgrey"></div>
+        <div class="item-slant"></div>
+        <div class="item-label">
+            <div class="item-title"><a href="http://hackfox.vip/post/161024-mysql%E4%BC%98%E5%8C%96%E5%BB%BA%E8%AE%AE/">Mysql优化建议</a></div>
+            <div class="item-meta clearfix">
+                
+                 
+                
+                <div class="item-meta-ico bg-ico-note" style="background: url(http://hackfox.vip/images/bg-ico.png) no-repeat;background-size: 40px auto;"></div>
+                 
+                
+                <div class="item-meta-cat"><a href="http://hackfox.vip/categories/development">Development</a></div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    </div>
+     
+
+<div class="lists-navigator clearfix">
+    <ol class="page-navigator">
+         
+         
+        
+        <span class="pagination-number"> 第 1 页 / 共 4 页 </span> 
+         
+         
+         
+         
+         
+         
+         
+         
+        
+        <li class="next"><a href="http://hackfox.vip/page/2/">下一页</a>
+        </li>
+        
+    </ol>
+</div>
+
+
+
+</div>
+
+<footer id="footer" class="footer bg-white">
+    <div class="footer-social">
+        <div class="footer-container clearfix">
+            <div class="social-list">
+                
+                
+                <a class="social" target="blank" href="mailto:codehackfox@gmail.com">Email</a>  
+                
+                <a class="social" target="blank" href="https://github.com/xsoer">Github</a>  
+                
+                <a class="social" target="blank" href="http://hackfox.vip/index.xml">RSS</a>  
+            </div>
+        </div>
+    </div>
+    <div class="footer-meta">
+        <div class="footer-container">
+            <div class="meta-item meta-copyright">
+                <div class="meta-copyright-info">
+                    <br>
+                    <div class="info-text">
+                        <p id="chakhsu"> </p>
+                        <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="nofollow">Hugo</a>.
+                            <a href="https://golang.org/" target="_blank" rel="nofollow">#golang</a>.
+                        </p>
+                        <p> &copy; 2019 <a href="http://hackfox.vip">Hackfox</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="meta-item meta-comments">
+                <h3 class="meta-title">CATEGORIES</h3>
+                <li><a href="http://hackfox.vip/categories/development">Development</a>(21)</li>
+                <li><a href="http://hackfox.vip/categories/linux">Linux</a>(2)</li>
+                <li><a href="http://hackfox.vip/categories/mysql">Mysql</a>(2)</li>
+                <li><a href="http://hackfox.vip/categories/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93">数据仓库</a>(1)</li>
+                <li><a href="http://hackfox.vip/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA">计算机</a>(2)</li>
+            </div>
+            <div class="meta-item meta-posts">
+                <h3 class="meta-title">RECENT POSTS</h3>
+                   
+                <li><a href="http://hackfox.vip/post/180827-%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/">数据仓库模型</a></li>
+                  
+                <li><a href="http://hackfox.vip/post/180228-laravel%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">Laravel的异常处理</a></li>
+                  
+                <li><a href="http://hackfox.vip/post/180226-laravel%E7%9A%84%E6%8B%BC%E6%8E%A5sql%E9%97%AE%E9%A2%98/">Laravel的拼接sql问题</a></li>
+                  
+                <li><a href="http://hackfox.vip/post/180224-atom%E5%8E%9F%E7%90%86/">Atom原理</a></li>
+                  
+                <li><a href="http://hackfox.vip/post/180224-vue%E9%A1%B9%E7%9B%AE%E5%8D%87%E7%BA%A7%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7/">Vue项目升级打包工具</a></li>
+                  
+                <li><a href="http://hackfox.vip/post/180112-csrf-token%E5%8E%9F%E7%90%86/">CSRF TOKEN原理</a></li>
+                 
+
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+
+
+<script src="//cdn.bootcss.com/headroom/0.9.1/headroom.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.10.0/highlight.min.js"></script>
+<script src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+<script>
+
+
+
+    var header = new Headroom(document.getElementById("header"), {
+        tolerance: 0,
+        offset: 70,
+        classes: {
+            initial: "animated",
+            pinned: "slideDown",
+            unpinned: "slideUp"
+        }
+    });
+    header.init();
+    var chakhsu = function (r) {
+        function t() {
+            return b[Math.floor(Math.random() * b.length)]
+        }
+
+        function e() {
+            return String.fromCharCode(94 * Math.random() + 33)
+        }
+
+        function n(r) {
+            for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
+                var l = document.createElement("span");
+                l.textContent = e(), l.style.color = t(), n.appendChild(l)
+            }
+            return n
+        }
+
+        function i() {
+            var t = o[c.skillI];
+            c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
+        }
+        var l = "",
+            o = ["I am a Developer","I am happy"].map(function (r) {
+                return r + "."
+            }),
+            a = 2,
+            g = 1,
+            s = 5,
+            d = 75,
+            b = ["rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", "rgb(198,214,60)", "rgb(175,240,91)", "rgb(127,246,88)", "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", "rgb(76,110,219)", "rgb(96,84,200)"],
+            c = {
+                text: "",
+                prefixP: -s,
+                skillI: 0,
+                skillP: 0,
+                direction: "forward",
+                delay: a,
+                step: g
+            };
+        i()
+    };
+    chakhsu(document.getElementById('chakhsu'));
+    if ('addEventListener' in document) {
+        document.addEventListener('DOMContentLoaded', function () {
+            FastClick.attach(document.body);
+        }, false);
+    }
+
+</script>
+<script type="text/x-mathjax-config"> MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none", extensions: ["tex2jax.js"], jax: ["input/TeX",
+    "output/HTML-CSS"], tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'], ignoreClass:"comment-content" }, "HTML-CSS":
+    { availableFonts: ["STIX","TeX"], showMathMenu: false } }); MathJax.Hub.Queue(["Typeset",MathJax.Hub]); </script>
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-114671402-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+</body>
+
+</html>
+

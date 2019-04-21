@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>linux on hackfox</title>
+    <link>http://hackfox.vip/categories/linux/</link>
+    <description>Recent content in linux on hackfox</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 28 Aug 2016 12:23:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://hackfox.vip/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>linux命令</title>
+      <link>http://hackfox.vip/post/170828-linux%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Sun, 28 Aug 2016 12:23:00 +0000</pubDate>
+      
+      <guid>http://hackfox.vip/post/170828-linux%E5%91%BD%E4%BB%A4/</guid>
+      <description>linux命令 1.1.修改权限： a)chmod:+ 表示增加权限、- 表示取消权限、= 表示唯一设定权限。 r 表示可读取，w 表示可写入，x 表示可执行。 -f : 若该文件权限无法被更改也不要显示错误讯息 -v : 显示权限变更的详细资料 -R : 对目前目录下的所有档案与子目录进行相同的权限变更(即以递回的方式逐个变更) 例：chmod -R 777 /wwwroot/pc811 2. 总核数 = 物理CPU个数 X 每颗物理CPU的核数
+总逻辑CPU数 = 物理CPU个数 X 每颗物理CPU的核数 X 超线程数# 查看物理CPU个数 cat /proc/cpuinfo| grep &amp;ldquo;physical id&amp;rdquo;| sort| uniq| wc -l# 查看每个物理CPU中core的个数(即核数) cat /proc/cpuinfo| grep &amp;ldquo;cpu cores&amp;rdquo;| uniq# 查看逻辑CPU的个数 cat /proc/cpuinfo| grep &amp;ldquo;processor&amp;rdquo;| wc -l#查看CPU信息（型号） cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c 3.</description>
+    </item>
+    
+    <item>
+      <title>运维技能</title>
+      <link>http://hackfox.vip/post/150228-%E8%BF%90%E7%BB%B4%E6%8A%80%E8%83%BD/</link>
+      <pubDate>Sat, 28 Feb 2015 12:23:00 +0000</pubDate>
+      
+      <guid>http://hackfox.vip/post/150228-%E8%BF%90%E7%BB%B4%E6%8A%80%E8%83%BD/</guid>
+      <description>初级运维：  1.CPU、内存、磁盘、IO、文件系统 2.系统安装：设备选择、规划磁盘分区、定制化安装 3.基础知识：基本命令、文本编辑器、用户与组、权限管理 4.磁盘管理：磁盘分区和文件系统、磁盘阵列管理、逻辑卷管理 5.软件管理：软件安装、服务管理、进程管理  中级运维：  1.开源、GNU、GPL、POSIX、Linux内核、RAID、RAID等级、磁盘、磁盘原理、块、超级块、文件系统、i节点 2.shell  1.基础入门 1)shell的基本组成与参数 2)执行跟踪和调优排错 2.shell脚本 1)输入输出重定向 2)分割和管道 3)增强管道能力：find、grep等 4)shell变量和返回值 5)字符串操作 6)条件判断、循环 7)分支、函数、块输入 8)shell文件处理 3.正则表达式 1)基本概念 2)基本元字符 3)正则表达式总的分组 4.sed与awk 1)sed与awk的概念 2)sed工作模式 3)sed中的正则 4)awk中的模式与动作 5)awk的域和记录 6)awk中的正则 7)awk管道与重定向 8)awk格式化输出 9)awk变量与函数  3.LAMP  1.APACHE  1)APACHE安装与配置 2)profork与workert 3)apache模块  2.mysql  1)mysql安装与配置 2)SQL语句与管理工具 3)存储引擎与索引 4)单机运行多实例 5)mysql主从复制 6)mysql cluster  3.php  1)php安装与配置 2)phpize 3)session与cookie 4)php操作数据库  4.lamp整合  1)编译整合 2)FASTCGI  5.</description>
+    </item>
+    
+  </channel>
+</rss>

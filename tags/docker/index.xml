@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>docker on hackfox</title>
+    <link>http://hackfox.vip/tags/docker/</link>
+    <description>Recent content in docker on hackfox</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 24 Dec 2017 19:24:45 +0000</lastBuildDate>
+    
+	<atom:link href="http://hackfox.vip/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Docker基础</title>
+      <link>http://hackfox.vip/post/171224-docker%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Sun, 24 Dec 2017 19:24:45 +0000</pubDate>
+      
+      <guid>http://hackfox.vip/post/171224-docker%E5%9F%BA%E7%A1%80/</guid>
+      <description>命令  Management Commands:
+ config Manage Docker configs container Manage containers image Manage images network Manage networks node Manage Swarm nodes plugin Manage plugins secret Manage Docker secrets service Manage services stack Manage Docker stacks swarm Manage Swarm system Manage Docker volume Manage volumes  Commands:
+ attach Attach local standard input, output, and error streams to a running container build Build an image from a Dockerfile commit Create a new image from a container&amp;rsquo;s changes cp Copy files/folders between a container and the local filesystem create Create a new container diff Inspect changes to files or directories on a container&amp;rsquo;s filesystem events Get real time events from the server exec Run a command in a running container export Export a container&amp;rsquo;s filesystem as a tar archive history Show the history of an image images List images import Import the contents from a tarball to create a filesystem image info Display system-wide information inspect Return low-level information on Docker objects kill Kill one or more running containers load Load an image from a tar archive or STDIN login Log in to a Docker registry logout Log out from a Docker registry logs Fetch the logs of a container pause Pause all processes within one or more containers port List port mappings or a specific mapping for the container ps List containers pull Pull an image or a repository from a registry push Push an image or a repository to a registry rename Rename a container restart Restart one or more containers rm Remove one or more containers rmi Remove one or more images run Run a command in a new container save Save one or more images to a tar archive (streamed to STDOUT by default) search Search the Docker Hub for images start Start one or more stopped containers stats Display a live stream of container(s) resource usage statistics stop Stop one or more running containers tag Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE top Display the running processes of a container unpause Unpause all processes within one or more containers update Update configuration of one or more containers version Show the Docker version information wait Block until one or more containers stop, then print their exit codes  docker images // 查看存在多少镜像</description>
+    </item>
+    
+  </channel>
+</rss>
