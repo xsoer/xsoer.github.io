@@ -24,12 +24,11 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
 markdown: kramdown
-theme: jekyll-theme-hacker
+theme: heiswayi/the-plain 
 plugins:
   - jekyll-feed
-  - jekyll-remote-theme
 
-remote_theme: heiswayi/the-plain
+#remote_theme: heiswayi/the-plain
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
