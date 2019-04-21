@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    <link rel="dns-prefetch" href="https://o243f9mnq.qnssl.com/" />
+    <link rel="dns-prefetch" href="//cdn.bootcss.com" />
+    <link rel="dns-prefetch" href="//secure.gravatar.com" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    
+    <link rel="shortcut icon" href="http://xsoer.github.io/images/favicon.png">
+    <link rel="apple-touch-icon" href="http://xsoer.github.io/images/apple-touch-icon.png">
+    <title>
+        
+        linux命令 - hackfox
+        
+    </title>
+    <meta name="keywords" content=" " />
+    <meta name="description" content=" " />
+    <link href="//cdn.bootcss.com/highlight.js/9.10.0/styles/xcode.min.css" rel="stylesheet">
+    <link href="http://xsoer.github.io/css/style.min.css?20170331" rel="stylesheet">
+    
+</head>
+
+
+<body class="bg-white" gtools_scp_screen_capture_injected="true">
+    
+    <header id="header" class="header bg-white">
+        <div class="navbar-container">
+            <a href="http://xsoer.github.io" class="navbar-logo" style="color: #5f5f5f">hackfox</a>
+            <div class="navbar-menu">
+            
+                <a href="http://xsoer.github.io/post/">Archives</a>  
+            
+                <a href="http://xsoer.github.io/tags/">Tags</a>  
+            
+                <a href="http://xsoer.github.io/about">About</a>  
+            
+            </div>
+            
+            <div class="navbar-mobile-menu" onclick=""> 
+                <span class="icon-menu cross"><span class="middle"></span></span>
+                <ul>
+                
+                <li><a href="http://xsoer.github.io/post/">Archives</a></li> 
+                
+                <li><a href="http://xsoer.github.io/tags/">Tags</a></li> 
+                
+                <li><a href="http://xsoer.github.io/about">About</a></li> 
+                
+                </ul>
+            </div>
+        </div>
+    </header>
+    <article class="main-content page-page">
+        <div class="post-header">
+            <h1 class="post-title" itemprop="name headline">
+                linux命令
+            </h1>
+            <div class="post-data">
+                Published on Aug 28, 2016 ,3 min reading time
+            </div>
+        </div>
+        <div id="post-content" class="post-content">
+            
+<p class="post-tags"> 
+	
+	<a href="http://xsoer.github.io/tags/%E5%B7%A5%E5%85%B7">工具</a>
+	
+</p>
+
+ 
+
+<p>linux命令
+1.1.修改权限：
+a)chmod:+ 表示增加权限、- 表示取消权限、= 表示唯一设定权限。
+        r 表示可读取，w 表示可写入，x 表示可执行。
+         -f : 若该文件权限无法被更改也不要显示错误讯息
+        -v : 显示权限变更的详细资料
+        -R : 对目前目录下的所有档案与子目录进行相同的权限变更(即以递回的方式逐个变更) 例：chmod -R 777 /wwwroot/pc811
+2. 总核数 = 物理CPU个数 X 每颗物理CPU的核数</p>
+
+<h1 id="总逻辑cpu数-物理cpu个数-x-每颗物理cpu的核数-x-超线程数-查看物理cpu个数-cat-proc-cpuinfo-grep-physical-id-sort-uniq-wc-l-查看每个物理cpu中core的个数-即核数-cat-proc-cpuinfo-grep-cpu-cores-uniq-查看逻辑cpu的个数-cat-proc-cpuinfo-grep-processor-wc-l-查看cpu信息-型号-cat-proc-cpuinfo-grep-name-cut-f2-d-uniq-c">总逻辑CPU数 = 物理CPU个数 X 每颗物理CPU的核数 X 超线程数# 查看物理CPU个数  cat /proc/cpuinfo| grep &ldquo;physical id&rdquo;| sort| uniq| wc -l# 查看每个物理CPU中core的个数(即核数)    cat /proc/cpuinfo| grep &ldquo;cpu cores&rdquo;| uniq# 查看逻辑CPU的个数   cat /proc/cpuinfo| grep &ldquo;processor&rdquo;| wc -l#查看CPU信息（型号）  cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c</h1>
+
+<p>3.查看centos当前版本：
+cat /ect/redhat-release
+4.查看内核版本
+uname -r ；uname -a
+5.查看当前时间
+date;    
+6.查看日历
+cal
+7.查看硬盘和分区
+df -h    ; fdisk -l
+    查看分区：du -sh    ; du /etc/ -sh
+8.查看现在安装了哪些软件
+rpm -qa    ;rpm -qa | wc -l    ;yum list installed | wc -l
+9.查看键盘布局
+cat /etc/sysconfig/keyboard
+10.查看selinux情况
+sestatus    ;sestus | cut -f2 -d:
+11.查看ip、mac地址
+ifconfig
+cat /etc/sysconfig/network
+cat /etc/resolv.conf
+12.查看时区
+cat /etc/sysconfig/clock</p>
+
+<p>13.查看主机名
+13.hostname
+  cat /etc/sysconfig/network
+14.查看开机运行时间
+uptime
+15.卸载系统自带的httpd和mysql
+yun erase httpd
+16.显示脚本执行的1000个命令
+history
+17.显示当前工作的目录
+pwd
+18.查看centos发行版本
+cat /etc/issue
+19.当前使用者
+whoami
+20.用户的表示组信息
+id username
+21.内存使用情况
+free
+22.查看版本
+cat /proc/version
+23.查看文件系统类型
+cat /proc/filesystems
+24.查看加载的内核模块
+lsmod
+25.显示当前用户环境变量
+set
+26.显示可以设置的内核参数
+sysctl -a
+27.运行级别
+runlevel
+28.改变目录
+cd
+29.赋值
+cp
+30.改名移动文件
+mv
+31. 在当前目录下运行一个可执行文件
+./script
+32.删除
+rm    ;rm -r    ; rm -f
+33.建立目录
+mkdir</p>
+
+<p>34.查看文件
+cat    ;cat more
+35.比较两个文件不同之处
+diff
+36.关机 重启
+shutdown -r now -h    ;poweroff    ;reboot
+35.显示文件的类型，
+file
+36.搜索指定的字符串
+gtep
+37.修改文件的类型，也可以建立文件
+touch
+38.查找文件
+find
+39.定位文件
+locate
+40.查找一个命令都在哪些位置
+whereis
+41.加入其它目录没有的命令
+/etc/profile
+42.查看端口占用情况
+netstat -tunlp
+43.杀死进程
+kill -p pid
+44.查看进程
+ps -ef | grep java    ;ps -ef    ;top
+45.挂着驱动
+mount    /dev/cdrom/mnt
+46.防火墙
+/etc/init.d/iptables start /restart /
+47.更新内核和软件到最新版本
+yum -y upgrade
+48.去除上次登录的信息
+46.touch ~/.hushlogin
+49.查看流量监控
+iptraf
+50.查看apache下访问数量前十的ip
+awk &lsquo;{print $1}&rsquo; apach_log |sort |uniq -c|sort -nr|head -n 10
+awk 首先将每条日志中的ip抓出
+    sort 进行初次排序，为的使相同的记录排列到一起
+    uniq -c 合并重复的行，并记录重复次数
+    head 进行选择前几名
+    sort -nr 按照数字进行倒叙排序</p>
+
+<p>51.查看apache日志中访问次数最多的几分钟
+awk &lsquo;{print $4}&rsquo; access_log |cut -c 14-18| sort |uniq -c |sort -nr |head
+52.修改国外服务器时区
+yum install -y ntpdate
+    cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+    ntpdate us.pool.ntp.org
+53.以kb/Mb形式查看文件列表
+ls -lh
+54.查看指定文件目录大小
+du -sh    ；du  /etc  -sh;
+55.查看内存总量
+grep  MemTotal  /proc/meminfo
+56.查看空闲内存量
+grep MemFree  /proc/meminfo
+57.查看防火墙设置
+    iptables -L    
+58.关闭防火墙
+    service iptables stop    ;chkconfig  iptables off
+59.查看路由表
+    route -n
+60.查看所有已经建立的链接
+    netstat -antp
+61.查看网关
+    cat /etc/sysconfig/network
+62.查看用户登录日志
+    last    lastb
+63.查看系统所有用户
+    cut -d: -f1 /etc/passwd
+64.查看系统所有组
+    cut -d: -f1 /etc/group
+65.查看当前用户的计划任务服务
+    crontab -l
+66.服务
+    chkconfig  &ndash;list    #列出所有系统服务
+    chkconfig  &ndash;list | grep on    #列出所有启动的系统服务程序 
+67.查找
+    whereis    ;locate    ;find
+68.查看文档
+    cat    ;more    ;less
+69.显示消耗内存/CPU最多的10个进程
+ps aux | sort -nk +4 | tail
+ps aux | sort -nk +3 | tail
+70.查看Apache的并发请求数及其TCP连接状态
+netstat -n | awk ‘/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}’
+71.找出自己最常用的10条命令及使用次数（或求访问最多的ip数）
+sed -e ‘s/| /\n/g’ ~/.bash_history |cut -d ‘ ‘ -f 1 | sort | uniq -c | sort     -nr | head
+72.日志中第10个字段表示连接时间，求平均连接时间
+cat access_log |grep “connect cbp” |awk     ‘BEGIN{sum=0;count=0;}{sum+=$10;count++;}END{printf(“sum=%d,count=%d,avg=   %f\n”,sum,count,sum/count)}’
+73.lsof命令
+lsof abc.txt 显示开启文件abc.txt的进程
+lsof -i :22 知道22端口现在运行什么程序
+lsof -c abc 显示abc进程现在打开的文件
+lsof -p 12 看进程号为12的进程打开了哪些文件
+74.杀掉一个程序的所有进程
+pkill -9 httpd
+killall -9 httpd
+注意尽量不用-9，数据库服务器上更不能轻易用kill，否则造成重要数据丢失后果 将   不堪设想。
+75.把目录下<em>.sh文件改名为</em>.SH
+find . -name “<em>.sh” | sed ’s/(.</em>).sh/mv \0 \1.SH/’ |sh
+find . -name “<em>.sh” | sed ’s/(.</em>).sh/mv &amp; \1.SH/’|sh
+76.ssh执行远程的程序，并在本地显示
+ssh -n -l zouyunhao 192.168.2.14 “ls -al /home/zouyunhao”
+77.直接用命令行修改密码
+echo “zouyunhaoPassword” |passwd –stdin zouyunhao
+ssh-keygen
+    ssh-copy-id -i ~/.ssh/id_rsa.pub user@remoteServer
+78.以http方式共享当前文件夹的文件
+$ python -m SimpleHTTPServer
+79.shell段注释
+:&lt;&lt;’echo hello,world!’
+80.查看服务器序列号
+dmidecode |grep “Serial Number” （查看机器其他硬件信息也可用这个命令）
+81.查看网卡是否有网线物理连接
+/sbin/mii-tool
+82.查看linux系统或者mysql错误码表示的意思，如查看13错误码表示的意思：
+perror 13
+83.从格式不规范的日志中截取字符串
+perl -ne ’print “$1\n” if /servletPath=(\S+)/g’ test.log
+84.把所有的文件名含有空格的，把空格去掉
+    find ./ -type f | while read line;do echo $line|grep -q &ldquo; &rdquo; &amp;&amp; \mv &ldquo;$line&rdquo; $(echo $line|sed &rsquo;s/ //g&rsquo;);done
+85.把所有的文件夹的文件名含有空格的，把空格去掉
+find ./ -type d -name &lsquo;<em>&rsquo;|while read file; do echo $file|grep -q &ldquo; &rdquo; &amp;&amp; mv &ldquo;$file&rdquo; $(echo $file|tr -d &lsquo; &lsquo;); done
+86.生成随机字符串：
+tr -dc _A-Z-a-z#$%^</em>-0-9 &lt;/dev/urandom |head -c8 chgSh^eJ
+mkpasswd -l 8 -d 1 -c 3 -C 2 -s 2 G_ze3Hto
+87.linux统计PCI插槽数量
+dmidecode |grep -1 PCI
+88.nmap探测远程主机的开放端口及操作系统:
+nmap -A -T4 192.168.1.28 //此处可以为主机名，域名，或主机IP地址
+89.获取内存条TYPE和SPEED的信息：
+dmidecode | grep -A 16 &ldquo;Memory Device&rdquo;|grep -E &ldquo;Speed|Type&rdquo;
+90.显示当前登陆用户信息
+w
+91.显示开机信息
+dmesg
+92.设置系统的各种服务
+ntsysv
+93.设置shell
+set
+94.设置或显示环境变量
+94.setnev
+95.设置时区
+95.cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+96.修改root密码
+passwd root</p>
+
+            <p class="post-info">
+                本文由
+                
+                <a href=""> 
+                    hackfox
+                </a> 创作，采用
+                <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a>                
+                国际许可协议进行许可，转载请注明出处！<br>
+            </p>
+        </div>
+    </article>
+
+    <div id="post-bottom-bar" class="post-bottom-bar">
+        <div class="bottom-bar-inner">
+            <div class="bottom-bar-items social-share left">
+                <span class="bottom-bar-item">Share : </span>
+                <span class="bottom-bar-item bottom-bar-facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fxsoer.github.io%2fpost%2f170828-linux%25E5%2591%25BD%25E4%25BB%25A4%2f" target="_blank" title="linux命令" rel="nofollow">Facebook</a></span>
+                <span class="bottom-bar-item bottom-bar-twitter"><a href="https://twitter.com/intent/tweet?url=http%3a%2f%2fxsoer.github.io%2fpost%2f170828-linux%25E5%2591%25BD%25E4%25BB%25A4%2f&text=linux%e5%91%bd%e4%bb%a4" target="_blank" title="linux命令" rel="nofollow">Twitter</a></span>
+                <span class="bottom-bar-item bottom-bar-weibo"><a href="http://service.weibo.com/share/share.php?url=http%3a%2f%2fxsoer.github.io%2fpost%2f170828-linux%25E5%2591%25BD%25E4%25BB%25A4%2f&amp;title=linux%e5%91%bd%e4%bb%a4" target="_blank" title="linux命令" rel="nofollow">Weibo</a></span>
+                <span class="bottom-bar-item bottom-bar-qrcode"><a href="//pan.baidu.com/share/qrcode?w=300&amp;h=300&amp;url=http%3a%2f%2fxsoer.github.io%2fpost%2f170828-linux%25E5%2591%25BD%25E4%25BB%25A4%2f" target="_blank" rel="nofollow">QRcode</a></span>
+            </div>
+
+            <div class="bottom-bar-items right">
+                
+                <span class="bottom-bar-item"><a href="http://xsoer.github.io/post/160724-mysql%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" title="Mysql常用操作">←</a></span> 
+                
+                <span class="bottom-bar-item"><a href="http://xsoer.github.io/post/161024-centos7%E4%B8%8B%E8%BD%AC%E7%A7%BBmysql%E7%9B%AE%E5%BD%95/" title="Centos7下转移mysql目录">→</a></span> 
+                <span class="bottom-bar-item"></span> <span class="bottom-bar-item"><a href="#footer">↓</a></span>
+                <span class="bottom-bar-item"><a href="#">↑</a></span>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+ <footer id="footer" class="footer bg-white">
+    <div class="footer-social">
+        <div class="footer-container clearfix">
+            <div class="social-list">
+                
+                
+                <a class="social" target="blank" href="mailto:codehackfox@gmail.com">Email</a>  
+                
+                <a class="social" target="blank" href="https://github.com/xsoer">Github</a>  
+                
+                <a class="social" target="blank" href="http://xsoer.github.io/index.xml">RSS</a>  
+            </div>
+        </div>
+    </div>
+    <div class="footer-meta">
+        <div class="footer-container">
+            <div class="meta-item meta-copyright">
+                <div class="meta-copyright-info">
+                    <br>
+                    <div class="info-text">
+                        <p id="chakhsu"> </p>
+                        <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="nofollow">Hugo</a>.
+                            <a href="https://golang.org/" target="_blank" rel="nofollow">#golang</a>.
+                        </p>
+                        <p> &copy; 2019 <a href="http://xsoer.github.io">Hackfox</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="meta-item meta-comments">
+                <h3 class="meta-title">CATEGORIES</h3>
+                <li><a href="http://xsoer.github.io/categories/development">Development</a>(21)</li>
+                <li><a href="http://xsoer.github.io/categories/linux">Linux</a>(2)</li>
+                <li><a href="http://xsoer.github.io/categories/mysql">Mysql</a>(2)</li>
+                <li><a href="http://xsoer.github.io/categories/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93">数据仓库</a>(1)</li>
+                <li><a href="http://xsoer.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA">计算机</a>(2)</li>
+            </div>
+            <div class="meta-item meta-posts">
+                <h3 class="meta-title">RECENT POSTS</h3>
+                   
+                <li><a href="http://xsoer.github.io/post/180827-%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/">数据仓库模型</a></li>
+                  
+                <li><a href="http://xsoer.github.io/post/180228-laravel%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">Laravel的异常处理</a></li>
+                  
+                <li><a href="http://xsoer.github.io/post/180226-laravel%E7%9A%84%E6%8B%BC%E6%8E%A5sql%E9%97%AE%E9%A2%98/">Laravel的拼接sql问题</a></li>
+                  
+                <li><a href="http://xsoer.github.io/post/180224-atom%E5%8E%9F%E7%90%86/">Atom原理</a></li>
+                  
+                <li><a href="http://xsoer.github.io/post/180224-vue%E9%A1%B9%E7%9B%AE%E5%8D%87%E7%BA%A7%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7/">Vue项目升级打包工具</a></li>
+                  
+                <li><a href="http://xsoer.github.io/post/180112-csrf-token%E5%8E%9F%E7%90%86/">CSRF TOKEN原理</a></li>
+                 
+
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+
+ 
+    <div id="directory-content" class="directory-content">
+        <div id="directory"></div>
+    </div>
+    <script>
+    var postDirectoryBuild = function() {
+        var postChildren = function children(childNodes, reg) {
+                var result = [],
+                    isReg = typeof reg === 'object',
+                    isStr = typeof reg === 'string',
+                    node, i, len;
+                for (i = 0, len = childNodes.length; i < len; i++) {
+                    node = childNodes[i];
+                    if ((node.nodeType === 1 || node.nodeType === 9) && (!reg || isReg && reg.test(node.tagName.toLowerCase()) || isStr && node.tagName.toLowerCase() === reg)) {
+                        result.push(node);
+                    }
+                }
+                return result;
+            },
+            createPostDirectory = function(article, directory, isDirNum) {
+                var contentArr = [],
+                    titleId = [],
+                    levelArr, root, level, currentList, list, li, link, i, len;
+                levelArr = (function(article, contentArr, titleId) {
+                    var titleElem = postChildren(article.childNodes, /^h\d$/),
+                        levelArr = [],
+                        lastNum = 1,
+                        lastRevNum = 1,
+                        count = 0,
+                        guid = 1,
+                        id = 'directory' + (Math.random() + '').replace(/\D/, ''),
+                        lastRevNum, num, elem;
+                    while (titleElem.length) {
+                        elem = titleElem.shift();
+                        contentArr.push(elem.innerHTML);
+                        num = +elem.tagName.match(/\d/)[0];
+                        if (num > lastNum) {
+                            levelArr.push(1);
+                            lastRevNum += 1;
+                        } else if (num === lastRevNum || num > lastRevNum && num <= lastNum) {
+                            levelArr.push(0);
+                            lastRevNum = lastRevNum;
+                        } else if (num < lastRevNum) {
+                            levelArr.push(num - lastRevNum);
+                            lastRevNum = num;
+                        }
+                        count += levelArr[levelArr.length - 1];
+                        lastNum = num;
+                        elem.id = elem.id || (id + guid++);
+                        titleId.push(elem.id);
+                    }
+                    if (count !== 0 && levelArr[0] === 1) levelArr[0] = 0;
+                    return levelArr;
+                })(article, contentArr, titleId);
+                currentList = root = document.createElement('ul');
+                dirNum = [0];
+                for (i = 0, len = levelArr.length; i < len; i++) {
+                    level = levelArr[i];
+                    if (level === 1) {
+                        list = document.createElement('ul');
+                        if (!currentList.lastElementChild) {
+                            currentList.appendChild(document.createElement('li'));
+                        }
+                        currentList.lastElementChild.appendChild(list);
+                        currentList = list;
+                        dirNum.push(0);
+                    } else if (level < 0) {
+                        level *= 2;
+                        while (level++) {
+                            if (level % 2) dirNum.pop();
+                            currentList = currentList.parentNode;
+                        }
+                    }
+                    dirNum[dirNum.length - 1]++;
+                    li = document.createElement('li');
+                    link = document.createElement('a');
+                    link.href = '#' + titleId[i];
+                    link.innerHTML = !isDirNum ? contentArr[i] : dirNum.join('.') + ' ' + contentArr[i];
+                    li.appendChild(link);
+                    currentList.appendChild(li);
+                }
+                directory.appendChild(root);
+            };
+        createPostDirectory(document.getElementById('post-content'), document.getElementById('directory'), true);
+    };
+    postDirectoryBuild();
+    </script> 
+
+
+<script src="//cdn.bootcss.com/headroom/0.9.1/headroom.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.10.0/highlight.min.js"></script>
+<script src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+<script>
+
+
+    var postDirectory = new Headroom(document.getElementById("directory-content"), {
+        tolerance: 0,
+        offset: 90,
+        classes: {
+            initial: "initial",
+            pinned: "pinned",
+            unpinned: "unpinned"
+        }
+    });
+    postDirectory.init();
+
+
+     var postSharer = new Headroom(document.getElementById("post-bottom-bar"), {
+        tolerance: 0,
+        offset: 70,
+        classes: {
+            initial: "animated",
+            pinned: "pinned",
+            unpinned: "unpinned"
+        }
+    });
+    postSharer.init();
+
+
+
+
+    var header = new Headroom(document.getElementById("header"), {
+        tolerance: 0,
+        offset: 70,
+        classes: {
+            initial: "animated",
+            pinned: "slideDown",
+            unpinned: "slideUp"
+        }
+    });
+    header.init();
+    var chakhsu = function (r) {
+        function t() {
+            return b[Math.floor(Math.random() * b.length)]
+        }
+
+        function e() {
+            return String.fromCharCode(94 * Math.random() + 33)
+        }
+
+        function n(r) {
+            for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
+                var l = document.createElement("span");
+                l.textContent = e(), l.style.color = t(), n.appendChild(l)
+            }
+            return n
+        }
+
+        function i() {
+            var t = o[c.skillI];
+            c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
+        }
+        var l = "",
+            o = ["I am a Developer","I am happy"].map(function (r) {
+                return r + "."
+            }),
+            a = 2,
+            g = 1,
+            s = 5,
+            d = 75,
+            b = ["rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", "rgb(198,214,60)", "rgb(175,240,91)", "rgb(127,246,88)", "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", "rgb(76,110,219)", "rgb(96,84,200)"],
+            c = {
+                text: "",
+                prefixP: -s,
+                skillI: 0,
+                skillP: 0,
+                direction: "forward",
+                delay: a,
+                step: g
+            };
+        i()
+    };
+    chakhsu(document.getElementById('chakhsu'));
+    if ('addEventListener' in document) {
+        document.addEventListener('DOMContentLoaded', function () {
+            FastClick.attach(document.body);
+        }, false);
+    }
+
+</script>
+<script type="text/x-mathjax-config"> MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none", extensions: ["tex2jax.js"], jax: ["input/TeX",
+    "output/HTML-CSS"], tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'], ignoreClass:"comment-content" }, "HTML-CSS":
+    { availableFonts: ["STIX","TeX"], showMathMenu: false } }); MathJax.Hub.Queue(["Typeset",MathJax.Hub]); </script>
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-114671402-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+</body>
+
+</html>
