@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>数据建模 on hackfox</title>
-    <link>http://hackfox.vip/tags/%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/</link>
+    <link>http://xsoer.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/</link>
     <description>Recent content in 数据建模 on hackfox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 28 Aug 2018 12:23:00 +0000</lastBuildDate>
     
-	<atom:link href="http://hackfox.vip/tags/%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://xsoer.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>数据仓库模型</title>
-      <link>http://hackfox.vip/post/180827-%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/</link>
+      <link>http://xsoer.github.io/post/180827-%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/</link>
       <pubDate>Tue, 28 Aug 2018 12:23:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/180827-%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/</guid>
+      <guid>http://xsoer.github.io/post/180827-%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/</guid>
       <description>数据模型   为什么要建模
  定义如何存储信息，如何操作信息，以及信息的完整性等约束功能 影响了数据的形态和使用方式 需要满足不同的业务场景需要 联机事务处理(OLTP):满足业务线需要，频繁的维护更新数据，强一致性 联机分析处理(OLAP):满足决策层需要，更多纬度的视角查询，满足统计决策   定义数据如何存储
  数据模型是定义数据如何输入和输出的一种模型。其主要作用是为信息系统提供数据的定义和格式。

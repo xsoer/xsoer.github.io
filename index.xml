@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>hackfox</title>
-    <link>http://hackfox.vip/</link>
+    <link>http://xsoer.github.io/</link>
     <description>Recent content on hackfox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 28 Aug 2018 12:23:00 +0000</lastBuildDate>
     
-	<atom:link href="http://hackfox.vip/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://xsoer.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>数据仓库模型</title>
-      <link>http://hackfox.vip/post/180827-%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/</link>
+      <link>http://xsoer.github.io/post/180827-%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/</link>
       <pubDate>Tue, 28 Aug 2018 12:23:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/180827-%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/</guid>
+      <guid>http://xsoer.github.io/post/180827-%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/</guid>
       <description>数据模型   为什么要建模
  定义如何存储信息，如何操作信息，以及信息的完整性等约束功能 影响了数据的形态和使用方式 需要满足不同的业务场景需要 联机事务处理(OLTP):满足业务线需要，频繁的维护更新数据，强一致性 联机分析处理(OLAP):满足决策层需要，更多纬度的视角查询，满足统计决策   定义数据如何存储
  数据模型是定义数据如何输入和输出的一种模型。其主要作用是为信息系统提供数据的定义和格式。
@@ -27,10 +27,10 @@
     
     <item>
       <title>Laravel的异常处理</title>
-      <link>http://hackfox.vip/post/180228-laravel%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</link>
+      <link>http://xsoer.github.io/post/180228-laravel%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</link>
       <pubDate>Wed, 28 Feb 2018 18:30:10 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/180228-laravel%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</guid>
+      <guid>http://xsoer.github.io/post/180228-laravel%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</guid>
       <description>在进行项目操作时，
 // class A文件 public function a() { try{ logger(111); (new \App\Business\B)-&amp;gt;b(); }catch(BusinessException $e) { logger(444) $this-&amp;gt;rollBackOrder(); throw new BusinessException($e-&amp;gt;getMessage().&#39;请联系管理员处理&#39;, 21000); } } public function rollBackOrder() { // some code } // class B文件 public function b() { try{ $i = 1; if ($i != 0) { logger(222) throw new KrException(&#39;错误了，回滚回滚&#39;, 500); } }catch (KrException $e) { logger(333) throw new KrException($e-&amp;gt;getMessage(), 500); } }  以上代码打印结果为:
 111 222 333  可以看到最后A内的rollBackOrder方法未执行</description>
@@ -38,10 +38,10 @@
     
     <item>
       <title>Laravel的拼接sql问题</title>
-      <link>http://hackfox.vip/post/180226-laravel%E7%9A%84%E6%8B%BC%E6%8E%A5sql%E9%97%AE%E9%A2%98/</link>
+      <link>http://xsoer.github.io/post/180226-laravel%E7%9A%84%E6%8B%BC%E6%8E%A5sql%E9%97%AE%E9%A2%98/</link>
       <pubDate>Mon, 26 Feb 2018 17:46:28 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/180226-laravel%E7%9A%84%E6%8B%BC%E6%8E%A5sql%E9%97%AE%E9%A2%98/</guid>
+      <guid>http://xsoer.github.io/post/180226-laravel%E7%9A%84%E6%8B%BC%E6%8E%A5sql%E9%97%AE%E9%A2%98/</guid>
       <description>laravel的原始sql语句在输入数据查询时，需要注意传入的字符，否则很容易出问题。例如：
 $query-&amp;gt;whereRaw(&amp;quot;(fund_name like %{$wd}% or fund_fullname like %{$wd}%)&amp;quot;);  在传入：siggi&amp;rsquo;s,或者siggi&amp;rdquo;s时，在sql执行时会报错。 需要修改为一下
 $query-&amp;gt;where( function ($q) use ($wd) { $q-&amp;gt;where(&#39;fund_name&#39;, &#39;like&#39;, &amp;quot;%{$wd}%&amp;quot;); $q-&amp;gt;orWhere(&#39;fund_fullname&#39;, &#39;like&#39;, &amp;quot;%{$wd}%&amp;quot;); } );  利用larvel自带的ORM进行转义就没有问题。</description>
@@ -49,10 +49,10 @@ $query-&amp;gt;where( function ($q) use ($wd) { $q-&amp;gt;where(&#39;fund_name&
     
     <item>
       <title>Atom原理</title>
-      <link>http://hackfox.vip/post/180224-atom%E5%8E%9F%E7%90%86/</link>
+      <link>http://xsoer.github.io/post/180224-atom%E5%8E%9F%E7%90%86/</link>
       <pubDate>Sat, 24 Feb 2018 16:42:41 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/180224-atom%E5%8E%9F%E7%90%86/</guid>
+      <guid>http://xsoer.github.io/post/180224-atom%E5%8E%9F%E7%90%86/</guid>
       <description>atom基于electron来构建，可以跨平台、开源。 什么是electron呢？  a framework for building cross platform apps using web technologies   Electron  简介
   一个基于Node、chromium、V8集成的跨平台的用web技术开发桌面程序的工具。   如何集成的？
   分为一个主进程和渲染进程。 主进程。package.json里的main函数就是主进程， 运行在主进程中的脚本将以创建 web 页面的方式显示一个 GUI。 渲染进程。由于 Electron 使用 Chromium 来显示 web 页面，所以 Chromium 的多进程架构也是可用的。 每个 Electron 中的 web 页面运行在它的叫渲染进程的进程中。在通常的浏览器内，网页通常运行在一个沙盒的环境挡住并且不能够使用原生的资源。 然而 Electron 的用户在 Node.js 的 API 支持下可以在页面中和操作系统进行一些低级别的交互。 两者区别。  主进程使用 BrowserWindow 实例创建页面。 每个 BrowserWindow 实例都在自己的渲染进程里运行页面。 当一个 BrowserWindow 实例被销毁后，相应的渲染进程也会被终止。 主进程管理所有页面和与之对应的渲染进程。每个渲染进程都是相互独立的，并且只关心他们自己的页面。 由于在页面里管理原生 GUI 资源是非常危险而且容易造成资源泄露，所以在页面调用 GUI 相关的 APIs 是不被允许的。 如果你想在网页里使用 GUI 操作，其对应的渲染进程必须与主进程进行通讯，请求主进程进行相关的 GUI 操作。 在 Electron，我们提供几种方法用于主进程和渲染进程之间的通讯。 像 ipcRenderer 和 ipcMain 模块用于发送消息， remote 模块用于 RPC 方式通讯。 这些内容都可以在一个 FAQ 中查看 如何在两个页面之间共享数据。    如何涉及API？有哪些方面的API？使用了chromium的哪些技术?</description>
@@ -60,10 +60,10 @@ $query-&amp;gt;where( function ($q) use ($wd) { $q-&amp;gt;where(&#39;fund_name&
     
     <item>
       <title>Vue项目升级打包工具</title>
-      <link>http://hackfox.vip/post/180224-vue%E9%A1%B9%E7%9B%AE%E5%8D%87%E7%BA%A7%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7/</link>
+      <link>http://xsoer.github.io/post/180224-vue%E9%A1%B9%E7%9B%AE%E5%8D%87%E7%BA%A7%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Sat, 24 Feb 2018 16:27:30 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/180224-vue%E9%A1%B9%E7%9B%AE%E5%8D%87%E7%BA%A7%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7/</guid>
+      <guid>http://xsoer.github.io/post/180224-vue%E9%A1%B9%E7%9B%AE%E5%8D%87%E7%BA%A7%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7/</guid>
       <description> 原因
   由于早起的项目是一年前用vue-cli工具生成的，当时的打包工具是webpack1.0版本的，现在的项目越来越大，打包速度越来越慢；并且配套的校验、压缩等工具也已老旧，所以打算升级。   步骤
   1.用最新版的vue-cli脚手架工具来安装一个项目。 升级vue-cli工具  nmp update vue-cli -g   2.执行一下命令来生成最新的vue项目  vue init webpack my-project  3.把原项目内的src文件保留，其余的全部替换为新项目的文件。此处应该把老项目内引用的相关依赖加入新项目的package.json内，然后执行安装。
@@ -75,28 +75,28 @@ $query-&amp;gt;where( function ($q) use ($wd) { $q-&amp;gt;where(&#39;fund_name&
     
     <item>
       <title>CSRF TOKEN原理</title>
-      <link>http://hackfox.vip/post/180112-csrf-token%E5%8E%9F%E7%90%86/</link>
+      <link>http://xsoer.github.io/post/180112-csrf-token%E5%8E%9F%E7%90%86/</link>
       <pubDate>Fri, 12 Jan 2018 19:28:21 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/180112-csrf-token%E5%8E%9F%E7%90%86/</guid>
+      <guid>http://xsoer.github.io/post/180112-csrf-token%E5%8E%9F%E7%90%86/</guid>
       <description>用处  在Kernel文件内引入的VerifyCsrfToken文件，如果不需要就注释掉 传统Form表单提交，在form表单内添加  &amp;lt;input name=&amp;quot;_token&amp;quot; type=&amp;quot;hidden&amp;quot; value=&amp;quot;{{ csrf_token() }}&amp;quot; /&amp;gt;   在Ajax，用 X-CSRF-TOKEN或者X-XSRF-TOKEN.在公共父页面添加  &amp;lt;meta name=&amp;quot;csrf-token&amp;quot; content=&amp;quot;{{csrf_token()}}&amp;quot; /&amp;gt; $.ajaxSetup({ headers: { &#39;X-CSRF-TOKEN&#39;: $(&#39;meta[name=&amp;quot;csrf-token&amp;quot;]&#39;).attr(&#39;content&#39;) } });   判断及添加token源码,在Illuminate\Foundation\Http\Middleware\VerifyCsrfToken文件内  public function handle($request, Closure $next) { if ( $this-&amp;gt;isReading($request) || $this-&amp;gt;runningUnitTests() || $this-&amp;gt;shouldPassThrough($request) || $this-&amp;gt;tokensMatch($request) ) { return $this-&amp;gt;addCookieToResponse($request, $next($request)); } throw new TokenMismatchException; } protected function tokensMatch($request) { $sessionToken = $request-&amp;gt;session()-&amp;gt;token(); $token = $request-&amp;gt;input(&#39;_token&#39;) ?: $request-&amp;gt;header(&#39;X-CSRF-TOKEN&#39;); if (!</description>
     </item>
     
     <item>
       <title>Laravel定时任务</title>
-      <link>http://hackfox.vip/post/180110-laravel%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/</link>
+      <link>http://xsoer.github.io/post/180110-laravel%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/</link>
       <pubDate>Wed, 10 Jan 2018 19:31:08 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/180110-laravel%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/</guid>
+      <guid>http://xsoer.github.io/post/180110-laravel%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/</guid>
       <description>定时任务传入参数和选择值方法  param为必填 option为可选项·   &amp;lt;?php namespace App\Console\Commands; use Illuminate\Console\Command; class TestDemo extends Command { /** * 控制台命令名称 * * @var string */ protected $signature = &#39;test {param1} {--param2=}&#39;; /** * 控制台命令描述 * * @var string */ protected $description = &#39;test&#39;; /** * 创建新的命令实例 * * @param DripEmailer $drip * @return void */ public function __construct(DripEmailer $drip) { parent::__construct(); } /** * 执行控制台命令 * * @return mixed */ public function handle() { //参数调用方法 $param1 = $this-&amp;gt;argument(&#39;param1&#39;); $param2 = $this-&amp;gt;option(&#39;param2&#39;); $this-&amp;gt;info($param1); $this-&amp;gt;info($param2); } }   依赖的服务要注入  &amp;lt;?</description>
     </item>
     
     <item>
       <title>Docker基础</title>
-      <link>http://hackfox.vip/post/171224-docker%E5%9F%BA%E7%A1%80/</link>
+      <link>http://xsoer.github.io/post/171224-docker%E5%9F%BA%E7%A1%80/</link>
       <pubDate>Sun, 24 Dec 2017 19:24:45 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/171224-docker%E5%9F%BA%E7%A1%80/</guid>
+      <guid>http://xsoer.github.io/post/171224-docker%E5%9F%BA%E7%A1%80/</guid>
       <description>命令  Management Commands:
  config Manage Docker configs container Manage containers image Manage images network Manage networks node Manage Swarm nodes plugin Manage plugins secret Manage Docker secrets service Manage services stack Manage Docker stacks swarm Manage Swarm system Manage Docker volume Manage volumes  Commands:
  attach Attach local standard input, output, and error streams to a running container build Build an image from a Dockerfile commit Create a new image from a container&amp;rsquo;s changes cp Copy files/folders between a container and the local filesystem create Create a new container diff Inspect changes to files or directories on a container&amp;rsquo;s filesystem events Get real time events from the server exec Run a command in a running container export Export a container&amp;rsquo;s filesystem as a tar archive history Show the history of an image images List images import Import the contents from a tarball to create a filesystem image info Display system-wide information inspect Return low-level information on Docker objects kill Kill one or more running containers load Load an image from a tar archive or STDIN login Log in to a Docker registry logout Log out from a Docker registry logs Fetch the logs of a container pause Pause all processes within one or more containers port List port mappings or a specific mapping for the container ps List containers pull Pull an image or a repository from a registry push Push an image or a repository to a registry rename Rename a container restart Restart one or more containers rm Remove one or more containers rmi Remove one or more images run Run a command in a new container save Save one or more images to a tar archive (streamed to STDOUT by default) search Search the Docker Hub for images start Start one or more stopped containers stats Display a live stream of container(s) resource usage statistics stop Stop one or more running containers tag Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE top Display the running processes of a container unpause Unpause all processes within one or more containers update Update configuration of one or more containers version Show the Docker version information wait Block until one or more containers stop, then print their exit codes  docker images // 查看存在多少镜像</description>
@@ -104,10 +104,10 @@ $query-&amp;gt;where( function ($q) use ($wd) { $q-&amp;gt;where(&#39;fund_name&
     
     <item>
       <title>ES6标准预览</title>
-      <link>http://hackfox.vip/post/171001-es6%E6%A0%87%E5%87%86%E6%A6%82%E8%A7%88/</link>
+      <link>http://xsoer.github.io/post/171001-es6%E6%A0%87%E5%87%86%E6%A6%82%E8%A7%88/</link>
       <pubDate>Sun, 01 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/171001-es6%E6%A0%87%E5%87%86%E6%A6%82%E8%A7%88/</guid>
+      <guid>http://xsoer.github.io/post/171001-es6%E6%A0%87%E5%87%86%E6%A6%82%E8%A7%88/</guid>
       <description>一、变量  新增两个关键字：let、const
   let与var的区别
  作用域不同() 变量是否可以提升不  contst：只读不可改，声明即赋值 其所声明的对象的属性是可以改变的。
@@ -117,10 +117,10 @@ $query-&amp;gt;where( function ($q) use ($wd) { $q-&amp;gt;where(&#39;fund_name&
     
     <item>
       <title>开机自检</title>
-      <link>http://hackfox.vip/post/170928-%E5%BC%80%E6%9C%BA%E8%87%AA%E6%A3%80/</link>
+      <link>http://xsoer.github.io/post/170928-%E5%BC%80%E6%9C%BA%E8%87%AA%E6%A3%80/</link>
       <pubDate>Thu, 28 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/170928-%E5%BC%80%E6%9C%BA%E8%87%AA%E6%A3%80/</guid>
+      <guid>http://xsoer.github.io/post/170928-%E5%BC%80%E6%9C%BA%E8%87%AA%E6%A3%80/</guid>
       <description> 关于开机自动检测硬盘的原因：
   第一种：是你非法关机造成的，比如直接断电的情况。
  第二种：是和硬盘的分区格式有关，FAT32格式在非法关机后会在开机时要求检测硬盘，而且必须检测完毕才不会在下次启动时重新检测。系统有一个文件中记录了检测是否结束的信息，有时即使检测完成了也会因为这个文件没有更新而在下次开机时重新检测。
@@ -137,75 +137,75 @@ $query-&amp;gt;where( function ($q) use ($wd) { $q-&amp;gt;where(&#39;fund_name&
     
     <item>
       <title>Git常用命令</title>
-      <link>http://hackfox.vip/post/161224-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <link>http://xsoer.github.io/post/161224-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Sat, 24 Dec 2016 19:08:57 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/161224-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <guid>http://xsoer.github.io/post/161224-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
       <description>git init #git 初始化仓库 git clone remote_url #git 克隆远程库 git add * #git 添加所有文件 git commit -m &amp;quot;批注&amp;quot; #git 提交 git push &amp;lt;remoteName&amp;gt; &amp;lt;localName&amp;gt; #git推送至远程 git remote add origin &amp;lt;server&amp;gt; #远程没有创建仓库，将本地推送到远程仓库 git checkout -b branch_name #创建分支，并切换到分支 git checkout master #切换到主分支 git branch -d &amp;lt;branch_name&amp;gt; #删除分支 git pull &amp;lt;remoteName&amp;gt; &amp;lt;localName&amp;gt; #将本地仓库更新至最新 git merge branch_name #将其他分支合并到本地主分支 git diff &amp;lt;sourch_branch&amp;gt; &amp;lt;target_branch&amp;gt; #比对分支 git tag &amp;lt;tag_name&amp;gt; #创建标签 git show # git status #查看当前状态 git fetch #合并 git config --list #查看配置信息 git rm &amp;lt;file_name&amp;gt; #删除文件 git mv &amp;lt;old_name&amp;gt; &amp;lt;new_name&amp;gt; #重命名文件 git log #查看日志 git rebase HEAD &amp;lt;file_name&amp;gt; #重置 git remote -v #查看远程仓库 git remote rm &amp;lt;file_name&amp;gt; #删除远程仓库 git branch #查看本地分支 git branch -r #查看远程分支 git branch &amp;lt;branch_name&amp;gt; #创建本地分支 git config --global user.</description>
     </item>
     
     <item>
       <title>Mysql优化建议</title>
-      <link>http://hackfox.vip/post/161024-mysql%E4%BC%98%E5%8C%96%E5%BB%BA%E8%AE%AE/</link>
+      <link>http://xsoer.github.io/post/161024-mysql%E4%BC%98%E5%8C%96%E5%BB%BA%E8%AE%AE/</link>
       <pubDate>Mon, 24 Oct 2016 19:21:22 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/161024-mysql%E4%BC%98%E5%8C%96%E5%BB%BA%E8%AE%AE/</guid>
+      <guid>http://xsoer.github.io/post/161024-mysql%E4%BC%98%E5%8C%96%E5%BB%BA%E8%AE%AE/</guid>
       <description> 1.为查询缓存优化你的查询(curdata(),rand(),no()无法进行优化)； 2.explain你的查询； 3.当只要一行数据时使用limit 1； 4.为搜索字段建立索引； 5.在join表的时候使用相当类型的列，并将其索引 6.千万不要order by rand(); 7.避免select *； 8.用于为每张表设置一个id，尽量为unsigned int类型； 9.使用enum而不是varchar; 10.从procedure analyse()取得建议； 11.尽可能的使用not null; 12.Prepared Statements; 13.把ip地址存成UNSIGNED INT 14.固定长度表会更快； 15.垂直分割； 16.拆分大的delete或insert语句； 17.越小的列会越快； 18.选择正确的存储引擎； 19.使用一个对象关系映射器（ORM）； 20.小心“永久链接”；  </description>
     </item>
     
     <item>
       <title>Centos7下转移mysql目录</title>
-      <link>http://hackfox.vip/post/161024-centos7%E4%B8%8B%E8%BD%AC%E7%A7%BBmysql%E7%9B%AE%E5%BD%95/</link>
+      <link>http://xsoer.github.io/post/161024-centos7%E4%B8%8B%E8%BD%AC%E7%A7%BBmysql%E7%9B%AE%E5%BD%95/</link>
       <pubDate>Mon, 24 Oct 2016 19:03:05 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/161024-centos7%E4%B8%8B%E8%BD%AC%E7%A7%BBmysql%E7%9B%AE%E5%BD%95/</guid>
+      <guid>http://xsoer.github.io/post/161024-centos7%E4%B8%8B%E8%BD%AC%E7%A7%BBmysql%E7%9B%AE%E5%BD%95/</guid>
       <description> 1.停止mysql systemctl stop mysqld  2.假设转移的目标目录为/mnt下 cp -arp /var/lib/mysql /mnt  3.修改mysql配置文件 vim /etc/my.cnf #datadir=/var/lib/mysql #旧路径 datadir=/mnt/mysql	#新路径 #socket=/var/lib/mysql/mysql.sock #旧路径 socket=/data/mysql/mysql.sock #新路径  4.修改apache配置文件 vim /etc/php.ini [mysql] mysql.default_socket = /mnt/mysql/mysql.sock [mysqli] mysql.default_socket = /mnt/mysql/mysql.sock  5.创建连接 ln -s /mnt/mysql/mysql.sock /var/lib/mysql/mysql.sock  6.启动mysql,大功告成 systemctl start mysqld  </description>
     </item>
     
     <item>
       <title>linux命令</title>
-      <link>http://hackfox.vip/post/170828-linux%E5%91%BD%E4%BB%A4/</link>
+      <link>http://xsoer.github.io/post/170828-linux%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Sun, 28 Aug 2016 12:23:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/170828-linux%E5%91%BD%E4%BB%A4/</guid>
+      <guid>http://xsoer.github.io/post/170828-linux%E5%91%BD%E4%BB%A4/</guid>
       <description>linux命令 1.1.修改权限： a)chmod:+ 表示增加权限、- 表示取消权限、= 表示唯一设定权限。 r 表示可读取，w 表示可写入，x 表示可执行。 -f : 若该文件权限无法被更改也不要显示错误讯息 -v : 显示权限变更的详细资料 -R : 对目前目录下的所有档案与子目录进行相同的权限变更(即以递回的方式逐个变更) 例：chmod -R 777 /wwwroot/pc811 2. 总核数 = 物理CPU个数 X 每颗物理CPU的核数
 总逻辑CPU数 = 物理CPU个数 X 每颗物理CPU的核数 X 超线程数# 查看物理CPU个数 cat /proc/cpuinfo| grep &amp;ldquo;physical id&amp;rdquo;| sort| uniq| wc -l# 查看每个物理CPU中core的个数(即核数) cat /proc/cpuinfo| grep &amp;ldquo;cpu cores&amp;rdquo;| uniq# 查看逻辑CPU的个数 cat /proc/cpuinfo| grep &amp;ldquo;processor&amp;rdquo;| wc -l#查看CPU信息（型号） cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c 3.</description>
     </item>
     
     <item>
       <title>Mysql常用操作</title>
-      <link>http://hackfox.vip/post/160724-mysql%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</link>
+      <link>http://xsoer.github.io/post/160724-mysql%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Sun, 24 Jul 2016 19:12:57 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/160724-mysql%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
+      <guid>http://xsoer.github.io/post/160724-mysql%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
       <description>1.授权用户 mysql&amp;gt;GRANT ALL PRIVILEGES ON *.* TO &#39;zxc&#39;@&#39;%&#39; IDENTIFIED BY &#39;ydp#2015$Z!!!&#39; WITH GRANT OPTION; mysql&amp;gt;FLUSH PRIVILEGES;  2.远程连接 shell&amp;gt;mysql -h127.0.0.1 -P3306 -uroot -p  3.导出数据库 shell&amp;gt;mysqldump -h127.0.0.1 -P3306 -uroot -p sqsx &amp;gt; sqsx.sql  -4.导入数据库
 shell&amp;gt;mysql -uroot -p sqsx &amp;lt; sqsx.sql  5.分析查询 shell&amp;gt; explain `select * from user`  6.查询所有的进程 mysql&amp;gt;show procelist;  7.建数据库语句 mysql&amp;gt;create database dbname default character set utf8 collate utf8_general_ci;  8.创建数据表语句 mysql&amp;gt;create table dbname.tablename () engine=Innodb charset=utf8;  9.</description>
     </item>
     
     <item>
       <title>运维技能</title>
-      <link>http://hackfox.vip/post/160224-%E8%BF%90%E7%BB%B4%E6%8A%80%E8%83%BD/</link>
+      <link>http://xsoer.github.io/post/160224-%E8%BF%90%E7%BB%B4%E6%8A%80%E8%83%BD/</link>
       <pubDate>Wed, 24 Feb 2016 19:01:13 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/160224-%E8%BF%90%E7%BB%B4%E6%8A%80%E8%83%BD/</guid>
+      <guid>http://xsoer.github.io/post/160224-%E8%BF%90%E7%BB%B4%E6%8A%80%E8%83%BD/</guid>
       <description>初级运维：  1.CPU、内存、磁盘、IO、文件系统 2.系统安装：设备选择、规划磁盘分区、定制化安装 3.基础知识：基本命令、文本编辑器、用户与组、权限管理 4.磁盘管理：磁盘分区和文件系统、磁盘阵列管理、逻辑卷管理 5.软件管理：软件安装、服务管理、进程管理  中级运维：  1.开源、GNU、GPL、POSIX、Linux内核、RAID、RAID等级、磁盘、磁盘原理、块、超级块、文件系统、i节点 2.shell  1.基础入门 1)shell的基本组成与参数 2)执行跟踪和调优排错 2.shell脚本 1)输入输出重定向 2)分割和管道 3)增强管道能力：find、grep等 4)shell变量和返回值 5)字符串操作 6)条件判断、循环 7)分支、函数、块输入 8)shell文件处理 3.正则表达式 1)基本概念 2)基本元字符 3)正则表达式总的分组 4.sed与awk 1)sed与awk的概念 2)sed工作模式 3)sed中的正则 4)awk中的模式与动作 5)awk的域和记录 6)awk中的正则 7)awk管道与重定向 8)awk格式化输出 9)awk变量与函数  3.LAMP  1.APACHE  1)APACHE安装与配置 2)profork与workert 3)apache模块  2.mysql  1)mysql安装与配置 2)SQL语句与管理工具 3)存储引擎与索引 4)单机运行多实例 5)mysql主从复制 6)mysql cluster  3.php  1)php安装与配置 2)phpize 3)session与cookie 4)php操作数据库  4.lamp整合  1)编译整合 2)FASTCGI  5.</description>
     </item>
     
     <item>
       <title>mysql性能优化建议</title>
-      <link>http://hackfox.vip/post/151228-mysql%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%BB%BA%E8%AE%AE/</link>
+      <link>http://xsoer.github.io/post/151228-mysql%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%BB%BA%E8%AE%AE/</link>
       <pubDate>Mon, 28 Dec 2015 12:23:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/151228-mysql%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%BB%BA%E8%AE%AE/</guid>
+      <guid>http://xsoer.github.io/post/151228-mysql%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%BB%BA%E8%AE%AE/</guid>
       <description> 1.为查询缓存优化你的查询(curdata(),rand(),no()无法进行优化)； 2.explain你的查询； 3.当只要一行数据时使用limit 1； 4.为搜索字段建立索引； 5.在join表的时候使用相当类型的列，并将其索引 6.千万不要order by rand(); 7.避免select *； 8.用于为每张表设置一个id，尽量为unsigned int类型； 9.使用enum而不是varchar; 10.从procedure analyse()取得建议； 11.尽可能的使用not null; 12.Prepared Statements; 13.把ip地址存成UNSIGNED INT 14.固定长度表会更快； 15.垂直分割； 16.拆分大的delete或insert语句； 17.越小的列会越快； 18.选择正确的存储引擎； 19.使用一个对象关系映射器（ORM）； 20.小心“永久链接”；  </description>
     </item>
     
     <item>
       <title>mysql主从同步</title>
-      <link>http://hackfox.vip/post/151110-mysql%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5/</link>
+      <link>http://xsoer.github.io/post/151110-mysql%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5/</link>
       <pubDate>Tue, 10 Nov 2015 13:08:25 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/151110-mysql%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5/</guid>
+      <guid>http://xsoer.github.io/post/151110-mysql%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5/</guid>
       <description>1.主库和从库创建同步账户  mysql&amp;gt; grant replication slave, replication client on *.* to repl@&#39;192.168.1.%&#39; identified by &#39;123456&#39;;   2.主库配置  /etc/my.cnf server-id=130 #保证唯一值 log-bin=mysql-bin binlog_format=mixed binlog-do-db=test2 binlog-ignore-db=mysql log-error=/var/lib/mysql/mysql.err   3.重启主库
  4.查看主库状态
   mysql&amp;gt;show master status; +-------------------------+-----------------+--------------------+-------------------------+ | File | Position | Binlog_Do_DB | Binlog_Ignore_DB | +-------------------------+----------------+--------------------+--------------------------+ | mysql-bin.000002 | 120 | test2 | mysql | +-------------------------+----------------+---------------------+------------------------+ 1 row in set (0.00 sec)   5.从库配置  /etc/my.cnf server-id=131 #保证唯一值 log-bin=mysql-bin binlog_format=mixed replicate-do-db=test2 replicate-ignore-db=mysql relay_log=/var/lib/mysql/mysql-relay-bin log_slave_updates=1 read_only=1   6.</description>
@@ -213,20 +213,20 @@ shell&amp;gt;mysql -uroot -p sqsx &amp;lt; sqsx.sql  5.分析查询 shell&amp;gt
     
     <item>
       <title>mysql技术</title>
-      <link>http://hackfox.vip/post/151012-mysql%E6%8A%80%E6%9C%AF/</link>
+      <link>http://xsoer.github.io/post/151012-mysql%E6%8A%80%E6%9C%AF/</link>
       <pubDate>Mon, 12 Oct 2015 12:23:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/151012-mysql%E6%8A%80%E6%9C%AF/</guid>
+      <guid>http://xsoer.github.io/post/151012-mysql%E6%8A%80%E6%9C%AF/</guid>
       <description>数据库基本概念 1.数据模型：描述数据、数据关系、数据语义及一致性约束的概念工具集 1）网络模型 2）层次模型 3）关系模型* 2.关系模型：用表来描述数据与数据间的关系 3.数据完整性和数据保护 4.mysql 1.0诞生于1995年 5.mysql以守护进程运行
 结构体系 1.连接器 mysql&amp;gt; show variables like &amp;ldquo;%connection%&amp;rdquo;; 进行身份验证、线程重用,连接限制,检查内存,数据缓存；管理用户的连接，线程处理等需要缓存的需求。 2.连接池组件 3.缓存 全局和引擎特定的缓存和缓冲区 mysql&amp;gt; show variables like &amp;lsquo;%query_cache%&amp;lsquo;; 4.权限 5.表管理器 6.日志管理 7.sql接口组件 进行DML、DDL,存储过程、视图、触发器等操作和管理；用户通过SQL命令来查询所需结果。 8.插件式存储引擎 mysql&amp;gt; show engines; 9.解析器 查询翻译对象的特权；SQL命令传递到解析器的时候会被解析器验证和解析 10.优化器 访问路径的统计数据 mysql&amp;gt; select @@optimizer_switch; 11.管理服务与工具组件 备份和恢复的安全性，复制，集群，管理，配置，迁移和元数据 12.物理文件 #1.日志文件 1)错误日志：errorlog 2)二进制日志：binlog 3)更新日志：update log 4)查询日志：query log 5)慢查询日志：slow query log 6)innodb在线redo日志：innodb redo log #2.数据文件 1).frm:任何存储引擎都有一个，存储表结构定义信息 2).MYD:MYISAM存储引擎专用，存储数据 3).MYI:MYISAM存储引擎专用，存储索引信息 4).idb和idbdata:innodb存储引擎存储数据，.idb存储独享表空间数据，idbdata存储共享表空间数据 #3.replication相关文件： 1)master.info文件：存在于slave端的数据目录下，存放master端的ip，用户，连接密码和接口等数据 2)relay log和relay log index 3)relay-log.</description>
     </item>
     
     <item>
       <title>PHP字符串操作</title>
-      <link>http://hackfox.vip/post/150705-php%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/</link>
+      <link>http://xsoer.github.io/post/150705-php%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Sun, 05 Jul 2015 08:32:19 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/150705-php%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/</guid>
+      <guid>http://xsoer.github.io/post/150705-php%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/</guid>
       <description> 1.print 有返回值、只能输出一个、可以用在表达式中
  echo 无返回值、能输出多个、不能用于表达式中  2.trim($strs) //去除两边的空格
  rtrim($strs) //去除右边的空格 ltrim($strs) //去除左边的空格  3.点链接字符串(.)
@@ -250,10 +250,10 @@ shell&amp;gt;mysql -uroot -p sqsx &amp;lt; sqsx.sql  5.分析查询 shell&amp;gt
     
     <item>
       <title>PHP数组函数</title>
-      <link>http://hackfox.vip/post/150705-php%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0/</link>
+      <link>http://xsoer.github.io/post/150705-php%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0/</link>
       <pubDate>Sun, 05 Jul 2015 01:53:37 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/150705-php%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0/</guid>
+      <guid>http://xsoer.github.io/post/150705-php%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0/</guid>
       <description>1.array() [] //生成数组
  2.isset($arr[$i])//判断该值是否存在
  3.is_array($arr) //判断是否是数组
@@ -280,10 +280,10 @@ shell&amp;gt;mysql -uroot -p sqsx &amp;lt; sqsx.sql  5.分析查询 shell&amp;gt
     
     <item>
       <title>JS字符串转换为数字</title>
-      <link>http://hackfox.vip/post/150702-js%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%95%B0%E5%AD%97/</link>
+      <link>http://xsoer.github.io/post/150702-js%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%95%B0%E5%AD%97/</link>
       <pubDate>Thu, 02 Jul 2015 04:05:40 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/150702-js%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%95%B0%E5%AD%97/</guid>
+      <guid>http://xsoer.github.io/post/150702-js%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%95%B0%E5%AD%97/</guid>
       <description>  字符串在做运算时，一定要转换为数字后在做运算，否则会出现各种奇葩现象。
  转换的函数：  1.js提供了parseInt()和parseFloat()两个转换函数。前者把值转换成整数，后者把值转换成浮点数。只有对String类型调用这些方法，这两个函数才能正确运行；对其他类型返回的都是NaN(Not a Number)。
  2.还可使用强制类型转换（type casting）处理转换值的类型。使用强制类型转换可以访问特定的值，即使它是另一种类型的。
@@ -293,37 +293,37 @@ shell&amp;gt;mysql -uroot -p sqsx &amp;lt; sqsx.sql  5.分析查询 shell&amp;gt
     
     <item>
       <title>mysql常用命令</title>
-      <link>http://hackfox.vip/post/150612-mysql%E5%B8%B8%E7%94%A8%E8%AF%AD%E5%8F%A5/</link>
+      <link>http://xsoer.github.io/post/150612-mysql%E5%B8%B8%E7%94%A8%E8%AF%AD%E5%8F%A5/</link>
       <pubDate>Fri, 12 Jun 2015 11:23:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/150612-mysql%E5%B8%B8%E7%94%A8%E8%AF%AD%E5%8F%A5/</guid>
+      <guid>http://xsoer.github.io/post/150612-mysql%E5%B8%B8%E7%94%A8%E8%AF%AD%E5%8F%A5/</guid>
       <description>1.授权用户 mysql&amp;gt;GRANT ALL PRIVILEGES ON . TO &amp;lsquo;zxc&amp;rsquo;@&amp;lsquo;%&amp;rsquo; IDENTIFIED BY &amp;lsquo;ydp#2015$Z!!!&amp;rsquo; WITH GRANT OPTION; mysql&amp;gt;FLUSH PRIVILEGES; 2.远程连接 shell&amp;gt;mysql -h127.0.0.1 -P3306 -uroot -p 3.导出数据库 shell&amp;gt;mysqldump -h127.0.0.1 -P3306 -uroot -p sqsx &amp;gt; sqsx.sql -4.导入数据库 shell&amp;gt;mysql -uroot -p sqsx &amp;lt; sqsx.sql 5.分析查询 mysql&amp;gt;explain select * from user; 6.查询所有的进程 mysql&amp;gt;show procelist; 7.建数据库语句 mysql&amp;gt;create database dbname default character set utf8 collate utf8_general_ci; 8.创建数据表语句 mysql&amp;gt;create table dbname.tablename () engine=Innodb charset=utf8; 9.删除数据库 mysql&amp;gt;drop database dbname; 10.查看数据库状态 mysql&amp;gt;use dbname; mysql&amp;gt;status; 11.</description>
     </item>
     
     <item>
       <title>运维技能</title>
-      <link>http://hackfox.vip/post/150228-%E8%BF%90%E7%BB%B4%E6%8A%80%E8%83%BD/</link>
+      <link>http://xsoer.github.io/post/150228-%E8%BF%90%E7%BB%B4%E6%8A%80%E8%83%BD/</link>
       <pubDate>Sat, 28 Feb 2015 12:23:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/150228-%E8%BF%90%E7%BB%B4%E6%8A%80%E8%83%BD/</guid>
+      <guid>http://xsoer.github.io/post/150228-%E8%BF%90%E7%BB%B4%E6%8A%80%E8%83%BD/</guid>
       <description>初级运维：  1.CPU、内存、磁盘、IO、文件系统 2.系统安装：设备选择、规划磁盘分区、定制化安装 3.基础知识：基本命令、文本编辑器、用户与组、权限管理 4.磁盘管理：磁盘分区和文件系统、磁盘阵列管理、逻辑卷管理 5.软件管理：软件安装、服务管理、进程管理  中级运维：  1.开源、GNU、GPL、POSIX、Linux内核、RAID、RAID等级、磁盘、磁盘原理、块、超级块、文件系统、i节点 2.shell  1.基础入门 1)shell的基本组成与参数 2)执行跟踪和调优排错 2.shell脚本 1)输入输出重定向 2)分割和管道 3)增强管道能力：find、grep等 4)shell变量和返回值 5)字符串操作 6)条件判断、循环 7)分支、函数、块输入 8)shell文件处理 3.正则表达式 1)基本概念 2)基本元字符 3)正则表达式总的分组 4.sed与awk 1)sed与awk的概念 2)sed工作模式 3)sed中的正则 4)awk中的模式与动作 5)awk的域和记录 6)awk中的正则 7)awk管道与重定向 8)awk格式化输出 9)awk变量与函数  3.LAMP  1.APACHE  1)APACHE安装与配置 2)profork与workert 3)apache模块  2.mysql  1)mysql安装与配置 2)SQL语句与管理工具 3)存储引擎与索引 4)单机运行多实例 5)mysql主从复制 6)mysql cluster  3.php  1)php安装与配置 2)phpize 3)session与cookie 4)php操作数据库  4.lamp整合  1)编译整合 2)FASTCGI  5.</description>
     </item>
     
     <item>
       <title>JDBC对sqlserver的操作</title>
-      <link>http://hackfox.vip/post/140604-jdbc%E5%AF%B9sqlserver%E7%9A%84%E6%93%8D%E4%BD%9C/</link>
+      <link>http://xsoer.github.io/post/140604-jdbc%E5%AF%B9sqlserver%E7%9A%84%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Wed, 04 Jun 2014 09:41:26 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/140604-jdbc%E5%AF%B9sqlserver%E7%9A%84%E6%93%8D%E4%BD%9C/</guid>
+      <guid>http://xsoer.github.io/post/140604-jdbc%E5%AF%B9sqlserver%E7%9A%84%E6%93%8D%E4%BD%9C/</guid>
       <description>过程：  1.注册驱动器类：Class.forName() 2.连接数据库：  String url = &amp;quot;jdbc:sqlserver://localhost:1433;DatabaseName=DataBaseName&amp;quot;; String uername = &amp;quot;dbuser&amp;quot;; String password = &amp;quot;secret&amp;quot;; Connection conn = DriverManager.getConnection(url,username,password);   3.执行sql语句：  Statement stat = conn.createStatement(); String command = &amp;quot;UPDATE BOOKS&amp;quot;; stat.executeUpdate(command);  java.sql.Statement()(三种执行方式)  第一种: execute();void 可执行任何sql语句 第二种：executeUpdate();int  可以执行：INSERT UPDATE DELETE CREATE TABLE;DROP TABLE 返回：受影响的行数  第三种：executeQuery(); ResultSet  执行：SELECT 返回：一个ResultSet对象，每次一行迭代例：   ResultSet rs = stat.executeQuery(&amp;quot;SELECT * FORM BOOKS&amp;quot;)； while(rs.next()){ look at a row of the result set } rs.</description>
     </item>
     
     <item>
       <title>About Hugo</title>
-      <link>http://hackfox.vip/about/</link>
+      <link>http://xsoer.github.io/about/</link>
       <pubDate>Wed, 09 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/about/</guid>
+      <guid>http://xsoer.github.io/about/</guid>
       <description>Hugo is a static site engine written in Go.
 It makes use of a variety of open source projects including:
  Cobra Viper J Walter Weatherman Cast  Learn more and contribute on GitHub.
@@ -333,29 +333,29 @@ Setup Some fun facts about Hugo:
     
     <item>
       <title>基础数据结构</title>
-      <link>http://hackfox.vip/post/140224-%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
+      <link>http://xsoer.github.io/post/140224-%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
       <pubDate>Mon, 24 Feb 2014 19:34:10 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/140224-%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid>
+      <guid>http://xsoer.github.io/post/140224-%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid>
       <description>数据结构往往同高效的检索算法和索引技术有关，是介于数学、计算机硬件和计算机软件三者之间的一门核心课程
 基本结构：集合、线性结构、树形结构、图状结构  集合结构:除了同属于一种类型外，别无其它关系 线性结构:元素之间存在一对一关系常见类型有:数组,链表,队列,栈,它们之间在操作上有所区别。例如:链表可在任意位置插入或删除元素,而队列在队尾插入元素,队头删除元素,栈只能在栈顶进行插入,删除操作. 树形结构:元素之间存在一对多的关系,常见类型有:树(有许多特例:二叉树、平衡二叉树、查找树等) 图形结构:元素之间存在多对多的关系,图形结构中每个结点的前驱结点数和后续结点多个数可以任意  常用数据结构  数组（静态数组、动态数组） 线性表 链表（单向链表、双向链表、循环链表） 队栈 散列表 树（二叉树、查找树、平衡树、线索、堆） 图等的定义、存储和操作  数组  PHP的数组和其他语言不同之处是键可以为字符串，而且语言都是整型值 关于数组的问题及解法   - 数组的循环移动 - 最长递增子序列 - 和最大的子数组 - 寻找最大的前K个元素 - 数组分裂 - 乘积最大的子数组 - 最快速度求两个数组之交集算法 - 查找第二大数的算法 - 蛇形输出数组  线性表 -</description>
     </item>
     
     <item>
       <title>基础数据结构</title>
-      <link>http://hackfox.vip/post/php/laravel/cookie%E4%B8%8Esession/</link>
+      <link>http://xsoer.github.io/post/php/laravel/cookie%E4%B8%8Esession/</link>
       <pubDate>Mon, 24 Feb 2014 19:34:10 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/php/laravel/cookie%E4%B8%8Esession/</guid>
+      <guid>http://xsoer.github.io/post/php/laravel/cookie%E4%B8%8Esession/</guid>
       <description> Laravel 并没有使用 PHP 内置的 Session 功能，而且自己实现了一套更加灵活更加强大的 Session 机制，核心逻辑请参考 Illuminate\Session\Middleware\StartSession 这个中间件，因此在 Laravel 应用中不要试图通过 $_SESSION 方式去获取应用的 Session 值，这是徒劳的 在 Laravel 的控制器构造函数中是无法获取应用 Session 数据的，这是因为 Laravel 的 Session 通过 StartSession 中间件启动，既然是中间件就会在服务容器注册所有服务之后执行，而控制器们的构造函数都是在容器注册服务的时候执行的，所以这个时候 Session 尚未启动，又何来的获取数据呢？解决办法是将获取 Session 数据逻辑后置或者在构造函数中引入在 StartSession 之后执行的中间件。 记住我 的功能就是通过cookie来实现的  </description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/post/php/laravel/csrf-token%E5%8E%9F%E7%90%86/</link>
+      <link>http://xsoer.github.io/post/php/laravel/csrf-token%E5%8E%9F%E7%90%86/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/php/laravel/csrf-token%E5%8E%9F%E7%90%86/</guid>
+      <guid>http://xsoer.github.io/post/php/laravel/csrf-token%E5%8E%9F%E7%90%86/</guid>
       <description>用处  在Kernel文件内引入的VerifyCsrfToken文件，如果不需要就注释掉 传统Form表单提交，在form表单内添加  &amp;lt;input name=&amp;quot;_token&amp;quot; type=&amp;quot;hidden&amp;quot; value=&amp;quot;{{ csrf_token() }}&amp;quot; /&amp;gt;  在Ajax，用 X-CSRF-TOKEN或者X-XSRF-TOKEN.在公共父页面添加
 &amp;lt;meta name=&amp;quot;csrf-token&amp;quot; content=&amp;quot;{{csrf_token()}}&amp;quot; /&amp;gt; $.ajaxSetup({ headers: { &#39;X-CSRF-TOKEN&#39;: $(&#39;meta[name=&amp;quot;csrf-token&amp;quot;]&#39;).attr(&#39;content&#39;) } });  判断及添加token源码,在Illuminate\Foundation\Http\Middleware\VerifyCsrfToken文件内 ```php public function handle($request, Closure $next) { if ( $this-&amp;gt;isReading($request) || $this-&amp;gt;runningUnitTests() || $this-&amp;gt;shouldPassThrough($request) || $this-&amp;gt;tokensMatch($request) ) { return $this-&amp;gt;addCookieToResponse($request, $next($request)); }
 throw new TokenMismatchException;  }
@@ -365,10 +365,10 @@ throw new TokenMismatchException;  }
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/post/php/laravel/arch/</link>
+      <link>http://xsoer.github.io/post/php/laravel/arch/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/php/laravel/arch/</guid>
+      <guid>http://xsoer.github.io/post/php/laravel/arch/</guid>
       <description> 概述  一个系统需要的基本功能： 用户、日志、流程、消息、验证、事件、缓存、邮件、测试
 一个框架功能： 路由器、控制层、视图层、模型层、业务层、中间件
  用户  1.用户认证
@@ -380,19 +380,19 @@ throw new TokenMismatchException;  }
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/post/php/laravel/php_web/</link>
+      <link>http://xsoer.github.io/post/php/laravel/php_web/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/php/laravel/php_web/</guid>
+      <guid>http://xsoer.github.io/post/php/laravel/php_web/</guid>
       <description> web操作php相关性 常用函数及方法 常用思想 常用框架及优劣 </description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/post/linux/linux/</link>
+      <link>http://xsoer.github.io/post/linux/linux/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/linux/linux/</guid>
+      <guid>http://xsoer.github.io/post/linux/linux/</guid>
       <description>Linux
  进程 1.分为三类：交互式进程、批处理进程、守护进程 2.守护进程：最活跃、在后台运行 3.父进程与子进程 1)父进程总结，子进程跟着总结；反之不然 4.工具：ps,kill,pgrep,top 5.状态：R-运行，S-睡眠，Z-僵尸http://www.jianshu.com/p/a146a8d383d4
 awk使用 1.其中单引号中的被大括号括着的就是awk的语句，注意，其只能被单引号包含。 2.其中的$1..$n表示第几例。注：$0表示整个行。 如：shell&amp;gt;awk &amp;lsquo;{print $1, $4}&amp;rsquo; netstat.txt 3.格式化输出，如：shell&amp;gt;awk &amp;lsquo;{printf &amp;ldquo;%-8s %-8s %-8s %-18s %-22s %-15s\n&amp;rdquo;,$1,$2,$3,$4,$5,$6}&amp;rsquo; netstat.txt 4.过滤记录，第三列为0且第六列为listen,如：shell&amp;gt;awk &amp;lsquo;$3==0 &amp;amp;&amp;amp; $6==&amp;ldquo;LISTEN&amp;rdquo; &amp;lsquo; netstat.txt, #其中：“==”为比较运算符。其他比较运算符：!=, &amp;gt;, &amp;lt;, &amp;gt;=, &amp;lt;= e.g：shell&amp;gt;awk &amp;lsquo; $3&amp;gt;0 {print $0}&amp;rsquo; netstat.txt #如果我们需要表头的话，我们可以引入内建变量NR： shell&amp;gt;awk &amp;lsquo;$3==0 &amp;amp;&amp;amp; $6==&amp;ldquo;LISTEN&amp;rdquo; || NR==1 &amp;lsquo; netstat.txt #再加上格式化输出： shell&amp;gt;awk &amp;lsquo;$3==0 &amp;amp;&amp;amp; $6==&amp;ldquo;LISTEN&amp;rdquo; || NR==1 {printf &amp;ldquo;%-20s %-20s %s\n&amp;rdquo;,$4,$5,$6}&amp;rsquo; netstat.txt 5.内建变量 $0 当前记录（这个变量中存放着整个行的内容） $1~$n 当前记录的第n个字段，字段间由FS分隔 FS 输入字段分隔符 默认是空格或Tab NF 当前记录中的字段个数，就是有多少列 NR 已经读出的记录数，就是行号，从1开始，如果有多个文件话，这个值也是不断累加中。 FNR 当前记录数，与NR不同的是，这个值会是各个文件自己的行号 RS 输入的记录分隔符， 默认为换行符 OFS 输出字段分隔符， 默认也是空格 ORS 输出的记录分隔符，默认为换行符 FILENAME 当前输入文件的名字 e.</description>
@@ -400,19 +400,19 @@ awk使用 1.其中单引号中的被大括号括着的就是awk的语句，注�
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/post/linux/centos7%E5%AE%89%E8%A3%85mysql/</link>
+      <link>http://xsoer.github.io/post/linux/centos7%E5%AE%89%E8%A3%85mysql/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/linux/centos7%E5%AE%89%E8%A3%85mysql/</guid>
+      <guid>http://xsoer.github.io/post/linux/centos7%E5%AE%89%E8%A3%85mysql/</guid>
       <description>1.安裝 MySQL Repository: # rpm -Uvh http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm https://repo.mysql.com//mysql57-community-release-el6-7.noarch.rpm http://repo.mysql.com//mysql57-community-release-el7-7.noarch.rpm 2.安裝 MySQL Server, MySQL client 已經包括在 server 套件內: # yum install mysql-community-server 3.开机自动启动 MySQL # /usr/bin/systemctl enable mysqld 4.启动 MySQL # /usr/bin/systemctl start mysqld 5.MySQL 預設為空密碼, 執行以下指令修改: # /usr/bin/mysql_secure_installation 6.设置新密码 #set password for root@localhost password=(“password”);</description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/post/linux/centos7%E6%90%AD%E5%BB%BAvsftpd/</link>
+      <link>http://xsoer.github.io/post/linux/centos7%E6%90%AD%E5%BB%BAvsftpd/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/linux/centos7%E6%90%AD%E5%BB%BAvsftpd/</guid>
+      <guid>http://xsoer.github.io/post/linux/centos7%E6%90%AD%E5%BB%BAvsftpd/</guid>
       <description>1.首先看看vsftpd装了没有 -&amp;gt;rpm -q vsftpd
 2.没装的话就先安装吧 -&amp;gt;yum -y install vsftpd
 3.设置开机启动vsftpd ftp服务 -&amp;gt;systemctl enable vsftpd
@@ -426,19 +426,19 @@ awk使用 1.其中单引号中的被大括号括着的就是awk的语句，注�
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/post/linux/centos7%E8%BD%AC%E7%A7%BBapache%E7%9B%AE%E5%BD%95/</link>
+      <link>http://xsoer.github.io/post/linux/centos7%E8%BD%AC%E7%A7%BBapache%E7%9B%AE%E5%BD%95/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/linux/centos7%E8%BD%AC%E7%A7%BBapache%E7%9B%AE%E5%BD%95/</guid>
+      <guid>http://xsoer.github.io/post/linux/centos7%E8%BD%AC%E7%A7%BBapache%E7%9B%AE%E5%BD%95/</guid>
       <description>1.假设转移目录为/mnt/www -&amp;gt;mkdir /mnt/www #创建www目录 2.停止apache服务 -&amp;gt;systemctl stop httpd 3.编辑apache配置文件 -&amp;gt;vim /etc/httpd/conf/httpd.conf -&amp;gt;#DocumentRoot “/var/www/html” #旧目录 -&amp;gt;DocumentRoot “/mnt/www” #新目录 -&amp;gt;##旧目录 -&amp;gt;4.修改www下文件的权限 -&amp;gt;chown -R apache:ftp /mnt/www #修改为apache用户，否则不允许访问 -&amp;gt;chmod -R 755 /mnt/www #或者这样改 5.重启apache服务 -&amp;gt;systemctl start httpd</description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/post/linux/linux%E7%9B%AE%E5%BD%95/</link>
+      <link>http://xsoer.github.io/post/linux/linux%E7%9B%AE%E5%BD%95/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/linux/linux%E7%9B%AE%E5%BD%95/</guid>
+      <guid>http://xsoer.github.io/post/linux/linux%E7%9B%AE%E5%BD%95/</guid>
       <description>Linux系统目录
 /： 根目录，一般根目录下只存放目录，不要存放文件，/etc、/bin、/dev、 /lib、/sbin应该和根目录放置在一个分区中 /bin:/usr/bin: 可执行二进制文件的目录，如常用命令ls、tar、mv、cat等。 /boot： 放置linux系统启动时用到的一些文件。/boot/vmlinuz为linux的内核文件，以及/boot/gurb。建议单独分区，分区大小100M即可 /dev： 存放linux系统下的设备文件，访问该目录下某个文件，相当于访问某个设备，常用的是挂载光驱mount /dev/cdrom /mnt。 /etc： 系统配置文件存放的目录，不建议在此目录下存放可执行文件，重要的配置文件有/etc/inittab、/etc/fstab、/etc/init.d、 /etc/X11、/etc/sysconfig、/etc/xinetd.d修改配置文件之前记得备份。注：/etc/X11存放与x windows有关的设置。 /home： 系统默认的用户家目录，新增用户账号时，用户的家目录都存放在此目录下，~表示当前用户的家目录，~test表示用户test的家目录。建议单独分区，并设置较大的磁盘空间，方便用户存放数据 /lib:/usr/lib:/usr/local/lib： 系统使用的函数库的目录，程序在执行过程中，需要调用一些额外的参数时需要函数库的协助，比较重要的目录为/lib/modules。 /lost+fount： 系统异常产生错误时，会将一些遗失的片段放置于此目录下，通常这个目录会自动出现在装置目录下。如加载硬盘于/disk 中，此目录下就会自动产生目录/disk/lost+found /mnt:/media： 光盘默认挂载点，通常光盘挂载于/mnt/cdrom下，也不一定，可以选择任意位置进行挂载。 /opt： 给主机额外安装软件所摆放的目录。如：FC4使用的Fedora 社群开发软件，如果想要自行安装新的KDE 桌面软件，可以将该软件安装在该目录下。以前的 Linux 系统中，习惯放置在 /usr/local 目录下 /proc： 此目录的数据都在内存中，如系统核心，外部设备，网络状态，由于数据都存放于内存中，所以不占用磁盘空间，比较重要的目录有/proc/cpuinfo、/proc/interrupts、/proc/dma、/proc/ioports、/proc/net/*等 /root： 系统管理员root的家目录，系统第一个启动的分区为/，所以最好将/root和/放置在一个分区下。 /sbin:/usr/sbin:/usr/local/sbin： 放置系统管理员使用的可执行命令，如fdisk、shutdown、mount等。与/bin不同的是，这几个目录是给系统管理员root使用的命令，一般用户只能&amp;rdquo;查看&amp;rdquo;而不能设置和使用。 /tmp： 一般用户或正在执行的程序临时存放文件的目录,任何人都可以访问,重要数据不可放置在此目录下 /srv：服务启动之后需要访问的数据目录，如www服务需要访问的网页数据存放在/srv/www内 /usr：应用程序存放目录， /usr/bin 存放应用程序， /usr/share存放共享数据， /usr/lib 存放不能直接运行的，却是许多程序运行所必需的一些函数库 /usr/local:存放软件升级包。 /usr/share/doc: 系统说明文件存放目录。 /usr/share/man: 程序说明文件存放目录，使用 man ls时会查询/usr/share/man/man1/ls.1.gz的内容建议单独分区，设置较大的磁盘空间
 /var： 放置系统执行过程中经常变化的文件，如随时更改的日志文件 /var/log，/var/log/message：所有的登录文件存放目录， /var/spool/mail： 邮件存放的目录， /var/run:程序或服务启动后，其PID存放在该目录下。建议单独分区，设置较大的磁盘空间</description>
@@ -446,30 +446,30 @@ awk使用 1.其中单引号中的被大括号括着的就是awk的语句，注�
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/post/python/django/</link>
+      <link>http://xsoer.github.io/post/python/django/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/python/django/</guid>
+      <guid>http://xsoer.github.io/post/python/django/</guid>
       <description> 基础
  </description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/post/python/pyqt/</link>
+      <link>http://xsoer.github.io/post/python/pyqt/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/python/pyqt/</guid>
+      <guid>http://xsoer.github.io/post/python/pyqt/</guid>
       <description> 包含模块
   1.QtCore：非图形类模块，包括事件，信号，字符，线程，内存，正则，用户和应用配置 2.QtGui：主要图形类模块 3.QtHelp 4.QtNetwork 5.QtOpenGL:3D图形模块 6.QtScript：QT的javascript应用 7.QtScriptTools：javascript的调试工具等 8.QtSql：数据库模块 9.QtSvg：SVG文件 10.QtWebkit：开源浏览器内核模块 11.QtXml 12.QtXmlPatterns 13.phonon 14.QtDBus 15.QtDeclarative 16.QtMultimedia 17.QtAssistat 18.QtDesigner 19.QAxContainer -20.Qt  </description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/post/python/python/</link>
+      <link>http://xsoer.github.io/post/python/python/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/python/python/</guid>
+      <guid>http://xsoer.github.io/post/python/python/</guid>
       <description>基本概念
 基本类型 - 1.数字:numbers int,double,float,bool,complex 1)可同时为多个变量赋值 2)一个变量可以通过赋值指向不同类型的对象 3)数值的除法(/)总时返回浮点数，要获得整数用(//) - 2.字符串:string 1)可以用&amp;rdquo;或&amp;rdquo;&amp;rdquo; 2)可以使用()转义 3)不想转义需要字符串前加r 4)可以使用(+)号连接，用(*)可以重复 5)可以使用()连接上下行，也可以用&amp;rdquo;&amp;lsquo;&amp;hellip;&amp;ldquo;&amp;lsquo;或&amp;rdquo;&amp;ldquo;&amp;rdquo;&amp;hellip;&amp;ldquo;&amp;rdquo;&amp;rdquo; 6)没有单独的字符，一个字符就是长度为1的字符串 7)可对字符串切片，用冒号切割，形式为：变量[头下标:尾下标]，从左向右以0开始，从右向左以-1开始 8)字符串不能改变 - 3.列表:list-&amp;gt;[] 1)写在方括号内，并用逗号隔开 2)元素类型可以不同 3)可以被索引和切片 4)支持串联操作，用(+)操作符 5)列表元素可以改变 6)内置很多方法：如append(i),pop(i),len(),insert(i,x),remove(x),index(i),count(i),sort(),reverse(),copy() - 4.元组:tuple-&amp;gt;() 1)写在圆括号内，用逗号隔开 2)元素类型可以不同 3)可以被索引和切片 4)支持串联操作，用(+)操作符 5)元素不可改变 - 5.集合：set-&amp;gt;{} 1)无序不重复元素集 2)基本功能是进行成员关系测试和消除重复元素 3)可以使用大括号或set()函数创建集合；但创建空集合必须用set()函数，因为{}是用来创建字典的 - 6.字典：Dictionary-&amp;gt;{&amp;rdquo;:&amp;ldquo;,&amp;hellip;} 1)一种映射类型，一个无序的键:值对的集合 2)dict()函数直接从键值对序列中构造，也可以进行推导 3)内置很多方法：如clear(),keys(),values()等 4)字典的关键字必须是不可变类型，且不能重复
   list,string和tuple都属于sequence(序列)  注释  1.#号单行注释 2.&amp;ldquo;&amp;lsquo;或&amp;rdquo;&amp;ldquo;&amp;ldquo;多行注释  格式  1.使用缩进来划分语句，相同缩进数的语句在一起组成一个语句块 2.没有switch-case语句 3.每个条件后都要是用(:)，表示接下来满足条件后要执行的语句  关键字 while,if,else,elif,pass,True,False,None,for,in,do break,continue,as,del,from,global,import,is,lambda,not,or class,def,self,return,with,yield,nonlocal try,except,raise,finally
@@ -479,46 +479,46 @@ awk使用 1.其中单引号中的被大括号括着的就是awk的语句，注�
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/post/%E7%AE%97%E6%B3%95/%E5%9B%BE/</link>
+      <link>http://xsoer.github.io/post/%E7%AE%97%E6%B3%95/%E5%9B%BE/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/%E7%AE%97%E6%B3%95/%E5%9B%BE/</guid>
+      <guid>http://xsoer.github.io/post/%E7%AE%97%E6%B3%95/%E5%9B%BE/</guid>
       <description></description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/post/%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</link>
+      <link>http://xsoer.github.io/post/%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</guid>
+      <guid>http://xsoer.github.io/post/%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</guid>
       <description></description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/post/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95/</link>
+      <link>http://xsoer.github.io/post/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95/</guid>
+      <guid>http://xsoer.github.io/post/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95/</guid>
       <description></description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/post/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
+      <link>http://xsoer.github.io/post/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid>
+      <guid>http://xsoer.github.io/post/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid>
       <description>数据结构往往同高效的检索算法和索引技术有关，是介于数学、计算机硬件和计算机软件三者之间的一门核心课程  基本结构：集合、线性结构、树形结构、图状结构  集合结构:除了同属于一种类型外，别无其它关系 线性结构:元素之间存在一对一关系常见类型有:数组,链表,队列,栈,它们之间在操作上有所区别。例如:链表可在任意位置插入或删除元素,而队列在队尾插入元素,队头删除元素,栈只能在栈顶进行插入,删除操作. 树形结构:元素之间存在一对多的关系,常见类型有:树(有许多特例:二叉树、平衡二叉树、查找树等) 图形结构:元素之间存在多对多的关系,图形结构中每个结点的前驱结点数和后续结点多个数可以任意  常用数据结构  数组（静态数组、动态数组） 线性表 链表（单向链表、双向链表、循环链表） 队栈 散列表 树（二叉树、查找树、平衡树、线索、堆） 图等的定义、存储和操作  数组  PHP的数组和其他语言不同之处是键可以为字符串，而且语言都是整型值 关于数组的问题及解法   - 数组的循环移动 - 最长递增子序列 - 和最大的子数组 - 寻找最大的前K个元素 - 数组分裂 - 乘积最大的子数组 - 最快速度求两个数组之交集算法 - 查找第二大数的算法 - 蛇形输出数组  线性表 -</description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/post/%E7%AE%97%E6%B3%95/%E6%A0%91/</link>
+      <link>http://xsoer.github.io/post/%E7%AE%97%E6%B3%95/%E6%A0%91/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/%E7%AE%97%E6%B3%95/%E6%A0%91/</guid>
+      <guid>http://xsoer.github.io/post/%E7%AE%97%E6%B3%95/%E6%A0%91/</guid>
       <description></description>
     </item>
     

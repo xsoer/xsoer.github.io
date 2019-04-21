@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>JS on hackfox</title>
-    <link>http://hackfox.vip/tags/js/</link>
+    <link>http://xsoer.github.io/tags/js/</link>
     <description>Recent content in JS on hackfox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sun, 01 Oct 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://hackfox.vip/tags/js/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://xsoer.github.io/tags/js/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>ES6标准预览</title>
-      <link>http://hackfox.vip/post/171001-es6%E6%A0%87%E5%87%86%E6%A6%82%E8%A7%88/</link>
+      <link>http://xsoer.github.io/post/171001-es6%E6%A0%87%E5%87%86%E6%A6%82%E8%A7%88/</link>
       <pubDate>Sun, 01 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/171001-es6%E6%A0%87%E5%87%86%E6%A6%82%E8%A7%88/</guid>
+      <guid>http://xsoer.github.io/post/171001-es6%E6%A0%87%E5%87%86%E6%A6%82%E8%A7%88/</guid>
       <description>一、变量  新增两个关键字：let、const
   let与var的区别
  作用域不同() 变量是否可以提升不  contst：只读不可改，声明即赋值 其所声明的对象的属性是可以改变的。
@@ -26,10 +26,10 @@
     
     <item>
       <title>JS字符串转换为数字</title>
-      <link>http://hackfox.vip/post/150702-js%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%95%B0%E5%AD%97/</link>
+      <link>http://xsoer.github.io/post/150702-js%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%95%B0%E5%AD%97/</link>
       <pubDate>Thu, 02 Jul 2015 04:05:40 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/150702-js%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%95%B0%E5%AD%97/</guid>
+      <guid>http://xsoer.github.io/post/150702-js%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%95%B0%E5%AD%97/</guid>
       <description>  字符串在做运算时，一定要转换为数字后在做运算，否则会出现各种奇葩现象。
  转换的函数：  1.js提供了parseInt()和parseFloat()两个转换函数。前者把值转换成整数，后者把值转换成浮点数。只有对String类型调用这些方法，这两个函数才能正确运行；对其他类型返回的都是NaN(Not a Number)。
  2.还可使用强制类型转换（type casting）处理转换值的类型。使用强制类型转换可以访问特定的值，即使它是另一种类型的。

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>计算机 on hackfox</title>
-    <link>http://hackfox.vip/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/</link>
+    <link>http://xsoer.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/</link>
     <description>Recent content in 计算机 on hackfox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Thu, 28 Sep 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://hackfox.vip/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://xsoer.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>开机自检</title>
-      <link>http://hackfox.vip/post/170928-%E5%BC%80%E6%9C%BA%E8%87%AA%E6%A3%80/</link>
+      <link>http://xsoer.github.io/post/170928-%E5%BC%80%E6%9C%BA%E8%87%AA%E6%A3%80/</link>
       <pubDate>Thu, 28 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/170928-%E5%BC%80%E6%9C%BA%E8%87%AA%E6%A3%80/</guid>
+      <guid>http://xsoer.github.io/post/170928-%E5%BC%80%E6%9C%BA%E8%87%AA%E6%A3%80/</guid>
       <description> 关于开机自动检测硬盘的原因：
   第一种：是你非法关机造成的，比如直接断电的情况。
  第二种：是和硬盘的分区格式有关，FAT32格式在非法关机后会在开机时要求检测硬盘，而且必须检测完毕才不会在下次启动时重新检测。系统有一个文件中记录了检测是否结束的信息，有时即使检测完成了也会因为这个文件没有更新而在下次开机时重新检测。
@@ -33,29 +33,29 @@
     
     <item>
       <title>Centos7下转移mysql目录</title>
-      <link>http://hackfox.vip/post/161024-centos7%E4%B8%8B%E8%BD%AC%E7%A7%BBmysql%E7%9B%AE%E5%BD%95/</link>
+      <link>http://xsoer.github.io/post/161024-centos7%E4%B8%8B%E8%BD%AC%E7%A7%BBmysql%E7%9B%AE%E5%BD%95/</link>
       <pubDate>Mon, 24 Oct 2016 19:03:05 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/161024-centos7%E4%B8%8B%E8%BD%AC%E7%A7%BBmysql%E7%9B%AE%E5%BD%95/</guid>
+      <guid>http://xsoer.github.io/post/161024-centos7%E4%B8%8B%E8%BD%AC%E7%A7%BBmysql%E7%9B%AE%E5%BD%95/</guid>
       <description> 1.停止mysql systemctl stop mysqld  2.假设转移的目标目录为/mnt下 cp -arp /var/lib/mysql /mnt  3.修改mysql配置文件 vim /etc/my.cnf #datadir=/var/lib/mysql #旧路径 datadir=/mnt/mysql	#新路径 #socket=/var/lib/mysql/mysql.sock #旧路径 socket=/data/mysql/mysql.sock #新路径  4.修改apache配置文件 vim /etc/php.ini [mysql] mysql.default_socket = /mnt/mysql/mysql.sock [mysqli] mysql.default_socket = /mnt/mysql/mysql.sock  5.创建连接 ln -s /mnt/mysql/mysql.sock /var/lib/mysql/mysql.sock  6.启动mysql,大功告成 systemctl start mysqld  </description>
     </item>
     
     <item>
       <title>基础数据结构</title>
-      <link>http://hackfox.vip/post/140224-%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
+      <link>http://xsoer.github.io/post/140224-%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
       <pubDate>Mon, 24 Feb 2014 19:34:10 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/140224-%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid>
+      <guid>http://xsoer.github.io/post/140224-%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid>
       <description>数据结构往往同高效的检索算法和索引技术有关，是介于数学、计算机硬件和计算机软件三者之间的一门核心课程
 基本结构：集合、线性结构、树形结构、图状结构  集合结构:除了同属于一种类型外，别无其它关系 线性结构:元素之间存在一对一关系常见类型有:数组,链表,队列,栈,它们之间在操作上有所区别。例如:链表可在任意位置插入或删除元素,而队列在队尾插入元素,队头删除元素,栈只能在栈顶进行插入,删除操作. 树形结构:元素之间存在一对多的关系,常见类型有:树(有许多特例:二叉树、平衡二叉树、查找树等) 图形结构:元素之间存在多对多的关系,图形结构中每个结点的前驱结点数和后续结点多个数可以任意  常用数据结构  数组（静态数组、动态数组） 线性表 链表（单向链表、双向链表、循环链表） 队栈 散列表 树（二叉树、查找树、平衡树、线索、堆） 图等的定义、存储和操作  数组  PHP的数组和其他语言不同之处是键可以为字符串，而且语言都是整型值 关于数组的问题及解法   - 数组的循环移动 - 最长递增子序列 - 和最大的子数组 - 寻找最大的前K个元素 - 数组分裂 - 乘积最大的子数组 - 最快速度求两个数组之交集算法 - 查找第二大数的算法 - 蛇形输出数组  线性表 -</description>
     </item>
     
     <item>
       <title>基础数据结构</title>
-      <link>http://hackfox.vip/post/php/laravel/cookie%E4%B8%8Esession/</link>
+      <link>http://xsoer.github.io/post/php/laravel/cookie%E4%B8%8Esession/</link>
       <pubDate>Mon, 24 Feb 2014 19:34:10 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/php/laravel/cookie%E4%B8%8Esession/</guid>
+      <guid>http://xsoer.github.io/post/php/laravel/cookie%E4%B8%8Esession/</guid>
       <description> Laravel 并没有使用 PHP 内置的 Session 功能，而且自己实现了一套更加灵活更加强大的 Session 机制，核心逻辑请参考 Illuminate\Session\Middleware\StartSession 这个中间件，因此在 Laravel 应用中不要试图通过 $_SESSION 方式去获取应用的 Session 值，这是徒劳的 在 Laravel 的控制器构造函数中是无法获取应用 Session 数据的，这是因为 Laravel 的 Session 通过 StartSession 中间件启动，既然是中间件就会在服务容器注册所有服务之后执行，而控制器们的构造函数都是在容器注册服务的时候执行的，所以这个时候 Session 尚未启动，又何来的获取数据呢？解决办法是将获取 Session 数据逻辑后置或者在构造函数中引入在 StartSession 之后执行的中间件。 记住我 的功能就是通过cookie来实现的  </description>
     </item>
     

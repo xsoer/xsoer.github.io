@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>PHP on hackfox</title>
-    <link>http://hackfox.vip/tags/php/</link>
+    <link>http://xsoer.github.io/tags/php/</link>
     <description>Recent content in PHP on hackfox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 28 Feb 2018 18:30:10 +0000</lastBuildDate>
     
-	<atom:link href="http://hackfox.vip/tags/php/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://xsoer.github.io/tags/php/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Laravel的异常处理</title>
-      <link>http://hackfox.vip/post/180228-laravel%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</link>
+      <link>http://xsoer.github.io/post/180228-laravel%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</link>
       <pubDate>Wed, 28 Feb 2018 18:30:10 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/180228-laravel%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</guid>
+      <guid>http://xsoer.github.io/post/180228-laravel%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</guid>
       <description>在进行项目操作时，
 // class A文件 public function a() { try{ logger(111); (new \App\Business\B)-&amp;gt;b(); }catch(BusinessException $e) { logger(444) $this-&amp;gt;rollBackOrder(); throw new BusinessException($e-&amp;gt;getMessage().&#39;请联系管理员处理&#39;, 21000); } } public function rollBackOrder() { // some code } // class B文件 public function b() { try{ $i = 1; if ($i != 0) { logger(222) throw new KrException(&#39;错误了，回滚回滚&#39;, 500); } }catch (KrException $e) { logger(333) throw new KrException($e-&amp;gt;getMessage(), 500); } }  以上代码打印结果为:
 111 222 333  可以看到最后A内的rollBackOrder方法未执行</description>
@@ -24,10 +24,10 @@
     
     <item>
       <title>Laravel的拼接sql问题</title>
-      <link>http://hackfox.vip/post/180226-laravel%E7%9A%84%E6%8B%BC%E6%8E%A5sql%E9%97%AE%E9%A2%98/</link>
+      <link>http://xsoer.github.io/post/180226-laravel%E7%9A%84%E6%8B%BC%E6%8E%A5sql%E9%97%AE%E9%A2%98/</link>
       <pubDate>Mon, 26 Feb 2018 17:46:28 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/180226-laravel%E7%9A%84%E6%8B%BC%E6%8E%A5sql%E9%97%AE%E9%A2%98/</guid>
+      <guid>http://xsoer.github.io/post/180226-laravel%E7%9A%84%E6%8B%BC%E6%8E%A5sql%E9%97%AE%E9%A2%98/</guid>
       <description>laravel的原始sql语句在输入数据查询时，需要注意传入的字符，否则很容易出问题。例如：
 $query-&amp;gt;whereRaw(&amp;quot;(fund_name like %{$wd}% or fund_fullname like %{$wd}%)&amp;quot;);  在传入：siggi&amp;rsquo;s,或者siggi&amp;rdquo;s时，在sql执行时会报错。 需要修改为一下
 $query-&amp;gt;where( function ($q) use ($wd) { $q-&amp;gt;where(&#39;fund_name&#39;, &#39;like&#39;, &amp;quot;%{$wd}%&amp;quot;); $q-&amp;gt;orWhere(&#39;fund_fullname&#39;, &#39;like&#39;, &amp;quot;%{$wd}%&amp;quot;); } );  利用larvel自带的ORM进行转义就没有问题。</description>
@@ -35,28 +35,28 @@ $query-&amp;gt;where( function ($q) use ($wd) { $q-&amp;gt;where(&#39;fund_name&
     
     <item>
       <title>CSRF TOKEN原理</title>
-      <link>http://hackfox.vip/post/180112-csrf-token%E5%8E%9F%E7%90%86/</link>
+      <link>http://xsoer.github.io/post/180112-csrf-token%E5%8E%9F%E7%90%86/</link>
       <pubDate>Fri, 12 Jan 2018 19:28:21 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/180112-csrf-token%E5%8E%9F%E7%90%86/</guid>
+      <guid>http://xsoer.github.io/post/180112-csrf-token%E5%8E%9F%E7%90%86/</guid>
       <description>用处  在Kernel文件内引入的VerifyCsrfToken文件，如果不需要就注释掉 传统Form表单提交，在form表单内添加  &amp;lt;input name=&amp;quot;_token&amp;quot; type=&amp;quot;hidden&amp;quot; value=&amp;quot;{{ csrf_token() }}&amp;quot; /&amp;gt;   在Ajax，用 X-CSRF-TOKEN或者X-XSRF-TOKEN.在公共父页面添加  &amp;lt;meta name=&amp;quot;csrf-token&amp;quot; content=&amp;quot;{{csrf_token()}}&amp;quot; /&amp;gt; $.ajaxSetup({ headers: { &#39;X-CSRF-TOKEN&#39;: $(&#39;meta[name=&amp;quot;csrf-token&amp;quot;]&#39;).attr(&#39;content&#39;) } });   判断及添加token源码,在Illuminate\Foundation\Http\Middleware\VerifyCsrfToken文件内  public function handle($request, Closure $next) { if ( $this-&amp;gt;isReading($request) || $this-&amp;gt;runningUnitTests() || $this-&amp;gt;shouldPassThrough($request) || $this-&amp;gt;tokensMatch($request) ) { return $this-&amp;gt;addCookieToResponse($request, $next($request)); } throw new TokenMismatchException; } protected function tokensMatch($request) { $sessionToken = $request-&amp;gt;session()-&amp;gt;token(); $token = $request-&amp;gt;input(&#39;_token&#39;) ?: $request-&amp;gt;header(&#39;X-CSRF-TOKEN&#39;); if (!</description>
     </item>
     
     <item>
       <title>Laravel定时任务</title>
-      <link>http://hackfox.vip/post/180110-laravel%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/</link>
+      <link>http://xsoer.github.io/post/180110-laravel%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/</link>
       <pubDate>Wed, 10 Jan 2018 19:31:08 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/180110-laravel%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/</guid>
+      <guid>http://xsoer.github.io/post/180110-laravel%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/</guid>
       <description>定时任务传入参数和选择值方法  param为必填 option为可选项·   &amp;lt;?php namespace App\Console\Commands; use Illuminate\Console\Command; class TestDemo extends Command { /** * 控制台命令名称 * * @var string */ protected $signature = &#39;test {param1} {--param2=}&#39;; /** * 控制台命令描述 * * @var string */ protected $description = &#39;test&#39;; /** * 创建新的命令实例 * * @param DripEmailer $drip * @return void */ public function __construct(DripEmailer $drip) { parent::__construct(); } /** * 执行控制台命令 * * @return mixed */ public function handle() { //参数调用方法 $param1 = $this-&amp;gt;argument(&#39;param1&#39;); $param2 = $this-&amp;gt;option(&#39;param2&#39;); $this-&amp;gt;info($param1); $this-&amp;gt;info($param2); } }   依赖的服务要注入  &amp;lt;?</description>
     </item>
     
     <item>
       <title>PHP字符串操作</title>
-      <link>http://hackfox.vip/post/150705-php%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/</link>
+      <link>http://xsoer.github.io/post/150705-php%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Sun, 05 Jul 2015 08:32:19 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/150705-php%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/</guid>
+      <guid>http://xsoer.github.io/post/150705-php%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/</guid>
       <description> 1.print 有返回值、只能输出一个、可以用在表达式中
  echo 无返回值、能输出多个、不能用于表达式中  2.trim($strs) //去除两边的空格
  rtrim($strs) //去除右边的空格 ltrim($strs) //去除左边的空格  3.点链接字符串(.)
@@ -80,10 +80,10 @@ $query-&amp;gt;where( function ($q) use ($wd) { $q-&amp;gt;where(&#39;fund_name&
     
     <item>
       <title>PHP数组函数</title>
-      <link>http://hackfox.vip/post/150705-php%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0/</link>
+      <link>http://xsoer.github.io/post/150705-php%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0/</link>
       <pubDate>Sun, 05 Jul 2015 01:53:37 +0000</pubDate>
       
-      <guid>http://hackfox.vip/post/150705-php%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0/</guid>
+      <guid>http://xsoer.github.io/post/150705-php%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0/</guid>
       <description>1.array() [] //生成数组
  2.isset($arr[$i])//判断该值是否存在
  3.is_array($arr) //判断是否是数组
