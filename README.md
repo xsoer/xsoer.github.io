@@ -9,7 +9,7 @@
 * [数据库基础](2019/03-10-数据库基础.md)
 * [python资源汇总](2019/03-10-python资源汇总.md)
 * [python底层原理](2019/03-10-python底层原理.md)
-* [mysql数据库主从](2019/03-10-mysql数据库主从.md)
+* [mysql数据库主从同步](2019/03-10-mysql数据库主从同步.md)
 * [docker基础文档](2019/03-10-docker基础文档.md)
 * [iterm2配置lzrz](2019/03-09-iterm2配置lzrz.md)
 * [python装饰器](2019/03-08-python装饰器.md)
