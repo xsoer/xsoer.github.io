@@ -142,7 +142,7 @@ print('hello {name1} {} i am {name2}'.format(*args, **kwargs))  # hello Kevin i 
 #### 四、其他
 - 1.转义{和}符号
 ```python
-print("{{ hello {0} }}".format('Kevin'))
+print("\{\{ hello {0} \}\}".format('Kevin'))
 # 跟%中%%转义%一样，formate中用两个大括号来转义
 ```
 
