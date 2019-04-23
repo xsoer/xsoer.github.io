@@ -39,6 +39,7 @@
 
 - sql示例
 ```sql
+
 -- This line is a comment about a table.
 create table ...;
 /*
@@ -53,7 +54,6 @@ where ...;
 ```
 
 * 外部表映射
-
 ```sql
 CREATE EXTERNAL TABLE my_mapping_table
 STORED AS KUDU
@@ -61,8 +61,8 @@ TBLPROPERTIES (
   'kudu.table_name' = 'my_kudu_table'
 );
 ```
-* 创建内部表
 
+* 创建内部表
 ```sql
 CREATE TABLE my_first_table
 (
