@@ -13,7 +13,7 @@
 
 ```python
 
-print 'hello {0}'.format('world')
+print('hello {0}'.format('world'))
 
 // hello world
 
@@ -131,7 +131,7 @@ print('hello {name1} {} i am {name2}'.format(*args, **kwargs))  # hello Kevin i 
 #### 三、对齐与填充
 
 |数字|	格式|	输出|	描述|
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 |5	|{:0>2}	|05	|数字补零 (填充左边, 宽度为2)|
 |5	|{:x<4}|5xxx|	数字补x (填充右边, 宽度为4)|
 |10|{:x^4}|x10x|	数字补x (填充右边, 宽度为4)|
