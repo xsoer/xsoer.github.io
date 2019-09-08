@@ -2,68 +2,68 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>hackfox</title>
-    <link>http://hackfox.vip/</link>
+    <link>https://xsoer.github.io/</link>
     <description>Recent content on hackfox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Fri, 06 Sep 2019 22:10:12 +0000</lastBuildDate>
     
-	<atom:link href="http://hackfox.vip/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xsoer.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>数据同步工具</title>
-      <link>http://hackfox.vip/posts/2019/09-06-%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%E5%B7%A5%E5%85%B7/</link>
+      <link>https://xsoer.github.io/posts/2019/09-06-%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Fri, 06 Sep 2019 22:10:12 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2019/09-06-%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%E5%B7%A5%E5%85%B7/</guid>
+      <guid>https://xsoer.github.io/posts/2019/09-06-%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%E5%B7%A5%E5%85%B7/</guid>
       <description>0x00、总览  1.定时任务 2.canal/otter 3.Datax 4.Sqoop 5.NiFi 6.mongoshake  0x02、定时任务 定时任务工具是作为数据同步的最基本也是最常用的工具。其不但用于定时的数据同步，而且作为定时的处理其他任务，比如爬虫等。
 1.Airflow 2.gocron 0x03、cannel/otter  阿里巴巴分布式数据库同步系统 官网 主要同步mysql数据，读取解析mysql binlog，然后同步导入到新的mysql库内  0x04、Datax  阿里巴巴开源离线同步Datax 官网 抽象为读取的reader源和写入的write源，支持开发新插件 直接读取写入，用json格式来描述，不支持中间做转换  0x05、Sqoop  https://sqoop.apache.org/ https://github.com/apache/sqoop 定位是从hadoop与关系型数据库的同步。 Sqoop 启用了一个 MapReduce 作业（极其容错的分布式并行计算）来执行任务 Sqoop 的另一大优势是其传输大量结构化或半结构化数据的过程是完全自动化的。   0x06、Nifi  NiFi 项目在创建过程中遵循了一些理念  1）精细化管理信息流的能力； 2）跟踪数据相关事件和信息的能力，比如数据从哪里来，在路径中发生了什么； 3）保证控制和数据面的安全能力  优势  有保证的数据交付 支持背压（back-pressure）机制的数据缓冲 有优先级的队列 QoS 数据溯源（Data provenance）：NiFi 对数据流路径上的每次变化都会保留日志记录，从而保证结果的可追溯，以及数据的恢复、重播、审计和评估。 通过日志记录数据的历史细节 支持交互式命令和控制台，并对系统变化提供可视化的反馈 支持流模板（Flow templates） 支持插入式（Pluggable）/ 多角色（multi-role）的安全机制 支持对数据操作的扩展 支持集群管理   0x07、mongoshake  https://github.</description>
     </item>
     
     <item>
       <title>python面试总结</title>
-      <link>http://hackfox.vip/posts/2019/02-10-python%E9%9D%A2%E8%AF%95/</link>
+      <link>https://xsoer.github.io/posts/2019/02-10-python%E9%9D%A2%E8%AF%95/</link>
       <pubDate>Sun, 10 Feb 2019 20:37:50 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2019/02-10-python%E9%9D%A2%E8%AF%95/</guid>
+      <guid>https://xsoer.github.io/posts/2019/02-10-python%E9%9D%A2%E8%AF%95/</guid>
       <description> 0x00、语言特性 0x01、注意点  1.如果想import一个文件，其所在的文件夹必须有一个init.py的文件，否则会报找不到错喔。 2.只有函数可以进行调用，list不可以的。  </description>
     </item>
     
     <item>
       <title>2019技术动向</title>
-      <link>http://hackfox.vip/posts/2019/01-01-2019%E6%8A%80%E6%9C%AF%E5%8A%A8%E5%90%91/</link>
+      <link>https://xsoer.github.io/posts/2019/01-01-2019%E6%8A%80%E6%9C%AF%E5%8A%A8%E5%90%91/</link>
       <pubDate>Tue, 01 Jan 2019 10:37:50 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2019/01-01-2019%E6%8A%80%E6%9C%AF%E5%8A%A8%E5%90%91/</guid>
+      <guid>https://xsoer.github.io/posts/2019/01-01-2019%E6%8A%80%E6%9C%AF%E5%8A%A8%E5%90%91/</guid>
       <description> 2019技术动向  作者：codehackfox@gmail.com 时间：2019-01-01 10:37:50  0X00、目录  5G AI 忆阻器  5G AI 硬件 忆阻器  一种新基础元器件。可以随电压、电流多不同，修改自身电阻，从而达到了存储与计算在同一个地方。  </description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/about/</link>
+      <link>https://xsoer.github.io/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/about/</guid>
+      <guid>https://xsoer.github.io/about/</guid>
       <description></description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2015/03-10-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
+      <link>https://xsoer.github.io/posts/2015/03-10-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2015/03-10-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid>
+      <guid>https://xsoer.github.io/posts/2015/03-10-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid>
       <description> 数据结构  作者：codehackfox@gmail.com 时间：2015-03-10 20:41:31   0x00、基本结构：集合、线性结构、树形结构、图状结构   数据结构往往同高效的检索算法和索引技术有关，是介于数学、计算机硬件和计算机软件三者之间的一门核心课程 集合结构:除了同属于一种类型外，别无其它关系 线性结构:元素之间存在一对一关系常见类型有:数组,链表,队列,栈,它们之间在操作上有所区别。例如:链表可在任意位置插入或删除元素,而队列在队尾插入元素,队头删除元素,栈只能在栈顶进行插入,删除操作. 树形结构:元素之间存在一对多的关系,常见类型有:树(有许多特例:二叉树、平衡二叉树、查找树等) 图形结构:元素之间存在多对多的关系,图形结构中每个结点的前驱结点数和后续结点多个数可以任意   0x01、常用数据结构   数组（静态数组、动态数组） 线性表 链表（单向链表、双向链表、循环链表） 队栈 散列表 树（二叉树、查找树、平衡树、线索、堆） 图等的定义、存储和操作   0x02、数组   PHP的数组和其他语言不同之处是键可以为字符串，而且语言都是整型值 关于数组的问题及解法
 - 数组的循环移动 - 最长递增子序列 - 和最大的子数组 - 寻找最大的前K个元素 - 数组分裂 - 乘积最大的子数组 - 最快速度求两个数组之交集算法 - 查找第二大数的算法 - 蛇形输出数组    0x03、线性表  </description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2015/06-12-php%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/</link>
+      <link>https://xsoer.github.io/posts/2015/06-12-php%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2015/06-12-php%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/</guid>
+      <guid>https://xsoer.github.io/posts/2015/06-12-php%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/</guid>
       <description>PHP字符串操作  作者：codehackfox@gmail.com 时间：2015-06-12 13:24:35   0x00、字符串操作   1.print 有返回值、只能输出一个、可以用在表达式中
  echo 无返回值、能输出多个、不能用于表达式中  2.trim($strs) //去除两边的空格
  rtrim($strs) //去除右边的空格 ltrim($strs) //去除左边的空格  3.点链接字符串(.)
@@ -86,137 +86,137 @@
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2015/07-05-php%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0/</link>
+      <link>https://xsoer.github.io/posts/2015/07-05-php%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2015/07-05-php%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0/</guid>
+      <guid>https://xsoer.github.io/posts/2015/07-05-php%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0/</guid>
       <description> PHP数组函数  作者：codehackfox@gmail.com 时间：2015-07-05 01:53:37   0x00、函数   1.array() [] //生成数组 2.isset($arr[$i])//判断该值是否存在 3.is_array($arr) //判断是否是数组、 4.array_push($arr,$a) //从尾部往数组内添加值 5.array_unshift //从头部往数组内插入 6.array_pop //弹出数组最后一个 7.array_shift //弹出数组第一个 8.range(0,6) //产生一个从0到6的数组 9.in_array($a,$arr) //检验是否在数组内 10.array_keys() //返回数组的所有键值 11.array_change_key_case($arr1,CASE_UPPER) //改变键值为大写 或者CASE_LOWER 小写 12.array_merge() //合并两个或多个数组 13.sort($arr) //给数组排序，升序
  14.count() //查询数组内元素的个数 15.array_filter($arr,$fun) //用一个函数过滤数组 16.print_r() //输出数组 17.foreach($arr as $k) //遍历数组 18.while(list($key,$value)==each($arr)) //list遍历数组 19.explode(&amp;lsquo;,&amp;rsquo;,$arr) //去除字符串中的逗号，转为数组 20.implode(&amp;lsquo;,&amp;rsquo;,$arr) //将数组转为字符串 21.ksort() //按键排序 22.asort() //按值排序 23.rsort($arr) //降序排序  </description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2015/10-01-%E8%BF%90%E7%BB%B4%E6%8A%80%E8%83%BD/</link>
+      <link>https://xsoer.github.io/posts/2015/10-01-%E8%BF%90%E7%BB%B4%E6%8A%80%E8%83%BD/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2015/10-01-%E8%BF%90%E7%BB%B4%E6%8A%80%E8%83%BD/</guid>
+      <guid>https://xsoer.github.io/posts/2015/10-01-%E8%BF%90%E7%BB%B4%E6%8A%80%E8%83%BD/</guid>
       <description>运维技能  作者：codehackfox@gmail.com 时间：2015-10-01 13:20:12   0x00、初级运维   1.CPU、内存、磁盘、IO、文件系统 2.系统安装：设备选择、规划磁盘分区、定制化安装 3.基础知识：基本命令、文本编辑器、用户与组、权限管理 4.磁盘管理：磁盘分区和文件系统、磁盘阵列管理、逻辑卷管理 5.软件管理：软件安装、服务管理、进程管理   0x01、中级运维   1.开源、GNU、GPL、POSIX、Linux内核、RAID、RAID等级、磁盘、磁盘原理、块、超级块、文件系统、i节点 2.shell  1.基础入门 1)shell的基本组成与参数 2)执行跟踪和调优排错 2.shell脚本 1)输入输出重定向 2)分割和管道 3)增强管道能力：find、grep等 4)shell变量和返回值 5)字符串操作 6)条件判断、循环 7)分支、函数、块输入 8)shell文件处理 3.正则表达式 1)基本概念 2)基本元字符 3)正则表达式总的分组 4.sed与awk 1)sed与awk的概念 2)sed工作模式 3)sed中的正则 4)awk中的模式与动作 5)awk的域和记录 6)awk中的正则 7)awk管道与重定向 8)awk格式化输出 9)awk变量与函数  3.LAMP  1.APACHE  1)APACHE安装与配置 2)profork与workert 3)apache模块  2.mysql  1)mysql安装与配置 2)SQL语句与管理工具 3)存储引擎与索引 4)单机运行多实例 5)mysql主从复制 6)mysql cluster  3.php  1)php安装与配置 2)phpize 3)session与cookie 4)php操作数据库  4.</description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2015/10-12-mysql%E6%8A%80%E6%9C%AF/</link>
+      <link>https://xsoer.github.io/posts/2015/10-12-mysql%E6%8A%80%E6%9C%AF/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2015/10-12-mysql%E6%8A%80%E6%9C%AF/</guid>
+      <guid>https://xsoer.github.io/posts/2015/10-12-mysql%E6%8A%80%E6%9C%AF/</guid>
       <description>mysql技术  作者：codehackfox@gmail.com 时间：2015-10-12 12:23:00   0x00、数据库基本概念   1.数据模型：描述数据、数据关系、数据语义及一致性约束的概念工具集  1）网络模型 2）层次模型 3）关系模型*  2.关系模型：用表来描述数据与数据间的关系 3.数据完整性和数据保护 4.mysql 1.0诞生于1995年 5.mysql以守护进程运行   0x01、结构体系   1.连接器 mysql&amp;gt; show variables like &amp;ldquo;%connection%&amp;rdquo;; 进行身份验证、线程重用,连接限制,检查内存,数据缓存；管理用户的连接，线程处理等需要缓存的需求。 2.连接池组件 3.缓存 全局和引擎特定的缓存和缓冲区 mysql&amp;gt; show variables like &amp;lsquo;%query_cache%&amp;lsquo;; 4.权限 5.表管理器 6.日志管理 7.sql接口组件 进行DML、DDL,存储过程、视图、触发器等操作和管理；用户通过SQL命令来查询所需结果。 8.插件式存储引擎 mysql&amp;gt; show engines; 9.解析器 查询翻译对象的特权；SQL命令传递到解析器的时候会被解析器验证和解析 10.优化器 访问路径的统计数据 mysql&amp;gt; select @@optimizer_switch; 11.管理服务与工具组件 备份和恢复的安全性，复制，集群，管理，配置，迁移和元数据 12.物理文件 #1.日志文件 1)错误日志：errorlog 2)二进制日志：binlog 3)更新日志：update log 4)查询日志：query log 5)慢查询日志：slow query log 6)innodb在线redo日志：innodb redo log #2.</description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2015/12-28-mysql%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%BB%BA%E8%AE%AE/</link>
+      <link>https://xsoer.github.io/posts/2015/12-28-mysql%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%BB%BA%E8%AE%AE/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2015/12-28-mysql%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%BB%BA%E8%AE%AE/</guid>
+      <guid>https://xsoer.github.io/posts/2015/12-28-mysql%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%BB%BA%E8%AE%AE/</guid>
       <description> mysql性能优化建议  作者：codehackfox@gmail.com 时间：2015-12-28 12:23:00   0x00、优化建议   1.为查询缓存优化你的查询(curdata(),rand(),no()无法进行优化)； 2.explain你的查询； 3.当只要一行数据时使用limit 1； 4.为搜索字段建立索引； 5.在join表的时候使用相当类型的列，并将其索引 6.千万不要order by rand(); 7.避免select *； 8.用于为每张表设置一个id，尽量为unsigned int类型； 9.使用enum而不是varchar; 10.从procedure analyse()取得建议； 11.尽可能的使用not null; 12.Prepared Statements; 13.把ip地址存成UNSIGNED INT 14.固定长度表会更快； 15.垂直分割； 16.拆分大的delete或insert语句； 17.越小的列会越快； 18.选择正确的存储引擎； 19.使用一个对象关系映射器（ORM）； 20.小心“永久链接”；  </description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2016/03-10-mysql%E7%B4%A2%E5%BC%95/</link>
+      <link>https://xsoer.github.io/posts/2016/03-10-mysql%E7%B4%A2%E5%BC%95/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2016/03-10-mysql%E7%B4%A2%E5%BC%95/</guid>
+      <guid>https://xsoer.github.io/posts/2016/03-10-mysql%E7%B4%A2%E5%BC%95/</guid>
       <description></description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2016/03-25-%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E7%89%A9/</link>
+      <link>https://xsoer.github.io/posts/2016/03-25-%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E7%89%A9/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2016/03-25-%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E7%89%A9/</guid>
+      <guid>https://xsoer.github.io/posts/2016/03-25-%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E7%89%A9/</guid>
       <description></description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2016/05-23-url%E8%AF%B7%E6%B1%82%E8%BF%87%E7%A8%8B/</link>
+      <link>https://xsoer.github.io/posts/2016/05-23-url%E8%AF%B7%E6%B1%82%E8%BF%87%E7%A8%8B/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2016/05-23-url%E8%AF%B7%E6%B1%82%E8%BF%87%E7%A8%8B/</guid>
+      <guid>https://xsoer.github.io/posts/2016/05-23-url%E8%AF%B7%E6%B1%82%E8%BF%87%E7%A8%8B/</guid>
       <description></description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2016/12-24-git%E5%91%BD%E4%BB%A4/</link>
+      <link>https://xsoer.github.io/posts/2016/12-24-git%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2016/12-24-git%E5%91%BD%E4%BB%A4/</guid>
+      <guid>https://xsoer.github.io/posts/2016/12-24-git%E5%91%BD%E4%BB%A4/</guid>
       <description>Git常用命令  作者：codehackfox@gmail.com 时间：2016-12-24 19:08:57   0x00、常用命令   git init #git 初始化仓库 git clone remote_url #git 克隆远程库 git add . #git 添加所有文件 git commit -m &amp;quot;批注&amp;quot; #git 提交 git push &amp;lt;remoteName&amp;gt; &amp;lt;localName&amp;gt; #git推送至远程 git remote add origin &amp;lt;server&amp;gt; #远程没有创建仓库，将本地推送到远程仓库 git checkout -b branch_name #创建分支，并切换到分支 git checkout master #切换到主分支 git branch -d &amp;lt;branch_name&amp;gt; #删除分支 git pull &amp;lt;remoteName&amp;gt; &amp;lt;localName&amp;gt; #将本地仓库更新至最新 git merge branch_name #将其他分支合并到本地主分支 git diff &amp;lt;sourch_branch&amp;gt; &amp;lt;target_branch&amp;gt; #比对分支 git tag &amp;lt;tag_name&amp;gt; #创建标签 git show # git status #查看当前状态 git fetch #合并 git config --list #查看配置信息 git rm &amp;lt;file_name&amp;gt; #删除文件 git mv &amp;lt;old_name&amp;gt; &amp;lt;new_name&amp;gt; #重命名文件 git log #查看日志 git rebase HEAD &amp;lt;file_name&amp;gt; #重置 git remote -v #查看远程仓库 git remote rm &amp;lt;file_name&amp;gt; #删除远程仓库 git branch #查看本地分支 git branch -r #查看远程分支 git branch &amp;lt;branch_name&amp;gt; #创建本地分支 git config --global user.</description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2017/03-12-vim%E5%91%BD%E4%BB%A4/</link>
+      <link>https://xsoer.github.io/posts/2017/03-12-vim%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2017/03-12-vim%E5%91%BD%E4%BB%A4/</guid>
+      <guid>https://xsoer.github.io/posts/2017/03-12-vim%E5%91%BD%E4%BB%A4/</guid>
       <description> VIM使用文档总结  作者:codehackfox@gmail.com 时间: 2017-03-02 13:10:12   0x00、快捷键   向下添加一行 &amp;gt; o 向下翻页 &amp;gt; ctrl+f 向上翻页 &amp;gt; ctrl+b 下一个词 &amp;gt; w 行尾 &amp;gt; $ 第一个字符行首 &amp;gt; ^ 行首 &amp;gt; 0 撤销 &amp;gt; u 文件首 &amp;gt; gg 文件尾 &amp;gt; G 屏首 &amp;gt; ctrl+h 屏中 &amp;gt; ctrl+m 屏尾 &amp;gt; ctrl+l  </description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2017/07-06-mysql%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/</link>
+      <link>https://xsoer.github.io/posts/2017/07-06-mysql%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2017/07-06-mysql%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/</guid>
+      <guid>https://xsoer.github.io/posts/2017/07-06-mysql%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/</guid>
       <description> mysql编码问题  作者：codehackfox@gamil.com 时间：2019-09-06 09:12:43  </description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2017/09-28-%E5%BC%80%E6%9C%BA%E8%87%AA%E6%A3%80/</link>
+      <link>https://xsoer.github.io/posts/2017/09-28-%E5%BC%80%E6%9C%BA%E8%87%AA%E6%A3%80/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2017/09-28-%E5%BC%80%E6%9C%BA%E8%87%AA%E6%A3%80/</guid>
+      <guid>https://xsoer.github.io/posts/2017/09-28-%E5%BC%80%E6%9C%BA%E8%87%AA%E6%A3%80/</guid>
       <description> 系统开机自检  作者：codehackfox@gmail.com 时间：2017-09-28 15:24:23   0x00、关于开机自动检测硬盘的原因   第一种：是你非法关机造成的，比如直接断电的情况。 第二种：是和硬盘的分区格式有关，FAT32格式在非法关机后会在开机时要求检测硬盘，而且必须检测完毕才不会在下次启动时重新检测。系统有一个文件中记录了检测是否结束的信息，有时即使检测完成了也会因为这个文件没有更新而在下次开机时重新检测。 第三种：当硬盘出现坏道也会出现开机自动检测硬盘。   0x01、关于取消开机自动检测硬盘的方法   方法一： 如果分区是FAT32格式，将其转换成NTFS，方法是在命令提示符下输入：convert X: /fs:ntfs 方法二： 如果是非正常的关机，然后开机检测时又跳过了，每一次都会运行的。如果不是这个原因的话，您就要检查一下D盘状态是否正常，修正一下硬盘的错误。方法为 &amp;ldquo;开始&amp;rdquo;→&amp;rdquo;运行&amp;rdquo;，在窗口中输入&amp;rdquo;chkdskX:/f&amp;rdquo;(x为盘符)，这个命令可以检查文件系统中的逻辑错误，并进行修复；然后启动&amp;rdquo;磁盘碎片整理&amp;rdquo; 对相应的磁盘进行碎片整理，可以消除再次的磁盘扫描。如果还是不行，就可能是硬盘出现了坏道，最简单的方法是把D盘的数据备份一下，然后格式化D盘，就可 以正常使用了。 方法三：打开&amp;rdquo;我的电脑&amp;rdquo;－右键点击X盘选择&amp;rdquo;属性&amp;rdquo;－选择&amp;rdquo;工具&amp;rdquo;－&amp;rdquo;查错&amp;rdquo;中点&amp;rdquo;开始检查&amp;rdquo;－选中&amp;rdquo;自动修复文件系统错误&amp;rdquo;和&amp;rdquo;扫描并试图恢复坏扇区&amp;rdquo;，然后点&amp;rdquo;开始&amp;rdquo;。 方法四：我们知道系统之所以要对磁盘进行扫描是因为在注册表中设置了&amp;rdquo;脏&amp;rdquo;字节。在注册表中找到以下分支: 方法五：如果是硬盘出现坏道，请使用磁盘修复工具进行修复，如使用HDDRegenerate等。 方法六：一定是你在BIOS设置中选择了每次开机都要检测硬盘,所以才这样,和你的电脑配置是没有关系的。解决方法在开机后按DEL进入BIOS选 择Quick Power On Self Test（快速加电自检测），你的一定设为了Enabled了,选择Disabled，将其关闭就行了。  </description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2018/03-02-php%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/</link>
+      <link>https://xsoer.github.io/posts/2018/03-02-php%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2018/03-02-php%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/</guid>
+      <guid>https://xsoer.github.io/posts/2018/03-02-php%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/</guid>
       <description>PHP知识体系  作者：codehackfox@gmail.com 时间：2018-03-02 11:53:29   0x00、关键字   $ 、echo、 print、null、global、GLOBALS[&amp;lsquo;y&amp;rsquo;]、static、function、public、private、protected 对象(class)：String、Integer、Float、Boolean、Object、NULL、Resource、Closure() 函数(function)：  通用：die()、var_dump()、for()、foreach()、define()、echo 函数：function_exists() 数组：array()、sort()、count()、 implode($arr,&amp;lsquo;,&amp;rsquo;)、is_array()、unset()、 字符串：strlen()、mb_substr()、strpos()、str_replace()、str_word_count()、sprintf()、explode(&amp;lsquo;,&amp;rsquo;,$string)、substr()、iconv_substr 数据库：query()、mysql()、close()、 文件：file_exist()、is_file()、is_dir() 对象： serialize()、unserialize() 回话：session_start()、setcookie()、session_destroy()、session_unset()、 日期：date()、strtotime()、date_default_timezone_set() socket：  超级全局变量:  $GLOBALS $_SERVER $_REQUEST $_POST $_GET $_FILES $_ENV $_COOKIE $_SESSION  魔术方法：  contract()、decontract、get()、set()、 _invoke()    0x01、字符串  //字符串定义方式 // &#39;&#39;只转译 &#39; / 但是“”转译的比较多 // &amp;quot;&amp;quot;可以解析变量 // &#39;&#39;速度比较快，不用分析变量，转译内用少。我们优先使用 &#39;&#39; $str1 = &#39;hello&#39;; $str2 = &amp;quot;hello&amp;quot;; //写大段文本 //heredoc &amp;lt;&amp;lt;&amp;lt;HTML .</description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2018/05-18-docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <link>https://xsoer.github.io/posts/2018/05-18-docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2018/05-18-docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <guid>https://xsoer.github.io/posts/2018/05-18-docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
       <description> docker常用命令  作者：codehackfox@gmail.com 时间：2018-05-18 14:29:58   0x00、常用命令   查看容器重启次数  docker inspect -f &amp;ldquo;{{ .RestartCount }}&amp;rdquo; container_id  查看容器最后一次的启动时间  docker inspect -f &amp;ldquo;{{ .State.StartedAt }}” container_id  commit一个镜像  docker run &amp;ndash;name=&amp;ldquo;python_env_l&amp;rdquo; -it image_name /bin/bash docker commit -m=&amp;ldquo;msg&amp;rdquo; -a=&amp;ldquo;user_name&amp;rdquo; 4631e1627784 image_name:2.1 docker tag image_name:2.1 image_name:latest docker push image_name  Docker构建镜像  docker build -t imageName .  打标签  Docker tag image user/newName:tag  批量删除无用镜像  docker image rm docker images|grep none|awk {&#39;print $3&#39;}  批量删除无用容器  sudo docker rm sudo docker ps -a |grep Exited| awk {&#39;print $1&#39;}   </description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2018/08-10-%E8%A1%8C%E4%B8%8E%E5%88%97%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+      <link>https://xsoer.github.io/posts/2018/08-10-%E8%A1%8C%E4%B8%8E%E5%88%97%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2018/08-10-%E8%A1%8C%E4%B8%8E%E5%88%97%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
+      <guid>https://xsoer.github.io/posts/2018/08-10-%E8%A1%8C%E4%B8%8E%E5%88%97%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
       <description> 行与列式数据库  作者：codehackfox@gmail.com 时间：2018-08-10 13:23:49   0x00、简介  行式数据库  平常用的结构化关系型数据库，比如mysql、sqlserver等 一行为一条数据，进行记录存储 可以进行join查询，可以进行笛卡尔积运算  列式数据库  列式数据库是以列相关存储架构进行数据存储的数据库，主要适合于批量数据处理和即时查询。相对应的是行式数据库，数据以行相关的存储体系架构进行空间分配，主要适合于小批量的数据处理，常用于联机事务型数据处理。 特点  因为硬盘寻址时间相较于计算机上其他部件的运行速度来说不是一般的慢，所以常用相同工作负载下的硬盘访问性能来比较行数据库和列数据库。通常，顺序读取数据要比随机访问更快。而且，硬盘寻址时间的提升比起CPU速度的进步要慢得多 (参看 摩尔定律)，在使用硬盘作为存储媒介的系统上这种情况很可能还会持续一段时间。下面简单罗列了一些选择行数据库还是列数据库的权衡依据。当然，如果能够把数据全放在内存中，那么使用内存数据库性能会更好。  1.在只需要根据某几列来聚合数据的时候按列的数据组织方式更有效。因为这样只需要读取一部分数据，要比读取全部数据更快。 2.当只需要修改某一列值的时候按列的数据组织方式更有效。因为可以直接找到某列数据并修改，而与行中的其他列无关。 3.当需要某行的多列数据的时候按行的数据组织方式更有效。当行中数据不是太多的情况下一次硬盘寻址就可以获得该行的所有数据。 4.在新增行数据的时候，如果各列都有值，那么按行的数据组织方式会更有效，因为只需要一次硬盘寻址就可以写入整行的全部数据。    应用  面向行的数据存储架构更适用于OLTP-频繁交互事务的场景。 面向列的数据存储架构更适用于OLAP-(如数据仓库)这样在海量数据（(可能达到 terabyte规模)）中进行有限复杂查询的场景。   0x01、比较     底层存储实例      随机读与顺序读      0x02、优缺点  列数据库  优点：  极高的装载速度（最高可以等于所有硬盘IO 的总和，基本是极限了） 适合大量的数据而不是小数据 实时加载数据仅限于增加（删除和更新需要解压缩Block 然后计算然后重新压缩储存 高效的压缩率，不仅节省储存空间也节省计算内存和CPU。 非常适合做聚合操作。  缺点：  不适合扫描小量数据 不适合随机的更新 批量更新情况各异，有的优化的比较好的列式数据库（比如Vertica）表现比较好，有些没有针对更新的数据库表现比较差。 不适合做含有删除和更新的实时操作   行数据库  优点  适合频繁的增删改数据 小量数据的频繁维护和简单统计  缺点  不适合做统计类操作   </description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2018/08-12-%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/</link>
+      <link>https://xsoer.github.io/posts/2018/08-12-%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2018/08-12-%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/</guid>
+      <guid>https://xsoer.github.io/posts/2018/08-12-%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/</guid>
       <description>数据建模  作者：codehackfox@gmail.com 时间：2018-08-12 12:12:23   0x00、数据模型   为什么要建模
  定义如何存储信息，如何操作信息，以及信息的完整性等约束功能 影响了数据的形态和使用方式 需要满足不同的业务场景需要 联机事务处理(OLTP):满足业务线需要，频繁的维护更新数据，强一致性 联机分析处理(OLAP):满足决策层需要，更多纬度的视角查询，满足统计决策   定义数据如何存储
  数据模型是定义数据如何输入和输出的一种模型。其主要作用是为信息系统提供数据的定义和格式。
@@ -227,10 +227,10 @@
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2018/10-26-python%E7%9A%84format%E4%BD%BF%E7%94%A8/</link>
+      <link>https://xsoer.github.io/posts/2018/10-26-python%E7%9A%84format%E4%BD%BF%E7%94%A8/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2018/10-26-python%E7%9A%84format%E4%BD%BF%E7%94%A8/</guid>
+      <guid>https://xsoer.github.io/posts/2018/10-26-python%E7%9A%84format%E4%BD%BF%E7%94%A8/</guid>
       <description>python的format使用  作者：codehackfox@gmail.com 时间：2018-10-26 17:15:23  0x00、介绍  format优点
  1.不需要理会数据类型的问题，在%方法中%s只能替代字符串类型 2.单个参数可以多次输出，参数顺序可以不相同 3.填充方式十分灵活，对齐方式十分强大 4.官方推荐用的方式，%方式将会在后面的版本被淘汰
 print(&#39;hello {0}&#39;.format(&#39;world&#39;)) // hello world   format格式
@@ -239,19 +239,19 @@ print(&#39;hello {0}&#39;.format(&#39;world&#39;)) // hello world   format格式
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2018/12-02-python%E6%80%BB%E7%BB%93/</link>
+      <link>https://xsoer.github.io/posts/2018/12-02-python%E6%80%BB%E7%BB%93/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2018/12-02-python%E6%80%BB%E7%BB%93/</guid>
+      <guid>https://xsoer.github.io/posts/2018/12-02-python%E6%80%BB%E7%BB%93/</guid>
       <description>python总结  作者：codehackfox@gmail.com 时间：2018-12-02 09:23:23   0x00、基本概念 0x01、基本类型   1.数字:numbers  int,double,float,bool,complex 1)可同时为多个变量赋值 2)一个变量可以通过赋值指向不同类型的对象 3)数值的除法(/)总时返回浮点数，要获得整数用(//)  2.字符串:string  1)可以用&amp;rdquo;或&amp;rdquo;&amp;rdquo; 2)可以使用()转义 3)不想转义需要字符串前加r 4)可以使用(+)号连接，用(*)可以重复 5)可以使用()连接上下行，也可以用&amp;rdquo;&amp;lsquo;&amp;hellip;&amp;ldquo;&amp;lsquo;或&amp;rdquo;&amp;ldquo;&amp;rdquo;&amp;hellip;&amp;ldquo;&amp;rdquo;&amp;rdquo; 6)没有单独的字符，一个字符就是长度为1的字符串 7)可对字符串切片，用冒号切割，形式为：变量[头下标:尾下标]，从左向右以0开始，从右向左以-1开始 8)字符串不能改变  3.列表:list-&amp;gt;[]  1)写在方括号内，并用逗号隔开 2)元素类型可以不同 3)可以被索引和切片 4)支持串联操作，用(+)操作符 5)列表元素可以改变 6)内置很多方法：如append(i),pop(i),len(),insert(i,x),remove(x),index(i),count(i),sort(),reverse(),copy()  4.元组:tuple-&amp;gt;()  1)写在圆括号内，用逗号隔开 2)元素类型可以不同 3)可以被索引和切片 4)支持串联操作，用(+)操作符 5)元素不可改变  5.集合：set-&amp;gt;{}  1)无序不重复元素集 2)基本功能是进行成员关系测试和消除重复元素 3)可以使用大括号或set()函数创建集合；但创建空集合必须用set()函数，因为{}是用来创建字典的  6.字典：Dictionary-&amp;gt;{&amp;rdquo;:&amp;ldquo;,&amp;hellip;}  1)一种映射类型，一个无序的键:值对的集合 2)dict()函数直接从键值对序列中构造，也可以进行推导 3)内置很多方法：如clear(),keys(),values()等 4)字典的关键字必须是不可变类型，且不能重复  list,string和tuple都属于sequence(序列)   0x02、注释   1.#号单行注释 2.&amp;ldquo;&amp;lsquo;或&amp;rdquo;&amp;ldquo;&amp;ldquo;多行注释   0x03、格式   1.</description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2019/03-08-python%E8%A3%85%E9%A5%B0%E5%99%A8/</link>
+      <link>https://xsoer.github.io/posts/2019/03-08-python%E8%A3%85%E9%A5%B0%E5%99%A8/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2019/03-08-python%E8%A3%85%E9%A5%B0%E5%99%A8/</guid>
+      <guid>https://xsoer.github.io/posts/2019/03-08-python%E8%A3%85%E9%A5%B0%E5%99%A8/</guid>
       <description> python装饰器  作者：codehackfox@gmail.com 时间：2019-03-08 10:56:37   0x00、装饰器   在函数调用前后想添加功能，但又不希望修改原函数的定义，这种在代码运行期间动态增加功能的方式，称之为“装饰器”（Decorator）。 本质上，decorator就是一个返回函数的高阶函数。
 def deco1(func): print(&amp;quot;func before&amp;quot;) start = datetime.datetime.now() ret = func() print(&amp;quot;func after&amp;quot;) end = datetime.datetime.now() return ret def func(): print(&amp;quot;my name is func&amp;quot;)  带了装饰器的函数会自动运行。
    0x01、复杂的装饰器  </description>
@@ -259,10 +259,10 @@ def deco1(func): print(&amp;quot;func before&amp;quot;) start = datetime.datetim
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2019/03-09-iterm2%E9%85%8D%E7%BD%AElzrz/</link>
+      <link>https://xsoer.github.io/posts/2019/03-09-iterm2%E9%85%8D%E7%BD%AElzrz/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2019/03-09-iterm2%E9%85%8D%E7%BD%AElzrz/</guid>
+      <guid>https://xsoer.github.io/posts/2019/03-09-iterm2%E9%85%8D%E7%BD%AElzrz/</guid>
       <description>iterm2配置lzrz  作者：codehackfox@gmail.com 时间：2019-03-09 12:11:30   0x00、安装lzrz   1.远程连接的服务器端必须要有sz、rz这两个工具，如果没有，可以执行安装。如在CentOS上安装的命令为：
 sudo yum install lrzsz  2.本地安装lzrz工具。
 brew install lrzsz    0x01、本地下载脚本   1.由于sz,rz是基于ZMODEM/YMODEM/XMODEM协议的，所以安装iterm2-zmodem
@@ -272,10 +272,10 @@ Regular Expression: \*\*B0100 Action: Run Silent Coprocess Parameters: /usr/loca
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2019/03-10-docker%E5%9F%BA%E7%A1%80%E6%96%87%E6%A1%A3/</link>
+      <link>https://xsoer.github.io/posts/2019/03-10-docker%E5%9F%BA%E7%A1%80%E6%96%87%E6%A1%A3/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2019/03-10-docker%E5%9F%BA%E7%A1%80%E6%96%87%E6%A1%A3/</guid>
+      <guid>https://xsoer.github.io/posts/2019/03-10-docker%E5%9F%BA%E7%A1%80%E6%96%87%E6%A1%A3/</guid>
       <description>docker基础文档  作者：codehackfox@gmail.com 时间：2019-03-10 18:06:12   0x00、命令   Management Commands:
  config Manage Docker configs container Manage containers image Manage images network Manage networks node Manage Swarm nodes plugin Manage plugins secret Manage Docker secrets service Manage services stack Manage Docker stacks swarm Manage Swarm system Manage Docker volume Manage volumes  Commands:
  attach Attach local standard input, output, and error streams to a running container build Build an image from a Dockerfile commit Create a new image from a container&amp;rsquo;s changes cp Copy files/folders between a container and the local filesystem create Create a new container diff Inspect changes to files or directories on a container&amp;rsquo;s filesystem events Get real time events from the server exec Run a command in a running container export Export a container&amp;rsquo;s filesystem as a tar archive history Show the history of an image images List images import Import the contents from a tarball to create a filesystem image info Display system-wide information inspect Return low-level information on Docker objects kill Kill one or more running containers load Load an image from a tar archive or STDIN login Log in to a Docker registry logout Log out from a Docker registry logs Fetch the logs of a container pause Pause all processes within one or more containers port List port mappings or a specific mapping for the container ps List containers pull Pull an image or a repository from a registry push Push an image or a repository to a registry rename Rename a container restart Restart one or more containers rm Remove one or more containers rmi Remove one or more images run Run a command in a new container save Save one or more images to a tar archive (streamed to STDOUT by default) search Search the Docker Hub for images start Start one or more stopped containers stats Display a live stream of container(s) resource usage statistics stop Stop one or more running containers tag Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE top Display the running processes of a container unpause Unpause all processes within one or more containers update Update configuration of one or more containers version Show the Docker version information wait Block until one or more containers stop, then print their exit codes  docker images // 查看存在多少镜像</description>
@@ -283,10 +283,10 @@ Regular Expression: \*\*B0100 Action: Run Silent Coprocess Parameters: /usr/loca
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2019/03-10-es6%E6%A0%87%E5%87%86%E6%A6%82%E8%A7%88/</link>
+      <link>https://xsoer.github.io/posts/2019/03-10-es6%E6%A0%87%E5%87%86%E6%A6%82%E8%A7%88/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2019/03-10-es6%E6%A0%87%E5%87%86%E6%A6%82%E8%A7%88/</guid>
+      <guid>https://xsoer.github.io/posts/2019/03-10-es6%E6%A0%87%E5%87%86%E6%A6%82%E8%A7%88/</guid>
       <description>ES6标准概览  作者：codehackfox@gmail.com 时间：2019-03-10 19:58:51   0x00、变量 新增两个关键字：let、const
   let与var的区别
  作用域不同() 变量是否可以提升不  contst：只读不可改，声明即赋值 其所声明的对象的属性是可以改变的。
@@ -298,10 +298,10 @@ Regular Expression: \*\*B0100 Action: Run Silent Coprocess Parameters: /usr/loca
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2019/03-10-mysql%E5%B8%B8%E7%94%A8%E8%AF%AD%E5%8F%A5/</link>
+      <link>https://xsoer.github.io/posts/2019/03-10-mysql%E5%B8%B8%E7%94%A8%E8%AF%AD%E5%8F%A5/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2019/03-10-mysql%E5%B8%B8%E7%94%A8%E8%AF%AD%E5%8F%A5/</guid>
+      <guid>https://xsoer.github.io/posts/2019/03-10-mysql%E5%B8%B8%E7%94%A8%E8%AF%AD%E5%8F%A5/</guid>
       <description>mysql常用语句  作者：codehackfox@gmail.com 时间：2019-03-10 18:20:48   0x00、常用语句   1.授权用户
 mysql&amp;gt;GRANT ALL PRIVILEGES ON *.* TO &#39;zxc&#39;@&#39;%&#39; IDENTIFIED BY &#39;ydp#2015$Z!!!&#39; WITH GRANT OPTION; mysql&amp;gt;FLUSH PRIVILEGES;  2.远程连接
 shell&amp;gt;mysql -h127.0.0.1 -P3306 -uroot -p  3.导出数据库
@@ -314,10 +314,10 @@ mysql&amp;gt;create database dbname default character set utf8 collate utf8_gene
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2019/03-10-mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5/</link>
+      <link>https://xsoer.github.io/posts/2019/03-10-mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2019/03-10-mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5/</guid>
+      <guid>https://xsoer.github.io/posts/2019/03-10-mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5/</guid>
       <description>mysql数据库主从同步  作者：codehackfox@gmail.com 时间：2019-03-10 18:25:53   0x00、同步步骤   1.主库和从库创建同步账户
 mysql&amp;gt; grant replication slave, replication client on *.* to repl@&#39;192.168.1.%&#39; identified by &#39;123456&#39;;  2.主库配置/etc/my.cnf
 server-id=130	#保证唯一值 log-bin=mysql-bin binlog_format=mixed binlog-do-db=test2 binlog-ignore-db=mysql log-error=/var/lib/mysql/mysql.err  3.重启主库
@@ -327,56 +327,56 @@ mysql&amp;gt;show master status; +-------------------------+-----------------+--
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2019/03-10-python%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/</link>
+      <link>https://xsoer.github.io/posts/2019/03-10-python%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2019/03-10-python%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/</guid>
+      <guid>https://xsoer.github.io/posts/2019/03-10-python%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/</guid>
       <description> python底层原理  作者：codehackfox@gmail.com 时间：2019-03-10 21:07:19   0x00、Python中的对象  对象可以说是Python最核心的一个概念，在Python的世界里，一切都是对象。我们知道Python是由C编写的，C并不是一个面向对象语言，而由C编写的Python确实面向对象的，那么它的对象机制是如何实现的呢？ 对于人的思维，对象是可以形象描述的，但是对于计算机而言，对象是一个抽象的概念，计算机所知道的一切都是字节。关于对象，通常的说法是，对象是数据以及基于这些数据的操作的集合，在计算机中，一个对象实际就是把一片被分配的内存空间，且这片内存在更高层次可作为一个整体，这个整体就是一个对象。 在Python中，对象就是C中的结构体在堆上申请的一块内存。 对象机制的基石——Pyobject在Python中，所有的东西都是对象，而所有的对象都拥有一些相同的内容，Python中的这些内容都是在object.h中的Pyobject中定义的。
 typedef struct _object { PyObject_HEAD } PyObject;    </description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2019/03-10-python%E8%B5%84%E6%BA%90%E6%B1%87%E6%80%BB/</link>
+      <link>https://xsoer.github.io/posts/2019/03-10-python%E8%B5%84%E6%BA%90%E6%B1%87%E6%80%BB/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2019/03-10-python%E8%B5%84%E6%BA%90%E6%B1%87%E6%80%BB/</guid>
+      <guid>https://xsoer.github.io/posts/2019/03-10-python%E8%B5%84%E6%BA%90%E6%B1%87%E6%80%BB/</guid>
       <description>python资源汇总  作者：codehackfox@gmail.com 时间：2019-03-10 13:33:30   0x00、图书链接   各种图书资源   0x01、常用库  01、通用库  urllib  allows you access websites via your program 文档  requests -网络库 grab – 网络库（基于pycurl）。 pycurl – 网络库（绑定libcurl）。 urllib3 – Python HTTP库，安全连接池、支持文件post、可用性高。 httplib2 – 网络库。 RoboBrowser – 一个简单的、极具Python风格的Python库，无需独立的浏览器即可浏览网页。 MechanicalSoup -一个与网站自动交互Python库。 mechanize -有状态、可编程的Web浏览库。 socket – 底层网络接口(stdlib)。 Unirest for Python – Unirest是一套可用于多种语言的轻量级的HTTP库。 hyper – Python的HTTP/2客户端。 PySocks – SocksiPy更新并积极维护的版本，包括错误修复和一些其他的特征。作为socket模块的直接替换。  02、爬虫库  scrapy – 网络爬虫框架（基于twisted），不支持Python3。 pyspider – 一个强大的爬虫系统。 cola – 一个分布式爬虫框架 portia – 基于Scrapy的可视化爬虫。 restkit – Python的HTTP资源工具包。它可以让你轻松地访问HTTP资源，并围绕它建立的对象。 demiurge – 基于PyQuery的爬虫微框架。  03、HTML/XML解析器  lxml – C语言编写高效HTML/ XML处理库。支持XPath。 cssselect – 解析DOM树和CSS选择器。 pyquery – 解析DOM树和jQuery选择器。 BeautifulSoup – 低效HTML/ XML处理库，纯Python实现。 html5lib – 根据WHATWG规范生成HTML/ XML文档的DOM。该规范被用在现在所有的浏览器上。 feedparser – 解析RSS/ATOM feeds。 MarkupSafe – 为XML/HTML/XHTML提供了安全转义的字符串。 xmltodict – 一个可以让你在处理XML时感觉像在处理JSON一样的Python模块。 xhtml2pdf – 将HTML/CSS转换为PDF。 untangle – 轻松实现将XML文件转换为Python对象。 Bleach – 清理HTML（需要html5lib）。 sanitize – 为混乱的数据世界带来清明。  04、文本处理  difflib – （Python标准库）帮助进行差异化比较。 Levenshtein – 快速计算Levenshtein距离和字符串相似度。 fuzzywuzzy – 模糊字符串匹配。 esmre – 正则表达式加速器。 ftfy – 自动整理Unicode文本，减少碎片化。  05、自然语言处理  NLTK -编写Python程序来处理人类语言数据的最好平台。 Pattern – Python的网络挖掘模块。他有自然语言处理工具，机器学习以及其它。 TextBlob – 为深入自然语言处理任务提供了一致的API。是基于NLTK以及Pattern的巨人之肩上发展的。 jieba – 中文分词工具。 SnowNLP – 中文文本处理库。 loso – 另一个中文分词库。 scikit-learn tensorflow kera  06、图像处理库  matplotlib  官网 文档地址 文档pdf版本 中文文档 总结说明   07、浏览器自动化与仿真  selenium – 自动化真正的浏览器（Chrome浏览器，火狐浏览器，Opera浏览器，IE浏览器）。 Ghost.</description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2019/03-10-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/</link>
+      <link>https://xsoer.github.io/posts/2019/03-10-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2019/03-10-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/</guid>
+      <guid>https://xsoer.github.io/posts/2019/03-10-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/</guid>
       <description> 数据库基础  作者：codehackfox@gmail.com 时间：2019-03-10 18:19:34   1.数据库中的事务是什么?事务的隔离级别?脏读、幻读、不可重复读是什么意思？   数据库事务  将一组相关操作组合为一个要么全部成功要么全部失败的单元 具有ACID（原子性、一致性、隔离性和持久性）属性  原子性(Atomicity)：原子性是指事务包含的所有操作要么全部成功，要么全部失败回滚 一致性(Consistent)：一致性是指事务必须使数据库从一个一致性状态变换到另一个一致性状态，也就是说一个事务执行之前和执行之后都必须于一致性状态 隔离性(Isolation)：隔离性是当多个用户并发访问数据库时，比如操作同一张表时，数据库为每一个用户开启的事务，不能被其他事务的操作所扰，多个并发事务之间要相互隔离。 持久性(Duration)：持久性是指一个事务一旦被提交了，那么对数据库中的数据的改变就是永久性的，即便是在数据库系统遇到故障的情况下也不会丢失提交事务的操作。   事物隔离级别  Serializable (串行化)：可避免脏读、不可重复读、幻读的发生。 Repeatable read (可重复读)：可避免脏读、不可重复读的发生。 Read committed (读已提交)：可避免脏读的发生。 Read uncommitted (读未提交)：最低级别，任何情况都无法保证。  脏读、幻读、不可重复读  脏读：脏读是指在一个事务处理过程里读取了另一个未提交的事务中的数据 不可重复读：不可重复读是指在对于数据库中的某个数据，一个事务范围内多次查询却返回了不同的数据值，这是由于在查询间隔，被另一个事务修改并提交了。 幻读：是事务非独立执行时发生的一种现象。例如事务T1对一个表中所有的行的某个数据项做了从“1”修改为“2”的操作，这时事务T2又对这个表中插入了一行数据项，而这个数据项的数值还是为“1”并且提交给数据库。而操作事务T1的用户如果再查看刚刚修改的数据，会发现还有一行没有修改，其实这行是从事务T2中添加的，就好像产生幻觉一样，这就是发生了幻读。  备注：  不可重复读和脏读的区别是，脏读是某一事务读取了另一个事务未提交的脏数据，而不可重复读则是读取了前一事务提交的数据。 幻读和不可重复读都是读取了另一条已经提交的事务（这点就脏读不同），所不同的是不可重复读查询的都是同一个数据项，而幻读针对的是一批数据整体（比如数据的个数） 当前事务的隔离级别：select @@tx_isolation;    2.优化数据库的方法。说说 SQL 优化之道   主机性能 内存使用性能 网络传输性能 SQL语句执行性能   3.唯一索引和普通索引的区别，索引类别（B+树索引、全文索引、哈希索引），索引的区别   为什么要用 B+tree 作为 MySql 索引的数据结构   聚集索引与非聚集索引的区别   Mysql存储引擎有哪些？有什么区别？存储引擎的 InnoDB 与 MyISAM区别、优缺点、使用场景？   varchar和char有什么区别   DDL、DML、DCL 分别指什么   explain 命令   数据库的几大范式   说说分库与分表设计，分库与分表带来的分布式困境与对应之策   什么是自适应哈希索引（AHI）   limit 20000 加载很慢怎么解决   常见的几种分布式 ID 的设计方案  </description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2019/04-09-%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84/</link>
+      <link>https://xsoer.github.io/posts/2019/04-09-%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2019/04-09-%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84/</guid>
+      <guid>https://xsoer.github.io/posts/2019/04-09-%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84/</guid>
       <description> 人工智能学习路线  作者：codehackfox@gmail.com 时间：2019-03-10 18:17:19   0x00、数学基础   线性代数：如何将研究对象形式化  事实上，线性代数不仅仅是人工智能的基础，更是现代数学和以现代数学作为主要分析方法的众多学科的基础。从量子力学到图像处理都离不开向量和矩阵的使用。而在向量和矩阵背后，线性代数的核心意义在于提供了⼀种看待世界的抽象视角：万事万物都可以被抽象成某些特征的组合，并在由预置规则定义的框架之下以静态和动态的方式加以观察。 着重于抽象概念的解释而非具体的数学公式来看，线性代数要点如下：线性代数的本质在于将具体事物抽象为数学对象，并描述其静态和动态的特性；向量的实质是 n 维线性空间中的静止点；线性变换描述了向量或者作为参考系的坐标系的变化，可以用矩阵表示；矩阵的特征值和特征向量描述了变化的速度与方向。 总之，线性代数之于人工智能如同加法之于高等数学，是一个基础的工具集。  概率论：如何描述统计规律？  除了线性代数之外，概率论也是人工智能研究中必备的数学基础。随着连接主义学派的兴起，概率统计已经取代了数理逻辑，成为人工智能研究的主流工具。在数据爆炸式增长和计算力指数化增强的今天，概率论已经在机器学习中扮演了核心角色。 同线性代数一样，概率论也代表了一种看待世界的方式，其关注的焦点是无处不在的可能性。频率学派认为先验分布是固定的，模型参数要靠最大似然估计计算；贝叶斯学派认为先验分布是随机的，模型参数要靠后验概率最大化计算；正态分布是最重要的一种随机变量的分布。  数理统计：如何以小见大？  在人工智能的研究中，数理统计同样不可或缺。基础的统计理论有助于对机器学习的算法和数据挖掘的结果做出解释，只有做出合理的解读，数据的价值才能够体现。数理统计根据观察或实验得到的数据来研究随机现象，并对研究对象的客观规律做出合理的估计和判断。 虽然数理统计以概率论为理论基础，但两者之间存在方法上的本质区别。概率论作用的前提是随机变量的分布已知，根据已知的分布来分析随机变量的特征与规律；数理统计的研究对象则是未知分布的随机变量，研究方法是对随机变量进行独立重复的观察，根据得到的观察结果对原始分布做出推断。 用一句不严谨但直观的话讲：数理统计可以看成是逆向的概率论。 数理统计的任务是根据可观察的样本反过来推断总体的性质；推断的工具是统计量，统计量是样本的函数，是个随机变量；参数估计通过随机抽取的样本来估计总体分布的未知参数，包括点估计和区间估计；假设检验通过随机抽取的样本来接受或拒绝关于总体的某个判断，常用于估计机器学习模型的泛化错误率。  最优化理论： 如何找到最优解？  本质上讲，人工智能的目标就是最优化：在复杂环境与多体交互中做出最优决策。几乎所有的人工智能问题最后都会归结为一个优化问题的求解，因而最优化理论同样是人工智能必备的基础知识。最优化理论研究的问题是判定给定目标函数的最大值（最小值）是否存在，并找到令目标函数取到最大值 (最小值) 的数值。 如果把给定的目标函数看成一座山脉，最优化的过程就是判断顶峰的位置并找到到达顶峰路径的过程。 通常情况下，最优化问题是在无约束情况下求解给定目标函数的最小值；在线性搜索中，确定寻找最小值时的搜索方向需要使用目标函数的一阶导数和二阶导数；置信域算法的思想是先确定搜索步长，再确定搜索方向；以人工神经网络为代表的启发式算法是另外一类重要的优化方法。  信息论：如何定量度量不确定性？  近年来的科学研究不断证实，不确定性就是客观世界的本质属性。换句话说，上帝还真就掷骰子。不确定性的世界只能使用概率模型来描述，这促成了信息论的诞生。 信息论使用“信息熵”的概念，对单个信源的信息量和通信中传递信息的数量与效率等问题做出了解释，并在世界的不确定性和信息的可测量性之间搭建起一座桥梁。 总之，信息论处理的是客观世界中的不确定性；条件熵和信息增益是分类问题中的重要参数；KL 散度用于描述两个不同概率分布之间的差异；最大熵原理是分类问题汇总的常用准则。  形式逻辑：如何实现抽象推理？  1956 年召开的达特茅斯会议宣告了人工智能的诞生。在人工智能的襁褓期，各位奠基者们，包括约翰·麦卡锡、赫伯特·西蒙、马文·闵斯基等未来的图灵奖得主，他们的愿景是让“具备抽象思考能力的程序解释合成的物质如何能够拥有人类的心智。”通俗地说，理想的人工智能应该具有抽象意义上的学习、推理与归纳能力，其通用性将远远强于解决国际象棋或是围棋等具体问题的算法。 如果将认知过程定义为对符号的逻辑运算，人工智能的基础就是形式逻辑；谓词逻辑是知识表示的主要方法；基于谓词逻辑系统可以实现具有自动推理能力的人工智能；不完备性定理向“认知的本质是计算”这一人工智能的基本理念提出挑战。    0x01、机器学习主要方法   机器学习概述：如何让计算机识别特征 线性回归：如何拟合线性模型？ 朴素贝叶斯分类：如何利用后验概率 逻辑回归：如何利用似然函数 决策树方法：如何利用信息增益 支持向量机：如何在特征空间上分类 集成学习：如何整合优化 聚类：如何实现无监督学习 降维学习：如何抓大放小   0x02、人工神经网络   神经网络的生理学依据：如何模拟人类认知？ 神经网络的基本单元：如何构造人工神经网络？ 多层神经网络：如何解决复杂问题？ 前馈与反向传播：如何用神经网络实现优化？ 自组织神经网络：如何用神经网络实现无监督学习？ 模糊神经网络：如何用神经网络实现逻辑功能？   0x03、深度学习   深度学习概述：如何让人工神经网络物尽其用？ 深度前馈网络：如何实现最佳近似？ 深度学习中的正则化：如何抑制过拟合？ 深度模型优化：如何提升学习效率？ 自动编码器：如何实现生成式建模？ 深度强化学习：如何实现从数据到决策？  深度信念网络：如何充分利用隐藏单元？ 卷积神经网络：如何高效处理网格化数据？ 递归神经网络：如何高效处理序列数据？ 生成式对抗网络：如何让神经网络自行优化？ 长短期记忆神经网络：如何在神经网络中引入记忆？  贝叶斯网络：如何利用有向概率图？ 马尔可夫随扌厼如何利用无向概率图？ 迁移学习：如何基于小数据学习？ 集群智能：如何让智能涌现？   0x04、应用场景   计算机视觉：如何让人工智能会“看”？ 语音识别：如何让人工智能会“听”？ 对话系统：如何让人工智能会“说”？ 机器翻译：如何让人工智能会“想”？   0x05、基础算法：   SVM简介； 带松弛变量的SVM模型: CSVM； 对偶问题； 核方法； 支持向量回归：SVR； Scikit-Learn中的SVM； SVM案例分析：Otto商品分类； 决策树； Scikit-Learn中的决策树模型； 决策树案例分析：Otto商品分类； Bagging和随机森林； Scikit-Learn中的随机森林模型； 随机森林案例分析：Otto商品分类； Adaboost； GBM； Scikit-Learn中的GBM； XGBoost原理； XGBoost工具包使用指南； XGBoost的Scikit-Learn接口； XGBoost案例分析：Otto商品分类； LightGBM原理； LightGBM使用指南； LightGBM案例分析：Otto商品分析； PCA降维原理； Scikit-Learn中的PCA； t-SNE； Scikit-Learn中的 t-SNE； 降维案例分析：Otto商品数据降维分析； 聚类简介； KMean聚类算法； Scikit-Learn中的 KMean聚类； 聚类案例分析：Event聚类； 推荐系统简介； 基于内容的推荐； 基于用户的协同过滤； 基于物品的协同过滤； 基于矩阵分解的协同过滤； 协同过滤推荐案例分析：MovieLens电影推荐； CTR预估简介； FTRL模型； FM与FFM； GBDT； Wide and Deep Learning模型； CTR案例分析：Criteo CTR预估；  </description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2019/04-11-%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%B7%A5%E5%85%B7/</link>
+      <link>https://xsoer.github.io/posts/2019/04-11-%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2019/04-11-%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%B7%A5%E5%85%B7/</guid>
+      <guid>https://xsoer.github.io/posts/2019/04-11-%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%B7%A5%E5%85%B7/</guid>
       <description> 大数据存储工具比较  作者：codehackfox@gmail.com 时间：2019-04-12 10:47:23   0x00、整体比较   数据整体   0x01、Kudu 0x02、Impala 0x03、PostgreSQL   标准的结构化数据库  </description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2019/04-22-impala%E7%B3%BB%E7%BB%9F%E6%80%A7%E6%96%87%E6%A1%A3/</link>
+      <link>https://xsoer.github.io/posts/2019/04-22-impala%E7%B3%BB%E7%BB%9F%E6%80%A7%E6%96%87%E6%A1%A3/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2019/04-22-impala%E7%B3%BB%E7%BB%9F%E6%80%A7%E6%96%87%E6%A1%A3/</guid>
+      <guid>https://xsoer.github.io/posts/2019/04-22-impala%E7%B3%BB%E7%BB%9F%E6%80%A7%E6%96%87%E6%A1%A3/</guid>
       <description>Impala操作手册  作者：codehackfox@gmail.com 时间：2019-04-22 20:08:24 状态：pending 标签：数据库 大数据存储  [TOC]
  简介   支持的查询存储  关系型数据库 数据仓库 Kudu Hive Hbase HDFS  可以单独部署一个集群，读取远程数据源。 支持的操作  运行impala-shell进入交互模式  /usr/bin/impala-shell  ODBC、JDBC Hue web-based user interface.    数据表   分为外部表和内部表 内部表  通过impala创建的表都是内部表(internal) 修改表结构对应的底层表也会进行变动  外部表  不同过impala创建的表都是外部表(external) 要操作这些表，需要在impala建立表的映射关系 通过sql修改表结构或者删除表不会删除底层表，删除的只是表的映射关系    SQL语法   sql示例
 -- This line is a comment about a table. create table .</description>
@@ -384,28 +384,28 @@ typedef struct _object { PyObject_HEAD } PyObject;    </description>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2019/04-22-%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4%E5%B7%A5%E5%85%B7%E9%9B%86/</link>
+      <link>https://xsoer.github.io/posts/2019/04-22-%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4%E5%B7%A5%E5%85%B7%E9%9B%86/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2019/04-22-%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4%E5%B7%A5%E5%85%B7%E9%9B%86/</guid>
+      <guid>https://xsoer.github.io/posts/2019/04-22-%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4%E5%B7%A5%E5%85%B7%E9%9B%86/</guid>
       <description> 终端命令工具集  作者：codehackfox@gamil.com 时间：2019-04-22 15:27:45  0x00、工具  autojump  自动跳转文件夹，不用cd  tree  以树状图列出当前目录结构  you-get  视频下载  tldr  命令示例文档  htop  更强大的top  git  版本控制工具  vim  编辑器  tmux  终端复用神器  thefuck  命令出错自动完善   </description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2019/04-23-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E5%85%B7%E9%9B%86/</link>
+      <link>https://xsoer.github.io/posts/2019/04-23-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E5%85%B7%E9%9B%86/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2019/04-23-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E5%85%B7%E9%9B%86/</guid>
+      <guid>https://xsoer.github.io/posts/2019/04-23-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E5%85%B7%E9%9B%86/</guid>
       <description>浏览器工具集  作者：codehackfox@gmail.com 时间：2019-04-23 12:21:23   0x00、插件   github  sourcegraph octotree  剪切网页  evernote  调试接口  JSONview  词典  沙拉查词  广告  广告终结者  产品原型  axure  多tab管理  Toby    0x01、工具网站   json格式化  https://json.cn http://json.parser.online.fr  随机密码生成  https://www.sexauth.com/ https://suijimimashengcheng.51240.com/ https://www.dashlane.com/zh/features/password-generator  正则表达式  https://regexr.com/ http://wangwl.net/static/projects/visualRegex  问题讨论  https://stackoverflow.com https://stackexchange.com/  文章  https://medium.com/    0x02、前沿科技网站   论文  https://arxiv.</description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2019/07-12-kudu%E7%AE%80%E4%BB%8B/</link>
+      <link>https://xsoer.github.io/posts/2019/07-12-kudu%E7%AE%80%E4%BB%8B/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2019/07-12-kudu%E7%AE%80%E4%BB%8B/</guid>
+      <guid>https://xsoer.github.io/posts/2019/07-12-kudu%E7%AE%80%E4%BB%8B/</guid>
       <description>kudu简介  作者：codehackfox@gmail.com 时间：2019-07-12 10:13:23
  总体概览
  设计模式
@@ -422,55 +422,55 @@ typedef struct _object { PyObject_HEAD } PyObject;    </description>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2019/08-26-numpy%E4%BD%BF%E7%94%A8/</link>
+      <link>https://xsoer.github.io/posts/2019/08-26-numpy%E4%BD%BF%E7%94%A8/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2019/08-26-numpy%E4%BD%BF%E7%94%A8/</guid>
+      <guid>https://xsoer.github.io/posts/2019/08-26-numpy%E4%BD%BF%E7%94%A8/</guid>
       <description>numpy库使用  作者：codehackfox@gmail.com 时间：2019-08-26 09:43:33  ##</description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2019/09-01-%E6%95%B0%E5%AD%A6%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/</link>
+      <link>https://xsoer.github.io/posts/2019/09-01-%E6%95%B0%E5%AD%A6%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2019/09-01-%E6%95%B0%E5%AD%A6%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/</guid>
+      <guid>https://xsoer.github.io/posts/2019/09-01-%E6%95%B0%E5%AD%A6%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/</guid>
       <description> 数学理论基础  作者：codehackfox@gmail.com 时间：2019-09-01 10:01:57  0x00、整体简介  向量 矩阵 导数 数值计算 概率分布 参数估计 回归分析 判断问题  0x01、向量 0x02、矩阵 0x03、导数 0x04、数值计算 0x05、概率分布 0x06、参数估计 0x07、回归分析 0x08、判断问题 </description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2019/09-02-lstm/</link>
+      <link>https://xsoer.github.io/posts/2019/09-02-lstm/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2019/09-02-lstm/</guid>
+      <guid>https://xsoer.github.io/posts/2019/09-02-lstm/</guid>
       <description> LSTM  作者：codehackfox@gmail.com 时间：2019-09-02 12:00:04  </description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2019/09-02-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%B1%BB%E5%9E%8B/</link>
+      <link>https://xsoer.github.io/posts/2019/09-02-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%B1%BB%E5%9E%8B/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2019/09-02-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%B1%BB%E5%9E%8B/</guid>
+      <guid>https://xsoer.github.io/posts/2019/09-02-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%B1%BB%E5%9E%8B/</guid>
       <description> 神经网络类型  作者：codehackfox@gmail.com 时间：2019-09-02 09:47:18  0x00、大体类型  1.卷积神经网络 2.循环神经网络 3.深度信念网络 4.生成对抗网络 5.深度强化学习  0x01、卷积神经网络  卷积神经网络属于前面介绍的前馈神经网络之一，它对于图形图像的处理有着独特的效果，在结构上至少包括卷积层和池化层 目前卷积神经网络主要应用于影像中物体检测和识别、视频理解，除此之外，卷积神经网络还被应用于自然语言处理 代表性的卷积神经网络包括LeNet-5、VGG、AlexNet 等  0x02、循环神经网络  不同于卷积神经网络，循环神经网络更擅长于对语言文本的处理。文本的分析处理，更看重时序上的输入与上下文的联系。循环神经网络的内部记忆结构，刚好满足这样的需求场景，因此在文本处理方面循环神经网络更胜一筹。 目前循环神经网络的主要落地场景在机器翻译、情感分析等NLP 领域。特别是近几年媒体曝光较多的新闻写稿机器人，也是基于循环神经网络的一个应用。除此之外，循环神经网络还可以实现自动作诗、自动写歌词，甚至自动写代码。  0x03、深度信念网络  是一种生成模型，由多个受限玻尔兹曼机组成，采用逐层的方式进行训练，其结构可以理解为由多层简单学习模型组合而成的复合模型。深度信念网络是一个可以对训练的数据样本进行深层次表达的图形模型。  0x04、生成对抗网络  生成对抗网络将对抗的思想引入机器学习领域，对抗的双方为判别模型和生成模型 判别模型的职责是准确区分真实数据和生成数据，而生成模型负责生成符合真实数据概率分布的新数据 生成对抗网络主要用于样本数据概率分布的建模，并生成与训练数据相同分布的新数据  目前，GAN 主要应用于图像与视觉领域，以及自然语言处理领域，例如，提升图像分辨率、还原遮挡或破损图像、基于文本描述生成图像等。   0x05、深度强化学习  与其他机器学习的差异在于，深度强化学习更加注重基于环境的改变而调整自身的行为 深度强化学习的运行机制由四个基本组件组成：环境、代理、动作、反馈。通过四者的关系，强调代理如何在环境给予的奖励或者惩罚的刺激下，逐渐改变自己的行为动作，使得尽可能使用环境，从而达到环境给予的奖励值最大，逐步形成符合最大利益的惯性行为。  </description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2019/09-05-mac%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link>
+      <link>https://xsoer.github.io/posts/2019/09-05-mac%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2019/09-05-mac%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid>
+      <guid>https://xsoer.github.io/posts/2019/09-05-mac%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid>
       <description>Mac开发环境配置  作者：codehackfox@gmail.com 时间：2019-09-05 16:12:25  0X00、Mac软件  1.vscode 2.omyzsh 3.tmux 4.vim 5.Chrome 6.输入法  0x01、vscode 插件  Dash clock in status bar Docker ESlint File Utils filesize GitLens Go python IntelliJ IDEA keybingdings LaTex Workshop leetCode open in browser Path Intelligence Remote - Container Remote - SSH Remote - SSH:Editing Configuration Remote - SSH:Explore Remote - WSL Remote Development Settings Sync Shades of Purple SQLTools Stackoverflow Instant Search TabNine Vetur YAML  配置 { &amp;quot;workbench.</description>
     </item>
     
     <item>
       <title></title>
-      <link>http://hackfox.vip/posts/2019/09-05-tmux%E9%85%8D%E7%BD%AE/</link>
+      <link>https://xsoer.github.io/posts/2019/09-05-tmux%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://hackfox.vip/posts/2019/09-05-tmux%E9%85%8D%E7%BD%AE/</guid>
+      <guid>https://xsoer.github.io/posts/2019/09-05-tmux%E9%85%8D%E7%BD%AE/</guid>
       <description>tmux配置  作者：codehackfox@gamil.com 时间：2019-09-05 18:01:57  0x00、简介  终端复用神器  0x01、快捷键 1.tmux命令  启动新会话
 tmux [new -s 会话名 -n 窗口名]  恢复会话：
 tmux at [-t 会话名]  列出所有会话：
