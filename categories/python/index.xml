@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>python on hackfox</title>
+    <link>https://xsoer.github.io/categories/python/</link>
+    <description>Recent content in python on hackfox</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 10 Mar 2019 21:07:19 +0000</lastBuildDate>
+    
+	<atom:link href="https://xsoer.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>python底层原理</title>
+      <link>https://xsoer.github.io/posts/2019/03-10-python%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/</link>
+      <pubDate>Sun, 10 Mar 2019 21:07:19 +0000</pubDate>
+      
+      <guid>https://xsoer.github.io/posts/2019/03-10-python%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/</guid>
+      <description>  0x00、Python中的对象  对象可以说是Python最核心的一个概念，在Python的世界里，一切都是对象。我们知道Python是由C编写的，C并不是一个面向对象语言，而由C编写的Python确实面向对象的，那么它的对象机制是如何实现的呢？ 对于人的思维，对象是可以形象描述的，但是对于计算机而言，对象是一个抽象的概念，计算机所知道的一切都是字节。关于对象，通常的说法是，对象是数据以及基于这些数据的操作的集合，在计算机中，一个对象实际就是把一片被分配的内存空间，且这片内存在更高层次可作为一个整体，这个整体就是一个对象。 在Python中，对象就是C中的结构体在堆上申请的一块内存。 对象机制的基石——Pyobject在Python中，所有的东西都是对象，而所有的对象都拥有一些相同的内容，Python中的这些内容都是在object.h中的Pyobject中定义的。
+typedef struct _object { PyObject_HEAD } PyObject;    </description>
+    </item>
+    
+    <item>
+      <title>python资源汇总</title>
+      <link>https://xsoer.github.io/posts/2019/03-10-python%E8%B5%84%E6%BA%90%E6%B1%87%E6%80%BB/</link>
+      <pubDate>Sun, 10 Mar 2019 13:33:30 +0000</pubDate>
+      
+      <guid>https://xsoer.github.io/posts/2019/03-10-python%E8%B5%84%E6%BA%90%E6%B1%87%E6%80%BB/</guid>
+      <description>0x00、图书链接   各种图书资源   0x01、常用库  01、通用库  urllib  allows you access websites via your program 文档  requests -网络库 grab – 网络库（基于pycurl）。 pycurl – 网络库（绑定libcurl）。 urllib3 – Python HTTP库，安全连接池、支持文件post、可用性高。 httplib2 – 网络库。 RoboBrowser – 一个简单的、极具Python风格的Python库，无需独立的浏览器即可浏览网页。 MechanicalSoup -一个与网站自动交互Python库。 mechanize -有状态、可编程的Web浏览库。 socket – 底层网络接口(stdlib)。 Unirest for Python – Unirest是一套可用于多种语言的轻量级的HTTP库。 hyper – Python的HTTP/2客户端。 PySocks – SocksiPy更新并积极维护的版本，包括错误修复和一些其他的特征。作为socket模块的直接替换。  02、爬虫库  scrapy – 网络爬虫框架（基于twisted），不支持Python3。 pyspider – 一个强大的爬虫系统。 cola – 一个分布式爬虫框架 portia – 基于Scrapy的可视化爬虫。 restkit – Python的HTTP资源工具包。它可以让你轻松地访问HTTP资源，并围绕它建立的对象。 demiurge – 基于PyQuery的爬虫微框架。  03、HTML/XML解析器  lxml – C语言编写高效HTML/ XML处理库。支持XPath。 cssselect – 解析DOM树和CSS选择器。 pyquery – 解析DOM树和jQuery选择器。 BeautifulSoup – 低效HTML/ XML处理库，纯Python实现。 html5lib – 根据WHATWG规范生成HTML/ XML文档的DOM。该规范被用在现在所有的浏览器上。 feedparser – 解析RSS/ATOM feeds。 MarkupSafe – 为XML/HTML/XHTML提供了安全转义的字符串。 xmltodict – 一个可以让你在处理XML时感觉像在处理JSON一样的Python模块。 xhtml2pdf – 将HTML/CSS转换为PDF。 untangle – 轻松实现将XML文件转换为Python对象。 Bleach – 清理HTML（需要html5lib）。 sanitize – 为混乱的数据世界带来清明。  04、文本处理  difflib – （Python标准库）帮助进行差异化比较。 Levenshtein – 快速计算Levenshtein距离和字符串相似度。 fuzzywuzzy – 模糊字符串匹配。 esmre – 正则表达式加速器。 ftfy – 自动整理Unicode文本，减少碎片化。  05、自然语言处理  NLTK -编写Python程序来处理人类语言数据的最好平台。 Pattern – Python的网络挖掘模块。他有自然语言处理工具，机器学习以及其它。 TextBlob – 为深入自然语言处理任务提供了一致的API。是基于NLTK以及Pattern的巨人之肩上发展的。 jieba – 中文分词工具。 SnowNLP – 中文文本处理库。 loso – 另一个中文分词库。 scikit-learn tensorflow kera  06、图像处理库  matplotlib  官网 文档地址 文档pdf版本 中文文档 总结说明   07、浏览器自动化与仿真  selenium – 自动化真正的浏览器（Chrome浏览器，火狐浏览器，Opera浏览器，IE浏览器）。 Ghost.</description>
+    </item>
+    
+    <item>
+      <title>python装饰器</title>
+      <link>https://xsoer.github.io/posts/2019/03-08-python%E8%A3%85%E9%A5%B0%E5%99%A8/</link>
+      <pubDate>Fri, 08 Mar 2019 10:56:37 +0000</pubDate>
+      
+      <guid>https://xsoer.github.io/posts/2019/03-08-python%E8%A3%85%E9%A5%B0%E5%99%A8/</guid>
+      <description>  0x00、装饰器   在函数调用前后想添加功能，但又不希望修改原函数的定义，这种在代码运行期间动态增加功能的方式，称之为“装饰器”（Decorator）。 本质上，decorator就是一个返回函数的高阶函数。
+def deco1(func): print(&amp;quot;func before&amp;quot;) start = datetime.datetime.now() ret = func() print(&amp;quot;func after&amp;quot;) end = datetime.datetime.now() return ret def func(): print(&amp;quot;my name is func&amp;quot;)  带了装饰器的函数会自动运行。
+   0x01、复杂的装饰器  </description>
+    </item>
+    
+    <item>
+      <title>python总结</title>
+      <link>https://xsoer.github.io/posts/2018/12-02-python%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Sun, 02 Dec 2018 09:23:23 +0000</pubDate>
+      
+      <guid>https://xsoer.github.io/posts/2018/12-02-python%E6%80%BB%E7%BB%93/</guid>
+      <description>0x00、基本概念 0x01、基本类型   1.数字:numbers  int,double,float,bool,complex 1)可同时为多个变量赋值 2)一个变量可以通过赋值指向不同类型的对象 3)数值的除法(/)总时返回浮点数，要获得整数用(//)  2.字符串:string  1)可以用&amp;rdquo;或&amp;rdquo;&amp;rdquo; 2)可以使用()转义 3)不想转义需要字符串前加r 4)可以使用(+)号连接，用(*)可以重复 5)可以使用()连接上下行，也可以用&amp;rdquo;&amp;lsquo;&amp;hellip;&amp;ldquo;&amp;lsquo;或&amp;rdquo;&amp;ldquo;&amp;rdquo;&amp;hellip;&amp;ldquo;&amp;rdquo;&amp;rdquo; 6)没有单独的字符，一个字符就是长度为1的字符串 7)可对字符串切片，用冒号切割，形式为：变量[头下标:尾下标]，从左向右以0开始，从右向左以-1开始 8)字符串不能改变  3.列表:list-&amp;gt;[]  1)写在方括号内，并用逗号隔开 2)元素类型可以不同 3)可以被索引和切片 4)支持串联操作，用(+)操作符 5)列表元素可以改变 6)内置很多方法：如append(i),pop(i),len(),insert(i,x),remove(x),index(i),count(i),sort(),reverse(),copy()  4.元组:tuple-&amp;gt;()  1)写在圆括号内，用逗号隔开 2)元素类型可以不同 3)可以被索引和切片 4)支持串联操作，用(+)操作符 5)元素不可改变  5.集合：set-&amp;gt;{}  1)无序不重复元素集 2)基本功能是进行成员关系测试和消除重复元素 3)可以使用大括号或set()函数创建集合；但创建空集合必须用set()函数，因为{}是用来创建字典的  6.字典：Dictionary-&amp;gt;{&amp;rdquo;:&amp;ldquo;,&amp;hellip;}  1)一种映射类型，一个无序的键:值对的集合 2)dict()函数直接从键值对序列中构造，也可以进行推导 3)内置很多方法：如clear(),keys(),values()等 4)字典的关键字必须是不可变类型，且不能重复  list,string和tuple都属于sequence(序列)   0x02、注释   1.#号单行注释 2.&amp;ldquo;&amp;lsquo;或&amp;rdquo;&amp;ldquo;&amp;ldquo;多行注释   0x03、格式   1.使用缩进来划分语句，相同缩进数的语句在一起组成一个语句块 2.没有switch-case语句 3.每个条件后都要是用(:)，表示接下来满足条件后要执行的语句   0x04、关键字  while,if,else,elif,pass,True,False,None,for,in,do break,continue,as,del,from,global,import,is,lambda,not,or class,def,self,return,with,yield,nonlocal try,except,raise,finally   0x05、操作符  &amp;lt;,&amp;gt;,&amp;lt;=,&amp;gt;=,==,!=   0x06、函数   1.range(begin,end,step): 2.input(&amp;ldquo;some word&amp;rdquo;): 3.len() 4.dir() 5.format() 6.open()  1)f.read() 2)f.write() 3)f.readlines() 4)f.tell() 5)f.feek() 6)f.close()  7.str 8.init 9.del 10.repr 11.setitem 12.getitem 13.len 14.cmp 15.call 16.add 17.sub 18.mul 19.div 20.mod 21.pow   0x07、模块   1.conllections  1)deque  2.sys 3.fibo 4.math 5.os  1)getcwd() 2)get_exec_path() 3)getenv(&amp;lsquo;varname&amp;rsquo;)  6.re 7.glob 8.urllib 9.smtplib 10.</description>
+    </item>
+    
+  </channel>
+</rss>

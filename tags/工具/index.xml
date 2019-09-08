@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>工具 on hackfox</title>
+    <link>https://xsoer.github.io/tags/%E5%B7%A5%E5%85%B7/</link>
+    <description>Recent content in 工具 on hackfox</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 06 Sep 2019 22:10:12 +0000</lastBuildDate>
+    
+	<atom:link href="https://xsoer.github.io/tags/%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>数据同步工具</title>
+      <link>https://xsoer.github.io/posts/2019/09-06-%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%E5%B7%A5%E5%85%B7/</link>
+      <pubDate>Fri, 06 Sep 2019 22:10:12 +0000</pubDate>
+      
+      <guid>https://xsoer.github.io/posts/2019/09-06-%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%E5%B7%A5%E5%85%B7/</guid>
+      <description> 0x00、总览  1.定时任务 2.canal/otter 3.Datax 4.Sqoop 5.NiFi 6.mongoshake  0x02、定时任务 定时任务工具是作为数据同步的最基本也是最常用的工具。其不但用于定时的数据同步，而且作为定时的处理其他任务，比如爬虫等。
+1.Airflow 2.gocron 0x03、cannel/otter  阿里巴巴分布式数据库同步系统 官网 主要同步mysql数据，读取解析mysql binlog，然后同步导入到新的mysql库内  0x04、Datax  阿里巴巴开源离线同步Datax 官网 抽象为读取的reader源和写入的write源，支持开发新插件 直接读取写入，用json格式来描述，不支持中间做转换  0x05、Sqoop  https://sqoop.apache.org/ https://github.com/apache/sqoop 定位是从hadoop与关系型数据库的同步。 Sqoop 启用了一个 MapReduce 作业（极其容错的分布式并行计算）来执行任务 Sqoop 的另一大优势是其传输大量结构化或半结构化数据的过程是完全自动化的。   0x06、Nifi  NiFi 项目在创建过程中遵循了一些理念  1）精细化管理信息流的能力； 2）跟踪数据相关事件和信息的能力，比如数据从哪里来，在路径中发生了什么； 3）保证控制和数据面的安全能力  优势  有保证的数据交付 支持背压（back-pressure）机制的数据缓冲 有优先级的队列 QoS 数据溯源（Data provenance）：NiFi 对数据流路径上的每次变化都会保留日志记录，从而保证结果的可追溯，以及数据的恢复、重播、审计和评估。 通过日志记录数据的历史细节 支持交互式命令和控制台，并对系统变化提供可视化的反馈 支持流模板（Flow templates） 支持插入式（Pluggable）/ 多角色（multi-role）的安全机制 支持对数据操作的扩展 支持集群管理   0x07、mongoshake  https://github.com/alibaba/MongoShake alibaba开源的同步mogndb的服务   </description>
+    </item>
+    
+    <item>
+      <title>tmux配置</title>
+      <link>https://xsoer.github.io/posts/2019/09-05-tmux%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Thu, 05 Sep 2019 18:01:57 +0000</pubDate>
+      
+      <guid>https://xsoer.github.io/posts/2019/09-05-tmux%E9%85%8D%E7%BD%AE/</guid>
+      <description>0x00、简介  终端复用神器  0x01、快捷键 1.tmux命令  启动新会话
+tmux [new -s 会话名 -n 窗口名]  恢复会话：
+tmux at [-t 会话名]  列出所有会话：
+tmux ls  关闭会话
+tmux kill-session -t 会话名   2.tmux内快捷键  会话
+:new&amp;lt;回车&amp;gt; 启动新会话 s 列出所有会话 $ 重命名当前会话  窗口 (标签页)
+c 创建新窗口 w 列出所有窗口 n 后一个窗口 p 前一个窗口 f 查找窗口 , 重命名当前窗口 &amp;amp; 关闭当前窗口  调整窗口排序
+swap-window -s 3 -t 1 交换 3 号和 1 号窗口 swap-window -t 1 交换当前和 1 号窗口 move-window -t 1 移动当前窗口到 1 号  窗格（分割窗口）
+% 垂直分割 &amp;quot; 水平分割 o 交换窗格 x 关闭窗格 ⍽ 左边这个符号代表空格键 - 切换布局 q 显示每个窗格是第几个，当数字出现的时候按数字几就选中第几个窗格 { 与上一个窗格交换位置 } 与下一个窗格交换位置 z 切换窗格最大化/最小化  杂项
+d 退出 tmux（tmux 仍在后台运行） t 窗口中央显示一个数字时钟 ? 列出所有快捷键 : 命令提示符   0x02、配置文件 #设置前缀为Ctrl + a set -g prefix C-a #解除Ctrl+b 与前缀的对应关系 unbind C-b bind C-a send-prefix # 绑定Ctrl+a为新的指令前缀 # 设置序号从1开始 set -g base-index 1 set -g pane-base-index 1 #将r 设置为加载配置文件，并显示&amp;quot;reloaded!</description>
+    </item>
+    
+    <item>
+      <title>Mac开发环境配置</title>
+      <link>https://xsoer.github.io/posts/2019/09-05-mac%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Thu, 05 Sep 2019 16:12:25 +0000</pubDate>
+      
+      <guid>https://xsoer.github.io/posts/2019/09-05-mac%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid>
+      <description>0X00、Mac软件  1.vscode 2.omyzsh 3.tmux 4.vim 5.Chrome 6.输入法  0x01、vscode 插件  Dash clock in status bar Docker ESlint File Utils filesize GitLens Go python IntelliJ IDEA keybingdings LaTex Workshop leetCode open in browser Path Intelligence Remote - Container Remote - SSH Remote - SSH:Editing Configuration Remote - SSH:Explore Remote - WSL Remote Development Settings Sync Shades of Purple SQLTools Stackoverflow Instant Search TabNine Vetur YAML  配置 { &amp;quot;workbench.activityBar.visible&amp;quot;: true, &amp;quot;editor.scrollBeyondLastLine&amp;quot;: false, &amp;quot;files.autoSave&amp;quot;: &amp;quot;onFocusChange&amp;quot;, &amp;quot;workbench.colorTheme&amp;quot;: &amp;quot;Shades of Purple&amp;quot;, &amp;quot;terminal.integrated.cursorStyle&amp;quot;: &amp;quot;line&amp;quot;, &amp;quot;workbench.statusBar.feedback.visible&amp;quot;: false, &amp;quot;clock.dateFormat&amp;quot;: &amp;quot;yyyy-mm-dd HH:MM:ss&amp;quot;, &amp;quot;extensions.ignoreRecommendations&amp;quot;: false, &amp;quot;files.exclude&amp;quot;: { &amp;quot;**/__pycache__&amp;quot;: true, &amp;quot;**/*.pyc&amp;quot;: true }, &amp;quot;breadcrumbs.enabled&amp;quot;: true, &amp;quot;editor.fontSize&amp;quot;: 15, &amp;quot;editor.fontFamily&amp;quot;: &amp;quot;&#39;Source Code Pro&#39;,Menlo, Monaco, &#39;Courier New&#39;, monospace&amp;quot;, &amp;quot;terminal.external.osxExec&amp;quot;: &amp;quot;iterm.app&amp;quot;, &amp;quot;terminal.integrated.copyOnSelection&amp;quot;: true, &amp;quot;terminal.integrated.fontSize&amp;quot;: 15, &amp;quot;terminal.integrated.fontFamily&amp;quot;: &amp;quot;&#39;Source Code Pro&#39;&amp;quot;, &amp;quot;terminal.integrated.scrollback&amp;quot;: 3000, &amp;quot;terminal.integrated.shell.osx&amp;quot;: &amp;quot;/bin/zsh&amp;quot;, &amp;quot;python.pythonPath&amp;quot;: &amp;quot;~/anaconda3/bin/python&amp;quot;, &amp;quot;python.linting.pylintEnabled&amp;quot;: true, &amp;quot;leetcode.defaultLanguage&amp;quot;: &amp;quot;python3&amp;quot;, &amp;quot;leetcode.outputFolder&amp;quot;: &amp;quot;leecode&amp;quot;, &amp;quot;leetcode.hideSolved&amp;quot;: true, &amp;quot;breadcrumbs.symbolSortOrder&amp;quot;: &amp;quot;name&amp;quot;, // Theme Setup. // &amp;quot;workbench.iconTheme&amp;quot;: &amp;quot;vscode-icons&amp;quot;, &amp;quot;editor.</description>
+    </item>
+    
+    <item>
+      <title>浏览器工具集</title>
+      <link>https://xsoer.github.io/posts/2019/04-23-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E5%85%B7%E9%9B%86/</link>
+      <pubDate>Tue, 23 Apr 2019 12:21:23 +0000</pubDate>
+      
+      <guid>https://xsoer.github.io/posts/2019/04-23-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E5%85%B7%E9%9B%86/</guid>
+      <description>  0x00、插件   github  sourcegraph octotree  剪切网页  evernote  调试接口  JSONview  词典  沙拉查词  广告  广告终结者  产品原型  axure  多tab管理  Toby    0x01、工具网站   json格式化  https://json.cn http://json.parser.online.fr  随机密码生成  https://www.sexauth.com/ https://suijimimashengcheng.51240.com/ https://www.dashlane.com/zh/features/password-generator  正则表达式  https://regexr.com/ http://wangwl.net/static/projects/visualRegex  问题讨论  https://stackoverflow.com https://stackexchange.com/  文章  https://medium.com/    0x02、前沿科技网站   论文  https://arxiv.org/ https://www.nature.com/    0x03、github系列   图书
+ https://github.com/royeo/free-programming-books.pdf https://github.com/threerocks/studyFiles https://github.com/justjavac/free-programming-books-zh_CN https://github.com/it-ebooks/it-ebooks-archive https://github.com/shivam-jha/DockerBooks https://github.com/EbookFoundation/free-programming-books/blob/master/free-programming-books-zh.md https://github.com/zhiwoeryi/eBook-3  awesome系列
+ https://github.com/sindresorhus/awesome  算法
+ https://github.com/linyiqun/DataMiningAlgorithm   </description>
+    </item>
+    
+    <item>
+      <title>终端命令工具集</title>
+      <link>https://xsoer.github.io/posts/2019/04-22-%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4%E5%B7%A5%E5%85%B7%E9%9B%86/</link>
+      <pubDate>Mon, 22 Apr 2019 15:27:45 +0000</pubDate>
+      
+      <guid>https://xsoer.github.io/posts/2019/04-22-%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4%E5%B7%A5%E5%85%B7%E9%9B%86/</guid>
+      <description> 0x00、工具  autojump  自动跳转文件夹，不用cd  tree  以树状图列出当前目录结构  you-get  视频下载  tldr  命令示例文档  htop  更强大的top  git  版本控制工具  vim  编辑器  tmux  终端复用神器  thefuck  命令出错自动完善   </description>
+    </item>
+    
+    <item>
+      <title>iterm2配置lzrz</title>
+      <link>https://xsoer.github.io/posts/2019/03-09-iterm2%E9%85%8D%E7%BD%AElzrz/</link>
+      <pubDate>Sat, 09 Mar 2019 12:11:30 +0000</pubDate>
+      
+      <guid>https://xsoer.github.io/posts/2019/03-09-iterm2%E9%85%8D%E7%BD%AElzrz/</guid>
+      <description>  0x00、安装lzrz   1.远程连接的服务器端必须要有sz、rz这两个工具，如果没有，可以执行安装。如在CentOS上安装的命令为：
+sudo yum install lrzsz  2.本地安装lzrz工具。
+brew install lrzsz    0x01、本地下载脚本   1.由于sz,rz是基于ZMODEM/YMODEM/XMODEM协议的，所以安装iterm2-zmodem
+cd /usr/local/bin sudo wget https://raw.github.com/mmastrac/iterm2-zmodem/master/iterm2-send-zmodem.sh sudo wget https://raw.github.com/mmastrac/iterm2-zmodem/master/iterm2-recv-zmodem.sh sudo chmod 777 /usr/local/bin/iterm2-*    0x02、配置iterm2   1.打开Item2，点击preferences → profiles，选择某个profile，如Default，之后继续选择advanced → triggers，添加编辑添加如下triggers： (Profiles -&amp;gt; Open Profiles -&amp;gt; Edit Profies -&amp;gt; Advanced -&amp;gt; Triggers -&amp;gt; Edit ) 2.rz配置
+Regular Expression: \*\*B0100 Action: Run Silent Coprocess Parameters: /usr/local/bin/iterm2-send-zmodem.sh  3.sz配置
+Regular Expression: \*\*B00000000000000 Action: Run Silent Coprocess Parameters: /usr/local/bin/iterm2-recv-zmodem.sh    0x03、配置完毕，进行尝试。  </description>
+    </item>
+    
+  </channel>
+</rss>

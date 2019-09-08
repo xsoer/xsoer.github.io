@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.58.1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>docker | hackfox</title>
+    <meta property="og:title" content="docker - hackfox">
+    <meta property="og:type" content="article">
+        
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="docker">
+        
+    <meta name="author" content="">
+    <meta property="og:url" content="https://xsoer.github.io/categories/docker/">
+    <link rel="shortcut icon" href="https://xsoer.github.io/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://xsoer.github.io/css/normalize.css">
+    
+    <link rel="stylesheet" href="https://xsoer.github.io/css/style.css">
+    <link rel="alternate" type="application/rss+xml+xml" href="https://xsoer.github.io/categories/docker/index.xml" title="hackfox" />
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://xsoer.github.io/">
+                        hackfox
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="https://xsoer.github.io/">首页</a>
+                    
+                    <a  href="https://xsoer.github.io/tags/" title="标签">标签</a>
+                    
+                    <a  href="https://xsoer.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://xsoer.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    
+                    <h3 class="archive-title">
+                        分类
+                        <span class="keyword">docker</span>
+                        中的文章
+                    </h3>
+                    
+
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://xsoer.github.io/posts/2019/03-10-docker%E5%9F%BA%E7%A1%80%E6%96%87%E6%A1%A3/">docker基础文档</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年3月10日
+                            </date>
+                            
+                            <div class="post-meta meta-category">
+                                |
+                                
+                                    <a href="https://xsoer.github.io/categories/docker">docker</a>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                0x00、命令   Management Commands:
+ config Manage Docker configs container Manage containers image Manage images network Manage networks node Manage Swarm nodes plugin Manage plugins secret Manage Docker secrets service Manage services stack Manage Docker stacks swarm Manage Swarm system Manage Docker volume Manage volumes  Commands:
+ attach Attach local standard input, output, and error streams to a running container build Build an image from a Dockerfile commit Create a new image from a container&rsquo;s changes cp Copy files/folders between a container and the local filesystem create Create a new container diff Inspect changes to files or directories on a container&rsquo;s filesystem events Get real time events from the server exec Run a command in a running container export Export a container&rsquo;s filesystem as a tar archive history Show the history of an image images List images import Import the contents from a tarball to create a filesystem image info Display system-wide information inspect Return low-level information on Docker objects kill Kill one or more running containers load Load an image from a tar archive or STDIN login Log in to a Docker registry logout Log out from a Docker registry logs Fetch the logs of a container pause Pause all processes within one or more containers port List port mappings or a specific mapping for the container ps List containers pull Pull an image or a repository from a registry push Push an image or a repository to a registry rename Rename a container restart Restart one or more containers rm Remove one or more containers rmi Remove one or more images run Run a command in a new container save Save one or more images to a tar archive (streamed to STDOUT by default) search Search the Docker Hub for images start Start one or more stopped containers stats Display a live stream of container(s) resource usage statistics stop Stop one or more running containers tag Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE top Display the running processes of a container unpause Unpause all processes within one or more containers update Update configuration of one or more containers version Show the Docker version information wait Block until one or more containers stop, then print their exit codes  docker images // 查看存在多少镜像……
+                                <p class="readmore"><a href="https://xsoer.github.io/posts/2019/03-10-docker%E5%9F%BA%E7%A1%80%E6%96%87%E6%A1%A3/">阅读全文</a></p>
+                            </div>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://xsoer.github.io/posts/2018/05-18-docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">docker常用命令</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2018年5月18日
+                            </date>
+                            
+                            <div class="post-meta meta-category">
+                                |
+                                
+                                    <a href="https://xsoer.github.io/categories/docker">docker</a>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                 docker常用命令  作者：codehackfox@gmail.com 时间：2018-05-18 14:29:58   0x00、常用命令   查看容器重启次数  docker inspect -f &ldquo;{{ .RestartCount }}&rdquo; container_id  查看容器最后一次的启动时间  docker inspect -f &ldquo;{{ .State.StartedAt }}” container_id  commit一个镜像  docker run &ndash;name=&ldquo;python_env_l&rdquo; -it image_name /bin/bash docker commit -m=&ldquo;msg&rdquo; -a=&ldquo;user_name&rdquo; 4631e1627784 image_name:2.1 docker tag image_name:2.1 image_name:latest docker push image_name  Docker构建镜像  docker build -t imageName .  打标签  Docker tag image user/newName:tag  批量删除无用镜像  docker image rm docker images|grep none|awk {'print $3'}  批量删除无用容器  sudo docker rm sudo docker ps -a |grep Exited| awk {'print $1'}   ……
+                                <p class="readmore"><a href="https://xsoer.github.io/posts/2018/05-18-docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">阅读全文</a></p>
+                            </div>
+                        </article>
+                    
+
+                    
+
+
+
+
+
+                </div>
+            </div>
+
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://xsoer.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://xsoer.github.io/posts/2019/09-06-%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%E5%B7%A5%E5%85%B7/" title="数据同步工具">数据同步工具</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/posts/2019/09-05-tmux%E9%85%8D%E7%BD%AE/" title="tmux配置">tmux配置</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/posts/2019/09-05-mac%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" title="Mac开发环境配置">Mac开发环境配置</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/posts/2019/09-02-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%B1%BB%E5%9E%8B/" title="神经网络类型">神经网络类型</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/posts/2019/09-01-%E6%95%B0%E5%AD%A6%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/" title="kudu简介">kudu简介</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/posts/2019/08-26-numpy%E4%BD%BF%E7%94%A8/" title="numpy库使用">numpy库使用</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/posts/2019/07-12-kudu%E7%AE%80%E4%BB%8B/" title="kudu简介">kudu简介</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/posts/2019/04-23-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E5%85%B7%E9%9B%86/" title="浏览器工具集">浏览器工具集</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/posts/2019/04-22-impala%E7%B3%BB%E7%BB%9F%E6%80%A7%E6%96%87%E6%A1%A3/" title="Impala操作手册">Impala操作手册</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/posts/2019/04-22-%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4%E5%B7%A5%E5%85%B7%E9%9B%86/" title="终端命令工具集">终端命令工具集</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://xsoer.github.io/categories/ai/">ai(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/categories/development/">development(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/categories/docker/">docker(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/categories/git/">git(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/categories/javascript/">javascript(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/categories/kudu/">kudu(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/categories/mysql/">mysql(5)</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/categories/numpy/">numpy(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/categories/php/">php(3)</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/categories/python/">python(4)</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/categories/vim/">vim(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/categories/%E5%B7%A5%E5%85%B7/">工具(6)</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(6)</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/categories/%E8%BF%90%E7%BB%B4/">运维(1)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://xsoer.github.io/tags/ai/">ai</a>
+    
+    <a href="https://xsoer.github.io/tags/docker/">docker</a>
+    
+    <a href="https://xsoer.github.io/tags/git/">git</a>
+    
+    <a href="https://xsoer.github.io/tags/javascript/">javascript</a>
+    
+    <a href="https://xsoer.github.io/tags/kudu/">kudu</a>
+    
+    <a href="https://xsoer.github.io/tags/mysql/">mysql</a>
+    
+    <a href="https://xsoer.github.io/tags/numpy/">numpy</a>
+    
+    <a href="https://xsoer.github.io/tags/php/">php</a>
+    
+    <a href="https://xsoer.github.io/tags/python/">python</a>
+    
+    <a href="https://xsoer.github.io/tags/vim/">vim</a>
+    
+    <a href="https://xsoer.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+    
+    <a href="https://xsoer.github.io/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+    
+    <a href="https://xsoer.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="https://xsoer.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    
+    <a href="https://xsoer.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+    
+    <a href="https://xsoer.github.io/tags/%E6%96%B0%E6%8A%80%E6%9C%AF/">新技术</a>
+    
+    <a href="https://xsoer.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</a>
+    
+    <a href="https://xsoer.github.io/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://xsoer.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        &copy; 2019 <a href="https://xsoer.github.io/">hackfox By </a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="https://xsoer.github.io/js/totop.js?v=0.0.0" async=""></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-114671402-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

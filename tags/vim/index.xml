@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VIM on hackfox</title>
+    <link>https://xsoer.github.io/tags/vim/</link>
+    <description>Recent content in VIM on hackfox</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 02 Mar 2017 13:10:12 +0000</lastBuildDate>
+    
+	<atom:link href="https://xsoer.github.io/tags/vim/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>VIM使用文档总结</title>
+      <link>https://xsoer.github.io/posts/2017/03-12-vim%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Thu, 02 Mar 2017 13:10:12 +0000</pubDate>
+      
+      <guid>https://xsoer.github.io/posts/2017/03-12-vim%E5%91%BD%E4%BB%A4/</guid>
+      <description>  0x00、快捷键   向下添加一行 &amp;gt; o 向下翻页 &amp;gt; ctrl+f 向上翻页 &amp;gt; ctrl+b 下一个词 &amp;gt; w 行尾 &amp;gt; $ 第一个字符行首 &amp;gt; ^ 行首 &amp;gt; 0 撤销 &amp;gt; u 文件首 &amp;gt; gg 文件尾 &amp;gt; G 屏首 &amp;gt; ctrl+h 屏中 &amp;gt; ctrl+m 屏尾 &amp;gt; ctrl+l  </description>
+    </item>
+    
+  </channel>
+</rss>

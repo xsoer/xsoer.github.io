@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.58.1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>kudu | hackfox</title>
+    <meta property="og:title" content="kudu - hackfox">
+    <meta property="og:type" content="article">
+        
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="kudu">
+        
+    <meta name="author" content="">
+    <meta property="og:url" content="https://xsoer.github.io/categories/kudu/">
+    <link rel="shortcut icon" href="https://xsoer.github.io/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://xsoer.github.io/css/normalize.css">
+    
+    <link rel="stylesheet" href="https://xsoer.github.io/css/style.css">
+    <link rel="alternate" type="application/rss+xml+xml" href="https://xsoer.github.io/categories/kudu/index.xml" title="hackfox" />
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://xsoer.github.io/">
+                        hackfox
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="https://xsoer.github.io/">首页</a>
+                    
+                    <a  href="https://xsoer.github.io/tags/" title="标签">标签</a>
+                    
+                    <a  href="https://xsoer.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://xsoer.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    
+                    <h3 class="archive-title">
+                        分类
+                        <span class="keyword">kudu</span>
+                        中的文章
+                    </h3>
+                    
+
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://xsoer.github.io/posts/2019/07-12-kudu%E7%AE%80%E4%BB%8B/">kudu简介</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年7月12日
+                            </date>
+                            
+                            <div class="post-meta meta-category">
+                                |
+                                
+                                    <a href="https://xsoer.github.io/categories/kudu">kudu</a>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                总体概览 设计模式 存储结构 读写流程 impala结合 限制条件 文档资源   0x00、总体概览  1.历史发展  2012年10月由Cloudera公司发起创建,2015年10月对外公布，2015年12月进入apache基金会进行孵化，后续进入快速发展轨道。  2.产品定位  Fast Analytics on Fast Data。 在快速修改的数据上进行快速分析  3.产生之前 在有kudu之前，数据分类为： * 静态数据 * 以HDFS引擎作为存储引擎，适⽤用于⾼吞吐量的离线大数据分析场景 * 这类存储的局限性是数据无法进行行随机的读写 * 动态数据 * 以HBase、Cassandra 作为存储引擎，适⽤用于⼤大数据随机读写场景 * 这类存储的局限性是批量量读取吞吐量量远不不如 HDFS，不不适⽤用于批量量数据分 析的场景
+而既要满足随机读写和大数据分析的解决方案如下：
+而以上的方案问题是：
+ 架构复杂  流转涉及环节太多，运维成本很高 每个环节需要保证高可用，需要维护多个副本，存储空间也有一定的浪费 数据在多个系统上，对数据安全策略、监控等都提出了挑战  时效性低  从 HBase 导出成静态文件是周期性  难以应对后续的更新  已经从 HBase 导出到 HDFS，新到的变更数据就难以处理   所以产生了新的解决方案，那就是kudu，其定位如下： 而其gap了hdfs和hbase之间的 4.架构图 kudu的整体架构图如下 5.基本概念 下面了解一些kudu里的一些基本概念。 * Table * 数据存储，没有库的概念 * 有对应的schema结构 * 字段是强类型 * 需要设置主键 * 分隔为N个tablets * Tablet * Table按照行切分后存储的位置 * 一个tablet会多副本到其他server上，并且有一个会是leader * 如果leader失效，会用raft一致性协议重新选举 * 任何一组副本内的tablet都可以读，但是只能从leader写入 * Mater * 持续追踪所有的tablet、tablet server、catalog table、其他的集群meta信息 * 可以部署多个master，但只有一个是active * 如果active时效了，用raft协议在选举出一个 * Master信息也会存储在一个tablet上，并且被复制同步到其他master机器上 * Tablet servers会发送心跳包到master机器(默认是一秒一次) * Tablet Server * 用来存储tablet数据并且向client提供服务 * 一个tablet会在多个tablet server上 * 一个tablet server会有多个tablet * Catelog table * 是kudu元数据的中心，存储了关于table和tablet的信息 * 不允许被直接读写 * table * table schemas, * Locations * states * tablet * Tablet list * Tablet server上有哪些tablet * States * Start and end keys * Raft一致性协议算法 * 分布式服务高可用性进行多副本 * 通过raft来选举出leader * 多副本数据都可以读，但只有leader可以写 * 写入时只有当大多数follower确认成功，才算写入成功 * 在一组副本中(通常是3或5个)，允许有(N-1)/2的失败……
+                                <p class="readmore"><a href="https://xsoer.github.io/posts/2019/07-12-kudu%E7%AE%80%E4%BB%8B/">阅读全文</a></p>
+                            </div>
+                        </article>
+                    
+
+                    
+
+
+
+
+
+                </div>
+            </div>
+
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://xsoer.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://xsoer.github.io/posts/2019/09-06-%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%E5%B7%A5%E5%85%B7/" title="数据同步工具">数据同步工具</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/posts/2019/09-05-tmux%E9%85%8D%E7%BD%AE/" title="tmux配置">tmux配置</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/posts/2019/09-05-mac%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" title="Mac开发环境配置">Mac开发环境配置</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/posts/2019/09-02-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%B1%BB%E5%9E%8B/" title="神经网络类型">神经网络类型</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/posts/2019/09-01-%E6%95%B0%E5%AD%A6%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/" title="kudu简介">kudu简介</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/posts/2019/08-26-numpy%E4%BD%BF%E7%94%A8/" title="numpy库使用">numpy库使用</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/posts/2019/07-12-kudu%E7%AE%80%E4%BB%8B/" title="kudu简介">kudu简介</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/posts/2019/04-23-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E5%85%B7%E9%9B%86/" title="浏览器工具集">浏览器工具集</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/posts/2019/04-22-impala%E7%B3%BB%E7%BB%9F%E6%80%A7%E6%96%87%E6%A1%A3/" title="Impala操作手册">Impala操作手册</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/posts/2019/04-22-%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4%E5%B7%A5%E5%85%B7%E9%9B%86/" title="终端命令工具集">终端命令工具集</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://xsoer.github.io/categories/ai/">ai(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/categories/development/">development(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/categories/docker/">docker(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/categories/git/">git(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/categories/javascript/">javascript(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/categories/kudu/">kudu(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/categories/mysql/">mysql(5)</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/categories/numpy/">numpy(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/categories/php/">php(3)</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/categories/python/">python(4)</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/categories/vim/">vim(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/categories/%E5%B7%A5%E5%85%B7/">工具(6)</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(6)</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://xsoer.github.io/categories/%E8%BF%90%E7%BB%B4/">运维(1)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://xsoer.github.io/tags/ai/">ai</a>
+    
+    <a href="https://xsoer.github.io/tags/docker/">docker</a>
+    
+    <a href="https://xsoer.github.io/tags/git/">git</a>
+    
+    <a href="https://xsoer.github.io/tags/javascript/">javascript</a>
+    
+    <a href="https://xsoer.github.io/tags/kudu/">kudu</a>
+    
+    <a href="https://xsoer.github.io/tags/mysql/">mysql</a>
+    
+    <a href="https://xsoer.github.io/tags/numpy/">numpy</a>
+    
+    <a href="https://xsoer.github.io/tags/php/">php</a>
+    
+    <a href="https://xsoer.github.io/tags/python/">python</a>
+    
+    <a href="https://xsoer.github.io/tags/vim/">vim</a>
+    
+    <a href="https://xsoer.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+    
+    <a href="https://xsoer.github.io/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+    
+    <a href="https://xsoer.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="https://xsoer.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    
+    <a href="https://xsoer.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+    
+    <a href="https://xsoer.github.io/tags/%E6%96%B0%E6%8A%80%E6%9C%AF/">新技术</a>
+    
+    <a href="https://xsoer.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</a>
+    
+    <a href="https://xsoer.github.io/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://xsoer.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        &copy; 2019 <a href="https://xsoer.github.io/">hackfox By </a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="https://xsoer.github.io/js/totop.js?v=0.0.0" async=""></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-114671402-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>
