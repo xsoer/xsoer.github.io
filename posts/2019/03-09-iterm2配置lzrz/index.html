@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.58.1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title> | hackfox</title>
+    <meta property="og:title" content=" - hackfox">
+    <meta property="og:type" content="article">
+        
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="">
+        
+    <meta name="author" content="">
+    <meta property="og:url" content="http://hackfox.vip/posts/2019/03-09-iterm2%E9%85%8D%E7%BD%AElzrz/">
+    <link rel="shortcut icon" href="http://hackfox.vip/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="http://hackfox.vip/css/normalize.css">
+    
+        <link rel="stylesheet" href="http://hackfox.vip/css/prism.css">
+    
+    <link rel="stylesheet" href="http://hackfox.vip/css/style.css">
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="http://hackfox.vip">
+                        hackfox
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="http://hackfox.vip">首页</a>
+                    
+                    <a  href="http://hackfox.vip/books/" title="新书">新书</a>
+                    
+                    <a  href="http://hackfox.vip/archives/" title="归档">归档</a>
+                    
+                    <a  href="http://hackfox.vip/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+        
+        
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    <article class="post">
+                        <header>
+                            <h1 class="post-title"></h1>
+                        </header>
+                        <date class="post-meta meta-date">
+                            1年1月1日
+                        </date>
+                        
+                        
+                        
+                        <div class="post-content">
+                            
+
+<h1 id="iterm2配置lzrz">iterm2配置lzrz</h1>
+
+<ul>
+<li>作者：codehackfox@gmail.com</li>
+<li>时间：2019-03-09 12:11:30</li>
+</ul>
+
+<blockquote>
+<h2 id="0x00-安装lzrz">0x00、安装lzrz</h2>
+</blockquote>
+
+<ul>
+<li><p>1.远程连接的服务器端必须要有sz、rz这两个工具，如果没有，可以执行安装。如在CentOS上安装的命令为：</p>
+
+<pre><code>sudo yum install lrzsz
+</code></pre></li>
+
+<li><p>2.本地安装lzrz工具。</p>
+
+<pre><code>brew install lrzsz
+</code></pre></li>
+</ul>
+
+<blockquote>
+<h2 id="0x01-本地下载脚本">0x01、本地下载脚本</h2>
+</blockquote>
+
+<ul>
+<li><p>1.由于sz,rz是基于ZMODEM/YMODEM/XMODEM协议的，所以安装iterm2-zmodem</p>
+
+<pre><code>cd /usr/local/bin
+sudo wget https://raw.github.com/mmastrac/iterm2-zmodem/master/iterm2-send-zmodem.sh
+sudo wget https://raw.github.com/mmastrac/iterm2-zmodem/master/iterm2-recv-zmodem.sh
+sudo chmod 777 /usr/local/bin/iterm2-*
+</code></pre></li>
+</ul>
+
+<blockquote>
+<h2 id="0x02-配置iterm2">0x02、配置iterm2</h2>
+</blockquote>
+
+<ul>
+<li>1.打开Item2，点击preferences → profiles，选择某个profile，如Default，之后继续选择advanced → triggers，添加编辑添加如下triggers：
+(Profiles -&gt; Open Profiles -&gt; Edit Profies -&gt; Advanced -&gt; Triggers -&gt; Edit )</li>
+
+<li><p>2.rz配置</p>
+
+<pre><code>Regular Expression: \*\*B0100
+Action: Run Silent Coprocess
+Parameters: /usr/local/bin/iterm2-send-zmodem.sh
+</code></pre></li>
+
+<li><p>3.sz配置</p>
+
+<pre><code>Regular Expression: \*\*B00000000000000
+Action: Run Silent Coprocess
+Parameters: /usr/local/bin/iterm2-recv-zmodem.sh
+</code></pre></li>
+</ul>
+
+<blockquote>
+<h2 id="0x03-配置完毕-进行尝试">0x03、配置完毕，进行尝试。</h2>
+</blockquote>
+
+                        </div>
+
+                        
+
+
+                        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="http://hackfox.vip/posts/2019/09-06-%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%E5%B7%A5%E5%85%B7/">数据同步工具</a></li>
+        
+        <li><a href="http://hackfox.vip/posts/2019/02-10-python%E9%9D%A2%E8%AF%95/">python面试总结</a></li>
+        
+        <li><a href="http://hackfox.vip/posts/2019/01-01-2019%E6%8A%80%E6%9C%AF%E5%8A%A8%E5%90%91/">2019技术动向</a></li>
+        
+        <li><a href="http://hackfox.vip/posts/2016/03-10-mysql%E7%B4%A2%E5%BC%95/"></a></li>
+        
+        <li><a href="http://hackfox.vip/posts/2019/03-10-mysql%E5%B8%B8%E7%94%A8%E8%AF%AD%E5%8F%A5/"></a></li>
+        
+    </ul>
+</div>
+
+
+                        <div class="post-meta meta-tags">
+                            
+                            没有标签
+                            
+                        </div>
+                    </article>
+                    
+    
+
+    
+    
+                </div>
+            </div>
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="http://hackfox.vip">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="http://hackfox.vip/posts/2019/09-06-%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%E5%B7%A5%E5%85%B7/" title="数据同步工具">数据同步工具</a>
+    </li>
+    
+    <li>
+        <a href="http://hackfox.vip/posts/2019/02-10-python%E9%9D%A2%E8%AF%95/" title="python面试总结">python面试总结</a>
+    </li>
+    
+    <li>
+        <a href="http://hackfox.vip/posts/2019/01-01-2019%E6%8A%80%E6%9C%AF%E5%8A%A8%E5%90%91/" title="2019技术动向">2019技术动向</a>
+    </li>
+    
+    <li>
+        <a href="http://hackfox.vip/posts/2015/03-10-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title=""></a>
+    </li>
+    
+    <li>
+        <a href="http://hackfox.vip/posts/2015/06-12-php%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/" title=""></a>
+    </li>
+    
+    <li>
+        <a href="http://hackfox.vip/posts/2015/07-05-php%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0/" title=""></a>
+    </li>
+    
+    <li>
+        <a href="http://hackfox.vip/posts/2015/10-01-%E8%BF%90%E7%BB%B4%E6%8A%80%E8%83%BD/" title=""></a>
+    </li>
+    
+    <li>
+        <a href="http://hackfox.vip/posts/2015/10-12-mysql%E6%8A%80%E6%9C%AF/" title=""></a>
+    </li>
+    
+    <li>
+        <a href="http://hackfox.vip/posts/2015/12-28-mysql%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%BB%BA%E8%AE%AE/" title=""></a>
+    </li>
+    
+    <li>
+        <a href="http://hackfox.vip/posts/2016/03-10-mysql%E7%B4%A2%E5%BC%95/" title=""></a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="http://hackfox.vip/categories/development/">development(3)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="http://hackfox.vip/tags/%E6%96%B0%E6%8A%80%E6%9C%AF/">新技术</a>
+    
+    <a href="http://hackfox.vip/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="http://hackfox.vip/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        &copy; 2019 <a href="http://hackfox.vip">hackfox By </a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        
+        (function () {
+            $("pre code").parent().addClass("line-numbers")
+        }());
+
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script type="text/javascript" src="http://hackfox.vip/js/prism.js" async="true"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="http://hackfox.vip/js/totop.js?v=0.0.0" async=""></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-114671402-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+</body>
+</html>

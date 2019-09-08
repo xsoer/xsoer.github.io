@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.58.1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title> | hackfox</title>
+    <meta property="og:title" content=" - hackfox">
+    <meta property="og:type" content="article">
+        
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="">
+        
+    <meta name="author" content="">
+    <meta property="og:url" content="http://hackfox.vip/posts/2018/08-10-%E8%A1%8C%E4%B8%8E%E5%88%97%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%BA%93/">
+    <link rel="shortcut icon" href="http://hackfox.vip/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="http://hackfox.vip/css/normalize.css">
+    
+        <link rel="stylesheet" href="http://hackfox.vip/css/prism.css">
+    
+    <link rel="stylesheet" href="http://hackfox.vip/css/style.css">
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="http://hackfox.vip">
+                        hackfox
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="http://hackfox.vip">首页</a>
+                    
+                    <a  href="http://hackfox.vip/books/" title="新书">新书</a>
+                    
+                    <a  href="http://hackfox.vip/archives/" title="归档">归档</a>
+                    
+                    <a  href="http://hackfox.vip/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+        
+        
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    <article class="post">
+                        <header>
+                            <h1 class="post-title"></h1>
+                        </header>
+                        <date class="post-meta meta-date">
+                            1年1月1日
+                        </date>
+                        
+                        
+                        
+                        <div class="post-content">
+                            
+
+<h1 id="行与列式数据库">行与列式数据库</h1>
+
+<ul>
+<li>作者：codehackfox@gmail.com</li>
+<li>时间：2018-08-10 13:23:49</li>
+</ul>
+
+<blockquote>
+<h3 id="0x00-简介">0x00、简介</h3>
+</blockquote>
+
+<h5 id="行式数据库">行式数据库</h5>
+
+<ul>
+<li>平常用的结构化关系型数据库，比如mysql、sqlserver等</li>
+<li>一行为一条数据，进行记录存储</li>
+<li>可以进行join查询，可以进行笛卡尔积运算</li>
+</ul>
+
+<h5 id="列式数据库">列式数据库</h5>
+
+<ul>
+<li>列式数据库是以列相关存储架构进行数据存储的数据库，主要适合于批量数据处理和即时查询。相对应的是行式数据库，数据以行相关的存储体系架构进行空间分配，主要适合于小批量的数据处理，常用于联机事务型数据处理。</li>
+<li>特点
+
+<ul>
+<li>因为硬盘寻址时间相较于计算机上其他部件的运行速度来说不是一般的慢，所以常用相同工作负载下的硬盘访问性能来比较行数据库和列数据库。通常，顺序读取数据要比随机访问更快。而且，硬盘寻址时间的提升比起CPU速度的进步要慢得多 (参看 摩尔定律)，在使用硬盘作为存储媒介的系统上这种情况很可能还会持续一段时间。下面简单罗列了一些选择行数据库还是列数据库的权衡依据。当然，如果能够把数据全放在内存中，那么使用内存数据库性能会更好。
+
+<ul>
+<li>1.在只需要根据某几列来聚合数据的时候按列的数据组织方式更有效。因为这样只需要读取一部分数据，要比读取全部数据更快。</li>
+<li>2.当只需要修改某一列值的时候按列的数据组织方式更有效。因为可以直接找到某列数据并修改，而与行中的其他列无关。</li>
+<li>3.当需要某行的多列数据的时候按行的数据组织方式更有效。当行中数据不是太多的情况下一次硬盘寻址就可以获得该行的所有数据。</li>
+<li>4.在新增行数据的时候，如果各列都有值，那么按行的数据组织方式会更有效，因为只需要一次硬盘寻址就可以写入整行的全部数据。</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h5 id="应用">应用</h5>
+
+<ul>
+<li>面向行的数据存储架构更适用于OLTP-频繁交互事务的场景。</li>
+<li>面向列的数据存储架构更适用于OLAP-(如数据仓库)这样在海量数据（(可能达到 terabyte规模)）中进行有限复杂查询的场景。</li>
+</ul>
+
+<blockquote>
+<h3 id="0x01-比较">0x01、比较</h3>
+</blockquote>
+
+<ul>
+<li><img src="assets/13022AD3-DD16-4B84-9099-C03E4F10533D.png" alt="13022AD3-DD16-4B84-9099-C03E4F10533D.png" /></li>
+<li><img src="assets/0CD4C6E1-CAB6-44A4-8875-DA4F1C6FCF57.png" alt="0CD4C6E1-CAB6-44A4-8875-DA4F1C6FCF57.png" /></li>
+<li>底层存储实例
+
+<ul>
+<li><img src="assets/773CBA88-4945-40CA-8628-78BE4CF97B5C.jpg" alt="773CBA88-4945-40CA-8628-78BE4CF97B5C.jpg" /></li>
+<li><img src="assets/FA6212EF-26D1-4AB7-B52C-343F8105A3D6.jpg" alt="FA6212EF-26D1-4AB7-B52C-343F8105A3D6.jpg" /></li>
+<li><img src="assets/2D9E6EC3-D366-4087-A92F-C9CF9A2BC238.jpg" alt="2D9E6EC3-D366-4087-A92F-C9CF9A2BC238.jpg" /></li>
+</ul></li>
+<li>随机读与顺序读
+
+<ul>
+<li><img src="assets/CA0D0CF0-F150-47DD-A98F-8BAB0D9B0A02.jpg" alt="CA0D0CF0-F150-47DD-A98F-8BAB0D9B0A02.jpg" /></li>
+</ul></li>
+</ul>
+
+<blockquote>
+<h3 id="0x02-优缺点">0x02、优缺点</h3>
+</blockquote>
+
+<h5 id="列数据库">列数据库</h5>
+
+<ul>
+<li>优点：
+
+<ul>
+<li>极高的装载速度（最高可以等于所有硬盘IO 的总和，基本是极限了）</li>
+<li>适合大量的数据而不是小数据</li>
+<li>实时加载数据仅限于增加（删除和更新需要解压缩Block 然后计算然后重新压缩储存</li>
+<li>高效的压缩率，不仅节省储存空间也节省计算内存和CPU。</li>
+<li>非常适合做聚合操作。</li>
+</ul></li>
+<li>缺点：
+
+<ul>
+<li>不适合扫描小量数据</li>
+<li>不适合随机的更新</li>
+<li>批量更新情况各异，有的优化的比较好的列式数据库（比如Vertica）表现比较好，有些没有针对更新的数据库表现比较差。</li>
+<li>不适合做含有删除和更新的实时操作</li>
+</ul></li>
+</ul>
+
+<h5 id="行数据库">行数据库</h5>
+
+<ul>
+<li>优点
+
+<ul>
+<li>适合频繁的增删改数据</li>
+<li>小量数据的频繁维护和简单统计</li>
+</ul></li>
+<li>缺点
+
+<ul>
+<li>不适合做统计类操作</li>
+</ul></li>
+</ul>
+
+                        </div>
+
+                        
+
+
+                        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="http://hackfox.vip/posts/2019/09-06-%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%E5%B7%A5%E5%85%B7/">数据同步工具</a></li>
+        
+        <li><a href="http://hackfox.vip/posts/2019/02-10-python%E9%9D%A2%E8%AF%95/">python面试总结</a></li>
+        
+        <li><a href="http://hackfox.vip/posts/2019/01-01-2019%E6%8A%80%E6%9C%AF%E5%8A%A8%E5%90%91/">2019技术动向</a></li>
+        
+        <li><a href="http://hackfox.vip/posts/2015/03-10-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"></a></li>
+        
+        <li><a href="http://hackfox.vip/posts/2019/03-08-python%E8%A3%85%E9%A5%B0%E5%99%A8/"></a></li>
+        
+    </ul>
+</div>
+
+
+                        <div class="post-meta meta-tags">
+                            
+                            没有标签
+                            
+                        </div>
+                    </article>
+                    
+    
+
+    
+    
+                </div>
+            </div>
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="http://hackfox.vip">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="http://hackfox.vip/posts/2019/09-06-%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%E5%B7%A5%E5%85%B7/" title="数据同步工具">数据同步工具</a>
+    </li>
+    
+    <li>
+        <a href="http://hackfox.vip/posts/2019/02-10-python%E9%9D%A2%E8%AF%95/" title="python面试总结">python面试总结</a>
+    </li>
+    
+    <li>
+        <a href="http://hackfox.vip/posts/2019/01-01-2019%E6%8A%80%E6%9C%AF%E5%8A%A8%E5%90%91/" title="2019技术动向">2019技术动向</a>
+    </li>
+    
+    <li>
+        <a href="http://hackfox.vip/posts/2015/03-10-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title=""></a>
+    </li>
+    
+    <li>
+        <a href="http://hackfox.vip/posts/2015/06-12-php%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/" title=""></a>
+    </li>
+    
+    <li>
+        <a href="http://hackfox.vip/posts/2015/07-05-php%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0/" title=""></a>
+    </li>
+    
+    <li>
+        <a href="http://hackfox.vip/posts/2015/10-01-%E8%BF%90%E7%BB%B4%E6%8A%80%E8%83%BD/" title=""></a>
+    </li>
+    
+    <li>
+        <a href="http://hackfox.vip/posts/2015/10-12-mysql%E6%8A%80%E6%9C%AF/" title=""></a>
+    </li>
+    
+    <li>
+        <a href="http://hackfox.vip/posts/2015/12-28-mysql%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%BB%BA%E8%AE%AE/" title=""></a>
+    </li>
+    
+    <li>
+        <a href="http://hackfox.vip/posts/2016/03-10-mysql%E7%B4%A2%E5%BC%95/" title=""></a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="http://hackfox.vip/categories/development/">development(3)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="http://hackfox.vip/tags/%E6%96%B0%E6%8A%80%E6%9C%AF/">新技术</a>
+    
+    <a href="http://hackfox.vip/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="http://hackfox.vip/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        &copy; 2019 <a href="http://hackfox.vip">hackfox By </a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        
+        (function () {
+            $("pre code").parent().addClass("line-numbers")
+        }());
+
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script type="text/javascript" src="http://hackfox.vip/js/prism.js" async="true"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="http://hackfox.vip/js/totop.js?v=0.0.0" async=""></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-114671402-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+</body>
+</html>

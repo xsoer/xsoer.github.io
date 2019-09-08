@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.58.1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title> | hackfox</title>
+    <meta property="og:title" content=" - hackfox">
+    <meta property="og:type" content="article">
+        
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="">
+        
+    <meta name="author" content="">
+    <meta property="og:url" content="http://hackfox.vip/posts/2019/03-10-python%E8%B5%84%E6%BA%90%E6%B1%87%E6%80%BB/">
+    <link rel="shortcut icon" href="http://hackfox.vip/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="http://hackfox.vip/css/normalize.css">
+    
+        <link rel="stylesheet" href="http://hackfox.vip/css/prism.css">
+    
+    <link rel="stylesheet" href="http://hackfox.vip/css/style.css">
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="http://hackfox.vip">
+                        hackfox
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="http://hackfox.vip">首页</a>
+                    
+                    <a  href="http://hackfox.vip/books/" title="新书">新书</a>
+                    
+                    <a  href="http://hackfox.vip/archives/" title="归档">归档</a>
+                    
+                    <a  href="http://hackfox.vip/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+        
+        
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    <article class="post">
+                        <header>
+                            <h1 class="post-title"></h1>
+                        </header>
+                        <date class="post-meta meta-date">
+                            1年1月1日
+                        </date>
+                        
+                        
+                        
+                        <div class="post-content">
+                            
+
+<h1 id="python资源汇总">python资源汇总</h1>
+
+<ul>
+<li>作者：codehackfox@gmail.com</li>
+<li>时间：2019-03-10 13:33:30</li>
+</ul>
+
+<blockquote>
+<h2 id="0x00-图书链接">0x00、图书链接</h2>
+</blockquote>
+
+<ul>
+<li><a href="https://github.com/xsoer/learn-files/tree/master/%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3/python">各种图书资源</a></li>
+</ul>
+
+<blockquote>
+<h2 id="0x01-常用库">0x01、常用库</h2>
+</blockquote>
+
+<h3 id="01-通用库">01、通用库</h3>
+
+<ul>
+<li>urllib
+
+<ul>
+<li>allows you access websites via your program</li>
+<li><a href="https://docs.python.org/3/library/urllib.html">文档</a></li>
+</ul></li>
+<li>requests -网络库</li>
+<li>grab – 网络库（基于pycurl）。</li>
+<li>pycurl – 网络库（绑定libcurl）。</li>
+<li>urllib3 – Python HTTP库，安全连接池、支持文件post、可用性高。</li>
+<li>httplib2 – 网络库。</li>
+<li>RoboBrowser – 一个简单的、极具Python风格的Python库，无需独立的浏览器即可浏览网页。</li>
+<li>MechanicalSoup -一个与网站自动交互Python库。</li>
+<li>mechanize -有状态、可编程的Web浏览库。</li>
+<li>socket – 底层网络接口(stdlib)。</li>
+<li>Unirest for Python – Unirest是一套可用于多种语言的轻量级的HTTP库。</li>
+<li>hyper – Python的HTTP/2客户端。</li>
+<li>PySocks – SocksiPy更新并积极维护的版本，包括错误修复和一些其他的特征。作为socket模块的直接替换。</li>
+</ul>
+
+<h3 id="02-爬虫库">02、爬虫库</h3>
+
+<ul>
+<li>scrapy – 网络爬虫框架（基于twisted），不支持Python3。</li>
+<li>pyspider – 一个强大的爬虫系统。</li>
+<li>cola – 一个分布式爬虫框架</li>
+<li>portia – 基于Scrapy的可视化爬虫。</li>
+<li>restkit – Python的HTTP资源工具包。它可以让你轻松地访问HTTP资源，并围绕它建立的对象。</li>
+<li>demiurge – 基于PyQuery的爬虫微框架。</li>
+</ul>
+
+<h3 id="03-html-xml解析器">03、HTML/XML解析器</h3>
+
+<ul>
+<li>lxml – C语言编写高效HTML/ XML处理库。支持XPath。</li>
+<li>cssselect – 解析DOM树和CSS选择器。</li>
+<li>pyquery – 解析DOM树和jQuery选择器。</li>
+<li>BeautifulSoup – 低效HTML/ XML处理库，纯Python实现。</li>
+<li>html5lib – 根据WHATWG规范生成HTML/ XML文档的DOM。该规范被用在现在所有的浏览器上。</li>
+<li>feedparser – 解析RSS/ATOM feeds。</li>
+<li>MarkupSafe – 为XML/HTML/XHTML提供了安全转义的字符串。</li>
+<li>xmltodict – 一个可以让你在处理XML时感觉像在处理JSON一样的Python模块。</li>
+<li>xhtml2pdf – 将HTML/CSS转换为PDF。</li>
+<li>untangle – 轻松实现将XML文件转换为Python对象。</li>
+<li>Bleach – 清理HTML（需要html5lib）。</li>
+<li>sanitize – 为混乱的数据世界带来清明。</li>
+</ul>
+
+<h3 id="04-文本处理">04、文本处理</h3>
+
+<ul>
+<li>difflib – （Python标准库）帮助进行差异化比较。</li>
+<li>Levenshtein – 快速计算Levenshtein距离和字符串相似度。</li>
+<li>fuzzywuzzy – 模糊字符串匹配。</li>
+<li>esmre – 正则表达式加速器。</li>
+<li>ftfy – 自动整理Unicode文本，减少碎片化。</li>
+</ul>
+
+<h3 id="05-自然语言处理">05、自然语言处理</h3>
+
+<ul>
+<li>NLTK -编写Python程序来处理人类语言数据的最好平台。</li>
+<li>Pattern – Python的网络挖掘模块。他有自然语言处理工具，机器学习以及其它。</li>
+<li>TextBlob – 为深入自然语言处理任务提供了一致的API。是基于NLTK以及Pattern的巨人之肩上发展的。</li>
+<li>jieba – 中文分词工具。</li>
+<li>SnowNLP – 中文文本处理库。</li>
+<li>loso – 另一个中文分词库。</li>
+<li>scikit-learn</li>
+<li>tensorflow</li>
+<li>kera</li>
+</ul>
+
+<h3 id="06-图像处理库">06、图像处理库</h3>
+
+<ul>
+<li>matplotlib
+
+<ul>
+<li><a href="https://matplotlib.org/">官网</a></li>
+<li><a href="https://matplotlib.org/contents.html">文档地址</a></li>
+<li><a href="https://matplotlib.org/Matplotlib.pdf">文档pdf版本</a></li>
+<li><a href="https://www.matplotlib.org.cn/index.html">中文文档</a></li>
+<li><a href="https://github.com/xsoer/interview/blob/master/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/python/libaray/matplotlib.md">总结说明</a></li>
+</ul></li>
+</ul>
+
+<h3 id="07-浏览器自动化与仿真">07、浏览器自动化与仿真</h3>
+
+<ul>
+<li>selenium – 自动化真正的浏览器（Chrome浏览器，火狐浏览器，Opera浏览器，IE浏览器）。</li>
+<li>Ghost.py – 对PyQt的webkit的封装（需要PyQT）。</li>
+<li>Spynner – 对PyQt的webkit的封装（需要PyQT）。</li>
+<li>Splinter – 通用API浏览器模拟器（selenium web驱动，Django客户端，Zope）。</li>
+</ul>
+
+<h3 id="08-多重处理">08、多重处理</h3>
+
+<ul>
+<li>threading – Python标准库的线程运行。对于I/O密集型任务很有效。对于CPU绑定的任务没用，因为python GIL。</li>
+<li>multiprocessing – 标准的Python库运行多进程。</li>
+<li>celery – 基于分布式消息传递的异步任务队列/作业队列。</li>
+<li>concurrent-futures – concurrent-futures 模块为调用异步执行提供了一个高层次的接口。</li>
+</ul>
+
+<h3 id="09-异步">09、异步</h3>
+
+<ul>
+<li>asyncio – （在Python 3.4 +版本以上的 Python标准库）异步I/O，时间循环，协同程序和任务。</li>
+<li>Twisted – 基于事件驱动的网络引擎框架。</li>
+<li>Tornado – 一个网络框架和异步网络库。</li>
+<li>pulsar – Python事件驱动的并发框架。</li>
+<li>diesel – Python的基于绿色事件的I/O框架。</li>
+<li>gevent – 一个使用greenlet 的基于协程的Python网络库。</li>
+<li>eventlet – 有WSGI支持的异步框架。</li>
+<li>Tomorrow – 异步代码的奇妙的修饰语法。</li>
+</ul>
+
+<h3 id="10-队列">10、队列</h3>
+
+<ul>
+<li>celery – 基于分布式消息传递的异步任务队列/作业队列。</li>
+<li>huey – 小型多线程任务队列。</li>
+<li>mrq – Mr. Queue – 使用redis &amp; Gevent 的Python分布式工作任务队列。</li>
+<li>RQ – 基于Redis的轻量级任务队列管理器。</li>
+<li>simpleq – 一个简单的，可无限扩展，基于Amazon SQS的队列。</li>
+<li>python-gearman – Gearman的Python API</li>
+</ul>
+
+<h3 id="11-云计算">11、云计算</h3>
+
+<ul>
+<li>picloud – 云端执行Python代码。</li>
+<li>dominoup.com – 云端执行R，Python和matlab代码</li>
+</ul>
+
+<h3 id="12-网页内容提取">12、网页内容提取</h3>
+
+<ul>
+<li>newspaper – 用Python进行新闻提取、文章提取和内容策展。</li>
+<li>html2text – 将HTML转为Markdown格式文本。</li>
+<li>python-goose – HTML内容/文章提取器。</li>
+<li>lassie – 人性化的网页内容检索工具</li>
+</ul>
+
+<h3 id="13-websocket">13、WebSocket</h3>
+
+<ul>
+<li>Crossbar – 开源的应用消息传递路由器（Python实现的用于Autobahn的WebSocket和WAMP）。</li>
+<li>AutobahnPython – 提供了WebSocket协议和WAMP协议的Python实现并且开源。</li>
+<li>WebSocket-for-Python – Python 2和3以及PyPy的WebSocket客户端和服务器库。</li>
+</ul>
+
+<h3 id="14-dns解析">14、DNS解析</h3>
+
+<ul>
+<li>dnsyo – 在全球超过1500个的DNS服务器上检查你的DNS。</li>
+<li>pycares – c-ares的接口。c-ares是进行DNS请求和异步名称决议的C语言库。</li>
+</ul>
+
+<h3 id="15-计算机视觉">15、计算机视觉</h3>
+
+<ul>
+<li>OpenCV – 开源计算机视觉库。</li>
+<li>SimpleCV – 用于照相机、图像处理、特征提取、格式转换的简介，可读性强的接口（基于OpenCV）。</li>
+<li>mahotas – 快速计算机图像处理算法（完全使用 C++ 实现），完全基于 numpy 的数组作为它的数据类型。</li>
+</ul>
+
+<h3 id="16-web框架">16、web框架</h3>
+
+<ul>
+<li>Django</li>
+<li>Flask</li>
+<li>Web2py</li>
+<li>Tornado</li>
+<li>CherryPy</li>
+</ul>
+
+                        </div>
+
+                        
+
+
+                        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="http://hackfox.vip/posts/2019/09-06-%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%E5%B7%A5%E5%85%B7/">数据同步工具</a></li>
+        
+        <li><a href="http://hackfox.vip/posts/2019/02-10-python%E9%9D%A2%E8%AF%95/">python面试总结</a></li>
+        
+        <li><a href="http://hackfox.vip/posts/2019/01-01-2019%E6%8A%80%E6%9C%AF%E5%8A%A8%E5%90%91/">2019技术动向</a></li>
+        
+        <li><a href="http://hackfox.vip/posts/2017/07-06-mysql%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/"></a></li>
+        
+        <li><a href="http://hackfox.vip/posts/2019/08-26-numpy%E4%BD%BF%E7%94%A8/"></a></li>
+        
+    </ul>
+</div>
+
+
+                        <div class="post-meta meta-tags">
+                            
+                            没有标签
+                            
+                        </div>
+                    </article>
+                    
+    
+
+    
+    
+                </div>
+            </div>
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="http://hackfox.vip">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="http://hackfox.vip/posts/2019/09-06-%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%E5%B7%A5%E5%85%B7/" title="数据同步工具">数据同步工具</a>
+    </li>
+    
+    <li>
+        <a href="http://hackfox.vip/posts/2019/02-10-python%E9%9D%A2%E8%AF%95/" title="python面试总结">python面试总结</a>
+    </li>
+    
+    <li>
+        <a href="http://hackfox.vip/posts/2019/01-01-2019%E6%8A%80%E6%9C%AF%E5%8A%A8%E5%90%91/" title="2019技术动向">2019技术动向</a>
+    </li>
+    
+    <li>
+        <a href="http://hackfox.vip/posts/2015/03-10-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title=""></a>
+    </li>
+    
+    <li>
+        <a href="http://hackfox.vip/posts/2015/06-12-php%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/" title=""></a>
+    </li>
+    
+    <li>
+        <a href="http://hackfox.vip/posts/2015/07-05-php%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0/" title=""></a>
+    </li>
+    
+    <li>
+        <a href="http://hackfox.vip/posts/2015/10-01-%E8%BF%90%E7%BB%B4%E6%8A%80%E8%83%BD/" title=""></a>
+    </li>
+    
+    <li>
+        <a href="http://hackfox.vip/posts/2015/10-12-mysql%E6%8A%80%E6%9C%AF/" title=""></a>
+    </li>
+    
+    <li>
+        <a href="http://hackfox.vip/posts/2015/12-28-mysql%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%BB%BA%E8%AE%AE/" title=""></a>
+    </li>
+    
+    <li>
+        <a href="http://hackfox.vip/posts/2016/03-10-mysql%E7%B4%A2%E5%BC%95/" title=""></a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="http://hackfox.vip/categories/development/">development(3)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="http://hackfox.vip/tags/%E6%96%B0%E6%8A%80%E6%9C%AF/">新技术</a>
+    
+    <a href="http://hackfox.vip/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="http://hackfox.vip/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        &copy; 2019 <a href="http://hackfox.vip">hackfox By </a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        
+        (function () {
+            $("pre code").parent().addClass("line-numbers")
+        }());
+
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script type="text/javascript" src="http://hackfox.vip/js/prism.js" async="true"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="http://hackfox.vip/js/totop.js?v=0.0.0" async=""></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-114671402-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+</body>
+</html>
