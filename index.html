@@ -1,633 +1,1232 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
+<!DOCTYPE HTML>
+<html lang="">
 
+
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.58.1" />
+    <meta name="keywords" content="hackfox">
+    <meta name="description" content="hackfox">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>hackfox</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
 
-    <title>hackfox | </title>
-    <meta property="og:title" content="hackfox | ">
-    <meta property="og:type" content="website">
-    <meta name="Keywords" content="">
-    <meta name="description" content="">
-    <meta property="og:url" content="https://xsoer.github.io/">
-    <link rel="shortcut icon" href="https://xsoer.github.io/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
 
-    <link rel="stylesheet" href="https://xsoer.github.io/css/normalize.css">
-    
-    <link rel="stylesheet" href="https://xsoer.github.io/css/style.css">
-    <link rel="alternate" type="application/rss+xml+xml" href="https://xsoer.github.io/index.xml" title="hackfox" />
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-    
-
-
-    
-    
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
 </head>
 
 
 <body>
-<header id="header" class="clearfix">
-    <div class="container">
-        <div class="col-group">
-            <div class="site-name ">
-                
-                    <h1>
-                        <a id="logo" href="https://xsoer.github.io/">
-                            hackfox
-                        </a>
-                    </h1>
-                
-                
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">hackfox</span>
+                </a>
             </div>
-            <div>
-                <nav id="nav-menu" class="clearfix">
-                    <a class="current" href="https://xsoer.github.io/">首页</a>
-                    
-                    <a  href="https://xsoer.github.io/tags/" title="标签">标签</a>
-                    
-                    <a  href="https://xsoer.github.io/archives/" title="归档">归档</a>
-                    
-                    <a  href="https://xsoer.github.io/about/" title="关于">关于</a>
-                    
-                </nav>
-            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>Index</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>Tags</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>Categories</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>Archives</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>About</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>Friends</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="Search"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">hackfox</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
         </div>
     </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                Index
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                Tags
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                Categories
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                Archives
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                About
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                Friends
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
 </header>
 
 
-<div id="body">
-    <div class="container">
-        <div class="col-group">
+<style>
+    .carousel-control {
+        width: 45px;
+        height: 45px;
+        line-height: 55px;
+        border-radius: 45px;
+        background: transparent;
+        cursor: pointer;
+        z-index: 100;
+    }
 
-            <div class="col-8" id="main">
-                <div class="res-cons">
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://xsoer.github.io/posts/2019/09-06-%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%E5%B7%A5%E5%85%B7/" title="数据同步工具" >数据同步工具</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2019年9月6日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="https://xsoer.github.io/categories/%E5%B7%A5%E5%85%B7">工具</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                 0x00、总览  1.定时任务 2.canal/otter 3.Datax 4.Sqoop 5.NiFi 6.mongoshake  0x02、定时任务 定时任务工具是作为数据同步的最基本也是最常用的工具。其不但用于定时的数据同步，而且作为定时的处理其他任务，比如爬虫等。
-1.Airflow 2.gocron 0x03、cannel/otter  阿里巴巴分布式数据库同步系统 官网 主要同步mysql数据，读取解析mysql binlog，然后同步导入到新的mysql库内  0x04、Datax  阿里巴巴开源离线同步Datax 官网 抽象为读取的reader源和写入的write源，支持开发新插件 直接读取写入，用json格式来描述，不支持中间做转换  0x05、Sqoop  https://sqoop.apache.org/ https://github.com/apache/sqoop 定位是从hadoop与关系型数据库的同步。 Sqoop 启用了一个 MapReduce 作业（极其容错的分布式并行计算）来执行任务 Sqoop 的另一大优势是其传输大量结构化或半结构化数据的过程是完全自动化的。   0x06、Nifi  NiFi 项目在创建过程中遵循了一些理念  1）精细化管理信息流的能力； 2）跟踪数据相关事件和信息的能力，比如数据从哪里来，在路径中发生了什么； 3）保证控制和数据面的安全能力  优势  有保证的数据交付 支持背压（back-pressure）机制的数据缓冲 有优先级的队列 QoS 数据溯源（Data provenance）：NiFi 对数据流路径上的每次变化都会保留日志记录，从而保证结果的可追溯，以及数据的恢复、重播、审计和评估。 通过日志记录数据的历史细节 支持交互式命令和控制台，并对系统变化提供可视化的反馈 支持流模板（Flow templates） 支持插入式（Pluggable）/ 多角色（multi-role）的安全机制 支持对数据操作的扩展 支持集群管理   0x07、mongoshake  https://github.com/alibaba/MongoShake alibaba开源的同步mogndb的服务   ……
-                            </div>
-                            <p class="readmore"><a href="https://xsoer.github.io/posts/2019/09-06-%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%E5%B7%A5%E5%85%B7/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://xsoer.github.io/posts/2019/09-05-tmux%E9%85%8D%E7%BD%AE/" title="tmux配置" >tmux配置</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2019年9月5日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="https://xsoer.github.io/categories/%E5%B7%A5%E5%85%B7">工具</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                0x00、简介  终端复用神器  0x01、快捷键 1.tmux命令  启动新会话
-tmux [new -s 会话名 -n 窗口名]  恢复会话：
-tmux at [-t 会话名]  列出所有会话：
-tmux ls  关闭会话
-tmux kill-session -t 会话名   2.tmux内快捷键  会话
-:new&lt;回车&gt; 启动新会话 s 列出所有会话 $ 重命名当前会话  窗口 (标签页)
-c 创建新窗口 w 列出所有窗口 n 后一个窗口 p 前一个窗口 f 查找窗口 , 重命名当前窗口 &amp; 关闭当前窗口  调整窗口排序
-swap-window -s 3 -t 1 交换 3 号和 1 号窗口 swap-window -t 1 交换当前和 1 号窗口 move-window -t 1 移动当前窗口到 1 号  窗格（分割窗口）
-% 垂直分割 &quot; 水平分割 o 交换窗格 x 关闭窗格 ⍽ 左边这个符号代表空格键 - 切换布局 q 显示每个窗格是第几个，当数字出现的时候按数字几就选中第几个窗格 { 与上一个窗格交换位置 } 与下一个窗格交换位置 z 切换窗格最大化/最小化  杂项
-d 退出 tmux（tmux 仍在后台运行） t 窗口中央显示一个数字时钟 ? 列出所有快捷键 : 命令提示符   0x02、配置文件 #设置前缀为Ctrl + a set -g prefix C-a #解除Ctrl+b 与前缀的对应关系 unbind C-b bind C-a send-prefix # 绑定Ctrl+a为新的指令前缀 # 设置序号从1开始 set -g base-index 1 set -g pane-base-index 1 #将r 设置为加载配置文件，并显示&quot;reloaded!……
-                            </div>
-                            <p class="readmore"><a href="https://xsoer.github.io/posts/2019/09-05-tmux%E9%85%8D%E7%BD%AE/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://xsoer.github.io/posts/2019/09-05-mac%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" title="Mac开发环境配置" >Mac开发环境配置</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2019年9月5日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="https://xsoer.github.io/categories/%E5%B7%A5%E5%85%B7">工具</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                0X00、Mac软件  1.vscode 2.omyzsh 3.tmux 4.vim 5.Chrome 6.输入法  0x01、vscode 插件  Dash clock in status bar Docker ESlint File Utils filesize GitLens Go python IntelliJ IDEA keybingdings LaTex Workshop leetCode open in browser Path Intelligence Remote - Container Remote - SSH Remote - SSH:Editing Configuration Remote - SSH:Explore Remote - WSL Remote Development Settings Sync Shades of Purple SQLTools Stackoverflow Instant Search TabNine Vetur YAML  配置 { &quot;workbench.activityBar.visible&quot;: true, &quot;editor.scrollBeyondLastLine&quot;: false, &quot;files.autoSave&quot;: &quot;onFocusChange&quot;, &quot;workbench.colorTheme&quot;: &quot;Shades of Purple&quot;, &quot;terminal.integrated.cursorStyle&quot;: &quot;line&quot;, &quot;workbench.statusBar.feedback.visible&quot;: false, &quot;clock.dateFormat&quot;: &quot;yyyy-mm-dd HH:MM:ss&quot;, &quot;extensions.ignoreRecommendations&quot;: false, &quot;files.exclude&quot;: { &quot;**/__pycache__&quot;: true, &quot;**/*.pyc&quot;: true }, &quot;breadcrumbs.enabled&quot;: true, &quot;editor.fontSize&quot;: 15, &quot;editor.fontFamily&quot;: &quot;'Source Code Pro',Menlo, Monaco, 'Courier New', monospace&quot;, &quot;terminal.external.osxExec&quot;: &quot;iterm.app&quot;, &quot;terminal.integrated.copyOnSelection&quot;: true, &quot;terminal.integrated.fontSize&quot;: 15, &quot;terminal.integrated.fontFamily&quot;: &quot;'Source Code Pro'&quot;, &quot;terminal.integrated.scrollback&quot;: 3000, &quot;terminal.integrated.shell.osx&quot;: &quot;/bin/zsh&quot;, &quot;python.pythonPath&quot;: &quot;~/anaconda3/bin/python&quot;, &quot;python.linting.pylintEnabled&quot;: true, &quot;leetcode.defaultLanguage&quot;: &quot;python3&quot;, &quot;leetcode.outputFolder&quot;: &quot;leecode&quot;, &quot;leetcode.hideSolved&quot;: true, &quot;breadcrumbs.symbolSortOrder&quot;: &quot;name&quot;, // Theme Setup. // &quot;workbench.iconTheme&quot;: &quot;vscode-icons&quot;, &quot;editor.……
-                            </div>
-                            <p class="readmore"><a href="https://xsoer.github.io/posts/2019/09-05-mac%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://xsoer.github.io/posts/2019/09-02-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%B1%BB%E5%9E%8B/" title="神经网络类型" >神经网络类型</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2019年9月2日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="https://xsoer.github.io/categories/ai">AI</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                 0x00、大体类型  1.卷积神经网络 2.循环神经网络 3.深度信念网络 4.生成对抗网络 5.深度强化学习  0x01、卷积神经网络  卷积神经网络属于前面介绍的前馈神经网络之一，它对于图形图像的处理有着独特的效果，在结构上至少包括卷积层和池化层 目前卷积神经网络主要应用于影像中物体检测和识别、视频理解，除此之外，卷积神经网络还被应用于自然语言处理 代表性的卷积神经网络包括LeNet-5、VGG、AlexNet 等  0x02、循环神经网络  不同于卷积神经网络，循环神经网络更擅长于对语言文本的处理。文本的分析处理，更看重时序上的输入与上下文的联系。循环神经网络的内部记忆结构，刚好满足这样的需求场景，因此在文本处理方面循环神经网络更胜一筹。 目前循环神经网络的主要落地场景在机器翻译、情感分析等NLP 领域。特别是近几年媒体曝光较多的新闻写稿机器人，也是基于循环神经网络的一个应用。除此之外，循环神经网络还可以实现自动作诗、自动写歌词，甚至自动写代码。  0x03、深度信念网络  是一种生成模型，由多个受限玻尔兹曼机组成，采用逐层的方式进行训练，其结构可以理解为由多层简单学习模型组合而成的复合模型。深度信念网络是一个可以对训练的数据样本进行深层次表达的图形模型。  0x04、生成对抗网络  生成对抗网络将对抗的思想引入机器学习领域，对抗的双方为判别模型和生成模型 判别模型的职责是准确区分真实数据和生成数据，而生成模型负责生成符合真实数据概率分布的新数据 生成对抗网络主要用于样本数据概率分布的建模，并生成与训练数据相同分布的新数据  目前，GAN 主要应用于图像与视觉领域，以及自然语言处理领域，例如，提升图像分辨率、还原遮挡或破损图像、基于文本描述生成图像等。   0x05、深度强化学习  与其他机器学习的差异在于，深度强化学习更加注重基于环境的改变而调整自身的行为 深度强化学习的运行机制由四个基本组件组成：环境、代理、动作、反馈。通过四者的关系，强调代理如何在环境给予的奖励或者惩罚的刺激下，逐渐改变自己的行为动作，使得尽可能使用环境，从而达到环境给予的奖励值最大，逐步形成符合最大利益的惯性行为。  ……
-                            </div>
-                            <p class="readmore"><a href="https://xsoer.github.io/posts/2019/09-02-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%B1%BB%E5%9E%8B/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://xsoer.github.io/posts/2019/09-01-%E6%95%B0%E5%AD%A6%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/" title="kudu简介" >kudu简介</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2019年9月1日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="https://xsoer.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93">数据库</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                 0x00、整体简介  向量 矩阵 导数 数值计算 概率分布 参数估计 回归分析 判断问题  0x01、向量 0x02、矩阵 0x03、导数 0x04、数值计算 0x05、概率分布 0x06、参数估计 0x07、回归分析 0x08、判断问题 ……
-                            </div>
-                            <p class="readmore"><a href="https://xsoer.github.io/posts/2019/09-01-%E6%95%B0%E5%AD%A6%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://xsoer.github.io/posts/2019/08-26-numpy%E4%BD%BF%E7%94%A8/" title="numpy库使用" >numpy库使用</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2019年8月26日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="https://xsoer.github.io/categories/numpy">numpy</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                ##……
-                            </div>
-                            <p class="readmore"><a href="https://xsoer.github.io/posts/2019/08-26-numpy%E4%BD%BF%E7%94%A8/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://xsoer.github.io/posts/2019/07-12-kudu%E7%AE%80%E4%BB%8B/" title="kudu简介" >kudu简介</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2019年7月12日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="https://xsoer.github.io/categories/kudu">kudu</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                总体概览 设计模式 存储结构 读写流程 impala结合 限制条件 文档资源   0x00、总体概览  1.历史发展  2012年10月由Cloudera公司发起创建,2015年10月对外公布，2015年12月进入apache基金会进行孵化，后续进入快速发展轨道。  2.产品定位  Fast Analytics on Fast Data。 在快速修改的数据上进行快速分析  3.产生之前 在有kudu之前，数据分类为： * 静态数据 * 以HDFS引擎作为存储引擎，适⽤用于⾼吞吐量的离线大数据分析场景 * 这类存储的局限性是数据无法进行行随机的读写 * 动态数据 * 以HBase、Cassandra 作为存储引擎，适⽤用于⼤大数据随机读写场景 * 这类存储的局限性是批量量读取吞吐量量远不不如 HDFS，不不适⽤用于批量量数据分 析的场景
-而既要满足随机读写和大数据分析的解决方案如下：
-而以上的方案问题是：
- 架构复杂  流转涉及环节太多，运维成本很高 每个环节需要保证高可用，需要维护多个副本，存储空间也有一定的浪费 数据在多个系统上，对数据安全策略、监控等都提出了挑战  时效性低  从 HBase 导出成静态文件是周期性  难以应对后续的更新  已经从 HBase 导出到 HDFS，新到的变更数据就难以处理   所以产生了新的解决方案，那就是kudu，其定位如下： 而其gap了hdfs和hbase之间的 4.架构图 kudu的整体架构图如下 5.基本概念 下面了解一些kudu里的一些基本概念。 * Table * 数据存储，没有库的概念 * 有对应的schema结构 * 字段是强类型 * 需要设置主键 * 分隔为N个tablets * Tablet * Table按照行切分后存储的位置 * 一个tablet会多副本到其他server上，并且有一个会是leader * 如果leader失效，会用raft一致性协议重新选举 * 任何一组副本内的tablet都可以读，但是只能从leader写入 * Mater * 持续追踪所有的tablet、tablet server、catalog table、其他的集群meta信息 * 可以部署多个master，但只有一个是active * 如果active时效了，用raft协议在选举出一个 * Master信息也会存储在一个tablet上，并且被复制同步到其他master机器上 * Tablet servers会发送心跳包到master机器(默认是一秒一次) * Tablet Server * 用来存储tablet数据并且向client提供服务 * 一个tablet会在多个tablet server上 * 一个tablet server会有多个tablet * Catelog table * 是kudu元数据的中心，存储了关于table和tablet的信息 * 不允许被直接读写 * table * table schemas, * Locations * states * tablet * Tablet list * Tablet server上有哪些tablet * States * Start and end keys * Raft一致性协议算法 * 分布式服务高可用性进行多副本 * 通过raft来选举出leader * 多副本数据都可以读，但只有leader可以写 * 写入时只有当大多数follower确认成功，才算写入成功 * 在一组副本中(通常是3或5个)，允许有(N-1)/2的失败……
-                            </div>
-                            <p class="readmore"><a href="https://xsoer.github.io/posts/2019/07-12-kudu%E7%AE%80%E4%BB%8B/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://xsoer.github.io/posts/2019/04-23-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E5%85%B7%E9%9B%86/" title="浏览器工具集" >浏览器工具集</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2019年4月23日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="https://xsoer.github.io/categories/%E5%B7%A5%E5%85%B7">工具</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                  0x00、插件   github  sourcegraph octotree  剪切网页  evernote  调试接口  JSONview  词典  沙拉查词  广告  广告终结者  产品原型  axure  多tab管理  Toby    0x01、工具网站   json格式化  https://json.cn http://json.parser.online.fr  随机密码生成  https://www.sexauth.com/ https://suijimimashengcheng.51240.com/ https://www.dashlane.com/zh/features/password-generator  正则表达式  https://regexr.com/ http://wangwl.net/static/projects/visualRegex  问题讨论  https://stackoverflow.com https://stackexchange.com/  文章  https://medium.com/    0x02、前沿科技网站   论文  https://arxiv.org/ https://www.nature.com/    0x03、github系列   图书
- https://github.com/royeo/free-programming-books.pdf https://github.com/threerocks/studyFiles https://github.com/justjavac/free-programming-books-zh_CN https://github.com/it-ebooks/it-ebooks-archive https://github.com/shivam-jha/DockerBooks https://github.com/EbookFoundation/free-programming-books/blob/master/free-programming-books-zh.md https://github.com/zhiwoeryi/eBook-3  awesome系列
- https://github.com/sindresorhus/awesome  算法
- https://github.com/linyiqun/DataMiningAlgorithm   ……
-                            </div>
-                            <p class="readmore"><a href="https://xsoer.github.io/posts/2019/04-23-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E5%85%B7%E9%9B%86/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://xsoer.github.io/posts/2019/04-22-impala%E7%B3%BB%E7%BB%9F%E6%80%A7%E6%96%87%E6%A1%A3/" title="Impala操作手册" >Impala操作手册</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2019年4月22日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="https://xsoer.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93">数据库</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                [TOC]
- 简介   支持的查询存储  关系型数据库 数据仓库 Kudu Hive Hbase HDFS  可以单独部署一个集群，读取远程数据源。 支持的操作  运行impala-shell进入交互模式  /usr/bin/impala-shell  ODBC、JDBC Hue web-based user interface.    数据表   分为外部表和内部表 内部表  通过impala创建的表都是内部表(internal) 修改表结构对应的底层表也会进行变动  外部表  不同过impala创建的表都是外部表(external) 要操作这些表，需要在impala建立表的映射关系 通过sql修改表结构或者删除表不会删除底层表，删除的只是表的映射关系    SQL语法   sql示例
--- This line is a comment about a table. create table ...; /* This is a multi-line comment about a query. */ select ...; select * from t /* This is an embedded comment about a query. */ where ...; select * from t -- This is a trailing comment within a multi-line command. where ...;  外部表映射
-CREATE EXTERNAL TABLE my_mapping_table STORED AS KUDU TBLPROPERTIES ( 'kudu.table_name' = 'my_kudu_table' );  创建内部表
-CREATE TABLE my_first_table ( id BIGINT, name STRING, PRIMARY KEY(id) ) PARTITION BY HASH PARTITIONS 16 STORED AS KUDU;  用select来建表……
-                            </div>
-                            <p class="readmore"><a href="https://xsoer.github.io/posts/2019/04-22-impala%E7%B3%BB%E7%BB%9F%E6%80%A7%E6%96%87%E6%A1%A3/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://xsoer.github.io/posts/2019/04-22-%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4%E5%B7%A5%E5%85%B7%E9%9B%86/" title="终端命令工具集" >终端命令工具集</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2019年4月22日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="https://xsoer.github.io/categories/%E5%B7%A5%E5%85%B7">工具</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                 0x00、工具  autojump  自动跳转文件夹，不用cd  tree  以树状图列出当前目录结构  you-get  视频下载  tldr  命令示例文档  htop  更强大的top  git  版本控制工具  vim  编辑器  tmux  终端复用神器  thefuck  命令出错自动完善   ……
-                            </div>
-                            <p class="readmore"><a href="https://xsoer.github.io/posts/2019/04-22-%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4%E5%B7%A5%E5%85%B7%E9%9B%86/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://xsoer.github.io/posts/2019/03-10-python%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/" title="python底层原理" >python底层原理</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2019年3月10日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="https://xsoer.github.io/categories/python">python</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                  0x00、Python中的对象  对象可以说是Python最核心的一个概念，在Python的世界里，一切都是对象。我们知道Python是由C编写的，C并不是一个面向对象语言，而由C编写的Python确实面向对象的，那么它的对象机制是如何实现的呢？ 对于人的思维，对象是可以形象描述的，但是对于计算机而言，对象是一个抽象的概念，计算机所知道的一切都是字节。关于对象，通常的说法是，对象是数据以及基于这些数据的操作的集合，在计算机中，一个对象实际就是把一片被分配的内存空间，且这片内存在更高层次可作为一个整体，这个整体就是一个对象。 在Python中，对象就是C中的结构体在堆上申请的一块内存。 对象机制的基石——Pyobject在Python中，所有的东西都是对象，而所有的对象都拥有一些相同的内容，Python中的这些内容都是在object.h中的Pyobject中定义的。
-typedef struct _object { PyObject_HEAD } PyObject;    ……
-                            </div>
-                            <p class="readmore"><a href="https://xsoer.github.io/posts/2019/03-10-python%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://xsoer.github.io/posts/2019/03-10-es6%E6%A0%87%E5%87%86%E6%A6%82%E8%A7%88/" title="ES6标准概览" >ES6标准概览</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2019年3月10日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="https://xsoer.github.io/categories/javascript">javascript</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                0x00、变量 新增两个关键字：let、const
-  let与var的区别
- 作用域不同() 变量是否可以提升不  contst：只读不可改，声明即赋值 其所声明的对象的属性是可以改变的。
-   0x01、箭头函数 0x02、字符串   模版字符串(``) 新增几个方法
-'my string'.startsWith('my'); //true 'my string'.endsWith('my'); // false 'my string'.includes('str'); // true 'my '.repeat(3); // 'my my my '    0x03、数组 Array 对象增加了一些新的静态方法，Array 原型上也增加了一些新方法
-  from 从类数组和可遍历对象中创建 Array 的实例 find 返回回调返回 true 的第一个元素。
-[9, 2, 10, 8].find(n =&gt; n === 10) // 10  findIndex 返回回调函数返回 true的第一个元素的下标。
-[5, 1, 10, 8].findIndex(n =&gt; n === 10) // 2  fill 用所给参数&rdquo;覆盖&rdquo;数组的元素。
-[0, 0, 0].fill(7) // [7, 7, 7] [0, 0, 0, 0, 0].fill(7, 1, 3) // [0, 7, 7, 7, 0]    0x04、新增Map和Set结构 0x05、Math新增几个方法   Math.sign 返回数字的符号，结果为 1、-1 或 0。 Math.trunc 返回无小数位的数字 Math.cbrt 返回数字的立方根。
-Math.sign(5); // 1 Math.sign(-9); // -1 Math.trunc(5.9); // 5 Math.trunc(5.123); // 5 Math.cbrt(64); // 4    0x06、扩展运算符(&hellip;)  let values = [1, 2, 4]; let some = [.……
-                            </div>
-                            <p class="readmore"><a href="https://xsoer.github.io/posts/2019/03-10-es6%E6%A0%87%E5%87%86%E6%A6%82%E8%A7%88/">阅读全文</a></p>
-                        </article>
-                    
-                    
+    #prev-cover {
+        position: absolute;
+        top: 48%;
+        left: 8px;
+    }
+
+    #next-cover {
+        position: absolute;
+        top: 48%;
+        right: 8px;;
+    }
+
+    #prev-cover i {
+        margin-right: 3px;
+    }
+
+    #next-cover i {
+        margin-left: 3px;
+    }
+
+    .carousel-control:hover {
+        background-color:rgba(0, 0, 0, .4);
+    }
+
+    .carousel-control i {
+        color: #fff;
+        font-size: 2.4rem;
+    }
+</style>
 
 
 
-<ol class="page-navigator">
+<div class="carousel carousel-slider center index-cover" data-indicators="true" style="margin-top: -64px;">
     
 
-    
-    <li  class="current">
-        <a href="https://xsoer.github.io/">1</a>
-    </li>
-    
-    <li >
-        <a href="https://xsoer.github.io/page/2/">2</a>
-    </li>
-    
-    <li >
-        <a href="https://xsoer.github.io/page/3/">3</a>
-    </li>
-    
-    <li >
-        <a href="https://xsoer.github.io/page/4/">4</a>
-    </li>
-    
-
-    
-    <li class="next">
-        <a href="https://xsoer.github.io/page/2/">下一页</a>
-    </li>
-    
-</ol>
-
-
-
-                </div>
+    <div class="carousel-item red white-text bg-cover about-cover">
+        <div class="container">
+            <div class="row">
+    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+        <div class="brand">
+            <div class="title center-align">
+                
+                    subtitle
+                
             </div>
 
-            <div id="secondary">
-    <section class="widget">
-        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
-      
-      <input type="text" name="q" maxlength="20" placeholder="Search">
-      <input type="hidden" name="sitesearch" value="https://xsoer.github.io/">
-      <button type="submit" class="submit icon-search"></button>
-</form>
-    </section>
-    
-    <section class="widget">
-        <h3 class="widget-title">最近文章</h3>
-<ul class="widget-list">
-    
-    <li>
-        <a href="https://xsoer.github.io/posts/2019/09-06-%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%E5%B7%A5%E5%85%B7/" title="数据同步工具">数据同步工具</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/posts/2019/09-05-tmux%E9%85%8D%E7%BD%AE/" title="tmux配置">tmux配置</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/posts/2019/09-05-mac%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" title="Mac开发环境配置">Mac开发环境配置</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/posts/2019/09-02-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%B1%BB%E5%9E%8B/" title="神经网络类型">神经网络类型</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/posts/2019/09-01-%E6%95%B0%E5%AD%A6%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/" title="kudu简介">kudu简介</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/posts/2019/08-26-numpy%E4%BD%BF%E7%94%A8/" title="numpy库使用">numpy库使用</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/posts/2019/07-12-kudu%E7%AE%80%E4%BB%8B/" title="kudu简介">kudu简介</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/posts/2019/04-23-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E5%85%B7%E9%9B%86/" title="浏览器工具集">浏览器工具集</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/posts/2019/04-22-impala%E7%B3%BB%E7%BB%9F%E6%80%A7%E6%96%87%E6%A1%A3/" title="Impala操作手册">Impala操作手册</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/posts/2019/04-22-%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4%E5%B7%A5%E5%85%B7%E9%9B%86/" title="终端命令工具集">终端命令工具集</a>
-    </li>
-    
-</ul>
-    </section>
-
-    
-
-    <section class="widget">
-        <h3 class="widget-title">分类</h3>
-<ul class="widget-list">
-    
-    <li>
-        <a href="https://xsoer.github.io/categories/ai/">ai(2)</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/categories/development/">development(2)</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/categories/docker/">docker(2)</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/categories/git/">git(1)</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/categories/javascript/">javascript(1)</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/categories/kudu/">kudu(1)</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/categories/mysql/">mysql(5)</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/categories/numpy/">numpy(1)</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/categories/php/">php(3)</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/categories/python/">python(4)</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/categories/vim/">vim(1)</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据(1)</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/categories/%E5%B7%A5%E5%85%B7/">工具(6)</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统(1)</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(6)</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构(1)</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/categories/%E8%BF%90%E7%BB%B4/">运维(1)</a>
-    </li>
-    
-</ul>
-    </section>
-
-    <section class="widget">
-        <h3 class="widget-title">标签</h3>
-<div class="tagcloud">
-    
-    <a href="https://xsoer.github.io/tags/ai/">ai</a>
-    
-    <a href="https://xsoer.github.io/tags/docker/">docker</a>
-    
-    <a href="https://xsoer.github.io/tags/git/">git</a>
-    
-    <a href="https://xsoer.github.io/tags/javascript/">javascript</a>
-    
-    <a href="https://xsoer.github.io/tags/kudu/">kudu</a>
-    
-    <a href="https://xsoer.github.io/tags/mysql/">mysql</a>
-    
-    <a href="https://xsoer.github.io/tags/numpy/">numpy</a>
-    
-    <a href="https://xsoer.github.io/tags/php/">php</a>
-    
-    <a href="https://xsoer.github.io/tags/python/">python</a>
-    
-    <a href="https://xsoer.github.io/tags/vim/">vim</a>
-    
-    <a href="https://xsoer.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
-    
-    <a href="https://xsoer.github.io/tags/%E5%B7%A5%E5%85%B7/">工具</a>
-    
-    <a href="https://xsoer.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
-    
-    <a href="https://xsoer.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
-    
-    <a href="https://xsoer.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-    
-    <a href="https://xsoer.github.io/tags/%E6%96%B0%E6%8A%80%E6%9C%AF/">新技术</a>
-    
-    <a href="https://xsoer.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</a>
-    
-    <a href="https://xsoer.github.io/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-    
-</div>
-    </section>
-
-    
-
-    <section class="widget">
-        <h3 class="widget-title">其它</h3>
-        <ul class="widget-list">
-            <li><a href="https://xsoer.github.io/index.xml">文章 RSS</a></li>
-        </ul>
-    </section>
-</div>
+            <div class="description center-align">
+                
+                    This is your root _config.yml 'description' value.
+                
+            </div>
         </div>
     </div>
 </div>
-<footer id="footer">
-    <div class="container">
-        &copy; 2019 <a href="https://xsoer.github.io/">hackfox By </a>.
-        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
-        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+<script>
+// 每天切换 banner 图.  Switch banner image every day.
+$('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
+</script>
+
+            <div class="cover-btns">
+                <a href="#indexCard" class="waves-effect waves-light btn">
+                    <i class="fa fa-angle-double-down"></i>Start
+                </a>
+
+                
+                <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light btn" target="_blank">
+                    <i class="fa fa-github-alt"></i>Github
+                </a>
+                
+            </div>
+            <div class="cover-social-link">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script>
+$(function () {
+    let coverSlider = $('.carousel');
+    coverSlider.carousel({
+        duration: Number('120'),
+        fullWidth: true,
+        indicators: 'true' === 'true'
+    });
+
+    let carouselIntervalId;
+    
+    // Loop to call the next cover article picture.
+    let autoCarousel = function() {
+        carouselIntervalId = setInterval(function () {
+            coverSlider.carousel('next');
+        }, 5000);
+    };
+    autoCarousel();
+    
+
+    let restartPlay = function () {
         
+        clearInterval(carouselIntervalId);
+        autoCarousel();
+        
+    };
+
+    
+    // prev and next cover post.
+    $('#prev-cover').click(function () {
+        coverSlider.carousel('prev');
+        restartPlay();
+    });
+    $('#next-cover').click(function () {
+        coverSlider.carousel('next');
+        restartPlay();
+    });
+    
+});
+</script>
+
+
+
+<main class="content">
+
+    
+    <div id="indexCard" class="index-card">
+        <div class="container ">
+            <div class="card">
+                <div class="card-content">
+                    
+                        <div class="dream">
+    
+    <div class="title center-align">
+        <i class="fa fa-lightbulb-o"></i>&nbsp;&nbsp;我的梦想
+    </div>
+    
+    <div class="row">
+        <div class="col l8 offset-l2 m10 offset-m1 s10 offset-s1 center-align text">
+            不是每个人都应该像我这样去建造一座水晶大教堂，但是每个人都应该拥有自己的梦想，设计自己的梦想，追求自己的梦想，实现自己的梦想。梦想是生命的灵魂，是心灵的灯塔，是引导人走向成功的信仰。有了崇高的梦想，只要矢志不渝地追求，梦想就会成为现实，奋斗就会变成壮举，生命就会创造奇迹。——罗伯·舒乐
+        </div>
+    </div>
+</div>
+                    
+
+                    
+
+                    
+
+                    <div id="recommend-sections" class="recommend">
+                        
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    
+
+    <!-- 所有文章卡片 -->
+    <article id="articles" class="container articles">
+        <div class="row article-row">
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2019/09/06/2019/09-06-数据同步工具/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="数据同步工具">
+                            
+                            <span class="card-title">数据同步工具</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+
+0x00、总览
+1.定时任务
+2.canal/otter
+3.Datax
+4.Sqoop
+5.NiFi
+6.mongoshake
+
+0x02、定时任务定时任务工具是作为数据同步的最基本也是最常用的工具。其不但用于定时的数据同步，而且作为
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-06
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/工具/" class="post-category" target="_blank">
+                                    工具
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/工具/" target="_blank">
+                            <span class="chip bg-color">工具</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2019/09/05/2019/09-05-tmux配置/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="tmux配置">
+                            
+                            <span class="card-title">tmux配置</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+
+0x00、简介
+终端复用神器
+
+0x01、快捷键1.tmux命令
+启动新会话
+1tmux [new -s 会话名 -n 窗口名]
+
+恢复会话：
+1tmux at [-t 会话名]
+
+列出所有会话：
+1tmux ls
+
+关闭会话
+1tmu
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-05
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/工具/" class="post-category" target="_blank">
+                                    工具
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/工具/" target="_blank">
+                            <span class="chip bg-color">工具</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2019/09/05/2019/09-05-mac开发环境配置/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Mac开发环境配置">
+                            
+                            <span class="card-title">Mac开发环境配置</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+
+0X00、Mac软件
+1.vscode
+2.omyzsh
+3.tmux
+4.vim
+5.Chrome
+6.输入法
+
+0x01、vscode插件
+Dash
+clock in status bar
+Docker
+ESlint
+File Ut
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-05
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/工具/" class="post-category" target="_blank">
+                                    工具
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/工具/" target="_blank">
+                            <span class="chip bg-color">工具</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2019/09/02/2019/09-02-神经网络类型/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="神经网络类型">
+                            
+                            <span class="card-title">神经网络类型</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+
+0x00、大体类型
+1.卷积神经网络
+2.循环神经网络
+3.深度信念网络
+4.生成对抗网络
+5.深度强化学习
+
+0x01、卷积神经网络
+卷积神经网络属于前面介绍的前馈神经网络之一，它对于图形图像的处理有着独特的效果，在结构上至少包括卷积
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-02
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/AI/" class="post-category" target="_blank">
+                                    AI
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/AI/" target="_blank">
+                            <span class="chip bg-color">AI</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2019/09/01/2019/09-01-数学理论基础/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="kudu简介">
+                            
+                            <span class="card-title">kudu简介</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+
+0x00、整体简介
+向量
+矩阵
+导数
+数值计算
+概率分布
+参数估计
+回归分析
+判断问题
+
+0x01、向量0x02、矩阵0x03、导数0x04、数值计算0x05、概率分布0x06、参数估计0x07、回归分析0x08、判断问题
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/数据库/" class="post-category" target="_blank">
+                                    数据库
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/数据库/" target="_blank">
+                            <span class="chip bg-color">数据库</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2019/08/26/2019/08-26-numpy使用/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="numpy库使用">
+                            
+                            <span class="card-title">numpy库使用</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+
+
+##
+
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-26
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/numpy/" class="post-category" target="_blank">
+                                    numpy
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/numpy/" target="_blank">
+                            <span class="chip bg-color">numpy</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2019/07/12/2019/07-12-kudu简介/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="kudu简介">
+                            
+                            <span class="card-title">kudu简介</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+
+
+总体概览
+设计模式
+存储结构
+读写流程
+impala结合
+限制条件
+文档资源
+
+
+0x00、总体概览
+1.历史发展
+2012年10月由Cloudera公司发起创建,2015年10月对外公布，2015年12月进入apache基金会进行孵
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-12
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/kudu/" class="post-category" target="_blank">
+                                    kudu
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/kudu/" target="_blank">
+                            <span class="chip bg-color">kudu</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2019/04/23/2019/04-23-浏览器工具集/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="浏览器工具集">
+                            
+                            <span class="card-title">浏览器工具集</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+
+
+
+0x00、插件
+
+github
+sourcegraph
+octotree
+
+
+剪切网页
+evernote
+
+
+调试接口
+JSONview
+
+
+词典
+沙拉查词
+
+
+广告
+广告终结者
+
+
+产品原型
+axure
+
+
+多tab管理
+Toby
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-23
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/工具/" class="post-category" target="_blank">
+                                    工具
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/工具/" target="_blank">
+                            <span class="chip bg-color">工具</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2019/04/22/2019/04-22-Impala系统性文档/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Impala操作手册">
+                            
+                            <span class="card-title">Impala操作手册</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+
+[TOC]
+
+简介
+
+支持的查询存储
+关系型数据库
+数据仓库
+Kudu
+Hive
+Hbase
+HDFS
+
+
+可以单独部署一个集群，读取远程数据源。
+支持的操作
+运行impala-shell进入交互模式
+/usr/bin/impala-s
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-22
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/数据库/" class="post-category" target="_blank">
+                                    数据库
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/数据库/" target="_blank">
+                            <span class="chip bg-color">数据库</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2019/04/22/2019/04-22-终端命令工具集/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="终端命令工具集">
+                            
+                            <span class="card-title">终端命令工具集</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+
+0x00、工具
+autojump
+自动跳转文件夹，不用cd
+
+
+tree
+以树状图列出当前目录结构
+
+
+you-get
+视频下载
+
+
+tldr
+命令示例文档
+
+
+htop
+更强大的top
+
+
+git
+版本控制工具
+
+
+vim
+编辑器
+
+
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-22
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/工具/" class="post-category" target="_blank">
+                                    工具
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/工具/" target="_blank">
+                            <span class="chip bg-color">工具</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </article>
+
+</main>
+
+
+<div class="container paging">
+    <div class="row">
+        <div class="col s6 m4 l4">
+            
+            <a class="left btn-floating btn-large disabled">
+                <i class="fa fa-angle-left"></i>
+            </a>
+            
+        </div>
+        <div class="page-info col m4 l4 hide-on-small-only">
+            <div class="center-align b-text-gray">1 / 4</div>
+        </div>
+        <div class="col s6 m4 l4">
+            
+            <a href="/page/2/"
+               class="right btn-floating btn-large waves-effect waves-light bg-color">
+                <i class="fa fa-angle-right"></i>
+            </a>
+            
+        </div>
+    </div>
+</div>
+
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&nbsp;&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>&nbsp;基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a>&nbsp;的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>&nbsp;主题搭建
+            <br>
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="fa fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fa fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            <br>
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date();
+
+                function createtime() {
+                    var grt = new Date("06/28/2019 00:00:00");
+                    now.setTime(now.getTime() + 250);
+                    days = (now - grt) / 1000 / 60 / 60 / 24;
+                    dnum = Math.floor(days);
+                    hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+                    hnum = Math.floor(hours);
+                    if (String(hnum).length == 1) {
+                        hnum = "0" + hnum;
+                    }
+                    minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+                    mnum = Math.floor(minutes);
+                    if (String(mnum).length == 1) {
+                        mnum = "0" + mnum;
+                    }
+                    seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                    snum = Math.round(seconds);
+                    if (String(snum).length == 1) {
+                        snum = "0" + snum;
+                    }
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+                }
+                setInterval("createtime()", 250);
+            </script>
+            
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
     </div>
 </footer>
 
+<div class="progress-bar"></div>
 
 
-<a id="rocket" href="#top"></a>
-<script type="text/javascript" src="https://xsoer.github.io/js/totop.js?v=0.0.0" async=""></script>
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-114671402-1', 'auto');
-	
-	ga('send', 'pageview');
-}
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
 
 
 
+    <script src="/libs/others/clicklove.js"></script>
 
 
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
 </body>

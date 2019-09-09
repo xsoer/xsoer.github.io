@@ -1,0 +1,1472 @@
+<!DOCTYPE HTML>
+<html lang="">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="docker基础文档, hackfox">
+    <meta name="description" content="
+
+
+
+0x00、命令
+
+Management Commands:
+
+config      Manage Docker configs
+container   Manage containers
+image       Manage im">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>docker基础文档 | hackfox</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+</head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">hackfox</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>Index</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>Tags</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>Categories</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>Archives</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>About</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>Friends</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="Search"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">hackfox</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                Index
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                Tags
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                Categories
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                Archives
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                About
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                Friends
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        docker基础文档
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/docker/" target="_blank">
+                                <span class="chip bg-color">docker</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/docker/" class="post-category" target="_blank">
+                                docker
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2019-03-10
+                </div>
+
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <!-- # docker基础文档
+- 作者：codehackfox@gmail.com
+- 时间：2019-03-10 18:06:12 -->
+
+
+<blockquote>
+<h2 id="0x00、命令"><a href="#0x00、命令" class="headerlink" title="0x00、命令"></a>0x00、命令</h2></blockquote>
+<ul>
+<li><p>Management Commands:</p>
+<ul>
+<li>config      Manage Docker configs</li>
+<li>container   Manage containers</li>
+<li>image       Manage images</li>
+<li>network     Manage networks</li>
+<li>node        Manage Swarm nodes</li>
+<li>plugin      Manage plugins</li>
+<li>secret      Manage Docker secrets</li>
+<li>service     Manage services</li>
+<li>stack       Manage Docker stacks</li>
+<li>swarm       Manage Swarm</li>
+<li>system      Manage Docker</li>
+<li>volume      Manage volumes</li>
+</ul>
+</li>
+<li><p>Commands:</p>
+<ul>
+<li>attach      Attach local standard input, output, and error streams to a running container</li>
+<li>build       Build an image from a Dockerfile</li>
+<li>commit      Create a new image from a container’s changes</li>
+<li>cp          Copy files/folders between a container and the local filesystem</li>
+<li>create      Create a new container</li>
+<li>diff        Inspect changes to files or directories on a container’s filesystem</li>
+<li>events      Get real time events from the server</li>
+<li>exec        Run a command in a running container</li>
+<li>export      Export a container’s filesystem as a tar archive</li>
+<li>history     Show the history of an image</li>
+<li>images      List images</li>
+<li>import      Import the contents from a tarball to create a filesystem image</li>
+<li>info        Display system-wide information</li>
+<li>inspect     Return low-level information on Docker objects</li>
+<li>kill        Kill one or more running containers</li>
+<li>load        Load an image from a tar archive or STDIN</li>
+<li>login       Log in to a Docker registry</li>
+<li>logout      Log out from a Docker registry</li>
+<li>logs        Fetch the logs of a container</li>
+<li>pause       Pause all processes within one or more containers</li>
+<li>port        List port mappings or a specific mapping for the container</li>
+<li>ps          List containers</li>
+<li>pull        Pull an image or a repository from a registry</li>
+<li>push        Push an image or a repository to a registry</li>
+<li>rename      Rename a container</li>
+<li>restart     Restart one or more containers</li>
+<li>rm          Remove one or more containers</li>
+<li>rmi         Remove one or more images</li>
+<li>run         Run a command in a new container</li>
+<li>save        Save one or more images to a tar archive (streamed to STDOUT by default)</li>
+<li>search      Search the Docker Hub for images</li>
+<li>start       Start one or more stopped containers</li>
+<li>stats       Display a live stream of container(s) resource usage statistics</li>
+<li>stop        Stop one or more running containers</li>
+<li>tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE</li>
+<li>top         Display the running processes of a container</li>
+<li>unpause     Unpause all processes within one or more containers</li>
+<li>update      Update configuration of one or more containers</li>
+<li>version     Show the Docker version information</li>
+<li>wait        Block until one or more containers stop, then print their exit codes</li>
+</ul>
+</li>
+<li><p>docker images      // 查看存在多少镜像</p>
+</li>
+<li><p>docker ps         // 查看镜像运行情况</p>
+</li>
+<li><p>docker run -t -i  // 运行镜像。并进行交互模式。</p>
+</li>
+<li><p>docker stop     // 停止运行镜像，后边跟镜像ID或name</p>
+</li>
+<li><p>docker search   // 搜索镜像仓库</p>
+</li>
+<li><p>docker pull     // 拉取镜像</p>
+</li>
+<li><p>docker inspect  // 查看镜像的json文件，即全部详细信息</p>
+</li>
+<li><p>docker port     // 查看docker与宿主机的端口映射关系</p>
+</li>
+<li><p>docker commit   // 用来生成新的版本</p>
+</li>
+<li><p>docker build    // 用docker file来创建镜像</p>
+</li>
+<li><p>docker tag      // 设置镜像标签</p>
+</li>
+<li><p>容器生命周期管理</p>
+<ul>
+<li>run</li>
+<li>start/stop/restart</li>
+<li>kill</li>
+<li>rm</li>
+<li>pause/unpause·</li>
+<li>create</li>
+<li>exec</li>
+</ul>
+</li>
+<li><p>容器操作</p>
+<ul>
+<li>ps</li>
+<li>inspect</li>
+<li>top</li>
+<li>attach</li>
+<li>events</li>
+<li>logs</li>
+<li>wait</li>
+<li>export</li>
+<li>port</li>
+</ul>
+</li>
+<li><p>容器rootfs命令</p>
+<ul>
+<li>commit</li>
+<li>cp</li>
+<li>diff</li>
+</ul>
+</li>
+<li><p>镜像仓库</p>
+<ul>
+<li>login</li>
+<li>pull</li>
+<li>push</li>
+<li>search</li>
+</ul>
+</li>
+<li><p>本地镜像管理</p>
+<ul>
+<li>images</li>
+<li>rmi</li>
+<li>tag</li>
+<li>build</li>
+<li>history</li>
+<li>save</li>
+<li>import</li>
+</ul>
+</li>
+<li><p>info|version</p>
+<ul>
+<li>info</li>
+<li>version</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<h2 id="0x01、简介"><a href="#0x01、简介" class="headerlink" title="0x01、简介"></a>0x01、简介</h2></blockquote>
+<h3 id="链接映射"><a href="#链接映射" class="headerlink" title="链接映射"></a>链接映射</h3><ul>
+<li>docker有一个连接系统允许将多个容器连接在一起，共享连接信息。docker连接会创建一个父子关系，其中父容器可以看到子容器的信息。·</li>
+</ul>
+<h3 id="容器与虚拟机是互补的。"><a href="#容器与虚拟机是互补的。" class="headerlink" title="容器与虚拟机是互补的。"></a>容器与虚拟机是互补的。</h3><ul>
+<li>虚拟机是用来进行硬件资源划分的完美解决方案，它利用了硬件虚拟化技术，例如VT-x、AMD-V或者privilege level（权限等级）会同时通过一个hypervisor层来实现对资源的彻底隔离；而容器则是操作系统级别的虚拟化，利用的是内核的Cgroup和Namespace特性，此功能完全通过软件来实现，仅仅是进程本身就可以与其他进程隔离开，不需要任何辅助。</li>
+<li>Docker容器与主机共享操作系统内核，不同的容器之间可以共享部分系统资源，因此容器更加轻量级，消耗的资源也更少。而虚拟机会独占分配给自己的资源，几乎不存在资源共享，各个虚拟机实例之间近乎完全隔离，因此虚拟机更加重量级，也会消耗更多的资源。\</li>
+</ul>
+<h3 id="最小组成"><a href="#最小组成" class="headerlink" title="最小组成"></a>最小组成</h3><ul>
+<li>对于Linux容器的最小组成，可以由以下公式来表示：<br>容器=cgroup+namespace+rootfs+容器引擎（用户态工具）</li>
+<li>其中各项的功能分别为：<ul>
+<li>Cgroup：资源控制。</li>
+<li>Namespace：访问隔离。</li>
+<li>rootfs：文件系统隔离。</li>
+<li>容器引擎：生命周期控制。</li>
+</ul>
+</li>
+<li>目前市场上所有Linux容器项目都包含以上组件。</li>
+</ul>
+<blockquote>
+<h2 id="0x02、Cgroups"><a href="#0x02、Cgroups" class="headerlink" title="0x02、Cgroups"></a>0x02、Cgroups</h2></blockquote>
+<ul>
+<li>Cgroup是control group的简写，属于Linux内核提供的一个特性，用于限制和隔离一组进程对系统资源的使用，也就是做资源QoS，这些资源主要包括CPU、内存、block I/O和网络带宽。</li>
+<li>从实现的角度来看，Cgroup实现了一个通用的进程分组的框架，而不同资源的具体管理则是由各个Cgroup子系统实现的。</li>
+<li>Cgroup中实现的子系统及其作用如下：<ul>
+<li>devices：设备权限控制。</li>
+<li>cpuset：分配指定的CPU和内存节点。</li>
+<li>cpu：控制CPU占用率。</li>
+<li>cpuacct：统计CPU使用情况。</li>
+<li>memory：限制内存的使用上限。</li>
+<li>freezer：冻结（暂停）Cgroup中的进程。</li>
+<li>net_cls：配合tc（traffic controller）限制网络带宽。</li>
+<li>net_prio：设置进程的网络流量优先级。</li>
+<li>huge_tlb：限制HugeTLB的使用。</li>
+<li>perf_event：允许Perf工具基于Cgroup分组</li>
+<li>做性能监测。</li>
+</ul>
+</li>
+</ul>
+<h4 id="Cgroups子系统"><a href="#Cgroups子系统" class="headerlink" title="Cgroups子系统"></a>Cgroups子系统</h4><blockquote>
+<p>cpuset子系统</p>
+</blockquote>
+<ul>
+<li>cpuset可以为一组进程分配指定的CPU和内存节点。</li>
+</ul>
+<blockquote>
+<p>cpu子系统</p>
+</blockquote>
+<ul>
+<li>子系统用于限制进程的CPU占用率。实际上它有三个功能，分别通过不同的接口来提供。<ul>
+<li>CPU比重分配。这个特性使用的接口是cpu.shares。</li>
+<li>CPU带宽限制。这个特性使用的接口是cpu.cfs_period_us和cpu.cfs_quota_us，这两个接口的单位是微秒</li>
+<li>实时进程的CPU带宽限制。以上两个特性都只能限制普通进程，若要限制实时进程，就要使用cpu.rt_period_us和cpu.rt_runtime_us这两个接口了。使用方法和上面类似。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>cpuacct子系统</p>
+</blockquote>
+<ul>
+<li>cpuacct子系统用来统计各个Cgroup的CPU使用情况</li>
+</ul>
+<blockquote>
+<p>memory子系统</p>
+</blockquote>
+<ul>
+<li>memory子系统用来限制Cgroup所能使用的内存上限</li>
+</ul>
+<blockquote>
+<p>blkio子系统</p>
+</blockquote>
+<ul>
+<li>blkio子系统用来限制Cgroup的block I/O带宽</li>
+</ul>
+<blockquote>
+<p>devices子系统</p>
+</blockquote>
+<ul>
+<li>devices子系统用来控制Cgroup的进程对哪些设备有访问权限</li>
+</ul>
+<blockquote>
+<h2 id="0x03、Namespace"><a href="#0x03、Namespace" class="headerlink" title="0x03、Namespace"></a>0x03、Namespace</h2></blockquote>
+<ul>
+<li>Namespace是将内核的全局资源做封装，使得每个Namespace都有一份独立的资源，因此不同的进程在各自的Namespace内对同一种资源的使用不会互相干扰</li>
+<li>目前Linux内核总共实现了6种Namespace：<ul>
+<li>IPC：隔离System V IPC和POSIX消息队列。</li>
+<li>Network：隔离网络资源。</li>
+<li>Mount：隔离文件系统挂载点。</li>
+<li>PID：隔离进程ID。</li>
+<li>UTS：隔离主机名和域名。</li>
+<li>User：隔离用户ID和组ID。</li>
+</ul>
+</li>
+<li>对Namespace的操作，主要是通过clone、setns和unshare这3个系统调用来完成的。</li>
+</ul>
+<blockquote>
+<p>子命名空间</p>
+</blockquote>
+<ul>
+<li><p>1.UTS Namespace</p>
+<ul>
+<li>UTS Namespace用于对主机名和域名进行隔离，也就是uname系统调用使用的结构体struct utsname里的nodename和domainname这两个字段，UTS这个名字也是由此而来的。</li>
+</ul>
+</li>
+<li><p>2.IPC Namespace</p>
+<ul>
+<li>IPC是Inter-Process Communication的简写，也就是进程间通信。Linux提供了很多种进程间通信的机制，IPC Namespace针对的是SystemV IPC和Posix消息队列。</li>
+</ul>
+</li>
+<li><p>3.PID Namespace</p>
+<ul>
+<li>PID Namespace用于隔离进程PID号，这样一来，不同的Namespace里的进程PID号就可以是一样的了。</li>
+</ul>
+</li>
+<li><p>4.Mount Namespace</p>
+<ul>
+<li>Mount Namespace用来隔离文件系统挂载点，每个进程能看到的文件系统都记录在/proc/$$/mounts里。</li>
+</ul>
+</li>
+<li><p>5.Network Namespace</p>
+<ul>
+<li>这个Namespace会对网络相关的系统资源进行隔离，每个Network Namespace都有自己的网络设备、IP地址、路由表、/proc/net目录、端口号等。</li>
+</ul>
+</li>
+<li><p>6.User Namespace</p>
+<ul>
+<li>User Namespace用来隔离用户和组ID，也就是说一个进程在Namespace里的用户和组ID与它在host里的ID可以不一样，这样说可能读者还不理解有什么实际的用处。</li>
+</ul>
+</li>
+<li><p>Namespace和Cgroup的使用是很灵活的，同时这里面又有不少需要注意的地方，因此直接操作Namespace和Cgroup并不是很容易。正是因为这些原因，Docker通过Libcontainer来处理这些底层的事情。这样一来，Docker只需要简单地调用Libcontainer的API，就能将完整的容器搭建起来</p>
+</li>
+</ul>
+<blockquote>
+<h2 id="0x04、Images"><a href="#0x04、Images" class="headerlink" title="0x04、Images"></a>0x04、Images</h2></blockquote>
+<ul>
+<li>是启动融资的rootfs,只读模版</li>
+</ul>
+<h4 id="一、基本概念"><a href="#一、基本概念" class="headerlink" title="一、基本概念"></a>一、基本概念</h4><blockquote>
+<p>创建镜像</p>
+</blockquote>
+<ul>
+<li><p>1.直接下载镜像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull centos</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2.导入镜像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker save -o centos.tar centos</span><br><span class="line">docker load -i centos.tar</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3.制作新镜像</p>
+<ul>
+<li>docker import 用于导入包含根文件系统的归档，并将之变成docker镜像</li>
+<li>docker commit 可以增量的生成镜像，可以把容器保存为一个镜像</li>
+<li>docker build 可以用Dockerfile来制作镜像</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>传输镜像</p>
+</blockquote>
+<ul>
+<li>1.用Docker镜像仓库做中转</li>
+<li>2.docker export/docker save生成tar包</li>
+<li>3.Dockerfile文件</li>
+</ul>
+<blockquote>
+<p>运行镜像</p>
+</blockquote>
+<ul>
+<li>docker run 来运营一个镜像成为容器</li>
+</ul>
+<h4 id="二、组织结构"><a href="#二、组织结构" class="headerlink" title="二、组织结构"></a>二、组织结构</h4><blockquote>
+<p>数据内容</p>
+</blockquote>
+<ul>
+<li>包含着数据和元数据。<ul>
+<li>数据有一层一层的image layer组成，元数据则是一些JSON文件，用来描述数据之间的关系和容器配置信息。</li>
+</ul>
+</li>
+<li>Docker对数据进行来完整性校验，这种完整性对凭证是有镜像仓库提供的。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ll /var/lab/docker</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>1.总体信息<ul>
+<li>从repositories-overlay文件可以看到该存储目录下的所有image以及其对应的layer ID.</li>
+</ul>
+</li>
+<li>2.数据和元数据<ul>
+<li>graph和overlay目录包含本地镜像库中所有元数据和数据信息</li>
+<li>对于不同的存储驱动，数据的存储位置和存储结构是不同的。</li>
+<li>元数据包含json和layersize两个文件，其中json包含来必要的层次和配置信息，layersize文件包含来该层的大小。</li>
+<li>先通过repositories-overlay获取image对应的layer ID；在根据layer对应的元数据梳理出image包含的所有层，以及层之间的关系；在使用联合挂载技术还原出容器启动所需要的rootfs和一些基本配置信息。</li>
+</ul>
+</li>
+<li>3.数据组织<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect dockerID</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<blockquote>
+<p>扩展知识</p>
+</blockquote>
+<ul>
+<li>docker引入的联合挂载(Union mount)使镜像分层成为可能；而git式管理，使基础镜像复用成为可能。</li>
+<li>1.联合挂载<ul>
+<li>把多个目录挂载到同一个目录，对外呈现这些目录的联合。·</li>
+</ul>
+</li>
+<li>2.写时复制</li>
+</ul>
+<blockquote>
+<h2 id="0x05、仓库进阶"><a href="#0x05、仓库进阶" class="headerlink" title="0x05、仓库进阶"></a>0x05、仓库进阶</h2></blockquote>
+<h4 id="什么是仓库"><a href="#什么是仓库" class="headerlink" title="什么是仓库"></a>什么是仓库</h4><blockquote>
+<p>仓库的组成</p>
+</blockquote>
+<ul>
+<li>仓库的名字通常有两部分组成，中间以斜线分隔。前边是用户名，后边是镜像名。</li>
+<li>仓库有镜像存储系统和账户管理系统</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker login -u &lt;user_name&gt; -p &lt;password&gt; -e &lt;email&gt; &lt;registry domain&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>仓库镜像</p>
+</blockquote>
+<ul>
+<li>仓库下面包含一组镜像，彼此之间用标签(tag)区分。一个完整的镜像地址通常有 服务器地址、仓库名称和标签组成。</li>
+<li>1.上传镜像：push</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 表示向本地私有仓库上传镜像。如果不写服务器地址，默认上传到官方Docker Hub。一般需要先登陆在上传。</span><br><span class="line">docker push localhost::5000/official/ubuntu:14.04</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>2.下载镜像：pull</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull ubuntu:14.04</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>3.搜索镜像：search</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker search ubuntu</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>注：在上传、下载过程中是逐层进行的。下载和搜索不需要登陆</li>
+</ul>
+<blockquote>
+<p>restfulApi介绍</p>
+</blockquote>
+<blockquote>
+<p>上传、下载、鉴权原理</p>
+</blockquote>
+<blockquote>
+<p>私有仓库搭建</p>
+</blockquote>
+<blockquote>
+<h2 id="0x06、docker网络"><a href="#0x06、docker网络" class="headerlink" title="0x06、docker网络"></a>0x06、docker网络</h2></blockquote>
+<blockquote>
+<h2 id="0x07、容器卷管理"><a href="#0x07、容器卷管理" class="headerlink" title="0x07、容器卷管理"></a>0x07、容器卷管理</h2></blockquote>
+<ul>
+<li>可以把本地文件目录挂载到容器内</li>
+</ul>
+<blockquote>
+<h2 id="0x08、DockerAPI"><a href="#0x08、DockerAPI" class="headerlink" title="0x08、DockerAPI"></a>0x08、DockerAPI</h2></blockquote>
+<ul>
+<li>Docker Remote API</li>
+<li>Docker Registry API</li>
+<li>Docker Hub API</li>
+</ul>
+<blockquote>
+<h2 id="0x09、Docker安全"><a href="#0x09、Docker安全" class="headerlink" title="0x09、Docker安全"></a>0x09、Docker安全</h2></blockquote>
+<blockquote>
+<p>包含内容</p>
+</blockquote>
+<ul>
+<li>容器的安全性</li>
+<li>镜像的安全性</li>
+<li>Docker daemon的安全性</li>
+</ul>
+<blockquote>
+<p>容器安全</p>
+</blockquote>
+<ul>
+<li>Cgroup<ul>
+<li>限制CPU：指定CPU权重、使用上限</li>
+<li>限制内存</li>
+<li>限制块设备I/O</li>
+</ul>
+</li>
+<li>ulimit<ul>
+<li>core dump文件大小</li>
+<li>进程数据段大小</li>
+<li>可创建文件大小</li>
+<li>常驻内存集大小</li>
+<li>打开文件数量</li>
+<li>进程栈的大小</li>
+<li>CPU时间</li>
+<li>单个用户的最大进程数</li>
+<li>进程的最大虚拟内存</li>
+</ul>
+</li>
+<li>容器组网<ul>
+<li>将容器隔离在不同的网络内</li>
+</ul>
+</li>
+<li>容器+虚拟化</li>
+<li>镜像签名</li>
+<li>日志审计</li>
+<li>监控</li>
+<li>文件系统级保护</li>
+<li>capability<ul>
+<li>可以作用在进程上；也可以作用在程序文件上</li>
+<li>与sudo不同，sudo可以配置某个用户可以执行某个命令或更改某个文件；而capablity则是让某个程序拥有某种能力</li>
+<li>每个进程有三个和能力有关的位图：Inheritable(I)、Permitted(P)和Effective(E)</li>
+</ul>
+</li>
+<li>SELinux</li>
+<li>APPArmor</li>
+<li>Seccomp</li>
+<li>grsecurity</li>
+</ul>
+<blockquote>
+<p>安全加固</p>
+</blockquote>
+<blockquote>
+<p>安全遗留问题</p>
+</blockquote>
+<blockquote>
+<h2 id="0x10、Libcontainer"><a href="#0x10、Libcontainer" class="headerlink" title="0x10、Libcontainer"></a>0x10、Libcontainer</h2></blockquote>
+<ul>
+<li>容器引擎：一种驱动和管理容器生命周期的runtime工具</li>
+</ul>
+<blockquote>
+<h2 id="0x11、Docker实战"><a href="#0x11、Docker实战" class="headerlink" title="0x11、Docker实战"></a>0x11、Docker实战</h2></blockquote>
+<ul>
+<li>部署web服务</li>
+</ul>
+<blockquote>
+<h2 id="0x12、Docker集群"><a href="#0x12、Docker集群" class="headerlink" title="0x12、Docker集群"></a>0x12、Docker集群</h2></blockquote>
+<ul>
+<li>Compose</li>
+<li>Machine</li>
+<li>Swarm</li>
+</ul>
+<blockquote>
+<h2 id="0x13、Docker生态圈"><a href="#0x13、Docker生态圈" class="headerlink" title="0x13、Docker生态圈"></a>0x13、Docker生态圈</h2></blockquote>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone, qq, weibo, douban"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>Reprint policy</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+                    <img alt=""
+                         style="border-width:0"
+                         src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
+                </a>
+            </div>
+            <br/>
+            <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
+                  property="dct:title" rel="dct:type">
+                    《docker基础文档》
+                </span> by
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/03/10/2019/03-10-docker基础文档/" property="cc:attributionName"
+               rel="cc:attributionURL">
+                hackfox
+            </a> is licensed under a
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+                Creative Commons Attribution 4.0 International License
+            </a> 
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2019/03/10/2019/04-11-大数据存储工具/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="大数据存储工具比较">
+                        
+                        <span class="card-title">大数据存储工具比较</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+
+
+0x00、整体比较
+
+数据整体
+
+
+0x01、Kudu
+
+0x02、Impala
+
+0x03、PostgreSQL
+
+标准的结构化数据库
+
+
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-10
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/大数据/" class="post-category" target="_blank">
+                                    大数据
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/大数据/" target="_blank">
+                        <span class="chip bg-color">大数据</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/03/10/2019/03-10-python资源汇总/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="python资源汇总">
+                        
+                        <span class="card-title">python资源汇总</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+
+
+0x00、图书链接
+
+各种图书资源
+
+
+0x01、常用库
+01、通用库
+urllib
+allows you access websites via your program
+文档
+
+
+requests -网络库
+grab – 网络库（
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-10
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/python/" class="post-category" target="_blank">
+                                    python
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/python/" target="_blank">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&nbsp;&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>&nbsp;基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a>&nbsp;的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>&nbsp;主题搭建
+            <br>
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="fa fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fa fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            <br>
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date();
+
+                function createtime() {
+                    var grt = new Date("06/28/2019 00:00:00");
+                    now.setTime(now.getTime() + 250);
+                    days = (now - grt) / 1000 / 60 / 60 / 24;
+                    dnum = Math.floor(days);
+                    hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+                    hnum = Math.floor(hours);
+                    if (String(hnum).length == 1) {
+                        hnum = "0" + hnum;
+                    }
+                    minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+                    mnum = Math.floor(minutes);
+                    if (String(mnum).length == 1) {
+                        mnum = "0" + mnum;
+                    }
+                    seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                    snum = Math.round(seconds);
+                    if (String(snum).length == 1) {
+                        snum = "0" + snum;
+                    }
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+                }
+                setInterval("createtime()", 250);
+            </script>
+            
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>

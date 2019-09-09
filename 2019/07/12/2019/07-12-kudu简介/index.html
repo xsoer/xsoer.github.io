@@ -1,0 +1,1337 @@
+<!DOCTYPE HTML>
+<html lang="">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="kudu简介, hackfox">
+    <meta name="description" content="
+
+
+总体概览
+设计模式
+存储结构
+读写流程
+impala结合
+限制条件
+文档资源
+
+
+0x00、总体概览
+1.历史发展
+2012年10月由Cloudera公司发起创建,2015年10月对外公布，2015年12月进入apache基金会进行孵">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>kudu简介 | hackfox</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+</head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">hackfox</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>Index</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>Tags</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>Categories</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>Archives</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>About</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>Friends</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="Search"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">hackfox</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                Index
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                Tags
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                Categories
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                Archives
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                About
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                Friends
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        kudu简介
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/kudu/" target="_blank">
+                                <span class="chip bg-color">kudu</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/kudu/" class="post-category" target="_blank">
+                                kudu
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2019-07-12
+                </div>
+
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <!-- # kudu简介
+
+- 作者：codehackfox@gmail.com
+- 时间：2019-07-12 10:13:23 -->
+
+<ul>
+<li><a href="#0x00、总体概览">总体概览</a></li>
+<li><a href="#0x01、设计模式">设计模式</a></li>
+<li><a href="#0x02、存储结构">存储结构</a></li>
+<li><a href="#0x03、读写流程">读写流程</a></li>
+<li><a href="#0x04、impala结合">impala结合</a></li>
+<li><a href="#0x05、限制条件">限制条件</a></li>
+<li><a href="#0x06、文档资源">文档资源</a></li>
+</ul>
+<blockquote>
+<h2 id="0x00、总体概览"><a href="#0x00、总体概览" class="headerlink" title="0x00、总体概览"></a>0x00、总体概览</h2></blockquote>
+<h3 id="1-历史发展"><a href="#1-历史发展" class="headerlink" title="1.历史发展"></a>1.历史发展</h3><ul>
+<li>2012年10月由Cloudera公司发起创建,2015年10月对外公布，2015年12月进入apache基金会进行孵化，后续进入快速发展轨道。</li>
+</ul>
+<h3 id="2-产品定位"><a href="#2-产品定位" class="headerlink" title="2.产品定位"></a>2.产品定位</h3><ul>
+<li>Fast Analytics on Fast Data。</li>
+<li>在快速修改的数据上进行快速分析</li>
+</ul>
+<h3 id="3-产生之前"><a href="#3-产生之前" class="headerlink" title="3.产生之前"></a>3.产生之前</h3><p>在有kudu之前，数据分类为：</p>
+<ul>
+<li>静态数据<ul>
+<li>以HDFS引擎作为存储引擎，适⽤用于⾼吞吐量的离线大数据分析场景</li>
+<li>这类存储的局限性是数据无法进行行随机的读写</li>
+</ul>
+</li>
+<li>动态数据<ul>
+<li>以HBase、Cassandra 作为存储引擎，适⽤用于⼤大数据随机读写场景</li>
+<li>这类存储的局限性是批量量读取吞吐量量远不不如 HDFS，不不适⽤用于批量量数据分 析的场景</li>
+</ul>
+</li>
+</ul>
+<p>而既要满足随机读写和大数据分析的解决方案如下：</p>
+<p><img src="images/2019/07-12-hbase-hdfs.png" alt="解决方案图"></p>
+<p>而以上的方案问题是：</p>
+<ul>
+<li>架构复杂<ul>
+<li>流转涉及环节太多，运维成本很高</li>
+<li>每个环节需要保证高可用，需要维护多个副本，存储空间也有一定的浪费</li>
+<li>数据在多个系统上，对数据安全策略、监控等都提出了挑战</li>
+</ul>
+</li>
+<li>时效性低<ul>
+<li>从 HBase 导出成静态文件是周期性</li>
+</ul>
+</li>
+<li>难以应对后续的更新<ul>
+<li>已经从 HBase 导出到 HDFS，新到的变更数据就难以处理</li>
+</ul>
+</li>
+</ul>
+<p>所以产生了新的解决方案，那就是kudu，其定位如下：<br><img src="images/2019/07-12-kudu-position.png" alt="kudu定位"></p>
+<p>而其gap了hdfs和hbase之间的<br><img src="images/2019/07-12-kudu-gap.png" alt="kudugap"></p>
+<h3 id="4-架构图"><a href="#4-架构图" class="headerlink" title="4.架构图"></a>4.架构图</h3><p>kudu的整体架构图如下<br><img src="images/2019/07-12-kudu-architecture.png" alt="架构图"></p>
+<h3 id="5-基本概念"><a href="#5-基本概念" class="headerlink" title="5.基本概念"></a>5.基本概念</h3><p>下面了解一些kudu里的一些基本概念。</p>
+<ul>
+<li>Table<ul>
+<li>数据存储，没有库的概念</li>
+<li>有对应的schema结构</li>
+<li>字段是强类型</li>
+<li>需要设置主键</li>
+<li>分隔为N个tablets</li>
+</ul>
+</li>
+<li>Tablet<ul>
+<li>Table按照行切分后存储的位置</li>
+<li>一个tablet会多副本到其他server上，并且有一个会是leader</li>
+<li>如果leader失效，会用raft一致性协议重新选举</li>
+<li>任何一组副本内的tablet都可以读，但是只能从leader写入</li>
+</ul>
+</li>
+<li>Mater<ul>
+<li>持续追踪所有的tablet、tablet server、catalog table、其他的集群meta信息</li>
+<li>可以部署多个master，但只有一个是active</li>
+<li>如果active时效了，用raft协议在选举出一个</li>
+<li>Master信息也会存储在一个tablet上，并且被复制同步到其他master机器上</li>
+<li>Tablet servers会发送心跳包到master机器(默认是一秒一次)</li>
+</ul>
+</li>
+<li>Tablet Server<ul>
+<li>用来存储tablet数据并且向client提供服务</li>
+<li>一个tablet会在多个tablet server上</li>
+<li>一个tablet server会有多个tablet</li>
+</ul>
+</li>
+<li>Catelog table<ul>
+<li>是kudu元数据的中心，存储了关于table和tablet的信息</li>
+<li>不允许被直接读写</li>
+<li>table<ul>
+<li>table schemas,</li>
+<li>Locations</li>
+<li>states</li>
+</ul>
+</li>
+<li>tablet<ul>
+<li>Tablet list</li>
+<li>Tablet server上有哪些tablet</li>
+<li>States</li>
+<li>Start and end keys</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Raft一致性协议算法<ul>
+<li>分布式服务高可用性进行多副本</li>
+<li>通过raft来选举出leader</li>
+<li>多副本数据都可以读，但只有leader可以写</li>
+<li>写入时只有当大多数follower确认成功，才算写入成功</li>
+<li>在一组副本中(通常是3或5个)，允许有(N-1)/2的失败</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-使用场景"><a href="#6-使用场景" class="headerlink" title="6.使用场景"></a>6.使用场景</h3><ul>
+<li>流式实时计算<ul>
+<li>流式计算场景通常有持续不断地大量写入</li>
+<li>与此同时这些数据还要支持近乎实时的读、写以及更新操作</li>
+</ul>
+</li>
+<li>时间序列存储<ul>
+<li>hash分片设计能够很好地避免TSDB类请求的局部热点问题</li>
+<li>高效的Scan性能让Kudu能够比Hbase更好的支持查询操作</li>
+</ul>
+</li>
+<li>历史数据共存<ul>
+<li>Impala可以同时支持HDFS、Kudu等多个底层存储引擎</li>
+<li>不必把所有的数据都迁移到Kudu</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<h2 id="0x01、设计模式"><a href="#0x01、设计模式" class="headerlink" title="0x01、设计模式"></a>0x01、设计模式</h2></blockquote>
+<h3 id="1-数据类型"><a href="#1-数据类型" class="headerlink" title="1.数据类型"></a>1.数据类型</h3><ul>
+<li>boolean</li>
+<li>8-bit signed integer</li>
+<li>16-bit signed integer</li>
+<li>32-bit signed integer</li>
+<li>64-bit signed integer</li>
+<li>unixtime_micros (64-bit microseconds since the Unix epoch)</li>
+<li>single-precision (32-bit) IEEE-754 floating-point number</li>
+<li>double-precision (64-bit) IEEE-754 floating-point number</li>
+<li>decimal (see Decimal Type for details)</li>
+<li>UTF-8 encoded string (up to 64KB uncompressed)</li>
+<li>binary (up to 64KB uncompressed)</li>
+</ul>
+<h3 id="2-主键设计"><a href="#2-主键设计" class="headerlink" title="2.主键设计"></a>2.主键设计</h3><ul>
+<li>单列或多列<ul>
+<li>可以设置一列为主键，也同时设置多列为主键</li>
+</ul>
+</li>
+<li>唯一性<ul>
+<li>数据是全表唯一的</li>
+</ul>
+</li>
+<li>不可被更改性<ul>
+<li>在schema建成后，主键不能够修改</li>
+<li>其值不能被更改，不同即新增</li>
+</ul>
+</li>
+<li>主键索引<ul>
+<li>为主键建立B+索引</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-分区设计-Partition"><a href="#3-分区设计-Partition" class="headerlink" title="3.分区设计(Partition)"></a>3.分区设计(Partition)</h3><ul>
+<li><p>表分区类型</p>
+<ul>
+<li>hash<ul>
+<li>按照某一个或几个值的hash进行分区</li>
+<li>可指定分区的个数</li>
+</ul>
+</li>
+<li>range<ul>
+<li>按照某一个字段值的范围分区</li>
+<li>可以动态的增删</li>
+</ul>
+</li>
+<li>multilevel<ul>
+<li>可以同时按照hash、range结合来分区</li>
+<li>既分散热点数据又可动态增删</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>比如建立如下一个表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> metrics (</span><br><span class="line">    host <span class="keyword">STRING</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    metric <span class="keyword">STRING</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    <span class="built_in">time</span> INT64 <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    <span class="keyword">value</span> <span class="keyword">DOUBLE</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    PRIMARY <span class="keyword">KEY</span> (host, metric, <span class="built_in">time</span>),</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>按照range来分区如下<br><img src="images/2019/07-12-range.png" alt="range"></p>
+</li>
+<li><p>按照hash分区如下<br><img src="images/2019/07-12-hash.png" alt="hash"></p>
+</li>
+<li><p>同时按照range和hash来分区<br><img src="images/2019/07-12-hash-range.png" alt="rang-hash"></p>
+</li>
+<li><p>同时按照hash和hash来分区<br><img src="images/2019/07-12-hash-hash.png" alt="hash-hash"></p>
+</li>
+<li><p>那么hash与range的优缺点是<br><img src="images/2019/07-12-hash-range-good-bad.png" alt="hash-range-good-bad"></p>
+</li>
+</ul>
+<h3 id="4-字段编码"><a href="#4-字段编码" class="headerlink" title="4.字段编码"></a>4.字段编码</h3><ul>
+<li><p>编码的类型如下<br><img src="images/2019/07-12-encoding.png" alt="encoding"></p>
+</li>
+<li><p>每中字段适用及默认的编码类型如下<br><img src="images/2019/07-12-field-encoding.png" alt="field-encoding"></p>
+</li>
+</ul>
+<h3 id="5-数据压缩"><a href="#5-数据压缩" class="headerlink" title="5.数据压缩"></a>5.数据压缩</h3><ul>
+<li>编码类型有一下几种<ul>
+<li>LZ4<ul>
+<li>可以设置为默认</li>
+</ul>
+</li>
+<li>zlib</li>
+<li>snappy</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<h2 id="0x02、存储结构"><a href="#0x02、存储结构" class="headerlink" title="0x02、存储结构"></a>0x02、存储结构</h2></blockquote>
+<ul>
+<li>逻辑结构图如下<br><img src="images/2019/07-12-store-tree.png" alt="store-tree"></li>
+</ul>
+<blockquote>
+<h2 id="0x03、读写流程"><a href="#0x03、读写流程" class="headerlink" title="0x03、读写流程"></a>0x03、读写流程</h2></blockquote>
+<h3 id="1-锁类型"><a href="#1-锁类型" class="headerlink" title="1.锁类型"></a>1.锁类型</h3><ul>
+<li>共享锁(读锁)<ul>
+<li>获得后只能够进行读操作</li>
+<li>其他读可以，任何写等待</li>
+</ul>
+</li>
+<li>互斥锁(写锁)<ul>
+<li>只能获得锁的对象进行写</li>
+<li>任何读等待，其他写等待</li>
+</ul>
+</li>
+<li>MVCC(Multi-Version Concurrency Control)<ul>
+<li>每一个写操作都会创建一个新版本的数据</li>
+<li>读操作会从有限多个版本的数据中挑选一个最合适的结果直接返回</li>
+<li>读写操作之间的冲突就不再需要被关注，而管理和快速挑选数据的版本就成了 MVCC 需要解决的主要问题。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-存储数据"><a href="#2-存储数据" class="headerlink" title="2.存储数据"></a>2.存储数据</h3><p><img src="images/2019/07-12-insert-data.png" alt="insert-data"><br><img src="images/2019/07-12-store-data.png" alt="store-data"><br>fluash示例如下<br><img src="images/2019/07-12-flush.png" alt="flush"></p>
+<h3 id="3-compaction"><a href="#3-compaction" class="headerlink" title="3.compaction"></a>3.compaction</h3><p><img src="images/2019/07-12-compation.png" alt="compation"></p>
+<h3 id="4-kudu-api"><a href="#4-kudu-api" class="headerlink" title="4.kudu api"></a>4.kudu api</h3><p><img src="images/2019/07-12-kuduapi.png" alt="kuduapi"></p>
+<blockquote>
+<h2 id="0x04、impala结合"><a href="#0x04、impala结合" class="headerlink" title="0x04、impala结合"></a>0x04、impala结合</h2></blockquote>
+<h3 id="1-功能简介"><a href="#1-功能简介" class="headerlink" title="1.功能简介"></a>1.功能简介</h3><ul>
+<li>支持存储<ul>
+<li>HDFS、Hbase、Kudu、Hive</li>
+<li>csv、file</li>
+</ul>
+</li>
+<li>结构概念<ul>
+<li>库、表、视图、角色</li>
+<li>权限、函数</li>
+</ul>
+</li>
+<li>多种类型<ul>
+<li>array、bigint、boolean、char</li>
+<li>map、struct</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-表的概念"><a href="#2-表的概念" class="headerlink" title="2.表的概念"></a>2.表的概念</h3><ul>
+<li>内部表<ul>
+<li>通过impala创建的表都是内部表(internal)</li>
+<li>修改表结构对应的底层表也会进行变动</li>
+<li>删除表底层表也删除</li>
+</ul>
+</li>
+<li>外部表<ul>
+<li>不同过impala创建的表都是外部表(external)</li>
+<li>要操作这些表，需要在impala建立表的映射关系</li>
+<li>通过sql修改表结构或者删除表不会删除底层表，删除的只是表的映射关系</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-建表示例"><a href="#3-建表示例" class="headerlink" title="3.建表示例"></a>3.建表示例</h3><p><img src="images/2019/07-12-impala-create.png" alt="impala-create"></p>
+<h3 id="4-属性操作"><a href="#4-属性操作" class="headerlink" title="4.属性操作"></a>4.属性操作</h3><p><img src="images/2019/07-12-impala-property.png" alt="impala-property"></p>
+<h3 id="5-常用操作"><a href="#5-常用操作" class="headerlink" title="5.常用操作"></a>5.常用操作</h3><p><img src="images/2019/07-12-impala-op.png" alt="impala-op"></p>
+<h3 id="6-python-api"><a href="#6-python-api" class="headerlink" title="6.python api"></a>6.python api</h3><p><img src="images/2019/07-12-impalaapi.png" alt="api"></p>
+<blockquote>
+<h2 id="0x05、限制条件"><a href="#0x05、限制条件" class="headerlink" title="0x05、限制条件"></a>0x05、限制条件</h2></blockquote>
+<h3 id="1-表限制"><a href="#1-表限制" class="headerlink" title="1.表限制"></a>1.表限制</h3><ul>
+<li>表的备份数必须为奇数，最⼤大为7</li>
+<li>备份数在设置后不不可修改</li>
+<li>删除表后空间会⽴立⻢马释放</li>
+<li>建表时partition总数限制为60个，后续可以添加</li>
+</ul>
+<h3 id="2-列限制"><a href="#2-列限制" class="headerlink" title="2.列限制"></a>2.列限制</h3><ul>
+<li>部分数据类型不支持，如CHAR, VARCHAR, DATE, ARRAY等</li>
+<li>数据类型以及是否可为空等列列属性不支持修改</li>
+<li>一张表最多有300列列</li>
+<li>删除列列的时候不会立马清除空间，需要执⾏Compaction操作，但是 Compaction操作不⽀持手动执行</li>
+</ul>
+<h3 id="3-主键限制"><a href="#3-主键限制" class="headerlink" title="3.主键限制"></a>3.主键限制</h3><ul>
+<li>表创建后主键不不可更更改</li>
+<li>主键字段必须在其他字段之前定义</li>
+<li>⼀行对应的主键内容不可以被Update操作修改。要修改⼀行的主键值，需 要删除并新增⼀行新数据，并且该操作无法保持原子性</li>
+<li>主键的类型不支持DOUBLE、FLOAT、BOOL，且必须是非空的(NOT NULL)</li>
+<li>不支持⾃自动⽣生成主键</li>
+<li>每行对应的主键存储单元(CELL)最⼤为16KB</li>
+</ul>
+<h3 id="4-单元限制"><a href="#4-单元限制" class="headerlink" title="4.单元限制"></a>4.单元限制</h3><ul>
+<li>单元对应的数据最⼤大为64KB，并且是在压缩前</li>
+</ul>
+<h3 id="5-分片限制"><a href="#5-分片限制" class="headerlink" title="5.分片限制"></a>5.分片限制</h3><ul>
+<li>分⽚只支持手动指定，⾃自动分⽚不支持</li>
+<li>分片设定不不⽀支持修改，修改分⽚设定需要”建新表-导数据-删老表”操作;</li>
+<li>丢掉多数备份的Tablets需要⼿手动修复。</li>
+<li>Range⽀持删除或新增</li>
+</ul>
+<h3 id="6-容量建议"><a href="#6-容量建议" class="headerlink" title="6.容量建议"></a>6.容量建议</h3><ul>
+<li>建议tablet servers的最⼤大数量量为100;</li>
+<li>建议masters的最⼤大数量量为3;</li>
+<li>建议每个tablet server存储的数据最大为8T</li>
+<li>每个tablet server存储的tablets数量建议在1000以内;</li>
+<li>每个表分片后的tablets存储在单个tablet server的最⼤大数量为60。</li>
+</ul>
+<h3 id="7-Impala集成限制"><a href="#7-Impala集成限制" class="headerlink" title="7.Impala集成限制"></a>7.Impala集成限制</h3><ul>
+<li>不支持varchar、array、map、struct等类型</li>
+<li>Impala⼤小写不不敏敏感，kudu是⼤小写敏敏感，所以表名及字段最好都是小写</li>
+<li>!=和like查询是kudu把数据全部给impala，然后在过滤的，相⽐其他操作效率要低</li>
+<li>Updates、inserts、deletes都是⾮非事务的</li>
+<li>一条sql的并发执⾏行行数在于tablets的个数，所以推荐⾄至少有10个tablets</li>
+</ul>
+<h3 id="8-其他限制"><a href="#8-其他限制" class="headerlink" title="8.其他限制"></a>8.其他限制</h3><ul>
+<li>主键有索引，不支持⼆级索引(Secondary indexes)</li>
+<li>不支持多⾏行行的事务操作</li>
+<li>关系型数据的一些功能，如外键，不支持;</li>
+<li>列和表的名字强制为UTF-8编码，并且最大256字节</li>
+</ul>
+<blockquote>
+<h2 id="0x06、文档资源"><a href="#0x06、文档资源" class="headerlink" title="0x06、文档资源"></a>0x06、文档资源</h2></blockquote>
+<ul>
+<li><a href="https://kudu.apache.org/kudu.pdf" target="_blank" rel="noopener">https://kudu.apache.org/kudu.pdf</a></li>
+<li><a href="https://www.cloudera.com/documentation/enterprise/latest/PDF/cloudera-kudu.pdf" target="_blank" rel="noopener">https://www.cloudera.com/documentation/enterprise/latest/PDF/cloudera-kudu.pdf</a></li>
+<li><a href="https://kudu.apache.org/docs/" target="_blank" rel="noopener">https://kudu.apache.org/docs/</a></li>
+<li><a href="https://github.com/apache/kudu/blob/master/docs/design-docs/tablet.md" target="_blank" rel="noopener">https://github.com/apache/kudu/blob/master/docs/design-docs/tablet.md</a></li>
+<li><a href="https://github.com/apache/kudu/blob/master/docs/design-docs/cfile.md" target="_blank" rel="noopener">https://github.com/apache/kudu/blob/master/docs/design-docs/cfile.md</a></li>
+<li><a href="https://raft.github.io/raft.pdf" target="_blank" rel="noopener">https://raft.github.io/raft.pdf</a></li>
+<li><a href="https://impala.apache.org/docs/build/impala-2.8.pdf" target="_blank" rel="noopener">https://impala.apache.org/docs/build/impala-2.8.pdf</a></li>
+<li><a href="https://www.cloudera.com/documentation/enterprise/5-10-x/topics/impala_tutorial.html" target="_blank" rel="noopener">https://www.cloudera.com/documentation/enterprise/5-10-x/topics/impala_tutorial.html</a></li>
+</ul>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone, qq, weibo, douban"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>Reprint policy</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+                    <img alt=""
+                         style="border-width:0"
+                         src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
+                </a>
+            </div>
+            <br/>
+            <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
+                  property="dct:title" rel="dct:type">
+                    《kudu简介》
+                </span> by
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/07/12/2019/07-12-kudu简介/" property="cc:attributionName"
+               rel="cc:attributionURL">
+                hackfox
+            </a> is licensed under a
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+                Creative Commons Attribution 4.0 International License
+            </a> 
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2019/08/26/2019/08-26-numpy使用/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="numpy库使用">
+                        
+                        <span class="card-title">numpy库使用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+
+
+##
+
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-26
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/numpy/" class="post-category" target="_blank">
+                                    numpy
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/numpy/" target="_blank">
+                        <span class="chip bg-color">numpy</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/04/23/2019/04-23-浏览器工具集/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="浏览器工具集">
+                        
+                        <span class="card-title">浏览器工具集</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+
+
+
+0x00、插件
+
+github
+sourcegraph
+octotree
+
+
+剪切网页
+evernote
+
+
+调试接口
+JSONview
+
+
+词典
+沙拉查词
+
+
+广告
+广告终结者
+
+
+产品原型
+axure
+
+
+多tab管理
+Toby
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-23
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/工具/" class="post-category" target="_blank">
+                                    工具
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/工具/" target="_blank">
+                        <span class="chip bg-color">工具</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&nbsp;&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>&nbsp;基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a>&nbsp;的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>&nbsp;主题搭建
+            <br>
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="fa fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fa fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            <br>
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date();
+
+                function createtime() {
+                    var grt = new Date("06/28/2019 00:00:00");
+                    now.setTime(now.getTime() + 250);
+                    days = (now - grt) / 1000 / 60 / 60 / 24;
+                    dnum = Math.floor(days);
+                    hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+                    hnum = Math.floor(hours);
+                    if (String(hnum).length == 1) {
+                        hnum = "0" + hnum;
+                    }
+                    minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+                    mnum = Math.floor(minutes);
+                    if (String(mnum).length == 1) {
+                        mnum = "0" + mnum;
+                    }
+                    seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                    snum = Math.round(seconds);
+                    if (String(snum).length == 1) {
+                        snum = "0" + snum;
+                    }
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+                }
+                setInterval("createtime()", 250);
+            </script>
+            
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>

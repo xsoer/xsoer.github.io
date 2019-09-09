@@ -1,461 +1,786 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
+<!DOCTYPE HTML>
+<html lang="">
 
+
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.58.1" />
+    <meta name="keywords" content="Tag: 数据库, hackfox">
+    <meta name="description" content="Tag: 数据库 | hackfox">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Tag: 数据库 | hackfox</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
 
-    <title>数据库 | hackfox</title>
-    <meta property="og:title" content="数据库 - hackfox">
-    <meta property="og:type" content="article">
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
         
-        
-    <meta name="Keywords" content="">
-    <meta name="description" content="数据库">
-        
-    <meta name="author" content="">
-    <meta property="og:url" content="https://xsoer.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-    <link rel="shortcut icon" href="https://xsoer.github.io/favicon.ico" type="image/x-icon">
+    </style>
 
-    <link rel="stylesheet" href="https://xsoer.github.io/css/normalize.css">
-    
-    <link rel="stylesheet" href="https://xsoer.github.io/css/style.css">
-    <link rel="alternate" type="application/rss+xml+xml" href="https://xsoer.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" title="hackfox" />
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-    
-
-
-    
-    
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
 </head>
 
 
 <body>
-<header id="header" class="clearfix">
-    <div class="container">
-        <div class="col-group">
-            <div class="site-name ">
-                
-                    <a id="logo" href="https://xsoer.github.io/">
-                        hackfox
-                    </a>
-                
-                
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">hackfox</span>
+                </a>
             </div>
-            <div>
-                <nav id="nav-menu" class="clearfix">
-                    <a class="" href="https://xsoer.github.io/">首页</a>
-                    
-                    <a  href="https://xsoer.github.io/tags/" title="标签">标签</a>
-                    
-                    <a  href="https://xsoer.github.io/archives/" title="归档">归档</a>
-                    
-                    <a  href="https://xsoer.github.io/about/" title="关于">关于</a>
-                    
-                </nav>
-            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>Index</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>Tags</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>Categories</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>Archives</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>About</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>Friends</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="Search"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">hackfox</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
         </div>
     </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                Index
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                Tags
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                Categories
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                Archives
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                About
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                Friends
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
 </header>
 
-
-<div id="body">
+<div class="bg-cover pd-header about-cover">
     <div class="container">
-        <div class="col-group">
-
-            <div class="col-8" id="main">
-                <div class="res-cons">
-                    
-                    <h3 class="archive-title">
-                        包含标签
-                        <span class="keyword">数据库</span>
-                        的文章
-                    </h3>
-                    
-
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://xsoer.github.io/posts/2019/09-01-%E6%95%B0%E5%AD%A6%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/">kudu简介</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2019年9月1日
-                            </date>
-                            
-                            <div class="post-meta meta-category">
-                                |
-                                
-                                    <a href="https://xsoer.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93">数据库</a>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                 0x00、整体简介  向量 矩阵 导数 数值计算 概率分布 参数估计 回归分析 判断问题  0x01、向量 0x02、矩阵 0x03、导数 0x04、数值计算 0x05、概率分布 0x06、参数估计 0x07、回归分析 0x08、判断问题 ……
-                                <p class="readmore"><a href="https://xsoer.github.io/posts/2019/09-01-%E6%95%B0%E5%AD%A6%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/">阅读全文</a></p>
-                            </div>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://xsoer.github.io/posts/2019/04-22-impala%E7%B3%BB%E7%BB%9F%E6%80%A7%E6%96%87%E6%A1%A3/">Impala操作手册</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2019年4月22日
-                            </date>
-                            
-                            <div class="post-meta meta-category">
-                                |
-                                
-                                    <a href="https://xsoer.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93">数据库</a>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                [TOC]
- 简介   支持的查询存储  关系型数据库 数据仓库 Kudu Hive Hbase HDFS  可以单独部署一个集群，读取远程数据源。 支持的操作  运行impala-shell进入交互模式  /usr/bin/impala-shell  ODBC、JDBC Hue web-based user interface.    数据表   分为外部表和内部表 内部表  通过impala创建的表都是内部表(internal) 修改表结构对应的底层表也会进行变动  外部表  不同过impala创建的表都是外部表(external) 要操作这些表，需要在impala建立表的映射关系 通过sql修改表结构或者删除表不会删除底层表，删除的只是表的映射关系    SQL语法   sql示例
--- This line is a comment about a table. create table ...; /* This is a multi-line comment about a query. */ select ...; select * from t /* This is an embedded comment about a query. */ where ...; select * from t -- This is a trailing comment within a multi-line command. where ...;  外部表映射
-CREATE EXTERNAL TABLE my_mapping_table STORED AS KUDU TBLPROPERTIES ( 'kudu.table_name' = 'my_kudu_table' );  创建内部表
-CREATE TABLE my_first_table ( id BIGINT, name STRING, PRIMARY KEY(id) ) PARTITION BY HASH PARTITIONS 16 STORED AS KUDU;  用select来建表……
-                                <p class="readmore"><a href="https://xsoer.github.io/posts/2019/04-22-impala%E7%B3%BB%E7%BB%9F%E6%80%A7%E6%96%87%E6%A1%A3/">阅读全文</a></p>
-                            </div>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://xsoer.github.io/posts/2019/03-10-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/">数据库基础</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2019年3月10日
-                            </date>
-                            
-                            <div class="post-meta meta-category">
-                                |
-                                
-                                    <a href="https://xsoer.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93">数据库</a>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                  1.数据库中的事务是什么?事务的隔离级别?脏读、幻读、不可重复读是什么意思？   数据库事务  将一组相关操作组合为一个要么全部成功要么全部失败的单元 具有ACID（原子性、一致性、隔离性和持久性）属性  原子性(Atomicity)：原子性是指事务包含的所有操作要么全部成功，要么全部失败回滚 一致性(Consistent)：一致性是指事务必须使数据库从一个一致性状态变换到另一个一致性状态，也就是说一个事务执行之前和执行之后都必须于一致性状态 隔离性(Isolation)：隔离性是当多个用户并发访问数据库时，比如操作同一张表时，数据库为每一个用户开启的事务，不能被其他事务的操作所扰，多个并发事务之间要相互隔离。 持久性(Duration)：持久性是指一个事务一旦被提交了，那么对数据库中的数据的改变就是永久性的，即便是在数据库系统遇到故障的情况下也不会丢失提交事务的操作。   事物隔离级别  Serializable (串行化)：可避免脏读、不可重复读、幻读的发生。 Repeatable read (可重复读)：可避免脏读、不可重复读的发生。 Read committed (读已提交)：可避免脏读的发生。 Read uncommitted (读未提交)：最低级别，任何情况都无法保证。  脏读、幻读、不可重复读  脏读：脏读是指在一个事务处理过程里读取了另一个未提交的事务中的数据 不可重复读：不可重复读是指在对于数据库中的某个数据，一个事务范围内多次查询却返回了不同的数据值，这是由于在查询间隔，被另一个事务修改并提交了。 幻读：是事务非独立执行时发生的一种现象。例如事务T1对一个表中所有的行的某个数据项做了从“1”修改为“2”的操作，这时事务T2又对这个表中插入了一行数据项，而这个数据项的数值还是为“1”并且提交给数据库。而操作事务T1的用户如果再查看刚刚修改的数据，会发现还有一行没有修改，其实这行是从事务T2中添加的，就好像产生幻觉一样，这就是发生了幻读。  备注：  不可重复读和脏读的区别是，脏读是某一事务读取了另一个事务未提交的脏数据，而不可重复读则是读取了前一事务提交的数据。 幻读和不可重复读都是读取了另一条已经提交的事务（这点就脏读不同），所不同的是不可重复读查询的都是同一个数据项，而幻读针对的是一批数据整体（比如数据的个数） 当前事务的隔离级别：select @@tx_isolation;    2.优化数据库的方法。说说 SQL 优化之道   主机性能 内存使用性能 网络传输性能 SQL语句执行性能   3.唯一索引和普通索引的区别，索引类别（B+树索引、全文索引、哈希索引），索引的区别   为什么要用 B+tree 作为 MySql 索引的数据结构   聚集索引与非聚集索引的区别   Mysql存储引擎有哪些？有什么区别？存储引擎的 InnoDB 与 MyISAM区别、优缺点、使用场景？   varchar和char有什么区别   DDL、DML、DCL 分别指什么   explain 命令   数据库的几大范式   说说分库与分表设计，分库与分表带来的分布式困境与对应之策   什么是自适应哈希索引（AHI）   limit 20000 加载很慢怎么解决   常见的几种分布式 ID 的设计方案  ……
-                                <p class="readmore"><a href="https://xsoer.github.io/posts/2019/03-10-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/">阅读全文</a></p>
-                            </div>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://xsoer.github.io/posts/2018/10-26-python%E7%9A%84format%E4%BD%BF%E7%94%A8/">python的format使用</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2018年10月26日
-                            </date>
-                            
-                            <div class="post-meta meta-category">
-                                |
-                                
-                                    <a href="https://xsoer.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93">数据库</a>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                0x00、介绍  format优点
- 1.不需要理会数据类型的问题，在%方法中%s只能替代字符串类型 2.单个参数可以多次输出，参数顺序可以不相同 3.填充方式十分灵活，对齐方式十分强大 4.官方推荐用的方式，%方式将会在后面的版本被淘汰
-print('hello {0}'.format('world')) // hello world   format格式
-#format的格式 replacement_field ::= &quot;{&quot; [field_name] [&quot;!&quot; conversion] [&quot;:&quot; format_spec] &quot;}&quot; field_name ::= arg_name (&quot;.&quot; attribute_name | &quot;[&quot; element_index &quot;]&quot;)* arg_name ::= [identifier | integer] attribute_name ::= identifier element_index ::= integer | index_string index_string ::= &lt;any source character except &quot;]&quot;&gt; + conversion ::= &quot;r&quot; | &quot;s&quot; | &quot;a&quot; format_spec ::= &lt;described in the next section&gt;  format_spec 的格式
-format_spec ::= [[fill]align][sign][#][0][width][,][.precision][type] fill ::= &lt;any character&gt; align ::= &quot;&lt;&quot; | &quot;&gt;&quot; | &quot;=&quot; | &quot;^&quot; sign ::= &quot;+&quot; | &quot;-&quot; | &quot; &quot; width ::= integer precision ::= integer type ::= &quot;b&quot; | &quot;c&quot; | &quot;d&quot; | &quot;e&quot; | &quot;E&quot; | &quot;f&quot; | &quot;F&quot; | &quot;g&quot; | &quot;G&quot; | &quot;n&quot; | &quot;o&quot; | &quot;s&quot; | &quot;x&quot; | &quot;X&quot; | &quot;%&quot;   0x01、应用 一、填充  1.……
-                                <p class="readmore"><a href="https://xsoer.github.io/posts/2018/10-26-python%E7%9A%84format%E4%BD%BF%E7%94%A8/">阅读全文</a></p>
-                            </div>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://xsoer.github.io/posts/2018/08-12-%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/">数据建模</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2018年8月12日
-                            </date>
-                            
-                            <div class="post-meta meta-category">
-                                |
-                                
-                                    <a href="https://xsoer.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93">数据库</a>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                0x00、数据模型   为什么要建模
- 定义如何存储信息，如何操作信息，以及信息的完整性等约束功能 影响了数据的形态和使用方式 需要满足不同的业务场景需要 联机事务处理(OLTP):满足业务线需要，频繁的维护更新数据，强一致性 联机分析处理(OLAP):满足决策层需要，更多纬度的视角查询，满足统计决策   定义数据如何存储
- 数据模型是定义数据如何输入和输出的一种模型。其主要作用是为信息系统提供数据的定义和格式。
- 数据模型是数据库系统的核心和基础，现有的数据库系统都是基于某种数据模型而建立起来的。
- 三要素
- 数据结构：储存在数据库中对象类型的集合，作用是描述数据库组成对象以及对象之间的联系。 比如结构化存储、非结构化存储 关联关系型，KV型 数据操作：指对数据库中各种对象实例允许执行的操作的集合，包括操作及其相关的操作规则。 关系操作的select及其join、 group by、order by,insert,update, delete等 关系型数据库：oracle,SQLServer,DB2,Mysql。面向对象化 键值数据库：redis,mongodb,hbase等。存储非结构化，缓存等 时间序列数据库:InfluxDB，confluenceDB，Elasticsearch等。 存储日志类型，便于分析 流式数据库:MQ，Spark，Kafka。存储消息类型，不做永久性存储。发布-订阅型、消息队列、消息中间件 数据完整性约束条件：指在给定的数据模型中，数据及其联系所遵守的一组通用的完整性规则，它能保证数据的正确性和一致性。[1]    0x01、数据建模   建模过程中的主要活动包括：  确定数据及其相关过程（如实地销售人员需要查看在线产品目录并提交新客户订单）。 定义数据（如数据类型、大小和默认值）。 确保数据的完整性（使用业务规则和验证检查）。 定义操作过程（如安全检查和备份）。 选择数据存储技术（如关系、分层或索引存储技术）。  数据建模大致分为三个阶段，概念建模阶段，逻辑建模阶段和物理建模阶段。其中概念建模和逻辑建模阶段与数据库厂商毫无关系，换言之，与MySQL，SQL Server，Oracle没有关系。物理建模阶段和数据库厂商存在很大的联系，因为不同厂商对同一功能的支持方式不同，如高可用性，读写分离，甚至是索引，分区等。   0x02、数据存储历史   历史发展  无库时代 ：没有专门的数据库，数据大多以文件形式存放 层次状数据库 ：使用层次状模型进行数据库设计和存放 网状数据库 ：使用网状模型进行数据库设计和存放 关系型数据库 ：使用关系型模型进行数据库设计和存放 非关系型数据库：为适应水平扩展性和处理超大量的数据环境，近几年发展非常迅速的发展，衍生类型非常多。 数据集市 数据仓库    0x03、层次模型    一种用树形结构描述实体及其之间关系的数据模型。在这种结构中，每一个记录类型都是用节点表示，记录类型之间的联系则用结点之间的有向线段来表示。每一个双亲结点可以有多个子节点但是每一个子节点只能有一个双亲结点。这种结构决定了采用层次模型作为数系组织方式的层次数据库系统只能处理一对多的实体联系。 层次模型是最早用于商品数据库管理系统的数据模型。 层次数据模型中最基本的数据关系是基本层次关系，它代表两个记录型之间一对多的关系，也叫做双亲子女关系（PCR）。 举例   一个教师学生层次模型。该层次模型有4个记录类型，即实体。分别是： （1）记录型（实体）系是根结点，由系编号、系名、地点3个属性（字段）组成。它有两个子结点，分别是教研室实体和学生实体。 （2）记录型（实体）教研室是系的子结点，同时又是教师实体的双亲结点。它由教研室编号和教研室名两个属性（字段）组成。 （3）记录型（实体）学生由学号、姓名、成绩3个属性（字段）组成。 （4）记录型（实体）教师由教师号、姓名、研究方向3个属性（字段）组成。学生与教师是叶子结点，他们没有子结点。由系到教研室、教研室到教师、系到学生都是一对多的联系。  特征。在一个层次模型中的限制条件是：  （1）有且仅有一个节点，无父节点，它为树的根；（有且仅有一个结点没有双亲，该节点就是根结点。） （2）其他节点有且仅有一个父节点。（根以外的其他结点有且仅有一个双亲结点 ）这就使得层次数据库系统只能直接处理一对多的实体关系。 （3）任何一个给定的记录值只有按照其路径查看时，才能显出它的全部意义，没有一个子女记录值能够脱离双亲记录值而独立存在。 因而层次模型只能表示“1一M”关系，而不能直接表示“M—M”关系。在层次模型中，一个结点称为一个记录型，用来描述实体集。每个记录型可以有一个或多个记录值，上层一个记录值对应下层一个或多个记录值，而下层每个记录值只能对应上层一个记录值。例如，系记录型有：计算机系、电信系等记录值。而计算机系的下层记录值有软件、结构、应用等研究室和数据结构、操作系统、数据库等课程，软件研究室下层又有员工和项目记录值，如图所示:  关于层次模型中实体集之间多对多的联系的处理，解决的方法是引入冗余结点。例如，学生和课程之间的多对多的联系，引入学生和课程的冗余结点，转换为两棵树：一棵树的根是学生，子结点是课程，它表现了一个学生可以选多门课程；一棵树的根是课程，子结点是学生，它反映了一门课程可以被多个学生选。至于冗余结点可以用虚拟结点实现：在冗余结点处仅存放一个指针，指向实际结点。  数据完整性约束。层次模型的数据操纵主要有查询、插入、删除和更新。进行插入、删除、更新操作时要满足层次模型的完整性约束条件。具体如下：  （1）进行插入数据时，如果没有相应的双亲结点值就不能插入它的子结点值。例如，在上图层次数据库中，如果新调入一名教师，但尚未分配到某个教研室，这时就不能将新的教师插入到数据库中。 （2）进行删除数据时，如果删除双亲结点值，则相应的子结点值也被同时删除。例如，在上图中的层次数据库中，如果删除网络教研室，则该教研室的所有教师的数据将全部丢失。 （3）进行修改数据时，进行更新操作时，应更新所有相应记录，以保证数据的一致性。 [2]  优缺点  优点:  层次模型的数据结构比较简单，只需要几条命令就能操纵数据库，比较容易使用。 结构清晰，结点间联系简单，只要知道每个结点的双亲结点，就可以知道整个模型结构。现实世界中许多实体间联系本来就是呈现出一种很自然的层次关系，如表示行政层次，家族关系很关系  缺点:  （1）现实世界中很多联系是非层次性的，如多对多联系、一个结点具有多个双亲等。层次模型表示这类联系的方法很不灵活，不能直接表示两个以上的实体型间的的复杂的联系和实体型间的多对多联系。只能通过引入冗余数据或建非自然的数据组织如创建虚拟节点的方法来解决，易产生不一致性。 （2）对数据的插入和删除的操作限制太多。 （3）查询子女结点必须通过双亲结点，因为层次模型对任一结点的所有子树都规定了先后次序，这一限制隐含了对数据库存取路径的控制。树中父子结点之间只存在一种联系，因此，对树中的任一结点，只有一条自根结点到达它的路径。 （4）树结点中任何记录的属性只能是不可再分的简单数据类型。 （5）由于结构严密，层次命令趋于程序化。   层次模型的物理存储有两种实现方法：  顺序法：按照层次顺序把所有的记录邻接存放，即通过物理空间的位置相邻来实现层次顺序。 指针法：各个记录存放时不是按层次顺序，而是用指针按层次顺序把它们链接起来。  1969由IBM公司的IMS（Information Management System），这是IBM公司研制的最早的大型数据库系统程序产品   0x04、网状模型   定义  用有向图结构表示实体类型及实体间联系的数据结构模型称为网状模型（Network Model）。 网状模型取消了层次模型的不能表示非树状结构的限制，两个或两个以上的结点都可以有多个双亲结点，则此时有向树变成了有向图，该有向图描述了网状模型。  特征。网状模型的数据结构主要有以下两个特征:  (1)允许有一个以上的节点无双亲。 (2)至少有一个节点可以有多于一个的双亲。 网状模型中每个结点表示一个记录型（实体），每个记录型可包含若干个字段（实体的属性），结点间的连线表示记录类型（实体）间的父子关系。  示例   课程（实体）的父节点由专业、教研室、学生。以课程和学生之间的关系来说，他们是一种m:n的关系，也就是说一个学生能够选修多门课程，一门课程也可以被多个学生同时选修。  网状与层级数据库的区别  层次模型中子结点与双亲结点的联系是唯一的，在网状模型中这种联系可以不唯一。 层次模型可以看作网状模型的特例 因此，在网状模型中要为每个联系命名，并指出与该联系有关的双亲记录和子记录。  数据操作与完整性约束  网状模型的数据操作主要包括查询、插入、删除和更新。具体如下：  (1)进行插入操作时，允许插入尚未确定双亲结点值的子结点值。如可增加一名尚未分配到某个教研室的新老师，也可增加一些刚来报到还未分配宿舍的学生。 (2)进行删除操作时，只允许删除双亲结点值。如可删除一个教研室，而该科研室所有教师的信息仍保留在数据库中。 (3)修改数据时，可直接表示非树状结构，而无须像层次模型那样增加冗余结点，因此修改操作时只需要指定更新记录即可。  进行更新操作时只需更新指定记录即可。因此，一般来说，网状模型没有层次模型那样严格的完整性约束条件，但具体的网状数据库系统(如DBTG)对数据操作都加了一些限制，提供了一定的完整性约束。 [3] DBTG在模式DDL中提供了定义DBTG数据库完整性的若干概念和语句，主要有：  (1)支持记录码的概念，码是唯一标识记录的数据项的集合。 (2)保证一个联系中双亲记录和子记录之间是一对多的联系。 (3)可以支持双亲记录和子记录之间某些约束条件。如有些子记录要求双亲记录存在才能插入，双亲记录删除时也连同删除。   优缺点  优点  能够更为直接地描述现实客观世界。可表示实体间的多种复杂联系。 修改网状数据模型时，没有层次状数据模型的那么多的严格限制，可以删除一个节点的父节点而依旧保留该节点；也允许插入一个没有任何父节点的节点，这样的插入在层次状数据模型中是不被允许的，除非是首先插入的是根节点； 实体之间的关系在底层中可以借由指针指针实现。具有良好的性能，存取效率较高。  缺点  结构比较复杂，其数据定义语言(DDL)、数据操作语言(DML)复杂，用户不容易使用。而且应用环境越大，数据库的结构就变得越复杂，不利于最终用户掌握。 数据独立性差，由于实体间的联系本质上是通过存取路径表示的，因此应用程序在访问数据时要指定存取路径。 网状数据模型数据之间的彼此关联比较大，该模型其实一种导航式的数据模型结构，不仅要说明要对数据做些什么，还说明操作的记录的路径；     0x05、关系模型   网状数据库和层次数据库已经很好地解决了数据的集中和共享问题 但是在数据独立性和抽象级别上仍有很大欠缺。用户在对这两种数据库进行存取时，仍然需要明确数据的存储结构，指出存取路径。 1970年，IBM的研究员E.……
-                                <p class="readmore"><a href="https://xsoer.github.io/posts/2018/08-12-%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/">阅读全文</a></p>
-                            </div>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://xsoer.github.io/posts/2018/08-10-%E8%A1%8C%E4%B8%8E%E5%88%97%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%BA%93/">行与列式数据库</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2018年8月10日
-                            </date>
-                            
-                            <div class="post-meta meta-category">
-                                |
-                                
-                                    <a href="https://xsoer.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93">数据库</a>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                 行与列式数据库  作者：codehackfox@gmail.com 时间：2018-08-10 13:23:49   0x00、简介  行式数据库  平常用的结构化关系型数据库，比如mysql、sqlserver等 一行为一条数据，进行记录存储 可以进行join查询，可以进行笛卡尔积运算  列式数据库  列式数据库是以列相关存储架构进行数据存储的数据库，主要适合于批量数据处理和即时查询。相对应的是行式数据库，数据以行相关的存储体系架构进行空间分配，主要适合于小批量的数据处理，常用于联机事务型数据处理。 特点  因为硬盘寻址时间相较于计算机上其他部件的运行速度来说不是一般的慢，所以常用相同工作负载下的硬盘访问性能来比较行数据库和列数据库。通常，顺序读取数据要比随机访问更快。而且，硬盘寻址时间的提升比起CPU速度的进步要慢得多 (参看 摩尔定律)，在使用硬盘作为存储媒介的系统上这种情况很可能还会持续一段时间。下面简单罗列了一些选择行数据库还是列数据库的权衡依据。当然，如果能够把数据全放在内存中，那么使用内存数据库性能会更好。  1.在只需要根据某几列来聚合数据的时候按列的数据组织方式更有效。因为这样只需要读取一部分数据，要比读取全部数据更快。 2.当只需要修改某一列值的时候按列的数据组织方式更有效。因为可以直接找到某列数据并修改，而与行中的其他列无关。 3.当需要某行的多列数据的时候按行的数据组织方式更有效。当行中数据不是太多的情况下一次硬盘寻址就可以获得该行的所有数据。 4.在新增行数据的时候，如果各列都有值，那么按行的数据组织方式会更有效，因为只需要一次硬盘寻址就可以写入整行的全部数据。    应用  面向行的数据存储架构更适用于OLTP-频繁交互事务的场景。 面向列的数据存储架构更适用于OLAP-(如数据仓库)这样在海量数据（(可能达到 terabyte规模)）中进行有限复杂查询的场景。   0x01、比较     底层存储实例      随机读与顺序读      0x02、优缺点  列数据库  优点：  极高的装载速度（最高可以等于所有硬盘IO 的总和，基本是极限了） 适合大量的数据而不是小数据 实时加载数据仅限于增加（删除和更新需要解压缩Block 然后计算然后重新压缩储存 高效的压缩率，不仅节省储存空间也节省计算内存和CPU。 非常适合做聚合操作。  缺点：  不适合扫描小量数据 不适合随机的更新 批量更新情况各异，有的优化的比较好的列式数据库（比如Vertica）表现比较好，有些没有针对更新的数据库表现比较差。 不适合做含有删除和更新的实时操作   行数据库  优点  适合频繁的增删改数据 小量数据的频繁维护和简单统计  缺点  不适合做统计类操作   ……
-                                <p class="readmore"><a href="https://xsoer.github.io/posts/2018/08-10-%E8%A1%8C%E4%B8%8E%E5%88%97%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%BA%93/">阅读全文</a></p>
-                            </div>
-                        </article>
-                    
-
-                    
-
-
-
-
-
-                </div>
+    <div class="row">
+    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+        <div class="brand">
+            <div class="title center-align">
+                
+                    subtitle
+                
             </div>
 
-            <div id="secondary">
-    <section class="widget">
-        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
-      
-      <input type="text" name="q" maxlength="20" placeholder="Search">
-      <input type="hidden" name="sitesearch" value="https://xsoer.github.io/">
-      <button type="submit" class="submit icon-search"></button>
-</form>
-    </section>
-    
-    <section class="widget">
-        <h3 class="widget-title">最近文章</h3>
-<ul class="widget-list">
-    
-    <li>
-        <a href="https://xsoer.github.io/posts/2019/09-06-%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%E5%B7%A5%E5%85%B7/" title="数据同步工具">数据同步工具</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/posts/2019/09-05-tmux%E9%85%8D%E7%BD%AE/" title="tmux配置">tmux配置</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/posts/2019/09-05-mac%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" title="Mac开发环境配置">Mac开发环境配置</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/posts/2019/09-02-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%B1%BB%E5%9E%8B/" title="神经网络类型">神经网络类型</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/posts/2019/09-01-%E6%95%B0%E5%AD%A6%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/" title="kudu简介">kudu简介</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/posts/2019/08-26-numpy%E4%BD%BF%E7%94%A8/" title="numpy库使用">numpy库使用</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/posts/2019/07-12-kudu%E7%AE%80%E4%BB%8B/" title="kudu简介">kudu简介</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/posts/2019/04-23-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E5%85%B7%E9%9B%86/" title="浏览器工具集">浏览器工具集</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/posts/2019/04-22-impala%E7%B3%BB%E7%BB%9F%E6%80%A7%E6%96%87%E6%A1%A3/" title="Impala操作手册">Impala操作手册</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/posts/2019/04-22-%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4%E5%B7%A5%E5%85%B7%E9%9B%86/" title="终端命令工具集">终端命令工具集</a>
-    </li>
-    
-</ul>
-    </section>
-
-    
-
-    <section class="widget">
-        <h3 class="widget-title">分类</h3>
-<ul class="widget-list">
-    
-    <li>
-        <a href="https://xsoer.github.io/categories/ai/">ai(2)</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/categories/development/">development(2)</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/categories/docker/">docker(2)</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/categories/git/">git(1)</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/categories/javascript/">javascript(1)</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/categories/kudu/">kudu(1)</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/categories/mysql/">mysql(5)</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/categories/numpy/">numpy(1)</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/categories/php/">php(3)</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/categories/python/">python(4)</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/categories/vim/">vim(1)</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据(1)</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/categories/%E5%B7%A5%E5%85%B7/">工具(6)</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统(1)</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库(6)</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构(1)</a>
-    </li>
-    
-    <li>
-        <a href="https://xsoer.github.io/categories/%E8%BF%90%E7%BB%B4/">运维(1)</a>
-    </li>
-    
-</ul>
-    </section>
-
-    <section class="widget">
-        <h3 class="widget-title">标签</h3>
-<div class="tagcloud">
-    
-    <a href="https://xsoer.github.io/tags/ai/">ai</a>
-    
-    <a href="https://xsoer.github.io/tags/docker/">docker</a>
-    
-    <a href="https://xsoer.github.io/tags/git/">git</a>
-    
-    <a href="https://xsoer.github.io/tags/javascript/">javascript</a>
-    
-    <a href="https://xsoer.github.io/tags/kudu/">kudu</a>
-    
-    <a href="https://xsoer.github.io/tags/mysql/">mysql</a>
-    
-    <a href="https://xsoer.github.io/tags/numpy/">numpy</a>
-    
-    <a href="https://xsoer.github.io/tags/php/">php</a>
-    
-    <a href="https://xsoer.github.io/tags/python/">python</a>
-    
-    <a href="https://xsoer.github.io/tags/vim/">vim</a>
-    
-    <a href="https://xsoer.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
-    
-    <a href="https://xsoer.github.io/tags/%E5%B7%A5%E5%85%B7/">工具</a>
-    
-    <a href="https://xsoer.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
-    
-    <a href="https://xsoer.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
-    
-    <a href="https://xsoer.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-    
-    <a href="https://xsoer.github.io/tags/%E6%96%B0%E6%8A%80%E6%9C%AF/">新技术</a>
-    
-    <a href="https://xsoer.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</a>
-    
-    <a href="https://xsoer.github.io/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-    
-</div>
-    </section>
-
-    
-
-    <section class="widget">
-        <h3 class="widget-title">其它</h3>
-        <ul class="widget-list">
-            <li><a href="https://xsoer.github.io/index.xml">文章 RSS</a></li>
-        </ul>
-    </section>
-</div>
+            <div class="description center-align">
+                
+                    This is your root _config.yml 'description' value.
+                
+            </div>
         </div>
     </div>
 </div>
-<footer id="footer">
-    <div class="container">
-        &copy; 2019 <a href="https://xsoer.github.io/">hackfox By </a>.
-        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
-        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
-        
+<script>
+// 每天切换 banner 图.  Switch banner image every day.
+$('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
+</script>
+    </div>
+</div>
+
+<main class="content">
+
+    
+
+<div id="tags" class="container chip-container">
+    <div class="card">
+        <div class="card-content">
+            <div class="tag-title center-align">
+                <i class="fa fa-tags"></i>&nbsp;&nbsp;Post Tags
+            </div>
+            <div class="tag-chips">
+                
+                
+                <a href="/tags/运维/" title="运维: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="运维" style="background-color: #F9EBEA;">运维
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/PHP/" title="PHP: 3">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="PHP" style="background-color: #F5EEF8;">PHP
+                        <span class="tag-length">3</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/数据结构/" title="数据结构: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="数据结构" style="background-color: #D5F5E3;">数据结构
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/mysql/" title="mysql: 5">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="mysql" style="background-color: #E8F8F5;">mysql
+                        <span class="tag-length">5</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/VIM/" title="VIM: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="VIM" style="background-color: #FEF9E7;">VIM
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/GIT/" title="GIT: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="GIT" style="background-color: #F8F9F9;">GIT
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/操作系统/" title="操作系统: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="操作系统" style="background-color: #82E0AA;">操作系统
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/docker/" title="docker: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="docker" style="background-color: #D7BDE2;">docker
+                        <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/数据库/" title="数据库: 6">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-active "
+                            data-tagname="数据库" style="background-color: #A3E4D7;">数据库
+                        <span class="tag-length">6</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/python/" title="python: 4">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="python" style="background-color: #85C1E9;">python
+                        <span class="tag-length">4</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/新技术/" title="新技术: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="新技术" style="background-color: #F8C471;">新技术
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/面试/" title="面试: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="面试" style="background-color: #F9E79F;">面试
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/工具/" title="工具: 6">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="工具" style="background-color: #E8F8F5;">工具
+                        <span class="tag-length">6</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/javascript/" title="javascript: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="javascript" style="background-color: #FFF;">javascript
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/大数据/" title="大数据: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="大数据" style="background-color: #F5EEF8;">大数据
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/numpy/" title="numpy: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="numpy" style="background-color: #82E0AA;">numpy
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/AI/" title="AI: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="AI" style="background-color: #A3E4D7;">AI
+                        <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/kudu/" title="kudu: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="kudu" style="background-color: #FEF9E7;">kudu
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <article id="articles" class="container articles">
+        <div class="row tags-posts">
+            
+            
+            <div class="article tag-post col s12 m6 l4" data-tags="数据库" data-aos="fade-up">
+                <div class="card">
+                    <a href="/2019/09/01/2019/09-01-数学理论基础/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="kudu简介">
+                            
+                            <span class="card-title">kudu简介</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/数据库/" class="post-category" target="_blank">
+                                数据库
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="article tag-post col s12 m6 l4" data-tags="数据库" data-aos="fade-up">
+                <div class="card">
+                    <a href="/2019/04/22/2019/04-22-Impala系统性文档/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Impala操作手册">
+                            
+                            <span class="card-title">Impala操作手册</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-22
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/数据库/" class="post-category" target="_blank">
+                                数据库
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="article tag-post col s12 m6 l4" data-tags="数据库" data-aos="fade-up">
+                <div class="card">
+                    <a href="/2019/03/10/2019/03-10-数据库基础/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="数据库基础">
+                            
+                            <span class="card-title">数据库基础</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-10
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/数据库/" class="post-category" target="_blank">
+                                数据库
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="article tag-post col s12 m6 l4" data-tags="数据库" data-aos="fade-up">
+                <div class="card">
+                    <a href="/2018/10/26/2018/10-26-python的format使用/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="python的format使用">
+                            
+                            <span class="card-title">python的format使用</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-26
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/数据库/" class="post-category" target="_blank">
+                                数据库
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="article tag-post col s12 m6 l4" data-tags="数据库" data-aos="fade-up">
+                <div class="card">
+                    <a href="/2018/08/12/2018/08-12-数据建模/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="数据建模">
+                            
+                            <span class="card-title">数据建模</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-08-12
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/数据库/" class="post-category" target="_blank">
+                                数据库
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="article tag-post col s12 m6 l4" data-tags="数据库" data-aos="fade-up">
+                <div class="card">
+                    <a href="/2018/08/10/2018/08-10-行与列式数据库/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="行与列式数据库">
+                            
+                            <span class="card-title">行与列式数据库</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-08-10
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/数据库/" class="post-category" target="_blank">
+                                数据库
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </article>
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&nbsp;&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>&nbsp;基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a>&nbsp;的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>&nbsp;主题搭建
+            <br>
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="fa fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fa fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            <br>
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date();
+
+                function createtime() {
+                    var grt = new Date("06/28/2019 00:00:00");
+                    now.setTime(now.getTime() + 250);
+                    days = (now - grt) / 1000 / 60 / 60 / 24;
+                    dnum = Math.floor(days);
+                    hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+                    hnum = Math.floor(hours);
+                    if (String(hnum).length == 1) {
+                        hnum = "0" + hnum;
+                    }
+                    minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+                    mnum = Math.floor(minutes);
+                    if (String(mnum).length == 1) {
+                        mnum = "0" + mnum;
+                    }
+                    seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                    snum = Math.round(seconds);
+                    if (String(snum).length == 1) {
+                        snum = "0" + snum;
+                    }
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+                }
+                setInterval("createtime()", 250);
+            </script>
+            
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
     </div>
 </footer>
 
+<div class="progress-bar"></div>
 
 
-<a id="rocket" href="#top"></a>
-<script type="text/javascript" src="https://xsoer.github.io/js/totop.js?v=0.0.0" async=""></script>
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-114671402-1', 'auto');
-	
-	ga('send', 'pageview');
-}
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
 
 
 
+    <script src="/libs/others/clicklove.js"></script>
 
 
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
 </body>
