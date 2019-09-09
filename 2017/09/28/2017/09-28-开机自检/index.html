@@ -5,14 +5,9 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="系统开机自检, hackfox">
-    <meta name="description" content="
-
-
-
-0x00、关于开机自动检测硬盘的原因
-
+    <meta name="description" content="0x00、关于开机自动检测硬盘的原因
 第一种：是你非法关机造成的，比如直接断电的情况。
-第二种：是和硬盘的分区格式有关，FAT32格式在非法关机后会在开机时要求检测硬盘，而且必须检测完毕才不会在下次启动时重新检测。系统有一个文件中">
+第二种：是和硬盘的分区格式有关，FAT32格式在非法关机后会在开机时要求检测硬盘，而且必须检测完毕才不会在下次启动时重新检测。系统有一个文件中记录了检测">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -35,7 +30,7 @@
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -101,15 +96,6 @@
         </a>
     </li>
     
-    <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <i class="fa fa-address-book"></i>
-            
-            <span>Friends</span>
-        </a>
-    </li>
-    
     <li>
         <a href="#searchModal" class="modal-trigger waves-effect waves-light">
             <i id="searchIcon" class="fa fa-search" title="Search"></i>
@@ -126,7 +112,7 @@
         <div class="logo-name">hackfox</div>
         <div class="logo-desc">
             
-            架构、AI、打数据
+            架构、AI、大数据、python、go
             
         </div>
     </div>
@@ -177,15 +163,6 @@
                 <i class="fa fa-fw fa-user-circle-o"></i>
                 
                 About
-            </a>
-        </li>
-        
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-address-book"></i>
-                
-                Friends
             </a>
         </li>
         
@@ -365,27 +342,22 @@
                 
 				
 				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
             </div>
         </div>
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <!-- # 系统开机自检
-
-- 作者：codehackfox@gmail.com
-- 时间：2017-09-28 15:24:23 -->
-
-
-<blockquote>
-<h2 id="0x00、关于开机自动检测硬盘的原因"><a href="#0x00、关于开机自动检测硬盘的原因" class="headerlink" title="0x00、关于开机自动检测硬盘的原因"></a>0x00、关于开机自动检测硬盘的原因</h2></blockquote>
-<ul>
+                <h2 id="0x00、关于开机自动检测硬盘的原因"><a href="#0x00、关于开机自动检测硬盘的原因" class="headerlink" title="0x00、关于开机自动检测硬盘的原因"></a>0x00、关于开机自动检测硬盘的原因</h2><ul>
 <li>第一种：是你非法关机造成的，比如直接断电的情况。</li>
 <li>第二种：是和硬盘的分区格式有关，FAT32格式在非法关机后会在开机时要求检测硬盘，而且必须检测完毕才不会在下次启动时重新检测。系统有一个文件中记录了检测是否结束的信息，有时即使检测完成了也会因为这个文件没有更新而在下次开机时重新检测。</li>
 <li>第三种：当硬盘出现坏道也会出现开机自动检测硬盘。</li>
 </ul>
-<blockquote>
-<h2 id="0x01、关于取消开机自动检测硬盘的方法"><a href="#0x01、关于取消开机自动检测硬盘的方法" class="headerlink" title="0x01、关于取消开机自动检测硬盘的方法"></a>0x01、关于取消开机自动检测硬盘的方法</h2></blockquote>
-<ul>
+<h2 id="0x01、关于取消开机自动检测硬盘的方法"><a href="#0x01、关于取消开机自动检测硬盘的方法" class="headerlink" title="0x01、关于取消开机自动检测硬盘的方法"></a>0x01、关于取消开机自动检测硬盘的方法</h2><ul>
 <li>方法一： 如果分区是FAT32格式，将其转换成NTFS，方法是在命令提示符下输入：convert X: /fs:ntfs</li>
 <li>方法二： 如果是非正常的关机，然后开机检测时又跳过了，每一次都会运行的。如果不是这个原因的话，您就要检查一下D盘状态是否正常，修正一下硬盘的错误。方法为 “开始”→”运行”，在窗口中输入”chkdskX:/f”(x为盘符)，这个命令可以检查文件系统中的逻辑错误，并进行修复；然后启动”磁盘碎片整理” 对相应的磁盘进行碎片整理，可以消除再次的磁盘扫描。如果还是不行，就可能是硬盘出现了坏道，最简单的方法是把D盘的数据备份一下，然后格式化D盘，就可 以正常使用了。</li>
 <li>方法三：打开”我的电脑”－右键点击X盘选择”属性”－选择”工具”－”查错”中点”开始检查”－选中”自动修复文件系统错误”和”扫描并试图恢复坏扇区”，然后点”开始”。</li>
@@ -507,13 +479,9 @@ gitment.render('gitment-content');
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-
-
-0x00、关键字
-
+                            0x00、关键字
 $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、public、private、protected
-对象(class)：String、Integer、F
+对象(class)：String、Integer、Float
                         
                     </div>
                     <div class="publish-info">
@@ -601,6 +569,43 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
 </article>
 </div>
 
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + 'From: hackfox<br />'
+            + 'Author: hackfox<br />'
+            + 'Link: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
 
 
     </div>
@@ -710,17 +715,65 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
             <br>
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">60.2k</span>&nbsp;字
+                class="white-color">60k</span>&nbsp;字
             
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="fa fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fa fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            <br>
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date();
+
+                function createtime() {
+                    var grt = new Date("Mon Sep 09 2019 08:00:00 GMT+0800 (GMT+08:00)");
+                    now.setTime(now.getTime() + 250);
+                    days = (now - grt) / 1000 / 60 / 60 / 24;
+                    dnum = Math.floor(days);
+                    hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+                    hnum = Math.floor(hours);
+                    if (String(hnum).length == 1) {
+                        hnum = "0" + hnum;
+                    }
+                    minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+                    mnum = Math.floor(minutes);
+                    if (String(mnum).length == 1) {
+                        mnum = "0" + mnum;
+                    }
+                    seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                    snum = Math.round(seconds);
+                    if (String(snum).length == 1) {
+                        snum = "0" + snum;
+                    }
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+                }
+                setInterval("createtime()", 250);
+            </script>
             
             
         </div>
-        <div class="col s12 m4 l4 social-link ">
+        <div class="col s12 m4 l4 social-link social-statis">
     <a href="https://github.com/xsoer" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fa fa-github"></i>
     </a>
 
 
+
+    <a href="mailto:codehackfox@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
 
 
 
@@ -791,6 +844,8 @@ $(function () {
 
     <script src="/libs/others/clicklove.js"></script>
 
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
 </body>

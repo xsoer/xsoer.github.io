@@ -5,19 +5,12 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="python总结, hackfox">
-    <meta name="description" content="
-
-
-
-0x00、基本概念
-
-0x01、基本类型
-
+    <meta name="description" content="0x00、基本概念0x01、基本类型
 1.数字:numbers
 int,double,float,bool,complex
 1)可同时为多个变量赋值
 2)一个变量可以通过赋值指向不同类型的对象
-3)数值的除法(/)总时返回浮点">
+3)数值的除法(/)总时返回浮点数，要获得整数">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -40,7 +33,7 @@ int,double,float,bool,complex
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -106,15 +99,6 @@ int,double,float,bool,complex
         </a>
     </li>
     
-    <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <i class="fa fa-address-book"></i>
-            
-            <span>Friends</span>
-        </a>
-    </li>
-    
     <li>
         <a href="#searchModal" class="modal-trigger waves-effect waves-light">
             <i id="searchIcon" class="fa fa-search" title="Search"></i>
@@ -131,7 +115,7 @@ int,double,float,bool,complex
         <div class="logo-name">hackfox</div>
         <div class="logo-desc">
             
-            架构、AI、打数据
+            架构、AI、大数据、python、go
             
         </div>
     </div>
@@ -182,15 +166,6 @@ int,double,float,bool,complex
                 <i class="fa fa-fw fa-user-circle-o"></i>
                 
                 About
-            </a>
-        </li>
-        
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-address-book"></i>
-                
-                Friends
             </a>
         </li>
         
@@ -357,7 +332,7 @@ int,double,float,bool,complex
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>Word Count:&nbsp;&nbsp;
-                        759
+                        760
                     </div>
                     
 
@@ -370,22 +345,17 @@ int,double,float,bool,complex
                 
 				
 				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
             </div>
         </div>
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <!-- # python总结
-
-- 作者：codehackfox@gmail.com
-- 时间：2018-12-02 09:23:23 -->
-
-
-<blockquote>
-<h2 id="0x00、基本概念"><a href="#0x00、基本概念" class="headerlink" title="0x00、基本概念"></a>0x00、基本概念</h2></blockquote>
-<blockquote>
-<h2 id="0x01、基本类型"><a href="#0x01、基本类型" class="headerlink" title="0x01、基本类型"></a>0x01、基本类型</h2></blockquote>
-<ul>
+                <h2 id="0x00、基本概念"><a href="#0x00、基本概念" class="headerlink" title="0x00、基本概念"></a>0x00、基本概念</h2><h2 id="0x01、基本类型"><a href="#0x01、基本类型" class="headerlink" title="0x01、基本类型"></a>0x01、基本类型</h2><ul>
 <li>1.数字:numbers<ul>
 <li>int,double,float,bool,complex</li>
 <li>1)可同时为多个变量赋值</li>
@@ -436,30 +406,19 @@ int,double,float,bool,complex
 </li>
 <li>list,string和tuple都属于sequence(序列)</li>
 </ul>
-<blockquote>
-<h2 id="0x02、注释"><a href="#0x02、注释" class="headerlink" title="0x02、注释"></a>0x02、注释</h2></blockquote>
-<ul>
+<h2 id="0x02、注释"><a href="#0x02、注释" class="headerlink" title="0x02、注释"></a>0x02、注释</h2><ul>
 <li>1.#号单行注释</li>
 <li>2.’’’或”””多行注释</li>
 </ul>
-<blockquote>
-<h2 id="0x03、格式"><a href="#0x03、格式" class="headerlink" title="0x03、格式"></a>0x03、格式</h2></blockquote>
-<ul>
+<h2 id="0x03、格式"><a href="#0x03、格式" class="headerlink" title="0x03、格式"></a>0x03、格式</h2><ul>
 <li>1.使用缩进来划分语句，相同缩进数的语句在一起组成一个语句块</li>
 <li>2.没有switch-case语句</li>
 <li>3.每个条件后都要是用(:)，表示接下来满足条件后要执行的语句</li>
 </ul>
-<blockquote>
-<h2 id="0x04、关键字"><a href="#0x04、关键字" class="headerlink" title="0x04、关键字"></a>0x04、关键字</h2></blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">while,if,else,elif,pass,True,False,None,for,in,do</span><br><span class="line">break,continue,as,del,from,global,import,is,lambda,not,or</span><br><span class="line">class,def,self,return,with,yield,nonlocal</span><br><span class="line">try,except,raise,finally</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<h2 id="0x05、操作符"><a href="#0x05、操作符" class="headerlink" title="0x05、操作符"></a>0x05、操作符</h2></blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;,&gt;,&lt;=,&gt;=,==,!=</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<h2 id="0x06、函数"><a href="#0x06、函数" class="headerlink" title="0x06、函数"></a>0x06、函数</h2></blockquote>
-<ul>
+<h2 id="0x04、关键字"><a href="#0x04、关键字" class="headerlink" title="0x04、关键字"></a>0x04、关键字</h2><pre><code>while,if,else,elif,pass,True,False,None,for,in,do
+break,continue,as,del,from,global,import,is,lambda,not,or
+class,def,self,return,with,yield,nonlocal
+try,except,raise,finally</code></pre><h2 id="0x05、操作符"><a href="#0x05、操作符" class="headerlink" title="0x05、操作符"></a>0x05、操作符</h2><pre><code>&lt;,&gt;,&lt;=,&gt;=,==,!=</code></pre><h2 id="0x06、函数"><a href="#0x06、函数" class="headerlink" title="0x06、函数"></a>0x06、函数</h2><ul>
 <li>1.range(begin,end,step):</li>
 <li>2.input(“some word”):</li>
 <li>3.len()</li>
@@ -490,9 +449,7 @@ int,double,float,bool,complex
 <li>20.<strong>mod</strong></li>
 <li>21.<strong>pow</strong></li>
 </ul>
-<blockquote>
-<h2 id="0x07、模块"><a href="#0x07、模块" class="headerlink" title="0x07、模块"></a>0x07、模块</h2></blockquote>
-<ul>
+<h2 id="0x07、模块"><a href="#0x07、模块" class="headerlink" title="0x07、模块"></a>0x07、模块</h2><ul>
 <li>1.conllections<ul>
 <li>1)deque</li>
 </ul>
@@ -522,11 +479,7 @@ int,double,float,bool,complex
 </li>
 <li><strong>name</strong>属性</li>
 </ul>
-<blockquote>
-<h2 id="0x08、包"><a href="#0x08、包" class="headerlink" title="0x08、包"></a>0x08、包</h2></blockquote>
-<blockquote>
-<h2 id="0x09、特性"><a href="#0x09、特性" class="headerlink" title="0x09、特性"></a>0x09、特性</h2></blockquote>
-<ul>
+<h2 id="0x08、包"><a href="#0x08、包" class="headerlink" title="0x08、包"></a>0x08、包</h2><h2 id="0x09、特性"><a href="#0x09、特性" class="headerlink" title="0x09、特性"></a>0x09、特性</h2><ul>
 <li>1.自动检测递归深度，如果无限太深，会自动停止并抛出异常。</li>
 </ul>
 
@@ -643,9 +596,7 @@ gitment.render('gitment-content');
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-
-0X00、目录
+                            0X00、目录
 5G
 AI
 忆阻器
@@ -702,14 +653,14 @@ AI
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-
-0x00、介绍
+                            0x00、介绍
 format优点
 1.不需要理会数据类型的问题，在%方法中%s只能替代字符串类型
 2.单个参数可以多次输出，参数顺序可以不相同
 3.填充方式十分灵活，对齐方式十分强大
 4.官方推荐用的方式，%方式将会在后面的版本被淘汰
+
+
 
                         
                     </div>
@@ -745,6 +696,43 @@ format优点
 </article>
 </div>
 
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + 'From: hackfox<br />'
+            + 'Author: hackfox<br />'
+            + 'Link: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
 
 
     </div>
@@ -854,17 +842,65 @@ format优点
             <br>
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">60.2k</span>&nbsp;字
+                class="white-color">60k</span>&nbsp;字
             
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="fa fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fa fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            <br>
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date();
+
+                function createtime() {
+                    var grt = new Date("Mon Sep 09 2019 08:00:00 GMT+0800 (GMT+08:00)");
+                    now.setTime(now.getTime() + 250);
+                    days = (now - grt) / 1000 / 60 / 60 / 24;
+                    dnum = Math.floor(days);
+                    hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+                    hnum = Math.floor(hours);
+                    if (String(hnum).length == 1) {
+                        hnum = "0" + hnum;
+                    }
+                    minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+                    mnum = Math.floor(minutes);
+                    if (String(mnum).length == 1) {
+                        mnum = "0" + mnum;
+                    }
+                    seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                    snum = Math.round(seconds);
+                    if (String(snum).length == 1) {
+                        snum = "0" + snum;
+                    }
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+                }
+                setInterval("createtime()", 250);
+            </script>
             
             
         </div>
-        <div class="col s12 m4 l4 social-link ">
+        <div class="col s12 m4 l4 social-link social-statis">
     <a href="https://github.com/xsoer" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fa fa-github"></i>
     </a>
 
 
+
+    <a href="mailto:codehackfox@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
 
 
 
@@ -935,6 +971,8 @@ $(function () {
 
     <script src="/libs/others/clicklove.js"></script>
 
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
 </body>

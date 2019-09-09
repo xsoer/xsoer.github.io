@@ -5,12 +5,7 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="Impala操作手册, hackfox">
-    <meta name="description" content="
-
-[TOC]
-
-简介
-
+    <meta name="description" content="简介
 支持的查询存储
 关系型数据库
 数据仓库
@@ -23,7 +18,10 @@ HDFS
 可以单独部署一个集群，读取远程数据源。
 支持的操作
 运行impala-shell进入交互模式
-/usr/bin/impala-s">
+/usr/bin/impala-shell
+
+
+ODB">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -46,7 +44,7 @@ HDFS
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -112,15 +110,6 @@ HDFS
         </a>
     </li>
     
-    <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <i class="fa fa-address-book"></i>
-            
-            <span>Friends</span>
-        </a>
-    </li>
-    
     <li>
         <a href="#searchModal" class="modal-trigger waves-effect waves-light">
             <i id="searchIcon" class="fa fa-search" title="Search"></i>
@@ -137,7 +126,7 @@ HDFS
         <div class="logo-name">hackfox</div>
         <div class="logo-desc">
             
-            架构、AI、打数据
+            架构、AI、大数据、python、go
             
         </div>
     </div>
@@ -188,15 +177,6 @@ HDFS
                 <i class="fa fa-fw fa-user-circle-o"></i>
                 
                 About
-            </a>
-        </li>
-        
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-address-book"></i>
-                
-                Friends
             </a>
         </li>
         
@@ -363,7 +343,7 @@ HDFS
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>Word Count:&nbsp;&nbsp;
-                        804
+                        810
                     </div>
                     
 
@@ -376,22 +356,17 @@ HDFS
                 
 				
 				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
             </div>
         </div>
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <!-- # Impala操作手册
-
-<!-- - 作者：codehackfox@gmail.com
-- 时间：2019-04-22 20:08:24
-- 状态：pending
-- 标签：数据库 大数据存储 -->
-
-<p>[TOC]</p>
-<blockquote>
-<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3></blockquote>
-<ul>
+                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
 <li>支持的查询存储<ul>
 <li>关系型数据库</li>
 <li>数据仓库</li>
@@ -412,9 +387,7 @@ HDFS
 </ul>
 </li>
 </ul>
-<blockquote>
-<h3 id="数据表"><a href="#数据表" class="headerlink" title="数据表"></a>数据表</h3></blockquote>
-<ul>
+<h2 id="数据表"><a href="#数据表" class="headerlink" title="数据表"></a>数据表</h2><ul>
 <li>分为外部表和内部表</li>
 <li>内部表<ul>
 <li>通过impala创建的表都是内部表(internal)</li>
@@ -428,36 +401,113 @@ HDFS
 </ul>
 </li>
 </ul>
-<blockquote>
-<h3 id="SQL语法"><a href="#SQL语法" class="headerlink" title="SQL语法"></a>SQL语法</h3></blockquote>
-<ul>
-<li>sql示例<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">-- This line is a comment about a table.</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> ...;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">This is a multi-line comment about a query.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">select</span> ...;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> t <span class="comment">/* This is an embedded comment about a query. */</span> <span class="keyword">where</span> ...;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> t <span class="comment">-- This is a trailing comment within a multi-line command.</span></span><br><span class="line"><span class="keyword">where</span> ...;</span><br></pre></td></tr></table></figure>
-</li>
+<h2 id="SQL语法"><a href="#SQL语法" class="headerlink" title="SQL语法"></a>SQL语法</h2><ul>
+<li>sql示例</li>
 </ul>
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- This line is a comment about a table.</span>
+<span class="token keyword">create</span> <span class="token keyword">table</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">/*
+This is a multi-line comment about a query.
+*/</span>
+<span class="token keyword">select</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">;</span>
+
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> t <span class="token comment" spellcheck="true">/* This is an embedded comment about a query. */</span> <span class="token keyword">where</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">;</span>
+
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> t <span class="token comment" spellcheck="true">-- This is a trailing comment within a multi-line command.</span>
+<span class="token keyword">where</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">;</span></code></pre>
 <ul>
-<li><p>外部表映射</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">EXTERNAL</span> <span class="keyword">TABLE</span> my_mapping_table</span><br><span class="line"><span class="keyword">STORED</span> <span class="keyword">AS</span> KUDU</span><br><span class="line">TBLPROPERTIES (</span><br><span class="line">  <span class="string">'kudu.table_name'</span> = <span class="string">'my_kudu_table'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-</li>
+<li>外部表映射</li>
+</ul>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">CREATE</span> EXTERNAL <span class="token keyword">TABLE</span> my_mapping_table
+STORED <span class="token keyword">AS</span> KUDU
+TBLPROPERTIES <span class="token punctuation">(</span>
+  <span class="token string">'kudu.table_name'</span> <span class="token operator">=</span> <span class="token string">'my_kudu_table'</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<ul>
 <li><p>创建内部表</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> my_first_table</span><br><span class="line">(</span><br><span class="line">  <span class="keyword">id</span> <span class="built_in">BIGINT</span>,</span><br><span class="line">  <span class="keyword">name</span> <span class="keyword">STRING</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span>(<span class="keyword">id</span>)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">PARTITION</span> <span class="keyword">BY</span> <span class="keyword">HASH</span> <span class="keyword">PARTITIONS</span> <span class="number">16</span></span><br><span class="line"><span class="keyword">STORED</span> <span class="keyword">AS</span> KUDU;</span><br></pre></td></tr></table></figure>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> my_first_table
+<span class="token punctuation">(</span>
+id <span class="token keyword">BIGINT</span><span class="token punctuation">,</span>
+name STRING<span class="token punctuation">,</span>
+<span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">PARTITION</span> <span class="token keyword">BY</span> <span class="token keyword">HASH</span> PARTITIONS <span class="token number">16</span>
+STORED <span class="token keyword">AS</span> KUDU<span class="token punctuation">;</span></code></pre>
 </li>
 <li><p>用select来建表</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> new_table</span><br><span class="line">PRIMARY <span class="keyword">KEY</span> (ts, <span class="keyword">name</span>)</span><br><span class="line"><span class="keyword">PARTITION</span> <span class="keyword">BY</span> <span class="keyword">HASH</span>(<span class="keyword">name</span>) <span class="keyword">PARTITIONS</span> <span class="number">8</span></span><br><span class="line"><span class="keyword">STORED</span> <span class="keyword">AS</span> KUDU</span><br><span class="line"><span class="keyword">AS</span> <span class="keyword">SELECT</span> ts, <span class="keyword">name</span>, <span class="keyword">value</span> <span class="keyword">FROM</span> old_table;</span><br></pre></td></tr></table></figure>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> new_table
+<span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span>ts<span class="token punctuation">,</span> name<span class="token punctuation">)</span>
+<span class="token keyword">PARTITION</span> <span class="token keyword">BY</span> <span class="token keyword">HASH</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> PARTITIONS <span class="token number">8</span>
+STORED <span class="token keyword">AS</span> KUDU
+<span class="token keyword">AS</span> <span class="token keyword">SELECT</span> ts<span class="token punctuation">,</span> name<span class="token punctuation">,</span> <span class="token keyword">value</span> <span class="token keyword">FROM</span> old_table<span class="token punctuation">;</span></code></pre>
 </li>
 <li><p>复杂点的partition</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> cust_behavior (</span><br><span class="line">  <span class="keyword">id</span> <span class="built_in">BIGINT</span>,</span><br><span class="line">  sku <span class="keyword">STRING</span>,</span><br><span class="line">  salary <span class="keyword">STRING</span>,</span><br><span class="line">  edu_level <span class="built_in">INT</span>,</span><br><span class="line">  usergender <span class="keyword">STRING</span>,</span><br><span class="line">  <span class="string">`group`</span> <span class="keyword">STRING</span>,</span><br><span class="line">  city <span class="keyword">STRING</span>,</span><br><span class="line">  postcode <span class="keyword">STRING</span>,</span><br><span class="line">  last_purchase_price <span class="built_in">FLOAT</span>,</span><br><span class="line">  last_purchase_date <span class="built_in">BIGINT</span>,</span><br><span class="line">  <span class="keyword">category</span> <span class="keyword">STRING</span>,</span><br><span class="line">  rating <span class="built_in">INT</span>,</span><br><span class="line">  fulfilled_date <span class="built_in">BIGINT</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="keyword">id</span>, sku)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">PARTITION</span> <span class="keyword">BY</span> <span class="keyword">HASH</span> (<span class="keyword">id</span>) <span class="keyword">PARTITIONS</span> <span class="number">4</span>,</span><br><span class="line"><span class="keyword">RANGE</span> (sku)</span><br><span class="line">(</span><br><span class="line">  <span class="keyword">PARTITION</span> <span class="keyword">VALUES</span> &lt; <span class="string">'g'</span>,</span><br><span class="line">  <span class="keyword">PARTITION</span> <span class="string">'g'</span> &lt;= <span class="keyword">VALUES</span> &lt; <span class="string">'o'</span>,</span><br><span class="line">  <span class="keyword">PARTITION</span> <span class="string">'o'</span> &lt;= <span class="keyword">VALUES</span> &lt; <span class="string">'u'</span>,</span><br><span class="line">  <span class="keyword">PARTITION</span> <span class="string">'u'</span> &lt;= <span class="keyword">VALUES</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">STORED</span> <span class="keyword">AS</span> KUDU;</span><br></pre></td></tr></table></figure>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> cust_behavior <span class="token punctuation">(</span>
+id <span class="token keyword">BIGINT</span><span class="token punctuation">,</span>
+sku STRING<span class="token punctuation">,</span>
+salary STRING<span class="token punctuation">,</span>
+edu_level <span class="token keyword">INT</span><span class="token punctuation">,</span>
+usergender STRING<span class="token punctuation">,</span>
+<span class="token punctuation">`</span><span class="token keyword">group</span><span class="token punctuation">`</span> STRING<span class="token punctuation">,</span>
+city STRING<span class="token punctuation">,</span>
+postcode STRING<span class="token punctuation">,</span>
+last_purchase_price <span class="token keyword">FLOAT</span><span class="token punctuation">,</span>
+last_purchase_date <span class="token keyword">BIGINT</span><span class="token punctuation">,</span>
+category STRING<span class="token punctuation">,</span>
+rating <span class="token keyword">INT</span><span class="token punctuation">,</span>
+fulfilled_date <span class="token keyword">BIGINT</span><span class="token punctuation">,</span>
+<span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span>id<span class="token punctuation">,</span> sku<span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">PARTITION</span> <span class="token keyword">BY</span> <span class="token keyword">HASH</span> <span class="token punctuation">(</span>id<span class="token punctuation">)</span> PARTITIONS <span class="token number">4</span><span class="token punctuation">,</span>
+RANGE <span class="token punctuation">(</span>sku<span class="token punctuation">)</span>
+<span class="token punctuation">(</span>
+<span class="token keyword">PARTITION</span> <span class="token keyword">VALUES</span> <span class="token operator">&lt;</span> <span class="token string">'g'</span><span class="token punctuation">,</span>
+<span class="token keyword">PARTITION</span> <span class="token string">'g'</span> <span class="token operator">&lt;=</span> <span class="token keyword">VALUES</span> <span class="token operator">&lt;</span> <span class="token string">'o'</span><span class="token punctuation">,</span>
+<span class="token keyword">PARTITION</span> <span class="token string">'o'</span> <span class="token operator">&lt;=</span> <span class="token keyword">VALUES</span> <span class="token operator">&lt;</span> <span class="token string">'u'</span><span class="token punctuation">,</span>
+<span class="token keyword">PARTITION</span> <span class="token string">'u'</span> <span class="token operator">&lt;=</span> <span class="token keyword">VALUES</span>
+<span class="token punctuation">)</span>
+STORED <span class="token keyword">AS</span> KUDU<span class="token punctuation">;</span></code></pre>
 </li>
 <li><p>多个hash分区</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> cust_behavior (</span><br><span class="line">  <span class="keyword">id</span> <span class="built_in">BIGINT</span>,</span><br><span class="line">  sku <span class="keyword">STRING</span>,</span><br><span class="line">  salary <span class="keyword">STRING</span>,</span><br><span class="line">  edu_level <span class="built_in">INT</span>,</span><br><span class="line">  usergender <span class="keyword">STRING</span>,</span><br><span class="line">  <span class="string">`group`</span> <span class="keyword">STRING</span>,</span><br><span class="line">  city <span class="keyword">STRING</span>,</span><br><span class="line">  postcode <span class="keyword">STRING</span>,</span><br><span class="line">  last_purchase_price <span class="built_in">FLOAT</span>,</span><br><span class="line">  last_purchase_date <span class="built_in">BIGINT</span>,</span><br><span class="line">  <span class="keyword">category</span> <span class="keyword">STRING</span>,</span><br><span class="line">  rating <span class="built_in">INT</span>,</span><br><span class="line">  fulfilled_date <span class="built_in">BIGINT</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="keyword">id</span>, sku)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">PARTITION</span> <span class="keyword">BY</span> <span class="keyword">HASH</span> (<span class="keyword">id</span>) <span class="keyword">PARTITIONS</span> <span class="number">4</span>,</span><br><span class="line">             <span class="keyword">HASH</span> (sku) <span class="keyword">PARTITIONS</span> <span class="number">4</span></span><br><span class="line"><span class="keyword">STORED</span> <span class="keyword">AS</span> KUDU;</span><br></pre></td></tr></table></figure>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> cust_behavior <span class="token punctuation">(</span>
+id <span class="token keyword">BIGINT</span><span class="token punctuation">,</span>
+sku STRING<span class="token punctuation">,</span>
+salary STRING<span class="token punctuation">,</span>
+edu_level <span class="token keyword">INT</span><span class="token punctuation">,</span>
+usergender STRING<span class="token punctuation">,</span>
+<span class="token punctuation">`</span><span class="token keyword">group</span><span class="token punctuation">`</span> STRING<span class="token punctuation">,</span>
+city STRING<span class="token punctuation">,</span>
+postcode STRING<span class="token punctuation">,</span>
+last_purchase_price <span class="token keyword">FLOAT</span><span class="token punctuation">,</span>
+last_purchase_date <span class="token keyword">BIGINT</span><span class="token punctuation">,</span>
+category STRING<span class="token punctuation">,</span>
+rating <span class="token keyword">INT</span><span class="token punctuation">,</span>
+fulfilled_date <span class="token keyword">BIGINT</span><span class="token punctuation">,</span>
+<span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span>id<span class="token punctuation">,</span> sku<span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">PARTITION</span> <span class="token keyword">BY</span> <span class="token keyword">HASH</span> <span class="token punctuation">(</span>id<span class="token punctuation">)</span> PARTITIONS <span class="token number">4</span><span class="token punctuation">,</span>
+           <span class="token keyword">HASH</span> <span class="token punctuation">(</span>sku<span class="token punctuation">)</span> PARTITIONS <span class="token number">4</span>
+STORED <span class="token keyword">AS</span> KUDU<span class="token punctuation">;</span></code></pre>
 </li>
 <li><p>多个range分区</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> sales_by_year (</span><br><span class="line">  <span class="keyword">year</span> <span class="built_in">INT</span>, sale_id <span class="built_in">INT</span>, amount <span class="built_in">INT</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (sale_id, <span class="keyword">year</span>)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">PARTITION</span> <span class="keyword">BY</span> <span class="keyword">RANGE</span> (<span class="keyword">year</span>) (</span><br><span class="line">  <span class="keyword">PARTITION</span> <span class="keyword">VALUE</span> = <span class="number">2012</span>,</span><br><span class="line">  <span class="keyword">PARTITION</span> <span class="keyword">VALUE</span> = <span class="number">2013</span>,</span><br><span class="line">  <span class="keyword">PARTITION</span> <span class="keyword">VALUE</span> = <span class="number">2014</span>,</span><br><span class="line">  <span class="keyword">PARTITION</span> <span class="keyword">VALUE</span> = <span class="number">2015</span>,</span><br><span class="line">  <span class="keyword">PARTITION</span> <span class="keyword">VALUE</span> = <span class="number">2016</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">STORED</span> <span class="keyword">AS</span> KUDU;</span><br></pre></td></tr></table></figure>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> sales_by_year <span class="token punctuation">(</span>
+year <span class="token keyword">INT</span><span class="token punctuation">,</span> sale_id <span class="token keyword">INT</span><span class="token punctuation">,</span> amount <span class="token keyword">INT</span><span class="token punctuation">,</span>
+<span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span>sale_id<span class="token punctuation">,</span> year<span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">PARTITION</span> <span class="token keyword">BY</span> RANGE <span class="token punctuation">(</span>year<span class="token punctuation">)</span> <span class="token punctuation">(</span>
+<span class="token keyword">PARTITION</span> <span class="token keyword">VALUE</span> <span class="token operator">=</span> <span class="token number">2012</span><span class="token punctuation">,</span>
+<span class="token keyword">PARTITION</span> <span class="token keyword">VALUE</span> <span class="token operator">=</span> <span class="token number">2013</span><span class="token punctuation">,</span>
+<span class="token keyword">PARTITION</span> <span class="token keyword">VALUE</span> <span class="token operator">=</span> <span class="token number">2014</span><span class="token punctuation">,</span>
+<span class="token keyword">PARTITION</span> <span class="token keyword">VALUE</span> <span class="token operator">=</span> <span class="token number">2015</span><span class="token punctuation">,</span>
+<span class="token keyword">PARTITION</span> <span class="token keyword">VALUE</span> <span class="token operator">=</span> <span class="token number">2016</span>
+<span class="token punctuation">)</span>
+STORED <span class="token keyword">AS</span> KUDU<span class="token punctuation">;</span></code></pre>
 </li>
 <li><p>添加ragne分区</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> sales_by_year <span class="keyword">ADD</span> <span class="keyword">RANGE</span> <span class="keyword">PARTITION</span> <span class="keyword">VALUE</span> = <span class="number">2017</span>;</span><br></pre></td></tr></table></figure>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> sales_by_year <span class="token keyword">ADD</span> RANGE <span class="token keyword">PARTITION</span> <span class="token keyword">VALUE</span> <span class="token operator">=</span> <span class="token number">2017</span><span class="token punctuation">;</span></code></pre>
 </li>
 <li><p>删除一个range分区</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> sales_by_year <span class="keyword">DROP</span> <span class="keyword">RANGE</span> <span class="keyword">PARTITION</span> <span class="keyword">VALUE</span> = <span class="number">2012</span>;</span><br></pre></td></tr></table></figure>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> sales_by_year <span class="token keyword">DROP</span> RANGE <span class="token keyword">PARTITION</span> <span class="token keyword">VALUE</span> <span class="token operator">=</span> <span class="token number">2012</span><span class="token punctuation">;</span></code></pre>
 </li>
 <li><p>操作元</p>
 <ul>
@@ -478,9 +528,7 @@ HDFS
 </ul>
 </li>
 </ul>
-<blockquote>
-<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3></blockquote>
-<ul>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ul>
 <li>ARRAY Complex Type (CDH 5.5 or higher only)</li>
 <li>BIGINT</li>
 <li>BOOLEAN</li>
@@ -503,9 +551,7 @@ HDFS
 </ul>
 </li>
 </ul>
-<blockquote>
-<h3 id="SQL-Statements"><a href="#SQL-Statements" class="headerlink" title="SQL Statements"></a>SQL Statements</h3></blockquote>
-<ul>
+<h2 id="SQL-Statements"><a href="#SQL-Statements" class="headerlink" title="SQL Statements"></a>SQL Statements</h2><ul>
 <li>DDL Statements</li>
 <li>DML Statements</li>
 <li>ALTER DATABASE</li>
@@ -652,9 +698,7 @@ HDFS
 <li>USE</li>
 <li>Optimizer Hints</li>
 </ul>
-<blockquote>
-<h3 id="内建函数"><a href="#内建函数" class="headerlink" title="内建函数"></a>内建函数</h3></blockquote>
-
+<h2 id="内建函数"><a href="#内建函数" class="headerlink" title="内建函数"></a>内建函数</h2>
             </div>
             <hr/>
 
@@ -768,12 +812,7 @@ gitment.render('gitment-content');
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-
-
-
-0x00、插件
-
+                            0x00、插件
 github
 sourcegraph
 octotree
@@ -801,6 +840,10 @@ axure
 
 多tab管理
 Toby
+
+
+
+0
                         
                     </div>
                     <div class="publish-info">
@@ -849,9 +892,7 @@ Toby
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-
-0x00、工具
+                            0x00、工具
 autojump
 自动跳转文件夹，不用cd
 
@@ -880,6 +921,7 @@ vim
 编辑器
 
 
+t
                         
                     </div>
                     <div class="publish-info">
@@ -914,6 +956,43 @@ vim
 </article>
 </div>
 
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + 'From: hackfox<br />'
+            + 'Author: hackfox<br />'
+            + 'Link: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
 
 
     </div>
@@ -1023,17 +1102,65 @@ vim
             <br>
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">60.2k</span>&nbsp;字
+                class="white-color">60k</span>&nbsp;字
             
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="fa fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fa fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            <br>
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date();
+
+                function createtime() {
+                    var grt = new Date("Mon Sep 09 2019 08:00:00 GMT+0800 (GMT+08:00)");
+                    now.setTime(now.getTime() + 250);
+                    days = (now - grt) / 1000 / 60 / 60 / 24;
+                    dnum = Math.floor(days);
+                    hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+                    hnum = Math.floor(hours);
+                    if (String(hnum).length == 1) {
+                        hnum = "0" + hnum;
+                    }
+                    minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+                    mnum = Math.floor(minutes);
+                    if (String(mnum).length == 1) {
+                        mnum = "0" + mnum;
+                    }
+                    seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                    snum = Math.round(seconds);
+                    if (String(snum).length == 1) {
+                        snum = "0" + snum;
+                    }
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+                }
+                setInterval("createtime()", 250);
+            </script>
             
             
         </div>
-        <div class="col s12 m4 l4 social-link ">
+        <div class="col s12 m4 l4 social-link social-statis">
     <a href="https://github.com/xsoer" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fa fa-github"></i>
     </a>
 
 
+
+    <a href="mailto:codehackfox@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
 
 
 
@@ -1104,6 +1231,8 @@ $(function () {
 
     <script src="/libs/others/clicklove.js"></script>
 
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
 </body>

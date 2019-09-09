@@ -5,13 +5,9 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="PHP知识体系, hackfox">
-    <meta name="description" content="
-
-
-0x00、关键字
-
+    <meta name="description" content="0x00、关键字
 $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、public、private、protected
-对象(class)：String、Integer、F">
+对象(class)：String、Integer、Float">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -34,7 +30,7 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -100,15 +96,6 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
         </a>
     </li>
     
-    <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <i class="fa fa-address-book"></i>
-            
-            <span>Friends</span>
-        </a>
-    </li>
-    
     <li>
         <a href="#searchModal" class="modal-trigger waves-effect waves-light">
             <i id="searchIcon" class="fa fa-search" title="Search"></i>
@@ -125,7 +112,7 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
         <div class="logo-name">hackfox</div>
         <div class="logo-desc">
             
-            架构、AI、打数据
+            架构、AI、大数据、python、go
             
         </div>
     </div>
@@ -176,15 +163,6 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
                 <i class="fa fa-fw fa-user-circle-o"></i>
                 
                 About
-            </a>
-        </li>
-        
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-address-book"></i>
-                
-                Friends
             </a>
         </li>
         
@@ -351,7 +329,7 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>Word Count:&nbsp;&nbsp;
-                        7.2k
+                        7.1k
                     </div>
                     
 
@@ -364,19 +342,17 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
                 
 				
 				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
             </div>
         </div>
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <!-- # PHP知识体系
-
-- 作者：codehackfox@gmail.com
-- 时间：2018-03-02 11:53:29 -->
-
-<blockquote>
-<h2 id="0x00、关键字"><a href="#0x00、关键字" class="headerlink" title="0x00、关键字"></a>0x00、关键字</h2></blockquote>
-<ul>
+                <h2 id="0x00、关键字"><a href="#0x00、关键字" class="headerlink" title="0x00、关键字"></a>0x00、关键字</h2><ul>
 <li>$ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、public、private、protected</li>
 <li>对象(class)：String、Integer、Float、Boolean、Object、NULL、Resource、Closure()</li>
 <li>函数(function)：<ul>
@@ -411,78 +387,286 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
 </ul>
 </li>
 </ul>
-<blockquote>
-<h2 id="0x01、字符串"><a href="#0x01、字符串" class="headerlink" title="0x01、字符串"></a>0x01、字符串</h2></blockquote>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//字符串定义方式</span></span><br><span class="line"><span class="comment">// ''只转译 ' / 但是“”转译的比较多</span></span><br><span class="line"><span class="comment">// ""可以解析变量</span></span><br><span class="line"><span class="comment">// ''速度比较快，不用分析变量，转译内用少。我们优先使用 ''</span></span><br><span class="line">$str1 = <span class="string">'hello'</span>;</span><br><span class="line">$str2 = <span class="string">"hello"</span>;</span><br><span class="line"><span class="comment">//写大段文本</span></span><br><span class="line"><span class="comment">//heredoc    &lt;&lt;&lt;HTML ......HTML; //类似于"" 可以解析文本中的变量</span></span><br><span class="line"><span class="comment">//nowdoc    &lt;&lt;&lt;'HTML'......HTML;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//字符串函数</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">字符长度计算</span></span><br><span class="line"><span class="comment">查找字符位置</span></span><br><span class="line"><span class="comment">字符替换</span></span><br><span class="line"><span class="comment">提取字符</span></span><br><span class="line"><span class="comment">分割连接反转字符</span></span><br><span class="line"><span class="comment">去除增加空格</span></span><br><span class="line"><span class="comment">HTML代码/数据库安全处理字符</span></span><br><span class="line"><span class="comment">比较字符</span></span><br><span class="line"><span class="comment">字符大小写转换</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">number_format(<span class="string">'123456789'</span>);<span class="comment">//123,456,789 使用科学计数法表示字符串</span></span><br><span class="line">str_repeat(<span class="string">' '</span>, <span class="number">10</span>); <span class="comment">//重复空格10次</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//计算字符串长度</span></span><br><span class="line">$t1 = <span class="string">'abcdefghijklmn abcdefg'</span>;</span><br><span class="line">$t2 = <span class="string">'我是中国人'</span>;</span><br><span class="line"><span class="keyword">echo</span> strlen($t1),<span class="string">'&lt;br /&gt;'</span>; <span class="comment">//22    //计算字符长度</span></span><br><span class="line"><span class="keyword">echo</span> mb_strlen($t2,<span class="string">'utf-8'</span>), <span class="string">'&lt;br /&gt;'</span>; <span class="comment">//utf-8 必须加 '' //5 //计算字节长度</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//反转字符</span></span><br><span class="line"><span class="keyword">echo</span> strrev($t1).<span class="string">'&lt;br /&gt;'</span>;<span class="comment">//gfedcba nmlkjihgfedcba 反转字符</span></span><br><span class="line"><span class="comment">//reverse 背面，反面 反转 同数组反转array_reverse 字符串是strrve</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//查找自字符串的位置</span></span><br><span class="line">$t1 = <span class="string">'abcdefghijklmn abcd.efg'</span>;</span><br><span class="line">$t3 = <span class="string">'d'</span>;</span><br><span class="line">$t4 = <span class="string">'bc'</span>;</span><br><span class="line"><span class="keyword">echo</span> strpos($t1, $t3), <span class="string">'&lt;br /&gt;'</span>; <span class="comment">//区分大小写，查找第一次出现的位置//返回值为int</span></span><br><span class="line"><span class="keyword">echo</span> stripos($t1, <span class="string">'c'</span>), <span class="string">'&lt;br /&gt;'</span>; <span class="comment">//不区分大小写，返回字符串在另一个字符串出现的位置</span></span><br><span class="line"><span class="keyword">echo</span> strrpos($t1, <span class="string">'.'</span>), <span class="string">'&lt;br /&gt;'</span>; <span class="comment">//区分大小写，最后一次出现的位置 //19</span></span><br><span class="line"><span class="keyword">echo</span> strrchr($t1, <span class="string">'.'</span>).<span class="string">'&lt;br /&gt;'</span>;    <span class="comment">//查找字符串最后出现的位置,并打印之后的 //.efg</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//字符串替换</span></span><br><span class="line">$t1 = <span class="string">'abcdefghijklmn abcdefg'</span>;</span><br><span class="line">$t5 = <span class="string">'opqrsruvw'</span>;</span><br><span class="line"><span class="keyword">echo</span> str_replace(<span class="string">'Abc'</span>, <span class="string">'dEfg'</span>, $t1), <span class="string">'&lt;br /&gt;'</span>; <span class="comment">//区分大小写,如果不同不会进行替换，在$t1中，defg替换掉abc</span></span><br><span class="line"><span class="keyword">echo</span> str_ireplace(<span class="string">'ABC'</span>, <span class="string">'HAHAha'</span>, $t1), <span class="string">'&lt;BR /&gt;'</span>;<span class="comment">//进行替换 //不区分大小写</span></span><br><span class="line"><span class="keyword">echo</span> strtr($t1, <span class="string">'aBCd'</span>, <span class="string">'HAHAHA'</span>),<span class="string">'&lt;bR /&gt;'</span>; <span class="comment">//HAHAHA只替换成HbcA,中间BC不被替换，只替换4位// 区分大小写，但是还是会进行替换 //只是截取等长部分，区分大小写，而且之替换相同的</span></span><br><span class="line"><span class="keyword">echo</span> substr_replace($t1, $t5, <span class="number">4</span>, <span class="number">3</span>),<span class="string">'&lt;br&gt;'</span>; <span class="comment">//$t5从$t1的第4位开始替换，$t1失去3字节的内容，如果没有写3，则默认替换掉$t1从第4位后的所有字节</span></span><br><span class="line"><span class="comment">//截取字符串</span></span><br><span class="line">$t1 = <span class="string">'abcdefghijklmn abcdefghijklmnopq'</span>;</span><br><span class="line">$t6 = <span class="string">'fg'</span>;</span><br><span class="line"><span class="keyword">echo</span> substr($t1, <span class="number">3</span>, <span class="number">5</span>),<span class="string">'&lt;bR /&gt;&lt;br /&gt;'</span>; <span class="comment">//defgh //从$t1的第3位开始，截取5字节内容，默认截取余下全部</span></span><br><span class="line"><span class="keyword">echo</span> mb_substr($t1, <span class="number">1</span>, <span class="number">10</span>, <span class="string">'UTF8'</span>); <span class="comment">//从第1位开始，长度为10，字符编码为 UTF-8 截取， 返回值string</span></span><br><span class="line"><span class="keyword">echo</span> strstr($t1, $t6),<span class="string">'&lt;br /&gt;'</span>; <span class="comment">//从$t1中找到$t6，截取后半截，$t6必须完全存在于$t1中，且区分大小写</span></span><br><span class="line"><span class="keyword">echo</span> stristr($t1, <span class="string">'FGH'</span>),<span class="string">'&lt;br /&gt;'</span>; <span class="comment">//同上不区分大小写</span></span><br><span class="line"><span class="keyword">echo</span> strrchr($t1, $t6), <span class="string">'&lt;br /&gt;'</span>;<span class="comment">//$t6最后一次出现的位置截取到最后</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//分割， 连接， 反转字符串</span></span><br><span class="line">$t1 = <span class="string">'abcde fghijklmn abcde fgh ijklm nopq'</span>;</span><br><span class="line">var_dump(str_split($t1, <span class="number">5</span>)); <span class="comment">//返回数组类型, 把$t1按照5个字节分成数组</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'&lt;br /&gt;'</span>;</span><br><span class="line">        <span class="comment">/*    array (size=7)</span></span><br><span class="line"><span class="comment">                  0 =&gt; string 'abcde' (length=5)</span></span><br><span class="line"><span class="comment">                  1 =&gt; string 'fghij' (length=5)</span></span><br><span class="line"><span class="comment">                  2 =&gt; string 'klmn ' (length=5)</span></span><br><span class="line"><span class="comment">                  3 =&gt; string 'abcde' (length=5)</span></span><br><span class="line"><span class="comment">                  4 =&gt; string 'fghij' (length=5)</span></span><br><span class="line"><span class="comment">                  5 =&gt; string 'klmno' (length=5)</span></span><br><span class="line"><span class="comment">                  6 =&gt; string 'pq' (length=2)</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">var_dump(split(<span class="string">'ij'</span>, $t1, <span class="number">5</span>)) ;<span class="comment">//将$t1以'ij'进行分割5次，如果后面还出现将不进行分割</span></span><br><span class="line">$t7 = explode(<span class="string">' '</span>, $t1); <span class="comment">//将$t1以空格分开，返回数组,</span></span><br><span class="line">    <span class="keyword">echo</span> $t7[<span class="number">0</span>], <span class="string">'&lt;br /&gt;'</span>, $t7[<span class="number">3</span>], <span class="string">'&lt;br /&gt;'</span>;<span class="comment">//abcde fgh</span></span><br><span class="line">    var_dump($t7);</span><br><span class="line">    <span class="comment">/*    array (size=6)</span></span><br><span class="line"><span class="comment">              0 =&gt; string 'abcde' (length=5)</span></span><br><span class="line"><span class="comment">              1 =&gt; string 'fghijklmn' (length=9)</span></span><br><span class="line"><span class="comment">              2 =&gt; string 'abcde' (length=5)</span></span><br><span class="line"><span class="comment">              3 =&gt; string 'fgh' (length=3)</span></span><br><span class="line"><span class="comment">              4 =&gt; string 'ijklm' (length=5)</span></span><br><span class="line"><span class="comment">              5 =&gt; string 'nopq' (length=4)</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="keyword">echo</span> implode($t7, <span class="string">'/'</span>), <span class="string">'&lt;br /&gt;'</span>;<span class="comment">//abcde/fghijklmn/abcde/fgh/ijklm/nopq //将$t7用 / 连接起来，并且以字符串的形式返回</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//空白处理字符串</span></span><br><span class="line">$t1 = <span class="string">'        abcde fghijklmn abcde fgh ijklm nopq         '</span>;</span><br><span class="line"><span class="keyword">echo</span> trim($t1), <span class="string">'&lt;br /&gt;'</span>;<span class="comment">//处理$t1 前后 的空白字符，包括 ""空格 "\t"制表符 "\n"换行符 "\r"回车符 "\0"空字节 "\x08"垂直制表符</span></span><br><span class="line"><span class="keyword">echo</span> ltrim($t1),<span class="string">'&lt;br /&gt;'</span>;<span class="comment">//处理$t1 前 的空白字符，同上//可查看网页源代码</span></span><br><span class="line"><span class="keyword">echo</span> rtrim($t1),<span class="string">'&lt;br /&gt;'</span>;<span class="comment">//处理$t1 后 的空白字符，同上</span></span><br><span class="line"><span class="keyword">ECHO</span> chunk_split(<span class="string">'abcdefghijklmnopq'</span>, <span class="number">3</span>, <span class="string">','</span>),<span class="string">'&lt;BR /&gt;'</span>;<span class="comment">//abc,def,ghi,jkl,mno,pq,//将字符串按照 3个字符+一个，分割开，并连起来</span></span><br><span class="line"><span class="keyword">echo</span> str_pad(<span class="string">'zxd'</span>, <span class="number">6</span>),<span class="string">'&lt;br /&gt;'</span>;<span class="comment">//将 zxd 填充到6个字节</span></span><br><span class="line"><span class="keyword">echo</span> str_pad(<span class="string">'zxd'</span>, <span class="number">6</span>, <span class="string">'_'</span>,STR_PAD_LEFT),<span class="string">'&lt;BR /&gt;'</span>; <span class="comment">//___zxd 以 _ 对 zxd 进行填充 // STR_PAD_LEFT STR_PAD_BOTH 或者不填则直接填到最后</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//字符转义</span></span><br><span class="line">$t8 = <span class="string">"My name\id Xiaodong'ZHANG"</span>;</span><br><span class="line">$t9 = <span class="string">"My name\\id Xiaodong\'ZHANG"</span>;</span><br><span class="line"><span class="keyword">echo</span> addslashes($t8),<span class="string">'&lt;br/&gt;'</span>; <span class="comment">//My name\\id Xiaodong\'ZHANG 使用反斜线引入字符串 //为了向数据库中输入带有 " ' \ null 的数据的时候使用的,</span></span><br><span class="line"><span class="keyword">echo</span> stripslashes($t9),<span class="string">'&lt;br /&gt;'</span>;<span class="comment">//My nameid Xiaodong'ZHANG 反引用一个引用字符串 同上相反，从数据库中提取数据</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//没有搞懂，同以下几个都没搞懂 echo get_magic_quotes_gpc();</span></span><br><span class="line"><span class="keyword">echo</span> htmlspecialchars(<span class="string">'&lt;h1&gt;HEllp'</span>),<span class="string">'&lt;br /&gt;'</span>;<span class="comment">//将字符串中的一些字符转换成HTML实体，其中&lt; &gt;被翻译成&lt; &gt;</span></span><br><span class="line"><span class="keyword">echo</span> htmlspecialchars_decode(<span class="string">'&lt;h1&gt;HEllp'</span>),<span class="string">'&lt;br /&gt;'</span>;<span class="comment">//&lt;h1&gt;HEllp //同上相反，这个是在网页中显示效果，上则是在源代码中显示效果</span></span><br><span class="line"><span class="keyword">echo</span> htmlentities(<span class="string">'html&lt;h1&gt;&lt;p&gt;'</span>),<span class="string">'&lt;br /&gt;'</span>;<span class="comment">//把字符串中所有可以转换的字符换成HTML实体</span></span><br><span class="line"><span class="keyword">echo</span> html_entity_decode(<span class="string">'&lt; &gt; haha'</span>),<span class="string">'&lt;br /&gt;'</span>;<span class="comment">//同上 相反</span></span><br><span class="line"><span class="comment">// echo '&lt;h1&gt;nihao&lt;h1&gt; &lt;br /&gt;';//直接在网页上输出大写的nihao 类似于网页效果</span></span><br><span class="line"><span class="comment">// echo '&lt;h1&gt; nihao&lt;h1&gt;','&lt;br /&gt;';//直接转译成&lt;h1&gt; nihao 并且自带效果</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'heiadk&lt;br /&gt;'</span>;<span class="comment">//上两行必须屏蔽掉，否则之后的自带h1效果</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//字符串比较</span></span><br><span class="line"><span class="keyword">echo</span> strcmp(<span class="string">'abcd'</span>, <span class="string">'abcde'</span>).<span class="string">'&lt;br /&gt;'</span>; <span class="comment">//-1 //str1大于str2是为正数，相等为0</span></span><br><span class="line"><span class="keyword">echo</span> strcasecmp(<span class="string">'ABcDe'</span>, <span class="string">'abcDE'</span>).<span class="string">'&lt;br /&gt;'</span>; <span class="comment">//0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//字符串转换大小</span></span><br><span class="line"><span class="keyword">ECHO</span> strtolower(<span class="string">'ABcDeFg'</span>).<span class="string">'&lt;br /&gt;'</span>; <span class="comment">//abcdefg</span></span><br><span class="line"><span class="keyword">echo</span> strtoupper(<span class="string">'strinABcDeFg'</span>).<span class="string">'&lt;br /&gt;'</span>;<span class="comment">//STRINABCDEFG</span></span><br><span class="line"><span class="keyword">echo</span> ucfirst(<span class="string">'andjfJSUD'</span>).<span class="string">'&lt;BR /&gt;'</span>; <span class="comment">//AndjfJSUD 首字母为大写</span></span><br><span class="line"><span class="keyword">echo</span> ucwords(<span class="string">'my name Is zhang XAIO dong'</span>).<span class="string">'&lt;br /&gt;'</span>; <span class="comment">//My Name Is Zhang XAIO Dong 每个单词的首字母大写</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 将1234567890转换成1,234,567,8</span></span><br><span class="line">$str1 = <span class="string">'1234567890'</span>;</span><br><span class="line">$str4 = strrev($str1);</span><br><span class="line">$str2 = chunk_split($str4, <span class="number">3</span>, <span class="string">','</span>); <span class="comment">//098,765,432,1,</span></span><br><span class="line">$str3 = substr($str2, <span class="number">2</span>, <span class="number">11</span>);</span><br><span class="line"><span class="keyword">echo</span> strrev($str3);</span><br><span class="line"><span class="keyword">echo</span> number_format(<span class="string">'123456789'</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="0x01、字符串"><a href="#0x01、字符串" class="headerlink" title="0x01、字符串"></a>0x01、字符串</h2><pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//字符串定义方式</span>
+<span class="token comment" spellcheck="true">// ''只转译 ' / 但是“”转译的比较多</span>
+<span class="token comment" spellcheck="true">// ""可以解析变量</span>
+<span class="token comment" spellcheck="true">// ''速度比较快，不用分析变量，转译内用少。我们优先使用 ''</span>
+<span class="token variable">$str1</span> <span class="token operator">=</span> <span class="token string">'hello'</span><span class="token punctuation">;</span>
+<span class="token variable">$str2</span> <span class="token operator">=</span> <span class="token string">"hello"</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//写大段文本</span>
+<span class="token comment" spellcheck="true">//heredoc    &lt;&lt;&lt;HTML ......HTML; //类似于"" 可以解析文本中的变量</span>
+<span class="token comment" spellcheck="true">//nowdoc    &lt;&lt;&lt;'HTML'......HTML;</span>
 
-<blockquote>
-<h2 id="0x02、数组"><a href="#0x02、数组" class="headerlink" title="0x02、数组"></a>0x02、数组</h2></blockquote>
-<blockquote>
-<h2 id="0x03、类"><a href="#0x03、类" class="headerlink" title="0x03、类"></a>0x03、类</h2></blockquote>
-<blockquote>
-<h2 id="0x04、函数"><a href="#0x04、函数" class="headerlink" title="0x04、函数"></a>0x04、函数</h2></blockquote>
-<blockquote>
-<h2 id="0x05、文件操作"><a href="#0x05、文件操作" class="headerlink" title="0x05、文件操作"></a>0x05、文件操作</h2></blockquote>
-<blockquote>
-<h2 id="0x06、应用"><a href="#0x06、应用" class="headerlink" title="0x06、应用"></a>0x06、应用</h2></blockquote>
-<ul>
+<span class="token comment" spellcheck="true">//字符串函数</span>
+<span class="token comment" spellcheck="true">/*
+字符长度计算
+查找字符位置
+字符替换
+提取字符
+分割连接反转字符
+去除增加空格
+HTML代码/数据库安全处理字符
+比较字符
+字符大小写转换
+*/</span>
+<span class="token function">number_format</span><span class="token punctuation">(</span><span class="token string">'123456789'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//123,456,789 使用科学计数法表示字符串</span>
+<span class="token function">str_repeat</span><span class="token punctuation">(</span><span class="token string">' '</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//重复空格10次</span>
+
+<span class="token comment" spellcheck="true">//计算字符串长度</span>
+<span class="token variable">$t1</span> <span class="token operator">=</span> <span class="token string">'abcdefghijklmn abcdefg'</span><span class="token punctuation">;</span>
+<span class="token variable">$t2</span> <span class="token operator">=</span> <span class="token string">'我是中国人'</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token function">strlen</span><span class="token punctuation">(</span><span class="token variable">$t1</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//22    //计算字符长度</span>
+<span class="token keyword">echo</span> <span class="token function">mb_strlen</span><span class="token punctuation">(</span><span class="token variable">$t2</span><span class="token punctuation">,</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'&lt;br />'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//utf-8 必须加 '' //5 //计算字节长度</span>
+
+<span class="token comment" spellcheck="true">//反转字符</span>
+<span class="token keyword">echo</span> <span class="token function">strrev</span><span class="token punctuation">(</span><span class="token variable">$t1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//gfedcba nmlkjihgfedcba 反转字符</span>
+<span class="token comment" spellcheck="true">//reverse 背面，反面 反转 同数组反转array_reverse 字符串是strrve</span>
+
+<span class="token comment" spellcheck="true">//查找自字符串的位置</span>
+<span class="token variable">$t1</span> <span class="token operator">=</span> <span class="token string">'abcdefghijklmn abcd.efg'</span><span class="token punctuation">;</span>
+<span class="token variable">$t3</span> <span class="token operator">=</span> <span class="token string">'d'</span><span class="token punctuation">;</span>
+<span class="token variable">$t4</span> <span class="token operator">=</span> <span class="token string">'bc'</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token function">strpos</span><span class="token punctuation">(</span><span class="token variable">$t1</span><span class="token punctuation">,</span> <span class="token variable">$t3</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'&lt;br />'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//区分大小写，查找第一次出现的位置//返回值为int</span>
+<span class="token keyword">echo</span> <span class="token function">stripos</span><span class="token punctuation">(</span><span class="token variable">$t1</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'&lt;br />'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//不区分大小写，返回字符串在另一个字符串出现的位置</span>
+<span class="token keyword">echo</span> <span class="token function">strrpos</span><span class="token punctuation">(</span><span class="token variable">$t1</span><span class="token punctuation">,</span> <span class="token string">'.'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'&lt;br />'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//区分大小写，最后一次出现的位置 //19</span>
+<span class="token keyword">echo</span> <span class="token function">strrchr</span><span class="token punctuation">(</span><span class="token variable">$t1</span><span class="token punctuation">,</span> <span class="token string">'.'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//查找字符串最后出现的位置,并打印之后的 //.efg</span>
+
+<span class="token comment" spellcheck="true">//字符串替换</span>
+<span class="token variable">$t1</span> <span class="token operator">=</span> <span class="token string">'abcdefghijklmn abcdefg'</span><span class="token punctuation">;</span>
+<span class="token variable">$t5</span> <span class="token operator">=</span> <span class="token string">'opqrsruvw'</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token function">str_replace</span><span class="token punctuation">(</span><span class="token string">'Abc'</span><span class="token punctuation">,</span> <span class="token string">'dEfg'</span><span class="token punctuation">,</span> <span class="token variable">$t1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'&lt;br />'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//区分大小写,如果不同不会进行替换，在$t1中，defg替换掉abc</span>
+<span class="token keyword">echo</span> <span class="token function">str_ireplace</span><span class="token punctuation">(</span><span class="token string">'ABC'</span><span class="token punctuation">,</span> <span class="token string">'HAHAha'</span><span class="token punctuation">,</span> <span class="token variable">$t1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'&lt;BR />'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//进行替换 //不区分大小写</span>
+<span class="token keyword">echo</span> <span class="token function">strtr</span><span class="token punctuation">(</span><span class="token variable">$t1</span><span class="token punctuation">,</span> <span class="token string">'aBCd'</span><span class="token punctuation">,</span> <span class="token string">'HAHAHA'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'&lt;bR />'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//HAHAHA只替换成HbcA,中间BC不被替换，只替换4位// 区分大小写，但是还是会进行替换 //只是截取等长部分，区分大小写，而且之替换相同的</span>
+<span class="token keyword">echo</span> <span class="token function">substr_replace</span><span class="token punctuation">(</span><span class="token variable">$t1</span><span class="token punctuation">,</span> <span class="token variable">$t5</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'&lt;br>'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//$t5从$t1的第4位开始替换，$t1失去3字节的内容，如果没有写3，则默认替换掉$t1从第4位后的所有字节</span>
+<span class="token comment" spellcheck="true">//截取字符串</span>
+<span class="token variable">$t1</span> <span class="token operator">=</span> <span class="token string">'abcdefghijklmn abcdefghijklmnopq'</span><span class="token punctuation">;</span>
+<span class="token variable">$t6</span> <span class="token operator">=</span> <span class="token string">'fg'</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token function">substr</span><span class="token punctuation">(</span><span class="token variable">$t1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'&lt;bR />&lt;br />'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//defgh //从$t1的第3位开始，截取5字节内容，默认截取余下全部</span>
+<span class="token keyword">echo</span> <span class="token function">mb_substr</span><span class="token punctuation">(</span><span class="token variable">$t1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token string">'UTF8'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//从第1位开始，长度为10，字符编码为 UTF-8 截取， 返回值string</span>
+<span class="token keyword">echo</span> <span class="token function">strstr</span><span class="token punctuation">(</span><span class="token variable">$t1</span><span class="token punctuation">,</span> <span class="token variable">$t6</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//从$t1中找到$t6，截取后半截，$t6必须完全存在于$t1中，且区分大小写</span>
+<span class="token keyword">echo</span> <span class="token function">stristr</span><span class="token punctuation">(</span><span class="token variable">$t1</span><span class="token punctuation">,</span> <span class="token string">'FGH'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//同上不区分大小写</span>
+<span class="token keyword">echo</span> <span class="token function">strrchr</span><span class="token punctuation">(</span><span class="token variable">$t1</span><span class="token punctuation">,</span> <span class="token variable">$t6</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'&lt;br />'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//$t6最后一次出现的位置截取到最后</span>
+
+<span class="token comment" spellcheck="true">//分割， 连接， 反转字符串</span>
+<span class="token variable">$t1</span> <span class="token operator">=</span> <span class="token string">'abcde fghijklmn abcde fgh ijklm nopq'</span><span class="token punctuation">;</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token function">str_split</span><span class="token punctuation">(</span><span class="token variable">$t1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//返回数组类型, 把$t1按照5个字节分成数组</span>
+<span class="token keyword">echo</span> <span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">/*    array (size=7)
+                  0 => string 'abcde' (length=5)
+                  1 => string 'fghij' (length=5)
+                  2 => string 'klmn ' (length=5)
+                  3 => string 'abcde' (length=5)
+                  4 => string 'fghij' (length=5)
+                  5 => string 'klmno' (length=5)
+                  6 => string 'pq' (length=2)
+        */</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">'ij'</span><span class="token punctuation">,</span> <span class="token variable">$t1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">;</span><span class="token comment" spellcheck="true">//将$t1以'ij'进行分割5次，如果后面还出现将不进行分割</span>
+<span class="token variable">$t7</span> <span class="token operator">=</span> <span class="token function">explode</span><span class="token punctuation">(</span><span class="token string">' '</span><span class="token punctuation">,</span> <span class="token variable">$t1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//将$t1以空格分开，返回数组,</span>
+    <span class="token keyword">echo</span> <span class="token variable">$t7</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'&lt;br />'</span><span class="token punctuation">,</span> <span class="token variable">$t7</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'&lt;br />'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//abcde fgh</span>
+    <span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$t7</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">/*    array (size=6)
+              0 => string 'abcde' (length=5)
+              1 => string 'fghijklmn' (length=9)
+              2 => string 'abcde' (length=5)
+              3 => string 'fgh' (length=3)
+              4 => string 'ijklm' (length=5)
+              5 => string 'nopq' (length=4)
+    */</span>
+<span class="token keyword">echo</span> <span class="token function">implode</span><span class="token punctuation">(</span><span class="token variable">$t7</span><span class="token punctuation">,</span> <span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'&lt;br />'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//abcde/fghijklmn/abcde/fgh/ijklm/nopq //将$t7用 / 连接起来，并且以字符串的形式返回</span>
+
+<span class="token comment" spellcheck="true">//空白处理字符串</span>
+<span class="token variable">$t1</span> <span class="token operator">=</span> <span class="token string">'        abcde fghijklmn abcde fgh ijklm nopq         '</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token function">trim</span><span class="token punctuation">(</span><span class="token variable">$t1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'&lt;br />'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//处理$t1 前后 的空白字符，包括 ""空格 "\t"制表符 "\n"换行符 "\r"回车符 "\0"空字节 "\x08"垂直制表符</span>
+<span class="token keyword">echo</span> <span class="token function">ltrim</span><span class="token punctuation">(</span><span class="token variable">$t1</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//处理$t1 前 的空白字符，同上//可查看网页源代码</span>
+<span class="token keyword">echo</span> <span class="token function">rtrim</span><span class="token punctuation">(</span><span class="token variable">$t1</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//处理$t1 后 的空白字符，同上</span>
+<span class="token keyword">ECHO</span> <span class="token function">chunk_split</span><span class="token punctuation">(</span><span class="token string">'abcdefghijklmnopq'</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">','</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'&lt;BR />'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//abc,def,ghi,jkl,mno,pq,//将字符串按照 3个字符+一个，分割开，并连起来</span>
+<span class="token keyword">echo</span> <span class="token function">str_pad</span><span class="token punctuation">(</span><span class="token string">'zxd'</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//将 zxd 填充到6个字节</span>
+<span class="token keyword">echo</span> <span class="token function">str_pad</span><span class="token punctuation">(</span><span class="token string">'zxd'</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token string">'_'</span><span class="token punctuation">,</span><span class="token constant">STR_PAD_LEFT</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'&lt;BR />'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//___zxd 以 _ 对 zxd 进行填充 // STR_PAD_LEFT STR_PAD_BOTH 或者不填则直接填到最后</span>
+
+<span class="token comment" spellcheck="true">//字符转义</span>
+<span class="token variable">$t8</span> <span class="token operator">=</span> <span class="token string">"My name\id Xiaodong'ZHANG"</span><span class="token punctuation">;</span>
+<span class="token variable">$t9</span> <span class="token operator">=</span> <span class="token string">"My name\\id Xiaodong\'ZHANG"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token function">addslashes</span><span class="token punctuation">(</span><span class="token variable">$t8</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'&lt;br/>'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//My name\\id Xiaodong\'ZHANG 使用反斜线引入字符串 //为了向数据库中输入带有 " ' \ null 的数据的时候使用的,</span>
+<span class="token keyword">echo</span> <span class="token function">stripslashes</span><span class="token punctuation">(</span><span class="token variable">$t9</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//My nameid Xiaodong'ZHANG 反引用一个引用字符串 同上相反，从数据库中提取数据</span>
+
+<span class="token comment" spellcheck="true">//没有搞懂，同以下几个都没搞懂 echo get_magic_quotes_gpc();</span>
+<span class="token keyword">echo</span> <span class="token function">htmlspecialchars</span><span class="token punctuation">(</span><span class="token string">'&lt;h1>HEllp'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//将字符串中的一些字符转换成HTML实体，其中&lt; >被翻译成&lt; ></span>
+<span class="token keyword">echo</span> <span class="token function">htmlspecialchars_decode</span><span class="token punctuation">(</span><span class="token string">'&lt;h1>HEllp'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//&lt;h1>HEllp //同上相反，这个是在网页中显示效果，上则是在源代码中显示效果</span>
+<span class="token keyword">echo</span> <span class="token function">htmlentities</span><span class="token punctuation">(</span><span class="token string">'html&lt;h1>&lt;p>'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//把字符串中所有可以转换的字符换成HTML实体</span>
+<span class="token keyword">echo</span> <span class="token function">html_entity_decode</span><span class="token punctuation">(</span><span class="token string">'&lt; > haha'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//同上 相反</span>
+<span class="token comment" spellcheck="true">// echo '</span><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span></span>nihao<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span></span> <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/></span></span></span>'<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//直接在网页上输出大写的nihao 类似于网页效果</span>
+<span class="token comment" spellcheck="true">// echo '</span><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span></span> nihao<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span></span><span class="token string">','</span><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/></span></span></span>'<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//直接转译成&lt;h1> nihao 并且自带效果</span>
+<span class="token keyword">echo</span> <span class="token string">'heiadk&lt;br />'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//上两行必须屏蔽掉，否则之后的自带h1效果</span>
+
+<span class="token comment" spellcheck="true">//字符串比较</span>
+<span class="token keyword">echo</span> <span class="token function">strcmp</span><span class="token punctuation">(</span><span class="token string">'abcd'</span><span class="token punctuation">,</span> <span class="token string">'abcde'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//-1 //str1大于str2是为正数，相等为0</span>
+<span class="token keyword">echo</span> <span class="token function">strcasecmp</span><span class="token punctuation">(</span><span class="token string">'ABcDe'</span><span class="token punctuation">,</span> <span class="token string">'abcDE'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//0</span>
+
+<span class="token comment" spellcheck="true">//字符串转换大小</span>
+<span class="token keyword">ECHO</span> <span class="token function">strtolower</span><span class="token punctuation">(</span><span class="token string">'ABcDeFg'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//abcdefg</span>
+<span class="token keyword">echo</span> <span class="token function">strtoupper</span><span class="token punctuation">(</span><span class="token string">'strinABcDeFg'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//STRINABCDEFG</span>
+<span class="token keyword">echo</span> <span class="token function">ucfirst</span><span class="token punctuation">(</span><span class="token string">'andjfJSUD'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;BR />'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//AndjfJSUD 首字母为大写</span>
+<span class="token keyword">echo</span> <span class="token function">ucwords</span><span class="token punctuation">(</span><span class="token string">'my name Is zhang XAIO dong'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//My Name Is Zhang XAIO Dong 每个单词的首字母大写</span>
+
+<span class="token comment" spellcheck="true">// 将1234567890转换成1,234,567,8</span>
+<span class="token variable">$str1</span> <span class="token operator">=</span> <span class="token string">'1234567890'</span><span class="token punctuation">;</span>
+<span class="token variable">$str4</span> <span class="token operator">=</span> <span class="token function">strrev</span><span class="token punctuation">(</span><span class="token variable">$str1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$str2</span> <span class="token operator">=</span> <span class="token function">chunk_split</span><span class="token punctuation">(</span><span class="token variable">$str4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">','</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//098,765,432,1,</span>
+<span class="token variable">$str3</span> <span class="token operator">=</span> <span class="token function">substr</span><span class="token punctuation">(</span><span class="token variable">$str2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token function">strrev</span><span class="token punctuation">(</span><span class="token variable">$str3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token function">number_format</span><span class="token punctuation">(</span><span class="token string">'123456789'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h2 id="0x02、数组"><a href="#0x02、数组" class="headerlink" title="0x02、数组"></a>0x02、数组</h2><h2 id="0x03、类"><a href="#0x03、类" class="headerlink" title="0x03、类"></a>0x03、类</h2><h2 id="0x04、函数"><a href="#0x04、函数" class="headerlink" title="0x04、函数"></a>0x04、函数</h2><h2 id="0x05、文件操作"><a href="#0x05、文件操作" class="headerlink" title="0x05、文件操作"></a>0x05、文件操作</h2><h2 id="0x06、应用"><a href="#0x06、应用" class="headerlink" title="0x06、应用"></a>0x06、应用</h2><ul>
 <li><p>1.交换两个数</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$a = <span class="number">123.456</span>;</span><br><span class="line">$b = \<span class="string">'abcDEF\';</span></span><br><span class="line"><span class="string">function swap (&amp;$arg1, &amp;$arg2)</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">   $w=$arg1;</span></span><br><span class="line"><span class="string">   $arg1=$arg2;</span></span><br><span class="line"><span class="string">   $arg2=$w;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">swap(&amp;$a,&amp;$b);</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-php"><code class="language-php"><span class="token variable">$a</span> <span class="token operator">=</span> <span class="token number">123.456</span><span class="token punctuation">;</span>
+<span class="token variable">$b</span> <span class="token operator">=</span> \'abcDEF\'<span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">swap</span> <span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token variable">$arg1</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span><span class="token variable">$arg2</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+ <span class="token variable">$w</span><span class="token operator">=</span><span class="token variable">$arg1</span><span class="token punctuation">;</span>
+ <span class="token variable">$arg1</span><span class="token operator">=</span><span class="token variable">$arg2</span><span class="token punctuation">;</span>
+ <span class="token variable">$arg2</span><span class="token operator">=</span><span class="token variable">$w</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token function">swap</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token variable">$a</span><span class="token punctuation">,</span><span class="token operator">&amp;</span><span class="token variable">$b</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 </li>
 <li><p>2.循环</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$a = <span class="keyword">array</span>(\<span class="string">'a\',\'b\',\'c\');</span></span><br><span class="line"><span class="string">foreach($a as &amp;$v)&#123;&#125;</span></span><br><span class="line"><span class="string">foreach($a as $v)&#123;&#125;</span></span><br><span class="line"><span class="string">var_dump($a); //a,b,b</span></span><br><span class="line"><span class="string">//当foreach循环结束的时候，由于$v为引用变量，因而$v 与 $a[ 2 ] 指向了同一个地址空间（共享变量值），</span></span><br><span class="line"><span class="string">//因而之后对$v的任何修改都会直接反映到数组$a中</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-php"><code class="language-php"><span class="token variable">$a</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span>\'a\'<span class="token punctuation">,</span>\'b\'<span class="token punctuation">,</span>\'c\'<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">foreach</span><span class="token punctuation">(</span><span class="token variable">$a</span> <span class="token keyword">as</span> <span class="token operator">&amp;</span><span class="token variable">$v</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token keyword">foreach</span><span class="token punctuation">(</span><span class="token variable">$a</span> <span class="token keyword">as</span> <span class="token variable">$v</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//a,b,b</span>
+<span class="token comment" spellcheck="true">//当foreach循环结束的时候，由于$v为引用变量，因而$v 与 $a[ 2 ] 指向了同一个地址空间（共享变量值），</span>
+<span class="token comment" spellcheck="true">//因而之后对$v的任何修改都会直接反映到数组$a中</span></code></pre>
 </li>
 <li><p>3.unset只会删除变量。并不会清空变量值对应的内存空间：（这是与指针不同的地方）</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$a = <span class="string">"str"</span>;</span><br><span class="line">$b = &amp;$a;</span><br><span class="line"><span class="keyword">unset</span>($b);</span><br><span class="line"><span class="keyword">echo</span> $a;</span><br></pre></td></tr></table></figure>
+<pre class=" language-php"><code class="language-php"><span class="token variable">$a</span> <span class="token operator">=</span> <span class="token string">"str"</span><span class="token punctuation">;</span>
+<span class="token variable">$b</span> <span class="token operator">=</span> <span class="token operator">&amp;</span><span class="token variable">$a</span><span class="token punctuation">;</span>
+<span class="token function">unset</span><span class="token punctuation">(</span><span class="token variable">$b</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$a</span><span class="token punctuation">;</span></code></pre>
 </li>
 <li><p>4.引用作为函数参数传递时，是可以被函数内部更改的</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">change</span><span class="params">(&amp;$a)</span></span>&#123;</span><br><span class="line">   <span class="keyword">if</span>(is_array($a))&#123;</span><br><span class="line">       $a = <span class="keyword">array</span>();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">$test = range(<span class="number">1</span>,<span class="number">10</span>);</span><br><span class="line">change($test);</span><br><span class="line">print_r($test);</span><br></pre></td></tr></table></figure>
-
+<pre class=" language-php"><code class="language-php"><span class="token keyword">function</span> <span class="token function">change</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+ <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">is_array</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+     <span class="token variable">$a</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token variable">$test</span> <span class="token operator">=</span> <span class="token function">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">change</span><span class="token punctuation">(</span><span class="token variable">$test</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">print_r</span><span class="token punctuation">(</span><span class="token variable">$test</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 </li>
 </ul>
-<blockquote>
-<h2 id="0x07、日期"><a href="#0x07、日期" class="headerlink" title="0x07、日期"></a>0x07、日期</h2></blockquote>
-<ul>
+<h2 id="0x07、日期"><a href="#0x07、日期" class="headerlink" title="0x07、日期"></a>0x07、日期</h2><ul>
 <li><p>函数:</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">strtotime();</span><br><span class="line">date(<span class="string">'Y-m-d H:i:s'</span>,strtotime()); <span class="comment">//转化为格式日期</span></span><br><span class="line">date_parse(); <span class="comment">//把日期时间拆分为数组</span></span><br><span class="line">date_default_timezone_set(<span class="string">'UTC'</span>); <span class="comment">//设置时区</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-php"><code class="language-php"><span class="token function">strtotime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">date</span><span class="token punctuation">(</span><span class="token string">'Y-m-d H:i:s'</span><span class="token punctuation">,</span><span class="token function">strtotime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//转化为格式日期</span>
+<span class="token function">date_parse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//把日期时间拆分为数组</span>
+<span class="token function">date_default_timezone_set</span><span class="token punctuation">(</span><span class="token string">'UTC'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//设置时区</span></code></pre>
 </li>
 <li><p>获取上个月第一天及最后一天</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> date(\<span class="string">'Y-m-01\', strtotime(\'-1 month\'));</span></span><br><span class="line"><span class="string">echo "&lt;br/&gt;";</span></span><br><span class="line"><span class="string">echo date(\'Y-m-t\', strtotime(\'-1 month\'));</span></span><br><span class="line"><span class="string">echo "&lt;br/&gt;";</span></span><br><span class="line"><span class="string">//获取上个月最后一天时间</span></span><br><span class="line"><span class="string">$times = date('</span>d<span class="string">')*24*3600;</span></span><br><span class="line"><span class="string">echo date("Y-m-d H:i:s",time()-$times);</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-php"><code class="language-php"><span class="token keyword">echo</span> <span class="token function">date</span><span class="token punctuation">(</span>\'Y<span class="token operator">-</span>m<span class="token number">-01</span>\'<span class="token punctuation">,</span> <span class="token function">strtotime</span><span class="token punctuation">(</span>\'<span class="token operator">-</span><span class="token number">1</span> month\'<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">"&lt;br/>"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token function">date</span><span class="token punctuation">(</span>\'Y<span class="token operator">-</span>m<span class="token operator">-</span>t\'<span class="token punctuation">,</span> <span class="token function">strtotime</span><span class="token punctuation">(</span>\'<span class="token operator">-</span><span class="token number">1</span> month\'<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">"&lt;br/>"</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//获取上个月最后一天时间</span>
+<span class="token variable">$times</span> <span class="token operator">=</span> <span class="token function">date</span><span class="token punctuation">(</span><span class="token string">'d'</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">24</span><span class="token operator">*</span><span class="token number">3600</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token function">date</span><span class="token punctuation">(</span><span class="token string">"Y-m-d H:i:s"</span><span class="token punctuation">,</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token variable">$times</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 </li>
 <li><p>获取当月第一天及最后一天</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$BeginDate=date(\<span class="string">'Y-m-01\', strtotime(date("Y-m-d")));</span></span><br><span class="line"><span class="string">echo $BeginDate;</span></span><br><span class="line"><span class="string">echo "&lt;br/&gt;";</span></span><br><span class="line"><span class="string">echo date(\'Y-m-d\', strtotime("$BeginDate +1 month -1 day"));</span></span><br><span class="line"><span class="string">echo "&lt;br/&gt;";</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-php"><code class="language-php"><span class="token variable">$BeginDate</span><span class="token operator">=</span><span class="token function">date</span><span class="token punctuation">(</span>\'Y<span class="token operator">-</span>m<span class="token number">-01</span>\'<span class="token punctuation">,</span> <span class="token function">strtotime</span><span class="token punctuation">(</span><span class="token function">date</span><span class="token punctuation">(</span><span class="token string">"Y-m-d"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$BeginDate</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">"&lt;br/>"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token function">date</span><span class="token punctuation">(</span>\'Y<span class="token operator">-</span>m<span class="token operator">-</span>d\'<span class="token punctuation">,</span> <span class="token function">strtotime</span><span class="token punctuation">(</span><span class="token string">"$BeginDate +1 month -1 day"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">"&lt;br/>"</span><span class="token punctuation">;</span></code></pre>
 </li>
 <li><p>获取当前年份、月份、日期及天数</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="string">" 本月共有:"</span>.date(<span class="string">"t"</span>).<span class="string">"天"</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">" 当前年份"</span>.date(\<span class="string">'Y\');</span></span><br><span class="line"><span class="string">echo " 当前月份".date(\'m\');</span></span><br><span class="line"><span class="string">echo " 当前几号".date(\'d\');</span></span><br><span class="line"><span class="string">echo "&lt;br/&gt;";</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-php"><code class="language-php"><span class="token keyword">echo</span> <span class="token string">" 本月共有:"</span><span class="token punctuation">.</span><span class="token function">date</span><span class="token punctuation">(</span><span class="token string">"t"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">"天"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">" 当前年份"</span><span class="token punctuation">.</span><span class="token function">date</span><span class="token punctuation">(</span>\'Y\'<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">" 当前月份"</span><span class="token punctuation">.</span><span class="token function">date</span><span class="token punctuation">(</span>\'m\'<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">" 当前几号"</span><span class="token punctuation">.</span><span class="token function">date</span><span class="token punctuation">(</span>\'d\'<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">"&lt;br/>"</span><span class="token punctuation">;</span></code></pre>
 </li>
 <li><p>使用函数及数组来获取当月第一天及最后一天</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getthemonth</span><span class="params">($date)</span></span>&#123;</span><br><span class="line">   $firstday = date(\<span class="string">'Y-m-01\', strtotime($date));</span></span><br><span class="line"><span class="string">   $lastday = date(\'Y-m-d\', strtotime("$firstday +1 month -1 day"));</span></span><br><span class="line"><span class="string">   return array($firstday,$lastday);</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">$today = date("Y-m-d");</span></span><br><span class="line"><span class="string">$day=getthemonth($today);</span></span><br><span class="line"><span class="string">echo "当月的第一天: ".$day[0]." 当月的最后一天: ".$day[1];</span></span><br><span class="line"><span class="string">echo "&lt;br/&gt;";</span></span><br></pre></td></tr></table></figure>
-
+<pre class=" language-php"><code class="language-php"><span class="token keyword">function</span> <span class="token function">getthemonth</span><span class="token punctuation">(</span><span class="token variable">$date</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+ <span class="token variable">$firstday</span> <span class="token operator">=</span> <span class="token function">date</span><span class="token punctuation">(</span>\'Y<span class="token operator">-</span>m<span class="token number">-01</span>\'<span class="token punctuation">,</span> <span class="token function">strtotime</span><span class="token punctuation">(</span><span class="token variable">$date</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token variable">$lastday</span> <span class="token operator">=</span> <span class="token function">date</span><span class="token punctuation">(</span>\'Y<span class="token operator">-</span>m<span class="token operator">-</span>d\'<span class="token punctuation">,</span> <span class="token function">strtotime</span><span class="token punctuation">(</span><span class="token string">"$firstday +1 month -1 day"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token keyword">return</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token variable">$firstday</span><span class="token punctuation">,</span><span class="token variable">$lastday</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token variable">$today</span> <span class="token operator">=</span> <span class="token function">date</span><span class="token punctuation">(</span><span class="token string">"Y-m-d"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$day</span><span class="token operator">=</span><span class="token function">getthemonth</span><span class="token punctuation">(</span><span class="token variable">$today</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">"当月的第一天: "</span><span class="token punctuation">.</span><span class="token variable">$day</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token string">" 当月的最后一天: "</span><span class="token punctuation">.</span><span class="token variable">$day</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">"&lt;br/>"</span><span class="token punctuation">;</span></code></pre>
 </li>
 </ul>
-<blockquote>
-<h2 id="0x08、正则"><a href="#0x08、正则" class="headerlink" title="0x08、正则"></a>0x08、正则</h2></blockquote>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">$str=preg_replace(<span class="string">"/&lt;\\s*img\\s+[^&gt;]*?src\\s*=\\s*(\\\'|\\"</span>)(.*?)\\\\<span class="number">1</span>[^&gt;]*?\\/?\\s*&gt;/i<span class="string">", "</span> <span class="string">", $str); //过滤img标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/\\s+/<span class="string">", "</span> <span class="string">", $str); //过滤多余回车</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;[ ]+/si<span class="string">","</span>&lt;<span class="string">",$str); //过滤&lt;__("</span>&lt;<span class="string">"号后面带空格)</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;\\!--.*?--&gt;/si<span class="string">","</span><span class="string">",$str); //注释</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(\\!.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤DOCTYPE</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(\\/?html.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤html标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(\\/?head.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤head标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(\\/?meta.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤meta标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(\\/?body.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤body标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(\\/?link.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤link标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(\\/?form.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤form标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/cookie/si<span class="string">","</span>COOKIE<span class="string">",$str); //过滤COOKIE标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(applet.*?)&gt;(.*?)&lt;(\\/applet.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤applet标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(\\/?applet.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤applet标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(style.*?)&gt;(.*?)&lt;(\\/style.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤style标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(\\/?style.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤style标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(title.*?)&gt;(.*?)&lt;(\\/title.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤title标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(\\/?title.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤title标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(object.*?)&gt;(.*?)&lt;(\\/object.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤object标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(\\/?objec.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤object标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(noframes.*?)&gt;(.*?)&lt;(\\/noframes.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤noframes标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(\\/?noframes.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤noframes标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(i?frame.*?)&gt;(.*?)&lt;(\\/i?frame.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤frame标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(\\/?i?frame.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤frame标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(script.*?)&gt;(.*?)&lt;(\\/script.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤script标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(\\/?script.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤script标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/javascript/si<span class="string">","</span>Javascript<span class="string">",$str); //过滤script标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/vbscript/si<span class="string">","</span>Vbscript<span class="string">",$str); //过滤script标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/on([a-z]+)\\s*=/si<span class="string">","</span>On\\\\<span class="number">1</span>=<span class="string">",$str); //过滤script标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&amp;<span class="comment">#/si","&amp;＃",$str); //过滤script标签</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<h2 id="0x09、socket"><a href="#0x09、socket" class="headerlink" title="0x09、socket"></a>0x09、socket</h2></blockquote>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">socket_accept() 接受一个Socket连接</span><br><span class="line">socket_bind() 把socket绑定在一个IP地址和端口上</span><br><span class="line">socket_clear_error() 清除socket的错误或最后的错误代码</span><br><span class="line">socket_close() 关闭一个socket资源</span><br><span class="line">socket_connect() 开始一个socket连接</span><br><span class="line">socket_create_listen() 在指定端口打开一个socket监听</span><br><span class="line">socket_create_pair() 产生一对没有差别的socket到一个数组里</span><br><span class="line">socket_create() 产生一个socket，相当于产生一个socket的数据结构</span><br><span class="line">socket_get_option() 获取socket选项</span><br><span class="line">socket_getpeername() 获取远程类似主机的ip地址</span><br><span class="line">socket_getsockname() 获取本地socket的ip地址</span><br><span class="line">socket_iovec_add() 添加一个新的向量到一个分散/聚合的数组</span><br><span class="line">socket_iovec_alloc() 这个函数创建一个能够发送接收读写的iovec数据结构</span><br><span class="line">socket_iovec_delete() 删除一个已分配的iovec</span><br><span class="line">socket_iovec_fetch() 返回指定的iovec资源的数据</span><br><span class="line">socket_iovec_free() 释放一个iovec资源</span><br><span class="line">socket_iovec_set() 设置iovec的数据新值</span><br><span class="line">socket_last_error() 获取当前socket的最后错误代码</span><br><span class="line">socket_listen() 监听由指定socket的所有连接</span><br><span class="line">socket_read() 读取指定长度的数据</span><br><span class="line">socket_readv() 读取从分散/聚合数组过来的数据</span><br><span class="line">socket_recv() 从socket里结束数据到缓存</span><br><span class="line">socket_recvfrom() 接受数据从指定的socket，如果没有指定则默认当前socket</span><br><span class="line">socket_recvmsg() 从iovec里接受消息</span><br><span class="line">socket_select() 多路选择</span><br><span class="line">socket_send() 这个函数发送数据到已连接的socket</span><br><span class="line">socket_sendmsg() 发送消息到socket</span><br><span class="line">socket_sendto() 发送消息到指定地址的socket</span><br><span class="line">socket_set_block() 在socket里设置为块模式</span><br><span class="line">socket_set_nonblock() socket里设置为非块模式</span><br><span class="line">socket_set_option() 设置socket选项</span><br><span class="line">socket_shutdown() 这个函数允许你关闭读、写、或指定的socket</span><br><span class="line">socket_strerror() 返回指定错误号的周详错误</span><br><span class="line">socket_write() 写数据到socket缓存</span><br><span class="line">socket_writev() 写数据到分散/聚合数组</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<h2 id="0x10、php-fpm与nginx"><a href="#0x10、php-fpm与nginx" class="headerlink" title="0x10、php-fpm与nginx"></a>0x10、php-fpm与nginx</h2></blockquote>
-<blockquote>
-<h2 id="0x11、资源"><a href="#0x11、资源" class="headerlink" title="0x11、资源"></a>0x11、资源</h2><ul>
+<h2 id="0x08、正则"><a href="#0x08、正则" class="headerlink" title="0x08、正则"></a>0x08、正则</h2><pre class=" language-php"><code class="language-php"><span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;\\s*img\\s+[^>]*?src\\s*=\\s*(\\\'|\\"</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token operator">*</span><span class="token operator">?</span><span class="token punctuation">)</span>\<span class="token package"><span class="token punctuation">\</span><span class="token punctuation">\</span><span class="token punctuation">\</span>1</span><span class="token punctuation">[</span><span class="token operator">^</span><span class="token operator">></span><span class="token punctuation">]</span><span class="token operator">*</span><span class="token operator">?</span>\<span class="token package"><span class="token punctuation">\</span></span><span class="token operator">/</span><span class="token operator">?</span>\<span class="token package"><span class="token punctuation">\</span>s</span><span class="token operator">*</span><span class="token operator">></span><span class="token operator">/</span>i<span class="token string">", "</span> "<span class="token punctuation">,</span> <span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤img标签</span>
+<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/\\s+/"</span><span class="token punctuation">,</span> <span class="token string">" "</span><span class="token punctuation">,</span> <span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤多余回车</span>
+<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;[ ]+/si"</span><span class="token punctuation">,</span><span class="token string">"&lt;"</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤&lt;__("&lt;"号后面带空格)</span>
+<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;\\!--.*?-->/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//注释</span>
+<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(\\!.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤DOCTYPE</span>
+<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(\\/?html.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤html标签</span>
+<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(\\/?head.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤head标签</span>
+<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(\\/?meta.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤meta标签</span>
+<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(\\/?body.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤body标签</span>
+<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(\\/?link.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤link标签</span>
+<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(\\/?form.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤form标签</span>
+<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/cookie/si"</span><span class="token punctuation">,</span><span class="token string">"COOKIE"</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤COOKIE标签</span>
+<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(applet.*?)>(.*?)&lt;(\\/applet.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤applet标签</span>
+<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(\\/?applet.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤applet标签</span>
+<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(style.*?)>(.*?)&lt;(\\/style.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤style标签</span>
+<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(\\/?style.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤style标签</span>
+<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(title.*?)>(.*?)&lt;(\\/title.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤title标签</span>
+<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(\\/?title.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤title标签</span>
+<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(object.*?)>(.*?)&lt;(\\/object.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤object标签</span>
+<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(\\/?objec.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤object标签</span>
+<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(noframes.*?)>(.*?)&lt;(\\/noframes.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤noframes标签</span>
+<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(\\/?noframes.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤noframes标签</span>
+<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(i?frame.*?)>(.*?)&lt;(\\/i?frame.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤frame标签</span>
+<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(\\/?i?frame.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤frame标签</span>
+<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(script.*?)>(.*?)&lt;(\\/script.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤script标签</span>
+<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(\\/?script.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤script标签</span>
+<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/javascript/si"</span><span class="token punctuation">,</span><span class="token string">"Javascript"</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤script标签</span>
+<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/vbscript/si"</span><span class="token punctuation">,</span><span class="token string">"Vbscript"</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤script标签</span>
+<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/on([a-z]+)\\s*=/si"</span><span class="token punctuation">,</span><span class="token string">"On\\\\1="</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤script标签</span>
+<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&amp;#/si"</span><span class="token punctuation">,</span><span class="token string">"&amp;＃"</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤script标签</span></code></pre>
+<h2 id="0x09、socket"><a href="#0x09、socket" class="headerlink" title="0x09、socket"></a>0x09、socket</h2><pre class=" language-php"><code class="language-php"><span class="token function">socket_accept</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 接受一个Socket连接
+<span class="token function">socket_bind</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 把socket绑定在一个<span class="token constant">IP</span>地址和端口上
+<span class="token function">socket_clear_error</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 清除socket的错误或最后的错误代码
+<span class="token function">socket_close</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 关闭一个socket资源
+<span class="token function">socket_connect</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 开始一个socket连接
+<span class="token function">socket_create_listen</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 在指定端口打开一个socket监听
+<span class="token function">socket_create_pair</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 产生一对没有差别的socket到一个数组里
+<span class="token function">socket_create</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 产生一个socket，相当于产生一个socket的数据结构
+<span class="token function">socket_get_option</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 获取socket选项
+<span class="token function">socket_getpeername</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 获取远程类似主机的ip地址
+<span class="token function">socket_getsockname</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 获取本地socket的ip地址
+<span class="token function">socket_iovec_add</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 添加一个新的向量到一个分散<span class="token operator">/</span>聚合的数组
+<span class="token function">socket_iovec_alloc</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 这个函数创建一个能够发送接收读写的iovec数据结构
+<span class="token function">socket_iovec_delete</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 删除一个已分配的iovec
+<span class="token function">socket_iovec_fetch</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 返回指定的iovec资源的数据
+<span class="token function">socket_iovec_free</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 释放一个iovec资源
+<span class="token function">socket_iovec_set</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 设置iovec的数据新值
+<span class="token function">socket_last_error</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 获取当前socket的最后错误代码
+<span class="token function">socket_listen</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 监听由指定socket的所有连接
+<span class="token function">socket_read</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 读取指定长度的数据
+<span class="token function">socket_readv</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 读取从分散<span class="token operator">/</span>聚合数组过来的数据
+<span class="token function">socket_recv</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 从socket里结束数据到缓存
+<span class="token function">socket_recvfrom</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 接受数据从指定的socket，如果没有指定则默认当前socket
+<span class="token function">socket_recvmsg</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 从iovec里接受消息
+<span class="token function">socket_select</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 多路选择
+<span class="token function">socket_send</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 这个函数发送数据到已连接的socket
+<span class="token function">socket_sendmsg</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 发送消息到socket
+<span class="token function">socket_sendto</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 发送消息到指定地址的socket
+<span class="token function">socket_set_block</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 在socket里设置为块模式
+<span class="token function">socket_set_nonblock</span><span class="token punctuation">(</span><span class="token punctuation">)</span> socket里设置为非块模式
+<span class="token function">socket_set_option</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 设置socket选项
+<span class="token function">socket_shutdown</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 这个函数允许你关闭读、写、或指定的socket
+<span class="token function">socket_strerror</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 返回指定错误号的周详错误
+<span class="token function">socket_write</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 写数据到socket缓存
+<span class="token function">socket_writev</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 写数据到分散<span class="token operator">/</span>聚合数组</code></pre>
+<h2 id="0x10、php-fpm与nginx"><a href="#0x10、php-fpm与nginx" class="headerlink" title="0x10、php-fpm与nginx"></a>0x10、php-fpm与nginx</h2><h2 id="0x11、资源"><a href="#0x11、资源" class="headerlink" title="0x11、资源"></a>0x11、资源</h2><ul>
 <li>PhpDocmentor</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x12、依赖管理——用于依赖管理的包和框架"><a href="#0x12、依赖管理——用于依赖管理的包和框架" class="headerlink" title="0x12、依赖管理——用于依赖管理的包和框架"></a>0x12、依赖管理——用于依赖管理的包和框架</h2><ul>
 <li>Composer/Packagist : 一个包和依赖管理器</li>
 <li>Composer Installers: 一个多框架Composer库安装器</li>
 <li>Pickle: 可以在任意平台上安装PHP扩展包</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x13、依赖管理的附加部分——其它依赖管理的相关工具"><a href="#0x13、依赖管理的附加部分——其它依赖管理的相关工具" class="headerlink" title="0x13、依赖管理的附加部分——其它依赖管理的相关工具"></a>0x13、依赖管理的附加部分——其它依赖管理的相关工具</h2><ul>
 <li>Satis : 静态的Composer库生成器</li>
 <li>Composition: 一个运行时检查Composer环境的库</li>
@@ -491,8 +675,6 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
 <li>Patch Installer: 使用Composer安装补丁的库</li>
 <li>Composer Checker: 一个验证Composer配置的工具</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x14、框架——Web开发框架"><a href="#0x14、框架——Web开发框架" class="headerlink" title="0x14、框架——Web开发框架"></a>0x14、框架——Web开发框架</h2><ul>
 <li>Symfony2 : 由独立组件构成的框架</li>
 <li>Zend Framework 2: 同样是由独立组件构成的框架</li>
@@ -503,22 +685,16 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
 <li>PPI Framework 2: 一个交互性的框架</li>
 <li>Phalcon: 一个作为C扩展的框架</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x15、框架的附加部分——其它关于Web开发框架的相关工具"><a href="#0x15、框架的附加部分——其它关于Web开发框架的相关工具" class="headerlink" title="0x15、框架的附加部分——其它关于Web开发框架的相关工具"></a>0x15、框架的附加部分——其它关于Web开发框架的相关工具</h2><ul>
 <li>Symfony CMF: 一个创建自定义CMS的内容管理框架</li>
 <li>Knp RAD Bundle: Symfony2的快速应用程序包（RAD）</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x16、框架组件——来自Web开发框架的组件"><a href="#0x16、框架组件——来自Web开发框架的组件" class="headerlink" title="0x16、框架组件——来自Web开发框架的组件"></a>0x16、框架组件——来自Web开发框架的组件</h2><ul>
 <li>Symfony2 Components: 关于Symphony2的组件</li>
 <li>Zend Framework 2 Components: 关于ZF2的组件</li>
 <li>Aura Components: 一个PHP5.4的组件包</li>
 <li>Hoa Project: 另一个PHP组件包</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x17、微型框架——微型框架和路由"><a href="#0x17、微型框架——微型框架和路由" class="headerlink" title="0x17、微型框架——微型框架和路由"></a>0x17、微型框架——微型框架和路由</h2><ul>
 <li>Silex: 基于Symphony2组件的微型框架</li>
 <li>Slim: 另一个简单的微型框架</li>
@@ -526,8 +702,6 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
 <li>Fast Route: 快速路由选择库</li>
 <li>Pux: 另一个快速路由选择库</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x18、微型框架的附加部分——其它相关的微型框架和路由"><a href="#0x18、微型框架的附加部分——其它相关的微型框架和路由" class="headerlink" title="0x18、微型框架的附加部分——其它相关的微型框架和路由"></a>0x18、微型框架的附加部分——其它相关的微型框架和路由</h2><ul>
 <li>Silex Skeleton: 用于Silex的项目框架</li>
 <li>Silex Web Profiler: 用于Silex的Web调试工具条</li>
@@ -536,8 +710,6 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
 <li>Slim View: Slim的自定义视图集</li>
 <li>Slim Middleware: Slim的自定义中间件集合</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x19、模板——模板和词法分析的库与工具"><a href="#0x19、模板——模板和词法分析的库与工具" class="headerlink" title="0x19、模板——模板和词法分析的库与工具"></a>0x19、模板——模板和词法分析的库与工具</h2><ul>
 <li>Twig: 一种综合的模板语言</li>
 <li>Twig Cache Extension: 用于Twig的模板片段缓存库</li>
@@ -548,8 +720,6 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
 <li>Plates: 一个原始的PHP模板库</li>
 <li>Lex: 一个轻量级模板解析器</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x20、静态站点生成器——生成Web页面内容的预处理工具"><a href="#0x20、静态站点生成器——生成Web页面内容的预处理工具" class="headerlink" title="0x20、静态站点生成器——生成Web页面内容的预处理工具"></a>0x20、静态站点生成器——生成Web页面内容的预处理工具</h2><ul>
 <li>Sculpin: 将Markdown和Twig转换为静态HTML的工具</li>
 <li>Phrozn: 另一款将Textile、Markdown和Twig转为HTML的工具</li>
@@ -571,8 +741,6 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
 <li>Stampie: 关于邮件服务的库，比如SendGrid、PostMark、MailGun和Mandrill</li>
 <li>CssToInlineStyles: 邮件模板中一个内联的CSS库</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x21、文件——关于文件处理和MIME类型检查"><a href="#0x21、文件——关于文件处理和MIME类型检查" class="headerlink" title="0x21、文件——关于文件处理和MIME类型检查"></a>0x21、文件——关于文件处理和MIME类型检查</h2><ul>
 <li>Gaufrette: 一个文件流的抽象层</li>
 <li>Flysystem: 另一个文件流的抽象层</li>
@@ -585,8 +753,6 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
 <li>PHP FFmpeg: 一个用于FFmpeg视频包装的库</li>
 <li>CSV: 一个CSV数据操作库</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x22、流——处理流的库"><a href="#0x22、流——处理流的库" class="headerlink" title="0x22、流——处理流的库"></a>0x22、流——处理流的库</h2><ul>
 <li>Streamer: 一个简单的面向对象流包装库</li>
 <li>依赖注入——实现依赖注入设计模式的库</li>
@@ -596,8 +762,6 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
 <li>PHP DI: 一个使用标注实现的依赖注入</li>
 <li>Acclimate: 依赖注入容器和服务定位器的通用接口</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x23、图像——处理图像的库"><a href="#0x23、图像——处理图像的库" class="headerlink" title="0x23、图像——处理图像的库"></a>0x23、图像——处理图像的库</h2><ul>
 <li>Imagine: 一个图像处理库</li>
 <li>PHP Image Workshop: 另一个图像处理库</li>
@@ -607,8 +771,6 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
 <li>Image With Text: 在图像中嵌入文本的库</li>
 <li>Color Extractor: 从图像中提取颜色的库</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x24、测试——测试代码库和生成测试数据的库"><a href="#0x24、测试——测试代码库和生成测试数据的库" class="headerlink" title="0x24、测试——测试代码库和生成测试数据的库"></a>0x24、测试——测试代码库和生成测试数据的库</h2><ul>
 <li>PHPUnit: 一个单元测试框架</li>
 <li>DBUnit: PHPUnit的代码测试库</li>
@@ -631,8 +793,6 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
 <li>VFS: 另一个用于测试的虚拟文件系统</li>
 <li>Locust: 一个Python开发的现代负载测试库</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x25、持续集成——持续集成的库和应用"><a href="#0x25、持续集成——持续集成的库和应用" class="headerlink" title="0x25、持续集成——持续集成的库和应用"></a>0x25、持续集成——持续集成的库和应用</h2><ul>
 <li>Travis CI: 一个持续集成的平台</li>
 <li>PHPCI: 一个PHP的开源持续集成平台</li>
@@ -640,16 +800,12 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
 <li>Jenkins: PHP支持的持续集成平台</li>
 <li>JoliCi: PHP开发的由Docker支持的持续集成客户端</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x26、文档——生成项目文档的库"><a href="#0x26、文档——生成项目文档的库" class="headerlink" title="0x26、文档——生成项目文档的库"></a>0x26、文档——生成项目文档的库</h2><ul>
 <li>Sami: 一个API文档生成器</li>
 <li>APIGen: 另一个API文档生成器</li>
 <li>PHP Documentor 2: 文档生成器</li>
 <li>phpDox: 一个PHP项目的文档生成器（不仅仅是API文档）</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x27、安全性"><a href="#0x27、安全性" class="headerlink" title="0x27、安全性"></a>0x27、安全性</h2><ul>
 <li>HTML Purifier: 一个标准的HTML过滤器</li>
 <li>RandomLib: 生成随机数和随机字符串的库</li>
@@ -663,8 +819,6 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
 <li>SensioLabs Security Check: 一个根据安全建议检查Composer依赖的Web工具</li>
 <li>Zed: 用于Web应用的集成渗透测试工具</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x28、密码"><a href="#0x28、密码" class="headerlink" title="0x28、密码"></a>0x28、密码</h2><ul>
 <li>Password Compat: 一个用于新的PHP5.5密码功能的兼容库</li>
 <li>phpass: 一个便携式密码哈希框架</li>
@@ -673,8 +827,6 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
 <li>Password Validator: 验证和升级密码哈希的库</li>
 <li>Zxcvbn PHP: 一个基于Zxcvbn JS的PHP显示密码强度估计库</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x29、代码分析"><a href="#0x29、代码分析" class="headerlink" title="0x29、代码分析"></a>0x29、代码分析</h2><ul>
 <li>PHP Parser: 一个PHP编写的PHP解析器</li>
 <li>PHPPHP: 一个PHP实现的PHP虚拟机</li>
@@ -696,8 +848,6 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
 <li>xHprof: 另一个PHP性能评测工具</li>
 <li>PHPCheckstyle: 一个帮助遵守特定代码规则的工具</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x30、调试"><a href="#0x30、调试" class="headerlink" title="0x30、调试"></a>0x30、调试</h2><ul>
 <li>xDebug: 一个PHP的调试和分析工具</li>
 <li>PHP Debug Bar: 一个调试工具条</li>
@@ -706,8 +856,6 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
 <li>PHPDBG: 一个交互性的PHP调试器</li>
 <li>Tracy: 一个简单的错误检测、日志和时间测量库</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x31、构建工具"><a href="#0x31、构建工具" class="headerlink" title="0x31、构建工具"></a>0x31、构建工具</h2><ul>
 <li>Go: 一个简单的PHP构建工具</li>
 <li>Bob: 一个简单的项目自动化工具</li>
@@ -715,21 +863,15 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
 <li>Box: 用来构建PHAR文件的工具</li>
 <li>Phing: 依据Apache Ant的PHP项目构建系统</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x32、任务运行器"><a href="#0x32、任务运行器" class="headerlink" title="0x32、任务运行器"></a>0x32、任务运行器</h2><ul>
 <li>Task: 依据Grunt和Gulp的纯PHP任务运行器</li>
 <li>Robo: 面向对象的PHP任务运行器</li>
 <li>Bldr: 构建在Symphony组件上的PHP任务运行器</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x33、导航"><a href="#0x33、导航" class="headerlink" title="0x33、导航"></a>0x33、导航</h2><ul>
 <li>KnpMenu: 一个菜单库</li>
 <li>Cartographer: 一个站点地图生成库</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x34、资源管理"><a href="#0x34、资源管理" class="headerlink" title="0x34、资源管理"></a>0x34、资源管理</h2><ul>
 <li>Assetic: 一个资源管理的管道库</li>
 <li>Pipe: 另一个资源管理的管道库</li>
@@ -737,23 +879,17 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
 <li>JShrink: 一个JavaScript的最小化库</li>
 <li>Puli: 一个检测资源绝对路径的库</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x35、地理定位"><a href="#0x35、地理定位" class="headerlink" title="0x35、地理定位"></a>0x35、地理定位</h2><ul>
 <li>GeoCoder: 一个地理编码库</li>
 <li>GeoTools: 一个地理工具相关的库</li>
 <li>PHPGeo: 一个简单的地理库</li>
 <li>GeoJSON: 一个GeoJSON的实现</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x36、日期和时间"><a href="#0x36、日期和时间" class="headerlink" title="0x36、日期和时间"></a>0x36、日期和时间</h2><ul>
 <li>Carbon: 一个简单的日期时间API扩展</li>
 <li>ExpressiveDate: 另一个日期时间API扩展</li>
 <li>CalendR: 一个日历管理的库</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x37、事件"><a href="#0x37、事件" class="headerlink" title="0x37、事件"></a>0x37、事件</h2><ul>
 <li>React: 一个事件驱动的非阻塞I/O库</li>
 <li>Rx.PHP: 一个反应扩展库</li>
@@ -763,14 +899,10 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
 <li>Evenement: 一个事件调度库</li>
 <li>FuelPHP Event: 另一个事件调度库</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x38、日志"><a href="#0x38、日志" class="headerlink" title="0x38、日志"></a>0x38、日志</h2><ul>
 <li>Monolog: 一个完整的日志工具</li>
 <li>KLogger: 一个易于使用的PSR-3日志类</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x39、电子商务"><a href="#0x39、电子商务" class="headerlink" title="0x39、电子商务"></a>0x39、电子商务</h2><ul>
 <li>OmniPay: 一个多网关支付处理的框架</li>
 <li>Payum: 一个用于支付的抽象库</li>
@@ -780,14 +912,10 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
 <li>Sebastian Money: 一个处理货币价值的库</li>
 <li>Swap: 一个汇率库</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x40、PDF"><a href="#0x40、PDF" class="headerlink" title="0x40、PDF"></a>0x40、PDF</h2><p>-Snappy: 一个PDF和图像的生成库</p>
 <ul>
 <li>WKHTMLToPDF: 一个将HTML转换为PDF的工具</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x41、数据库"><a href="#0x41、数据库" class="headerlink" title="0x41、数据库"></a>0x41、数据库</h2><ul>
 <li>Doctrine: 一个完整的DBAL和ORM</li>
 <li>Doctrine Extensions: 一个Doctrine行为的扩展集合</li>
@@ -799,39 +927,29 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
 <li>Pomm: 用于PostgreSQL的一个对象模型管理器</li>
 <li>ProxyManager: 用于数据映射生成代理对象的工具集合</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x42、迁移"><a href="#0x42、迁移" class="headerlink" title="0x42、迁移"></a>0x42、迁移</h2><ul>
 <li>PHPMig: 一个迁移管理库</li>
 <li>Phinx: 一个数据库迁移管理库</li>
 <li>Migrations: 另一个迁移管理库</li>
 <li>Doctrine Migrations: 用于Doctrine的迁移库</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x43、NoSQL"><a href="#0x43、NoSQL" class="headerlink" title="0x43、NoSQL"></a>0x43、NoSQL</h2><ul>
 <li>MongoQB: 一个MongoDB的查询构建库</li>
 <li>Monga: 一个MongoDB的抽象库</li>
 <li>Predis: 一个功能完全的Redis库</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x44、队列"><a href="#0x44、队列" class="headerlink" title="0x44、队列"></a>0x44、队列</h2><ul>
 <li>Pheanstalk: 一个Beanstalkd客户端库</li>
 <li>PHP AMQP: 一个纯PHP AMQP库</li>
 <li>Thumper: 一个RabbitMQ模式库</li>
 <li>Bernard: 一个多后端的抽象库</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x45、搜索"><a href="#0x45、搜索" class="headerlink" title="0x45、搜索"></a>0x45、搜索</h2><ul>
 <li>ElasticSearch PHP: 用于ElasticSearch的官方客户端库</li>
 <li>Elastica: 另一个ElasticSearch的客户端库</li>
 <li>Solarium: Solr的客户端库</li>
 <li>SphinxQL query builder: Sphinx搜索引擎的查询库</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x45、命令行"><a href="#0x45、命令行" class="headerlink" title="0x45、命令行"></a>0x45、命令行</h2><ul>
 <li>Boris: 一个微型的PHP REPL</li>
 <li>PsySH: 另一个PHP REPL</li>
@@ -846,8 +964,6 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
 <li>Shunt: 一个在多台远程机器上并行运行的命令行库</li>
 <li>Cilex: 构建命令行工具的小型框架</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x46、身份验证"><a href="#0x46、身份验证" class="headerlink" title="0x46、身份验证"></a>0x46、身份验证</h2><ul>
 <li>Sentry: 一个身份验证和授权的框架</li>
 <li>Sentry Social: 一个用于社交网络身份验证的库</li>
@@ -860,8 +976,6 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
 <li>Hawk: 一个Hawk HTTP身份验证库</li>
 <li>HybridAuth: 一个开源的社交登录库</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x47、标记"><a href="#0x47、标记" class="headerlink" title="0x47、标记"></a>0x47、标记</h2><ul>
 <li>Decoda: 一个轻量级的标记解析库</li>
 <li>PHP Markdown: Markdown解析器</li>
@@ -872,8 +986,6 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
 <li>Cebe Markdown: 一个快速、可扩展的Markdown解析器</li>
 <li>HTML5 PHP: 一个HTML5解析和序列化的库</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x48、字符串"><a href="#0x48、字符串" class="headerlink" title="0x48、字符串"></a>0x48、字符串</h2><ul>
 <li>ANSI to HTML5: 一个将ANSI转换为HTML5的库</li>
 <li>Patchwork UTF-8: 处理UTF-8格式字符串的便携库</li>
@@ -887,8 +999,6 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
 <li>SQL Formatter: 一个用于格式化SQL语句的库</li>
 <li>UA Parser: 一个用于解析用户字符串的库</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x49、数字"><a href="#0x49、数字" class="headerlink" title="0x49、数字"></a>0x49、数字</h2><ul>
 <li>Numbers PHP: 一个处理数字的库</li>
 <li>Math: 处理较大数字的库</li>
@@ -897,9 +1007,8 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
 <li>PHP Conversion: 另一个测量单位间转换的库</li>
 <li>LibPhoneNumber for PHP: PHP实现的Google电话号码处理系统库</li>
 </ul>
-</blockquote>
-<blockquote>
-<h2 id="0x50、过滤和验证"><a href="#0x50、过滤和验证" class="headerlink" title="0x50、过滤和验证"></a>0x50、过滤和验证</h2><p>用于过滤和验证数据的库</p>
+<h2 id="0x50、过滤和验证"><a href="#0x50、过滤和验证" class="headerlink" title="0x50、过滤和验证"></a>0x50、过滤和验证</h2><blockquote>
+<p>用于过滤和验证数据的库</p>
 </blockquote>
 <ul>
 <li>Filterus: 一个简单的PHP过滤库</li>
@@ -910,7 +1019,6 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
 <li>MetaYaml: 支持YAML、JSON和XML的一个模式验证库</li>
 <li>ISO-codes: 验证不同ISO和ZIP编码的库</li>
 </ul>
-<blockquote>
 <h2 id="0x51、REST和API"><a href="#0x51、REST和API" class="headerlink" title="0x51、REST和API"></a>0x51、REST和API</h2><ul>
 <li>Apigility: 一个使用Zend Framework2构建的API构建器</li>
 <li>Hateoas: 一个HATEOAS REST的web服务库</li>
@@ -919,15 +1027,11 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
 <li>Drest: 一个将Doctrine实体展现为REST资源结点的库</li>
 <li>Restler: 一个将PHP方法展现为RESTful web API的轻量级框架</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x52、缓存"><a href="#0x52、缓存" class="headerlink" title="0x52、缓存"></a>0x52、缓存</h2><ul>
 <li>Alternative PHP Cache (APC): PHP的开源操作码缓存</li>
 <li>Cache: 一个缓存库</li>
 <li>Stash: 另一个缓存库</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x53、数据结构和存储"><a href="#0x53、数据结构和存储" class="headerlink" title="0x53、数据结构和存储"></a>0x53、数据结构和存储</h2><ul>
 <li>Ardent: 一个数据结构库</li>
 <li>PHP Collections: 一个简单的集合库</li>
@@ -938,24 +1042,18 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
 <li>PINQ: PHP实时Linq库</li>
 <li>JsonMapper: 一个将内嵌JSON结构映射到PHP类上的库</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x54、通知"><a href="#0x54、通知" class="headerlink" title="0x54、通知"></a>0x54、通知</h2><ul>
 <li>Nod: 一个通知库</li>
 <li>Notificato: 一个处理推送消息的库</li>
 <li>Notification Pusher: 设备推送通知的独立库</li>
 <li>Notificator: 一个轻量级通知库</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x55、部署"><a href="#0x55、部署" class="headerlink" title="0x55、部署"></a>0x55、部署</h2><ul>
 <li>Pomander: 一个PHP应用的部署工具</li>
 <li>Rocketeer: PHP的快速和简单部署器</li>
 <li>Envoy: 使用PHP运行SSH任务的工具</li>
 <li>Plum: 一个部署库</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x56、第三方API"><a href="#0x56、第三方API" class="headerlink" title="0x56、第三方API"></a>0x56、第三方API</h2><ul>
 <li>Amazon Web Service SDK: PHP AWS SDK官方库</li>
 <li>S3 Stream Wrapper: Amazon S3的流包装库</li>
@@ -970,14 +1068,10 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
 <li>Twilio: 官方的Twilio PHP REST API</li>
 <li>Mailgun: 官方的Mailgun PHP API</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x57、扩展"><a href="#0x57、扩展" class="headerlink" title="0x57、扩展"></a>0x57、扩展</h2><ul>
 <li>Zephir: 用于开发PHP扩展的一种在PHP和C++间的编译语言</li>
 <li>PHP CPP: 一个用于开发PHP扩展的C++库</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x58、PHP安装"><a href="#0x58、PHP安装" class="headerlink" title="0x58、PHP安装"></a>0x58、PHP安装</h2><ul>
 <li>HomeBrew: OSX的包管理器</li>
 <li>HomeBrew PHP:一个HomeBrew的PHP接头</li>
@@ -988,8 +1082,6 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
 <li>PHP Build: 一个PHP的版本安装器</li>
 <li>VirtPHP: 一个用来创建和管理独立PHP开发环境的工具</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x59、开发环境"><a href="#0x59、开发环境" class="headerlink" title="0x59、开发环境"></a>0x59、开发环境</h2><ul>
 <li>Vagrant: 一个便携式的开发环境工具</li>
 <li>Ansible: 一个非常简单的编制框架</li>
@@ -998,15 +1090,11 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
 <li>Protobox: 另一个用于构建PHP开发虚拟机的Web工具</li>
 <li>Phansible: 一个用Ansible构建PHP开发开发虚拟机的Web工具</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x60、集成开发环境IDE"><a href="#0x60、集成开发环境IDE" class="headerlink" title="0x60、集成开发环境IDE"></a>0x60、集成开发环境IDE</h2><ul>
 <li>Netbeans: 支持PHP和HTML5的IDE环境</li>
 <li>Eclipse for PHP Developers : 基于Eclipse平台的PHP IDE</li>
 <li>PhpStorm : 商业PHP IDE</li>
 </ul>
-</blockquote>
-<blockquote>
 <h2 id="0x61、Web应用"><a href="#0x61、Web应用" class="headerlink" title="0x61、Web应用"></a>0x61、Web应用</h2><ul>
 <li>3V4L: 一个在线的PHP内核</li>
 <li>DBV: 一个数据库版本控制应用</li>
@@ -1014,10 +1102,7 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
 <li>Composer as a Service: 作为一个zip文件下载Composer包的工具</li>
 <li>MailCatcher: 一个抓取和浏览邮件的Web工具</li>
 </ul>
-</blockquote>
-<blockquote>
-<h2 id="0x62、源码解析"><a href="#0x62、源码解析" class="headerlink" title="0x62、源码解析"></a>0x62、源码解析</h2></blockquote>
-
+<h2 id="0x62、源码解析"><a href="#0x62、源码解析" class="headerlink" title="0x62、源码解析"></a>0x62、源码解析</h2>
             </div>
             <hr/>
 
@@ -1131,15 +1216,13 @@ gitment.render('gitment-content');
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            docker常用命令
-作者：codehackfox@gmail.com
-时间：2018-05-18 14:29:58
-
-
-0x00、常用命令
-
+                            0x00、常用命令
 查看容器重启次数
-docker inspect -f “ .RestartCount “ con
+docker inspect -f “ .RestartCount “ container_id
+
+
+查看容器最后一次的启动时间
+docker inspect -f “ .State.StartedAt
                         
                     </div>
                     <div class="publish-info">
@@ -1188,14 +1271,9 @@ docker inspect -f “ .RestartCount “ con
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-
-
-
-0x00、关于开机自动检测硬盘的原因
-
+                            0x00、关于开机自动检测硬盘的原因
 第一种：是你非法关机造成的，比如直接断电的情况。
-第二种：是和硬盘的分区格式有关，FAT32格式在非法关机后会在开机时要求检测硬盘，而且必须检测完毕才不会在下次启动时重新检测。系统有一个文件中
+第二种：是和硬盘的分区格式有关，FAT32格式在非法关机后会在开机时要求检测硬盘，而且必须检测完毕才不会在下次启动时重新检测。系统有一个文件中记录了检测
                         
                     </div>
                     <div class="publish-info">
@@ -1230,6 +1308,43 @@ docker inspect -f “ .RestartCount “ con
 </article>
 </div>
 
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + 'From: hackfox<br />'
+            + 'Author: hackfox<br />'
+            + 'Link: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
 
 
     </div>
@@ -1339,17 +1454,65 @@ docker inspect -f “ .RestartCount “ con
             <br>
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">60.2k</span>&nbsp;字
+                class="white-color">60k</span>&nbsp;字
             
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="fa fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fa fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            <br>
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date();
+
+                function createtime() {
+                    var grt = new Date("Mon Sep 09 2019 08:00:00 GMT+0800 (GMT+08:00)");
+                    now.setTime(now.getTime() + 250);
+                    days = (now - grt) / 1000 / 60 / 60 / 24;
+                    dnum = Math.floor(days);
+                    hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+                    hnum = Math.floor(hours);
+                    if (String(hnum).length == 1) {
+                        hnum = "0" + hnum;
+                    }
+                    minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+                    mnum = Math.floor(minutes);
+                    if (String(mnum).length == 1) {
+                        mnum = "0" + mnum;
+                    }
+                    seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                    snum = Math.round(seconds);
+                    if (String(snum).length == 1) {
+                        snum = "0" + snum;
+                    }
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+                }
+                setInterval("createtime()", 250);
+            </script>
             
             
         </div>
-        <div class="col s12 m4 l4 social-link ">
+        <div class="col s12 m4 l4 social-link social-statis">
     <a href="https://github.com/xsoer" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fa fa-github"></i>
     </a>
 
 
+
+    <a href="mailto:codehackfox@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
 
 
 
@@ -1420,6 +1583,8 @@ $(function () {
 
     <script src="/libs/others/clicklove.js"></script>
 
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
 </body>

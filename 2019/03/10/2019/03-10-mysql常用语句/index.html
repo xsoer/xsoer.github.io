@@ -5,13 +5,8 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="mysql常用语句, hackfox">
-    <meta name="description" content="
-
-
-0x00、常用语句
-
-1.授权用户
-12mysql&amp;gt;GRANT ALL PRIVILEGES ON *.* TO &amp;apos;zxc&amp;apos;@&amp;apos;%&amp;apos; IDENTIFIED BY &amp;apos;ydp#201">
+    <meta name="description" content="0x00、常用语句
+1.授权用户mysql&amp;gt;GRANT ALL PRIVILEGES ON *.* TO &amp;#39;zxc&amp;#39;@&amp;#39;%&amp;#39; IDENTIFIED BY &amp;#39;ydp#2015$Z!!!&amp;#39; ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -34,7 +29,7 @@
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -100,15 +95,6 @@
         </a>
     </li>
     
-    <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <i class="fa fa-address-book"></i>
-            
-            <span>Friends</span>
-        </a>
-    </li>
-    
     <li>
         <a href="#searchModal" class="modal-trigger waves-effect waves-light">
             <i id="searchIcon" class="fa fa-search" title="Search"></i>
@@ -125,7 +111,7 @@
         <div class="logo-name">hackfox</div>
         <div class="logo-desc">
             
-            架构、AI、打数据
+            架构、AI、大数据、python、go
             
         </div>
     </div>
@@ -176,15 +162,6 @@
                 <i class="fa fa-fw fa-user-circle-o"></i>
                 
                 About
-            </a>
-        </li>
-        
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-address-book"></i>
-                
-                Friends
             </a>
         </li>
         
@@ -364,98 +341,45 @@
                 
 				
 				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
             </div>
         </div>
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <!-- # mysql常用语句
-
-- 作者：codehackfox@gmail.com
-- 时间：2019-03-10 18:20:48 -->
-
-<blockquote>
-<h2 id="0x00、常用语句"><a href="#0x00、常用语句" class="headerlink" title="0x00、常用语句"></a>0x00、常用语句</h2></blockquote>
-<ul>
-<li><p>1.授权用户</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;GRANT ALL PRIVILEGES ON *.* TO &apos;zxc&apos;@&apos;%&apos; IDENTIFIED BY &apos;ydp#2015$Z!!!&apos; WITH GRANT OPTION;</span><br><span class="line">mysql&gt;FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>2.远程连接</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt;mysql -h127.0.0.1 -P3306 -uroot -p</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>3.导出数据库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt;mysqldump -h127.0.0.1 -P3306 -uroot -p sqsx &gt; sqsx.sql</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>4.导入数据库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt;mysql -uroot -p sqsx &lt; sqsx.sql</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>5.分析查询</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;explain select * from user;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>6.查询所有的进程</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;show procelist;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>7.建数据库语句</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;create database dbname default character set utf8 collate utf8_general_ci;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>8.创建数据表语句</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;create table dbname.tablename () engine=Innodb charset=utf8;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>9.删除数据库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;drop database dbname;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>10.查看数据库状态</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;use dbname;</span><br><span class="line">mysql&gt;status;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>11.查看参数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;show variables like “%sql%”;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>12.查看事件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;show events;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>13.查看触发器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;show triggers;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>14.查看所有参数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;show status;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>15.查看打开表</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;show open tables;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>16.查看表状态</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;show table status;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>17.查看主数据状态</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;show master status;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>18.查看从数据库状态</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;show slave status;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>19.查看函数状态</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;show function status;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>20.查看插件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;show plugins;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>21.查看某用户的授权</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;show grants for username;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>22.查看错误</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;show errors;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>23.查看创建表语句</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;show create table tablename;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>24.查看表头</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;show columns from tablename;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>25.查看存储引擎</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;show engines;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>26.查看表状态</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;show table status;</span><br></pre></td></tr></table></figure>
-
-</li>
+                <h2 id="0x00、常用语句"><a href="#0x00、常用语句" class="headerlink" title="0x00、常用语句"></a>0x00、常用语句</h2><ul>
+<li>1.授权用户<pre><code>mysql&gt;GRANT ALL PRIVILEGES ON *.* TO &#39;zxc&#39;@&#39;%&#39; IDENTIFIED BY &#39;ydp#2015$Z!!!&#39; WITH GRANT OPTION;
+mysql&gt;FLUSH PRIVILEGES;</code></pre></li>
+<li>2.远程连接<pre><code>shell&gt;mysql -h127.0.0.1 -P3306 -uroot -p</code></pre></li>
+<li>3.导出数据库<pre><code>shell&gt;mysqldump -h127.0.0.1 -P3306 -uroot -p sqsx &gt; sqsx.sql</code></pre></li>
+<li>4.导入数据库<pre><code>shell&gt;mysql -uroot -p sqsx &lt; sqsx.sql</code></pre></li>
+<li>5.分析查询<pre><code>mysql&gt;explain select * from user;</code></pre></li>
+<li>6.查询所有的进程<pre><code>mysql&gt;show procelist;</code></pre></li>
+<li>7.建数据库语句<pre><code>mysql&gt;create database dbname default character set utf8 collate utf8_general_ci;</code></pre></li>
+<li>8.创建数据表语句<pre><code>mysql&gt;create table dbname.tablename () engine=Innodb charset=utf8;</code></pre></li>
+<li>9.删除数据库<pre><code>mysql&gt;drop database dbname;</code></pre></li>
+<li>10.查看数据库状态<pre><code>mysql&gt;use dbname;
+mysql&gt;status;</code></pre></li>
+<li>11.查看参数<pre><code>mysql&gt;show variables like “%sql%”;</code></pre></li>
+<li>12.查看事件<pre><code>mysql&gt;show events;</code></pre></li>
+<li>13.查看触发器<pre><code>mysql&gt;show triggers;</code></pre></li>
+<li>14.查看所有参数<pre><code>mysql&gt;show status;</code></pre></li>
+<li>15.查看打开表<pre><code>mysql&gt;show open tables;</code></pre></li>
+<li>16.查看表状态<pre><code>mysql&gt;show table status;</code></pre></li>
+<li>17.查看主数据状态<pre><code>mysql&gt;show master status;</code></pre></li>
+<li>18.查看从数据库状态<pre><code>mysql&gt;show slave status;</code></pre></li>
+<li>19.查看函数状态<pre><code>mysql&gt;show function status;</code></pre></li>
+<li>20.查看插件<pre><code>mysql&gt;show plugins;</code></pre></li>
+<li>21.查看某用户的授权<pre><code>mysql&gt;show grants for username;</code></pre></li>
+<li>22.查看错误<pre><code>mysql&gt;show errors;</code></pre></li>
+<li>23.查看创建表语句<pre><code>mysql&gt;show create table tablename;</code></pre></li>
+<li>24.查看表头<pre><code>mysql&gt;show columns from tablename;</code></pre></li>
+<li>25.查看存储引擎<pre><code>mysql&gt;show engines;</code></pre></li>
+<li>26.查看表状态<pre><code>mysql&gt;show table status;</code></pre></li>
 </ul>
 
             </div>
@@ -571,13 +495,8 @@ gitment.render('gitment-content');
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-
-
-0x00、同步步骤
-
-1.主库和从库创建同步账户
-1mysql&gt; grant replication slave, replication client on *.* to repl@&apos;192.168.1.%&apos
+                            0x00、同步步骤
+1.主库和从库创建同步账户mysql&gt; grant replication slave, replication client on *.* to repl@&#39;192.168.1.%&#39; identi
                         
                     </div>
                     <div class="publish-info">
@@ -626,15 +545,11 @@ gitment.render('gitment-content');
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-
-
-1.数据库中的事务是什么?事务的隔离级别?脏读、幻读、不可重复读是什么意思？
-
+                            1.数据库中的事务是什么?事务的隔离级别?脏读、幻读、不可重复读是什么意思？
 数据库事务
 将一组相关操作组合为一个要么全部成功要么全部失败的单元
 具有ACID（原子性、一致性、隔离性和持久性）属性
-原子性(Atomicity)：原子
+原子性(Atomicity)：原子性是指事
                         
                     </div>
                     <div class="publish-info">
@@ -669,6 +584,43 @@ gitment.render('gitment-content');
 </article>
 </div>
 
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + 'From: hackfox<br />'
+            + 'Author: hackfox<br />'
+            + 'Link: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
 
 
     </div>
@@ -778,17 +730,65 @@ gitment.render('gitment-content');
             <br>
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">60.2k</span>&nbsp;字
+                class="white-color">60k</span>&nbsp;字
             
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="fa fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fa fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            <br>
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date();
+
+                function createtime() {
+                    var grt = new Date("Mon Sep 09 2019 08:00:00 GMT+0800 (GMT+08:00)");
+                    now.setTime(now.getTime() + 250);
+                    days = (now - grt) / 1000 / 60 / 60 / 24;
+                    dnum = Math.floor(days);
+                    hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+                    hnum = Math.floor(hours);
+                    if (String(hnum).length == 1) {
+                        hnum = "0" + hnum;
+                    }
+                    minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+                    mnum = Math.floor(minutes);
+                    if (String(mnum).length == 1) {
+                        mnum = "0" + mnum;
+                    }
+                    seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                    snum = Math.round(seconds);
+                    if (String(snum).length == 1) {
+                        snum = "0" + snum;
+                    }
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+                }
+                setInterval("createtime()", 250);
+            </script>
             
             
         </div>
-        <div class="col s12 m4 l4 social-link ">
+        <div class="col s12 m4 l4 social-link social-statis">
     <a href="https://github.com/xsoer" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fa fa-github"></i>
     </a>
 
 
+
+    <a href="mailto:codehackfox@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
 
 
 
@@ -859,6 +859,8 @@ $(function () {
 
     <script src="/libs/others/clicklove.js"></script>
 
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
 </body>

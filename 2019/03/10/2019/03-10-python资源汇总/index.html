@@ -5,23 +5,17 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="python资源汇总, hackfox">
-    <meta name="description" content="
-
-
-0x00、图书链接
-
+    <meta name="description" content="0x00、图书链接
 各种图书资源
 
-
-0x01、常用库
-01、通用库
+0x01、常用库01、通用库
 urllib
 allows you access websites via your program
 文档
 
 
 requests -网络库
-grab – 网络库（">
+grab – 网络库（基于pycu">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -44,7 +38,7 @@ grab – 网络库（">
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -110,15 +104,6 @@ grab – 网络库（">
         </a>
     </li>
     
-    <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <i class="fa fa-address-book"></i>
-            
-            <span>Friends</span>
-        </a>
-    </li>
-    
     <li>
         <a href="#searchModal" class="modal-trigger waves-effect waves-light">
             <i id="searchIcon" class="fa fa-search" title="Search"></i>
@@ -135,7 +120,7 @@ grab – 网络库（">
         <div class="logo-name">hackfox</div>
         <div class="logo-desc">
             
-            架构、AI、打数据
+            架构、AI、大数据、python、go
             
         </div>
     </div>
@@ -186,15 +171,6 @@ grab – 网络库（">
                 <i class="fa fa-fw fa-user-circle-o"></i>
                 
                 About
-            </a>
-        </li>
-        
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-address-book"></i>
-                
-                Friends
             </a>
         </li>
         
@@ -374,24 +350,20 @@ grab – 网络库（">
                 
 				
 				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
             </div>
         </div>
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <!-- # python资源汇总
-
-- 作者：codehackfox@gmail.com
-- 时间：2019-03-10 13:33:30 -->
-
-<blockquote>
-<h2 id="0x00、图书链接"><a href="#0x00、图书链接" class="headerlink" title="0x00、图书链接"></a>0x00、图书链接</h2></blockquote>
-<ul>
+                <h2 id="0x00、图书链接"><a href="#0x00、图书链接" class="headerlink" title="0x00、图书链接"></a>0x00、图书链接</h2><ul>
 <li><a href="https://github.com/xsoer/learn-files/tree/master/%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3/python" target="_blank" rel="noopener">各种图书资源</a></li>
 </ul>
-<blockquote>
-<h2 id="0x01、常用库"><a href="#0x01、常用库" class="headerlink" title="0x01、常用库"></a>0x01、常用库</h2></blockquote>
-<h3 id="01、通用库"><a href="#01、通用库" class="headerlink" title="01、通用库"></a>01、通用库</h3><ul>
+<h2 id="0x01、常用库"><a href="#0x01、常用库" class="headerlink" title="0x01、常用库"></a>0x01、常用库</h2><h3 id="01、通用库"><a href="#01、通用库" class="headerlink" title="01、通用库"></a>01、通用库</h3><ul>
 <li>urllib<ul>
 <li>allows you access websites via your program</li>
 <li><a href="https://docs.python.org/3/library/urllib.html" target="_blank" rel="noopener">文档</a></li>
@@ -635,17 +607,13 @@ gitment.render('gitment-content');
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-
-
-
-0x00、命令
-
+                            0x00、命令
 Management Commands:
 
 config      Manage Docker configs
 container   Manage containers
-image       Manage im
+image       Manage images
+
                         
                     </div>
                     <div class="publish-info">
@@ -694,18 +662,11 @@ image       Manage im
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-
-
-0x00、安装lzrz
-
-1.远程连接的服务器端必须要有sz、rz这两个工具，如果没有，可以执行安装。如在CentOS上安装的命令为：
-1sudo yum install lrzsz
-
+                            0x00、安装lzrz
+1.远程连接的服务器端必须要有sz、rz这两个工具，如果没有，可以执行安装。如在CentOS上安装的命令为：sudo yum install lrzsz
 2.本地安装lzrz工具。
 
-
-1brew in
+brew install lrz
                         
                     </div>
                     <div class="publish-info">
@@ -740,6 +701,43 @@ image       Manage im
 </article>
 </div>
 
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + 'From: hackfox<br />'
+            + 'Author: hackfox<br />'
+            + 'Link: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
 
 
     </div>
@@ -849,17 +847,65 @@ image       Manage im
             <br>
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">60.2k</span>&nbsp;字
+                class="white-color">60k</span>&nbsp;字
             
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="fa fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fa fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            <br>
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date();
+
+                function createtime() {
+                    var grt = new Date("Mon Sep 09 2019 08:00:00 GMT+0800 (GMT+08:00)");
+                    now.setTime(now.getTime() + 250);
+                    days = (now - grt) / 1000 / 60 / 60 / 24;
+                    dnum = Math.floor(days);
+                    hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+                    hnum = Math.floor(hours);
+                    if (String(hnum).length == 1) {
+                        hnum = "0" + hnum;
+                    }
+                    minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+                    mnum = Math.floor(minutes);
+                    if (String(mnum).length == 1) {
+                        mnum = "0" + mnum;
+                    }
+                    seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                    snum = Math.round(seconds);
+                    if (String(snum).length == 1) {
+                        snum = "0" + snum;
+                    }
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+                }
+                setInterval("createtime()", 250);
+            </script>
             
             
         </div>
-        <div class="col s12 m4 l4 social-link ">
+        <div class="col s12 m4 l4 social-link social-statis">
     <a href="https://github.com/xsoer" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fa fa-github"></i>
     </a>
 
 
+
+    <a href="mailto:codehackfox@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
 
 
 
@@ -930,6 +976,8 @@ $(function () {
 
     <script src="/libs/others/clicklove.js"></script>
 
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
 </body>

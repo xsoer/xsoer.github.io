@@ -5,17 +5,13 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="docker基础文档, hackfox">
-    <meta name="description" content="
-
-
-
-0x00、命令
-
+    <meta name="description" content="0x00、命令
 Management Commands:
 
 config      Manage Docker configs
 container   Manage containers
-image       Manage im">
+image       Manage images
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -38,7 +34,7 @@ image       Manage im">
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -104,15 +100,6 @@ image       Manage im">
         </a>
     </li>
     
-    <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <i class="fa fa-address-book"></i>
-            
-            <span>Friends</span>
-        </a>
-    </li>
-    
     <li>
         <a href="#searchModal" class="modal-trigger waves-effect waves-light">
             <i id="searchIcon" class="fa fa-search" title="Search"></i>
@@ -129,7 +116,7 @@ image       Manage im">
         <div class="logo-name">hackfox</div>
         <div class="logo-desc">
             
-            架构、AI、打数据
+            架构、AI、大数据、python、go
             
         </div>
     </div>
@@ -180,15 +167,6 @@ image       Manage im">
                 <i class="fa fa-fw fa-user-circle-o"></i>
                 
                 About
-            </a>
-        </li>
-        
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-address-book"></i>
-                
-                Friends
             </a>
         </li>
         
@@ -368,19 +346,17 @@ image       Manage im">
                 
 				
 				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
             </div>
         </div>
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <!-- # docker基础文档
-- 作者：codehackfox@gmail.com
-- 时间：2019-03-10 18:06:12 -->
-
-
-<blockquote>
-<h2 id="0x00、命令"><a href="#0x00、命令" class="headerlink" title="0x00、命令"></a>0x00、命令</h2></blockquote>
-<ul>
+                <h2 id="0x00、命令"><a href="#0x00、命令" class="headerlink" title="0x00、命令"></a>0x00、命令</h2><ul>
 <li><p>Management Commands:</p>
 <ul>
 <li>config      Manage Docker configs</li>
@@ -520,9 +496,7 @@ image       Manage im">
 </ul>
 </li>
 </ul>
-<blockquote>
-<h2 id="0x01、简介"><a href="#0x01、简介" class="headerlink" title="0x01、简介"></a>0x01、简介</h2></blockquote>
-<h3 id="链接映射"><a href="#链接映射" class="headerlink" title="链接映射"></a>链接映射</h3><ul>
+<h2 id="0x01、简介"><a href="#0x01、简介" class="headerlink" title="0x01、简介"></a>0x01、简介</h2><h3 id="链接映射"><a href="#链接映射" class="headerlink" title="链接映射"></a>链接映射</h3><ul>
 <li>docker有一个连接系统允许将多个容器连接在一起，共享连接信息。docker连接会创建一个父子关系，其中父容器可以看到子容器的信息。·</li>
 </ul>
 <h3 id="容器与虚拟机是互补的。"><a href="#容器与虚拟机是互补的。" class="headerlink" title="容器与虚拟机是互补的。"></a>容器与虚拟机是互补的。</h3><ul>
@@ -601,9 +575,7 @@ image       Manage im">
 <ul>
 <li>devices子系统用来控制Cgroup的进程对哪些设备有访问权限</li>
 </ul>
-<blockquote>
-<h2 id="0x03、Namespace"><a href="#0x03、Namespace" class="headerlink" title="0x03、Namespace"></a>0x03、Namespace</h2></blockquote>
-<ul>
+<h2 id="0x03、Namespace"><a href="#0x03、Namespace" class="headerlink" title="0x03、Namespace"></a>0x03、Namespace</h2><ul>
 <li>Namespace是将内核的全局资源做封装，使得每个Namespace都有一份独立的资源，因此不同的进程在各自的Namespace内对同一种资源的使用不会互相干扰</li>
 <li>目前Linux内核总共实现了6种Namespace：<ul>
 <li>IPC：隔离System V IPC和POSIX消息队列。</li>
@@ -653,23 +625,17 @@ image       Manage im">
 <li><p>Namespace和Cgroup的使用是很灵活的，同时这里面又有不少需要注意的地方，因此直接操作Namespace和Cgroup并不是很容易。正是因为这些原因，Docker通过Libcontainer来处理这些底层的事情。这样一来，Docker只需要简单地调用Libcontainer的API，就能将完整的容器搭建起来</p>
 </li>
 </ul>
-<blockquote>
-<h2 id="0x04、Images"><a href="#0x04、Images" class="headerlink" title="0x04、Images"></a>0x04、Images</h2></blockquote>
-<ul>
+<h2 id="0x04、Images"><a href="#0x04、Images" class="headerlink" title="0x04、Images"></a>0x04、Images</h2><ul>
 <li>是启动融资的rootfs,只读模版</li>
 </ul>
 <h4 id="一、基本概念"><a href="#一、基本概念" class="headerlink" title="一、基本概念"></a>一、基本概念</h4><blockquote>
 <p>创建镜像</p>
 </blockquote>
 <ul>
-<li><p>1.直接下载镜像</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull centos</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>2.导入镜像</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker save -o centos.tar centos</span><br><span class="line">docker load -i centos.tar</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>3.制作新镜像</p>
-<ul>
+<li>1.直接下载镜像<pre><code>docker pull centos</code></pre></li>
+<li>2.导入镜像<pre><code>docker save -o centos.tar centos
+docker load -i centos.tar</code></pre></li>
+<li>3.制作新镜像<ul>
 <li>docker import 用于导入包含根文件系统的归档，并将之变成docker镜像</li>
 <li>docker commit 可以增量的生成镜像，可以把容器保存为一个镜像</li>
 <li>docker build 可以用Dockerfile来制作镜像</li>
@@ -700,8 +666,7 @@ image       Manage im">
 </li>
 <li>Docker对数据进行来完整性校验，这种完整性对凭证是有镜像仓库提供的。</li>
 </ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ll /var/lab/docker</span><br></pre></td></tr></table></figure>
-
+<pre class=" language-shell"><code class="language-shell">ll /var/lab/docker</code></pre>
 <ul>
 <li>1.总体信息<ul>
 <li>从repositories-overlay文件可以看到该存储目录下的所有image以及其对应的layer ID.</li>
@@ -714,9 +679,7 @@ image       Manage im">
 <li>先通过repositories-overlay获取image对应的layer ID；在根据layer对应的元数据梳理出image包含的所有层，以及层之间的关系；在使用联合挂载技术还原出容器启动所需要的rootfs和一些基本配置信息。</li>
 </ul>
 </li>
-<li>3.数据组织<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect dockerID</span><br></pre></td></tr></table></figure>
-
-</li>
+<li>3.数据组织<pre><code>docker inspect dockerID</code></pre></li>
 </ul>
 <blockquote>
 <p>扩展知识</p>
@@ -729,17 +692,15 @@ image       Manage im">
 </li>
 <li>2.写时复制</li>
 </ul>
-<blockquote>
-<h2 id="0x05、仓库进阶"><a href="#0x05、仓库进阶" class="headerlink" title="0x05、仓库进阶"></a>0x05、仓库进阶</h2></blockquote>
-<h4 id="什么是仓库"><a href="#什么是仓库" class="headerlink" title="什么是仓库"></a>什么是仓库</h4><blockquote>
+<h2 id="0x05、仓库进阶"><a href="#0x05、仓库进阶" class="headerlink" title="0x05、仓库进阶"></a>0x05、仓库进阶</h2><h4 id="什么是仓库"><a href="#什么是仓库" class="headerlink" title="什么是仓库"></a>什么是仓库</h4><blockquote>
 <p>仓库的组成</p>
 </blockquote>
 <ul>
 <li>仓库的名字通常有两部分组成，中间以斜线分隔。前边是用户名，后边是镜像名。</li>
 <li>仓库有镜像存储系统和账户管理系统</li>
 </ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker login -u &lt;user_name&gt; -p &lt;password&gt; -e &lt;email&gt; &lt;registry domain&gt;</span><br></pre></td></tr></table></figure>
-
+<pre class=" language-shell"><code class="language-shell">docker login -u <user_name> -p <password> -e <email> <registry domain>
+</code></pre>
 <blockquote>
 <p>仓库镜像</p>
 </blockquote>
@@ -747,18 +708,16 @@ image       Manage im">
 <li>仓库下面包含一组镜像，彼此之间用标签(tag)区分。一个完整的镜像地址通常有 服务器地址、仓库名称和标签组成。</li>
 <li>1.上传镜像：push</li>
 </ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 表示向本地私有仓库上传镜像。如果不写服务器地址，默认上传到官方Docker Hub。一般需要先登陆在上传。</span><br><span class="line">docker push localhost::5000/official/ubuntu:14.04</span><br></pre></td></tr></table></figure>
-
+<pre class=" language-shell"><code class="language-shell">// 表示向本地私有仓库上传镜像。如果不写服务器地址，默认上传到官方Docker Hub。一般需要先登陆在上传。
+docker push localhost::5000/official/ubuntu:14.04</code></pre>
 <ul>
 <li>2.下载镜像：pull</li>
 </ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull ubuntu:14.04</span><br></pre></td></tr></table></figure>
-
+<pre class=" language-shell"><code class="language-shell">docker pull ubuntu:14.04</code></pre>
 <ul>
 <li>3.搜索镜像：search</li>
 </ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker search ubuntu</span><br></pre></td></tr></table></figure>
-
+<pre class=" language-shell"><code class="language-shell">docker search ubuntu</code></pre>
 <ul>
 <li>注：在上传、下载过程中是逐层进行的。下载和搜索不需要登陆</li>
 </ul>
@@ -771,23 +730,15 @@ image       Manage im">
 <blockquote>
 <p>私有仓库搭建</p>
 </blockquote>
-<blockquote>
-<h2 id="0x06、docker网络"><a href="#0x06、docker网络" class="headerlink" title="0x06、docker网络"></a>0x06、docker网络</h2></blockquote>
-<blockquote>
-<h2 id="0x07、容器卷管理"><a href="#0x07、容器卷管理" class="headerlink" title="0x07、容器卷管理"></a>0x07、容器卷管理</h2></blockquote>
-<ul>
+<h2 id="0x06、docker网络"><a href="#0x06、docker网络" class="headerlink" title="0x06、docker网络"></a>0x06、docker网络</h2><h2 id="0x07、容器卷管理"><a href="#0x07、容器卷管理" class="headerlink" title="0x07、容器卷管理"></a>0x07、容器卷管理</h2><ul>
 <li>可以把本地文件目录挂载到容器内</li>
 </ul>
-<blockquote>
-<h2 id="0x08、DockerAPI"><a href="#0x08、DockerAPI" class="headerlink" title="0x08、DockerAPI"></a>0x08、DockerAPI</h2></blockquote>
-<ul>
+<h2 id="0x08、DockerAPI"><a href="#0x08、DockerAPI" class="headerlink" title="0x08、DockerAPI"></a>0x08、DockerAPI</h2><ul>
 <li>Docker Remote API</li>
 <li>Docker Registry API</li>
 <li>Docker Hub API</li>
 </ul>
-<blockquote>
-<h2 id="0x09、Docker安全"><a href="#0x09、Docker安全" class="headerlink" title="0x09、Docker安全"></a>0x09、Docker安全</h2></blockquote>
-<blockquote>
+<h2 id="0x09、Docker安全"><a href="#0x09、Docker安全" class="headerlink" title="0x09、Docker安全"></a>0x09、Docker安全</h2><blockquote>
 <p>包含内容</p>
 </blockquote>
 <ul>
@@ -843,26 +794,18 @@ image       Manage im">
 <blockquote>
 <p>安全遗留问题</p>
 </blockquote>
-<blockquote>
-<h2 id="0x10、Libcontainer"><a href="#0x10、Libcontainer" class="headerlink" title="0x10、Libcontainer"></a>0x10、Libcontainer</h2></blockquote>
-<ul>
+<h2 id="0x10、Libcontainer"><a href="#0x10、Libcontainer" class="headerlink" title="0x10、Libcontainer"></a>0x10、Libcontainer</h2><ul>
 <li>容器引擎：一种驱动和管理容器生命周期的runtime工具</li>
 </ul>
-<blockquote>
-<h2 id="0x11、Docker实战"><a href="#0x11、Docker实战" class="headerlink" title="0x11、Docker实战"></a>0x11、Docker实战</h2></blockquote>
-<ul>
+<h2 id="0x11、Docker实战"><a href="#0x11、Docker实战" class="headerlink" title="0x11、Docker实战"></a>0x11、Docker实战</h2><ul>
 <li>部署web服务</li>
 </ul>
-<blockquote>
-<h2 id="0x12、Docker集群"><a href="#0x12、Docker集群" class="headerlink" title="0x12、Docker集群"></a>0x12、Docker集群</h2></blockquote>
-<ul>
+<h2 id="0x12、Docker集群"><a href="#0x12、Docker集群" class="headerlink" title="0x12、Docker集群"></a>0x12、Docker集群</h2><ul>
 <li>Compose</li>
 <li>Machine</li>
 <li>Swarm</li>
 </ul>
-<blockquote>
-<h2 id="0x13、Docker生态圈"><a href="#0x13、Docker生态圈" class="headerlink" title="0x13、Docker生态圈"></a>0x13、Docker生态圈</h2></blockquote>
-
+<h2 id="0x13、Docker生态圈"><a href="#0x13、Docker生态圈" class="headerlink" title="0x13、Docker生态圈"></a>0x13、Docker生态圈</h2>
             </div>
             <hr/>
 
@@ -977,8 +920,6 @@ gitment.render('gitment-content');
                     <div class="summary block-with-text">
                         
                             
-
-
 0x00、整体比较
 
 数据整体
@@ -1041,23 +982,17 @@ gitment.render('gitment-content');
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-
-
-0x00、图书链接
-
+                            0x00、图书链接
 各种图书资源
 
-
-0x01、常用库
-01、通用库
+0x01、常用库01、通用库
 urllib
 allows you access websites via your program
 文档
 
 
 requests -网络库
-grab – 网络库（
+grab – 网络库（基于pycu
                         
                     </div>
                     <div class="publish-info">
@@ -1092,6 +1027,43 @@ grab – 网络库（
 </article>
 </div>
 
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + 'From: hackfox<br />'
+            + 'Author: hackfox<br />'
+            + 'Link: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
 
 
     </div>
@@ -1201,17 +1173,65 @@ grab – 网络库（
             <br>
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">60.2k</span>&nbsp;字
+                class="white-color">60k</span>&nbsp;字
             
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="fa fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fa fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            <br>
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date();
+
+                function createtime() {
+                    var grt = new Date("Mon Sep 09 2019 08:00:00 GMT+0800 (GMT+08:00)");
+                    now.setTime(now.getTime() + 250);
+                    days = (now - grt) / 1000 / 60 / 60 / 24;
+                    dnum = Math.floor(days);
+                    hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+                    hnum = Math.floor(hours);
+                    if (String(hnum).length == 1) {
+                        hnum = "0" + hnum;
+                    }
+                    minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+                    mnum = Math.floor(minutes);
+                    if (String(mnum).length == 1) {
+                        mnum = "0" + mnum;
+                    }
+                    seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                    snum = Math.round(seconds);
+                    if (String(snum).length == 1) {
+                        snum = "0" + snum;
+                    }
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+                }
+                setInterval("createtime()", 250);
+            </script>
             
             
         </div>
-        <div class="col s12 m4 l4 social-link ">
+        <div class="col s12 m4 l4 social-link social-statis">
     <a href="https://github.com/xsoer" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fa fa-github"></i>
     </a>
 
 
+
+    <a href="mailto:codehackfox@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
 
 
 
@@ -1282,6 +1302,8 @@ $(function () {
 
     <script src="/libs/others/clicklove.js"></script>
 
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
 </body>

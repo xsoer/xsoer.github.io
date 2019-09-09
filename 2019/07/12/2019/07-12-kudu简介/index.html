@@ -6,8 +6,6 @@
     <meta charset="utf-8">
     <meta name="keywords" content="kudu简介, hackfox">
     <meta name="description" content="
-
-
 总体概览
 设计模式
 存储结构
@@ -16,10 +14,8 @@ impala结合
 限制条件
 文档资源
 
-
-0x00、总体概览
-1.历史发展
-2012年10月由Cloudera公司发起创建,2015年10月对外公布，2015年12月进入apache基金会进行孵">
+0x00、总体概览1.历史发展
+2012年10月由Cloudera公司发起创建,2015年10月对外公布，2015年12月进入apache基金会进行孵化，后续">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -42,7 +38,7 @@ impala结合
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -108,15 +104,6 @@ impala结合
         </a>
     </li>
     
-    <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <i class="fa fa-address-book"></i>
-            
-            <span>Friends</span>
-        </a>
-    </li>
-    
     <li>
         <a href="#searchModal" class="modal-trigger waves-effect waves-light">
             <i id="searchIcon" class="fa fa-search" title="Search"></i>
@@ -133,7 +120,7 @@ impala结合
         <div class="logo-name">hackfox</div>
         <div class="logo-desc">
             
-            架构、AI、打数据
+            架构、AI、大数据、python、go
             
         </div>
     </div>
@@ -184,15 +171,6 @@ impala结合
                 <i class="fa fa-fw fa-user-circle-o"></i>
                 
                 About
-            </a>
-        </li>
-        
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-address-book"></i>
-                
-                Friends
             </a>
         </li>
         
@@ -372,17 +350,17 @@ impala结合
                 
 				
 				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
             </div>
         </div>
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <!-- # kudu简介
-
-- 作者：codehackfox@gmail.com
-- 时间：2019-07-12 10:13:23 -->
-
-<ul>
+                <ul>
 <li><a href="#0x00、总体概览">总体概览</a></li>
 <li><a href="#0x01、设计模式">设计模式</a></li>
 <li><a href="#0x02、存储结构">存储结构</a></li>
@@ -391,9 +369,7 @@ impala结合
 <li><a href="#0x05、限制条件">限制条件</a></li>
 <li><a href="#0x06、文档资源">文档资源</a></li>
 </ul>
-<blockquote>
-<h2 id="0x00、总体概览"><a href="#0x00、总体概览" class="headerlink" title="0x00、总体概览"></a>0x00、总体概览</h2></blockquote>
-<h3 id="1-历史发展"><a href="#1-历史发展" class="headerlink" title="1.历史发展"></a>1.历史发展</h3><ul>
+<h2 id="0x00、总体概览"><a href="#0x00、总体概览" class="headerlink" title="0x00、总体概览"></a>0x00、总体概览</h2><h3 id="1-历史发展"><a href="#1-历史发展" class="headerlink" title="1.历史发展"></a>1.历史发展</h3><ul>
 <li>2012年10月由Cloudera公司发起创建,2015年10月对外公布，2015年12月进入apache基金会进行孵化，后续进入快速发展轨道。</li>
 </ul>
 <h3 id="2-产品定位"><a href="#2-产品定位" class="headerlink" title="2.产品定位"></a>2.产品定位</h3><ul>
@@ -414,7 +390,7 @@ impala结合
 </li>
 </ul>
 <p>而既要满足随机读写和大数据分析的解决方案如下：</p>
-<p><img src="images/2019/07-12-hbase-hdfs.png" alt="解决方案图"></p>
+<p><img src="/assets/images/2019/07-12-hbase-hdfs.png" alt="解决方案图"></p>
 <p>而以上的方案问题是：</p>
 <ul>
 <li>架构复杂<ul>
@@ -432,9 +408,9 @@ impala结合
 </ul>
 </li>
 </ul>
-<p>所以产生了新的解决方案，那就是kudu，其定位如下：<br><img src="images/2019/07-12-kudu-position.png" alt="kudu定位"></p>
-<p>而其gap了hdfs和hbase之间的<br><img src="images/2019/07-12-kudu-gap.png" alt="kudugap"></p>
-<h3 id="4-架构图"><a href="#4-架构图" class="headerlink" title="4.架构图"></a>4.架构图</h3><p>kudu的整体架构图如下<br><img src="images/2019/07-12-kudu-architecture.png" alt="架构图"></p>
+<p>所以产生了新的解决方案，那就是kudu，其定位如下：<br><img src="/assets/images/2019/07-12-kudu-position.png" alt="kudu定位"></p>
+<p>而其gap了hdfs和hbase之间的<br><img src="/assets/images/2019/07-12-kudu-gap.png" alt="kudugap"></p>
+<h3 id="4-架构图"><a href="#4-架构图" class="headerlink" title="4.架构图"></a>4.架构图</h3><p>kudu的整体架构图如下<br><img src="/assets/images/2019/07-12-kudu-architecture.png" alt="架构图"></p>
 <h3 id="5-基本概念"><a href="#5-基本概念" class="headerlink" title="5.基本概念"></a>5.基本概念</h3><p>下面了解一些kudu里的一些基本概念。</p>
 <ul>
 <li>Table<ul>
@@ -565,23 +541,29 @@ impala结合
 </ul>
 </li>
 <li><p>比如建立如下一个表</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> metrics (</span><br><span class="line">    host <span class="keyword">STRING</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    metric <span class="keyword">STRING</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    <span class="built_in">time</span> INT64 <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    <span class="keyword">value</span> <span class="keyword">DOUBLE</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    PRIMARY <span class="keyword">KEY</span> (host, metric, <span class="built_in">time</span>),</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> metrics <span class="token punctuation">(</span>
+  host STRING <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+  metric STRING <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+  time INT64 <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+  <span class="token keyword">value</span> <span class="token keyword">DOUBLE</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+  <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span>host<span class="token punctuation">,</span> metric<span class="token punctuation">,</span> time<span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 </li>
-<li><p>按照range来分区如下<br><img src="images/2019/07-12-range.png" alt="range"></p>
+<li><p>按照range来分区如下<br><img src="/assets/images/2019/07-12-range.png" alt="range"></p>
 </li>
-<li><p>按照hash分区如下<br><img src="images/2019/07-12-hash.png" alt="hash"></p>
+<li><p>按照hash分区如下<br><img src="/assets/images/2019/07-12-hash.png" alt="hash"></p>
 </li>
-<li><p>同时按照range和hash来分区<br><img src="images/2019/07-12-hash-range.png" alt="rang-hash"></p>
+<li><p>同时按照range和hash来分区<br><img src="/assets/images/2019/07-12-hash-range.png" alt="rang-hash"></p>
 </li>
-<li><p>同时按照hash和hash来分区<br><img src="images/2019/07-12-hash-hash.png" alt="hash-hash"></p>
+<li><p>同时按照hash和hash来分区<br><img src="/assets/images/2019/07-12-hash-hash.png" alt="hash-hash"></p>
 </li>
-<li><p>那么hash与range的优缺点是<br><img src="images/2019/07-12-hash-range-good-bad.png" alt="hash-range-good-bad"></p>
+<li><p>那么hash与range的优缺点是<br><img src="/assets/images/2019/07-12-hash-range-good-bad.png" alt="hash-range-good-bad"></p>
 </li>
 </ul>
 <h3 id="4-字段编码"><a href="#4-字段编码" class="headerlink" title="4.字段编码"></a>4.字段编码</h3><ul>
-<li><p>编码的类型如下<br><img src="images/2019/07-12-encoding.png" alt="encoding"></p>
+<li><p>编码的类型如下<br><img src="/assets/images/2019/07-12-encoding.png" alt="encoding"></p>
 </li>
-<li><p>每中字段适用及默认的编码类型如下<br><img src="images/2019/07-12-field-encoding.png" alt="field-encoding"></p>
+<li><p>每中字段适用及默认的编码类型如下<br><img src="/assets/images/2019/07-12-field-encoding.png" alt="field-encoding"></p>
 </li>
 </ul>
 <h3 id="5-数据压缩"><a href="#5-数据压缩" class="headerlink" title="5.数据压缩"></a>5.数据压缩</h3><ul>
@@ -598,7 +580,7 @@ impala结合
 <blockquote>
 <h2 id="0x02、存储结构"><a href="#0x02、存储结构" class="headerlink" title="0x02、存储结构"></a>0x02、存储结构</h2></blockquote>
 <ul>
-<li>逻辑结构图如下<br><img src="images/2019/07-12-store-tree.png" alt="store-tree"></li>
+<li>逻辑结构图如下<br><img src="/assets/images/2019/07-12-store-tree.png" alt="store-tree"></li>
 </ul>
 <blockquote>
 <h2 id="0x03、读写流程"><a href="#0x03、读写流程" class="headerlink" title="0x03、读写流程"></a>0x03、读写流程</h2></blockquote>
@@ -620,9 +602,9 @@ impala结合
 </ul>
 </li>
 </ul>
-<h3 id="2-存储数据"><a href="#2-存储数据" class="headerlink" title="2.存储数据"></a>2.存储数据</h3><p><img src="images/2019/07-12-insert-data.png" alt="insert-data"><br><img src="images/2019/07-12-store-data.png" alt="store-data"><br>fluash示例如下<br><img src="images/2019/07-12-flush.png" alt="flush"></p>
-<h3 id="3-compaction"><a href="#3-compaction" class="headerlink" title="3.compaction"></a>3.compaction</h3><p><img src="images/2019/07-12-compation.png" alt="compation"></p>
-<h3 id="4-kudu-api"><a href="#4-kudu-api" class="headerlink" title="4.kudu api"></a>4.kudu api</h3><p><img src="images/2019/07-12-kuduapi.png" alt="kuduapi"></p>
+<h3 id="2-存储数据"><a href="#2-存储数据" class="headerlink" title="2.存储数据"></a>2.存储数据</h3><p><img src="/assets/images/2019/07-12-insert-data.png" alt="insert-data"><br><img src="/assets/images/2019/07-12-store-data.png" alt="store-data"><br>fluash示例如下<br><img src="/assets/images/2019/07-12-flush.png" alt="flush"></p>
+<h3 id="3-compaction"><a href="#3-compaction" class="headerlink" title="3.compaction"></a>3.compaction</h3><p><img src="/assets/images/2019/07-12-compation.png" alt="compation"></p>
+<h3 id="4-kudu-api"><a href="#4-kudu-api" class="headerlink" title="4.kudu api"></a>4.kudu api</h3><p><img src="/assets/images/2019/07-12-kuduapi.png" alt="kuduapi"></p>
 <blockquote>
 <h2 id="0x04、impala结合"><a href="#0x04、impala结合" class="headerlink" title="0x04、impala结合"></a>0x04、impala结合</h2></blockquote>
 <h3 id="1-功能简介"><a href="#1-功能简介" class="headerlink" title="1.功能简介"></a>1.功能简介</h3><ul>
@@ -656,10 +638,10 @@ impala结合
 </ul>
 </li>
 </ul>
-<h3 id="3-建表示例"><a href="#3-建表示例" class="headerlink" title="3.建表示例"></a>3.建表示例</h3><p><img src="images/2019/07-12-impala-create.png" alt="impala-create"></p>
-<h3 id="4-属性操作"><a href="#4-属性操作" class="headerlink" title="4.属性操作"></a>4.属性操作</h3><p><img src="images/2019/07-12-impala-property.png" alt="impala-property"></p>
-<h3 id="5-常用操作"><a href="#5-常用操作" class="headerlink" title="5.常用操作"></a>5.常用操作</h3><p><img src="images/2019/07-12-impala-op.png" alt="impala-op"></p>
-<h3 id="6-python-api"><a href="#6-python-api" class="headerlink" title="6.python api"></a>6.python api</h3><p><img src="images/2019/07-12-impalaapi.png" alt="api"></p>
+<h3 id="3-建表示例"><a href="#3-建表示例" class="headerlink" title="3.建表示例"></a>3.建表示例</h3><p><img src="/assets/images/2019/07-12-impala-create.png" alt="impala-create"></p>
+<h3 id="4-属性操作"><a href="#4-属性操作" class="headerlink" title="4.属性操作"></a>4.属性操作</h3><p><img src="/assets/images/2019/07-12-impala-property.png" alt="impala-property"></p>
+<h3 id="5-常用操作"><a href="#5-常用操作" class="headerlink" title="5.常用操作"></a>5.常用操作</h3><p><img src="/assets/images/2019/07-12-impala-op.png" alt="impala-op"></p>
+<h3 id="6-python-api"><a href="#6-python-api" class="headerlink" title="6.python api"></a>6.python api</h3><p><img src="/assets/images/2019/07-12-impalaapi.png" alt="api"></p>
 <blockquote>
 <h2 id="0x05、限制条件"><a href="#0x05、限制条件" class="headerlink" title="0x05、限制条件"></a>0x05、限制条件</h2></blockquote>
 <h3 id="1-表限制"><a href="#1-表限制" class="headerlink" title="1.表限制"></a>1.表限制</h3><ul>
@@ -837,10 +819,7 @@ gitment.render('gitment-content');
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-
-
-##
+                            ##
 
                         
                     </div>
@@ -890,12 +869,7 @@ gitment.render('gitment-content');
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-
-
-
-0x00、插件
-
+                            0x00、插件
 github
 sourcegraph
 octotree
@@ -923,6 +897,10 @@ axure
 
 多tab管理
 Toby
+
+
+
+0
                         
                     </div>
                     <div class="publish-info">
@@ -957,6 +935,43 @@ Toby
 </article>
 </div>
 
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + 'From: hackfox<br />'
+            + 'Author: hackfox<br />'
+            + 'Link: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
 
 
     </div>
@@ -1066,17 +1081,65 @@ Toby
             <br>
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">60.2k</span>&nbsp;字
+                class="white-color">60k</span>&nbsp;字
             
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="fa fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fa fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            <br>
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date();
+
+                function createtime() {
+                    var grt = new Date("Mon Sep 09 2019 08:00:00 GMT+0800 (GMT+08:00)");
+                    now.setTime(now.getTime() + 250);
+                    days = (now - grt) / 1000 / 60 / 60 / 24;
+                    dnum = Math.floor(days);
+                    hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+                    hnum = Math.floor(hours);
+                    if (String(hnum).length == 1) {
+                        hnum = "0" + hnum;
+                    }
+                    minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+                    mnum = Math.floor(minutes);
+                    if (String(mnum).length == 1) {
+                        mnum = "0" + mnum;
+                    }
+                    seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                    snum = Math.round(seconds);
+                    if (String(snum).length == 1) {
+                        snum = "0" + snum;
+                    }
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+                }
+                setInterval("createtime()", 250);
+            </script>
             
             
         </div>
-        <div class="col s12 m4 l4 social-link ">
+        <div class="col s12 m4 l4 social-link social-statis">
     <a href="https://github.com/xsoer" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fa fa-github"></i>
     </a>
 
 
+
+    <a href="mailto:codehackfox@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
 
 
 
@@ -1147,6 +1210,8 @@ $(function () {
 
     <script src="/libs/others/clicklove.js"></script>
 
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
 </body>

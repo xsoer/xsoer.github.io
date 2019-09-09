@@ -5,9 +5,7 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="Mac开发环境配置, hackfox">
-    <meta name="description" content="
-
-0X00、Mac软件
+    <meta name="description" content="0X00、Mac软件
 1.vscode
 2.omyzsh
 3.tmux
@@ -20,7 +18,7 @@ Dash
 clock in status bar
 Docker
 ESlint
-File Ut">
+File Util">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -43,7 +41,7 @@ File Ut">
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -109,15 +107,6 @@ File Ut">
         </a>
     </li>
     
-    <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <i class="fa fa-address-book"></i>
-            
-            <span>Friends</span>
-        </a>
-    </li>
-    
     <li>
         <a href="#searchModal" class="modal-trigger waves-effect waves-light">
             <i id="searchIcon" class="fa fa-search" title="Search"></i>
@@ -134,7 +123,7 @@ File Ut">
         <div class="logo-name">hackfox</div>
         <div class="logo-desc">
             
-            架构、AI、打数据
+            架构、AI、大数据、python、go
             
         </div>
     </div>
@@ -185,15 +174,6 @@ File Ut">
                 <i class="fa fa-fw fa-user-circle-o"></i>
                 
                 About
-            </a>
-        </li>
-        
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-address-book"></i>
-                
-                Friends
             </a>
         </li>
         
@@ -373,17 +353,17 @@ File Ut">
                 
 				
 				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
             </div>
         </div>
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <!-- # Mac开发环境配置
-
-- 作者：codehackfox@gmail.com
-- 时间：2019-09-05 16:12:25 -->
-
-<h2 id="0X00、Mac软件"><a href="#0X00、Mac软件" class="headerlink" title="0X00、Mac软件"></a>0X00、Mac软件</h2><ul>
+                <h2 id="0X00、Mac软件"><a href="#0X00、Mac软件" class="headerlink" title="0X00、Mac软件"></a>0X00、Mac软件</h2><ul>
 <li>1.vscode</li>
 <li>2.omyzsh</li>
 <li>3.tmux</li>
@@ -420,23 +400,151 @@ File Ut">
 <li>Vetur</li>
 <li>YAML</li>
 </ul>
-<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;workbench.activityBar.visible&quot;: true,</span><br><span class="line">    &quot;editor.scrollBeyondLastLine&quot;: false,</span><br><span class="line">    &quot;files.autoSave&quot;: &quot;onFocusChange&quot;,</span><br><span class="line">    &quot;workbench.colorTheme&quot;: &quot;Shades of Purple&quot;,</span><br><span class="line">    &quot;terminal.integrated.cursorStyle&quot;: &quot;line&quot;,</span><br><span class="line">    &quot;workbench.statusBar.feedback.visible&quot;: false,</span><br><span class="line">    &quot;clock.dateFormat&quot;: &quot;yyyy-mm-dd HH:MM:ss&quot;,</span><br><span class="line">    &quot;extensions.ignoreRecommendations&quot;: false,</span><br><span class="line">    &quot;files.exclude&quot;: &#123;</span><br><span class="line">        &quot;**/__pycache__&quot;: true,</span><br><span class="line">        &quot;**/*.pyc&quot;: true</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;breadcrumbs.enabled&quot;: true,</span><br><span class="line">    &quot;editor.fontSize&quot;: 15,</span><br><span class="line">    &quot;editor.fontFamily&quot;: &quot;&apos;Source Code Pro&apos;,Menlo, Monaco, &apos;Courier New&apos;, monospace&quot;,</span><br><span class="line">    &quot;terminal.external.osxExec&quot;: &quot;iterm.app&quot;,</span><br><span class="line">    &quot;terminal.integrated.copyOnSelection&quot;: true,</span><br><span class="line">    &quot;terminal.integrated.fontSize&quot;: 15,</span><br><span class="line">    &quot;terminal.integrated.fontFamily&quot;: &quot;&apos;Source Code Pro&apos;&quot;,</span><br><span class="line">    &quot;terminal.integrated.scrollback&quot;: 3000,</span><br><span class="line">    &quot;terminal.integrated.shell.osx&quot;: &quot;/bin/zsh&quot;,</span><br><span class="line">    &quot;python.pythonPath&quot;: &quot;~/anaconda3/bin/python&quot;,</span><br><span class="line">    &quot;python.linting.pylintEnabled&quot;: true,</span><br><span class="line">    &quot;leetcode.defaultLanguage&quot;: &quot;python3&quot;,</span><br><span class="line">    &quot;leetcode.outputFolder&quot;: &quot;leecode&quot;,</span><br><span class="line">    &quot;leetcode.hideSolved&quot;: true,</span><br><span class="line">    &quot;breadcrumbs.symbolSortOrder&quot;: &quot;name&quot;,</span><br><span class="line">    // Theme Setup.</span><br><span class="line">    // &quot;workbench.iconTheme&quot;: &quot;vscode-icons&quot;,</span><br><span class="line">    &quot;editor.lineHeight&quot;: 24.65,</span><br><span class="line">    &quot;editor.letterSpacing&quot;: 0.5,</span><br><span class="line">    &quot;editor.fontWeight&quot;: &quot;400&quot;,</span><br><span class="line">    &quot;editor.fontLigatures&quot;: true,</span><br><span class="line">    &quot;editor.cursorStyle&quot;: &quot;line&quot;,</span><br><span class="line">    // &quot;editor.cursorWidth&quot;: 1,</span><br><span class="line">    &quot;editor.cursorBlinking&quot;: &quot;solid&quot;,</span><br><span class="line">    &quot;editor.renderWhitespace&quot;: &quot;all&quot;,</span><br><span class="line">    &quot;editor.snippetSuggestions&quot;: &quot;top&quot;,</span><br><span class="line">    &quot;editor.glyphMargin&quot;: true,</span><br><span class="line">    &quot;workbench.editor.enablePreview&quot;: false,</span><br><span class="line">    &quot;explorer.confirmDragAndDrop&quot;: false,</span><br><span class="line">    &quot;files.trimTrailingWhitespace&quot;: true,</span><br><span class="line">    &quot;files.trimFinalNewlines&quot;: true,</span><br><span class="line">    // Formatting Optional.</span><br><span class="line">    // &quot;editor.formatOnSave&quot;: true,</span><br><span class="line">    &quot;eslint.run&quot;: &quot;onType&quot;,</span><br><span class="line">    &quot;eslint.autoFixOnSave&quot;: true,</span><br><span class="line">    // MacOS Only Settings.</span><br><span class="line">    &quot;workbench.fontAliasing&quot;: &quot;auto&quot;,</span><br><span class="line">    &quot;terminal.integrated.macOptionIsMeta&quot;: true,</span><br><span class="line">    // SOP&apos;s highlight matching tag setting.</span><br><span class="line">    &quot;workbench.statusBar.visible&quot;: true,</span><br><span class="line">    &quot;python.dataScience.sendSelectionToInteractiveWindow&quot;: true,</span><br><span class="line">    &quot;terminal.integrated.rendererType&quot;: &quot;dom&quot;,</span><br><span class="line">    &quot;git.ignoreLegacyWarning&quot;: true,</span><br><span class="line">    &quot;GithubGistExplorer.explorer.gistSortBy&quot;: &quot;Last Updated&quot;,</span><br><span class="line">    &quot;GithubGistExplorer.explorer.gistAscending&quot;: false,</span><br><span class="line">    &quot;GithubGistExplorer.explorer.subscriptionSortBy&quot;: &quot;Last Updated&quot;,</span><br><span class="line">    &quot;GithubGistExplorer.explorer.subscriptionAscending&quot;: false,</span><br><span class="line">    &quot;GithubGistExplorer.github.token&quot;: &quot;b70cb2a4a71195fab3c47a8ae0a1209441a46075&quot;,</span><br><span class="line">    &quot;GithubGistExplorer.github.username&quot;: &quot;xsoer&quot;,</span><br><span class="line">    &quot;sync.gist&quot;: &quot;20a9cb9d32319e38ded959f092109cd5&quot;,</span><br><span class="line">    &quot;window.zoomLevel&quot;: 0,</span><br><span class="line">    &quot;go.formatTool&quot;: &quot;goimports&quot;,</span><br><span class="line">    &quot;go.useLanguageServer&quot;: true,</span><br><span class="line">    &quot;http.proxy&quot;: &quot;http://127.0.0.1:1087&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="0x02、omyzsh"><a href="#0x02、omyzsh" class="headerlink" title="0x02、omyzsh"></a>0x02、omyzsh</h2><h4 id="插件-1"><a href="#插件-1" class="headerlink" title="插件"></a>插件</h4><ul>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><pre><code>{
+    &quot;workbench.activityBar.visible&quot;: true,
+    &quot;editor.scrollBeyondLastLine&quot;: false,
+    &quot;files.autoSave&quot;: &quot;onFocusChange&quot;,
+    &quot;workbench.colorTheme&quot;: &quot;Shades of Purple&quot;,
+    &quot;terminal.integrated.cursorStyle&quot;: &quot;line&quot;,
+    &quot;workbench.statusBar.feedback.visible&quot;: false,
+    &quot;clock.dateFormat&quot;: &quot;yyyy-mm-dd HH:MM:ss&quot;,
+    &quot;extensions.ignoreRecommendations&quot;: false,
+    &quot;files.exclude&quot;: {
+        &quot;**/__pycache__&quot;: true,
+        &quot;**/*.pyc&quot;: true
+    },
+    &quot;breadcrumbs.enabled&quot;: true,
+    &quot;editor.fontSize&quot;: 15,
+    &quot;editor.fontFamily&quot;: &quot;&#39;Source Code Pro&#39;,Menlo, Monaco, &#39;Courier New&#39;, monospace&quot;,
+    &quot;terminal.external.osxExec&quot;: &quot;iterm.app&quot;,
+    &quot;terminal.integrated.copyOnSelection&quot;: true,
+    &quot;terminal.integrated.fontSize&quot;: 15,
+    &quot;terminal.integrated.fontFamily&quot;: &quot;&#39;Source Code Pro&#39;&quot;,
+    &quot;terminal.integrated.scrollback&quot;: 3000,
+    &quot;terminal.integrated.shell.osx&quot;: &quot;/bin/zsh&quot;,
+    &quot;python.pythonPath&quot;: &quot;~/anaconda3/bin/python&quot;,
+    &quot;python.linting.pylintEnabled&quot;: true,
+    &quot;leetcode.defaultLanguage&quot;: &quot;python3&quot;,
+    &quot;leetcode.outputFolder&quot;: &quot;leecode&quot;,
+    &quot;leetcode.hideSolved&quot;: true,
+    &quot;breadcrumbs.symbolSortOrder&quot;: &quot;name&quot;,
+    // Theme Setup.
+    // &quot;workbench.iconTheme&quot;: &quot;vscode-icons&quot;,
+    &quot;editor.lineHeight&quot;: 24.65,
+    &quot;editor.letterSpacing&quot;: 0.5,
+    &quot;editor.fontWeight&quot;: &quot;400&quot;,
+    &quot;editor.fontLigatures&quot;: true,
+    &quot;editor.cursorStyle&quot;: &quot;line&quot;,
+    // &quot;editor.cursorWidth&quot;: 1,
+    &quot;editor.cursorBlinking&quot;: &quot;solid&quot;,
+    &quot;editor.renderWhitespace&quot;: &quot;all&quot;,
+    &quot;editor.snippetSuggestions&quot;: &quot;top&quot;,
+    &quot;editor.glyphMargin&quot;: true,
+    &quot;workbench.editor.enablePreview&quot;: false,
+    &quot;explorer.confirmDragAndDrop&quot;: false,
+    &quot;files.trimTrailingWhitespace&quot;: true,
+    &quot;files.trimFinalNewlines&quot;: true,
+    // Formatting Optional.
+    // &quot;editor.formatOnSave&quot;: true,
+    &quot;eslint.run&quot;: &quot;onType&quot;,
+    &quot;eslint.autoFixOnSave&quot;: true,
+    // MacOS Only Settings.
+    &quot;workbench.fontAliasing&quot;: &quot;auto&quot;,
+    &quot;terminal.integrated.macOptionIsMeta&quot;: true,
+    // SOP&#39;s highlight matching tag setting.
+    &quot;workbench.statusBar.visible&quot;: true,
+    &quot;python.dataScience.sendSelectionToInteractiveWindow&quot;: true,
+    &quot;terminal.integrated.rendererType&quot;: &quot;dom&quot;,
+    &quot;git.ignoreLegacyWarning&quot;: true,
+    &quot;GithubGistExplorer.explorer.gistSortBy&quot;: &quot;Last Updated&quot;,
+    &quot;GithubGistExplorer.explorer.gistAscending&quot;: false,
+    &quot;GithubGistExplorer.explorer.subscriptionSortBy&quot;: &quot;Last Updated&quot;,
+    &quot;GithubGistExplorer.explorer.subscriptionAscending&quot;: false,
+    &quot;GithubGistExplorer.github.token&quot;: &quot;b70cb2a4a71195fab3c47a8ae0a1209441a46075&quot;,
+    &quot;GithubGistExplorer.github.username&quot;: &quot;xsoer&quot;,
+    &quot;sync.gist&quot;: &quot;20a9cb9d32319e38ded959f092109cd5&quot;,
+    &quot;window.zoomLevel&quot;: 0,
+    &quot;go.formatTool&quot;: &quot;goimports&quot;,
+    &quot;go.useLanguageServer&quot;: true,
+    &quot;http.proxy&quot;: &quot;http://127.0.0.1:1087&quot;
+}</code></pre><h2 id="0x02、omyzsh"><a href="#0x02、omyzsh" class="headerlink" title="0x02、omyzsh"></a>0x02、omyzsh</h2><h4 id="插件-1"><a href="#插件-1" class="headerlink" title="插件"></a>插件</h4><ul>
 <li>git</li>
 <li>autojump</li>
 <li>zsh-syntax-highlighting</li>
 <li>zsh-autosuggestions</li>
 </ul>
-<h4 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">plugins=(git zsh-autosuggestions zsh-syntax-highlighting)</span><br><span class="line"></span><br><span class="line">[ -f /usr/<span class="built_in">local</span>/etc/profile.d/autojump.sh ] &amp;&amp; . /usr/<span class="built_in">local</span>/etc/profile.d/autojump.sh</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -z <span class="string">"<span class="variable">$TMUX</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line">    tmux attach -t default || tmux new -s default</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<h4 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h4><pre class=" language-bash"><code class="language-bash">plugins<span class="token operator">=</span><span class="token punctuation">(</span>git zsh-autosuggestions zsh-syntax-highlighting<span class="token punctuation">)</span>
 
-<h2 id="0x03、tmux"><a href="#0x03、tmux" class="headerlink" title="0x03、tmux"></a>0x03、tmux</h2><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install tmux</span><br></pre></td></tr></table></figure>
+<span class="token punctuation">[</span> -f /usr/local/etc/profile.d/autojump.sh <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">.</span> /usr/local/etc/profile.d/autojump.sh
 
-<h4 id="配置文件-1"><a href="#配置文件-1" class="headerlink" title="配置文件"></a>配置文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">#设置前缀为Ctrl + a</span><br><span class="line">set -g prefix C-a</span><br><span class="line"></span><br><span class="line">#解除Ctrl+b 与前缀的对应关系</span><br><span class="line">unbind C-b</span><br><span class="line">bind C-a send-prefix # 绑定Ctrl+a为新的指令前缀</span><br><span class="line"></span><br><span class="line"># 设置序号从1开始</span><br><span class="line">set -g base-index 1</span><br><span class="line">set -g pane-base-index 1</span><br><span class="line"></span><br><span class="line">#将r 设置为加载配置文件，并显示&quot;reloaded!&quot;信息</span><br><span class="line">bind r source-file ~/.tmux.conf \; display &quot;Reloaded!&quot;</span><br><span class="line"></span><br><span class="line">bind-key k select-pane -U # up</span><br><span class="line">bind-key j select-pane -D # down</span><br><span class="line">bind-key h select-pane -L # left</span><br><span class="line">bind-key l select-pane -R # right</span><br><span class="line"></span><br><span class="line">set -g mouse on # 支持鼠标选取文本等</span><br><span class="line"></span><br><span class="line">set -g status-interval 2 # 状态栏刷新时间</span><br><span class="line">set -g status-justify left # 状态栏列表左对齐</span><br><span class="line">setw -g monitor-activity on # 非当前窗口有内容更新时在状态栏通知</span><br><span class="line"></span><br><span class="line">set -g status-bg black # 设置状态栏背景黑色</span><br><span class="line">set -g status-fg yellow # 设置状态栏前景黄色</span><br><span class="line">set -g status-style &quot;bg=black, fg=yellow&quot; # 状态栏前景背景色</span><br><span class="line"></span><br><span class="line">set -g status-left &quot;#[bg=#FF661D] ❐ #S &quot; # 状态栏左侧内容</span><br><span class="line">set -g status-right &quot;#S #[fg=green,bg=black]#(tmux-mem-cpu-load --colors --interval 2)#[default]&quot;</span><br><span class="line">set -g status-left-length 300 # 状态栏左边长度300</span><br><span class="line">set -g status-right-length 500 # 状态栏右边长度500</span><br><span class="line"></span><br><span class="line">set -wg window-status-format &quot; #I #W &quot; # 状态栏窗口名称格式</span><br><span class="line">set -wg window-status-current-format &quot; #I:#W#F &quot; # 状态栏当前窗口名称格式(#I：序号，#w：窗口名称，#F：间隔符)</span><br><span class="line">set -wg window-status-separator &quot;&quot; # 状态栏窗口名称之间的间隔</span><br><span class="line">set -wg window-status-current-style &quot;bg=red&quot; # 状态栏当前窗口名称的样式</span><br><span class="line">set -wg window-status-last-style &quot;fg=yellow&quot; # 状态栏最后一个窗口名称的样式</span><br><span class="line"></span><br><span class="line">set -g message-style &quot;bg=#202529, fg=#91A8BA&quot; # 指定消息通知的前景、后景色</span><br></pre></td></tr></table></figure>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> -z <span class="token string">"<span class="token variable">$TMUX</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+    tmux attach -t default <span class="token operator">||</span> tmux new -s default
+<span class="token keyword">fi</span></code></pre>
+<h2 id="0x03、tmux"><a href="#0x03、tmux" class="headerlink" title="0x03、tmux"></a>0x03、tmux</h2><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre class=" language-bash"><code class="language-bash">brew <span class="token function">install</span> tmux</code></pre>
+<h4 id="配置文件-1"><a href="#配置文件-1" class="headerlink" title="配置文件"></a>配置文件</h4><pre><code>#设置前缀为Ctrl + a
+set -g prefix C-a
 
-<h2 id="0x04、vim"><a href="#0x04、vim" class="headerlink" title="0x04、vim"></a>0x04、vim</h2><h4 id="配置文件-2"><a href="#配置文件-2" class="headerlink" title="配置文件"></a>配置文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">set nocompatible</span><br><span class="line">syntax on</span><br><span class="line">filetype plugin indent on</span><br><span class="line">set ic</span><br><span class="line">set hlsearch</span><br><span class="line">set encoding=utf-8</span><br><span class="line">set fileencodings=utf-8,ucs-bom,GB2312,big5</span><br><span class="line">set cursorline</span><br><span class="line">set autoindent</span><br><span class="line">set smartindent</span><br><span class="line">set scrolloff=4</span><br><span class="line">set showmatch</span><br><span class="line">set nu</span><br><span class="line"></span><br><span class="line">let python_highlight_all=1</span><br><span class="line">au Filetype python set tabstop=4</span><br><span class="line">au Filetype python set softtabstop=4</span><br><span class="line">au Filetype python set shiftwidth=4</span><br><span class="line">au Filetype python set textwidth=79</span><br><span class="line">au Filetype python set expandtab</span><br><span class="line">au Filetype python set autoindent</span><br><span class="line">au Filetype python set fileformat=unix</span><br><span class="line">autocmd Filetype python set foldmethod=indent</span><br><span class="line">autocmd Filetype python set foldlevel=99</span><br></pre></td></tr></table></figure>
+#解除Ctrl+b 与前缀的对应关系
+unbind C-b
+bind C-a send-prefix # 绑定Ctrl+a为新的指令前缀
 
-<h2 id="0x05、chrome"><a href="#0x05、chrome" class="headerlink" title="0x05、chrome"></a>0x05、chrome</h2><h4 id="插件-2"><a href="#插件-2" class="headerlink" title="插件"></a>插件</h4><ul>
+# 设置序号从1开始
+set -g base-index 1
+set -g pane-base-index 1
+
+#将r 设置为加载配置文件，并显示&quot;reloaded!&quot;信息
+bind r source-file ~/.tmux.conf \; display &quot;Reloaded!&quot;
+
+bind-key k select-pane -U # up
+bind-key j select-pane -D # down
+bind-key h select-pane -L # left
+bind-key l select-pane -R # right
+
+set -g mouse on # 支持鼠标选取文本等
+
+set -g status-interval 2 # 状态栏刷新时间
+set -g status-justify left # 状态栏列表左对齐
+setw -g monitor-activity on # 非当前窗口有内容更新时在状态栏通知
+
+set -g status-bg black # 设置状态栏背景黑色
+set -g status-fg yellow # 设置状态栏前景黄色
+set -g status-style &quot;bg=black, fg=yellow&quot; # 状态栏前景背景色
+
+set -g status-left &quot;#[bg=#FF661D] ❐ #S &quot; # 状态栏左侧内容
+set -g status-right &quot;#S #[fg=green,bg=black]#(tmux-mem-cpu-load --colors --interval 2)#[default]&quot;
+set -g status-left-length 300 # 状态栏左边长度300
+set -g status-right-length 500 # 状态栏右边长度500
+
+set -wg window-status-format &quot; #I #W &quot; # 状态栏窗口名称格式
+set -wg window-status-current-format &quot; #I:#W#F &quot; # 状态栏当前窗口名称格式(#I：序号，#w：窗口名称，#F：间隔符)
+set -wg window-status-separator &quot;&quot; # 状态栏窗口名称之间的间隔
+set -wg window-status-current-style &quot;bg=red&quot; # 状态栏当前窗口名称的样式
+set -wg window-status-last-style &quot;fg=yellow&quot; # 状态栏最后一个窗口名称的样式
+
+set -g message-style &quot;bg=#202529, fg=#91A8BA&quot; # 指定消息通知的前景、后景色</code></pre><h2 id="0x04、vim"><a href="#0x04、vim" class="headerlink" title="0x04、vim"></a>0x04、vim</h2><h4 id="配置文件-2"><a href="#配置文件-2" class="headerlink" title="配置文件"></a>配置文件</h4><pre><code>set nocompatible
+syntax on
+filetype plugin indent on
+set ic
+set hlsearch
+set encoding=utf-8
+set fileencodings=utf-8,ucs-bom,GB2312,big5
+set cursorline
+set autoindent
+set smartindent
+set scrolloff=4
+set showmatch
+set nu
+
+let python_highlight_all=1
+au Filetype python set tabstop=4
+au Filetype python set softtabstop=4
+au Filetype python set shiftwidth=4
+au Filetype python set textwidth=79
+au Filetype python set expandtab
+au Filetype python set autoindent
+au Filetype python set fileformat=unix
+autocmd Filetype python set foldmethod=indent
+autocmd Filetype python set foldlevel=99</code></pre><h2 id="0x05、chrome"><a href="#0x05、chrome" class="headerlink" title="0x05、chrome"></a>0x05、chrome</h2><h4 id="插件-2"><a href="#插件-2" class="headerlink" title="插件"></a>插件</h4><ul>
 <li>vimium</li>
 <li>Evernote web Clipper</li>
 <li>JSONview</li>
@@ -561,23 +669,21 @@ gitment.render('gitment-content');
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-
-0x00、简介
+                            0x00、简介
 终端复用神器
 
 0x01、快捷键1.tmux命令
 启动新会话
-1tmux [new -s 会话名 -n 窗口名]
+tmux [new -s 会话名 -n 窗口名]
 
 恢复会话：
-1tmux at [-t 会话名]
+tmux at [-t 会话名]
 
 列出所有会话：
-1tmux ls
+tmux ls
 
 关闭会话
-1tmu
+tmux kill
                         
                     </div>
                     <div class="publish-info">
@@ -626,9 +732,7 @@ gitment.render('gitment-content');
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-
-0x00、大体类型
+                            0x00、大体类型
 1.卷积神经网络
 2.循环神经网络
 3.深度信念网络
@@ -636,7 +740,7 @@ gitment.render('gitment-content');
 5.深度强化学习
 
 0x01、卷积神经网络
-卷积神经网络属于前面介绍的前馈神经网络之一，它对于图形图像的处理有着独特的效果，在结构上至少包括卷积
+卷积神经网络属于前面介绍的前馈神经网络之一，它对于图形图像的处理有着独特的效果，在结构上至少包括卷积层和
                         
                     </div>
                     <div class="publish-info">
@@ -671,6 +775,43 @@ gitment.render('gitment-content');
 </article>
 </div>
 
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + 'From: hackfox<br />'
+            + 'Author: hackfox<br />'
+            + 'Link: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
 
 
     </div>
@@ -780,17 +921,65 @@ gitment.render('gitment-content');
             <br>
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">60.2k</span>&nbsp;字
+                class="white-color">60k</span>&nbsp;字
             
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="fa fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fa fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            <br>
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date();
+
+                function createtime() {
+                    var grt = new Date("Mon Sep 09 2019 08:00:00 GMT+0800 (GMT+08:00)");
+                    now.setTime(now.getTime() + 250);
+                    days = (now - grt) / 1000 / 60 / 60 / 24;
+                    dnum = Math.floor(days);
+                    hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+                    hnum = Math.floor(hours);
+                    if (String(hnum).length == 1) {
+                        hnum = "0" + hnum;
+                    }
+                    minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+                    mnum = Math.floor(minutes);
+                    if (String(mnum).length == 1) {
+                        mnum = "0" + mnum;
+                    }
+                    seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                    snum = Math.round(seconds);
+                    if (String(snum).length == 1) {
+                        snum = "0" + snum;
+                    }
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+                }
+                setInterval("createtime()", 250);
+            </script>
             
             
         </div>
-        <div class="col s12 m4 l4 social-link ">
+        <div class="col s12 m4 l4 social-link social-statis">
     <a href="https://github.com/xsoer" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fa fa-github"></i>
     </a>
 
 
+
+    <a href="mailto:codehackfox@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
 
 
 
@@ -861,6 +1050,8 @@ $(function () {
 
     <script src="/libs/others/clicklove.js"></script>
 
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
 </body>

@@ -5,18 +5,14 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="数据建模, hackfox">
-    <meta name="description" content="
-
-
-0x00、数据模型
-
+    <meta name="description" content="0x00、数据模型
 为什么要建模
 
 定义如何存储信息，如何操作信息，以及信息的完整性等约束功能
 影响了数据的形态和使用方式
 需要满足不同的业务场景需要
 联机事务处理(OLTP):满足业务线需要，频繁的维护更新数据，强一致性
-联机分析">
+联机分析处理(O">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -39,7 +35,7 @@
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -105,15 +101,6 @@
         </a>
     </li>
     
-    <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <i class="fa fa-address-book"></i>
-            
-            <span>Friends</span>
-        </a>
-    </li>
-    
     <li>
         <a href="#searchModal" class="modal-trigger waves-effect waves-light">
             <i id="searchIcon" class="fa fa-search" title="Search"></i>
@@ -130,7 +117,7 @@
         <div class="logo-name">hackfox</div>
         <div class="logo-desc">
             
-            架构、AI、打数据
+            架构、AI、大数据、python、go
             
         </div>
     </div>
@@ -181,15 +168,6 @@
                 <i class="fa fa-fw fa-user-circle-o"></i>
                 
                 About
-            </a>
-        </li>
-        
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-address-book"></i>
-                
-                Friends
             </a>
         </li>
         
@@ -369,19 +347,17 @@
                 
 				
 				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
             </div>
         </div>
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <!-- # 数据建模
-
-- 作者：codehackfox@gmail.com
-- 时间：2018-08-12 12:12:23 -->
-
-<blockquote>
-<h2 id="0x00、数据模型"><a href="#0x00、数据模型" class="headerlink" title="0x00、数据模型"></a>0x00、数据模型</h2></blockquote>
-<ul>
+                <h2 id="0x00、数据模型"><a href="#0x00、数据模型" class="headerlink" title="0x00、数据模型"></a>0x00、数据模型</h2><ul>
 <li><p>为什么要建模</p>
 <ul>
 <li>定义如何存储信息，如何操作信息，以及信息的完整性等约束功能</li>
@@ -393,7 +369,7 @@
 </li>
 </ul>
 </li>
-<li><p><img src="/images/180827/%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E4%BD%9C%E7%94%A8.png" alt="数据模型作用"></p>
+<li><p><img src="/assets/images/2018/180827/%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E4%BD%9C%E7%94%A8.png" alt="数据模型作用"></p>
 </li>
 <li><p>定义数据如何存储</p>
 </li>
@@ -420,9 +396,7 @@
 </ul>
 </li>
 </ul>
-<blockquote>
-<h2 id="0x01、数据建模"><a href="#0x01、数据建模" class="headerlink" title="0x01、数据建模"></a>0x01、数据建模</h2></blockquote>
-<ul>
+<h2 id="0x01、数据建模"><a href="#0x01、数据建模" class="headerlink" title="0x01、数据建模"></a>0x01、数据建模</h2><ul>
 <li>建模过程中的主要活动包括：<ul>
 <li>确定数据及其相关过程（如实地销售人员需要查看在线产品目录并提交新客户订单）。</li>
 <li>定义数据（如数据类型、大小和默认值）。</li>
@@ -433,9 +407,7 @@
 </li>
 <li>数据建模大致分为三个阶段，概念建模阶段，逻辑建模阶段和物理建模阶段。其中概念建模和逻辑建模阶段与数据库厂商毫无关系，换言之，与MySQL，SQL Server，Oracle没有关系。物理建模阶段和数据库厂商存在很大的联系，因为不同厂商对同一功能的支持方式不同，如高可用性，读写分离，甚至是索引，分区等。</li>
 </ul>
-<blockquote>
-<h2 id="0x02、数据存储历史"><a href="#0x02、数据存储历史" class="headerlink" title="0x02、数据存储历史"></a>0x02、数据存储历史</h2></blockquote>
-<ul>
+<h2 id="0x02、数据存储历史"><a href="#0x02、数据存储历史" class="headerlink" title="0x02、数据存储历史"></a>0x02、数据存储历史</h2><ul>
 <li>历史发展<ul>
 <li>无库时代 ：没有专门的数据库，数据大多以文件形式存放</li>
 <li>层次状数据库 ：使用层次状模型进行数据库设计和存放</li>
@@ -447,15 +419,13 @@
 </ul>
 </li>
 </ul>
-<blockquote>
-<h2 id="0x03、层次模型"><a href="#0x03、层次模型" class="headerlink" title="0x03、层次模型"></a>0x03、层次模型</h2></blockquote>
-<ul>
-<li><img src="/images/180827/%E5%B1%82%E6%AC%A1%E6%A8%A1%E5%9E%8B%E7%A4%BA%E4%BE%8B.jpg" alt="层次数据模型"></li>
+<h2 id="0x03、层次模型"><a href="#0x03、层次模型" class="headerlink" title="0x03、层次模型"></a>0x03、层次模型</h2><ul>
+<li><img src="/assets/images/2018/180827/%E5%B1%82%E6%AC%A1%E6%A8%A1%E5%9E%8B%E7%A4%BA%E4%BE%8B.jpg" alt="层次数据模型"></li>
 <li>一种用树形结构描述实体及其之间关系的数据模型。在这种结构中，每一个记录类型都是用节点表示，记录类型之间的联系则用结点之间的有向线段来表示。每一个双亲结点可以有多个子节点但是每一个子节点只能有一个双亲结点。这种结构决定了采用层次模型作为数系组织方式的层次数据库系统只能处理一对多的实体联系。</li>
 <li>层次模型是最早用于商品数据库管理系统的数据模型。</li>
 <li>层次数据模型中最基本的数据关系是基本层次关系，它代表两个记录型之间一对多的关系，也叫做双亲子女关系（PCR）。</li>
 <li>举例<ul>
-<li><img src="/images/180827/%E5%B1%82%E6%AC%A1%E6%A8%A1%E5%9E%8B%E7%A4%BA%E4%BE%8B.gif" alt="层次结构举例"></li>
+<li><img src="/assets/images/2018/180827/%E5%B1%82%E6%AC%A1%E6%A8%A1%E5%9E%8B%E7%A4%BA%E4%BE%8B.gif" alt="层次结构举例"></li>
 <li>一个教师学生层次模型。该层次模型有4个记录类型，即实体。分别是：<ul>
 <li>（1）记录型（实体）系是根结点，由系编号、系名、地点3个属性（字段）组成。它有两个子结点，分别是教研室实体和学生实体。</li>
 <li>（2）记录型（实体）教研室是系的子结点，同时又是教师实体的双亲结点。它由教研室编号和教研室名两个属性（字段）组成。</li>
@@ -470,7 +440,7 @@
 <li>（2）其他节点有且仅有一个父节点。（根以外的其他结点有且仅有一个双亲结点 ）这就使得层次数据库系统只能直接处理一对多的实体关系。</li>
 <li>（3）任何一个给定的记录值只有按照其路径查看时，才能显出它的全部意义，没有一个子女记录值能够脱离双亲记录值而独立存在。</li>
 <li>因而层次模型只能表示“1一M”关系，而不能直接表示“M—M”关系。在层次模型中，一个结点称为一个记录型，用来描述实体集。每个记录型可以有一个或多个记录值，上层一个记录值对应下层一个或多个记录值，而下层每个记录值只能对应上层一个记录值。例如，系记录型有：计算机系、电信系等记录值。而计算机系的下层记录值有软件、结构、应用等研究室和数据结构、操作系统、数据库等课程，软件研究室下层又有员工和项目记录值，如图所示:</li>
-<li><img src="/images/180827/%E5%B1%82%E6%AC%A1%E6%A8%A1%E5%9E%8B%E8%AE%B0%E5%BD%95%E5%80%BC%E7%A4%BA%E4%BE%8B.gif" alt="层次模型记录值示例"></li>
+<li><img src="/assets/images/2018/180827/%E5%B1%82%E6%AC%A1%E6%A8%A1%E5%9E%8B%E8%AE%B0%E5%BD%95%E5%80%BC%E7%A4%BA%E4%BE%8B.gif" alt="层次模型记录值示例"></li>
 <li>关于层次模型中实体集之间多对多的联系的处理，解决的方法是引入冗余结点。例如，学生和课程之间的多对多的联系，引入学生和课程的冗余结点，转换为两棵树：一棵树的根是学生，子结点是课程，它表现了一个学生可以选多门课程；一棵树的根是课程，子结点是学生，它反映了一门课程可以被多个学生选。至于冗余结点可以用虚拟结点实现：在冗余结点处仅存放一个指针，指向实际结点。</li>
 </ul>
 </li>
@@ -503,9 +473,7 @@
 </li>
 <li>1969由IBM公司的IMS（Information Management System），这是IBM公司研制的最早的大型数据库系统程序产品</li>
 </ul>
-<blockquote>
-<h2 id="0x04、网状模型"><a href="#0x04、网状模型" class="headerlink" title="0x04、网状模型"></a>0x04、网状模型</h2></blockquote>
-<ul>
+<h2 id="0x04、网状模型"><a href="#0x04、网状模型" class="headerlink" title="0x04、网状模型"></a>0x04、网状模型</h2><ul>
 <li>定义<ul>
 <li>用有向图结构表示实体类型及实体间联系的数据结构模型称为网状模型（Network Model）。</li>
 <li>网状模型取消了层次模型的不能表示非树状结构的限制，两个或两个以上的结点都可以有多个双亲结点，则此时有向树变成了有向图，该有向图描述了网状模型。</li>
@@ -518,7 +486,7 @@
 </ul>
 </li>
 <li>示例<ul>
-<li><img src="/images/180827/%E7%BD%91%E7%8A%B6%E6%A8%A1%E5%9E%8B%E7%A4%BA%E4%BE%8B.png" alt="网状模型示例"></li>
+<li><img src="/assets/images/2018/180827/%E7%BD%91%E7%8A%B6%E6%A8%A1%E5%9E%8B%E7%A4%BA%E4%BE%8B.png" alt="网状模型示例"></li>
 <li>课程（实体）的父节点由专业、教研室、学生。以课程和学生之间的关系来说，他们是一种m:n的关系，也就是说一个学生能够选修多门课程，一门课程也可以被多个学生同时选修。</li>
 </ul>
 </li>
@@ -560,17 +528,13 @@
 </ul>
 </li>
 </ul>
-<blockquote>
-<h2 id="0x05、关系模型"><a href="#0x05、关系模型" class="headerlink" title="0x05、关系模型"></a>0x05、关系模型</h2></blockquote>
-<ul>
+<h2 id="0x05、关系模型"><a href="#0x05、关系模型" class="headerlink" title="0x05、关系模型"></a>0x05、关系模型</h2><ul>
 <li>网状数据库和层次数据库已经很好地解决了数据的集中和共享问题</li>
 <li>但是在数据独立性和抽象级别上仍有很大欠缺。用户在对这两种数据库进行存取时，仍然需要明确数据的存储结构，指出存取路径。</li>
 <li>1970年，IBM的研究员E.F.Codd博士发表《大型共享数据银行的关系模型》一文提出了关系模型的概念，论述了范式理论和衡量关系系统的12条标准，如定义了某些关系代数运算，研究了数据的函数相关，定义了关系的第三范式，从而开创了数据库的关系方法和数据规范化理论的研究，他为此获得了1981年的图灵奖。</li>
 <li>关系模型有严格的数学基础，抽象级别比较高，而且简单清晰，便于理解和使用。但是当时也有人认为关系模型是理想化的数据模型，用来实现DBMS是不现实的，尤其担心关系数据库的性能难以接受，更有人视其为当时正在进行中的网状数据库规范化工作的严重威胁。</li>
 </ul>
-<blockquote>
-<h2 id="0x06、面向对象模型"><a href="#0x06、面向对象模型" class="headerlink" title="0x06、面向对象模型"></a>0x06、面向对象模型</h2></blockquote>
-<ul>
+<h2 id="0x06、面向对象模型"><a href="#0x06、面向对象模型" class="headerlink" title="0x06、面向对象模型"></a>0x06、面向对象模型</h2><ul>
 <li>电脑辅助设计</li>
 <li>嵌套记录、多值属性、继承</li>
 </ul>
@@ -583,15 +547,11 @@
 <li>原子域和第一范式：name:first_name,last_name;address:address1,address2,address3</li>
 <li>约束：唯一性约束、外键约束</li>
 </ul>
-<blockquote>
-<h2 id="0x07、数据仓库与操作型数据库的区别"><a href="#0x07、数据仓库与操作型数据库的区别" class="headerlink" title="0x07、数据仓库与操作型数据库的区别"></a>0x07、数据仓库与操作型数据库的区别</h2></blockquote>
-<ul>
+<h2 id="0x07、数据仓库与操作型数据库的区别"><a href="#0x07、数据仓库与操作型数据库的区别" class="headerlink" title="0x07、数据仓库与操作型数据库的区别"></a>0x07、数据仓库与操作型数据库的区别</h2><ul>
 <li>操作型数据库主要是用来支撑即时操作，对数据库的性能和质量要求都比较高。通常设计操作型数据库的都要遵循几个范式的约束，除非少数情况下为了性能进行妥协，才可能出现冗余</li>
 <li>数据仓库的数据是来源于即时操作产生的数据，而不是直接来源于即时操作，所以它的数据质量是由操作型系统来保证的，而不是由几个范式来保证的。而且为了更好的跟踪历史信息，以及更快的产生报表，数据仓库的物理模型中存在着大量冗余字段</li>
 </ul>
-<blockquote>
-<h2 id="0x08、数据仓库简介"><a href="#0x08、数据仓库简介" class="headerlink" title="0x08、数据仓库简介"></a>0x08、数据仓库简介</h2></blockquote>
-<ul>
+<h2 id="0x08、数据仓库简介"><a href="#0x08、数据仓库简介" class="headerlink" title="0x08、数据仓库简介"></a>0x08、数据仓库简介</h2><ul>
 <li>数据模型是抽象描述现实世界的一种工具和方法，是通过抽象的实体及实体之间联系的形式，来表示现实世界中事务的相互关系的一种映射</li>
 <li>数据模型表现的抽象的是实体和实体之间的关系，通过对实体和实体之间关系的定义和描述，来表达实际的业务中具体的业务关系。</li>
 <li>数据库与数据仓库区别<ul>
@@ -618,7 +578,7 @@
 </li>
 <li>数据从业务性的数据库中提取、加工、导入分析性的数据库就是传统的 ETL 工作</li>
 </ul>
-<p><img src="/images/180827/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E6%A8%A1%E5%9E%8B.jpg" alt="数据仓库模型"></p>
+<p><img src="/assets/images/2018/180827/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E6%A8%A1%E5%9E%8B.jpg" alt="数据仓库模型"></p>
 <ul>
 <li>数据仓库模型<ul>
 <li>业务建模，生成业务模型，主要解决业务层面的分解和程序化。</li>
@@ -629,7 +589,7 @@
 </li>
 <li>在整个数据仓库的模型的设计和架构中，既涉及到业务知识，也涉及到了具体的技术，我们既需要了解丰富的行业经验，同时，也需要一定的信息技术来帮助我们实现我们的数据模型，最重要的是，我们还需要一个非常适用的方法论，来指导我们自己针对我们的业务进行抽象，处理，生成各个阶段的模型</li>
 </ul>
-<p><img src="/images/180827/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84.jpg" alt="数据仓库架构"></p>
+<p><img src="/assets/images/2018/180827/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84.jpg" alt="数据仓库架构"></p>
 <ul>
 <li>从上图我们可以看出，整个数据仓库的数据模型可以分为大概 5 大部分：<ul>
 <li>系统记录域（System of Record）：这部分是主要的数据仓库业务数据存储区，数据模型在这里保证了数据的一致性。</li>
@@ -641,9 +601,7 @@
 </li>
 <li>通过对整个数据仓库模型的数据区域的划分，我们可以了解到，一个好的数据模型，不仅仅是对业务进行抽象划分，而且对实现技术也进行具体的指导，它应该涵盖了从业务到实现技术的各个部分。</li>
 </ul>
-<blockquote>
-<h2 id="0x09、ETL"><a href="#0x09、ETL" class="headerlink" title="0x09、ETL"></a>0x09、ETL</h2></blockquote>
-<ul>
+<h2 id="0x09、ETL"><a href="#0x09、ETL" class="headerlink" title="0x09、ETL"></a>0x09、ETL</h2><ul>
 <li>ETL，是英文 Extract-Transform-Load 的缩写，用来描述将数据从来源端经过抽取（extract）、交互转换（transform）、加载（load）至目的端的过程。ETL一词较常用在数据仓库，但其对象并不限于数据仓库。</li>
 <li>ETL的质量问题具体表现为正确性、完整性、一致性、完备性、有效性、时效性和可获取性等几个特性</li>
 <li>实现ETL，首先要实现ETL转换的过程。体现为以下几个方面：<ul>
@@ -657,9 +615,7 @@
 </ul>
 </li>
 </ul>
-<blockquote>
-<h2 id="0x10、仓库建模阶段解析"><a href="#0x10、仓库建模阶段解析" class="headerlink" title="0x10、仓库建模阶段解析"></a>0x10、仓库建模阶段解析</h2></blockquote>
-<ul>
+<h2 id="0x10、仓库建模阶段解析"><a href="#0x10、仓库建模阶段解析" class="headerlink" title="0x10、仓库建模阶段解析"></a>0x10、仓库建模阶段解析</h2><ul>
 <li>业务建模：<ul>
 <li>划分整个单位的业务，一般按照业务部门的划分，进行各个部分之间业务工作的界定，理清各业务部门之间的关系。</li>
 <li>深入了解各个业务部门的内具体业务流程并将其程序化。</li>
@@ -688,16 +644,14 @@
 </ul>
 </li>
 </ul>
-<blockquote>
-<h2 id="0x11、数据仓库建模方法"><a href="#0x11、数据仓库建模方法" class="headerlink" title="0x11、数据仓库建模方法"></a>0x11、数据仓库建模方法</h2></blockquote>
-<ul>
+<h2 id="0x11、数据仓库建模方法"><a href="#0x11、数据仓库建模方法" class="headerlink" title="0x11、数据仓库建模方法"></a>0x11、数据仓库建模方法</h2><ul>
 <li><p>数据仓库得建模方法同样也有很多种，每一种建模方法其实代表了哲学上的一个观点，代表了一种归纳，概括世界的一种方法</p>
 </li>
 <li><p>主要介绍:实体模型(范式模型、ER模型)，维度建模法，Data Vault模型，Anchor模型</p>
 </li>
 <li><p>1.实体关系(ER)模型: 范式建模法（Third Normal Form，3NF）</p>
 <ul>
-<li><img src="/images/180827/%E6%A0%B7%E4%BE%8BER%E5%9B%BE.png" alt="样例ER图"></li>
+<li><img src="/assets/images/2018/180827/%E6%A0%B7%E4%BE%8BER%E5%9B%BE.png" alt="样例ER图"></li>
 <li>范式模型由数据仓库之父 Inmon 提倡</li>
 <li>实体联系模型、实体关系模型或实体联系模式图</li>
 <li>范式是数据库逻辑模型设计的基本理论，一个关系模型可以从第一范式到第五范式进行无损分解，这个过程也可称为规范化。在数据仓库的模型设计中目前一般采用第三范式，它有着严格的数学定义</li>
@@ -727,7 +681,7 @@
 </li>
 <li><p>2.维度建模法</p>
 <ul>
-<li><img src="/images/180827/%E7%BA%AC%E5%BA%A6%E5%BB%BA%E6%A8%A1%E6%B3%95.jpg" alt="维度建模法"></li>
+<li><img src="/assets/images/2018/180827/%E7%BA%AC%E5%BA%A6%E5%BB%BA%E6%A8%A1%E6%B3%95.jpg" alt="维度建模法"></li>
 <li>数据仓库领域另一位大师 Ralph Kimball</li>
 <li>其最简单的描述就是，按照事实表，维表来构建数据仓库，数据集市。</li>
 <li>维度建模(dimensional modeling)是专门用于分析型数据库、数据仓库、数据集市建模的方法</li>
@@ -772,12 +726,8 @@
 </ul>
 </li>
 </ul>
-<blockquote>
-<h2 id="0x12、范式模型-ER模型、实体模型"><a href="#0x12、范式模型-ER模型、实体模型" class="headerlink" title="0x12、范式模型(ER模型、实体模型)"></a>0x12、范式模型(ER模型、实体模型)</h2></blockquote>
-<p>-</p>
-<blockquote>
-<h2 id="0x13、维度建模"><a href="#0x13、维度建模" class="headerlink" title="0x13、维度建模"></a>0x13、维度建模</h2></blockquote>
-<ul>
+<h2 id="0x12、范式模型-ER模型、实体模型"><a href="#0x12、范式模型-ER模型、实体模型" class="headerlink" title="0x12、范式模型(ER模型、实体模型)"></a>0x12、范式模型(ER模型、实体模型)</h2><p>-</p>
+<h2 id="0x13、维度建模"><a href="#0x13、维度建模" class="headerlink" title="0x13、维度建模"></a>0x13、维度建模</h2><ul>
 <li><p>数据仓库领域另一位大师 Ralph Kimball提出</p>
 </li>
 <li><p>维度建模以分析决策的需求出发构建模型。重点解决用户如何更快速完成分析需求，同时还有较好的大规模复杂查询的响应性能。</p>
@@ -900,9 +850,7 @@
 </li>
 <li>星座建模</li>
 </ul>
-<blockquote>
-<h2 id="0x14、范式模型和纬度模型区别"><a href="#0x14、范式模型和纬度模型区别" class="headerlink" title="0x14、范式模型和纬度模型区别"></a>0x14、范式模型和纬度模型区别</h2></blockquote>
-<ul>
+<h2 id="0x14、范式模型和纬度模型区别"><a href="#0x14、范式模型和纬度模型区别" class="headerlink" title="0x14、范式模型和纬度模型区别"></a>0x14、范式模型和纬度模型区别</h2><ul>
 <li><p>一般常规的数据仓库层级结构可分为：ods、dw(默认为汇总数据层，也可在细分为dwd(明细)与dw(汇总)两层)、dm共三层：</p>
 <ul>
 <li>ods层：称为接口层或近源数据层，表结构与源系统表结构高度相似，通常在ods层主要会做字段的筛选，枚举值转换，编码统一，异常&amp;缺失数据处理等操作。</li>
@@ -960,9 +908,7 @@
 </ul>
 </li>
 </ul>
-<blockquote>
-<h2 id="0x15、数据层"><a href="#0x15、数据层" class="headerlink" title="0x15、数据层"></a>0x15、数据层</h2></blockquote>
-<ul>
+<h2 id="0x15、数据层"><a href="#0x15、数据层" class="headerlink" title="0x15、数据层"></a>0x15、数据层</h2><ul>
 <li>数据规范定义<ul>
 <li>个性化的数据指标进行规范定义，抽象成：原子指标、时间周期、其他修饰词等三个要素。</li>
 </ul>
@@ -989,15 +935,11 @@
 </li>
 <li>流式数据结构，数据分层处理</li>
 </ul>
-<blockquote>
-<h2 id="0x16、查询方式"><a href="#0x16、查询方式" class="headerlink" title="0x16、查询方式"></a>0x16、查询方式</h2></blockquote>
-<ul>
+<h2 id="0x16、查询方式"><a href="#0x16、查询方式" class="headerlink" title="0x16、查询方式"></a>0x16、查询方式</h2><ul>
 <li>分组查询</li>
 <li>钻取查询</li>
 </ul>
-<blockquote>
-<h2 id="0x17、数据仓库"><a href="#0x17、数据仓库" class="headerlink" title="0x17、数据仓库"></a>0x17、数据仓库</h2></blockquote>
-<ul>
+<h2 id="0x17、数据仓库"><a href="#0x17、数据仓库" class="headerlink" title="0x17、数据仓库"></a>0x17、数据仓库</h2><ul>
 <li><p>这种新类型的系统环境的特点如下:</p>
 <ul>
 <li>为分析任务设计的数据库</li>
@@ -1320,9 +1262,7 @@
 </ul>
 </li>
 </ul>
-<blockquote>
-<h2 id="0x18、数据迁移注意点"><a href="#0x18、数据迁移注意点" class="headerlink" title="0x18、数据迁移注意点"></a>0x18、数据迁移注意点</h2></blockquote>
-
+<h2 id="0x18、数据迁移注意点"><a href="#0x18、数据迁移注意点" class="headerlink" title="0x18、数据迁移注意点"></a>0x18、数据迁移注意点</h2>
             </div>
             <hr/>
 
@@ -1436,14 +1376,14 @@ gitment.render('gitment-content');
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-
-0x00、介绍
+                            0x00、介绍
 format优点
 1.不需要理会数据类型的问题，在%方法中%s只能替代字符串类型
 2.单个参数可以多次输出，参数顺序可以不相同
 3.填充方式十分灵活，对齐方式十分强大
 4.官方推荐用的方式，%方式将会在后面的版本被淘汰
+
+
 
                         
                     </div>
@@ -1497,12 +1437,10 @@ format优点
 作者：codehackfox@gmail.com
 时间：2018-08-10 13:23:49
 
-
-0x00、简介
-行式数据库
+0x00、简介行式数据库
 平常用的结构化关系型数据库，比如mysql、sqlserver等
 一行为一条数据，进行记录存储
-
+可以
                         
                     </div>
                     <div class="publish-info">
@@ -1537,6 +1475,43 @@ format优点
 </article>
 </div>
 
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + 'From: hackfox<br />'
+            + 'Author: hackfox<br />'
+            + 'Link: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
 
 
     </div>
@@ -1646,17 +1621,65 @@ format优点
             <br>
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">60.2k</span>&nbsp;字
+                class="white-color">60k</span>&nbsp;字
             
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="fa fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fa fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            <br>
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date();
+
+                function createtime() {
+                    var grt = new Date("Mon Sep 09 2019 08:00:00 GMT+0800 (GMT+08:00)");
+                    now.setTime(now.getTime() + 250);
+                    days = (now - grt) / 1000 / 60 / 60 / 24;
+                    dnum = Math.floor(days);
+                    hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+                    hnum = Math.floor(hours);
+                    if (String(hnum).length == 1) {
+                        hnum = "0" + hnum;
+                    }
+                    minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+                    mnum = Math.floor(minutes);
+                    if (String(mnum).length == 1) {
+                        mnum = "0" + mnum;
+                    }
+                    seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                    snum = Math.round(seconds);
+                    if (String(snum).length == 1) {
+                        snum = "0" + snum;
+                    }
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+                }
+                setInterval("createtime()", 250);
+            </script>
             
             
         </div>
-        <div class="col s12 m4 l4 social-link ">
+        <div class="col s12 m4 l4 social-link social-statis">
     <a href="https://github.com/xsoer" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fa fa-github"></i>
     </a>
 
 
+
+    <a href="mailto:codehackfox@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
 
 
 
@@ -1727,6 +1750,8 @@ $(function () {
 
     <script src="/libs/others/clicklove.js"></script>
 
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
 </body>

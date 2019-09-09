@@ -5,15 +5,11 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="数据库基础, hackfox">
-    <meta name="description" content="
-
-
-1.数据库中的事务是什么?事务的隔离级别?脏读、幻读、不可重复读是什么意思？
-
+    <meta name="description" content="1.数据库中的事务是什么?事务的隔离级别?脏读、幻读、不可重复读是什么意思？
 数据库事务
 将一组相关操作组合为一个要么全部成功要么全部失败的单元
 具有ACID（原子性、一致性、隔离性和持久性）属性
-原子性(Atomicity)：原子">
+原子性(Atomicity)：原子性是指事">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -36,7 +32,7 @@
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -102,15 +98,6 @@
         </a>
     </li>
     
-    <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <i class="fa fa-address-book"></i>
-            
-            <span>Friends</span>
-        </a>
-    </li>
-    
     <li>
         <a href="#searchModal" class="modal-trigger waves-effect waves-light">
             <i id="searchIcon" class="fa fa-search" title="Search"></i>
@@ -127,7 +114,7 @@
         <div class="logo-name">hackfox</div>
         <div class="logo-desc">
             
-            架构、AI、打数据
+            架构、AI、大数据、python、go
             
         </div>
     </div>
@@ -178,15 +165,6 @@
                 <i class="fa fa-fw fa-user-circle-o"></i>
                 
                 About
-            </a>
-        </li>
-        
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-address-book"></i>
-                
-                Friends
             </a>
         </li>
         
@@ -366,18 +344,17 @@
                 
 				
 				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
             </div>
         </div>
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <!-- # 数据库基础
-- 作者：codehackfox@gmail.com
-- 时间：2019-03-10 18:19:34 -->
-
-<blockquote>
-<h3 id="1-数据库中的事务是什么-事务的隔离级别-脏读、幻读、不可重复读是什么意思？"><a href="#1-数据库中的事务是什么-事务的隔离级别-脏读、幻读、不可重复读是什么意思？" class="headerlink" title="1.数据库中的事务是什么?事务的隔离级别?脏读、幻读、不可重复读是什么意思？"></a>1.数据库中的事务是什么?事务的隔离级别?脏读、幻读、不可重复读是什么意思？</h3></blockquote>
-<ul>
+                <h3 id="1-数据库中的事务是什么-事务的隔离级别-脏读、幻读、不可重复读是什么意思？"><a href="#1-数据库中的事务是什么-事务的隔离级别-脏读、幻读、不可重复读是什么意思？" class="headerlink" title="1.数据库中的事务是什么?事务的隔离级别?脏读、幻读、不可重复读是什么意思？"></a>1.数据库中的事务是什么?事务的隔离级别?脏读、幻读、不可重复读是什么意思？</h3><ul>
 <li>数据库事务<ul>
 <li>将一组相关操作组合为一个要么全部成功要么全部失败的单元</li>
 <li>具有ACID（原子性、一致性、隔离性和持久性）属性<ul>
@@ -409,52 +386,13 @@
 </ul>
 </li>
 </ul>
-<hr>
-<blockquote>
-<h3 id="2-优化数据库的方法。说说-SQL-优化之道"><a href="#2-优化数据库的方法。说说-SQL-优化之道" class="headerlink" title="2.优化数据库的方法。说说 SQL 优化之道"></a>2.优化数据库的方法。说说 SQL 优化之道</h3></blockquote>
-<ul>
+<h3 id="2-优化数据库的方法。说说-SQL-优化之道"><a href="#2-优化数据库的方法。说说-SQL-优化之道" class="headerlink" title="2.优化数据库的方法。说说 SQL 优化之道"></a>2.优化数据库的方法。说说 SQL 优化之道</h3><ul>
 <li>主机性能</li>
 <li>内存使用性能</li>
 <li>网络传输性能</li>
 <li>SQL语句执行性能</li>
 </ul>
-<hr>
-<blockquote>
-<h3 id="3-唯一索引和普通索引的区别，索引类别（B-树索引、全文索引、哈希索引），索引的区别"><a href="#3-唯一索引和普通索引的区别，索引类别（B-树索引、全文索引、哈希索引），索引的区别" class="headerlink" title="3.唯一索引和普通索引的区别，索引类别（B+树索引、全文索引、哈希索引），索引的区别"></a>3.唯一索引和普通索引的区别，索引类别（B+树索引、全文索引、哈希索引），索引的区别</h3></blockquote>
-<hr>
-<blockquote>
-<h3 id="为什么要用-B-tree-作为-MySql-索引的数据结构"><a href="#为什么要用-B-tree-作为-MySql-索引的数据结构" class="headerlink" title="为什么要用 B+tree 作为 MySql 索引的数据结构"></a>为什么要用 B+tree 作为 MySql 索引的数据结构</h3></blockquote>
-<hr>
-<blockquote>
-<h3 id="聚集索引与非聚集索引的区别"><a href="#聚集索引与非聚集索引的区别" class="headerlink" title="聚集索引与非聚集索引的区别"></a>聚集索引与非聚集索引的区别</h3></blockquote>
-<hr>
-<blockquote>
-<h3 id="Mysql存储引擎有哪些？有什么区别？存储引擎的-InnoDB-与-MyISAM区别、优缺点、使用场景？"><a href="#Mysql存储引擎有哪些？有什么区别？存储引擎的-InnoDB-与-MyISAM区别、优缺点、使用场景？" class="headerlink" title="Mysql存储引擎有哪些？有什么区别？存储引擎的 InnoDB 与 MyISAM区别、优缺点、使用场景？"></a>Mysql存储引擎有哪些？有什么区别？存储引擎的 InnoDB 与 MyISAM区别、优缺点、使用场景？</h3></blockquote>
-<hr>
-<blockquote>
-<h3 id="varchar和char有什么区别"><a href="#varchar和char有什么区别" class="headerlink" title="varchar和char有什么区别"></a>varchar和char有什么区别</h3></blockquote>
-<hr>
-<blockquote>
-<h3 id="DDL、DML、DCL-分别指什么"><a href="#DDL、DML、DCL-分别指什么" class="headerlink" title="DDL、DML、DCL 分别指什么"></a>DDL、DML、DCL 分别指什么</h3></blockquote>
-<hr>
-<blockquote>
-<h3 id="explain-命令"><a href="#explain-命令" class="headerlink" title="explain 命令"></a>explain 命令</h3></blockquote>
-<hr>
-<blockquote>
-<h3 id="数据库的几大范式"><a href="#数据库的几大范式" class="headerlink" title="数据库的几大范式"></a>数据库的几大范式</h3></blockquote>
-<hr>
-<blockquote>
-<h3 id="说说分库与分表设计，分库与分表带来的分布式困境与对应之策"><a href="#说说分库与分表设计，分库与分表带来的分布式困境与对应之策" class="headerlink" title="说说分库与分表设计，分库与分表带来的分布式困境与对应之策"></a>说说分库与分表设计，分库与分表带来的分布式困境与对应之策</h3></blockquote>
-<hr>
-<blockquote>
-<h3 id="什么是自适应哈希索引（AHI）"><a href="#什么是自适应哈希索引（AHI）" class="headerlink" title="什么是自适应哈希索引（AHI）"></a>什么是自适应哈希索引（AHI）</h3></blockquote>
-<hr>
-<blockquote>
-<h3 id="limit-20000-加载很慢怎么解决"><a href="#limit-20000-加载很慢怎么解决" class="headerlink" title="limit 20000 加载很慢怎么解决"></a>limit 20000 加载很慢怎么解决</h3></blockquote>
-<hr>
-<blockquote>
-<h3 id="常见的几种分布式-ID-的设计方案"><a href="#常见的几种分布式-ID-的设计方案" class="headerlink" title="常见的几种分布式 ID 的设计方案"></a>常见的几种分布式 ID 的设计方案</h3></blockquote>
-
+<h3 id="3-唯一索引和普通索引的区别，索引类别（B-树索引、全文索引、哈希索引），索引的区别"><a href="#3-唯一索引和普通索引的区别，索引类别（B-树索引、全文索引、哈希索引），索引的区别" class="headerlink" title="3.唯一索引和普通索引的区别，索引类别（B+树索引、全文索引、哈希索引），索引的区别"></a>3.唯一索引和普通索引的区别，索引类别（B+树索引、全文索引、哈希索引），索引的区别</h3><h3 id="为什么要用-B-tree-作为-MySql-索引的数据结构"><a href="#为什么要用-B-tree-作为-MySql-索引的数据结构" class="headerlink" title="为什么要用 B+tree 作为 MySql 索引的数据结构"></a>为什么要用 B+tree 作为 MySql 索引的数据结构</h3><h3 id="聚集索引与非聚集索引的区别"><a href="#聚集索引与非聚集索引的区别" class="headerlink" title="聚集索引与非聚集索引的区别"></a>聚集索引与非聚集索引的区别</h3><h3 id="Mysql存储引擎有哪些？有什么区别？存储引擎的-InnoDB-与-MyISAM区别、优缺点、使用场景？"><a href="#Mysql存储引擎有哪些？有什么区别？存储引擎的-InnoDB-与-MyISAM区别、优缺点、使用场景？" class="headerlink" title="Mysql存储引擎有哪些？有什么区别？存储引擎的 InnoDB 与 MyISAM区别、优缺点、使用场景？"></a>Mysql存储引擎有哪些？有什么区别？存储引擎的 InnoDB 与 MyISAM区别、优缺点、使用场景？</h3><h3 id="varchar和char有什么区别"><a href="#varchar和char有什么区别" class="headerlink" title="varchar和char有什么区别"></a>varchar和char有什么区别</h3><h3 id="DDL、DML、DCL-分别指什么"><a href="#DDL、DML、DCL-分别指什么" class="headerlink" title="DDL、DML、DCL 分别指什么"></a>DDL、DML、DCL 分别指什么</h3><h3 id="explain-命令"><a href="#explain-命令" class="headerlink" title="explain 命令"></a>explain 命令</h3><h3 id="数据库的几大范式"><a href="#数据库的几大范式" class="headerlink" title="数据库的几大范式"></a>数据库的几大范式</h3><h3 id="说说分库与分表设计，分库与分表带来的分布式困境与对应之策"><a href="#说说分库与分表设计，分库与分表带来的分布式困境与对应之策" class="headerlink" title="说说分库与分表设计，分库与分表带来的分布式困境与对应之策"></a>说说分库与分表设计，分库与分表带来的分布式困境与对应之策</h3><h3 id="什么是自适应哈希索引（AHI）"><a href="#什么是自适应哈希索引（AHI）" class="headerlink" title="什么是自适应哈希索引（AHI）"></a>什么是自适应哈希索引（AHI）</h3><h3 id="limit-20000-加载很慢怎么解决"><a href="#limit-20000-加载很慢怎么解决" class="headerlink" title="limit 20000 加载很慢怎么解决"></a>limit 20000 加载很慢怎么解决</h3><h3 id="常见的几种分布式-ID-的设计方案"><a href="#常见的几种分布式-ID-的设计方案" class="headerlink" title="常见的几种分布式 ID 的设计方案"></a>常见的几种分布式 ID 的设计方案</h3>
             </div>
             <hr/>
 
@@ -568,13 +506,8 @@ gitment.render('gitment-content');
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-
-
-0x00、常用语句
-
-1.授权用户
-12mysql&gt;GRANT ALL PRIVILEGES ON *.* TO &apos;zxc&apos;@&apos;%&apos; IDENTIFIED BY &apos;ydp#201
+                            0x00、常用语句
+1.授权用户mysql&gt;GRANT ALL PRIVILEGES ON *.* TO &#39;zxc&#39;@&#39;%&#39; IDENTIFIED BY &#39;ydp#2015$Z!!!&#39; 
                         
                     </div>
                     <div class="publish-info">
@@ -623,14 +556,9 @@ gitment.render('gitment-content');
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-
-
-
-0x00、数学基础
-
+                            0x00、数学基础
 线性代数：如何将研究对象形式化
-事实上，线性代数不仅仅是人工智能的基础，更是现代数学和以现代数学作为主要分析方法的众多学科的基础。从量子力学到图像处理都离不开向量和矩阵的使用。而在向量和矩阵背后，线性代数的核心
+事实上，线性代数不仅仅是人工智能的基础，更是现代数学和以现代数学作为主要分析方法的众多学科的基础。从量子力学到图像处理都离不开向量和矩阵的使用。而在向量和矩阵背后，线性代数的核心意义在于提
                         
                     </div>
                     <div class="publish-info">
@@ -665,6 +593,43 @@ gitment.render('gitment-content');
 </article>
 </div>
 
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + 'From: hackfox<br />'
+            + 'Author: hackfox<br />'
+            + 'Link: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
 
 
     </div>
@@ -774,17 +739,65 @@ gitment.render('gitment-content');
             <br>
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">60.2k</span>&nbsp;字
+                class="white-color">60k</span>&nbsp;字
             
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="fa fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fa fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            <br>
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date();
+
+                function createtime() {
+                    var grt = new Date("Mon Sep 09 2019 08:00:00 GMT+0800 (GMT+08:00)");
+                    now.setTime(now.getTime() + 250);
+                    days = (now - grt) / 1000 / 60 / 60 / 24;
+                    dnum = Math.floor(days);
+                    hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+                    hnum = Math.floor(hours);
+                    if (String(hnum).length == 1) {
+                        hnum = "0" + hnum;
+                    }
+                    minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+                    mnum = Math.floor(minutes);
+                    if (String(mnum).length == 1) {
+                        mnum = "0" + mnum;
+                    }
+                    seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                    snum = Math.round(seconds);
+                    if (String(snum).length == 1) {
+                        snum = "0" + snum;
+                    }
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+                }
+                setInterval("createtime()", 250);
+            </script>
             
             
         </div>
-        <div class="col s12 m4 l4 social-link ">
+        <div class="col s12 m4 l4 social-link social-statis">
     <a href="https://github.com/xsoer" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fa fa-github"></i>
     </a>
 
 
+
+    <a href="mailto:codehackfox@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
 
 
 
@@ -855,6 +868,8 @@ $(function () {
 
     <script src="/libs/others/clicklove.js"></script>
 
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
 </body>
