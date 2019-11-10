@@ -4,12 +4,14 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="kudu简介, hackfox">
-    <meta name="description" content="0x00、总体概览1.历史发展
-2012年10月由Cloudera公司发起创建,2015年10月对外公布，2015年12月进入apache基金会进行孵化，后续进入快速发展轨道。
+    <meta name="keywords" content="python性能分析工具cProfile, hackfox">
+    <meta name="description" content="0x00、cProfile简介
+cProfile是python自带的模块，对运行的代码做性能分析。可以输出运行时长，
 
-2.产品定位
-Fast Analytics on Fast ">
+0x01、分析示例
+1.直接加载cProfile模块来运行代码进行输出分析。
+
+1234567891011121314#">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +19,7 @@ Fast Analytics on Fast ">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>kudu简介 | hackfox</title>
+    <title>python性能分析工具cProfile | hackfox</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -183,13 +185,13 @@ Fast Analytics on Fast ">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        kudu简介
+                        python性能分析工具cProfile
                     </div>
                 </div>
             </div>
@@ -300,8 +302,8 @@ Fast Analytics on Fast ">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/kudu/" target="_blank">
-                                <span class="chip bg-color">kudu</span>
+                            <a href="/tags/python/" target="_blank">
+                                <span class="chip bg-color">python</span>
                             </a>
                         
                     </div>
@@ -312,8 +314,8 @@ Fast Analytics on Fast ">
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/kudu/" class="post-category" target="_blank">
-                                kudu
+                            <a href="/categories/python/" class="post-category" target="_blank">
+                                python
                             </a>
                         
                     </div>
@@ -324,21 +326,21 @@ Fast Analytics on Fast ">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-07-12
+                    2019-10-08
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        2.3k
+                        460
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        8 分
+                        1 分
                     </div>
                     
                 
@@ -354,342 +356,35 @@ Fast Analytics on Fast ">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="0x00、总体概览"><a href="#0x00、总体概览" class="headerlink" title="0x00、总体概览"></a>0x00、总体概览</h2><h3 id="1-历史发展"><a href="#1-历史发展" class="headerlink" title="1.历史发展"></a>1.历史发展</h3><ul>
-<li>2012年10月由Cloudera公司发起创建,2015年10月对外公布，2015年12月进入apache基金会进行孵化，后续进入快速发展轨道。</li>
+                <h2 id="0x00、cProfile简介"><a href="#0x00、cProfile简介" class="headerlink" title="0x00、cProfile简介"></a>0x00、cProfile简介</h2><ul>
+<li>cProfile是python自带的模块，对运行的代码做性能分析。可以输出运行时长，</li>
 </ul>
-<h3 id="2-产品定位"><a href="#2-产品定位" class="headerlink" title="2.产品定位"></a>2.产品定位</h3><ul>
-<li>Fast Analytics on Fast Data。</li>
-<li>在快速修改的数据上进行快速分析</li>
+<h2 id="0x01、分析示例"><a href="#0x01、分析示例" class="headerlink" title="0x01、分析示例"></a>0x01、分析示例</h2><ul>
+<li>1.直接加载cProfile模块来运行代码进行输出分析。</li>
 </ul>
-<h3 id="3-产生之前"><a href="#3-产生之前" class="headerlink" title="3.产生之前"></a>3.产生之前</h3><p>在有kudu之前，数据分类为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方式一</span></span><br><span class="line"><span class="comment"># 直接输出调用的函数、运行时长、cpu占用等情况</span></span><br><span class="line">python -m cProfile main.py</span><br><span class="line"><span class="comment"># 如果调用链路太长，则可以指定输出到文件内，如下所示。不过输出内容为二进制，不可以直接查看。</span></span><br><span class="line">python -m cProfile -o profile.out main.py</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方式二</span></span><br><span class="line"><span class="keyword">import</span> cProfile</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    cProfile.run(<span class="string">"test()"</span>)</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>静态数据<ul>
-<li>以HDFS引擎作为存储引擎，适⽤用于⾼吞吐量的离线大数据分析场景</li>
-<li>这类存储的局限性是数据无法进行行随机的读写</li>
+<li>2.为了解决分析内容格式是二进制的，python自带了可以分析的工具pstats。示例代码如下</li>
 </ul>
-</li>
-<li>动态数据<ul>
-<li>以HBase、Cassandra 作为存储引擎，适⽤用于⼤大数据随机读写场景</li>
-<li>这类存储的局限性是批量量读取吞吐量量远不不如 HDFS，不不适⽤用于批量量数据分 析的场景</li>
-</ul>
-</li>
-</ul>
-<p>而既要满足随机读写和大数据分析的解决方案如下：</p>
-<p><img src="/assets/images/2019/07-12-hbase-hdfs.png" alt="解决方案图"></p>
-<p>而以上的方案问题是：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pstats</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建Stats对象</span></span><br><span class="line">p = pstats.Stats(<span class="string">"profile/profile.out"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># strip_dirs(): 去掉无关的路径信息</span></span><br><span class="line"><span class="comment"># sort_stats(): 排序，支持的方式和上述的一致</span></span><br><span class="line"><span class="comment"># print_stats(): 打印分析结果，可以指定打印前几行,也可以指定小数，为百分比，</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 和直接运行cProfile.run("test()")的结果是一样的</span></span><br><span class="line">p.strip_dirs().sort_stats(<span class="number">-1</span>).print_stats()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 按照函数名排序，只打印前3行函数的信息, 参数还可为小数,表示前百分之几的函数信息</span></span><br><span class="line">p.strip_dirs().sort_stats(<span class="string">"name"</span>).print_stats(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 按照运行时间和函数名进行排序</span></span><br><span class="line">p.strip_dirs().sort_stats(<span class="string">"cumulative"</span>, <span class="string">"name"</span>).print_stats(<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果想知道有哪些函数调用了sum_num</span></span><br><span class="line">p.print_callers(<span class="number">0.5</span>, <span class="string">"test"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看test()函数中调用了哪些函数</span></span><br><span class="line">p.print_callees(<span class="string">"test"</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="0x03、可视化分析"><a href="#0x03、可视化分析" class="headerlink" title="0x03、可视化分析"></a>0x03、可视化分析</h2><p>上面的分析只能做初步的统计查看，并不能有直观的查看和分析。所有一下提供了函数堆栈调用图及每步所花费的时间占比等。</p>
 <ul>
-<li>架构复杂<ul>
-<li>流转涉及环节太多，运维成本很高</li>
-<li>每个环节需要保证高可用，需要维护多个副本，存储空间也有一定的浪费</li>
-<li>数据在多个系统上，对数据安全策略、监控等都提出了挑战</li>
+<li>1.安装gprof2dot</li>
 </ul>
-</li>
-<li>时效性低<ul>
-<li>从 HBase 导出成静态文件是周期性</li>
-</ul>
-</li>
-<li>难以应对后续的更新<ul>
-<li>已经从 HBase 导出到 HDFS，新到的变更数据就难以处理</li>
-</ul>
-</li>
-</ul>
-<p>所以产生了新的解决方案，那就是kudu，其定位如下：<br><img src="/assets/images/2019/07-12-kudu-position.png" alt="kudu定位"></p>
-<p>而其gap了hdfs和hbase之间的<br><img src="/assets/images/2019/07-12-kudu-gap.png" alt="kudugap"></p>
-<h3 id="4-架构图"><a href="#4-架构图" class="headerlink" title="4.架构图"></a>4.架构图</h3><p>kudu的整体架构图如下<br><img src="/assets/images/2019/07-12-kudu-architecture.png" alt="架构图"></p>
-<h3 id="5-基本概念"><a href="#5-基本概念" class="headerlink" title="5.基本概念"></a>5.基本概念</h3><p>下面了解一些kudu里的一些基本概念。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install gprof2dot</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>Table<ul>
-<li>数据存储，没有库的概念</li>
-<li>有对应的schema结构</li>
-<li>字段是强类型</li>
-<li>需要设置主键</li>
-<li>分隔为N个tablets</li>
-</ul>
+<li><p>2.安装graphviz包。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> mac下</span><br><span class="line">brew install graphviz</span><br></pre></td></tr></table></figure>
 </li>
-<li>Tablet<ul>
-<li>Table按照行切分后存储的位置</li>
-<li>一个tablet会多副本到其他server上，并且有一个会是leader</li>
-<li>如果leader失效，会用raft一致性协议重新选举</li>
-<li>任何一组副本内的tablet都可以读，但是只能从leader写入</li>
-</ul>
-</li>
-<li>Mater<ul>
-<li>持续追踪所有的tablet、tablet server、catalog table、其他的集群meta信息</li>
-<li>可以部署多个master，但只有一个是active</li>
-<li>如果active时效了，用raft协议在选举出一个</li>
-<li>Master信息也会存储在一个tablet上，并且被复制同步到其他master机器上</li>
-<li>Tablet servers会发送心跳包到master机器(默认是一秒一次)</li>
-</ul>
-</li>
-<li>Tablet Server<ul>
-<li>用来存储tablet数据并且向client提供服务</li>
-<li>一个tablet会在多个tablet server上</li>
-<li>一个tablet server会有多个tablet</li>
-</ul>
-</li>
-<li>Catelog table<ul>
-<li>是kudu元数据的中心，存储了关于table和tablet的信息</li>
-<li>不允许被直接读写</li>
-<li>table<ul>
-<li>table schemas,</li>
-<li>Locations</li>
-<li>states</li>
-</ul>
-</li>
-<li>tablet<ul>
-<li>Tablet list</li>
-<li>Tablet server上有哪些tablet</li>
-<li>States</li>
-<li>Start and end keys</li>
-</ul>
+<li><p>3.对输出的out文件进行分析</p>
 </li>
 </ul>
-</li>
-<li>Raft一致性协议算法<ul>
-<li>分布式服务高可用性进行多副本</li>
-<li>通过raft来选举出leader</li>
-<li>多副本数据都可以读，但只有leader可以写</li>
-<li>写入时只有当大多数follower确认成功，才算写入成功</li>
-<li>在一组副本中(通常是3或5个)，允许有(N-1)/2的失败</li>
-</ul>
-</li>
-</ul>
-<h3 id="6-使用场景"><a href="#6-使用场景" class="headerlink" title="6.使用场景"></a>6.使用场景</h3><ul>
-<li>流式实时计算<ul>
-<li>流式计算场景通常有持续不断地大量写入</li>
-<li>与此同时这些数据还要支持近乎实时的读、写以及更新操作</li>
-</ul>
-</li>
-<li>时间序列存储<ul>
-<li>hash分片设计能够很好地避免TSDB类请求的局部热点问题</li>
-<li>高效的Scan性能让Kudu能够比Hbase更好的支持查询操作</li>
-</ul>
-</li>
-<li>历史数据共存<ul>
-<li>Impala可以同时支持HDFS、Kudu等多个底层存储引擎</li>
-<li>不必把所有的数据都迁移到Kudu</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<h2 id="0x01、设计模式"><a href="#0x01、设计模式" class="headerlink" title="0x01、设计模式"></a>0x01、设计模式</h2></blockquote>
-<h3 id="1-数据类型"><a href="#1-数据类型" class="headerlink" title="1.数据类型"></a>1.数据类型</h3><ul>
-<li>boolean</li>
-<li>8-bit signed integer</li>
-<li>16-bit signed integer</li>
-<li>32-bit signed integer</li>
-<li>64-bit signed integer</li>
-<li>unixtime_micros (64-bit microseconds since the Unix epoch)</li>
-<li>single-precision (32-bit) IEEE-754 floating-point number</li>
-<li>double-precision (64-bit) IEEE-754 floating-point number</li>
-<li>decimal (see Decimal Type for details)</li>
-<li>UTF-8 encoded string (up to 64KB uncompressed)</li>
-<li>binary (up to 64KB uncompressed)</li>
-</ul>
-<h3 id="2-主键设计"><a href="#2-主键设计" class="headerlink" title="2.主键设计"></a>2.主键设计</h3><ul>
-<li>单列或多列<ul>
-<li>可以设置一列为主键，也同时设置多列为主键</li>
-</ul>
-</li>
-<li>唯一性<ul>
-<li>数据是全表唯一的</li>
-</ul>
-</li>
-<li>不可被更改性<ul>
-<li>在schema建成后，主键不能够修改</li>
-<li>其值不能被更改，不同即新增</li>
-</ul>
-</li>
-<li>主键索引<ul>
-<li>为主键建立B+索引</li>
-</ul>
-</li>
-</ul>
-<h3 id="3-分区设计-Partition"><a href="#3-分区设计-Partition" class="headerlink" title="3.分区设计(Partition)"></a>3.分区设计(Partition)</h3><ul>
-<li><p>表分区类型</p>
-<ul>
-<li>hash<ul>
-<li>按照某一个或几个值的hash进行分区</li>
-<li>可指定分区的个数</li>
-</ul>
-</li>
-<li>range<ul>
-<li>按照某一个字段值的范围分区</li>
-<li>可以动态的增删</li>
-</ul>
-</li>
-<li>multilevel<ul>
-<li>可以同时按照hash、range结合来分区</li>
-<li>既分散热点数据又可动态增删</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>比如建立如下一个表</p>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> metrics <span class="token punctuation">(</span>
-  host STRING <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
-  metric STRING <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
-  time INT64 <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
-  <span class="token keyword">value</span> <span class="token keyword">DOUBLE</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
-  <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span>host<span class="token punctuation">,</span> metric<span class="token punctuation">,</span> time<span class="token punctuation">)</span><span class="token punctuation">,</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-</li>
-<li><p>按照range来分区如下<br><img src="/assets/images/2019/07-12-range.png" alt="range"></p>
-</li>
-<li><p>按照hash分区如下<br><img src="/assets/images/2019/07-12-hash.png" alt="hash"></p>
-</li>
-<li><p>同时按照range和hash来分区<br><img src="/assets/images/2019/07-12-hash-range.png" alt="rang-hash"></p>
-</li>
-<li><p>同时按照hash和hash来分区<br><img src="/assets/images/2019/07-12-hash-hash.png" alt="hash-hash"></p>
-</li>
-<li><p>那么hash与range的优缺点是<br><img src="/assets/images/2019/07-12-hash-range-good-bad.png" alt="hash-range-good-bad"></p>
-</li>
-</ul>
-<h3 id="4-字段编码"><a href="#4-字段编码" class="headerlink" title="4.字段编码"></a>4.字段编码</h3><ul>
-<li><p>编码的类型如下<br><img src="/assets/images/2019/07-12-encoding.png" alt="encoding"></p>
-</li>
-<li><p>每中字段适用及默认的编码类型如下<br><img src="/assets/images/2019/07-12-field-encoding.png" alt="field-encoding"></p>
-</li>
-</ul>
-<h3 id="5-数据压缩"><a href="#5-数据压缩" class="headerlink" title="5.数据压缩"></a>5.数据压缩</h3><ul>
-<li>编码类型有一下几种<ul>
-<li>LZ4<ul>
-<li>可以设置为默认</li>
-</ul>
-</li>
-<li>zlib</li>
-<li>snappy</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<h2 id="0x02、存储结构"><a href="#0x02、存储结构" class="headerlink" title="0x02、存储结构"></a>0x02、存储结构</h2></blockquote>
-<ul>
-<li>逻辑结构图如下<br><img src="/assets/images/2019/07-12-store-tree.png" alt="store-tree"></li>
-</ul>
-<blockquote>
-<h2 id="0x03、读写流程"><a href="#0x03、读写流程" class="headerlink" title="0x03、读写流程"></a>0x03、读写流程</h2></blockquote>
-<h3 id="1-锁类型"><a href="#1-锁类型" class="headerlink" title="1.锁类型"></a>1.锁类型</h3><ul>
-<li>共享锁(读锁)<ul>
-<li>获得后只能够进行读操作</li>
-<li>其他读可以，任何写等待</li>
-</ul>
-</li>
-<li>互斥锁(写锁)<ul>
-<li>只能获得锁的对象进行写</li>
-<li>任何读等待，其他写等待</li>
-</ul>
-</li>
-<li>MVCC(Multi-Version Concurrency Control)<ul>
-<li>每一个写操作都会创建一个新版本的数据</li>
-<li>读操作会从有限多个版本的数据中挑选一个最合适的结果直接返回</li>
-<li>读写操作之间的冲突就不再需要被关注，而管理和快速挑选数据的版本就成了 MVCC 需要解决的主要问题。</li>
-</ul>
-</li>
-</ul>
-<h3 id="2-存储数据"><a href="#2-存储数据" class="headerlink" title="2.存储数据"></a>2.存储数据</h3><p><img src="/assets/images/2019/07-12-insert-data.png" alt="insert-data"><br><img src="/assets/images/2019/07-12-store-data.png" alt="store-data"><br>fluash示例如下<br><img src="/assets/images/2019/07-12-flush.png" alt="flush"></p>
-<h3 id="3-compaction"><a href="#3-compaction" class="headerlink" title="3.compaction"></a>3.compaction</h3><p><img src="/assets/images/2019/07-12-compation.png" alt="compation"></p>
-<h3 id="4-kudu-api"><a href="#4-kudu-api" class="headerlink" title="4.kudu api"></a>4.kudu api</h3><p><img src="/assets/images/2019/07-12-kuduapi.png" alt="kuduapi"></p>
-<blockquote>
-<h2 id="0x04、impala结合"><a href="#0x04、impala结合" class="headerlink" title="0x04、impala结合"></a>0x04、impala结合</h2></blockquote>
-<h3 id="1-功能简介"><a href="#1-功能简介" class="headerlink" title="1.功能简介"></a>1.功能简介</h3><ul>
-<li>支持存储<ul>
-<li>HDFS、Hbase、Kudu、Hive</li>
-<li>csv、file</li>
-</ul>
-</li>
-<li>结构概念<ul>
-<li>库、表、视图、角色</li>
-<li>权限、函数</li>
-</ul>
-</li>
-<li>多种类型<ul>
-<li>array、bigint、boolean、char</li>
-<li>map、struct</li>
-</ul>
-</li>
-</ul>
-<h3 id="2-表的概念"><a href="#2-表的概念" class="headerlink" title="2.表的概念"></a>2.表的概念</h3><ul>
-<li>内部表<ul>
-<li>通过impala创建的表都是内部表(internal)</li>
-<li>修改表结构对应的底层表也会进行变动</li>
-<li>删除表底层表也删除</li>
-</ul>
-</li>
-<li>外部表<ul>
-<li>不同过impala创建的表都是外部表(external)</li>
-<li>要操作这些表，需要在impala建立表的映射关系</li>
-<li>通过sql修改表结构或者删除表不会删除底层表，删除的只是表的映射关系</li>
-</ul>
-</li>
-</ul>
-<h3 id="3-建表示例"><a href="#3-建表示例" class="headerlink" title="3.建表示例"></a>3.建表示例</h3><p><img src="/assets/images/2019/07-12-impala-create.png" alt="impala-create"></p>
-<h3 id="4-属性操作"><a href="#4-属性操作" class="headerlink" title="4.属性操作"></a>4.属性操作</h3><p><img src="/assets/images/2019/07-12-impala-property.png" alt="impala-property"></p>
-<h3 id="5-常用操作"><a href="#5-常用操作" class="headerlink" title="5.常用操作"></a>5.常用操作</h3><p><img src="/assets/images/2019/07-12-impala-op.png" alt="impala-op"></p>
-<h3 id="6-python-api"><a href="#6-python-api" class="headerlink" title="6.python api"></a>6.python api</h3><p><img src="/assets/images/2019/07-12-impalaapi.png" alt="api"></p>
-<blockquote>
-<h2 id="0x05、限制条件"><a href="#0x05、限制条件" class="headerlink" title="0x05、限制条件"></a>0x05、限制条件</h2></blockquote>
-<h3 id="1-表限制"><a href="#1-表限制" class="headerlink" title="1.表限制"></a>1.表限制</h3><ul>
-<li>表的备份数必须为奇数，最⼤大为7</li>
-<li>备份数在设置后不不可修改</li>
-<li>删除表后空间会⽴立⻢马释放</li>
-<li>建表时partition总数限制为60个，后续可以添加</li>
-</ul>
-<h3 id="2-列限制"><a href="#2-列限制" class="headerlink" title="2.列限制"></a>2.列限制</h3><ul>
-<li>部分数据类型不支持，如CHAR, VARCHAR, DATE, ARRAY等</li>
-<li>数据类型以及是否可为空等列列属性不支持修改</li>
-<li>一张表最多有300列列</li>
-<li>删除列列的时候不会立马清除空间，需要执⾏Compaction操作，但是 Compaction操作不⽀持手动执行</li>
-</ul>
-<h3 id="3-主键限制"><a href="#3-主键限制" class="headerlink" title="3.主键限制"></a>3.主键限制</h3><ul>
-<li>表创建后主键不不可更更改</li>
-<li>主键字段必须在其他字段之前定义</li>
-<li>⼀行对应的主键内容不可以被Update操作修改。要修改⼀行的主键值，需 要删除并新增⼀行新数据，并且该操作无法保持原子性</li>
-<li>主键的类型不支持DOUBLE、FLOAT、BOOL，且必须是非空的(NOT NULL)</li>
-<li>不支持⾃自动⽣生成主键</li>
-<li>每行对应的主键存储单元(CELL)最⼤为16KB</li>
-</ul>
-<h3 id="4-单元限制"><a href="#4-单元限制" class="headerlink" title="4.单元限制"></a>4.单元限制</h3><ul>
-<li>单元对应的数据最⼤大为64KB，并且是在压缩前</li>
-</ul>
-<h3 id="5-分片限制"><a href="#5-分片限制" class="headerlink" title="5.分片限制"></a>5.分片限制</h3><ul>
-<li>分⽚只支持手动指定，⾃自动分⽚不支持</li>
-<li>分片设定不不⽀支持修改，修改分⽚设定需要”建新表-导数据-删老表”操作;</li>
-<li>丢掉多数备份的Tablets需要⼿手动修复。</li>
-<li>Range⽀持删除或新增</li>
-</ul>
-<h3 id="6-容量建议"><a href="#6-容量建议" class="headerlink" title="6.容量建议"></a>6.容量建议</h3><ul>
-<li>建议tablet servers的最⼤大数量量为100;</li>
-<li>建议masters的最⼤大数量量为3;</li>
-<li>建议每个tablet server存储的数据最大为8T</li>
-<li>每个tablet server存储的tablets数量建议在1000以内;</li>
-<li>每个表分片后的tablets存储在单个tablet server的最⼤大数量为60。</li>
-</ul>
-<h3 id="7-Impala集成限制"><a href="#7-Impala集成限制" class="headerlink" title="7.Impala集成限制"></a>7.Impala集成限制</h3><ul>
-<li>不支持varchar、array、map、struct等类型</li>
-<li>Impala⼤小写不不敏敏感，kudu是⼤小写敏敏感，所以表名及字段最好都是小写</li>
-<li>!=和like查询是kudu把数据全部给impala，然后在过滤的，相⽐其他操作效率要低</li>
-<li>Updates、inserts、deletes都是⾮非事务的</li>
-<li>一条sql的并发执⾏行行数在于tablets的个数，所以推荐⾄至少有10个tablets</li>
-</ul>
-<h3 id="8-其他限制"><a href="#8-其他限制" class="headerlink" title="8.其他限制"></a>8.其他限制</h3><ul>
-<li>主键有索引，不支持⼆级索引(Secondary indexes)</li>
-<li>不支持多⾏行行的事务操作</li>
-<li>关系型数据的一些功能，如外键，不支持;</li>
-<li>列和表的名字强制为UTF-8编码，并且最大256字节</li>
-</ul>
-<blockquote>
-<h2 id="0x06、文档资源"><a href="#0x06、文档资源" class="headerlink" title="0x06、文档资源"></a>0x06、文档资源</h2></blockquote>
-<ul>
-<li><a href="https://kudu.apache.org/kudu.pdf" target="_blank" rel="noopener">https://kudu.apache.org/kudu.pdf</a></li>
-<li><a href="https://www.cloudera.com/documentation/enterprise/latest/PDF/cloudera-kudu.pdf" target="_blank" rel="noopener">https://www.cloudera.com/documentation/enterprise/latest/PDF/cloudera-kudu.pdf</a></li>
-<li><a href="https://kudu.apache.org/docs/" target="_blank" rel="noopener">https://kudu.apache.org/docs/</a></li>
-<li><a href="https://github.com/apache/kudu/blob/master/docs/design-docs/tablet.md" target="_blank" rel="noopener">https://github.com/apache/kudu/blob/master/docs/design-docs/tablet.md</a></li>
-<li><a href="https://github.com/apache/kudu/blob/master/docs/design-docs/cfile.md" target="_blank" rel="noopener">https://github.com/apache/kudu/blob/master/docs/design-docs/cfile.md</a></li>
-<li><a href="https://raft.github.io/raft.pdf" target="_blank" rel="noopener">https://raft.github.io/raft.pdf</a></li>
-<li><a href="https://impala.apache.org/docs/build/impala-2.8.pdf" target="_blank" rel="noopener">https://impala.apache.org/docs/build/impala-2.8.pdf</a></li>
-<li><a href="https://www.cloudera.com/documentation/enterprise/5-10-x/topics/impala_tutorial.html" target="_blank" rel="noopener">https://www.cloudera.com/documentation/enterprise/5-10-x/topics/impala_tutorial.html</a></li>
-</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gprof2dot -f pstats profile.out | dot -Tpng -o profile.png</span><br></pre></td></tr></table></figure>
+
+<p>其效果如下图<br><img src="/assets/images/2019/10-08-profile.png" alt="cprofile分析图"></p>
 
             </div>
             <hr/>
@@ -848,9 +543,9 @@ Fast Analytics on Fast ">
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《kudu简介》
+                    《python性能分析工具cProfile》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/07/12/2019/07-12-kudu简介/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/10/08/2019/10-08-python性能分析工具/" property="cc:attributionName"
                rel="cc:attributionURL">
                 hackfox
             </a> 采用
@@ -891,7 +586,7 @@ Fast Analytics on Fast ">
         repo: 'xsoer.github.io',
         owner: 'xsoer',
         admin: ["xsoer"],
-        id: '2019-07-12T10-13-23',
+        id: '2019-10-08T22-09-33',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -912,54 +607,54 @@ Fast Analytics on Fast ">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/09/02/2019/09-02-神经网络类型/">
+                <a href="/2019/10/08/2019/10-08-python性能分析工具/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="神经网络类型">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="python性能分析工具cProfile">
                         
-                        <span class="card-title">神经网络类型</span>
+                        <span class="card-title">python性能分析工具cProfile</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            0x00、大体类型
-1.卷积神经网络
-2.循环神经网络
-3.深度信念网络
-4.生成对抗网络
-5.深度强化学习
+                            0x00、cProfile简介
+cProfile是python自带的模块，对运行的代码做性能分析。可以输出运行时长，
 
-0x01、卷积神经网络
-卷积神经网络属于前面介绍的前馈神经网络之一，它对于图形图像的处理有着独特的效果，在结构上至少包括卷积层和
+0x01、分析示例
+1.直接加载cProfile模块来运行代码进行输出分析。
+
+1234567891011121314#
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-02
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-08
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/AI/" class="post-category" target="_blank">
-                                    AI
+                            <a href="/categories/python/" class="post-category" target="_blank">
+                                    python
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/AI/" target="_blank">
-                        <span class="chip bg-color">AI</span>
+                    <a href="/tags/python/" target="_blank">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
                 </div>
@@ -973,55 +668,32 @@ Fast Analytics on Fast ">
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/04/23/2019/04-23-浏览器工具集/">
+                <a href="/2019/09/06/2019/09-06-数据同步工具/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="浏览器工具集">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="数据同步工具">
                         
-                        <span class="card-title">浏览器工具集</span>
+                        <span class="card-title">数据同步工具</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            0x00、插件
-github
-sourcegraph
-octotree
+                            0x00、总览
+1.定时任务
+2.canal/otter
+3.Datax
+4.Sqoop
+5.NiFi
+6.mongoshake
 
-
-剪切网页
-evernote
-
-
-调试接口
-JSONview
-
-
-词典
-沙拉查词
-
-
-广告
-广告终结者
-
-
-产品原型
-axure
-
-
-多tab管理
-Toby
-
-
-
-0
+0x02、定时任务定时任务工具是作为数据同步的最基本也是最常用的工具。其不但用于定时的数据同步，而且作为定时
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-23
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-06
                             </span>
                         <span class="publish-author">
                             
