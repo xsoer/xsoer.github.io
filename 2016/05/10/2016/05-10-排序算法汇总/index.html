@@ -945,7 +945,9 @@ PARTITION(A,p,r)
 </li>
 </ul>
 <h4 id="1-算法思路-6"><a href="#1-算法思路-6" class="headerlink" title="1.算法思路"></a>1.算法思路</h4><ul>
-<li>伪代码描述<pre><code># 用于维护最大根堆的性质
+<li>伪代码描述</li>
+</ul>
+<pre><code># 用于维护最大根堆的性质
 # 对于树高为h的大根堆，其时间复杂度为O(h)
 MAX-HEAPIFY(A,i)
 1  l = LEFT(i)
@@ -958,65 +960,72 @@ MAX-HEAPIFY(A,i)
 8  if largest != i
 9    exchange A[i] with A[largest]
 10   MAX-HEAPIFY(A,largest)
-</code></pre></li>
+
+# 建堆
+BUILD-MAX-HEAP(A)
+1  A.heap-size = A.length
+2  for i = ⌊A.length/2⌋ downto 1
+3    MAX-HEAPIFY(A, i)
+
+# 堆排序
+HEAP-SORT(A)
+1  BUILD-MAX-HEAP(A)
+2  for i = A.length downto 2
+3    exchange A[1] with A[i]
+4    MAX-HEAPIFY(A, 1)</code></pre><h4 id="2-算法复杂度-7"><a href="#2-算法复杂度-7" class="headerlink" title="2.算法复杂度"></a>2.算法复杂度</h4><ul>
+<li>时间复杂度<ul>
+<li>最佳情况：T(n) = O(nlogn)</li>
+<li>最差情况：T(n) = O(nlogn)</li>
+<li>平均情况：T(n) = O(nlogn)</li>
 </ul>
-<h1 id="建堆"><a href="#建堆" class="headerlink" title="建堆"></a>建堆</h1><p>BUILD-MAX-HEAP(A)<br>1  A.heap-size = A.length<br>2  for i = ⌊A.length/2⌋ downto 1<br>3    MAX-HEAPIFY(A, i)</p>
-<h1 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h1><p>HEAP-SORT(A)<br>1  BUILD-MAX-HEAP(A)<br>2  for i = A.length downto 2<br>3    exchange A[1] with A[i]<br>4    MAX-HEAPIFY(A, 1)</p>
-<pre><code>
-#### 2.算法复杂度
+</li>
+<li>空间复杂度<ul>
+<li>O(1)</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-算法实现-7"><a href="#3-算法实现-7" class="headerlink" title="3.算法实现"></a>3.算法实现</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> collections <span class="token keyword">import</span> deque
 
-* 时间复杂度
-    * 最佳情况：T(n) = O(nlogn)
-    * 最差情况：T(n) = O(nlogn)
-    * 平均情况：T(n) = O(nlogn)
-* 空间复杂度
-    * O(1)
+<span class="token keyword">def</span> <span class="token function">swap_param</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span> i<span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    L<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> L<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> L<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> L<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+    <span class="token keyword">return</span> L
 
+<span class="token keyword">def</span> <span class="token function">heap_adjust</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span> start<span class="token punctuation">,</span> end<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    temp <span class="token operator">=</span> L<span class="token punctuation">[</span>start<span class="token punctuation">]</span>
 
-#### 3.算法实现
+    i <span class="token operator">=</span> start
+    j <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> i
 
-```python
-from collections import deque
+    <span class="token keyword">while</span> j <span class="token operator">&lt;=</span> end<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>j <span class="token operator">&lt;</span> end<span class="token punctuation">)</span> <span class="token operator">and</span> <span class="token punctuation">(</span>L<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> L<span class="token punctuation">[</span>j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            j <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token keyword">if</span> temp <span class="token operator">&lt;</span> L<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">:</span>
+            L<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> L<span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+            i <span class="token operator">=</span> j
+            j <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> i
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">break</span>
+    L<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> temp
 
-def swap_param(L, i, j):
-    L[i], L[j] = L[j], L[i]
-    return L
+<span class="token keyword">def</span> <span class="token function">heap_sort</span><span class="token punctuation">(</span>L<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    L_length <span class="token operator">=</span> len<span class="token punctuation">(</span>L<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
 
-def heap_adjust(L, start, end):
-    temp = L[start]
+    first_sort_count <span class="token operator">=</span> L_length <span class="token operator">//</span> <span class="token number">2</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>first_sort_count<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        heap_adjust<span class="token punctuation">(</span>L<span class="token punctuation">,</span> first_sort_count <span class="token operator">-</span> i<span class="token punctuation">,</span> L_length<span class="token punctuation">)</span>
 
-    i = start
-    j = 2 * i
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>L_length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        L <span class="token operator">=</span> swap_param<span class="token punctuation">(</span>L<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> L_length <span class="token operator">-</span> i<span class="token punctuation">)</span>
+        heap_adjust<span class="token punctuation">(</span>L<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> L_length <span class="token operator">-</span> i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
 
-    while j &lt;= end:
-        if (j &lt; end) and (L[j] &lt; L[j + 1]):
-            j += 1
-        if temp &lt; L[j]:
-            L[i] = L[j]
-            i = j
-            j = 2 * i
-        else:
-            break
-    L[i] = temp
+    <span class="token keyword">return</span> <span class="token punctuation">[</span>L<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> len<span class="token punctuation">(</span>L<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
 
-def heap_sort(L):
-    L_length = len(L) - 1
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">45</span><span class="token punctuation">,</span> <span class="token number">76</span><span class="token punctuation">,</span> <span class="token number">47</span><span class="token punctuation">,</span> <span class="token number">34</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">]</span>
+    L <span class="token operator">=</span> deque<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+    L<span class="token punctuation">.</span>appendleft<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>heap_sort<span class="token punctuation">(</span>L<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 
-    first_sort_count = L_length // 2
-    for i in range(first_sort_count):
-        heap_adjust(L, first_sort_count - i, L_length)
-
-    for i in range(L_length - 1):
-        L = swap_param(L, 1, L_length - i)
-        heap_adjust(L, 1, L_length - i - 1)
-
-    return [L[i] for i in range(1, len(L))]
-
-if __name__ == &#39;__main__&#39;:
-    a = [2, 1, 4, 6, 3, 45, 76, 47, 34, 5, 23]
-    L = deque(a)
-    L.appendleft(0)
-    print(heap_sort(L))</code></pre>
             </div>
             <hr/>
 
