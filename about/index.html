@@ -16,26 +16,23 @@
     <title>关于 | hackfox</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
-    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
     <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
-    <style type="text/css">
-        
-    </style>
-
-    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/css/prism-duotone-dark.css" type="text/css"></head>
 
 
 <body>
-
-<header class="navbar-fixed">
+    <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="nav-wrapper container">
+        <div id="navContainer" class="nav-wrapper head-container">
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
                     
@@ -46,59 +43,69 @@
             </div>
             
 
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
-<ul class="right">
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
     
-    <li class="hide-on-med-and-down">
-        <a href="/" class="waves-effect waves-light">
-            
-            <i class="fa fa-home"></i>
-            
-            <span>首页</span>
-        </a>
-    </li>
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
     
-    <li class="hide-on-med-and-down">
-        <a href="/tags" class="waves-effect waves-light">
-            
-            <i class="fa fa-tags"></i>
-            
-            <span>标签</span>
-        </a>
-    </li>
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
     
-    <li class="hide-on-med-and-down">
-        <a href="/categories" class="waves-effect waves-light">
-            
-            <i class="fa fa-bookmark"></i>
-            
-            <span>分类</span>
-        </a>
-    </li>
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
     
-    <li class="hide-on-med-and-down">
-        <a href="/archives" class="waves-effect waves-light">
-            
-            <i class="fa fa-archive"></i>
-            
-            <span>归档</span>
-        </a>
-    </li>
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
     
-    <li class="hide-on-med-and-down">
-        <a href="/about" class="waves-effect waves-light">
-            
-            <i class="fa fa-user-circle-o"></i>
-            
-            <span>关于</span>
-        </a>
-    </li>
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
     
-    <li>
-        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
-        </a>
-    </li>
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
 </ul>
 
 <div id="mobile-nav" class="side-nav sidenav">
@@ -119,49 +126,59 @@
 
     <ul class="menu-list mobile-menu-list">
         
-        <li>
-            <a href="/" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-home"></i>
-                
-                首页
-            </a>
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
         </li>
         
-        <li>
-            <a href="/tags" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-tags"></i>
-                
-                标签
-            </a>
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
         </li>
         
-        <li>
-            <a href="/categories" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-bookmark"></i>
-                
-                分类
-            </a>
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
         </li>
         
-        <li>
-            <a href="/archives" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-archive"></i>
-                
-                归档
-            </a>
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
         </li>
         
-        <li>
-            <a href="/about" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-user-circle-o"></i>
-                
-                关于
-            </a>
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
         </li>
         
         
@@ -175,7 +192,7 @@
 
 </header>
 
-<style type="text/css">
+    <style type="text/css">
     /* don't remove. */
     .about-cover {
         height: 75vh;
@@ -189,22 +206,26 @@
         <div class="brand">
             <div class="title center-align">
                 
-                    专注 慎思 博学
+                专注 慎思 博学
                 
             </div>
 
             <div class="description center-align">
                 
-                    架构、AI、大数据、数学、python、go
+                架构、AI、大数据、数学、python、go
                 
             </div>
         </div>
     </div>
 </div>
+
+
 <script>
-// 每天切换 banner 图.  Switch banner image every day.
-$('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
+    // 每天切换 banner 图.  Switch banner image every day.
+    $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
 </script>
+
+
     </div>
 </div>
 
@@ -217,23 +238,24 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                     <div class="post-statis col l4 hide-on-med-and-down" data-aos="zoom-in-right">
                         
 <div class="statis">
-    <span class="count"><a href="/" target="_blank">31</a></span>
+    <span class="count"><a href="/">31</a></span>
     <span class="name">文章</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/categories" target="_blank">17</a></span>
+    <span class="count"><a href="/categories">17</a></span>
     <span class="name">分类</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/tags" target="_blank">18</a></span>
+    <span class="count"><a href="/tags">18</a></span>
     <span class="name">标签</span>
 </div>
+
 
                     </div>
                     <div class="col s12 m12 l4">
@@ -246,23 +268,24 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                                 <div class="post-statis hide-on-large-only" data-aos="zoom-in-right">
                                     
 <div class="statis">
-    <span class="count"><a href="/" target="_blank">31</a></span>
+    <span class="count"><a href="/">31</a></span>
     <span class="name">文章</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/categories" target="_blank">17</a></span>
+    <span class="count"><a href="/categories">17</a></span>
     <span class="name">分类</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/tags" target="_blank">18</a></span>
+    <span class="count"><a href="/tags">18</a></span>
     <span class="name">标签</span>
 </div>
+
 
                                 </div>
                                 <div class="title">hackfox</div>
@@ -270,13 +293,13 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                                 <div class="social-link hide-on-large-only" data-aos="zoom-in-left">
                                     
     <a href="https://github.com/xsoer" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fa fa-github"></i>
+        <i class="fab fa-github"></i>
     </a>
 
 
 
     <a href="mailto:codehackfox@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fa fa-envelope-open"></i>
+        <i class="fas fa-envelope-open"></i>
     </a>
 
 
@@ -300,13 +323,13 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                         <div class="social-link">
                             
     <a href="https://github.com/xsoer" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fa fa-github"></i>
+        <i class="fab fa-github"></i>
     </a>
 
 
 
     <a href="mailto:codehackfox@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fa fa-envelope-open"></i>
+        <i class="fas fa-envelope-open"></i>
     </a>
 
 
@@ -341,7 +364,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
 
 <div id="postCharts" class="post-charts">
     <div class="title center-align" data-aos="zoom-in-up">
-        <i class="fa fa-bar-chart"></i>&nbsp;&nbsp;文章统计图
+        <i class="far fa-bar-chart"></i>&nbsp;&nbsp;文章统计图
     </div>
     <div class="row">
         <div class="chart col s12 m6 l4" data-aos="zoom-in-up">
@@ -429,7 +452,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"数据结构","value":1},{"name":"PHP","value":3},{"name":"mysql","value":4},{"name":"GIT","value":1},{"name":"VIM","value":1},{"name":"操作系统","value":1},{"name":"docker","value":2},{"name":"数据库","value":4},{"name":"python","value":3},{"name":"Development","value":0},{"name":"javascript","value":1},{"name":"工具","value":6},{"name":"大数据","value":0},{"name":"numpy","value":0},{"name":"AI","value":2},{"name":"kudu","value":1},{"name":"运维","value":1}],
+                data: [{"name":"Development","value":0},{"name":"python","value":3},{"name":"数据库","value":4},{"name":"大数据","value":0},{"name":"numpy","value":0},{"name":"mysql","value":4},{"name":"数据结构","value":1},{"name":"PHP","value":3},{"name":"运维","value":1},{"name":"GIT","value":1},{"name":"VIM","value":1},{"name":"操作系统","value":1},{"name":"docker","value":2},{"name":"工具","value":6},{"name":"javascript","value":1},{"name":"AI","value":2},{"name":"kudu","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -453,7 +476,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
         xAxis: [
             {
                 type: 'category',
-                data: ["工具","mysql","数据库","python","PHP","docker","AI","数据结构","VIM","操作系统"]
+                data: ["工具","数据库","mysql","python","PHP","AI","docker","运维","javascript","kudu"]
             }
         ],
         yAxis: [
@@ -501,7 +524,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 
 <div class="my-skills">
     <div class="title center-align" data-aos="zoom-in-up">
-        <i class="fa fa-wrench"></i>&nbsp;&nbsp;我的技能
+        <i class="fas fa-wrench"></i>&nbsp;&nbsp;我的技能
     </div>
     <div class="row">
         
@@ -583,110 +606,110 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
         <div class="tag-chips center-align">
             
             
-            <a href="/tags/数据结构/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">数据结构</span>
-            </a>
-            
-            
-            
-            <a href="/tags/PHP/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">PHP</span>
-            </a>
-            
-            
-            
-            <a href="/tags/mysql/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">mysql</span>
-            </a>
-            
-            
-            
-            <a href="/tags/GIT/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">GIT</span>
-            </a>
-            
-            
-            
-            <a href="/tags/VIM/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">VIM</span>
-            </a>
-            
-            
-            
-            <a href="/tags/操作系统/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">操作系统</span>
-            </a>
-            
-            
-            
-            <a href="/tags/docker/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">docker</span>
-            </a>
-            
-            
-            
-            <a href="/tags/数据库/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">数据库</span>
-            </a>
-            
-            
-            
-            <a href="/tags/python/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">python</span>
-            </a>
-            
-            
-            
-            <a href="/tags/新技术/" target="_blank">
+            <a href="/tags/新技术/">
                 <span class="chip center-align waves-effect waves-light chip-default">新技术</span>
             </a>
             
             
             
-            <a href="/tags/面试/" target="_blank">
+            <a href="/tags/面试/">
                 <span class="chip center-align waves-effect waves-light chip-default">面试</span>
             </a>
             
             
             
-            <a href="/tags/javascript/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">javascript</span>
+            <a href="/tags/python/">
+                <span class="chip center-align waves-effect waves-light chip-default">python</span>
             </a>
             
             
             
-            <a href="/tags/工具/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">工具</span>
+            <a href="/tags/数据库/">
+                <span class="chip center-align waves-effect waves-light chip-default">数据库</span>
             </a>
             
             
             
-            <a href="/tags/大数据/" target="_blank">
+            <a href="/tags/大数据/">
                 <span class="chip center-align waves-effect waves-light chip-default">大数据</span>
             </a>
             
             
             
-            <a href="/tags/numpy/" target="_blank">
+            <a href="/tags/numpy/">
                 <span class="chip center-align waves-effect waves-light chip-default">numpy</span>
             </a>
             
             
             
-            <a href="/tags/AI/" target="_blank">
+            <a href="/tags/mysql/">
+                <span class="chip center-align waves-effect waves-light chip-default">mysql</span>
+            </a>
+            
+            
+            
+            <a href="/tags/数据结构/">
+                <span class="chip center-align waves-effect waves-light chip-default">数据结构</span>
+            </a>
+            
+            
+            
+            <a href="/tags/PHP/">
+                <span class="chip center-align waves-effect waves-light chip-default">PHP</span>
+            </a>
+            
+            
+            
+            <a href="/tags/运维/">
+                <span class="chip center-align waves-effect waves-light chip-default">运维</span>
+            </a>
+            
+            
+            
+            <a href="/tags/GIT/">
+                <span class="chip center-align waves-effect waves-light chip-default">GIT</span>
+            </a>
+            
+            
+            
+            <a href="/tags/VIM/">
+                <span class="chip center-align waves-effect waves-light chip-default">VIM</span>
+            </a>
+            
+            
+            
+            <a href="/tags/操作系统/">
+                <span class="chip center-align waves-effect waves-light chip-default">操作系统</span>
+            </a>
+            
+            
+            
+            <a href="/tags/docker/">
+                <span class="chip center-align waves-effect waves-light chip-default">docker</span>
+            </a>
+            
+            
+            
+            <a href="/tags/工具/">
+                <span class="chip center-align waves-effect waves-light chip-default">工具</span>
+            </a>
+            
+            
+            
+            <a href="/tags/javascript/">
+                <span class="chip center-align waves-effect waves-light chip-default">javascript</span>
+            </a>
+            
+            
+            
+            <a href="/tags/AI/">
                 <span class="chip center-align waves-effect waves-light chip-default">AI</span>
             </a>
             
             
             
-            <a href="/tags/kudu/" target="_blank">
+            <a href="/tags/kudu/">
                 <span class="chip center-align waves-effect waves-light chip-default">kudu</span>
-            </a>
-            
-            
-            
-            <a href="/tags/运维/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">运维</span>
             </a>
             
             
@@ -695,13 +718,14 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
     
 
 </div>
+
                 
 
                 
                 
 <div id="myGallery" class="my-gallery">
     <div class="title center-align" data-aos="zoom-in-up">
-        <i class="fa fa-photo"></i>&nbsp;&nbsp;相册
+        <i class="far fa-image"></i>&nbsp;&nbsp;相册
     </div>
     <div class="row">
         
@@ -744,73 +768,92 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
         </div>
     </div>
 </main>
-<footer class="page-footer bg-color">
+
+    <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            本站由&nbsp;&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>&nbsp;基于
-            <a href="https://hexo.io/" target="_blank">Hexo</a>&nbsp;的
-            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>&nbsp;主题搭建
+            Copyright&nbsp;&copy;
+            <span id="year">年份</span>
+            <a href="http://yoursite.com" target="_blank">hackfox</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
             
-            &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">58.9k</span>&nbsp;字
             
             
             
             
             
             <span id="busuanzi_container_site_pv">
-                |&nbsp;<i class="fa fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
                     class="white-color"></span>&nbsp;次
             </span>
             
             
             <span id="busuanzi_container_site_uv">
-                |&nbsp;<i class="fa fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
                     class="white-color"></span>&nbsp;人
             </span>
+            
             <br>
-            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            
+            <span id="sitetime">载入运行时间...</span>
             <script>
-                var now = new Date();
-
-                function createtime() {
-                    var grt = new Date("Mon Sep 09 2019 08:00:00 GMT+0800 (GMT+08:00)");
-                    now.setTime(now.getTime() + 250);
-                    days = (now - grt) / 1000 / 60 / 60 / 24;
-                    dnum = Math.floor(days);
-                    hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
-                    hnum = Math.floor(hours);
-                    if (String(hnum).length == 1) {
-                        hnum = "0" + hnum;
+                function siteTime() {
+                    window.setTimeout("siteTime()", 1000);
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2019";
+                    var startMonth = "09";
+                    var startDate = "09";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
                     }
-                    minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
-                    mnum = Math.floor(minutes);
-                    if (String(mnum).length == 1) {
-                        mnum = "0" + mnum;
-                    }
-                    seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-                    snum = Math.round(seconds);
-                    if (String(snum).length == 1) {
-                        snum = "0" + snum;
-                    }
-                    document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
-                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
                 }
-                setInterval("createtime()", 250);
+                setInterval(siteTime, 1000);
             </script>
             
+            <br>
             
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
     <a href="https://github.com/xsoer" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fa fa-github"></i>
+        <i class="fab fa-github"></i>
     </a>
 
 
 
     <a href="mailto:codehackfox@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fa fa-envelope-open"></i>
+        <i class="fas fa-envelope-open"></i>
     </a>
 
 
@@ -832,11 +875,11 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
 <div class="progress-bar"></div>
 
 
-<!-- 搜索遮罩框 -->
+    <!-- 搜索遮罩框 -->
 <div id="searchModal" class="modal">
     <div class="modal-content">
         <div class="search-header">
-            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
             <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
                    class="search-input">
         </div>
@@ -850,22 +893,22 @@ $(function () {
     searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
 });
 </script>
-<!-- 回到顶部按钮 -->
+    <!-- 回到顶部按钮 -->
 <div id="backTop" class="top-scroll">
     <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fa fa-angle-up"></i>
+        <i class="fas fa-arrow-up"></i>
     </a>
 </div>
 
 
-<script src="/libs/materialize/materialize.min.js"></script>
-<script src="/libs/masonry/masonry.pkgd.min.js"></script>
-<script src="/libs/aos/aos.js"></script>
-<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
-<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
-<script src="/js/matery.js"></script>
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114671402-1"></script>
 <script>
@@ -879,12 +922,47 @@ $(function () {
 </script>
 
 
+    <!-- Baidu Analytics -->
 
-    <script src="/libs/others/clicklove.js"></script>
+    <!-- Baidu Push -->
 
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
 
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
 
+    
+
+    
+
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
 
 </body>
+
 </html>
