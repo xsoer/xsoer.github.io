@@ -4,10 +4,12 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="系统开机自检, hackfox">
-    <meta name="description" content="0x00、关于开机自动检测硬盘的原因
-第一种：是你非法关机造成的，比如直接断电的情况。
-第二种：是和硬盘的分区格式有关，FAT32格式在非法关机后会在开机时要求检测硬盘，而且必须检测完毕才不会在下次启动时重新检测。系统有一个文件中记录了检测">
+    <meta name="keywords" content="crontab表示法, hackfox">
+    <meta name="description" content="一、简介crontab是linux上的定时任务工具，用来做定时管理服务。其常用的命令如下
+crontab -l # 罗列出当前用户的所有定时任务列表
+crontab -e # 编辑定时任务
+crontab -r # 删除定时任务
+当然，最重">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>系统开机自检 | hackfox</title>
+    <title>crontab表示法 | hackfox</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -198,13 +200,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        系统开机自检
+                        crontab表示法
                     </div>
                 </div>
             </div>
@@ -316,8 +318,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/操作系统/">
-                                <span class="chip bg-color">操作系统</span>
+                            <a href="/tags/linux/">
+                                <span class="chip bg-color">linux</span>
                             </a>
                         
                     </div>
@@ -328,8 +330,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/操作系统/" class="post-category">
-                                操作系统
+                            <a href="/categories/linux/" class="post-category">
+                                linux
                             </a>
                         
                     </div>
@@ -341,7 +343,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2017-09-28
+                    2017-07-20
                 </div>
                 
 
@@ -350,14 +352,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    624
+                    474
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
 				
@@ -373,20 +375,42 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="0x00、关于开机自动检测硬盘的原因"><a href="#0x00、关于开机自动检测硬盘的原因" class="headerlink" title="0x00、关于开机自动检测硬盘的原因"></a>0x00、关于开机自动检测硬盘的原因</h2><ul>
-<li>第一种：是你非法关机造成的，比如直接断电的情况。</li>
-<li>第二种：是和硬盘的分区格式有关，FAT32格式在非法关机后会在开机时要求检测硬盘，而且必须检测完毕才不会在下次启动时重新检测。系统有一个文件中记录了检测是否结束的信息，有时即使检测完成了也会因为这个文件没有更新而在下次开机时重新检测。</li>
-<li>第三种：当硬盘出现坏道也会出现开机自动检测硬盘。</li>
+                <h3 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h3><p>crontab是linux上的定时任务工具，用来做定时管理服务。其常用的命令如下</p>
+<pre class=" language-shell"><code class="language-shell">crontab -l # 罗列出当前用户的所有定时任务列表
+crontab -e # 编辑定时任务
+crontab -r # 删除定时任务</code></pre>
+<p>当然，最重要的还是如何使用cron来表示什么时候什么频次来执行任务。</p>
+<pre><code>*  *  * *  *   command
+分 时 日 月 周   命令</code></pre><p>如上表示，有5个位置符来表示，后边跟需要执行的命令。</p>
+<ul>
+<li>第一列：分(0-59)</li>
+<li>第二列：时(0-23)</li>
+<li>第三列：日(1-31)</li>
+<li>第四列：月(1-12)</li>
+<li>第五列：周(0-6,0为星期天)</li>
 </ul>
-<h2 id="0x01、关于取消开机自动检测硬盘的方法"><a href="#0x01、关于取消开机自动检测硬盘的方法" class="headerlink" title="0x01、关于取消开机自动检测硬盘的方法"></a>0x01、关于取消开机自动检测硬盘的方法</h2><ul>
-<li>方法一： 如果分区是FAT32格式，将其转换成NTFS，方法是在命令提示符下输入：convert X: /fs:ntfs</li>
-<li>方法二： 如果是非正常的关机，然后开机检测时又跳过了，每一次都会运行的。如果不是这个原因的话，您就要检查一下D盘状态是否正常，修正一下硬盘的错误。方法为 “开始”→”运行”，在窗口中输入”chkdskX:/f”(x为盘符)，这个命令可以检查文件系统中的逻辑错误，并进行修复；然后启动”磁盘碎片整理” 对相应的磁盘进行碎片整理，可以消除再次的磁盘扫描。如果还是不行，就可能是硬盘出现了坏道，最简单的方法是把D盘的数据备份一下，然后格式化D盘，就可 以正常使用了。</li>
-<li>方法三：打开”我的电脑”－右键点击X盘选择”属性”－选择”工具”－”查错”中点”开始检查”－选中”自动修复文件系统错误”和”扫描并试图恢复坏扇区”，然后点”开始”。</li>
-<li>方法四：我们知道系统之所以要对磁盘进行扫描是因为在注册表中设置了”脏”字节。在注册表中找到以下分支:</li>
-<li>方法五：如果是硬盘出现坏道，请使用磁盘修复工具进行修复，如使用HDDRegenerate等。</li>
-<li>方法六：一定是你在BIOS设置中选择了每次开机都要检测硬盘,所以才这样,和你的电脑配置是没有关系的。解决方法在开机后按DEL进入BIOS选 择Quick Power On Self Test（快速加电自检测），你的一定设为了Enabled了,选择Disabled，将其关闭就行了。</li>
-</ul>
-
+<p>除了以上的表示方法，还可以结合一些特殊的符号来表示</p>
+<pre><code>* ： 表示任何时刻
+, ： 表示在这几个选项内
+－ ： 表示一个范围，如第二列里： 3-5，就表示3到5点
+/n ： 表示每个n的单位执行一次，如第二列里，*/1, 就表示每隔1个小时执行一次命令。也可以写成1-23/1.</code></pre><h3 id="二、示例"><a href="#二、示例" class="headerlink" title="二、示例"></a>二、示例</h3><pre><code>* * * * *                           每分钟执行一次
+0 */1 * * *                         每分钟执行一次
+43 21 * * *                         21:43 执行
+15 05 * * *                         05:15 执行
+0 17 * * *                          17:00 执行
+0 17 * * 1                          每周一的 17:00 执行
+0,10 17 * * 0,2,3                   每周日,周二,周三的 17:00和 17:10 执行
+0-10 17 1 * *                       毎月1日从 17:00到7:10 毎隔1分钟 执行
+0 0 1,15 * 1                        毎月1日和 15日和 一日的 0:00 执行
+42 4 1 * *                          毎月1日的 4:42分 执行
+0 21 * * 1-6                        周一到周六 21:00 执行
+0,10,20,30,40,50 * * * *            每隔10分 执行
+*/10 * * * *                        每隔10分 执行
+* 1 * * *                           从1:0到1:59 每隔1分钟 执行
+0 1 * * *                           1:00 执行
+0 * * * *                           毎时0分 每隔1小时 执行
+2 8-20/3 * * *                      8:02,11:02,14:02,17:02,20:02 执行
+30 5 1,15 * *                       1日 和 15日的 5:30 执行</code></pre>
             </div>
             <hr/>
 
@@ -411,7 +435,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://xsoer.github.io/2017/09/28/2017/09-28-开机自检/">https://xsoer.github.io/2017/09/28/2017/09-28-开机自检/</a>
+                    <a href="https://xsoer.github.io/2017/07/20/2017/07-20-crontab表示法/">https://xsoer.github.io/2017/07/20/2017/07-20-crontab表示法/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -449,8 +473,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/操作系统/">
-                                    <span class="chip bg-color">操作系统</span>
+                                <a href="/tags/linux/">
+                                    <span class="chip bg-color">linux</span>
                                 </a>
                             
                         </div>
@@ -621,7 +645,7 @@
         repo: 'xsoer.github.io',
         owner: 'xsoer',
         admin: ["xsoer"],
-        id: '2017-09-28T15-24-23',
+        id: '2017-07-20T13-43-56',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -646,33 +670,33 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2018/03/02/2018/03-02-PHP知识体系/">
+                <a href="/2017/09/28/2017/09-28-开机自检/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="PHP知识体系">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="系统开机自检">
                         
-                        <span class="card-title">PHP知识体系</span>
+                        <span class="card-title">系统开机自检</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            0x00、关键字
-$ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、public、private、protected
-对象(class)：String、Integer、Float
+                            0x00、关于开机自动检测硬盘的原因
+第一种：是你非法关机造成的，比如直接断电的情况。
+第二种：是和硬盘的分区格式有关，FAT32格式在非法关机后会在开机时要求检测硬盘，而且必须检测完毕才不会在下次启动时重新检测。系统有一个文件中记录了检测
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2018-03-02
+                            <i class="far fa-clock fa-fw icon-date"></i>2017-09-28
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/PHP/" class="post-category">
-                                    PHP
+                            <a href="/categories/操作系统/" class="post-category">
+                                    操作系统
                                 </a>
                             
                             
@@ -682,8 +706,8 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/PHP/">
-                        <span class="chip bg-color">PHP</span>
+                    <a href="/tags/操作系统/">
+                        <span class="chip bg-color">操作系统</span>
                     </a>
                     
                 </div>
@@ -697,35 +721,73 @@ $ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、publ
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2017/07/20/2017/07-20-crontab表示法/">
+                <a href="/2017/03/02/2017/03-12-vim命令/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="crontab表示法">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="VIM使用文档总结">
                         
-                        <span class="card-title">crontab表示法</span>
+                        <span class="card-title">VIM使用文档总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            一、简介crontab是linux上的定时任务工具，用来做定时管理服务。其常用的命令如下
-crontab -l # 罗列出当前用户的所有定时任务列表
-crontab -e # 编辑定时任务
-crontab -r # 删除定时任务
-当然，最重
+                            0x00、快捷键
+向下添加一行
+ o
+
+
+向下翻页
+ ctrl+f
+
+
+向上翻页
+ ctrl+b
+
+
+下一个词
+ w
+
+
+行尾
+ $
+
+
+第一个字符行首
+ ^
+
+
+行首
+ 0
+
+
+撤销
+ u
+
+
+文件首
+ gg
+
+
+文件尾
+ G
+
+
+屏首
+
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2017-07-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2017-03-02
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/linux/" class="post-category">
-                                    linux
+                            <a href="/categories/VIM/" class="post-category">
+                                    VIM
                                 </a>
                             
                             
@@ -735,8 +797,8 @@ crontab -r # 删除定时任务
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/linux/">
-                        <span class="chip bg-color">linux</span>
+                    <a href="/tags/VIM/">
+                        <span class="chip bg-color">VIM</span>
                     </a>
                     
                 </div>
