@@ -14,25 +14,27 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="0x00、cProfile简介 cProfile是python自带的模块，对运行的代码做性能分析。可以输出运行时长，  0x01、分析示例 1.直接加载cProfile模块来运行代码进行输出分析。   # 方式一 # 直接输出调用的函数、运行时长、cpu占用等情况 python -m cProfile main.py # 如果调用链路太长，则可以指定输出到文件内，如下所示。不过输出内容为二进制，不">
+  <meta name="description" content="0x00、cProfile简介 cProfile是python自带的模块，对运行的代码做性能分析。可以输出运行时长，  0x01、分析示例 1.直接加载cProfile模块来运行代码进行输出分析。  123456789101112131415# 方式一# 直接输出调用的函数、运行时长、cpu占用等情况python -m cProfile main.py# 如果调用链路太长，则可以指定输出到文件内，">
 <meta name="keywords" content="python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python性能分析工具cProfile">
 <meta property="og:url" content="https://xsoer.github.io/2019/10/08/2019/10-08-python性能分析工具/index.html">
 <meta property="og:site_name" content="hackfox">
-<meta property="og:description" content="0x00、cProfile简介 cProfile是python自带的模块，对运行的代码做性能分析。可以输出运行时长，  0x01、分析示例 1.直接加载cProfile模块来运行代码进行输出分析。   # 方式一 # 直接输出调用的函数、运行时长、cpu占用等情况 python -m cProfile main.py # 如果调用链路太长，则可以指定输出到文件内，如下所示。不过输出内容为二进制，不">
+<meta property="og:description" content="0x00、cProfile简介 cProfile是python自带的模块，对运行的代码做性能分析。可以输出运行时长，  0x01、分析示例 1.直接加载cProfile模块来运行代码进行输出分析。  123456789101112131415# 方式一# 直接输出调用的函数、运行时长、cpu占用等情况python -m cProfile main.py# 如果调用链路太长，则可以指定输出到文件内，">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://xsoer.github.io/assets/images/2019/10-08-profile.png">
 <meta property="og:updated_time" content="2019-11-10T14:40:11.945Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python性能分析工具cProfile">
-<meta name="twitter:description" content="0x00、cProfile简介 cProfile是python自带的模块，对运行的代码做性能分析。可以输出运行时长，  0x01、分析示例 1.直接加载cProfile模块来运行代码进行输出分析。   # 方式一 # 直接输出调用的函数、运行时长、cpu占用等情况 python -m cProfile main.py # 如果调用链路太长，则可以指定输出到文件内，如下所示。不过输出内容为二进制，不">
+<meta name="twitter:description" content="0x00、cProfile简介 cProfile是python自带的模块，对运行的代码做性能分析。可以输出运行时长，  0x01、分析示例 1.直接加载cProfile模块来运行代码进行输出分析。  123456789101112131415# 方式一# 直接输出调用的函数、运行时长、cpu占用等情况python -m cProfile main.py# 如果调用链路太长，则可以指定输出到文件内，">
 <meta name="twitter:image" content="https://xsoer.github.io/assets/images/2019/10-08-profile.png">
 
 <link rel="canonical" href="https://xsoer.github.io/2019/10/08/2019/10-08-python性能分析工具/">
@@ -50,6 +52,22 @@
 
   <title>python性能分析工具cProfile | hackfox</title>
   
+    <script>
+      function sendPageView() {
+        if (CONFIG.hostname !== location.hostname) return;
+        var uid = localStorage.getItem('uid') || (Math.random() + '.' + Math.random());
+        localStorage.setItem('uid', uid);
+        navigator.sendBeacon('https://www.google-analytics.com/collect', new URLSearchParams({
+          v  : 1,
+          tid: 'UA-114671402-1',
+          cid: uid,
+          t  : 'pageview',
+          dp : encodeURIComponent(location.pathname)
+        }));
+      }
+      document.addEventListener('pjax:complete', sendPageView);
+      sendPageView();
+    </script>
 
 
 
@@ -107,6 +125,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -126,11 +145,38 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -140,6 +186,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
 
 
     <main class="main">
@@ -197,6 +244,13 @@
             </span>
 
           
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
 
         </div>
       </header>
@@ -213,70 +267,29 @@
 <h2 id="0x01、分析示例"><a href="#0x01、分析示例" class="headerlink" title="0x01、分析示例"></a>0x01、分析示例</h2><ul>
 <li>1.直接加载cProfile模块来运行代码进行输出分析。</li>
 </ul>
-<pre class=" language-python"><code class="language-python">
-<span class="token comment" spellcheck="true"># 方式一</span>
-<span class="token comment" spellcheck="true"># 直接输出调用的函数、运行时长、cpu占用等情况</span>
-python <span class="token operator">-</span>m cProfile main<span class="token punctuation">.</span>py
-<span class="token comment" spellcheck="true"># 如果调用链路太长，则可以指定输出到文件内，如下所示。不过输出内容为二进制，不可以直接查看。</span>
-python <span class="token operator">-</span>m cProfile <span class="token operator">-</span>o profile<span class="token punctuation">.</span>out main<span class="token punctuation">.</span>py
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 方式一</span></span><br><span class="line"><span class="comment"># 直接输出调用的函数、运行时长、cpu占用等情况</span></span><br><span class="line">python -m cProfile main.py</span><br><span class="line"><span class="comment"># 如果调用链路太长，则可以指定输出到文件内，如下所示。不过输出内容为二进制，不可以直接查看。</span></span><br><span class="line">python -m cProfile -o profile.out main.py</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方式二</span></span><br><span class="line"><span class="keyword">import</span> cProfile</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    cProfile.run(<span class="string">"test()"</span>)</span><br></pre></td></tr></table></figure>
 
-<span class="token comment" spellcheck="true"># 方式二</span>
-<span class="token keyword">import</span> cProfile
-
-<span class="token keyword">def</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">pass</span>
-
-<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
-    cProfile<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token string">"test()"</span><span class="token punctuation">)</span>
-</code></pre>
 <ul>
 <li>2.为了解决分析内容格式是二进制的，python自带了可以分析的工具pstats。示例代码如下</li>
 </ul>
-<pre class=" language-python"><code class="language-python">
-<span class="token keyword">import</span> pstats
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> pstats</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建Stats对象</span></span><br><span class="line">p = pstats.Stats(<span class="string">"profile/profile.out"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># strip_dirs(): 去掉无关的路径信息</span></span><br><span class="line"><span class="comment"># sort_stats(): 排序，支持的方式和上述的一致</span></span><br><span class="line"><span class="comment"># print_stats(): 打印分析结果，可以指定打印前几行,也可以指定小数，为百分比，</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 和直接运行cProfile.run("test()")的结果是一样的</span></span><br><span class="line">p.strip_dirs().sort_stats(<span class="number">-1</span>).print_stats()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 按照函数名排序，只打印前3行函数的信息, 参数还可为小数,表示前百分之几的函数信息</span></span><br><span class="line">p.strip_dirs().sort_stats(<span class="string">"name"</span>).print_stats(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 按照运行时间和函数名进行排序</span></span><br><span class="line">p.strip_dirs().sort_stats(<span class="string">"cumulative"</span>, <span class="string">"name"</span>).print_stats(<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果想知道有哪些函数调用了sum_num</span></span><br><span class="line">p.print_callers(<span class="number">0.5</span>, <span class="string">"test"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看test()函数中调用了哪些函数</span></span><br><span class="line">p.print_callees(<span class="string">"test"</span>)</span><br></pre></td></tr></table></figure>
 
-<span class="token comment" spellcheck="true"># 创建Stats对象</span>
-p <span class="token operator">=</span> pstats<span class="token punctuation">.</span>Stats<span class="token punctuation">(</span><span class="token string">"profile/profile.out"</span><span class="token punctuation">)</span>
-
-<span class="token comment" spellcheck="true"># strip_dirs(): 去掉无关的路径信息</span>
-<span class="token comment" spellcheck="true"># sort_stats(): 排序，支持的方式和上述的一致</span>
-<span class="token comment" spellcheck="true"># print_stats(): 打印分析结果，可以指定打印前几行,也可以指定小数，为百分比，</span>
-
-<span class="token comment" spellcheck="true"># 和直接运行cProfile.run("test()")的结果是一样的</span>
-p<span class="token punctuation">.</span>strip_dirs<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>sort_stats<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>print_stats<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-<span class="token comment" spellcheck="true"># 按照函数名排序，只打印前3行函数的信息, 参数还可为小数,表示前百分之几的函数信息</span>
-p<span class="token punctuation">.</span>strip_dirs<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>sort_stats<span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>print_stats<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
-
-<span class="token comment" spellcheck="true"># 按照运行时间和函数名进行排序</span>
-p<span class="token punctuation">.</span>strip_dirs<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>sort_stats<span class="token punctuation">(</span><span class="token string">"cumulative"</span><span class="token punctuation">,</span> <span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>print_stats<span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">)</span>
-
-<span class="token comment" spellcheck="true"># 如果想知道有哪些函数调用了sum_num</span>
-p<span class="token punctuation">.</span>print_callers<span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token string">"test"</span><span class="token punctuation">)</span>
-
-<span class="token comment" spellcheck="true"># 查看test()函数中调用了哪些函数</span>
-p<span class="token punctuation">.</span>print_callees<span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">)</span>
-</code></pre>
 <h2 id="0x03、可视化分析"><a href="#0x03、可视化分析" class="headerlink" title="0x03、可视化分析"></a>0x03、可视化分析</h2><p>上面的分析只能做初步的统计查看，并不能有直观的查看和分析。所有一下提供了函数堆栈调用图及每步所花费的时间占比等。</p>
 <ul>
 <li>1.安装gprof2dot</li>
 </ul>
-<pre class=" language-shell"><code class="language-shell">
-pip install gprof2dot
-</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">pip install gprof2dot</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>2.安装graphviz包。</li>
 </ul>
-<pre class=" language-shell"><code class="language-shell">
-# mac下
-brew install graphviz
-</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> mac下</span></span><br><span class="line">brew install graphviz</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>3.对输出的out文件进行分析</li>
 </ul>
-<pre class=" language-shell"><code class="language-shell">
-gprof2dot -f pstats profile.out | dot -Tpng -o profile.png
-</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">gprof2dot -f pstats profile.out | dot -Tpng -o profile.png</span><br></pre></td></tr></table></figure>
+
 <p>其效果如下图<br><img src="/assets/images/2019/10-08-profile.png" alt="cprofile分析图"></p>
 
     </div>
@@ -378,12 +391,12 @@ gprof2dot -f pstats profile.out | dot -Tpng -o profile.png
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -416,10 +429,30 @@ gprof2dot -f pstats profile.out | dot -Tpng -o profile.png
   </span>
   <span class="author" itemprop="copyrightHolder">hackfox</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
 
 
 
@@ -437,8 +470,8 @@ gprof2dot -f pstats profile.out | dot -Tpng -o profile.png
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script>
-<script src="/js/schemes/muse.js"></script>
-<script src="/js/next-boot.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
 
 
 
@@ -447,6 +480,8 @@ gprof2dot -f pstats profile.out | dot -Tpng -o profile.png
 
 
 
+  <script src="/js/local-search.js"></script>
+
 
 
 
@@ -461,6 +496,7 @@ gprof2dot -f pstats profile.out | dot -Tpng -o profile.png
   
 
   
+
 
 </body>
 </html>

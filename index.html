@@ -14,10 +14,12 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="架构、AI、大数据、数学、python、go">
@@ -46,6 +48,22 @@
 
   <title>hackfox</title>
   
+    <script>
+      function sendPageView() {
+        if (CONFIG.hostname !== location.hostname) return;
+        var uid = localStorage.getItem('uid') || (Math.random() + '.' + Math.random());
+        localStorage.setItem('uid', uid);
+        navigator.sendBeacon('https://www.google-analytics.com/collect', new URLSearchParams({
+          v  : 1,
+          tid: 'UA-114671402-1',
+          cid: uid,
+          t  : 'pageview',
+          dp : encodeURIComponent(location.pathname)
+        }));
+      }
+      document.addEventListener('pjax:complete', sendPageView);
+      sendPageView();
+    </script>
 
 
 
@@ -103,6 +121,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -122,11 +141,38 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -136,6 +182,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
 
 
     <main class="main">
@@ -209,70 +256,29 @@
 <h2 id="0x01、分析示例"><a href="#0x01、分析示例" class="headerlink" title="0x01、分析示例"></a>0x01、分析示例</h2><ul>
 <li>1.直接加载cProfile模块来运行代码进行输出分析。</li>
 </ul>
-<pre class=" language-python"><code class="language-python">
-<span class="token comment" spellcheck="true"># 方式一</span>
-<span class="token comment" spellcheck="true"># 直接输出调用的函数、运行时长、cpu占用等情况</span>
-python <span class="token operator">-</span>m cProfile main<span class="token punctuation">.</span>py
-<span class="token comment" spellcheck="true"># 如果调用链路太长，则可以指定输出到文件内，如下所示。不过输出内容为二进制，不可以直接查看。</span>
-python <span class="token operator">-</span>m cProfile <span class="token operator">-</span>o profile<span class="token punctuation">.</span>out main<span class="token punctuation">.</span>py
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 方式一</span></span><br><span class="line"><span class="comment"># 直接输出调用的函数、运行时长、cpu占用等情况</span></span><br><span class="line">python -m cProfile main.py</span><br><span class="line"><span class="comment"># 如果调用链路太长，则可以指定输出到文件内，如下所示。不过输出内容为二进制，不可以直接查看。</span></span><br><span class="line">python -m cProfile -o profile.out main.py</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方式二</span></span><br><span class="line"><span class="keyword">import</span> cProfile</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    cProfile.run(<span class="string">"test()"</span>)</span><br></pre></td></tr></table></figure>
 
-<span class="token comment" spellcheck="true"># 方式二</span>
-<span class="token keyword">import</span> cProfile
-
-<span class="token keyword">def</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">pass</span>
-
-<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
-    cProfile<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token string">"test()"</span><span class="token punctuation">)</span>
-</code></pre>
 <ul>
 <li>2.为了解决分析内容格式是二进制的，python自带了可以分析的工具pstats。示例代码如下</li>
 </ul>
-<pre class=" language-python"><code class="language-python">
-<span class="token keyword">import</span> pstats
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> pstats</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建Stats对象</span></span><br><span class="line">p = pstats.Stats(<span class="string">"profile/profile.out"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># strip_dirs(): 去掉无关的路径信息</span></span><br><span class="line"><span class="comment"># sort_stats(): 排序，支持的方式和上述的一致</span></span><br><span class="line"><span class="comment"># print_stats(): 打印分析结果，可以指定打印前几行,也可以指定小数，为百分比，</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 和直接运行cProfile.run("test()")的结果是一样的</span></span><br><span class="line">p.strip_dirs().sort_stats(<span class="number">-1</span>).print_stats()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 按照函数名排序，只打印前3行函数的信息, 参数还可为小数,表示前百分之几的函数信息</span></span><br><span class="line">p.strip_dirs().sort_stats(<span class="string">"name"</span>).print_stats(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 按照运行时间和函数名进行排序</span></span><br><span class="line">p.strip_dirs().sort_stats(<span class="string">"cumulative"</span>, <span class="string">"name"</span>).print_stats(<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果想知道有哪些函数调用了sum_num</span></span><br><span class="line">p.print_callers(<span class="number">0.5</span>, <span class="string">"test"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看test()函数中调用了哪些函数</span></span><br><span class="line">p.print_callees(<span class="string">"test"</span>)</span><br></pre></td></tr></table></figure>
 
-<span class="token comment" spellcheck="true"># 创建Stats对象</span>
-p <span class="token operator">=</span> pstats<span class="token punctuation">.</span>Stats<span class="token punctuation">(</span><span class="token string">"profile/profile.out"</span><span class="token punctuation">)</span>
-
-<span class="token comment" spellcheck="true"># strip_dirs(): 去掉无关的路径信息</span>
-<span class="token comment" spellcheck="true"># sort_stats(): 排序，支持的方式和上述的一致</span>
-<span class="token comment" spellcheck="true"># print_stats(): 打印分析结果，可以指定打印前几行,也可以指定小数，为百分比，</span>
-
-<span class="token comment" spellcheck="true"># 和直接运行cProfile.run("test()")的结果是一样的</span>
-p<span class="token punctuation">.</span>strip_dirs<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>sort_stats<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>print_stats<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-<span class="token comment" spellcheck="true"># 按照函数名排序，只打印前3行函数的信息, 参数还可为小数,表示前百分之几的函数信息</span>
-p<span class="token punctuation">.</span>strip_dirs<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>sort_stats<span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>print_stats<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
-
-<span class="token comment" spellcheck="true"># 按照运行时间和函数名进行排序</span>
-p<span class="token punctuation">.</span>strip_dirs<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>sort_stats<span class="token punctuation">(</span><span class="token string">"cumulative"</span><span class="token punctuation">,</span> <span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>print_stats<span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">)</span>
-
-<span class="token comment" spellcheck="true"># 如果想知道有哪些函数调用了sum_num</span>
-p<span class="token punctuation">.</span>print_callers<span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token string">"test"</span><span class="token punctuation">)</span>
-
-<span class="token comment" spellcheck="true"># 查看test()函数中调用了哪些函数</span>
-p<span class="token punctuation">.</span>print_callees<span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">)</span>
-</code></pre>
 <h2 id="0x03、可视化分析"><a href="#0x03、可视化分析" class="headerlink" title="0x03、可视化分析"></a>0x03、可视化分析</h2><p>上面的分析只能做初步的统计查看，并不能有直观的查看和分析。所有一下提供了函数堆栈调用图及每步所花费的时间占比等。</p>
 <ul>
 <li>1.安装gprof2dot</li>
 </ul>
-<pre class=" language-shell"><code class="language-shell">
-pip install gprof2dot
-</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">pip install gprof2dot</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>2.安装graphviz包。</li>
 </ul>
-<pre class=" language-shell"><code class="language-shell">
-# mac下
-brew install graphviz
-</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> mac下</span></span><br><span class="line">brew install graphviz</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>3.对输出的out文件进行分析</li>
 </ul>
-<pre class=" language-shell"><code class="language-shell">
-gprof2dot -f pstats profile.out | dot -Tpng -o profile.png
-</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">gprof2dot -f pstats profile.out | dot -Tpng -o profile.png</span><br></pre></td></tr></table></figure>
+
 <p>其效果如下图<br><img src="/assets/images/2019/10-08-profile.png" alt="cprofile分析图"></p>
 
       
@@ -481,127 +487,61 @@ gprof2dot -f pstats profile.out | dot -Tpng -o profile.png
 <h2 id="0x01、快捷键"><a href="#0x01、快捷键" class="headerlink" title="0x01、快捷键"></a>0x01、快捷键</h2><h3 id="1-tmux命令"><a href="#1-tmux命令" class="headerlink" title="1.tmux命令"></a>1.tmux命令</h3><ul>
 <li>启动新会话</li>
 </ul>
-<pre class=" language-shell"><code class="language-shell">tmux [new -s 会话名 -n 窗口名]</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux [new -s 会话名 -n 窗口名]</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>恢复会话：</li>
 </ul>
-<pre class=" language-shell"><code class="language-shell">tmux at [-t 会话名]</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux at [-t 会话名]</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>列出所有会话：</li>
 </ul>
-<pre class=" language-shell"><code class="language-shell">tmux ls</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux ls</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>关闭会话</li>
 </ul>
-<pre class=" language-shell"><code class="language-shell">tmux kill-session -t 会话名</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux kill-session -t 会话名</span><br></pre></td></tr></table></figure>
+
 <h3 id="2-tmux内快捷键"><a href="#2-tmux内快捷键" class="headerlink" title="2.tmux内快捷键"></a>2.tmux内快捷键</h3><ul>
 <li>会话</li>
 </ul>
-<pre class=" language-shell"><code class="language-shell">:new<回车>  启动新会话
-s           列出所有会话
-$           重命名当前会话</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:new&lt;回车&gt;  启动新会话</span><br><span class="line">s           列出所有会话</span><br><span class="line"><span class="meta">$</span><span class="bash">           重命名当前会话</span></span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>窗口 (标签页)</li>
 </ul>
-<pre class=" language-shell"><code class="language-shell">c 创建一个新窗口
-, 重命名当前窗口
-w 列出所有窗口
-% 水平分割窗口
-" 竖直分割窗口
-n 选择下一个窗口
-p 选择上一个窗口
-0~9 选择0~9对应的窗口
-h 将光标移入左侧的窗格*
-j 将光标移入下方的窗格*
-l 将光标移入右侧的窗格*
-k 将光标移入上方的窗格*
-q 显示窗格的编号
-o 在窗格间切换
-} 与下一个窗格交换位置
-{ 与上一个窗格交换位置
-! 在新窗口中显示当前窗格
-x 关闭当前窗格</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">c 创建一个新窗口</span><br><span class="line">, 重命名当前窗口</span><br><span class="line">w 列出所有窗口</span><br><span class="line"><span class="meta">%</span><span class="bash"> 水平分割窗口</span></span><br><span class="line">" 竖直分割窗口</span><br><span class="line">n 选择下一个窗口</span><br><span class="line">p 选择上一个窗口</span><br><span class="line">0~9 选择0~9对应的窗口</span><br><span class="line">h 将光标移入左侧的窗格*</span><br><span class="line">j 将光标移入下方的窗格*</span><br><span class="line">l 将光标移入右侧的窗格*</span><br><span class="line">k 将光标移入上方的窗格*</span><br><span class="line">q 显示窗格的编号</span><br><span class="line">o 在窗格间切换</span><br><span class="line">&#125; 与下一个窗格交换位置</span><br><span class="line">&#123; 与上一个窗格交换位置</span><br><span class="line">! 在新窗口中显示当前窗格</span><br><span class="line">x 关闭当前窗格</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>调整窗口排序</li>
 </ul>
-<pre class=" language-shell"><code class="language-shell">swap-window -s 3 -t 1  交换 3 号和 1 号窗口
-swap-window -t 1       交换当前和 1 号窗口
-move-window -t 1       移动当前窗口到 1 号</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">swap-window -s 3 -t 1  交换 3 号和 1 号窗口</span><br><span class="line">swap-window -t 1       交换当前和 1 号窗口</span><br><span class="line">move-window -t 1       移动当前窗口到 1 号</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>窗格（分割窗口）</li>
 </ul>
-<pre class=" language-shell"><code class="language-shell">%  垂直分割
-"  水平分割
-o  交换窗格
-x  关闭窗格
-⍽  左边这个符号代表空格键 - 切换布局
-q 显示每个窗格是第几个，当数字出现的时候按数字几就选中第几个窗格
-{ 与上一个窗格交换位置
-} 与下一个窗格交换位置
-z 切换窗格最大化/最小化</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">%</span><span class="bash">  垂直分割</span></span><br><span class="line">"  水平分割</span><br><span class="line">o  交换窗格</span><br><span class="line">x  关闭窗格</span><br><span class="line">⍽  左边这个符号代表空格键 - 切换布局</span><br><span class="line">q 显示每个窗格是第几个，当数字出现的时候按数字几就选中第几个窗格</span><br><span class="line">&#123; 与上一个窗格交换位置</span><br><span class="line">&#125; 与下一个窗格交换位置</span><br><span class="line">z 切换窗格最大化/最小化</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>杂项</li>
 </ul>
-<pre class=" language-shell"><code class="language-shell">d  退出 tmux（tmux 仍在后台运行）
-t  窗口中央显示一个数字时钟
-?  列出所有快捷键
-:  命令提示符</code></pre>
-<h2 id="0x02、配置文件"><a href="#0x02、配置文件" class="headerlink" title="0x02、配置文件"></a>0x02、配置文件</h2><pre class=" language-shell"><code class="language-shell">#设置前缀为Ctrl + a
-set -g prefix C-a
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">d  退出 tmux（tmux 仍在后台运行）</span><br><span class="line">t  窗口中央显示一个数字时钟</span><br><span class="line">?  列出所有快捷键</span><br><span class="line">:  命令提示符</span><br></pre></td></tr></table></figure>
 
-#解除Ctrl+b 与前缀的对应关系
-unbind C-b
-bind C-a send-prefix # 绑定Ctrl+a为新的指令前缀
+<h2 id="0x02、配置文件"><a href="#0x02、配置文件" class="headerlink" title="0x02、配置文件"></a>0x02、配置文件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">设置前缀为Ctrl + a</span></span><br><span class="line">set -g prefix C-a</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">解除Ctrl+b 与前缀的对应关系</span></span><br><span class="line">unbind C-b</span><br><span class="line">bind C-a send-prefix # 绑定Ctrl+a为新的指令前缀</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置序号从1开始</span></span><br><span class="line">set -g base-index 1</span><br><span class="line">set -g pane-base-index 1</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">将r 设置为加载配置文件，并显示<span class="string">"reloaded!"</span>信息</span></span><br><span class="line">bind r source-file ~/.tmux.conf \; display "Reloaded!"</span><br><span class="line"></span><br><span class="line">bind-key k select-pane -U # up</span><br><span class="line">bind-key j select-pane -D # down</span><br><span class="line">bind-key h select-pane -L # left</span><br><span class="line">bind-key l select-pane -R # right</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">set -g mouse on # 支持鼠标选取文本等</span><br><span class="line"></span><br><span class="line">set -g status-interval 2 # 状态栏刷新时间</span><br><span class="line">set -g status-justify left # 状态栏列表左对齐</span><br><span class="line">setw -g monitor-activity on # 非当前窗口有内容更新时在状态栏通知</span><br><span class="line"></span><br><span class="line">set -g status-bg black # 设置状态栏背景黑色</span><br><span class="line">set -g status-fg yellow # 设置状态栏前景黄色</span><br><span class="line">set -g status-style "bg=black, fg=yellow" # 状态栏前景背景色</span><br><span class="line"></span><br><span class="line">set -g status-left "#[bg=#FF661D] " # 状态栏左侧内容</span><br><span class="line">set -g status-right "#S #[fg=green,bg=black]#(tmux-mem-cpu-load --colors --interval 2)#[default]"</span><br><span class="line">set -g status-left-length 300 # 状态栏左边长度300</span><br><span class="line">set -g status-right-length 500 # 状态栏右边长度500</span><br><span class="line"></span><br><span class="line">set -wg window-status-format " #I #W " # 状态栏窗口名称格式</span><br><span class="line">set -wg window-status-current-format " #I:#W#F " # 状态栏当前窗口名称格式(#I：序号，#w：窗口名称，#F：间隔符)</span><br><span class="line">set -wg window-status-separator "" # 状态栏窗口名称之间的间隔</span><br><span class="line">set -wg window-status-current-style "bg=red" # 状态栏当前窗口名称的样式</span><br><span class="line">set -wg window-status-last-style "fg=yellow" # 状态栏最后一个窗口名称的样式</span><br><span class="line"></span><br><span class="line">set -g message-style "bg=#202529, fg=#91A8BA" # 指定消息通知的前景、后景色</span><br></pre></td></tr></table></figure>
 
-# 设置序号从1开始
-set -g base-index 1
-set -g pane-base-index 1
-
-#将r 设置为加载配置文件，并显示"reloaded!"信息
-bind r source-file ~/.tmux.conf \; display "Reloaded!"
-
-bind-key k select-pane -U # up
-bind-key j select-pane -D # down
-bind-key h select-pane -L # left
-bind-key l select-pane -R # right
-
-
-set -g mouse on # 支持鼠标选取文本等
-
-set -g status-interval 2 # 状态栏刷新时间
-set -g status-justify left # 状态栏列表左对齐
-setw -g monitor-activity on # 非当前窗口有内容更新时在状态栏通知
-
-set -g status-bg black # 设置状态栏背景黑色
-set -g status-fg yellow # 设置状态栏前景黄色
-set -g status-style "bg=black, fg=yellow" # 状态栏前景背景色
-
-set -g status-left "#[bg=#FF661D] " # 状态栏左侧内容
-set -g status-right "#S #[fg=green,bg=black]#(tmux-mem-cpu-load --colors --interval 2)#[default]"
-set -g status-left-length 300 # 状态栏左边长度300
-set -g status-right-length 500 # 状态栏右边长度500
-
-set -wg window-status-format " #I #W " # 状态栏窗口名称格式
-set -wg window-status-current-format " #I:#W#F " # 状态栏当前窗口名称格式(#I：序号，#w：窗口名称，#F：间隔符)
-set -wg window-status-separator "" # 状态栏窗口名称之间的间隔
-set -wg window-status-current-style "bg=red" # 状态栏当前窗口名称的样式
-set -wg window-status-last-style "fg=yellow" # 状态栏最后一个窗口名称的样式
-
-set -g message-style "bg=#202529, fg=#91A8BA" # 指定消息通知的前景、后景色
-</code></pre>
 <h2 id="0x03、复制到系统"><a href="#0x03、复制到系统" class="headerlink" title="0x03、复制到系统"></a>0x03、复制到系统</h2><p>在 Mac 下使用 tmux，希望能够复制到系统粘贴板，可以通过下面的方式实现：</p>
 <ul>
 <li>1.安装 rettach-to-user-namespace</li>
 </ul>
-<pre class=" language-shell"><code class="language-shell">brew install reattach-to-user-namespace</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install reattach-to-user-namespace</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>2.修改 ~/.tmux.conf</li>
 </ul>
-<pre class=" language-shell"><code class="language-shell">set-option -g default-command "reattach-to-user-namespace -l zsh"
-# buffer缓存复制到Mac系统粘贴板
-bind y run "tmux save-buffer - | reattach-to-user-namespace pbcopy" \; display-message "Copied tmux buffer to system clipboard"
-# Mac系统粘贴板内容复制到会话
-bind C-v run "reattach-to-user-namespace pbpaste | tmux load-buffer - \; paste-buffer -d"</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">set-option -g default-command "reattach-to-user-namespace -l zsh"</span><br><span class="line"><span class="meta">#</span><span class="bash"> buffer缓存复制到Mac系统粘贴板</span></span><br><span class="line">bind y run "tmux save-buffer - | reattach-to-user-namespace pbcopy" \; display-message "Copied tmux buffer to system clipboard"</span><br><span class="line"><span class="meta">#</span><span class="bash"> Mac系统粘贴板内容复制到会话</span></span><br><span class="line">bind C-v run "reattach-to-user-namespace pbpaste | tmux load-buffer - \; paste-buffer -d"</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>3.使用<br>在 tmux 中复制之后，按 prefix + y 就可以把 tmux 内复制的内容放到系统粘贴板了</p>
 </li>
@@ -736,153 +676,22 @@ bind C-v run "reattach-to-user-namespace pbpaste | tmux load-buffer - \; paste-b
 <li>Vetur</li>
 <li>YAML</li>
 </ul>
-<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
-    <span class="token property">"workbench.activityBar.visible"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token property">"editor.scrollBeyondLastLine"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-    <span class="token property">"files.autoSave"</span><span class="token operator">:</span> <span class="token string">"onFocusChange"</span><span class="token punctuation">,</span>
-    <span class="token property">"workbench.colorTheme"</span><span class="token operator">:</span> <span class="token string">"Shades of Purple"</span><span class="token punctuation">,</span>
-    <span class="token property">"terminal.integrated.cursorStyle"</span><span class="token operator">:</span> <span class="token string">"line"</span><span class="token punctuation">,</span>
-    <span class="token property">"workbench.statusBar.feedback.visible"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-    <span class="token property">"clock.dateFormat"</span><span class="token operator">:</span> <span class="token string">"yyyy-mm-dd HH:MM:ss"</span><span class="token punctuation">,</span>
-    <span class="token property">"extensions.ignoreRecommendations"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-    <span class="token property">"files.exclude"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-        <span class="token property">"**/__pycache__"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-        <span class="token property">"**/*.pyc"</span><span class="token operator">:</span> <span class="token boolean">true</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token property">"breadcrumbs.enabled"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token property">"editor.fontSize"</span><span class="token operator">:</span> <span class="token number">15</span><span class="token punctuation">,</span>
-    <span class="token property">"editor.fontFamily"</span><span class="token operator">:</span> <span class="token string">"'Source Code Pro',Menlo, Monaco, 'Courier New', monospace"</span><span class="token punctuation">,</span>
-    <span class="token property">"terminal.external.osxExec"</span><span class="token operator">:</span> <span class="token string">"iterm.app"</span><span class="token punctuation">,</span>
-    <span class="token property">"terminal.integrated.copyOnSelection"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token property">"terminal.integrated.fontSize"</span><span class="token operator">:</span> <span class="token number">15</span><span class="token punctuation">,</span>
-    <span class="token property">"terminal.integrated.fontFamily"</span><span class="token operator">:</span> <span class="token string">"'Source Code Pro'"</span><span class="token punctuation">,</span>
-    <span class="token property">"terminal.integrated.scrollback"</span><span class="token operator">:</span> <span class="token number">3000</span><span class="token punctuation">,</span>
-    <span class="token property">"terminal.integrated.shell.osx"</span><span class="token operator">:</span> <span class="token string">"/bin/zsh"</span><span class="token punctuation">,</span>
-    <span class="token property">"python.pythonPath"</span><span class="token operator">:</span> <span class="token string">"~/anaconda3/bin/python"</span><span class="token punctuation">,</span>
-    <span class="token property">"python.linting.pylintEnabled"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token property">"leetcode.defaultLanguage"</span><span class="token operator">:</span> <span class="token string">"python3"</span><span class="token punctuation">,</span>
-    <span class="token property">"leetcode.outputFolder"</span><span class="token operator">:</span> <span class="token string">"leecode"</span><span class="token punctuation">,</span>
-    <span class="token property">"leetcode.hideSolved"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token property">"breadcrumbs.symbolSortOrder"</span><span class="token operator">:</span> <span class="token string">"name"</span><span class="token punctuation">,</span>
-    // Theme Setup.
-    // <span class="token property">"workbench.iconTheme"</span><span class="token operator">:</span> <span class="token string">"vscode-icons"</span><span class="token punctuation">,</span>
-    <span class="token property">"editor.lineHeight"</span><span class="token operator">:</span> <span class="token number">24.65</span><span class="token punctuation">,</span>
-    <span class="token property">"editor.letterSpacing"</span><span class="token operator">:</span> <span class="token number">0.5</span><span class="token punctuation">,</span>
-    <span class="token property">"editor.fontWeight"</span><span class="token operator">:</span> <span class="token string">"400"</span><span class="token punctuation">,</span>
-    <span class="token property">"editor.fontLigatures"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token property">"editor.cursorStyle"</span><span class="token operator">:</span> <span class="token string">"line"</span><span class="token punctuation">,</span>
-    // <span class="token property">"editor.cursorWidth"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
-    <span class="token property">"editor.cursorBlinking"</span><span class="token operator">:</span> <span class="token string">"solid"</span><span class="token punctuation">,</span>
-    <span class="token property">"editor.renderWhitespace"</span><span class="token operator">:</span> <span class="token string">"all"</span><span class="token punctuation">,</span>
-    <span class="token property">"editor.snippetSuggestions"</span><span class="token operator">:</span> <span class="token string">"top"</span><span class="token punctuation">,</span>
-    <span class="token property">"editor.glyphMargin"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token property">"workbench.editor.enablePreview"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-    <span class="token property">"explorer.confirmDragAndDrop"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-    <span class="token property">"files.trimTrailingWhitespace"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token property">"files.trimFinalNewlines"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    // Formatting Optional.
-    // <span class="token property">"editor.formatOnSave"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token property">"eslint.run"</span><span class="token operator">:</span> <span class="token string">"onType"</span><span class="token punctuation">,</span>
-    <span class="token property">"eslint.autoFixOnSave"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    // MacOS Only Settings.
-    <span class="token property">"workbench.fontAliasing"</span><span class="token operator">:</span> <span class="token string">"auto"</span><span class="token punctuation">,</span>
-    <span class="token property">"terminal.integrated.macOptionIsMeta"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    // SOP's highlight matching tag setting.
-    <span class="token property">"workbench.statusBar.visible"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token property">"python.dataScience.sendSelectionToInteractiveWindow"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token property">"terminal.integrated.rendererType"</span><span class="token operator">:</span> <span class="token string">"dom"</span><span class="token punctuation">,</span>
-    <span class="token property">"git.ignoreLegacyWarning"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token property">"GithubGistExplorer.explorer.gistSortBy"</span><span class="token operator">:</span> <span class="token string">"Last Updated"</span><span class="token punctuation">,</span>
-    <span class="token property">"GithubGistExplorer.explorer.gistAscending"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-    <span class="token property">"GithubGistExplorer.explorer.subscriptionSortBy"</span><span class="token operator">:</span> <span class="token string">"Last Updated"</span><span class="token punctuation">,</span>
-    <span class="token property">"GithubGistExplorer.explorer.subscriptionAscending"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-    <span class="token property">"GithubGistExplorer.github.token"</span><span class="token operator">:</span> <span class="token string">"b70cb2a4a71195fab3c47a8ae0a1209441a46075"</span><span class="token punctuation">,</span>
-    <span class="token property">"GithubGistExplorer.github.username"</span><span class="token operator">:</span> <span class="token string">"xsoer"</span><span class="token punctuation">,</span>
-    <span class="token property">"sync.gist"</span><span class="token operator">:</span> <span class="token string">"20a9cb9d32319e38ded959f092109cd5"</span><span class="token punctuation">,</span>
-    <span class="token property">"window.zoomLevel"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
-    <span class="token property">"go.formatTool"</span><span class="token operator">:</span> <span class="token string">"goimports"</span><span class="token punctuation">,</span>
-    <span class="token property">"go.useLanguageServer"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token property">"http.proxy"</span><span class="token operator">:</span> <span class="token string">"http://127.0.0.1:1087"</span>
-<span class="token punctuation">}</span></code></pre>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"workbench.activityBar.visible"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"editor.scrollBeyondLastLine"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"files.autoSave"</span>: <span class="string">"onFocusChange"</span>,</span><br><span class="line">    <span class="attr">"workbench.colorTheme"</span>: <span class="string">"Shades of Purple"</span>,</span><br><span class="line">    <span class="attr">"terminal.integrated.cursorStyle"</span>: <span class="string">"line"</span>,</span><br><span class="line">    <span class="attr">"workbench.statusBar.feedback.visible"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"clock.dateFormat"</span>: <span class="string">"yyyy-mm-dd HH:MM:ss"</span>,</span><br><span class="line">    <span class="attr">"extensions.ignoreRecommendations"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"files.exclude"</span>: &#123;</span><br><span class="line">        <span class="attr">"**/__pycache__"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">"**/*.pyc"</span>: <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"breadcrumbs.enabled"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"editor.fontSize"</span>: <span class="number">15</span>,</span><br><span class="line">    <span class="attr">"editor.fontFamily"</span>: <span class="string">"'Source Code Pro',Menlo, Monaco, 'Courier New', monospace"</span>,</span><br><span class="line">    <span class="attr">"terminal.external.osxExec"</span>: <span class="string">"iterm.app"</span>,</span><br><span class="line">    <span class="attr">"terminal.integrated.copyOnSelection"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"terminal.integrated.fontSize"</span>: <span class="number">15</span>,</span><br><span class="line">    <span class="attr">"terminal.integrated.fontFamily"</span>: <span class="string">"'Source Code Pro'"</span>,</span><br><span class="line">    <span class="attr">"terminal.integrated.scrollback"</span>: <span class="number">3000</span>,</span><br><span class="line">    <span class="attr">"terminal.integrated.shell.osx"</span>: <span class="string">"/bin/zsh"</span>,</span><br><span class="line">    <span class="attr">"python.pythonPath"</span>: <span class="string">"~/anaconda3/bin/python"</span>,</span><br><span class="line">    <span class="attr">"python.linting.pylintEnabled"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"leetcode.defaultLanguage"</span>: <span class="string">"python3"</span>,</span><br><span class="line">    <span class="attr">"leetcode.outputFolder"</span>: <span class="string">"leecode"</span>,</span><br><span class="line">    <span class="attr">"leetcode.hideSolved"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"breadcrumbs.symbolSortOrder"</span>: <span class="string">"name"</span>,</span><br><span class="line">    // Theme Setup.</span><br><span class="line">    // "workbench.iconTheme": "vscode-icons",</span><br><span class="line">    "editor.lineHeight": 24.65,</span><br><span class="line">    "editor.letterSpacing": 0.5,</span><br><span class="line">    "editor.fontWeight": "400",</span><br><span class="line">    "editor.fontLigatures": true,</span><br><span class="line">    "editor.cursorStyle": "line",</span><br><span class="line">    // "editor.cursorWidth": 1,</span><br><span class="line">    "editor.cursorBlinking": "solid",</span><br><span class="line">    "editor.renderWhitespace": "all",</span><br><span class="line">    "editor.snippetSuggestions": "top",</span><br><span class="line">    "editor.glyphMargin": true,</span><br><span class="line">    "workbench.editor.enablePreview": false,</span><br><span class="line">    "explorer.confirmDragAndDrop": false,</span><br><span class="line">    "files.trimTrailingWhitespace": true,</span><br><span class="line">    "files.trimFinalNewlines": true,</span><br><span class="line">    // Formatting Optional.</span><br><span class="line">    // "editor.formatOnSave": true,</span><br><span class="line">    "eslint.run": "onType",</span><br><span class="line">    "eslint.autoFixOnSave": true,</span><br><span class="line">    // MacOS Only Settings.</span><br><span class="line">    "workbench.fontAliasing": "auto",</span><br><span class="line">    "terminal.integrated.macOptionIsMeta": true,</span><br><span class="line">    // SOP's highlight matching tag setting.</span><br><span class="line">    "workbench.statusBar.visible": true,</span><br><span class="line">    "python.dataScience.sendSelectionToInteractiveWindow": true,</span><br><span class="line">    "terminal.integrated.rendererType": "dom",</span><br><span class="line">    "git.ignoreLegacyWarning": true,</span><br><span class="line">    "GithubGistExplorer.explorer.gistSortBy": "Last Updated",</span><br><span class="line">    "GithubGistExplorer.explorer.gistAscending": false,</span><br><span class="line">    "GithubGistExplorer.explorer.subscriptionSortBy": "Last Updated",</span><br><span class="line">    "GithubGistExplorer.explorer.subscriptionAscending": false,</span><br><span class="line">    "GithubGistExplorer.github.token": "b70cb2a4a71195fab3c47a8ae0a1209441a46075",</span><br><span class="line">    "GithubGistExplorer.github.username": "xsoer",</span><br><span class="line">    "sync.gist": "20a9cb9d32319e38ded959f092109cd5",</span><br><span class="line">    "window.zoomLevel": 0,</span><br><span class="line">    "go.formatTool": "goimports",</span><br><span class="line">    "go.useLanguageServer": true,</span><br><span class="line">    "http.proxy": "http://127.0.0.1:1087"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="0x02、omyzsh"><a href="#0x02、omyzsh" class="headerlink" title="0x02、omyzsh"></a>0x02、omyzsh</h2><h4 id="插件-1"><a href="#插件-1" class="headerlink" title="插件"></a>插件</h4><ul>
 <li>git</li>
 <li>autojump</li>
 <li>zsh-syntax-highlighting</li>
 <li>zsh-autosuggestions</li>
 </ul>
-<h4 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h4><pre class=" language-bash"><code class="language-bash">plugins<span class="token operator">=</span><span class="token punctuation">(</span>git zsh-autosuggestions zsh-syntax-highlighting<span class="token punctuation">)</span>
+<h4 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">plugins=(git zsh-autosuggestions zsh-syntax-highlighting)</span><br><span class="line"></span><br><span class="line">[ -f /usr/<span class="built_in">local</span>/etc/profile.d/autojump.sh ] &amp;&amp; . /usr/<span class="built_in">local</span>/etc/profile.d/autojump.sh</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -z <span class="string">"<span class="variable">$TMUX</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line">    tmux attach -t default || tmux new -s default</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
 
-<span class="token punctuation">[</span> -f /usr/local/etc/profile.d/autojump.sh <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">.</span> /usr/local/etc/profile.d/autojump.sh
+<h2 id="0x03、tmux"><a href="#0x03、tmux" class="headerlink" title="0x03、tmux"></a>0x03、tmux</h2><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install tmux</span><br></pre></td></tr></table></figure>
 
-<span class="token keyword">if</span> <span class="token punctuation">[</span> -z <span class="token string">"<span class="token variable">$TMUX</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-    tmux attach -t default <span class="token operator">||</span> tmux new -s default
-<span class="token keyword">fi</span></code></pre>
-<h2 id="0x03、tmux"><a href="#0x03、tmux" class="headerlink" title="0x03、tmux"></a>0x03、tmux</h2><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre class=" language-bash"><code class="language-bash">brew <span class="token function">install</span> tmux</code></pre>
-<h4 id="配置文件-1"><a href="#配置文件-1" class="headerlink" title="配置文件"></a>配置文件</h4><pre class=" language-conf"><code class="language-conf">#设置前缀为Ctrl + a
-set -g prefix C-a
+<h4 id="配置文件-1"><a href="#配置文件-1" class="headerlink" title="配置文件"></a>配置文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">#设置前缀为Ctrl + a</span><br><span class="line">set -g prefix C-a</span><br><span class="line"></span><br><span class="line">#解除Ctrl+b 与前缀的对应关系</span><br><span class="line">unbind C-b</span><br><span class="line">bind C-a send-prefix # 绑定Ctrl+a为新的指令前缀</span><br><span class="line"></span><br><span class="line"># 设置序号从1开始</span><br><span class="line">set -g base-index 1</span><br><span class="line">set -g pane-base-index 1</span><br><span class="line"></span><br><span class="line">#将r 设置为加载配置文件，并显示&quot;reloaded!&quot;信息</span><br><span class="line">bind r source-file ~/.tmux.conf \; display &quot;Reloaded!&quot;</span><br><span class="line"></span><br><span class="line">bind-key k select-pane -U # up</span><br><span class="line">bind-key j select-pane -D # down</span><br><span class="line">bind-key h select-pane -L # left</span><br><span class="line">bind-key l select-pane -R # right</span><br><span class="line"></span><br><span class="line">set -g mouse on # 支持鼠标选取文本等</span><br><span class="line"></span><br><span class="line">set -g status-interval 2 # 状态栏刷新时间</span><br><span class="line">set -g status-justify left # 状态栏列表左对齐</span><br><span class="line">setw -g monitor-activity on # 非当前窗口有内容更新时在状态栏通知</span><br><span class="line"></span><br><span class="line">set -g status-bg black # 设置状态栏背景黑色</span><br><span class="line">set -g status-fg yellow # 设置状态栏前景黄色</span><br><span class="line">set -g status-style &quot;bg=black, fg=yellow&quot; # 状态栏前景背景色</span><br><span class="line"></span><br><span class="line">set -g status-left &quot;#[bg=#FF661D] ❐ #S &quot; # 状态栏左侧内容</span><br><span class="line">set -g status-right &quot;#S #[fg=green,bg=black]#(tmux-mem-cpu-load --colors --interval 2)#[default]&quot;</span><br><span class="line">set -g status-left-length 300 # 状态栏左边长度300</span><br><span class="line">set -g status-right-length 500 # 状态栏右边长度500</span><br><span class="line"></span><br><span class="line">set -wg window-status-format &quot; #I #W &quot; # 状态栏窗口名称格式</span><br><span class="line">set -wg window-status-current-format &quot; #I:#W#F &quot; # 状态栏当前窗口名称格式(#I：序号，#w：窗口名称，#F：间隔符)</span><br><span class="line">set -wg window-status-separator &quot;&quot; # 状态栏窗口名称之间的间隔</span><br><span class="line">set -wg window-status-current-style &quot;bg=red&quot; # 状态栏当前窗口名称的样式</span><br><span class="line">set -wg window-status-last-style &quot;fg=yellow&quot; # 状态栏最后一个窗口名称的样式</span><br><span class="line"></span><br><span class="line">set -g message-style &quot;bg=#202529, fg=#91A8BA&quot; # 指定消息通知的前景、后景色</span><br></pre></td></tr></table></figure>
 
-#解除Ctrl+b 与前缀的对应关系
-unbind C-b
-bind C-a send-prefix # 绑定Ctrl+a为新的指令前缀
+<h2 id="0x04、vim"><a href="#0x04、vim" class="headerlink" title="0x04、vim"></a>0x04、vim</h2><h4 id="配置文件-2"><a href="#配置文件-2" class="headerlink" title="配置文件"></a>配置文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">set nocompatible</span><br><span class="line">syntax on</span><br><span class="line">filetype plugin indent on</span><br><span class="line">set ic</span><br><span class="line">set hlsearch</span><br><span class="line">set encoding=utf-8</span><br><span class="line">set fileencodings=utf-8,ucs-bom,GB2312,big5</span><br><span class="line">set cursorline</span><br><span class="line">set autoindent</span><br><span class="line">set smartindent</span><br><span class="line">set scrolloff=4</span><br><span class="line">set showmatch</span><br><span class="line">set nu</span><br><span class="line"></span><br><span class="line">let python_highlight_all=1</span><br><span class="line">au Filetype python set tabstop=4</span><br><span class="line">au Filetype python set softtabstop=4</span><br><span class="line">au Filetype python set shiftwidth=4</span><br><span class="line">au Filetype python set textwidth=79</span><br><span class="line">au Filetype python set expandtab</span><br><span class="line">au Filetype python set autoindent</span><br><span class="line">au Filetype python set fileformat=unix</span><br><span class="line">autocmd Filetype python set foldmethod=indent</span><br><span class="line">autocmd Filetype python set foldlevel=99</span><br></pre></td></tr></table></figure>
 
-# 设置序号从1开始
-set -g base-index 1
-set -g pane-base-index 1
-
-#将r 设置为加载配置文件，并显示"reloaded!"信息
-bind r source-file ~/.tmux.conf \; display "Reloaded!"
-
-bind-key k select-pane -U # up
-bind-key j select-pane -D # down
-bind-key h select-pane -L # left
-bind-key l select-pane -R # right
-
-set -g mouse on # 支持鼠标选取文本等
-
-set -g status-interval 2 # 状态栏刷新时间
-set -g status-justify left # 状态栏列表左对齐
-setw -g monitor-activity on # 非当前窗口有内容更新时在状态栏通知
-
-set -g status-bg black # 设置状态栏背景黑色
-set -g status-fg yellow # 设置状态栏前景黄色
-set -g status-style "bg=black, fg=yellow" # 状态栏前景背景色
-
-set -g status-left "#[bg=#FF661D] ❐ #S " # 状态栏左侧内容
-set -g status-right "#S #[fg=green,bg=black]#(tmux-mem-cpu-load --colors --interval 2)#[default]"
-set -g status-left-length 300 # 状态栏左边长度300
-set -g status-right-length 500 # 状态栏右边长度500
-
-set -wg window-status-format " #I #W " # 状态栏窗口名称格式
-set -wg window-status-current-format " #I:#W#F " # 状态栏当前窗口名称格式(#I：序号，#w：窗口名称，#F：间隔符)
-set -wg window-status-separator "" # 状态栏窗口名称之间的间隔
-set -wg window-status-current-style "bg=red" # 状态栏当前窗口名称的样式
-set -wg window-status-last-style "fg=yellow" # 状态栏最后一个窗口名称的样式
-
-set -g message-style "bg=#202529, fg=#91A8BA" # 指定消息通知的前景、后景色</code></pre>
-<h2 id="0x04、vim"><a href="#0x04、vim" class="headerlink" title="0x04、vim"></a>0x04、vim</h2><h4 id="配置文件-2"><a href="#配置文件-2" class="headerlink" title="配置文件"></a>配置文件</h4><pre class=" language-conf"><code class="language-conf">set nocompatible
-syntax on
-filetype plugin indent on
-set ic
-set hlsearch
-set encoding=utf-8
-set fileencodings=utf-8,ucs-bom,GB2312,big5
-set cursorline
-set autoindent
-set smartindent
-set scrolloff=4
-set showmatch
-set nu
-
-let python_highlight_all=1
-au Filetype python set tabstop=4
-au Filetype python set softtabstop=4
-au Filetype python set shiftwidth=4
-au Filetype python set textwidth=79
-au Filetype python set expandtab
-au Filetype python set autoindent
-au Filetype python set fileformat=unix
-autocmd Filetype python set foldmethod=indent
-autocmd Filetype python set foldlevel=99</code></pre>
 <h2 id="0x05、chrome"><a href="#0x05、chrome" class="headerlink" title="0x05、chrome"></a>0x05、chrome</h2><h4 id="插件-2"><a href="#插件-2" class="headerlink" title="插件"></a>插件</h4><ul>
 <li>vimium</li>
 <li>Evernote web Clipper</li>
@@ -1243,13 +1052,7 @@ autocmd Filetype python set foldlevel=99</code></pre>
 </ul>
 </li>
 <li><p>比如建立如下一个表</p>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> metrics <span class="token punctuation">(</span>
-  host STRING <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
-  metric STRING <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
-  time INT64 <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
-  <span class="token keyword">value</span> <span class="token keyword">DOUBLE</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
-  <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span>host<span class="token punctuation">,</span> metric<span class="token punctuation">,</span> time<span class="token punctuation">)</span><span class="token punctuation">,</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> metrics (</span><br><span class="line">    host <span class="keyword">STRING</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    metric <span class="keyword">STRING</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    <span class="built_in">time</span> INT64 <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    <span class="keyword">value</span> <span class="keyword">DOUBLE</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    PRIMARY <span class="keyword">KEY</span> (host, metric, <span class="built_in">time</span>),</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>按照range来分区如下<br><img src="/assets/images/2019/07-12-range.png" alt="range"></p>
 </li>
@@ -1679,110 +1482,34 @@ autocmd Filetype python set foldlevel=99</code></pre>
 <h2 id="SQL语法"><a href="#SQL语法" class="headerlink" title="SQL语法"></a>SQL语法</h2><ul>
 <li>sql示例</li>
 </ul>
-<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- This line is a comment about a table.</span>
-<span class="token keyword">create</span> <span class="token keyword">table</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">/*
-This is a multi-line comment about a query.
-*/</span>
-<span class="token keyword">select</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">;</span>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- This line is a comment about a table.</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> ...;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">This is a multi-line comment about a query.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">select</span> ...;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> t <span class="comment">/* This is an embedded comment about a query. */</span> <span class="keyword">where</span> ...;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> t <span class="comment">-- This is a trailing comment within a multi-line command.</span></span><br><span class="line"><span class="keyword">where</span> ...;</span><br></pre></td></tr></table></figure>
 
-<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> t <span class="token comment" spellcheck="true">/* This is an embedded comment about a query. */</span> <span class="token keyword">where</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">;</span>
-
-<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> t <span class="token comment" spellcheck="true">-- This is a trailing comment within a multi-line command.</span>
-<span class="token keyword">where</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">;</span></code></pre>
 <ul>
 <li>外部表映射</li>
 </ul>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">CREATE</span> EXTERNAL <span class="token keyword">TABLE</span> my_mapping_table
-STORED <span class="token keyword">AS</span> KUDU
-TBLPROPERTIES <span class="token punctuation">(</span>
-  <span class="token string">'kudu.table_name'</span> <span class="token operator">=</span> <span class="token string">'my_kudu_table'</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">EXTERNAL</span> <span class="keyword">TABLE</span> my_mapping_table</span><br><span class="line"><span class="keyword">STORED</span> <span class="keyword">AS</span> KUDU</span><br><span class="line">TBLPROPERTIES (</span><br><span class="line">  <span class="string">'kudu.table_name'</span> = <span class="string">'my_kudu_table'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>创建内部表</p>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> my_first_table
-<span class="token punctuation">(</span>
-id <span class="token keyword">BIGINT</span><span class="token punctuation">,</span>
-name STRING<span class="token punctuation">,</span>
-<span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span>
-<span class="token punctuation">)</span>
-<span class="token keyword">PARTITION</span> <span class="token keyword">BY</span> <span class="token keyword">HASH</span> PARTITIONS <span class="token number">16</span>
-STORED <span class="token keyword">AS</span> KUDU<span class="token punctuation">;</span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> my_first_table</span><br><span class="line">(</span><br><span class="line">  <span class="keyword">id</span> <span class="built_in">BIGINT</span>,</span><br><span class="line">  <span class="keyword">name</span> <span class="keyword">STRING</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span>(<span class="keyword">id</span>)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">PARTITION</span> <span class="keyword">BY</span> <span class="keyword">HASH</span> <span class="keyword">PARTITIONS</span> <span class="number">16</span></span><br><span class="line"><span class="keyword">STORED</span> <span class="keyword">AS</span> KUDU;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>用select来建表</p>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> new_table
-<span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span>ts<span class="token punctuation">,</span> name<span class="token punctuation">)</span>
-<span class="token keyword">PARTITION</span> <span class="token keyword">BY</span> <span class="token keyword">HASH</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> PARTITIONS <span class="token number">8</span>
-STORED <span class="token keyword">AS</span> KUDU
-<span class="token keyword">AS</span> <span class="token keyword">SELECT</span> ts<span class="token punctuation">,</span> name<span class="token punctuation">,</span> <span class="token keyword">value</span> <span class="token keyword">FROM</span> old_table<span class="token punctuation">;</span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> new_table</span><br><span class="line">PRIMARY <span class="keyword">KEY</span> (ts, <span class="keyword">name</span>)</span><br><span class="line"><span class="keyword">PARTITION</span> <span class="keyword">BY</span> <span class="keyword">HASH</span>(<span class="keyword">name</span>) <span class="keyword">PARTITIONS</span> <span class="number">8</span></span><br><span class="line"><span class="keyword">STORED</span> <span class="keyword">AS</span> KUDU</span><br><span class="line"><span class="keyword">AS</span> <span class="keyword">SELECT</span> ts, <span class="keyword">name</span>, <span class="keyword">value</span> <span class="keyword">FROM</span> old_table;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>复杂点的partition</p>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> cust_behavior <span class="token punctuation">(</span>
-id <span class="token keyword">BIGINT</span><span class="token punctuation">,</span>
-sku STRING<span class="token punctuation">,</span>
-salary STRING<span class="token punctuation">,</span>
-edu_level <span class="token keyword">INT</span><span class="token punctuation">,</span>
-usergender STRING<span class="token punctuation">,</span>
-<span class="token punctuation">`</span><span class="token keyword">group</span><span class="token punctuation">`</span> STRING<span class="token punctuation">,</span>
-city STRING<span class="token punctuation">,</span>
-postcode STRING<span class="token punctuation">,</span>
-last_purchase_price <span class="token keyword">FLOAT</span><span class="token punctuation">,</span>
-last_purchase_date <span class="token keyword">BIGINT</span><span class="token punctuation">,</span>
-category STRING<span class="token punctuation">,</span>
-rating <span class="token keyword">INT</span><span class="token punctuation">,</span>
-fulfilled_date <span class="token keyword">BIGINT</span><span class="token punctuation">,</span>
-<span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span>id<span class="token punctuation">,</span> sku<span class="token punctuation">)</span>
-<span class="token punctuation">)</span>
-<span class="token keyword">PARTITION</span> <span class="token keyword">BY</span> <span class="token keyword">HASH</span> <span class="token punctuation">(</span>id<span class="token punctuation">)</span> PARTITIONS <span class="token number">4</span><span class="token punctuation">,</span>
-RANGE <span class="token punctuation">(</span>sku<span class="token punctuation">)</span>
-<span class="token punctuation">(</span>
-<span class="token keyword">PARTITION</span> <span class="token keyword">VALUES</span> <span class="token operator">&lt;</span> <span class="token string">'g'</span><span class="token punctuation">,</span>
-<span class="token keyword">PARTITION</span> <span class="token string">'g'</span> <span class="token operator">&lt;=</span> <span class="token keyword">VALUES</span> <span class="token operator">&lt;</span> <span class="token string">'o'</span><span class="token punctuation">,</span>
-<span class="token keyword">PARTITION</span> <span class="token string">'o'</span> <span class="token operator">&lt;=</span> <span class="token keyword">VALUES</span> <span class="token operator">&lt;</span> <span class="token string">'u'</span><span class="token punctuation">,</span>
-<span class="token keyword">PARTITION</span> <span class="token string">'u'</span> <span class="token operator">&lt;=</span> <span class="token keyword">VALUES</span>
-<span class="token punctuation">)</span>
-STORED <span class="token keyword">AS</span> KUDU<span class="token punctuation">;</span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> cust_behavior (</span><br><span class="line">  <span class="keyword">id</span> <span class="built_in">BIGINT</span>,</span><br><span class="line">  sku <span class="keyword">STRING</span>,</span><br><span class="line">  salary <span class="keyword">STRING</span>,</span><br><span class="line">  edu_level <span class="built_in">INT</span>,</span><br><span class="line">  usergender <span class="keyword">STRING</span>,</span><br><span class="line">  <span class="string">`group`</span> <span class="keyword">STRING</span>,</span><br><span class="line">  city <span class="keyword">STRING</span>,</span><br><span class="line">  postcode <span class="keyword">STRING</span>,</span><br><span class="line">  last_purchase_price <span class="built_in">FLOAT</span>,</span><br><span class="line">  last_purchase_date <span class="built_in">BIGINT</span>,</span><br><span class="line">  <span class="keyword">category</span> <span class="keyword">STRING</span>,</span><br><span class="line">  rating <span class="built_in">INT</span>,</span><br><span class="line">  fulfilled_date <span class="built_in">BIGINT</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="keyword">id</span>, sku)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">PARTITION</span> <span class="keyword">BY</span> <span class="keyword">HASH</span> (<span class="keyword">id</span>) <span class="keyword">PARTITIONS</span> <span class="number">4</span>,</span><br><span class="line"><span class="keyword">RANGE</span> (sku)</span><br><span class="line">(</span><br><span class="line">  <span class="keyword">PARTITION</span> <span class="keyword">VALUES</span> &lt; <span class="string">'g'</span>,</span><br><span class="line">  <span class="keyword">PARTITION</span> <span class="string">'g'</span> &lt;= <span class="keyword">VALUES</span> &lt; <span class="string">'o'</span>,</span><br><span class="line">  <span class="keyword">PARTITION</span> <span class="string">'o'</span> &lt;= <span class="keyword">VALUES</span> &lt; <span class="string">'u'</span>,</span><br><span class="line">  <span class="keyword">PARTITION</span> <span class="string">'u'</span> &lt;= <span class="keyword">VALUES</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">STORED</span> <span class="keyword">AS</span> KUDU;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>多个hash分区</p>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> cust_behavior <span class="token punctuation">(</span>
-id <span class="token keyword">BIGINT</span><span class="token punctuation">,</span>
-sku STRING<span class="token punctuation">,</span>
-salary STRING<span class="token punctuation">,</span>
-edu_level <span class="token keyword">INT</span><span class="token punctuation">,</span>
-usergender STRING<span class="token punctuation">,</span>
-<span class="token punctuation">`</span><span class="token keyword">group</span><span class="token punctuation">`</span> STRING<span class="token punctuation">,</span>
-city STRING<span class="token punctuation">,</span>
-postcode STRING<span class="token punctuation">,</span>
-last_purchase_price <span class="token keyword">FLOAT</span><span class="token punctuation">,</span>
-last_purchase_date <span class="token keyword">BIGINT</span><span class="token punctuation">,</span>
-category STRING<span class="token punctuation">,</span>
-rating <span class="token keyword">INT</span><span class="token punctuation">,</span>
-fulfilled_date <span class="token keyword">BIGINT</span><span class="token punctuation">,</span>
-<span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span>id<span class="token punctuation">,</span> sku<span class="token punctuation">)</span>
-<span class="token punctuation">)</span>
-<span class="token keyword">PARTITION</span> <span class="token keyword">BY</span> <span class="token keyword">HASH</span> <span class="token punctuation">(</span>id<span class="token punctuation">)</span> PARTITIONS <span class="token number">4</span><span class="token punctuation">,</span>
-           <span class="token keyword">HASH</span> <span class="token punctuation">(</span>sku<span class="token punctuation">)</span> PARTITIONS <span class="token number">4</span>
-STORED <span class="token keyword">AS</span> KUDU<span class="token punctuation">;</span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> cust_behavior (</span><br><span class="line">  <span class="keyword">id</span> <span class="built_in">BIGINT</span>,</span><br><span class="line">  sku <span class="keyword">STRING</span>,</span><br><span class="line">  salary <span class="keyword">STRING</span>,</span><br><span class="line">  edu_level <span class="built_in">INT</span>,</span><br><span class="line">  usergender <span class="keyword">STRING</span>,</span><br><span class="line">  <span class="string">`group`</span> <span class="keyword">STRING</span>,</span><br><span class="line">  city <span class="keyword">STRING</span>,</span><br><span class="line">  postcode <span class="keyword">STRING</span>,</span><br><span class="line">  last_purchase_price <span class="built_in">FLOAT</span>,</span><br><span class="line">  last_purchase_date <span class="built_in">BIGINT</span>,</span><br><span class="line">  <span class="keyword">category</span> <span class="keyword">STRING</span>,</span><br><span class="line">  rating <span class="built_in">INT</span>,</span><br><span class="line">  fulfilled_date <span class="built_in">BIGINT</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="keyword">id</span>, sku)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">PARTITION</span> <span class="keyword">BY</span> <span class="keyword">HASH</span> (<span class="keyword">id</span>) <span class="keyword">PARTITIONS</span> <span class="number">4</span>,</span><br><span class="line">             <span class="keyword">HASH</span> (sku) <span class="keyword">PARTITIONS</span> <span class="number">4</span></span><br><span class="line"><span class="keyword">STORED</span> <span class="keyword">AS</span> KUDU;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>多个range分区</p>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> sales_by_year <span class="token punctuation">(</span>
-year <span class="token keyword">INT</span><span class="token punctuation">,</span> sale_id <span class="token keyword">INT</span><span class="token punctuation">,</span> amount <span class="token keyword">INT</span><span class="token punctuation">,</span>
-<span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span>sale_id<span class="token punctuation">,</span> year<span class="token punctuation">)</span>
-<span class="token punctuation">)</span>
-<span class="token keyword">PARTITION</span> <span class="token keyword">BY</span> RANGE <span class="token punctuation">(</span>year<span class="token punctuation">)</span> <span class="token punctuation">(</span>
-<span class="token keyword">PARTITION</span> <span class="token keyword">VALUE</span> <span class="token operator">=</span> <span class="token number">2012</span><span class="token punctuation">,</span>
-<span class="token keyword">PARTITION</span> <span class="token keyword">VALUE</span> <span class="token operator">=</span> <span class="token number">2013</span><span class="token punctuation">,</span>
-<span class="token keyword">PARTITION</span> <span class="token keyword">VALUE</span> <span class="token operator">=</span> <span class="token number">2014</span><span class="token punctuation">,</span>
-<span class="token keyword">PARTITION</span> <span class="token keyword">VALUE</span> <span class="token operator">=</span> <span class="token number">2015</span><span class="token punctuation">,</span>
-<span class="token keyword">PARTITION</span> <span class="token keyword">VALUE</span> <span class="token operator">=</span> <span class="token number">2016</span>
-<span class="token punctuation">)</span>
-STORED <span class="token keyword">AS</span> KUDU<span class="token punctuation">;</span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> sales_by_year (</span><br><span class="line">  <span class="keyword">year</span> <span class="built_in">INT</span>, sale_id <span class="built_in">INT</span>, amount <span class="built_in">INT</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (sale_id, <span class="keyword">year</span>)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">PARTITION</span> <span class="keyword">BY</span> <span class="keyword">RANGE</span> (<span class="keyword">year</span>) (</span><br><span class="line">  <span class="keyword">PARTITION</span> <span class="keyword">VALUE</span> = <span class="number">2012</span>,</span><br><span class="line">  <span class="keyword">PARTITION</span> <span class="keyword">VALUE</span> = <span class="number">2013</span>,</span><br><span class="line">  <span class="keyword">PARTITION</span> <span class="keyword">VALUE</span> = <span class="number">2014</span>,</span><br><span class="line">  <span class="keyword">PARTITION</span> <span class="keyword">VALUE</span> = <span class="number">2015</span>,</span><br><span class="line">  <span class="keyword">PARTITION</span> <span class="keyword">VALUE</span> = <span class="number">2016</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">STORED</span> <span class="keyword">AS</span> KUDU;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>添加ragne分区</p>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> sales_by_year <span class="token keyword">ADD</span> RANGE <span class="token keyword">PARTITION</span> <span class="token keyword">VALUE</span> <span class="token operator">=</span> <span class="token number">2017</span><span class="token punctuation">;</span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> sales_by_year <span class="keyword">ADD</span> <span class="keyword">RANGE</span> <span class="keyword">PARTITION</span> <span class="keyword">VALUE</span> = <span class="number">2017</span>;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>删除一个range分区</p>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> sales_by_year <span class="token keyword">DROP</span> RANGE <span class="token keyword">PARTITION</span> <span class="token keyword">VALUE</span> <span class="token operator">=</span> <span class="token number">2012</span><span class="token punctuation">;</span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> sales_by_year <span class="keyword">DROP</span> <span class="keyword">RANGE</span> <span class="keyword">PARTITION</span> <span class="keyword">VALUE</span> = <span class="number">2012</span>;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>操作元</p>
 <ul>
@@ -2176,10 +1903,8 @@ STORED <span class="token keyword">AS</span> KUDU<span class="token punctuation"
 <li>模版字符串(``)</li>
 <li>新增几个方法</li>
 </ul>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token string">'my string'</span><span class="token punctuation">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token string">'my'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//true</span>
-<span class="token string">'my string'</span><span class="token punctuation">.</span><span class="token function">endsWith</span><span class="token punctuation">(</span><span class="token string">'my'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// false</span>
-<span class="token string">'my string'</span><span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span><span class="token string">'str'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// true</span>
-<span class="token string">'my '</span><span class="token punctuation">.</span><span class="token function">repeat</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 'my my my '</span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'my string'</span>.startsWith(<span class="string">'my'</span>); <span class="comment">//true</span></span><br><span class="line"><span class="string">'my string'</span>.endsWith(<span class="string">'my'</span>); <span class="comment">// false</span></span><br><span class="line"><span class="string">'my string'</span>.includes(<span class="string">'str'</span>); <span class="comment">// true</span></span><br><span class="line"><span class="string">'my '</span>.repeat(<span class="number">3</span>); <span class="comment">// 'my my my '</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="0x03、数组"><a href="#0x03、数组" class="headerlink" title="0x03、数组"></a>0x03、数组</h2><blockquote>
 <p>Array 对象增加了一些新的静态方法，Array 原型上也增加了一些新方法</p>
 </blockquote>
@@ -2187,115 +1912,39 @@ STORED <span class="token keyword">AS</span> KUDU<span class="token punctuation"
 <li>from 从类数组和可遍历对象中创建 Array 的实例</li>
 <li>find 返回回调返回 true 的第一个元素。</li>
 </ul>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token punctuation">[</span><span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>n <span class="token operator">=</span><span class="token operator">></span> n <span class="token operator">===</span> <span class="token number">10</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 10</span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">9</span>, <span class="number">2</span>, <span class="number">10</span>, <span class="number">8</span>].find(<span class="function"><span class="params">n</span> =&gt;</span> n === <span class="number">10</span>) <span class="comment">// 10</span></span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>findIndex 返回回调函数返回 true的第一个元素的下标。</li>
 </ul>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">findIndex</span><span class="token punctuation">(</span>n <span class="token operator">=</span><span class="token operator">></span> n <span class="token operator">===</span> <span class="token number">10</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 2</span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">5</span>, <span class="number">1</span>, <span class="number">10</span>, <span class="number">8</span>].findIndex(<span class="function"><span class="params">n</span> =&gt;</span> n === <span class="number">10</span>) <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>fill 用所给参数”覆盖”数组的元素。</li>
 </ul>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// [7, 7, 7]</span>
-<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// [0, 7, 7, 7, 0]</span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>].fill(<span class="number">7</span>) <span class="comment">// [7, 7, 7]</span></span><br><span class="line">[<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>].fill(<span class="number">7</span>, <span class="number">1</span>, <span class="number">3</span>) <span class="comment">// [0, 7, 7, 7, 0]</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="0x04、新增Map和Set结构"><a href="#0x04、新增Map和Set结构" class="headerlink" title="0x04、新增Map和Set结构"></a>0x04、新增Map和Set结构</h2><h2 id="0x05、Math新增几个方法"><a href="#0x05、Math新增几个方法" class="headerlink" title="0x05、Math新增几个方法"></a>0x05、Math新增几个方法</h2><ul>
 <li>Math.sign 返回数字的符号，结果为 1、-1 或 0。</li>
 <li>Math.trunc 返回无小数位的数字</li>
 <li>Math.cbrt 返回数字的立方根。</li>
 </ul>
-<pre class=" language-javascript"><code class="language-javascript">Math<span class="token punctuation">.</span><span class="token function">sign</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 1</span>
-Math<span class="token punctuation">.</span><span class="token function">sign</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// -1</span>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Math</span>.sign(<span class="number">5</span>); <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">Math</span>.sign(<span class="number">-9</span>); <span class="comment">// -1</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Math</span>.trunc(<span class="number">5.9</span>); <span class="comment">// 5</span></span><br><span class="line"><span class="built_in">Math</span>.trunc(<span class="number">5.123</span>); <span class="comment">// 5</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Math</span>.cbrt(<span class="number">64</span>); <span class="comment">// 4</span></span><br></pre></td></tr></table></figure>
 
-Math<span class="token punctuation">.</span><span class="token function">trunc</span><span class="token punctuation">(</span><span class="token number">5.9</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 5</span>
-Math<span class="token punctuation">.</span><span class="token function">trunc</span><span class="token punctuation">(</span><span class="token number">5.123</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 5</span>
+<h2 id="0x06、扩展运算符-…"><a href="#0x06、扩展运算符-…" class="headerlink" title="0x06、扩展运算符(…)"></a>0x06、扩展运算符(…)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> values = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">let</span> some = [...values, <span class="number">8</span>]; <span class="comment">// [1, 2, 4, 8]</span></span><br><span class="line"><span class="keyword">let</span> more = [...values, <span class="number">8</span>, ...values]; <span class="comment">// [1, 2, 4, 8, 1, 2, 4]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ES5 equivalent:</span></span><br><span class="line"><span class="keyword">let</span> values = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>];</span><br><span class="line"><span class="comment">// Iterate, push, sweat, repeat...</span></span><br><span class="line"><span class="comment">// Iterate, push, sweat, repeat...</span></span><br></pre></td></tr></table></figure>
 
-Math<span class="token punctuation">.</span><span class="token function">cbrt</span><span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 4</span></code></pre>
-<h2 id="0x06、扩展运算符-…"><a href="#0x06、扩展运算符-…" class="headerlink" title="0x06、扩展运算符(…)"></a>0x06、扩展运算符(…)</h2><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> values <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">let</span> some <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>values<span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// [1, 2, 4, 8]</span>
-<span class="token keyword">let</span> more <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>values<span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token operator">...</span>values<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// [1, 2, 4, 8, 1, 2, 4]</span>
-
-<span class="token comment" spellcheck="true">// ES5 equivalent:</span>
-<span class="token keyword">let</span> values <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// Iterate, push, sweat, repeat...</span>
-<span class="token comment" spellcheck="true">// Iterate, push, sweat, repeat...</span></code></pre>
 <p>扩展语法在传参数调用函数时也非常有用</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> values <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> values = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>];</span><br><span class="line"></span><br><span class="line">doSomething(...values);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params">x, y, z</span>) </span>&#123;</span><br><span class="line">   <span class="comment">// x = 1, y = 2, z = 4</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES5 equivalent:</span></span><br><span class="line">doSomething.apply(<span class="literal">null</span>, values);</span><br></pre></td></tr></table></figure>
 
-<span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token operator">...</span>values<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<h2 id="0x07、解构赋值"><a href="#0x07、解构赋值" class="headerlink" title="0x07、解构赋值"></a>0x07、解构赋值</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> [x, y] = [<span class="number">1</span>, <span class="number">2</span>]; <span class="comment">// x = 1, y = 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ES5 equivalent:</span></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line"><span class="keyword">var</span> x = arr[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">var</span> y = arr[<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用这个语法，可以一次性给多个变量赋值。一个很好的附加用处是可以很简单地交换变量值：</span></span><br><span class="line"><span class="keyword">let</span> x = <span class="number">1</span>,</span><br><span class="line">    y = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">[x, y] = [y, x]; <span class="comment">// x = 2, y = 1</span></span><br><span class="line"><span class="comment">//解构也可以用于对象。注意对象中必须存在对应的键：</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">x</span>: <span class="number">1</span>, <span class="attr">y</span>: <span class="number">2</span>&#125;;</span><br><span class="line"><span class="keyword">let</span> &#123;x, y&#125; = obj; <span class="comment">// x = 1, y = 2</span></span><br><span class="line"><span class="comment">//你也可以使用该机制来修改变量名：</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">x</span>: <span class="number">1</span>, <span class="attr">y</span>: <span class="number">2</span>&#125;;</span><br><span class="line"><span class="keyword">let</span> &#123;<span class="attr">x</span>: a, <span class="attr">y</span>: b&#125; = obj; <span class="comment">// a = 1, b = 2</span></span><br><span class="line"><span class="comment">//另一个有趣的模式是模拟多个返回值：</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> [<span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> [x, y] = doSomething(); <span class="comment">// x = 1, y = 2</span></span><br><span class="line"><span class="comment">//解构可以用来为参数对象赋默认值。通过对象字面量，可以模拟命名参数：</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params">&#123;y = <span class="number">1</span>, z = <span class="number">0</span>&#125;</span>) </span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(y, z);</span><br><span class="line">&#125;</span><br><span class="line">doSomething(&#123;<span class="attr">y</span>: <span class="number">2</span>&#125;);</span><br></pre></td></tr></table></figure>
 
-<span class="token keyword">function</span> <span class="token function">doSomething</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> z<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-   <span class="token comment" spellcheck="true">// x = 1, y = 2, z = 4</span>
-<span class="token punctuation">}</span>
+<h2 id="0x08、参数"><a href="#0x08、参数" class="headerlink" title="0x08、参数"></a>0x08、参数</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//可以设置默认参数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params">x, y = <span class="number">2</span></span>) </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> x * y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">doSomething(<span class="number">5</span>); <span class="comment">// 10</span></span><br><span class="line">doSomething(<span class="number">5</span>, <span class="literal">undefined</span>); <span class="comment">// 10</span></span><br><span class="line">doSomething(<span class="number">5</span>, <span class="number">3</span>); <span class="comment">// 15</span></span><br><span class="line"><span class="comment">//看起来很简洁，对吧？ 我肯定你之前在 ES5 中曾经需要给某些参数赋默认值：</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">   y = y === <span class="literal">undefined</span> ? <span class="number">2</span> : y;</span><br><span class="line">   <span class="keyword">return</span> x * y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<span class="token comment" spellcheck="true">// ES5 equivalent:</span>
-doSomething<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> values<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h2 id="0x07、解构赋值"><a href="#0x07、解构赋值" class="headerlink" title="0x07、解构赋值"></a>0x07、解构赋值</h2><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> <span class="token punctuation">[</span>x<span class="token punctuation">,</span> y<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// x = 1, y = 2</span>
+<h2 id="0x09、模块"><a href="#0x09、模块" class="headerlink" title="0x09、模块"></a>0x09、模块</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">类的创建围绕 <span class="class"><span class="keyword">class</span> 和 <span class="title">constructor</span> 关键词。以下是个简短的示例：</span></span><br><span class="line"><span class="class"><span class="title">class</span> <span class="title">Vehicle</span> </span>&#123;</span><br><span class="line">   <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">      <span class="keyword">this</span>.name = name;</span><br><span class="line">      <span class="keyword">this</span>.kind = <span class="string">'vehicle'</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   getName() &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create an instance</span></span><br><span class="line"><span class="keyword">let</span> myVehicle = <span class="keyword">new</span> Vehicle(<span class="string">'rocky'</span>);</span><br></pre></td></tr></table></figure>
 
-<span class="token comment" spellcheck="true">// ES5 equivalent:</span>
-<span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">var</span> x <span class="token operator">=</span> arr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">var</span> y <span class="token operator">=</span> arr<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-
-<span class="token comment" spellcheck="true">//使用这个语法，可以一次性给多个变量赋值。一个很好的附加用处是可以很简单地交换变量值：</span>
-<span class="token keyword">let</span> x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>
-    y <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
-
-<span class="token punctuation">[</span>x<span class="token punctuation">,</span> y<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span>y<span class="token punctuation">,</span> x<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// x = 2, y = 1</span>
-<span class="token comment" spellcheck="true">//解构也可以用于对象。注意对象中必须存在对应的键：</span>
-<span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>x<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token keyword">let</span> <span class="token punctuation">{</span>x<span class="token punctuation">,</span> y<span class="token punctuation">}</span> <span class="token operator">=</span> obj<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// x = 1, y = 2</span>
-<span class="token comment" spellcheck="true">//你也可以使用该机制来修改变量名：</span>
-<span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>x<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token keyword">let</span> <span class="token punctuation">{</span>x<span class="token punctuation">:</span> a<span class="token punctuation">,</span> y<span class="token punctuation">:</span> b<span class="token punctuation">}</span> <span class="token operator">=</span> obj<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// a = 1, b = 2</span>
-<span class="token comment" spellcheck="true">//另一个有趣的模式是模拟多个返回值：</span>
-<span class="token keyword">function</span> <span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-   <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">let</span> <span class="token punctuation">[</span>x<span class="token punctuation">,</span> y<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// x = 1, y = 2</span>
-<span class="token comment" spellcheck="true">//解构可以用来为参数对象赋默认值。通过对象字面量，可以模拟命名参数：</span>
-<span class="token keyword">function</span> <span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">{</span>y <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> z <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>y<span class="token punctuation">,</span> z<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">{</span>y<span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h2 id="0x08、参数"><a href="#0x08、参数" class="headerlink" title="0x08、参数"></a>0x08、参数</h2><pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//可以设置默认参数</span>
-<span class="token keyword">function</span> <span class="token function">doSomething</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-   <span class="token keyword">return</span> x <span class="token operator">*</span> y<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 10</span>
-<span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> undefined<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 10</span>
-<span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 15</span>
-<span class="token comment" spellcheck="true">//看起来很简洁，对吧？ 我肯定你之前在 ES5 中曾经需要给某些参数赋默认值：</span>
-<span class="token keyword">function</span> <span class="token function">doSomething</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-   y <span class="token operator">=</span> y <span class="token operator">===</span> undefined <span class="token operator">?</span> <span class="token number">2</span> <span class="token punctuation">:</span> y<span class="token punctuation">;</span>
-   <span class="token keyword">return</span> x <span class="token operator">*</span> y<span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
-<h2 id="0x09、模块"><a href="#0x09、模块" class="headerlink" title="0x09、模块"></a>0x09、模块</h2><pre class=" language-javascript"><code class="language-javascript">类的创建围绕 <span class="token keyword">class</span> 和 constructor 关键词。以下是个简短的示例：
-<span class="token keyword">class</span> <span class="token class-name">Vehicle</span> <span class="token punctuation">{</span>
-   <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
-      <span class="token keyword">this</span><span class="token punctuation">.</span>kind <span class="token operator">=</span> <span class="token string">'vehicle'</span><span class="token punctuation">;</span>
-   <span class="token punctuation">}</span>
-   <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">;</span>
-   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">// Create an instance</span>
-<span class="token keyword">let</span> myVehicle <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vehicle</span><span class="token punctuation">(</span><span class="token string">'rocky'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>注意类的定义不是一般的对象，因此，类的成员间没有逗号。 创造一个类的对象时，需要使用 new 关键词。继承一个基类时，使用 extends：</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">class</span> <span class="token class-name">Car</span> <span class="token keyword">extends</span> <span class="token class-name">Vehicle</span> <span class="token punctuation">{</span>
-   <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">super</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token keyword">this</span><span class="token punctuation">.</span>kind <span class="token operator">=</span> <span class="token string">'car'</span>
-   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span> <span class="keyword">extends</span> <span class="title">Vehicle</span> </span>&#123;</span><br><span class="line">   <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">      <span class="keyword">super</span>(name);</span><br><span class="line">      <span class="keyword">this</span>.kind = <span class="string">'car'</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> myCar = <span class="keyword">new</span> Car(<span class="string">'bumpy'</span>);</span><br><span class="line"></span><br><span class="line">myCar.getName(); <span class="comment">// 'bumpy'</span></span><br><span class="line">myCar <span class="keyword">instanceof</span> Car; <span class="comment">// true</span></span><br><span class="line">myCar <span class="keyword">instanceof</span> Vehicle; <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
 
-<span class="token keyword">let</span> myCar <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Car</span><span class="token punctuation">(</span><span class="token string">'bumpy'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-myCar<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 'bumpy'</span>
-myCar <span class="token keyword">instanceof</span> <span class="token class-name">Car</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// true</span>
-myCar <span class="token keyword">instanceof</span> <span class="token class-name">Vehicle</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//true</span></code></pre>
 <p>从衍生类中，你可以使用从任何构造函数或方法中使用 super 来获取它的基类：</p>
 <blockquote>
 <p>使用 super() 调用父类构造函数。 调用其它成员，举个例子，使用 super.getName() 。</p>
@@ -2303,288 +1952,8 @@ myCar <span class="token keyword">instanceof</span> <span class="token class-nam
 <h2 id="0x10、记号"><a href="#0x10、记号" class="headerlink" title="0x10、记号"></a>0x10、记号</h2><blockquote>
 <p>记号是一个新的原生数据类型，像 Number 和 String 一样。你可以使用记号为对象属性创建唯一标识或创建唯一的常量。</p>
 </blockquote>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span> MY_CONSTANT <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> MY_CONSTANT = <span class="built_in">Symbol</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj = &#123;&#125;;</span><br><span class="line">obj[MY_CONSTANT] = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//记号与 const 配合很合适，因为它们都有不可改变的特性。</span></span><br><span class="line"><span class="keyword">const</span> CHINESE = <span class="built_in">Symbol</span>();</span><br><span class="line"><span class="keyword">const</span> ENGLISH = <span class="built_in">Symbol</span>();</span><br><span class="line"><span class="keyword">const</span> SPANISH = <span class="built_in">Symbol</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">switch</span>(language) &#123;</span><br><span class="line">   <span class="keyword">case</span> CHINESE:</span><br><span class="line">      <span class="comment">//</span></span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">   <span class="keyword">case</span> ENGLISH:</span><br><span class="line">      <span class="comment">//</span></span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">   <span class="keyword">case</span> SPANISH:</span><br><span class="line">      <span class="comment">//</span></span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">   <span class="keyword">default</span>:</span><br><span class="line">      <span class="comment">//</span></span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//你可以为 symbol 添加描述。虽然不可以通过描述获取 symbol，但是可用于代码调试。</span></span><br><span class="line"><span class="keyword">const</span> CONST_1 = <span class="built_in">Symbol</span>(<span class="string">'my symbol'</span>);</span><br><span class="line"><span class="keyword">const</span> CONST_2 = <span class="built_in">Symbol</span>(<span class="string">'my symbol'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> CONST_1 === <span class="string">'symbol'</span>; <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">CONST_1 === CONST_2; <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
 
-<span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-obj<span class="token punctuation">[</span>MY_CONSTANT<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-
-<span class="token comment" spellcheck="true">//记号与 const 配合很合适，因为它们都有不可改变的特性。</span>
-<span class="token keyword">const</span> CHINESE <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> ENGLISH <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> SPANISH <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">switch</span><span class="token punctuation">(</span>language<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-   <span class="token keyword">case</span> CHINESE<span class="token punctuation">:</span>
-      <span class="token comment" spellcheck="true">//</span>
-      <span class="token keyword">break</span><span class="token punctuation">;</span>
-   <span class="token keyword">case</span> ENGLISH<span class="token punctuation">:</span>
-      <span class="token comment" spellcheck="true">//</span>
-      <span class="token keyword">break</span><span class="token punctuation">;</span>
-   <span class="token keyword">case</span> SPANISH<span class="token punctuation">:</span>
-      <span class="token comment" spellcheck="true">//</span>
-      <span class="token keyword">break</span><span class="token punctuation">;</span>
-   <span class="token keyword">default</span><span class="token punctuation">:</span>
-      <span class="token comment" spellcheck="true">//</span>
-      <span class="token keyword">break</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">//你可以为 symbol 添加描述。虽然不可以通过描述获取 symbol，但是可用于代码调试。</span>
-<span class="token keyword">const</span> CONST_1 <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">'my symbol'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> CONST_2 <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">'my symbol'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">typeof</span> CONST_1 <span class="token operator">===</span> <span class="token string">'symbol'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// true</span>
-
-CONST_1 <span class="token operator">===</span> CONST_2<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// false</span></code></pre>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2019/03/10/2015/03-10-mysql数据库主从同步/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="hackfox">
-      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hackfox">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/03/10/2015/03-10-mysql数据库主从同步/" class="post-title-link" itemprop="url">mysql数据库主从同步</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-03-10 18:25:53" itemprop="dateCreated datePublished" datetime="2019-03-10T18:25:53+08:00">2019-03-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-18 22:52:14" itemprop="dateModified" datetime="2020-04-18T22:52:14+08:00">2020-04-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/mysql/" itemprop="url" rel="index"><span itemprop="name">mysql</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="一、同步配置"><a href="#一、同步配置" class="headerlink" title="一、同步配置"></a>一、同步配置</h2><ul>
-<li>1.主库和从库创建同步账户<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> grant replication slave, replication client on *.* to repl@<span class="token string">'192.168.1.%'</span> identified by <span class="token string">'123456'</span><span class="token punctuation">;</span></code></pre>
-</li>
-<li>2.主库配置/etc/my.cnf<pre class=" language-bash"><code class="language-bash">server-id<span class="token operator">=</span>130    <span class="token comment" spellcheck="true">#保证唯一值</span>
-log-bin<span class="token operator">=</span>mysql-bin
-binlog_format<span class="token operator">=</span>mixed
-binlog-do-db<span class="token operator">=</span>test2
-binlog-ignore-db<span class="token operator">=</span>mysql
-log-error<span class="token operator">=</span>/var/lib/mysql/mysql.err</code></pre>
-</li>
-<li>3.重启主库</li>
-<li>4.查看主库状态<pre class=" language-bash"><code class="language-bash">  mysql<span class="token operator">></span>show master status<span class="token punctuation">;</span>
-  +-------------------------+-----------------+--------------------+-------------------------+
-  <span class="token operator">|</span> File            <span class="token operator">|</span>     Position <span class="token operator">|</span> Binlog_Do_DB <span class="token operator">|</span> Binlog_Ignore_DB <span class="token operator">|</span>
-  +-------------------------+----------------+--------------------+--------------------------+
-  <span class="token operator">|</span> mysql-bin.000002 <span class="token operator">|</span>      120 <span class="token operator">|</span>   test2      <span class="token operator">|</span>   mysql        <span class="token operator">|</span>
-  +-------------------------+----------------+---------------------+------------------------+
-  1 row <span class="token keyword">in</span> <span class="token keyword">set</span> <span class="token punctuation">(</span>0.00 sec<span class="token punctuation">)</span></code></pre>
-</li>
-<li>5.从库配置 /etc/my.cnf<pre class=" language-shell"><code class="language-shell">server-id=131 #保证唯一值
-log-bin=mysql-bin
-binlog_format=mixed
-replicate-do-db=test2
-replicate-ignore-db=mysql
-relay_log=/var/lib/mysql/mysql-relay-bin
-log_slave_updates=1
-read_only=1</code></pre>
-</li>
-<li>6.重启从库</li>
-<li>7.指向主库操作<pre class=" language-shell"><code class="language-shell">mysql> change master to master_host='192.168.1.201',
-master_user='repl',
-master_password='123456',
-master_log_file='mysql-bin.000002',
-master_log_pos=120;</code></pre>
-</li>
-<li>8.开始同步<pre class=" language-shell"><code class="language-shell">mysql>start slave;</code></pre>
-</li>
-<li>9.查看状态<pre class=" language-shell"><code class="language-shell">mysql>show slave status;</code></pre>
-</li>
-<li>10.双向主从的话，把主库按照从库在配置一遍即可</li>
-</ul>
-<h2 id="二、常见问题"><a href="#二、常见问题" class="headerlink" title="二、常见问题"></a>二、常见问题</h2><ul>
-<li>1.两个数据库版本尽量一致，如果不一致，高版本做从库，此时不可双向主从</li>
-<li>2.主库和从库的数据库名必须相同；</li>
-<li>3.主库和从库的复制可以精确到表，但是在需要更改主库或从库的数据结构时需要立刻重启slave；</li>
-<li>4.不能在mysql配置文件里直接写入master的配置信息，需要用change master命令来完成；</li>
-<li>5.指定replicate_do_db必须在my.ini里配置，不能用change master命令来完成；</li>
-<li>6.如果不及时清理，日积月累二进制日志文件可能会把磁盘空间占满，可以在配置文件里加上expire_logs_days=7，只保留最近7天的日志，建议当slave不再使用时，通过reset slave来取消relaylog；</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2019/03/10/2016/03-10-mysql常用语句/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="hackfox">
-      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hackfox">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/03/10/2016/03-10-mysql常用语句/" class="post-title-link" itemprop="url">mysql常用语句</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-03-10 18:20:48" itemprop="dateCreated datePublished" datetime="2019-03-10T18:20:48+08:00">2019-03-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-19 13:29:39" itemprop="dateModified" datetime="2020-04-19T13:29:39+08:00">2020-04-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/mysql/" itemprop="url" rel="index"><span itemprop="name">mysql</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li>1.授权用户<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> GRANT ALL PRIVILEGES ON *.* TO <span class="token string">'zxc'</span>@<span class="token string">'%'</span> IDENTIFIED BY <span class="token string">'ydp#2015<span class="token variable">$Z!!!</span>'</span> WITH GRANT OPTION<span class="token punctuation">;</span>
-mysql<span class="token operator">></span> FLUSH PRIVILEGES<span class="token punctuation">;</span></code></pre>
-</li>
-<li>2.远程连接<pre class=" language-bash"><code class="language-bash">shell<span class="token operator">></span> mysql -h127.0.0.1 -P3306 -uroot -p</code></pre>
-</li>
-<li>3.导出数据库<pre class=" language-bash"><code class="language-bash">shell<span class="token operator">></span> mysqldump -h127.0.0.1 -P3306 -uroot -p sqsx <span class="token operator">></span> sqsx.sql</code></pre>
-</li>
-<li>4.导入数据库<pre class=" language-bash"><code class="language-bash">shell<span class="token operator">></span> mysql -uroot -p sqsx <span class="token operator">&lt;</span> sqsx.sql</code></pre>
-</li>
-<li>5.分析查询<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> explain <span class="token keyword">select</span> * from user<span class="token punctuation">;</span></code></pre>
-</li>
-<li>6.查询所有的进程<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show procelist<span class="token punctuation">;</span></code></pre>
-</li>
-<li>7.建数据库语句<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> create database dbname default character <span class="token keyword">set</span> utf8 collate utf8_general_ci<span class="token punctuation">;</span></code></pre>
-</li>
-<li>8.创建数据表语句<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> create table dbname.tablename <span class="token punctuation">(</span><span class="token punctuation">)</span> engine<span class="token operator">=</span>Innodb charset<span class="token operator">=</span>utf8<span class="token punctuation">;</span></code></pre>
-</li>
-<li>9.删除数据库<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> drop database dbname<span class="token punctuation">;</span></code></pre>
-</li>
-<li>10.查看数据库状态<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> use dbname<span class="token punctuation">;</span>
-mysql<span class="token operator">></span> status<span class="token punctuation">;</span></code></pre>
-</li>
-<li>11.查看参数<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show variables like “%sql%”<span class="token punctuation">;</span></code></pre>
-</li>
-<li>12.查看事件<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show events<span class="token punctuation">;</span></code></pre>
-</li>
-<li>13.查看触发器<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show triggers<span class="token punctuation">;</span></code></pre>
-</li>
-<li>14.查看所有参数<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show status<span class="token punctuation">;</span></code></pre>
-</li>
-<li>15.查看打开表<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show <span class="token function">open</span> tables<span class="token punctuation">;</span></code></pre>
-</li>
-<li>16.查看表状态<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show table status<span class="token punctuation">;</span></code></pre>
-</li>
-<li>17.查看主数据状态<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show master status<span class="token punctuation">;</span></code></pre>
-</li>
-<li>18.查看从数据库状态<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show slave status<span class="token punctuation">;</span></code></pre>
-</li>
-<li>19.查看函数状态<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show <span class="token keyword">function</span> status<span class="token punctuation">;</span></code></pre>
-</li>
-<li>20.查看插件<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show plugins<span class="token punctuation">;</span></code></pre>
-</li>
-<li>21.查看某用户的授权<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show grants <span class="token keyword">for</span> username<span class="token punctuation">;</span></code></pre>
-</li>
-<li>22.查看错误<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show errors<span class="token punctuation">;</span></code></pre>
-</li>
-<li>23.查看创建表语句<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show create table tablename<span class="token punctuation">;</span></code></pre>
-</li>
-<li>24.查看表头<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show columns from tablename<span class="token punctuation">;</span></code></pre>
-</li>
-<li>25.查看存储引擎<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show engines<span class="token punctuation">;</span></code></pre>
-</li>
-<li>26.查看表状态<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show table status<span class="token punctuation">;</span></code></pre>
-</li>
-</ul>
 
       
     </div>
@@ -2603,7 +1972,7 @@ mysql<span class="token operator">></span> status<span class="token punctuation"
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2675,12 +2044,12 @@ mysql<span class="token operator">></span> status<span class="token punctuation"
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -2713,10 +2082,30 @@ mysql<span class="token operator">></span> status<span class="token punctuation"
   </span>
   <span class="author" itemprop="copyrightHolder">hackfox</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
 
 
 
@@ -2734,8 +2123,8 @@ mysql<span class="token operator">></span> status<span class="token punctuation"
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script>
-<script src="/js/schemes/muse.js"></script>
-<script src="/js/next-boot.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
 
 
 
@@ -2744,6 +2133,8 @@ mysql<span class="token operator">></span> status<span class="token punctuation"
 
 
 
+  <script src="/js/local-search.js"></script>
+
 
 
 
@@ -2758,6 +2149,7 @@ mysql<span class="token operator">></span> status<span class="token punctuation"
   
 
   
+
 
 </body>
 </html>

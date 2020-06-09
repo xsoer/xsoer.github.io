@@ -14,24 +14,26 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="一、同步配置 1.主库和从库创建同步账户mysql&amp;gt; grant replication slave, replication client on *.* to repl@&apos;192.168.1.%&apos; identified by &apos;123456&apos;;  2.主库配置/etc/my.cnfserver-id=130    #保证唯一值 log-bin=mysql-bin binlog_format=mi">
+  <meta name="description" content="一、同步配置 1.主库和从库创建同步账户 1mysql&amp;gt; grant replication slave, replication client on *.* to repl@&apos;192.168.1.%&apos; identified by &apos;123456&apos;;  2.主库配置/etc/my.cnf 123456server-id=130	#保证唯一值log-bin=mysql-binbinlog_fo">
 <meta name="keywords" content="mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql数据库主从同步">
 <meta property="og:url" content="https://xsoer.github.io/2019/03/10/2015/03-10-mysql数据库主从同步/index.html">
 <meta property="og:site_name" content="hackfox">
-<meta property="og:description" content="一、同步配置 1.主库和从库创建同步账户mysql&amp;gt; grant replication slave, replication client on *.* to repl@&apos;192.168.1.%&apos; identified by &apos;123456&apos;;  2.主库配置/etc/my.cnfserver-id=130    #保证唯一值 log-bin=mysql-bin binlog_format=mi">
+<meta property="og:description" content="一、同步配置 1.主库和从库创建同步账户 1mysql&amp;gt; grant replication slave, replication client on *.* to repl@&apos;192.168.1.%&apos; identified by &apos;123456&apos;;  2.主库配置/etc/my.cnf 123456server-id=130	#保证唯一值log-bin=mysql-binbinlog_fo">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2020-04-18T14:52:14.230Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql数据库主从同步">
-<meta name="twitter:description" content="一、同步配置 1.主库和从库创建同步账户mysql&amp;gt; grant replication slave, replication client on *.* to repl@&apos;192.168.1.%&apos; identified by &apos;123456&apos;;  2.主库配置/etc/my.cnfserver-id=130    #保证唯一值 log-bin=mysql-bin binlog_format=mi">
+<meta name="twitter:description" content="一、同步配置 1.主库和从库创建同步账户 1mysql&amp;gt; grant replication slave, replication client on *.* to repl@&apos;192.168.1.%&apos; identified by &apos;123456&apos;;  2.主库配置/etc/my.cnf 123456server-id=130	#保证唯一值log-bin=mysql-binbinlog_fo">
 
 <link rel="canonical" href="https://xsoer.github.io/2019/03/10/2015/03-10-mysql数据库主从同步/">
 
@@ -48,6 +50,22 @@
 
   <title>mysql数据库主从同步 | hackfox</title>
   
+    <script>
+      function sendPageView() {
+        if (CONFIG.hostname !== location.hostname) return;
+        var uid = localStorage.getItem('uid') || (Math.random() + '.' + Math.random());
+        localStorage.setItem('uid', uid);
+        navigator.sendBeacon('https://www.google-analytics.com/collect', new URLSearchParams({
+          v  : 1,
+          tid: 'UA-114671402-1',
+          cid: uid,
+          t  : 'pageview',
+          dp : encodeURIComponent(location.pathname)
+        }));
+      }
+      document.addEventListener('pjax:complete', sendPageView);
+      sendPageView();
+    </script>
 
 
 
@@ -105,6 +123,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -124,11 +143,38 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -138,6 +184,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
 
 
     <main class="main">
@@ -195,6 +242,13 @@
             </span>
 
           
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
 
         </div>
       </header>
@@ -206,45 +260,33 @@
 
       
         <h2 id="一、同步配置"><a href="#一、同步配置" class="headerlink" title="一、同步配置"></a>一、同步配置</h2><ul>
-<li>1.主库和从库创建同步账户<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> grant replication slave, replication client on *.* to repl@<span class="token string">'192.168.1.%'</span> identified by <span class="token string">'123456'</span><span class="token punctuation">;</span></code></pre>
+<li><p>1.主库和从库创建同步账户</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; grant replication slave, replication client on *.* to repl@<span class="string">'192.168.1.%'</span> identified by <span class="string">'123456'</span>;</span><br></pre></td></tr></table></figure>
 </li>
-<li>2.主库配置/etc/my.cnf<pre class=" language-bash"><code class="language-bash">server-id<span class="token operator">=</span>130    <span class="token comment" spellcheck="true">#保证唯一值</span>
-log-bin<span class="token operator">=</span>mysql-bin
-binlog_format<span class="token operator">=</span>mixed
-binlog-do-db<span class="token operator">=</span>test2
-binlog-ignore-db<span class="token operator">=</span>mysql
-log-error<span class="token operator">=</span>/var/lib/mysql/mysql.err</code></pre>
+<li><p>2.主库配置/etc/my.cnf</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">server-id=130	<span class="comment">#保证唯一值</span></span><br><span class="line"><span class="built_in">log</span>-bin=mysql-bin</span><br><span class="line">binlog_format=mixed</span><br><span class="line">binlog-do-db=test2</span><br><span class="line">binlog-ignore-db=mysql</span><br><span class="line"><span class="built_in">log</span>-error=/var/lib/mysql/mysql.err</span><br></pre></td></tr></table></figure>
 </li>
-<li>3.重启主库</li>
-<li>4.查看主库状态<pre class=" language-bash"><code class="language-bash">  mysql<span class="token operator">></span>show master status<span class="token punctuation">;</span>
-  +-------------------------+-----------------+--------------------+-------------------------+
-  <span class="token operator">|</span> File            <span class="token operator">|</span>     Position <span class="token operator">|</span> Binlog_Do_DB <span class="token operator">|</span> Binlog_Ignore_DB <span class="token operator">|</span>
-  +-------------------------+----------------+--------------------+--------------------------+
-  <span class="token operator">|</span> mysql-bin.000002 <span class="token operator">|</span>      120 <span class="token operator">|</span>   test2      <span class="token operator">|</span>   mysql        <span class="token operator">|</span>
-  +-------------------------+----------------+---------------------+------------------------+
-  1 row <span class="token keyword">in</span> <span class="token keyword">set</span> <span class="token punctuation">(</span>0.00 sec<span class="token punctuation">)</span></code></pre>
+<li><p>3.重启主库</p>
 </li>
-<li>5.从库配置 /etc/my.cnf<pre class=" language-shell"><code class="language-shell">server-id=131 #保证唯一值
-log-bin=mysql-bin
-binlog_format=mixed
-replicate-do-db=test2
-replicate-ignore-db=mysql
-relay_log=/var/lib/mysql/mysql-relay-bin
-log_slave_updates=1
-read_only=1</code></pre>
+<li><p>4.查看主库状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;show master status;</span><br><span class="line">+-------------------------+-----------------+--------------------+-------------------------+</span><br><span class="line">| File            |	 Position | Binlog_Do_DB | Binlog_Ignore_DB |</span><br><span class="line">+-------------------------+----------------+--------------------+--------------------------+</span><br><span class="line">| mysql-bin.000002 |      120 |   test2      |   mysql        |</span><br><span class="line">+-------------------------+----------------+---------------------+------------------------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
 </li>
-<li>6.重启从库</li>
-<li>7.指向主库操作<pre class=" language-shell"><code class="language-shell">mysql> change master to master_host='192.168.1.201',
-master_user='repl',
-master_password='123456',
-master_log_file='mysql-bin.000002',
-master_log_pos=120;</code></pre>
+<li><p>5.从库配置 /etc/my.cnf</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">server-id=131 #保证唯一值</span><br><span class="line">log-bin=mysql-bin</span><br><span class="line">binlog_format=mixed</span><br><span class="line">replicate-do-db=test2</span><br><span class="line">replicate-ignore-db=mysql</span><br><span class="line">relay_log=/var/lib/mysql/mysql-relay-bin</span><br><span class="line">log_slave_updates=1</span><br><span class="line">read_only=1</span><br></pre></td></tr></table></figure>
 </li>
-<li>8.开始同步<pre class=" language-shell"><code class="language-shell">mysql>start slave;</code></pre>
+<li><p>6.重启从库</p>
 </li>
-<li>9.查看状态<pre class=" language-shell"><code class="language-shell">mysql>show slave status;</code></pre>
+<li><p>7.指向主库操作</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> change master to master_host=<span class="string">'192.168.1.201'</span>,</span></span><br><span class="line">master_user='repl',</span><br><span class="line">master_password='123456',</span><br><span class="line">master_log_file='mysql-bin.000002',</span><br><span class="line">master_log_pos=120;</span><br></pre></td></tr></table></figure>
 </li>
-<li>10.双向主从的话，把主库按照从库在配置一遍即可</li>
+<li><p>8.开始同步</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span><span class="bash">start slave;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>9.查看状态</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span><span class="bash">show slave status;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>10.双向主从的话，把主库按照从库在配置一遍即可</p>
+</li>
 </ul>
 <h2 id="二、常见问题"><a href="#二、常见问题" class="headerlink" title="二、常见问题"></a>二、常见问题</h2><ul>
 <li>1.两个数据库版本尽量一致，如果不一致，高版本做从库，此时不可双向主从</li>
@@ -357,12 +399,12 @@ master_log_pos=120;</code></pre>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -395,10 +437,30 @@ master_log_pos=120;</code></pre>
   </span>
   <span class="author" itemprop="copyrightHolder">hackfox</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
 
 
 
@@ -416,8 +478,8 @@ master_log_pos=120;</code></pre>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script>
-<script src="/js/schemes/muse.js"></script>
-<script src="/js/next-boot.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
 
 
 
@@ -426,6 +488,8 @@ master_log_pos=120;</code></pre>
 
 
 
+  <script src="/js/local-search.js"></script>
+
 
 
 
@@ -440,6 +504,7 @@ master_log_pos=120;</code></pre>
   
 
   
+
 
 </body>
 </html>

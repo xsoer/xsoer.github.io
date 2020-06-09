@@ -14,24 +14,26 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="1.生成数组array()  []  2.判断该值是否存在isset($arr[$i])  3.判断是否是数组、is_array($arr)  4.从尾部往数组内添加值array_push($arr,$a)  5.从头部往数组内插入array_unshift  6.弹出数组最后一个array_pop  7.弹出数组第一个array_shift  8.产生一个从0到6的数组range(0,6)">
+  <meta name="description" content="1.生成数组 1array()  []  2.判断该值是否存在 1isset($arr[$i])  3.判断是否是数组、 1is_array($arr)  4.从尾部往数组内添加值 1array_push($arr,$a)  5.从头部往数组内插入 1array_unshift  6.弹出数组最后一个 1array_pop  7.弹出数组第一个 1array_shift  8.产生一个从0到6的">
 <meta name="keywords" content="PHP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PHP数组函数">
 <meta property="og:url" content="https://xsoer.github.io/2015/07/05/2015/07-05-php数组函数/index.html">
 <meta property="og:site_name" content="hackfox">
-<meta property="og:description" content="1.生成数组array()  []  2.判断该值是否存在isset($arr[$i])  3.判断是否是数组、is_array($arr)  4.从尾部往数组内添加值array_push($arr,$a)  5.从头部往数组内插入array_unshift  6.弹出数组最后一个array_pop  7.弹出数组第一个array_shift  8.产生一个从0到6的数组range(0,6)">
+<meta property="og:description" content="1.生成数组 1array()  []  2.判断该值是否存在 1isset($arr[$i])  3.判断是否是数组、 1is_array($arr)  4.从尾部往数组内添加值 1array_push($arr,$a)  5.从头部往数组内插入 1array_unshift  6.弹出数组最后一个 1array_pop  7.弹出数组第一个 1array_shift  8.产生一个从0到6的">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2020-04-18T15:00:13.938Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP数组函数">
-<meta name="twitter:description" content="1.生成数组array()  []  2.判断该值是否存在isset($arr[$i])  3.判断是否是数组、is_array($arr)  4.从尾部往数组内添加值array_push($arr,$a)  5.从头部往数组内插入array_unshift  6.弹出数组最后一个array_pop  7.弹出数组第一个array_shift  8.产生一个从0到6的数组range(0,6)">
+<meta name="twitter:description" content="1.生成数组 1array()  []  2.判断该值是否存在 1isset($arr[$i])  3.判断是否是数组、 1is_array($arr)  4.从尾部往数组内添加值 1array_push($arr,$a)  5.从头部往数组内插入 1array_unshift  6.弹出数组最后一个 1array_pop  7.弹出数组第一个 1array_shift  8.产生一个从0到6的">
 
 <link rel="canonical" href="https://xsoer.github.io/2015/07/05/2015/07-05-php数组函数/">
 
@@ -48,6 +50,22 @@
 
   <title>PHP数组函数 | hackfox</title>
   
+    <script>
+      function sendPageView() {
+        if (CONFIG.hostname !== location.hostname) return;
+        var uid = localStorage.getItem('uid') || (Math.random() + '.' + Math.random());
+        localStorage.setItem('uid', uid);
+        navigator.sendBeacon('https://www.google-analytics.com/collect', new URLSearchParams({
+          v  : 1,
+          tid: 'UA-114671402-1',
+          cid: uid,
+          t  : 'pageview',
+          dp : encodeURIComponent(location.pathname)
+        }));
+      }
+      document.addEventListener('pjax:complete', sendPageView);
+      sendPageView();
+    </script>
 
 
 
@@ -105,6 +123,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -124,11 +143,38 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -138,6 +184,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
 
 
     <main class="main">
@@ -195,6 +242,13 @@
             </span>
 
           
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
 
         </div>
       </header>
@@ -206,51 +260,75 @@
 
       
         <ul>
-<li>1.生成数组<pre class=" language-php"><code class="language-php"><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token punctuation">[</span><span class="token punctuation">]</span></code></pre>
+<li><p>1.生成数组</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">array</span>()  []</span><br></pre></td></tr></table></figure>
 </li>
-<li>2.判断该值是否存在<pre class=" language-php"><code class="language-php"><span class="token function">isset</span><span class="token punctuation">(</span><span class="token variable">$arr</span><span class="token punctuation">[</span><span class="token variable">$i</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
+<li><p>2.判断该值是否存在</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">isset</span>($arr[$i])</span><br></pre></td></tr></table></figure>
 </li>
-<li>3.判断是否是数组、<pre class=" language-php"><code class="language-php"><span class="token function">is_array</span><span class="token punctuation">(</span><span class="token variable">$arr</span><span class="token punctuation">)</span></code></pre>
+<li><p>3.判断是否是数组、</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">is_array($arr)</span><br></pre></td></tr></table></figure>
 </li>
-<li>4.从尾部往数组内添加值<pre class=" language-php"><code class="language-php"><span class="token function">array_push</span><span class="token punctuation">(</span><span class="token variable">$arr</span><span class="token punctuation">,</span><span class="token variable">$a</span><span class="token punctuation">)</span></code></pre>
+<li><p>4.从尾部往数组内添加值</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array_push($arr,$a)</span><br></pre></td></tr></table></figure>
 </li>
-<li>5.从头部往数组内插入<pre class=" language-php"><code class="language-php">array_unshift</code></pre>
+<li><p>5.从头部往数组内插入</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array_unshift</span><br></pre></td></tr></table></figure>
 </li>
-<li>6.弹出数组最后一个<pre class=" language-php"><code class="language-php">array_pop</code></pre>
+<li><p>6.弹出数组最后一个</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array_pop</span><br></pre></td></tr></table></figure>
 </li>
-<li>7.弹出数组第一个<pre class=" language-php"><code class="language-php">array_shift</code></pre>
+<li><p>7.弹出数组第一个</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array_shift</span><br></pre></td></tr></table></figure>
 </li>
-<li>8.产生一个从0到6的数组<pre class=" language-php"><code class="language-php"><span class="token function">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">)</span></code></pre>
+<li><p>8.产生一个从0到6的数组</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">range(<span class="number">0</span>,<span class="number">6</span>)</span><br></pre></td></tr></table></figure>
 </li>
-<li>9.检验是否在数组内<pre class=" language-php"><code class="language-php"><span class="token function">in_array</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">,</span><span class="token variable">$arr</span><span class="token punctuation">)</span></code></pre>
+<li><p>9.检验是否在数组内</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">in_array($a,$arr)</span><br></pre></td></tr></table></figure>
 </li>
-<li>10.返回数组的所有键值<pre class=" language-php"><code class="language-php"><span class="token function">array_keys</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<li><p>10.返回数组的所有键值</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array_keys()</span><br></pre></td></tr></table></figure>
 </li>
-<li>11.改变键值为大写 或者CASE_LOWER 小写<pre class=" language-php"><code class="language-php"><span class="token function">array_change_key_case</span><span class="token punctuation">(</span><span class="token variable">$arr1</span><span class="token punctuation">,</span><span class="token constant">CASE_UPPER</span><span class="token punctuation">)</span></code></pre>
+<li><p>11.改变键值为大写 或者CASE_LOWER 小写</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array_change_key_case($arr1,CASE_UPPER)</span><br></pre></td></tr></table></figure>
 </li>
-<li>12.合并两个或多个数组<pre class=" language-php"><code class="language-php"><span class="token function">array_merge</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<li><p>12.合并两个或多个数组</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array_merge()</span><br></pre></td></tr></table></figure>
 </li>
-<li>13.给数组排序，升序<pre class=" language-php"><code class="language-php"><span class="token function">sort</span><span class="token punctuation">(</span><span class="token variable">$arr</span><span class="token punctuation">)</span></code></pre>
+<li><p>13.给数组排序，升序</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sort($arr)</span><br></pre></td></tr></table></figure>
 </li>
-<li>14.查询数组内元素的个数<pre class=" language-php"><code class="language-php"><span class="token function">count</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<li><p>14.查询数组内元素的个数</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">count()</span><br></pre></td></tr></table></figure>
 </li>
-<li>15.用一个函数过滤数组<pre class=" language-php"><code class="language-php"><span class="token function">array_filter</span><span class="token punctuation">(</span><span class="token variable">$arr</span><span class="token punctuation">,</span><span class="token variable">$fun</span><span class="token punctuation">)</span></code></pre>
+<li><p>15.用一个函数过滤数组</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array_filter($arr,$fun)</span><br></pre></td></tr></table></figure>
 </li>
-<li>16.输出数组<pre class=" language-php"><code class="language-php"><span class="token function">print_r</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<li><p>16.输出数组</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print_r()</span><br></pre></td></tr></table></figure>
 </li>
-<li>17.遍历数组<pre class=" language-php"><code class="language-php"><span class="token keyword">foreach</span><span class="token punctuation">(</span><span class="token variable">$arr</span> <span class="token keyword">as</span> <span class="token variable">$k</span><span class="token punctuation">)</span></code></pre>
+<li><p>17.遍历数组</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">foreach</span>($arr <span class="keyword">as</span> $k)</span><br></pre></td></tr></table></figure>
 </li>
-<li>18.list遍历数组<pre class=" language-php"><code class="language-php"><span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">list</span><span class="token punctuation">(</span><span class="token variable">$key</span><span class="token punctuation">,</span><span class="token variable">$value</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token function">each</span><span class="token punctuation">(</span><span class="token variable">$arr</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<li><p>18.list遍历数组</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(<span class="keyword">list</span>($key,$value)==each($arr))</span><br></pre></td></tr></table></figure>
 </li>
-<li>19.去除字符串中的逗号，转为数组<pre class=" language-php"><code class="language-php"><span class="token function">explode</span><span class="token punctuation">(</span><span class="token string">','</span><span class="token punctuation">,</span><span class="token variable">$arr</span><span class="token punctuation">)</span></code></pre>
+<li><p>19.去除字符串中的逗号，转为数组</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">explode(<span class="string">','</span>,$arr)</span><br></pre></td></tr></table></figure>
 </li>
-<li>20.将数组转为字符串<pre class=" language-php"><code class="language-php"><span class="token function">implode</span><span class="token punctuation">(</span><span class="token string">','</span><span class="token punctuation">,</span><span class="token variable">$arr</span><span class="token punctuation">)</span></code></pre>
+<li><p>20.将数组转为字符串</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implode(<span class="string">','</span>,$arr)</span><br></pre></td></tr></table></figure>
 </li>
-<li>21.按键排序<pre class=" language-php"><code class="language-php"><span class="token function">ksort</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<li><p>21.按键排序</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ksort()</span><br></pre></td></tr></table></figure>
 </li>
-<li>22.按值排序<pre class=" language-php"><code class="language-php"><span class="token function">asort</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<li><p>22.按值排序</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">asort()</span><br></pre></td></tr></table></figure>
 </li>
-<li>23.降序排序<pre class=" language-php"><code class="language-php"><span class="token function">rsort</span><span class="token punctuation">(</span><span class="token variable">$arr</span><span class="token punctuation">)</span></code></pre>
+<li><p>23.降序排序</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsort($arr)</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 
@@ -355,12 +433,12 @@
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -393,10 +471,30 @@
   </span>
   <span class="author" itemprop="copyrightHolder">hackfox</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
 
 
 
@@ -414,8 +512,8 @@
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script>
-<script src="/js/schemes/muse.js"></script>
-<script src="/js/next-boot.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
 
 
 
@@ -424,6 +522,8 @@
 
 
 
+  <script src="/js/local-search.js"></script>
+
 
 
 
@@ -438,6 +538,7 @@
   
 
   
+
 
 </body>
 </html>

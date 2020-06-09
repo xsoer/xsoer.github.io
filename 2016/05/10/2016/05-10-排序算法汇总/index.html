@@ -14,10 +14,12 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="本文是常见的排序算法的一个简单总结，也是算法导论第三版的一些摘要记录，以作备忘和查询。 0X00、简介 1.排序的定义：  输入：n个数的一个序列&amp;lt;a1,a2,…,an&amp;gt; 输出：序列的一个排列&amp;lt;a1’,a2’,…,an’&amp;gt;,满足a1’&amp;lt;=a2’&amp;lt;=…&amp;lt;=an’   2.排序算法复杂度概览      排序算法 平均时间复杂度 最好情况 最坏情况 空间复杂度">
@@ -28,7 +30,7 @@
 <meta property="og:site_name" content="hackfox">
 <meta property="og:description" content="本文是常见的排序算法的一个简单总结，也是算法导论第三版的一些摘要记录，以作备忘和查询。 0X00、简介 1.排序的定义：  输入：n个数的一个序列&amp;lt;a1,a2,…,an&amp;gt; 输出：序列的一个排列&amp;lt;a1’,a2’,…,an’&amp;gt;,满足a1’&amp;lt;=a2’&amp;lt;=…&amp;lt;=an’   2.排序算法复杂度概览      排序算法 平均时间复杂度 最好情况 最坏情况 空间复杂度">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-11T05:35:23.181Z">
+<meta property="og:updated_time" content="2020-04-19T05:30:21.156Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序算法汇总">
 <meta name="twitter:description" content="本文是常见的排序算法的一个简单总结，也是算法导论第三版的一些摘要记录，以作备忘和查询。 0X00、简介 1.排序的定义：  输入：n个数的一个序列&amp;lt;a1,a2,…,an&amp;gt; 输出：序列的一个排列&amp;lt;a1’,a2’,…,an’&amp;gt;,满足a1’&amp;lt;=a2’&amp;lt;=…&amp;lt;=an’   2.排序算法复杂度概览      排序算法 平均时间复杂度 最好情况 最坏情况 空间复杂度">
@@ -48,6 +50,22 @@
 
   <title>排序算法汇总 | hackfox</title>
   
+    <script>
+      function sendPageView() {
+        if (CONFIG.hostname !== location.hostname) return;
+        var uid = localStorage.getItem('uid') || (Math.random() + '.' + Math.random());
+        localStorage.setItem('uid', uid);
+        navigator.sendBeacon('https://www.google-analytics.com/collect', new URLSearchParams({
+          v  : 1,
+          tid: 'UA-114671402-1',
+          cid: uid,
+          t  : 'pageview',
+          dp : encodeURIComponent(location.pathname)
+        }));
+      }
+      document.addEventListener('pjax:complete', sendPageView);
+      sendPageView();
+    </script>
 
 
 
@@ -105,6 +123,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -124,11 +143,38 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -138,6 +184,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
 
 
     <main class="main">
@@ -182,7 +229,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-11 13:35:23" itemprop="dateModified" datetime="2019-11-11T13:35:23+08:00">2019-11-11</time>
+                <time title="修改时间：2020-04-19 13:30:21" itemprop="dateModified" datetime="2020-04-19T13:30:21+08:00">2020-04-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -195,6 +242,13 @@
             </span>
 
           
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
 
         </div>
       </header>
@@ -355,11 +409,9 @@
 </ul>
 </li>
 <li><p>伪代码描述</p>
-<pre><code>BUBBLE-SORT(A)
-1  for i = 1 to A.length - 1
-2    for j = A.length downto i+1
-3       if A[j] &lt; A[j-1]
-4           exchange A[j] with A[j-1]</code></pre></li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">BUBBLE-SORT(A)</span><br><span class="line">1  for i = 1 to A.length - 1</span><br><span class="line">2    for j = A.length downto i+1</span><br><span class="line">3       if A[j] &lt; A[j-1]</span><br><span class="line">4           exchange A[j] with A[j-1]</span><br></pre></td></tr></table></figure>
+
+</li>
 </ul>
 <h4 id="2-复杂度"><a href="#2-复杂度" class="headerlink" title="2.复杂度"></a>2.复杂度</h4><ul>
 <li>时间复杂度<ul>
@@ -370,25 +422,8 @@
 </li>
 <li>空间复杂度：O(1)</li>
 </ul>
-<h4 id="3-代码实现如下"><a href="#3-代码实现如下" class="headerlink" title="3.代码实现如下"></a>3.代码实现如下</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">bubble_sort</span><span class="token punctuation">(</span>a<span class="token punctuation">:</span> list<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    cnt <span class="token operator">=</span> len<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
-    <span class="token keyword">if</span> <span class="token operator">not</span> cnt<span class="token punctuation">:</span>
-        <span class="token keyword">return</span> a
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> cnt<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">for</span> j <span class="token keyword">in</span> range<span class="token punctuation">(</span>i<span class="token number">-1</span><span class="token punctuation">,</span> cnt<span class="token number">-1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token keyword">if</span> a<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">></span> a<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-                a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> a<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token punctuation">,</span> a<span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+<h4 id="3-代码实现如下"><a href="#3-代码实现如下" class="headerlink" title="3.代码实现如下"></a>3.代码实现如下</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bubble_sort</span><span class="params">(a: list)</span>:</span></span><br><span class="line">    cnt = len(a)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> cnt:</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, cnt):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i<span class="number">-1</span>, cnt<span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">if</span> a[j] &gt; a[j+<span class="number">1</span>]:</span><br><span class="line">                a[j], a[j+<span class="number">1</span>] = a[j+<span class="number">1</span>] , a[j]</span><br><span class="line"></span><br><span class="line">    <span class="comment">#for i in range(cnt-2):</span></span><br><span class="line">    <span class="comment">#    for j in range(cnt-1, i, -1):</span></span><br><span class="line">    <span class="comment">#        if a[j] &lt; a[j-1]:</span></span><br><span class="line">    <span class="comment">#            a[j], a[j-1] = a[j-1], a[j]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    a = [<span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">45</span>, <span class="number">76</span>, <span class="number">47</span>, <span class="number">34</span>, <span class="number">5</span>, <span class="number">23</span>]</span><br><span class="line">    bubble_sort(a)</span><br><span class="line">    print(a)</span><br></pre></td></tr></table></figure>
 
-    <span class="token comment" spellcheck="true">#for i in range(cnt-2):</span>
-    <span class="token comment" spellcheck="true">#    for j in range(cnt-1, i, -1):</span>
-    <span class="token comment" spellcheck="true">#        if a[j] &lt; a[j-1]:</span>
-    <span class="token comment" spellcheck="true">#            a[j], a[j-1] = a[j-1], a[j]</span>
-
-
-<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
-    a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">45</span><span class="token punctuation">,</span> <span class="token number">76</span><span class="token punctuation">,</span> <span class="token number">47</span><span class="token punctuation">,</span> <span class="token number">34</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">]</span>
-    bubble_sort<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span></code></pre>
 <h2 id="0X02、插入排序"><a href="#0X02、插入排序" class="headerlink" title="0X02、插入排序"></a>0X02、插入排序</h2><p>插入排序(Insertion-Sort)是一种简单有效的排序方法。整体思想就是把后边一个待排的元素和前边已经排序好的元素做比较，如果比这元素大，就把前边的元素依次后移，直到找到一个比待排元素小的值，在其后边插入既可。然后在排序下一个待排元素。</p>
 <h4 id="1-算法思路"><a href="#1-算法思路" class="headerlink" title="1.算法思路"></a>1.算法思路</h4><ul>
 <li><p>语言描述</p>
@@ -404,14 +439,9 @@
 <li><p>伪代码描述</p>
 </li>
 </ul>
-<pre><code>INSERTION-SORT(A):
-1  for j = 2 to A.length:
-2    key = A[j]
-3    i = j - 1
-4    while i &gt; 0 and A[i] &gt; key:
-5        A[i+1] = A[i]
-6        i = i - 1
-7    A[i+1] = key</code></pre><h4 id="2-算法复杂度"><a href="#2-算法复杂度" class="headerlink" title="2.算法复杂度"></a>2.算法复杂度</h4><ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">INSERTION-SORT(A):</span><br><span class="line">1  for j = 2 to A.length:</span><br><span class="line">2    key = A[j]</span><br><span class="line">3    i = j - 1</span><br><span class="line">4    while i &gt; 0 and A[i] &gt; key:</span><br><span class="line">5        A[i+1] = A[i]</span><br><span class="line">6        i = i - 1</span><br><span class="line">7    A[i+1] = key</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-算法复杂度"><a href="#2-算法复杂度" class="headerlink" title="2.算法复杂度"></a>2.算法复杂度</h4><ul>
 <li>时间复杂度：<ul>
 <li>最佳情况：T(n) = O(n)。</li>
 <li>最坏情况：T(n) = O(n^2)。</li>
@@ -423,25 +453,8 @@
 </ul>
 </li>
 </ul>
-<h4 id="3-算法实现"><a href="#3-算法实现" class="headerlink" title="3.算法实现"></a>3.算法实现</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">insert_sort</span><span class="token punctuation">(</span>a<span class="token punctuation">:</span> list<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    cnt <span class="token operator">=</span> len<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
-    <span class="token keyword">if</span> <span class="token operator">not</span> cnt<span class="token punctuation">:</span>
-        <span class="token keyword">return</span> a
+<h4 id="3-算法实现"><a href="#3-算法实现" class="headerlink" title="3.算法实现"></a>3.算法实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">insert_sort</span><span class="params">(a: list)</span>:</span></span><br><span class="line">    cnt = len(a)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> cnt:</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(cnt - <span class="number">1</span>):</span><br><span class="line">        value = a[i+<span class="number">1</span>]</span><br><span class="line">        pre_index = i</span><br><span class="line">        <span class="keyword">while</span> (pre_index &gt;= <span class="number">0</span> <span class="keyword">and</span> value &lt; a[pre_index]):</span><br><span class="line">            a[pre_index + <span class="number">1</span>] = a[pre_index]</span><br><span class="line">            pre_index -= <span class="number">1</span></span><br><span class="line">        a[pre_index+<span class="number">1</span>] = value</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    a = [<span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">45</span>, <span class="number">76</span>, <span class="number">47</span>, <span class="number">34</span>, <span class="number">5</span>, <span class="number">23</span>]</span><br><span class="line">    insert_sort(a)</span><br><span class="line">    print(a)</span><br></pre></td></tr></table></figure>
 
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>cnt <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        value <span class="token operator">=</span> a<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span>
-        pre_index <span class="token operator">=</span> i
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>pre_index <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">and</span> value <span class="token operator">&lt;</span> a<span class="token punctuation">[</span>pre_index<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            a<span class="token punctuation">[</span>pre_index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">[</span>pre_index<span class="token punctuation">]</span>
-            pre_index <span class="token operator">-=</span> <span class="token number">1</span>
-        a<span class="token punctuation">[</span>pre_index<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> value
-    <span class="token keyword">return</span> a
-
-
-<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
-    a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">45</span><span class="token punctuation">,</span> <span class="token number">76</span><span class="token punctuation">,</span> <span class="token number">47</span><span class="token punctuation">,</span> <span class="token number">34</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">]</span>
-    insert_sort<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span></code></pre>
 <h2 id="0X03、选择排序"><a href="#0X03、选择排序" class="headerlink" title="0X03、选择排序"></a>0X03、选择排序</h2><p>表现最稳定的排序算法之一，因为无论什么数据进去都是O(n2)的时间复杂度，所以用到它的时候，数据规模越小越好。唯一的好处可能就是不占用额外的内存空间了吧。理论上讲，选择排序可能也是平时排序一般人想到的最多的排序方法了吧。<br>选择排序(Selection-sort)是一种简单直观的排序算法。它的工作原理：首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。</p>
 <h4 id="1-算法分析"><a href="#1-算法分析" class="headerlink" title="1.算法分析"></a>1.算法分析</h4><ul>
 <li>1.初始状态：无序区为R[1..n]，有序区为空；</li>
@@ -453,26 +466,8 @@
 <li>最差情况：T(n) = O(n2)</li>
 <li>平均情况：T(n) = O(n2)</li>
 </ul>
-<h4 id="3-算法实现-1"><a href="#3-算法实现-1" class="headerlink" title="3.算法实现"></a>3.算法实现</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">selection_sort</span><span class="token punctuation">(</span>a<span class="token punctuation">:</span> list<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""
-    选择排序
+<h4 id="3-算法实现-1"><a href="#3-算法实现-1" class="headerlink" title="3.算法实现"></a>3.算法实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">selection_sort</span><span class="params">(a: list)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    选择排序</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    cnt = len(a)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> cnt:</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(cnt):</span><br><span class="line">        minIndex = i</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(cnt)[i:]:</span><br><span class="line">            <span class="keyword">if</span> a[j] &lt; a[minIndex]:</span><br><span class="line">                a[minIndex], a[j] = a[j], a[minIndex]</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    a = [<span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">45</span>, <span class="number">76</span>, <span class="number">47</span>, <span class="number">34</span>, <span class="number">5</span>, <span class="number">23</span>]</span><br><span class="line">    selection_sort(a)</span><br><span class="line">    print(a)</span><br></pre></td></tr></table></figure>
 
-    """</span>
-    cnt <span class="token operator">=</span> len<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
-    <span class="token keyword">if</span> <span class="token operator">not</span> cnt<span class="token punctuation">:</span>
-        <span class="token keyword">return</span> a
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>cnt<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        minIndex <span class="token operator">=</span> i
-        <span class="token keyword">for</span> j <span class="token keyword">in</span> range<span class="token punctuation">(</span>cnt<span class="token punctuation">)</span><span class="token punctuation">[</span>i<span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-            <span class="token keyword">if</span> a<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> a<span class="token punctuation">[</span>minIndex<span class="token punctuation">]</span><span class="token punctuation">:</span>
-                a<span class="token punctuation">[</span>minIndex<span class="token punctuation">]</span><span class="token punctuation">,</span> a<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> a<span class="token punctuation">[</span>minIndex<span class="token punctuation">]</span>
-    <span class="token keyword">return</span> a
-
-
-<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
-    a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">45</span><span class="token punctuation">,</span> <span class="token number">76</span><span class="token punctuation">,</span> <span class="token number">47</span><span class="token punctuation">,</span> <span class="token number">34</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">]</span>
-    selection_sort<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span></code></pre>
 <h2 id="0X04、希尔排序"><a href="#0X04、希尔排序" class="headerlink" title="0X04、希尔排序"></a>0X04、希尔排序</h2><p>希尔排序是希尔（Donald Shell）于1959年提出的一种排序算法。希尔排序也是一种插入排序，它是简单插入排序经过改进之后的一个更高效的版本，也称为缩小增量排序，同时该算法是冲破O(n2）的第一批算法之一。它与插入排序的不同之处在于，它会优先比较距离较远的元素。希尔排序又叫缩小增量排序。<br>希尔排序是把记录按下表的一定增量分组，对每组使用直接插入排序算法排序；随着增量逐渐减少，每组包含的关键词越来越多，当增量减至1时，整个文件恰被分成一组，算法便终止。</p>
 <h4 id="1-算法思路-1"><a href="#1-算法思路-1" class="headerlink" title="1.算法思路"></a>1.算法思路</h4><p>我们来看下希尔排序的基本步骤，在此我们选择增量gap=length/2，缩小增量继续以gap = gap/2的方式，这种增量选择我们可以用一个序列来表示，{n/2,(n/2)/2…1}，称为增量序列。希尔排序的增量序列的选择与证明是个数学难题，我们选择的这个增量序列是比较常用的，也是希尔建议的增量，称为希尔增量，但其实这个增量序列不是最优的。此处我们做示例使用希尔增量。<br>先将整个待排序的记录序列分割成为若干子序列分别进行直接插入排序，具体算法描述：</p>
 <ul>
@@ -485,33 +480,8 @@
 <li>最坏情况：T(n) = O(nlog2 n)</li>
 <li>平均情况：T(n) =O(nlog2n)　</li>
 </ul>
-<h4 id="3-算法实现-2"><a href="#3-算法实现-2" class="headerlink" title="3.算法实现"></a>3.算法实现</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">shell_sort</span><span class="token punctuation">(</span>a<span class="token punctuation">:</span> list<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""
-    希尔排序
-    算法思路：
-    时间复杂度：O(n^2)，最好：O(n)，最坏：O(n^2)
-    空间复杂度：O(1)
-    """</span>
-    cnt <span class="token operator">=</span> len<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
-    <span class="token keyword">if</span> <span class="token operator">not</span> cnt<span class="token punctuation">:</span>
-        <span class="token keyword">return</span> a
-    gap <span class="token operator">=</span> cnt <span class="token operator">//</span> <span class="token number">2</span>
-    <span class="token keyword">while</span> gap <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
-        <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>gap<span class="token punctuation">,</span> cnt<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            tmp <span class="token operator">=</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
-            pre_index <span class="token operator">=</span> i <span class="token operator">-</span> gap
-            <span class="token keyword">while</span> pre_index <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">and</span> a<span class="token punctuation">[</span>pre_index<span class="token punctuation">]</span> <span class="token operator">></span> tmp<span class="token punctuation">:</span>
-                a<span class="token punctuation">[</span>pre_index<span class="token operator">+</span>gap<span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">[</span>pre_index<span class="token punctuation">]</span>
-                pre_index <span class="token operator">-=</span> gap
-            a<span class="token punctuation">[</span>pre_index<span class="token operator">+</span>gap<span class="token punctuation">]</span> <span class="token operator">=</span> tmp
-        gap <span class="token operator">//=</span> <span class="token number">2</span>
-    <span class="token keyword">return</span> a
+<h4 id="3-算法实现-2"><a href="#3-算法实现-2" class="headerlink" title="3.算法实现"></a>3.算法实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">shell_sort</span><span class="params">(a: list)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    希尔排序</span></span><br><span class="line"><span class="string">    算法思路：</span></span><br><span class="line"><span class="string">    时间复杂度：O(n^2)，最好：O(n)，最坏：O(n^2)</span></span><br><span class="line"><span class="string">    空间复杂度：O(1)</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    cnt = len(a)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> cnt:</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    gap = cnt // <span class="number">2</span></span><br><span class="line">    <span class="keyword">while</span> gap &gt; <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(gap, cnt, <span class="number">1</span>):</span><br><span class="line">            tmp = a[i]</span><br><span class="line">            pre_index = i - gap</span><br><span class="line">            <span class="keyword">while</span> pre_index &gt;= <span class="number">0</span> <span class="keyword">and</span> a[pre_index] &gt; tmp:</span><br><span class="line">                a[pre_index+gap] = a[pre_index]</span><br><span class="line">                pre_index -= gap</span><br><span class="line">            a[pre_index+gap] = tmp</span><br><span class="line">        gap //= <span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    a = [<span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">45</span>, <span class="number">76</span>, <span class="number">47</span>, <span class="number">34</span>, <span class="number">5</span>, <span class="number">23</span>]</span><br><span class="line">    shell_sort(a)</span><br><span class="line">    print(a)</span><br></pre></td></tr></table></figure>
 
-
-<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
-    a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">45</span><span class="token punctuation">,</span> <span class="token number">76</span><span class="token punctuation">,</span> <span class="token number">47</span><span class="token punctuation">,</span> <span class="token number">34</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">]</span>
-    shell_sort<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span></code></pre>
 <h2 id="0X05、归并排序"><a href="#0X05、归并排序" class="headerlink" title="0X05、归并排序"></a>0X05、归并排序</h2><p>归并排序是分治思想的一种实现。这里分治模式的每层递归时都有三个步骤：</p>
 <ul>
 <li>分解原问题为若干子问题，这些子问题是原问题的规模较小的实例。</li>
@@ -528,70 +498,25 @@
 </ul>
 </li>
 <li><p>伪代码描述</p>
-<pre><code>MERGE(A,p,q,r)
-1  n1 = p - q + 1
-2  n2 = r - q
-3  let L[1..n1+1] and R[1..n2+1] to be new arrays
-4  for i = 1 to n1
-5    L[i] = A[p+i-1]
-6  for j = 1 to n2
-7    R[j] = A[q+j]
-8  L[n1+1] = ∞
-9  R[n2+1] = ∞
-10 i = 1
-11 j = 1
-12 for k = p to r
-13   if L[i] &lt;= R[j]
-14      A[k] = L[i]
-15      i = i+1
-16   else
-17      A[k] = R[j]
-18      j = j+1
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">MERGE(A,p,q,r)</span><br><span class="line">1  n1 = p - q + 1</span><br><span class="line">2  n2 = r - q</span><br><span class="line">3  let L[1..n1+1] and R[1..n2+1] to be new arrays</span><br><span class="line">4  for i = 1 to n1</span><br><span class="line">5    L[i] = A[p+i-1]</span><br><span class="line">6  for j = 1 to n2</span><br><span class="line">7    R[j] = A[q+j]</span><br><span class="line">8  L[n1+1] = ∞</span><br><span class="line">9  R[n2+1] = ∞</span><br><span class="line">10 i = 1</span><br><span class="line">11 j = 1</span><br><span class="line">12 for k = p to r</span><br><span class="line">13   if L[i] &lt;= R[j]</span><br><span class="line">14      A[k] = L[i]</span><br><span class="line">15      i = i+1</span><br><span class="line">16   else</span><br><span class="line">17      A[k] = R[j]</span><br><span class="line">18      j = j+1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MERGE-SORT(A,p,r)</span><br><span class="line">1  if p &lt; r</span><br><span class="line">2     q = (p+r)/2</span><br><span class="line">3     MERGE-SORT(A,p,q)</span><br><span class="line">4     MERGE-SORT(A,q+1,r)</span><br><span class="line">5     MERGE(A,p,q,r)</span><br></pre></td></tr></table></figure>
 
-</code></pre></li>
+</li>
 </ul>
-<p>MERGE-SORT(A,p,r)<br>1  if p &lt; r<br>2     q = (p+r)/2<br>3     MERGE-SORT(A,p,q)<br>4     MERGE-SORT(A,q+1,r)<br>5     MERGE(A,p,q,r)</p>
-<pre><code>
+<h4 id="2-算法复杂度-3"><a href="#2-算法复杂度-3" class="headerlink" title="2.算法复杂度"></a>2.算法复杂度</h4><ul>
+<li>时间复杂度<ul>
+<li>最佳情况：T(n) = O(n)</li>
+<li>最差情况：T(n) = O(nlogn)</li>
+<li>平均情况：T(n) = O(nlogn)</li>
+</ul>
+</li>
+<li>空间复杂度<ul>
+<li>O(1)</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-算法实现-3"><a href="#3-算法实现-3" class="headerlink" title="3.算法实现"></a>3.算法实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge_sort</span><span class="params">(a: list)</span>:</span></span><br><span class="line">    cnt = len(a)</span><br><span class="line">    <span class="keyword">if</span> cnt &lt; <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    mid = cnt // <span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> merge(merge_sort(a[:mid]), merge_sort(a[mid:]))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(left: list, right: list)</span>:</span></span><br><span class="line">    result = []</span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    j = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; len(left) <span class="keyword">and</span> j &lt; len(right):</span><br><span class="line">        <span class="keyword">if</span> left[i] &lt;= right[j]:</span><br><span class="line">            result.append(left[i])</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            result.append(right[j])</span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">    result += left[i:]</span><br><span class="line">    result += right[j:]</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    a = [<span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">45</span>, <span class="number">76</span>, <span class="number">47</span>, <span class="number">34</span>, <span class="number">5</span>, <span class="number">23</span>]</span><br><span class="line">    print(merge_sort(a))</span><br></pre></td></tr></table></figure>
 
-#### 2.算法复杂度
-
-* 时间复杂度
-    * 最佳情况：T(n) = O(n)
-    * 最差情况：T(n) = O(nlogn)
-    * 平均情况：T(n) = O(nlogn)
-* 空间复杂度
-    * O(1)
-
-#### 3.算法实现
-
-```python
-def merge_sort(a: list):
-    cnt = len(a)
-    if cnt &lt; 2:
-        return a
-    mid = cnt // 2
-    return merge(merge_sort(a[:mid]), merge_sort(a[mid:]))
-
-
-def merge(left: list, right: list):
-    result = []
-    i = 0
-    j = 0
-    while i &lt; len(left) and j &lt; len(right):
-        if left[i] &lt;= right[j]:
-            result.append(left[i])
-            i += 1
-        else:
-            result.append(right[j])
-            j += 1
-    result += left[i:]
-    result += right[j:]
-    return result
-
-
-if __name__ == &#39;__main__&#39;:
-    a = [2, 1, 4, 6, 3, 45, 76, 47, 34, 5, 23]
-    print(merge_sort(a))</code></pre><h2 id="0X06、快速排序"><a href="#0X06、快速排序" class="headerlink" title="0X06、快速排序"></a>0X06、快速排序</h2><p>通过一趟排序将待排记录分隔成独立的两部分，其中一部分记录的关键字均比另一部分的关键字小，则可分别对这两部分记录继续进行排序，以达到整个序列有序。</p>
+<h2 id="0X06、快速排序"><a href="#0X06、快速排序" class="headerlink" title="0X06、快速排序"></a>0X06、快速排序</h2><p>通过一趟排序将待排记录分隔成独立的两部分，其中一部分记录的关键字均比另一部分的关键字小，则可分别对这两部分记录继续进行排序，以达到整个序列有序。</p>
 <h4 id="1-算法思路-2"><a href="#1-算法思路-2" class="headerlink" title="1.算法思路"></a>1.算法思路</h4><p>快速排序使用分治法来把一个串（list）分为两个子串（sub-lists）。具体算法描述如下：</p>
 <ul>
 <li><p>语言描述</p>
@@ -604,21 +529,9 @@ if __name__ == &#39;__main__&#39;:
 <li><p>伪代码描述</p>
 </li>
 </ul>
-<pre><code>QUICKSORT(A,p,r)
-1  if p &lt; r
-2    q = PARTITION(A,p,r)
-3    QUICKSORT(A,p,q-1)
-4    QUICKSORT(A,q+1,r)
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">QUICKSORT(A,p,r)</span><br><span class="line">1  if p &lt; r</span><br><span class="line">2    q = PARTITION(A,p,r)</span><br><span class="line">3    QUICKSORT(A,p,q-1)</span><br><span class="line">4    QUICKSORT(A,q+1,r)</span><br><span class="line"></span><br><span class="line">PARTITION(A,p,r)</span><br><span class="line">1  x = A[r]</span><br><span class="line">2  i = p-1</span><br><span class="line">3  for j = p to r-1</span><br><span class="line">4    if A[j] &lt;= x</span><br><span class="line">5        i = i+1</span><br><span class="line">6        exchange A[i] with A[j]</span><br><span class="line">7  exchange A[i+1] with A[r]</span><br><span class="line">8  return i+1</span><br></pre></td></tr></table></figure>
 
-PARTITION(A,p,r)
-1  x = A[r]
-2  i = p-1
-3  for j = p to r-1
-4    if A[j] &lt;= x
-5        i = i+1
-6        exchange A[i] with A[j]
-7  exchange A[i+1] with A[r]
-8  return i+1</code></pre><h4 id="2-算法复杂度-3"><a href="#2-算法复杂度-3" class="headerlink" title="2.算法复杂度"></a>2.算法复杂度</h4><ul>
+<h4 id="2-算法复杂度-4"><a href="#2-算法复杂度-4" class="headerlink" title="2.算法复杂度"></a>2.算法复杂度</h4><ul>
 <li>时间复杂度<ul>
 <li>最佳情况：T(n) = O(nlogn)</li>
 <li>最差情况：T(n) = O(n2)</li>
@@ -630,37 +543,8 @@ PARTITION(A,p,r)
 </ul>
 </li>
 </ul>
-<h4 id="3-算法实现-3"><a href="#3-算法实现-3" class="headerlink" title="3.算法实现"></a>3.算法实现</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">quick_sort</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> l<span class="token punctuation">,</span> r<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">if</span> l <span class="token operator">&lt;</span> r<span class="token punctuation">:</span>
-        q <span class="token operator">=</span> partition<span class="token punctuation">(</span>array<span class="token punctuation">,</span> l<span class="token punctuation">,</span> r<span class="token punctuation">)</span>
-        quick_sort<span class="token punctuation">(</span>array<span class="token punctuation">,</span> l<span class="token punctuation">,</span> q<span class="token punctuation">)</span>
-        quick_sort<span class="token punctuation">(</span>array<span class="token punctuation">,</span> q <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> r<span class="token punctuation">)</span>
+<h4 id="3-算法实现-4"><a href="#3-算法实现-4" class="headerlink" title="3.算法实现"></a>3.算法实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quick_sort</span><span class="params">(array, l, r)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> l &lt; r:</span><br><span class="line">        q = partition(array, l, r)</span><br><span class="line">        quick_sort(array, l, q)</span><br><span class="line">        quick_sort(array, q + <span class="number">1</span>, r)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">partition</span><span class="params">(array, l, r)</span>:</span></span><br><span class="line">    i = l - <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(l, r):</span><br><span class="line">        <span class="keyword">if</span> array[j] &lt;= array[r]:</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">            array[i], array[j] = array[j], array[i]</span><br><span class="line">    array[i+<span class="number">1</span>], array[r] = array[r], array[i+<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">return</span> i</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quicksort</span><span class="params">(arr)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(arr) &lt;= <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> arr</span><br><span class="line">    pivot = arr[len(arr) // <span class="number">2</span>]</span><br><span class="line">    left = [x <span class="keyword">for</span> x <span class="keyword">in</span> arr <span class="keyword">if</span> x &lt; pivot]</span><br><span class="line">    middle = [x <span class="keyword">for</span> x <span class="keyword">in</span> arr <span class="keyword">if</span> x == pivot]</span><br><span class="line">    right = [x <span class="keyword">for</span> x <span class="keyword">in</span> arr <span class="keyword">if</span> x &gt; pivot]</span><br><span class="line">    <span class="keyword">return</span> quicksort(left) + middle + quicksort(right)</span><br><span class="line"></span><br><span class="line">print(quicksort([<span class="number">3</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">10</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    a = [<span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">45</span>, <span class="number">76</span>, <span class="number">47</span>, <span class="number">34</span>, <span class="number">5</span>, <span class="number">23</span>]</span><br><span class="line">    quick_sort(a, <span class="number">0</span>, len(a) - <span class="number">1</span>)</span><br><span class="line">    print(a)</span><br></pre></td></tr></table></figure>
 
-
-<span class="token keyword">def</span> <span class="token function">partition</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> l<span class="token punctuation">,</span> r<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    i <span class="token operator">=</span> l <span class="token operator">-</span> <span class="token number">1</span>
-    <span class="token keyword">for</span> j <span class="token keyword">in</span> range<span class="token punctuation">(</span>l<span class="token punctuation">,</span> r<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> array<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> array<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">:</span>
-            i <span class="token operator">+=</span> <span class="token number">1</span>
-            array<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> array<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> array<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> array<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
-    array<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> array<span class="token punctuation">[</span>r<span class="token punctuation">]</span> <span class="token operator">=</span> array<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">,</span> array<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span>
-    <span class="token keyword">return</span> i
-
-<span class="token keyword">def</span> <span class="token function">quicksort</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">if</span> len<span class="token punctuation">(</span>arr<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> arr
-    pivot <span class="token operator">=</span> arr<span class="token punctuation">[</span>len<span class="token punctuation">(</span>arr<span class="token punctuation">)</span> <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">]</span>
-    left <span class="token operator">=</span> <span class="token punctuation">[</span>x <span class="token keyword">for</span> x <span class="token keyword">in</span> arr <span class="token keyword">if</span> x <span class="token operator">&lt;</span> pivot<span class="token punctuation">]</span>
-    middle <span class="token operator">=</span> <span class="token punctuation">[</span>x <span class="token keyword">for</span> x <span class="token keyword">in</span> arr <span class="token keyword">if</span> x <span class="token operator">==</span> pivot<span class="token punctuation">]</span>
-    right <span class="token operator">=</span> <span class="token punctuation">[</span>x <span class="token keyword">for</span> x <span class="token keyword">in</span> arr <span class="token keyword">if</span> x <span class="token operator">></span> pivot<span class="token punctuation">]</span>
-    <span class="token keyword">return</span> quicksort<span class="token punctuation">(</span>left<span class="token punctuation">)</span> <span class="token operator">+</span> middle <span class="token operator">+</span> quicksort<span class="token punctuation">(</span>right<span class="token punctuation">)</span>
-
-<span class="token keyword">print</span><span class="token punctuation">(</span>quicksort<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
-    a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">45</span><span class="token punctuation">,</span> <span class="token number">76</span><span class="token punctuation">,</span> <span class="token number">47</span><span class="token punctuation">,</span> <span class="token number">34</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">]</span>
-    quick_sort<span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> len<span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span></code></pre>
 <h2 id="0X07、计数排序"><a href="#0X07、计数排序" class="headerlink" title="0X07、计数排序"></a>0X07、计数排序</h2><p>计数排序的核心在于将输入的数据值转化为键存储在额外开辟的数组空间中。 作为一种线性时间复杂度的排序，计数排序要求输入的数据必须是有确定范围的整数。<br>计数排序(Counting sort)是一种稳定的排序算法。计数排序使用一个额外的数组C，其中第i个元素是待排序数组A中值等于i的元素的个数。然后根据数组C来将A中的元素排到正确的位置。它只能对整数进行排序。</p>
 <h4 id="1-算法思路-3"><a href="#1-算法思路-3" class="headerlink" title="1.算法思路"></a>1.算法思路</h4><ul>
 <li>找出待排序的数组中最大和最小的元素；</li>
@@ -668,56 +552,23 @@ PARTITION(A,p,r)
 <li>对所有的计数累加（从C中的第一个元素开始，每一项和前一项相加）；</li>
 <li>反向填充目标数组：将每个元素i放在新数组的第C(i)项，每放一个元素就将C(i)减去1。</li>
 </ul>
-<h4 id="2-算法复杂度-4"><a href="#2-算法复杂度-4" class="headerlink" title="2.算法复杂度"></a>2.算法复杂度</h4><p>当输入的元素是n 个0到k之间的整数时，它的运行时间是 O(n + k)。计数排序不是比较排序，排序的速度快于任何比较排序算法。由于用来计数的数组C的长度取决于待排序数组中数据的范围（等于待排序数组的最大值与最小值的差加上1），这使得计数排序对于数据范围很大的数组，需要大量时间和内存。<br>最佳情况：T(n) = O(n+k) 最差情况：T(n) = O(n+k) 平均情况：T(n) = O(n+k)</p>
-<h4 id="3-算法实现-4"><a href="#3-算法实现-4" class="headerlink" title="3.算法实现"></a>3.算法实现</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">count_sort</span><span class="token punctuation">(</span>array<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    leng <span class="token operator">=</span> len<span class="token punctuation">(</span>array<span class="token punctuation">)</span>
-    c <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    res <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        c<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> leng<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        c<span class="token punctuation">[</span>array<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> c<span class="token punctuation">[</span>array<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">+</span><span class="token number">1</span>
-        res<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        c<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> c<span class="token punctuation">[</span>i<span class="token number">-1</span><span class="token punctuation">]</span><span class="token operator">+</span>c<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>leng<span class="token number">-1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        res<span class="token punctuation">[</span>c<span class="token punctuation">[</span>array<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> array<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
-        c<span class="token punctuation">[</span>array<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> c<span class="token punctuation">[</span>array<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">-</span><span class="token number">1</span>
-    <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+<h4 id="2-算法复杂度-5"><a href="#2-算法复杂度-5" class="headerlink" title="2.算法复杂度"></a>2.算法复杂度</h4><p>当输入的元素是n 个0到k之间的整数时，它的运行时间是 O(n + k)。计数排序不是比较排序，排序的速度快于任何比较排序算法。由于用来计数的数组C的长度取决于待排序数组中数据的范围（等于待排序数组的最大值与最小值的差加上1），这使得计数排序对于数据范围很大的数组，需要大量时间和内存。<br>最佳情况：T(n) = O(n+k) 最差情况：T(n) = O(n+k) 平均情况：T(n) = O(n+k)</p>
+<h4 id="3-算法实现-5"><a href="#3-算法实现-5" class="headerlink" title="3.算法实现"></a>3.算法实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">count_sort</span><span class="params">(array)</span>:</span></span><br><span class="line">    leng = len(array)</span><br><span class="line">    c = []</span><br><span class="line">    res = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">100</span>):</span><br><span class="line">        c.append(<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, leng):</span><br><span class="line">        c[array[i]] = c[array[i]]+<span class="number">1</span></span><br><span class="line">        res.append(<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">100</span>):</span><br><span class="line">        c[i] = c[i<span class="number">-1</span>]+c[i]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(leng<span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">        res[c[array[i]]<span class="number">-1</span>] = array[i]</span><br><span class="line">        c[array[i]] = c[array[i]]<span class="number">-1</span></span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    a = [<span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">45</span>, <span class="number">76</span>, <span class="number">47</span>, <span class="number">34</span>, <span class="number">5</span>, <span class="number">23</span>]</span><br><span class="line">    print(count_sort(a))</span><br></pre></td></tr></table></figure>
 
-
-<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
-    a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">45</span><span class="token punctuation">,</span> <span class="token number">76</span><span class="token punctuation">,</span> <span class="token number">47</span><span class="token punctuation">,</span> <span class="token number">34</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">]</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>count_sort<span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 <h2 id="0X08、基数排序"><a href="#0X08、基数排序" class="headerlink" title="0X08、基数排序"></a>0X08、基数排序</h2><p>基数排序也是非比较的排序算法，对每一位进行排序，从最低位开始排序，复杂度为O(kn),为数组长度，k为数组中的数的最大的位数；<br>基数排序是按照低位先排序，然后收集；再按照高位排序，然后再收集；依次类推，直到最高位。有时候有些属性是有优先级顺序的，先按低优先级排序，再按高优先级排序。最后的次序就是高优先级高的在前，高优先级相同的低优先级高的在前。基数排序基于分别排序，分别收集，所以是稳定的。</p>
 <h4 id="1-算法思路-4"><a href="#1-算法思路-4" class="headerlink" title="1.算法思路"></a>1.算法思路</h4><ul>
 <li>取得数组中的最大数，并取得位数；</li>
 <li>arr为原始数组，从最低位开始取每个位组成radix数组；</li>
 <li>对radix进行计数排序（利用计数排序适用于小范围数的特点）</li>
 </ul>
-<h4 id="2-算法复杂度-5"><a href="#2-算法复杂度-5" class="headerlink" title="2.算法复杂度"></a>2.算法复杂度</h4><p>最佳情况：T(n) = O(n * k) 最差情况：T(n) = O(n * k) 平均情况：T(n) = O(n * k)<br>基数排序有两种方法：<br>MSD 从高位开始进行排序 LSD 从低位开始进行排序<br>基数排序 vs 计数排序 vs 桶排序<br>这三种排序算法都利用了桶的概念，但对桶的使用方法上有明显差异：</p>
+<h4 id="2-算法复杂度-6"><a href="#2-算法复杂度-6" class="headerlink" title="2.算法复杂度"></a>2.算法复杂度</h4><p>最佳情况：T(n) = O(n * k) 最差情况：T(n) = O(n * k) 平均情况：T(n) = O(n * k)<br>基数排序有两种方法：<br>MSD 从高位开始进行排序 LSD 从低位开始进行排序<br>基数排序 vs 计数排序 vs 桶排序<br>这三种排序算法都利用了桶的概念，但对桶的使用方法上有明显差异：</p>
 <ul>
 <li>基数排序：根据键值的每位数字来分配桶</li>
 <li>计数排序：每个桶只存储单一键值</li>
 <li>桶排序：每个桶存储一定范围的数值</li>
 </ul>
-<h4 id="3-算法实现-5"><a href="#3-算法实现-5" class="headerlink" title="3.算法实现"></a>3.算法实现</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">radix_sort</span><span class="token punctuation">(</span>lists<span class="token punctuation">,</span> radix<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    k <span class="token operator">=</span> int<span class="token punctuation">(</span>math<span class="token punctuation">.</span>ceil<span class="token punctuation">(</span>math<span class="token punctuation">.</span>log<span class="token punctuation">(</span>max<span class="token punctuation">(</span>lists<span class="token punctuation">)</span><span class="token punctuation">,</span> radix<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    bucket <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>radix<span class="token punctuation">)</span><span class="token punctuation">]</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> k<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">for</span> j <span class="token keyword">in</span> lists<span class="token punctuation">:</span>
-            bucket<span class="token punctuation">[</span>j<span class="token operator">//</span><span class="token punctuation">(</span>radix<span class="token operator">**</span><span class="token punctuation">(</span>i<span class="token number">-1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token punctuation">(</span>radix<span class="token operator">**</span>i<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">.</span>append<span class="token punctuation">(</span>j<span class="token punctuation">)</span>
-        <span class="token keyword">del</span> lists<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
-        <span class="token keyword">for</span> z <span class="token keyword">in</span> bucket<span class="token punctuation">:</span>
-            lists <span class="token operator">+=</span> z
-            <span class="token keyword">del</span> z<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
-    <span class="token keyword">return</span> lists
+<h4 id="3-算法实现-6"><a href="#3-算法实现-6" class="headerlink" title="3.算法实现"></a>3.算法实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">radix_sort</span><span class="params">(lists, radix=<span class="number">10</span>)</span>:</span></span><br><span class="line">    k = int(math.ceil(math.log(max(lists), radix)))</span><br><span class="line">    bucket = [[] <span class="keyword">for</span> i <span class="keyword">in</span> range(radix)]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, k+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> lists:</span><br><span class="line">            bucket[j//(radix**(i<span class="number">-1</span>)) % (radix**i)].append(j)</span><br><span class="line">        <span class="keyword">del</span> lists[:]</span><br><span class="line">        <span class="keyword">for</span> z <span class="keyword">in</span> bucket:</span><br><span class="line">            lists += z</span><br><span class="line">            <span class="keyword">del</span> z[:]</span><br><span class="line">    <span class="keyword">return</span> lists</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    a = [<span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">45</span>, <span class="number">76</span>, <span class="number">47</span>, <span class="number">34</span>, <span class="number">5</span>, <span class="number">23</span>]</span><br><span class="line">    radix_sort(a)</span><br><span class="line">    print(a)</span><br></pre></td></tr></table></figure>
 
-
-<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
-    a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">45</span><span class="token punctuation">,</span> <span class="token number">76</span><span class="token punctuation">,</span> <span class="token number">47</span><span class="token punctuation">,</span> <span class="token number">34</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">]</span>
-    radix_sort<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span></code></pre>
 <h2 id="0X09、桶排序"><a href="#0X09、桶排序" class="headerlink" title="0X09、桶排序"></a>0X09、桶排序</h2><p>桶排序是计数排序的升级版。它利用了函数的映射关系，高效与否的关键就在于这个映射函数的确定。<br>桶排序 (Bucket sort)的工作的原理：假设输入数据服从均匀分布，将数据分到有限数量的桶里，每个桶再分别排序（有可能再使用别的排序算法或是以递归方式继续使用桶排序进行排</p>
 <h4 id="1-算法思路-5"><a href="#1-算法思路-5" class="headerlink" title="1.算法思路"></a>1.算法思路</h4><ul>
 <li>人为设置一个BucketSize，作为每个桶所能放置多少个不同数值（例如当BucketSize==5时，该桶可以存放｛1,2,3,4,5｝这几种数字，但是容量不限，即可以存放100个3）；</li>
@@ -725,43 +576,9 @@ PARTITION(A,p,r)
 <li>对每个不是空的桶进行排序，可以使用其它排序方法，也可以递归使用桶排序；</li>
 <li>从不是空的桶里把排好序的数据拼接起来。<br>注意，如果递归使用桶排序为各个桶排序，则当桶数量为1时要手动减小BucketSize增加下一循环桶的数量，否则会陷入死循环，导致内存溢出。</li>
 </ul>
-<h4 id="2-算法复杂度-6"><a href="#2-算法复杂度-6" class="headerlink" title="2.算法复杂度"></a>2.算法复杂度</h4><p>桶排序最好情况下使用线性时间O(n)，桶排序的时间复杂度，取决与对各个桶之间数据进行排序的时间复杂度，因为其它部分的时间复杂度都为O(n)。很显然，桶划分的越小，各个桶之间的数据越少，排序所用的时间也会越少。但相应的空间消耗就会增大。<br>最佳情况：T(n) = O(n+k) 最差情况：T(n) = O(n+k) 平均情况：T(n) = O(n2)　</p>
-<h4 id="3-算法实现-6"><a href="#3-算法实现-6" class="headerlink" title="3.算法实现"></a>3.算法实现</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">node</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>key <span class="token operator">=</span> k
-        self<span class="token punctuation">.</span>next <span class="token operator">=</span> None
+<h4 id="2-算法复杂度-7"><a href="#2-算法复杂度-7" class="headerlink" title="2.算法复杂度"></a>2.算法复杂度</h4><p>桶排序最好情况下使用线性时间O(n)，桶排序的时间复杂度，取决与对各个桶之间数据进行排序的时间复杂度，因为其它部分的时间复杂度都为O(n)。很显然，桶划分的越小，各个桶之间的数据越少，排序所用的时间也会越少。但相应的空间消耗就会增大。<br>最佳情况：T(n) = O(n+k) 最差情况：T(n) = O(n+k) 平均情况：T(n) = O(n2)　</p>
+<h4 id="3-算法实现-7"><a href="#3-算法实现-7" class="headerlink" title="3.算法实现"></a>3.算法实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">node</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, k)</span>:</span></span><br><span class="line">        self.key = k</span><br><span class="line">        self.next = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bucket_sort</span><span class="params">(lista)</span>:</span></span><br><span class="line">    h = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">10</span>):</span><br><span class="line">        h.append(node(<span class="number">0</span>))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(lista)):</span><br><span class="line">        tmp = node(lista[i])</span><br><span class="line">        map = lista[i]//<span class="number">10</span></span><br><span class="line">        p = h[map]</span><br><span class="line">        <span class="keyword">if</span> p.key <span class="keyword">is</span> <span class="number">0</span>:</span><br><span class="line">            h[map].next = tmp</span><br><span class="line">            h[map].key = h[map].key+<span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">while</span>(p.next != <span class="literal">None</span> <span class="keyword">and</span> p.next.key &lt;= tmp.key):</span><br><span class="line">                p = p.next</span><br><span class="line">            tmp.next = p.next</span><br><span class="line">            p.next = tmp</span><br><span class="line">            h[map].key = h[map].key+<span class="number">1</span></span><br><span class="line">    k = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">10</span>):</span><br><span class="line">        q = h[i].next</span><br><span class="line">        <span class="keyword">while</span>(q != <span class="literal">None</span>):</span><br><span class="line">            lista[k] = q.key</span><br><span class="line">            k = k+<span class="number">1</span></span><br><span class="line">            q = q.next</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    a = [<span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">45</span>, <span class="number">76</span>, <span class="number">47</span>, <span class="number">34</span>, <span class="number">5</span>, <span class="number">23</span>]</span><br><span class="line">    bucket_sort(a)</span><br><span class="line">    print(a)</span><br></pre></td></tr></table></figure>
 
-
-<span class="token keyword">def</span> <span class="token function">bucket_sort</span><span class="token punctuation">(</span>lista<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    h <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        h<span class="token punctuation">.</span>append<span class="token punctuation">(</span>node<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> len<span class="token punctuation">(</span>lista<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        tmp <span class="token operator">=</span> node<span class="token punctuation">(</span>lista<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
-        map <span class="token operator">=</span> lista<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">//</span><span class="token number">10</span>
-        p <span class="token operator">=</span> h<span class="token punctuation">[</span>map<span class="token punctuation">]</span>
-        <span class="token keyword">if</span> p<span class="token punctuation">.</span>key <span class="token keyword">is</span> <span class="token number">0</span><span class="token punctuation">:</span>
-            h<span class="token punctuation">[</span>map<span class="token punctuation">]</span><span class="token punctuation">.</span>next <span class="token operator">=</span> tmp
-            h<span class="token punctuation">[</span>map<span class="token punctuation">]</span><span class="token punctuation">.</span>key <span class="token operator">=</span> h<span class="token punctuation">[</span>map<span class="token punctuation">]</span><span class="token punctuation">.</span>key<span class="token operator">+</span><span class="token number">1</span>
-        <span class="token keyword">else</span><span class="token punctuation">:</span>
-            <span class="token keyword">while</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>next <span class="token operator">!=</span> None <span class="token operator">and</span> p<span class="token punctuation">.</span>next<span class="token punctuation">.</span>key <span class="token operator">&lt;=</span> tmp<span class="token punctuation">.</span>key<span class="token punctuation">)</span><span class="token punctuation">:</span>
-                p <span class="token operator">=</span> p<span class="token punctuation">.</span>next
-            tmp<span class="token punctuation">.</span>next <span class="token operator">=</span> p<span class="token punctuation">.</span>next
-            p<span class="token punctuation">.</span>next <span class="token operator">=</span> tmp
-            h<span class="token punctuation">[</span>map<span class="token punctuation">]</span><span class="token punctuation">.</span>key <span class="token operator">=</span> h<span class="token punctuation">[</span>map<span class="token punctuation">]</span><span class="token punctuation">.</span>key<span class="token operator">+</span><span class="token number">1</span>
-    k <span class="token operator">=</span> <span class="token number">0</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        q <span class="token operator">=</span> h<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>next
-        <span class="token keyword">while</span><span class="token punctuation">(</span>q <span class="token operator">!=</span> None<span class="token punctuation">)</span><span class="token punctuation">:</span>
-            lista<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> q<span class="token punctuation">.</span>key
-            k <span class="token operator">=</span> k<span class="token operator">+</span><span class="token number">1</span>
-            q <span class="token operator">=</span> q<span class="token punctuation">.</span>next
-
-
-<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
-    a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">45</span><span class="token punctuation">,</span> <span class="token number">76</span><span class="token punctuation">,</span> <span class="token number">47</span><span class="token punctuation">,</span> <span class="token number">34</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">]</span>
-    bucket_sort<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span></code></pre>
 <h2 id="0X10、堆排序"><a href="#0X10、堆排序" class="headerlink" title="0X10、堆排序"></a>0X10、堆排序</h2><p>堆排序(heap-sort),和归并排序一样，不同于插入排序的是，堆排序的时间复杂度是O(nlogn)。与插入排序相同，不同于堆排序的是，堆排序具有空间原址性：任何时候都需要常数个额外的元素空间来存储临时数据。<br>其思想便是引用一种成为堆的数据结构。常见的有大根堆（最大堆）和小根堆（最小堆）。在排序中一般使用大根堆，小根堆通常构建优先队列。</p>
 <ul>
 <li>大根堆：<ul>
@@ -776,32 +593,9 @@ PARTITION(A,p,r)
 <h4 id="1-算法思路-6"><a href="#1-算法思路-6" class="headerlink" title="1.算法思路"></a>1.算法思路</h4><ul>
 <li>伪代码描述</li>
 </ul>
-<pre><code># 用于维护最大根堆的性质
-# 对于树高为h的大根堆，其时间复杂度为O(h)
-MAX-HEAPIFY(A,i)
-1  l = LEFT(i)
-2  r = RIGHT(i)
-3  if l &lt;= A.heap-size and A[l] &gt; A[i]
-4    largest = l
-5  else larget = r
-6  if r &lt;= A.heap-size and A[r] &gt; A[largest]
-7    largest = r
-8  if largest != i
-9    exchange A[i] with A[largest]
-10   MAX-HEAPIFY(A,largest)
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"># 用于维护最大根堆的性质</span><br><span class="line"># 对于树高为h的大根堆，其时间复杂度为O(h)</span><br><span class="line">MAX-HEAPIFY(A,i)</span><br><span class="line">1  l = LEFT(i)</span><br><span class="line">2  r = RIGHT(i)</span><br><span class="line">3  if l &lt;= A.heap-size and A[l] &gt; A[i]</span><br><span class="line">4    largest = l</span><br><span class="line">5  else larget = r</span><br><span class="line">6  if r &lt;= A.heap-size and A[r] &gt; A[largest]</span><br><span class="line">7    largest = r</span><br><span class="line">8  if largest != i</span><br><span class="line">9    exchange A[i] with A[largest]</span><br><span class="line">10   MAX-HEAPIFY(A,largest)</span><br><span class="line"></span><br><span class="line"># 建堆</span><br><span class="line">BUILD-MAX-HEAP(A)</span><br><span class="line">1  A.heap-size = A.length</span><br><span class="line">2  for i = ⌊A.length/2⌋ downto 1</span><br><span class="line">3    MAX-HEAPIFY(A, i)</span><br><span class="line"></span><br><span class="line"># 堆排序</span><br><span class="line">HEAP-SORT(A)</span><br><span class="line">1  BUILD-MAX-HEAP(A)</span><br><span class="line">2  for i = A.length downto 2</span><br><span class="line">3    exchange A[1] with A[i]</span><br><span class="line">4    MAX-HEAPIFY(A, 1)</span><br></pre></td></tr></table></figure>
 
-# 建堆
-BUILD-MAX-HEAP(A)
-1  A.heap-size = A.length
-2  for i = ⌊A.length/2⌋ downto 1
-3    MAX-HEAPIFY(A, i)
-
-# 堆排序
-HEAP-SORT(A)
-1  BUILD-MAX-HEAP(A)
-2  for i = A.length downto 2
-3    exchange A[1] with A[i]
-4    MAX-HEAPIFY(A, 1)</code></pre><h4 id="2-算法复杂度-7"><a href="#2-算法复杂度-7" class="headerlink" title="2.算法复杂度"></a>2.算法复杂度</h4><ul>
+<h4 id="2-算法复杂度-8"><a href="#2-算法复杂度-8" class="headerlink" title="2.算法复杂度"></a>2.算法复杂度</h4><ul>
 <li>时间复杂度<ul>
 <li>最佳情况：T(n) = O(nlogn)</li>
 <li>最差情况：T(n) = O(nlogn)</li>
@@ -813,47 +607,8 @@ HEAP-SORT(A)
 </ul>
 </li>
 </ul>
-<h4 id="3-算法实现-7"><a href="#3-算法实现-7" class="headerlink" title="3.算法实现"></a>3.算法实现</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> collections <span class="token keyword">import</span> deque
+<h4 id="3-算法实现-8"><a href="#3-算法实现-8" class="headerlink" title="3.算法实现"></a>3.算法实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">swap_param</span><span class="params">(L, i, j)</span>:</span></span><br><span class="line">    L[i], L[j] = L[j], L[i]</span><br><span class="line">    <span class="keyword">return</span> L</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">heap_adjust</span><span class="params">(L, start, end)</span>:</span></span><br><span class="line">    temp = L[start]</span><br><span class="line"></span><br><span class="line">    i = start</span><br><span class="line">    j = <span class="number">2</span> * i</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> j &lt;= end:</span><br><span class="line">        <span class="keyword">if</span> (j &lt; end) <span class="keyword">and</span> (L[j] &lt; L[j + <span class="number">1</span>]):</span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> temp &lt; L[j]:</span><br><span class="line">            L[i] = L[j]</span><br><span class="line">            i = j</span><br><span class="line">            j = <span class="number">2</span> * i</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    L[i] = temp</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">heap_sort</span><span class="params">(L)</span>:</span></span><br><span class="line">    L_length = len(L) - <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    first_sort_count = L_length // <span class="number">2</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(first_sort_count):</span><br><span class="line">        heap_adjust(L, first_sort_count - i, L_length)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(L_length - <span class="number">1</span>):</span><br><span class="line">        L = swap_param(L, <span class="number">1</span>, L_length - i)</span><br><span class="line">        heap_adjust(L, <span class="number">1</span>, L_length - i - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> [L[i] <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(L))]</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    a = [<span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">45</span>, <span class="number">76</span>, <span class="number">47</span>, <span class="number">34</span>, <span class="number">5</span>, <span class="number">23</span>]</span><br><span class="line">    L = deque(a)</span><br><span class="line">    L.appendleft(<span class="number">0</span>)</span><br><span class="line">    print(heap_sort(L))</span><br></pre></td></tr></table></figure>
 
-<span class="token keyword">def</span> <span class="token function">swap_param</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span> i<span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    L<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> L<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> L<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> L<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
-    <span class="token keyword">return</span> L
-
-<span class="token keyword">def</span> <span class="token function">heap_adjust</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span> start<span class="token punctuation">,</span> end<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    temp <span class="token operator">=</span> L<span class="token punctuation">[</span>start<span class="token punctuation">]</span>
-
-    i <span class="token operator">=</span> start
-    j <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> i
-
-    <span class="token keyword">while</span> j <span class="token operator">&lt;=</span> end<span class="token punctuation">:</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>j <span class="token operator">&lt;</span> end<span class="token punctuation">)</span> <span class="token operator">and</span> <span class="token punctuation">(</span>L<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> L<span class="token punctuation">[</span>j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            j <span class="token operator">+=</span> <span class="token number">1</span>
-        <span class="token keyword">if</span> temp <span class="token operator">&lt;</span> L<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">:</span>
-            L<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> L<span class="token punctuation">[</span>j<span class="token punctuation">]</span>
-            i <span class="token operator">=</span> j
-            j <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> i
-        <span class="token keyword">else</span><span class="token punctuation">:</span>
-            <span class="token keyword">break</span>
-    L<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> temp
-
-<span class="token keyword">def</span> <span class="token function">heap_sort</span><span class="token punctuation">(</span>L<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    L_length <span class="token operator">=</span> len<span class="token punctuation">(</span>L<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
-
-    first_sort_count <span class="token operator">=</span> L_length <span class="token operator">//</span> <span class="token number">2</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>first_sort_count<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        heap_adjust<span class="token punctuation">(</span>L<span class="token punctuation">,</span> first_sort_count <span class="token operator">-</span> i<span class="token punctuation">,</span> L_length<span class="token punctuation">)</span>
-
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>L_length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        L <span class="token operator">=</span> swap_param<span class="token punctuation">(</span>L<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> L_length <span class="token operator">-</span> i<span class="token punctuation">)</span>
-        heap_adjust<span class="token punctuation">(</span>L<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> L_length <span class="token operator">-</span> i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
-
-    <span class="token keyword">return</span> <span class="token punctuation">[</span>L<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> len<span class="token punctuation">(</span>L<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
-
-<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
-    a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">45</span><span class="token punctuation">,</span> <span class="token number">76</span><span class="token punctuation">,</span> <span class="token number">47</span><span class="token punctuation">,</span> <span class="token number">34</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">]</span>
-    L <span class="token operator">=</span> deque<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
-    L<span class="token punctuation">.</span>appendleft<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>heap_sort<span class="token punctuation">(</span>L<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 
     </div>
 
@@ -937,7 +692,7 @@ HEAP-SORT(A)
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0X00、简介"><span class="nav-number">1.</span> <span class="nav-text">0X00、简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0X01、冒泡排序"><span class="nav-number">2.</span> <span class="nav-text">0X01、冒泡排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-算法描述"><span class="nav-number">2.0.1.</span> <span class="nav-text">1.算法描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-复杂度"><span class="nav-number">2.0.2.</span> <span class="nav-text">2.复杂度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-代码实现如下"><span class="nav-number">2.0.3.</span> <span class="nav-text">3.代码实现如下</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0X02、插入排序"><span class="nav-number">3.</span> <span class="nav-text">0X02、插入排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-算法思路"><span class="nav-number">3.0.1.</span> <span class="nav-text">1.算法思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-算法复杂度"><span class="nav-number">3.0.2.</span> <span class="nav-text">2.算法复杂度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-算法实现"><span class="nav-number">3.0.3.</span> <span class="nav-text">3.算法实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0X03、选择排序"><span class="nav-number">4.</span> <span class="nav-text">0X03、选择排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-算法分析"><span class="nav-number">4.0.1.</span> <span class="nav-text">1.算法分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-算法复杂度-1"><span class="nav-number">4.0.2.</span> <span class="nav-text">2.算法复杂度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-算法实现-1"><span class="nav-number">4.0.3.</span> <span class="nav-text">3.算法实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0X04、希尔排序"><span class="nav-number">5.</span> <span class="nav-text">0X04、希尔排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-算法思路-1"><span class="nav-number">5.0.1.</span> <span class="nav-text">1.算法思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-算法复杂度-2"><span class="nav-number">5.0.2.</span> <span class="nav-text">2.算法复杂度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-算法实现-2"><span class="nav-number">5.0.3.</span> <span class="nav-text">3.算法实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0X05、归并排序"><span class="nav-number">6.</span> <span class="nav-text">0X05、归并排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-算法思想"><span class="nav-number">6.0.1.</span> <span class="nav-text">1.算法思想</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0X06、快速排序"><span class="nav-number">7.</span> <span class="nav-text">0X06、快速排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-算法思路-2"><span class="nav-number">7.0.1.</span> <span class="nav-text">1.算法思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-算法复杂度-3"><span class="nav-number">7.0.2.</span> <span class="nav-text">2.算法复杂度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-算法实现-3"><span class="nav-number">7.0.3.</span> <span class="nav-text">3.算法实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0X07、计数排序"><span class="nav-number">8.</span> <span class="nav-text">0X07、计数排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-算法思路-3"><span class="nav-number">8.0.1.</span> <span class="nav-text">1.算法思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-算法复杂度-4"><span class="nav-number">8.0.2.</span> <span class="nav-text">2.算法复杂度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-算法实现-4"><span class="nav-number">8.0.3.</span> <span class="nav-text">3.算法实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0X08、基数排序"><span class="nav-number">9.</span> <span class="nav-text">0X08、基数排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-算法思路-4"><span class="nav-number">9.0.1.</span> <span class="nav-text">1.算法思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-算法复杂度-5"><span class="nav-number">9.0.2.</span> <span class="nav-text">2.算法复杂度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-算法实现-5"><span class="nav-number">9.0.3.</span> <span class="nav-text">3.算法实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0X09、桶排序"><span class="nav-number">10.</span> <span class="nav-text">0X09、桶排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-算法思路-5"><span class="nav-number">10.0.1.</span> <span class="nav-text">1.算法思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-算法复杂度-6"><span class="nav-number">10.0.2.</span> <span class="nav-text">2.算法复杂度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-算法实现-6"><span class="nav-number">10.0.3.</span> <span class="nav-text">3.算法实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0X10、堆排序"><span class="nav-number">11.</span> <span class="nav-text">0X10、堆排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-算法思路-6"><span class="nav-number">11.0.1.</span> <span class="nav-text">1.算法思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-算法复杂度-7"><span class="nav-number">11.0.2.</span> <span class="nav-text">2.算法复杂度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-算法实现-7"><span class="nav-number">11.0.3.</span> <span class="nav-text">3.算法实现</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0X00、简介"><span class="nav-number">1.</span> <span class="nav-text">0X00、简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0X01、冒泡排序"><span class="nav-number">2.</span> <span class="nav-text">0X01、冒泡排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-算法描述"><span class="nav-number">2.0.1.</span> <span class="nav-text">1.算法描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-复杂度"><span class="nav-number">2.0.2.</span> <span class="nav-text">2.复杂度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-代码实现如下"><span class="nav-number">2.0.3.</span> <span class="nav-text">3.代码实现如下</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0X02、插入排序"><span class="nav-number">3.</span> <span class="nav-text">0X02、插入排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-算法思路"><span class="nav-number">3.0.1.</span> <span class="nav-text">1.算法思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-算法复杂度"><span class="nav-number">3.0.2.</span> <span class="nav-text">2.算法复杂度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-算法实现"><span class="nav-number">3.0.3.</span> <span class="nav-text">3.算法实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0X03、选择排序"><span class="nav-number">4.</span> <span class="nav-text">0X03、选择排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-算法分析"><span class="nav-number">4.0.1.</span> <span class="nav-text">1.算法分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-算法复杂度-1"><span class="nav-number">4.0.2.</span> <span class="nav-text">2.算法复杂度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-算法实现-1"><span class="nav-number">4.0.3.</span> <span class="nav-text">3.算法实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0X04、希尔排序"><span class="nav-number">5.</span> <span class="nav-text">0X04、希尔排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-算法思路-1"><span class="nav-number">5.0.1.</span> <span class="nav-text">1.算法思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-算法复杂度-2"><span class="nav-number">5.0.2.</span> <span class="nav-text">2.算法复杂度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-算法实现-2"><span class="nav-number">5.0.3.</span> <span class="nav-text">3.算法实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0X05、归并排序"><span class="nav-number">6.</span> <span class="nav-text">0X05、归并排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-算法思想"><span class="nav-number">6.0.1.</span> <span class="nav-text">1.算法思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-算法复杂度-3"><span class="nav-number">6.0.2.</span> <span class="nav-text">2.算法复杂度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-算法实现-3"><span class="nav-number">6.0.3.</span> <span class="nav-text">3.算法实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0X06、快速排序"><span class="nav-number">7.</span> <span class="nav-text">0X06、快速排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-算法思路-2"><span class="nav-number">7.0.1.</span> <span class="nav-text">1.算法思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-算法复杂度-4"><span class="nav-number">7.0.2.</span> <span class="nav-text">2.算法复杂度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-算法实现-4"><span class="nav-number">7.0.3.</span> <span class="nav-text">3.算法实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0X07、计数排序"><span class="nav-number">8.</span> <span class="nav-text">0X07、计数排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-算法思路-3"><span class="nav-number">8.0.1.</span> <span class="nav-text">1.算法思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-算法复杂度-5"><span class="nav-number">8.0.2.</span> <span class="nav-text">2.算法复杂度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-算法实现-5"><span class="nav-number">8.0.3.</span> <span class="nav-text">3.算法实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0X08、基数排序"><span class="nav-number">9.</span> <span class="nav-text">0X08、基数排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-算法思路-4"><span class="nav-number">9.0.1.</span> <span class="nav-text">1.算法思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-算法复杂度-6"><span class="nav-number">9.0.2.</span> <span class="nav-text">2.算法复杂度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-算法实现-6"><span class="nav-number">9.0.3.</span> <span class="nav-text">3.算法实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0X09、桶排序"><span class="nav-number">10.</span> <span class="nav-text">0X09、桶排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-算法思路-5"><span class="nav-number">10.0.1.</span> <span class="nav-text">1.算法思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-算法复杂度-7"><span class="nav-number">10.0.2.</span> <span class="nav-text">2.算法复杂度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-算法实现-7"><span class="nav-number">10.0.3.</span> <span class="nav-text">3.算法实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0X10、堆排序"><span class="nav-number">11.</span> <span class="nav-text">0X10、堆排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-算法思路-6"><span class="nav-number">11.0.1.</span> <span class="nav-text">1.算法思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-算法复杂度-8"><span class="nav-number">11.0.2.</span> <span class="nav-text">2.算法复杂度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-算法实现-8"><span class="nav-number">11.0.3.</span> <span class="nav-text">3.算法实现</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -957,12 +712,12 @@ HEAP-SORT(A)
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -995,10 +750,30 @@ HEAP-SORT(A)
   </span>
   <span class="author" itemprop="copyrightHolder">hackfox</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
 
 
 
@@ -1016,8 +791,8 @@ HEAP-SORT(A)
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script>
-<script src="/js/schemes/muse.js"></script>
-<script src="/js/next-boot.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
 
 
 
@@ -1026,6 +801,8 @@ HEAP-SORT(A)
 
 
 
+  <script src="/js/local-search.js"></script>
+
 
 
 
@@ -1040,6 +817,7 @@ HEAP-SORT(A)
   
 
   
+
 
 </body>
 </html>

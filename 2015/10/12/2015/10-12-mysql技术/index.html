@@ -14,24 +14,26 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="0x00、数据库基本概念1.数据模型：描述数据、数据关系、数据语义及一致性约束的概念工具集  网络模型 层次模型 关系模型  2.关系模型：用表来描述数据与数据间的关系3.数据完整性和数据保护4.mysql 1.0诞生于1995年5.mysql以守护进程运行 0x01、结构体系1.连接器进行身份验证、线程重用,连接限制,检查内存,数据缓存；管理用户的连接，线程处理等需要缓存的需求。 mysql&amp;gt;">
+  <meta name="description" content="0x00、数据库基本概念1.数据模型：描述数据、数据关系、数据语义及一致性约束的概念工具集  网络模型 层次模型 关系模型  2.关系模型：用表来描述数据与数据间的关系3.数据完整性和数据保护4.mysql 1.0诞生于1995年5.mysql以守护进程运行 0x01、结构体系1.连接器进行身份验证、线程重用,连接限制,检查内存,数据缓存；管理用户的连接，线程处理等需要缓存的需求。 1mysql&amp;">
 <meta name="keywords" content="mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql技术">
 <meta property="og:url" content="https://xsoer.github.io/2015/10/12/2015/10-12-mysql技术/index.html">
 <meta property="og:site_name" content="hackfox">
-<meta property="og:description" content="0x00、数据库基本概念1.数据模型：描述数据、数据关系、数据语义及一致性约束的概念工具集  网络模型 层次模型 关系模型  2.关系模型：用表来描述数据与数据间的关系3.数据完整性和数据保护4.mysql 1.0诞生于1995年5.mysql以守护进程运行 0x01、结构体系1.连接器进行身份验证、线程重用,连接限制,检查内存,数据缓存；管理用户的连接，线程处理等需要缓存的需求。 mysql&amp;gt;">
+<meta property="og:description" content="0x00、数据库基本概念1.数据模型：描述数据、数据关系、数据语义及一致性约束的概念工具集  网络模型 层次模型 关系模型  2.关系模型：用表来描述数据与数据间的关系3.数据完整性和数据保护4.mysql 1.0诞生于1995年5.mysql以守护进程运行 0x01、结构体系1.连接器进行身份验证、线程重用,连接限制,检查内存,数据缓存；管理用户的连接，线程处理等需要缓存的需求。 1mysql&amp;">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2020-04-19T05:27:38.855Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql技术">
-<meta name="twitter:description" content="0x00、数据库基本概念1.数据模型：描述数据、数据关系、数据语义及一致性约束的概念工具集  网络模型 层次模型 关系模型  2.关系模型：用表来描述数据与数据间的关系3.数据完整性和数据保护4.mysql 1.0诞生于1995年5.mysql以守护进程运行 0x01、结构体系1.连接器进行身份验证、线程重用,连接限制,检查内存,数据缓存；管理用户的连接，线程处理等需要缓存的需求。 mysql&amp;gt;">
+<meta name="twitter:description" content="0x00、数据库基本概念1.数据模型：描述数据、数据关系、数据语义及一致性约束的概念工具集  网络模型 层次模型 关系模型  2.关系模型：用表来描述数据与数据间的关系3.数据完整性和数据保护4.mysql 1.0诞生于1995年5.mysql以守护进程运行 0x01、结构体系1.连接器进行身份验证、线程重用,连接限制,检查内存,数据缓存；管理用户的连接，线程处理等需要缓存的需求。 1mysql&amp;">
 
 <link rel="canonical" href="https://xsoer.github.io/2015/10/12/2015/10-12-mysql技术/">
 
@@ -48,6 +50,22 @@
 
   <title>mysql技术 | hackfox</title>
   
+    <script>
+      function sendPageView() {
+        if (CONFIG.hostname !== location.hostname) return;
+        var uid = localStorage.getItem('uid') || (Math.random() + '.' + Math.random());
+        localStorage.setItem('uid', uid);
+        navigator.sendBeacon('https://www.google-analytics.com/collect', new URLSearchParams({
+          v  : 1,
+          tid: 'UA-114671402-1',
+          cid: uid,
+          t  : 'pageview',
+          dp : encodeURIComponent(location.pathname)
+        }));
+      }
+      document.addEventListener('pjax:complete', sendPageView);
+      sendPageView();
+    </script>
 
 
 
@@ -105,6 +123,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -124,11 +143,38 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -138,6 +184,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
 
 
     <main class="main">
@@ -195,6 +242,13 @@
             </span>
 
           
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
 
         </div>
       </header>
@@ -213,19 +267,23 @@
 </ul>
 <p>2.关系模型：用表来描述数据与数据间的关系<br>3.数据完整性和数据保护<br>4.mysql 1.0诞生于1995年<br>5.mysql以守护进程运行</p>
 <h2 id="0x01、结构体系"><a href="#0x01、结构体系" class="headerlink" title="0x01、结构体系"></a>0x01、结构体系</h2><p>1.连接器<br>进行身份验证、线程重用,连接限制,检查内存,数据缓存；管理用户的连接，线程处理等需要缓存的需求。</p>
-<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show variables like <span class="token string">"%connection%"</span><span class="token punctuation">;</span></code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show variables like <span class="string">"%connection%"</span>;</span><br></pre></td></tr></table></figure>
+
 <p>2.连接池组件</p>
 <p>3.缓存<br>全局和引擎特定的缓存和缓冲区</p>
-<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show variables like <span class="token string">'%query_cache%'</span><span class="token punctuation">;</span></code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show variables like <span class="string">'%query_cache%'</span>;</span><br></pre></td></tr></table></figure>
+
 <p>4.权限</p>
 <p>5.表管理器</p>
 <p>6.日志管理</p>
 <p>7.sql接口组件<br>进行DML、DDL,存储过程、视图、触发器等操作和管理；用户通过SQL命令来查询所需结果。</p>
 <p>8.插件式存储引擎</p>
-<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show engines<span class="token punctuation">;</span></code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show engines;</span><br></pre></td></tr></table></figure>
+
 <p>9.解析器<br>查询翻译对象的特权；SQL命令传递到解析器的时候会被解析器验证和解析</p>
 <p>10.优化器<br>访问路径的统计数据</p>
-<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> <span class="token keyword">select</span> @@optimizer_switch<span class="token punctuation">;</span></code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select @@optimizer_switch;</span><br></pre></td></tr></table></figure>
+
 <p>11.管理服务与工具组件<br>备份和恢复的安全性，复制，集群，管理，配置，迁移和元数据</p>
 <p>12.物理文件</p>
 <ul>
@@ -388,61 +446,50 @@
 <p>3.文件管理器<br>4.缓冲管理器<br>5.数据文件<br>6.数据字典<br>7.索引</p>
 <h2 id="0x05、查询处理器"><a href="#0x05、查询处理器" class="headerlink" title="0x05、查询处理器"></a>0x05、查询处理器</h2><p>1.DDL解释器<br>2.DML编译器<br>3.查询计算引擎<br>4.预处理</p>
 <h2 id="0x06、关系型数据库"><a href="#0x06、关系型数据库" class="headerlink" title="0x06、关系型数据库"></a>0x06、关系型数据库</h2><p>1.数据库<br>2.表、元组、类型、主键、外键、码、关系、属性<br>3.范式<br>4.数据抽象：物理层、逻辑层、视图层<br>5.关系运算：选择、投影、并、差、笛卡儿积、交、自然连接、除<br>6.外连接：左外连接、右外连接</p>
-<h2 id="0x07、关键字-SQL"><a href="#0x07、关键字-SQL" class="headerlink" title="0x07、关键字(SQL)"></a>0x07、关键字(SQL)</h2><pre class=" language-sql"><code class="language-sql"><span class="token keyword">create</span><span class="token punctuation">,</span><span class="token keyword">delete</span><span class="token punctuation">,</span><span class="token keyword">drop</span><span class="token punctuation">,</span><span class="token keyword">select</span><span class="token punctuation">,</span><span class="token keyword">insert</span><span class="token punctuation">,</span><span class="token keyword">update</span><span class="token punctuation">,</span><span class="token keyword">set</span>
+<h2 id="0x07、关键字-SQL"><a href="#0x07、关键字-SQL" class="headerlink" title="0x07、关键字(SQL)"></a>0x07、关键字(SQL)</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span>,<span class="keyword">delete</span>,<span class="keyword">drop</span>,<span class="keyword">select</span>,<span class="keyword">insert</span>,<span class="keyword">update</span>,<span class="keyword">set</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">database</span>,<span class="keyword">table</span>,<span class="keyword">index</span>,<span class="keyword">function</span>,process,<span class="keyword">trigger</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">show</span>,<span class="keyword">status</span>,<span class="keyword">processlist</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">where</span>,<span class="keyword">distinct</span>,<span class="keyword">as</span>,<span class="keyword">with</span>,<span class="keyword">or</span>,<span class="keyword">and</span>,<span class="keyword">like</span>,<span class="keyword">not</span> <span class="keyword">like</span>,<span class="keyword">between</span> <span class="keyword">and</span>,<span class="keyword">order</span> <span class="keyword">by</span>(DESE,ASE),<span class="keyword">group</span> <span class="keyword">by</span>,<span class="keyword">having</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">union</span>,<span class="keyword">union</span> <span class="keyword">all</span>,<span class="keyword">except</span>,<span class="keyword">except</span> <span class="keyword">all</span>,<span class="keyword">unique</span>,<span class="keyword">check</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">in</span>,<span class="keyword">not</span> <span class="keyword">in</span></span><br><span class="line"></span><br><span class="line">primary <span class="keyword">key</span>,<span class="keyword">foreign</span> <span class="keyword">key</span>,<span class="keyword">not</span> <span class="literal">null</span>,<span class="keyword">default</span>,<span class="keyword">auto</span> <span class="keyword">increment</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">grant</span>,<span class="keyword">revoke</span></span><br></pre></td></tr></table></figure>
 
-<span class="token keyword">database</span><span class="token punctuation">,</span><span class="token keyword">table</span><span class="token punctuation">,</span><span class="token keyword">index</span><span class="token punctuation">,</span><span class="token keyword">function</span><span class="token punctuation">,</span>process<span class="token punctuation">,</span><span class="token keyword">trigger</span>
-
-<span class="token keyword">show</span><span class="token punctuation">,</span><span class="token keyword">status</span><span class="token punctuation">,</span>processlist
-
-<span class="token keyword">where</span><span class="token punctuation">,</span><span class="token keyword">distinct</span><span class="token punctuation">,</span><span class="token keyword">as</span><span class="token punctuation">,</span><span class="token keyword">with</span><span class="token punctuation">,</span><span class="token operator">or</span><span class="token punctuation">,</span><span class="token operator">and</span><span class="token punctuation">,</span><span class="token operator">like</span><span class="token punctuation">,</span><span class="token operator">not</span> <span class="token operator">like</span><span class="token punctuation">,</span><span class="token operator">between</span> <span class="token operator">and</span><span class="token punctuation">,</span><span class="token keyword">order</span> <span class="token keyword">by</span><span class="token punctuation">(</span>DESE<span class="token punctuation">,</span>ASE<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token keyword">group</span> <span class="token keyword">by</span><span class="token punctuation">,</span><span class="token keyword">having</span>
-
-<span class="token keyword">union</span><span class="token punctuation">,</span><span class="token keyword">union</span> <span class="token keyword">all</span><span class="token punctuation">,</span><span class="token keyword">except</span><span class="token punctuation">,</span><span class="token keyword">except</span> <span class="token keyword">all</span><span class="token punctuation">,</span><span class="token keyword">unique</span><span class="token punctuation">,</span><span class="token keyword">check</span>
-
-<span class="token operator">in</span><span class="token punctuation">,</span><span class="token operator">not</span> <span class="token operator">in</span>
-
-<span class="token keyword">primary</span> <span class="token keyword">key</span><span class="token punctuation">,</span><span class="token keyword">foreign</span> <span class="token keyword">key</span><span class="token punctuation">,</span><span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span><span class="token keyword">default</span><span class="token punctuation">,</span>auto increment
-
-<span class="token keyword">grant</span><span class="token punctuation">,</span><span class="token keyword">revoke</span></code></pre>
 <h2 id="0x08、SQL语句"><a href="#0x08、SQL语句" class="headerlink" title="0x08、SQL语句"></a>0x08、SQL语句</h2><p>1.DDL和DML</p>
 <ul>
 <li>创建操作</li>
-<li>权限操作<pre class=" language-sql"><code class="language-sql"><span class="token keyword">grant</span> <span class="token operator">&lt;</span>权限列表<span class="token operator">></span> <span class="token keyword">on</span> <span class="token operator">&lt;</span>关系名或视图<span class="token operator">></span> <span class="token keyword">to</span> <span class="token operator">&lt;</span>用户或角色<span class="token operator">></span>
-<span class="token keyword">revoke</span> <span class="token operator">&lt;</span>权限列表<span class="token operator">></span> <span class="token keyword">on</span> <span class="token operator">&lt;</span>关系名或试图<span class="token operator">></span> <span class="token keyword">from</span> <span class="token operator">&lt;</span>用户或角色<span class="token operator">></span>
-<span class="token keyword">grant</span> <span class="token keyword">all</span> <span class="token keyword">privileges</span> <span class="token keyword">on</span> <span class="token operator">*</span><span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword">to</span> <span class="token string">'root'</span><span class="token variable">@'%'</span> identify <span class="token keyword">by</span> <span class="token string">"password"</span><span class="token punctuation">;</span>flush <span class="token keyword">privileges</span><span class="token punctuation">;</span></code></pre>
+<li>权限操作<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">grant</span> &lt;权限列表&gt; <span class="keyword">on</span> &lt;关系名或视图&gt; <span class="keyword">to</span> &lt;用户或角色&gt;</span><br><span class="line"><span class="keyword">revoke</span> &lt;权限列表&gt; <span class="keyword">on</span> &lt;关系名或试图&gt; <span class="keyword">from</span> &lt;用户或角色&gt;</span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">all</span> <span class="keyword">privileges</span> <span class="keyword">on</span> *.* <span class="keyword">to</span> <span class="string">'root'</span>@<span class="string">'%'</span> identify <span class="keyword">by</span> <span class="string">"password"</span>;<span class="keyword">flush</span> <span class="keyword">privileges</span>;</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 <p>2.DDL：</p>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">database</span>\<span class="token keyword">table</span>\<span class="token keyword">index</span>\<span class="token keyword">function</span>\<span class="token keyword">view</span>\processor\<span class="token keyword">trigger</span>\<span class="token keyword">user</span>
-<span class="token keyword">alter</span>
-<span class="token keyword">drop</span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">database</span>\<span class="keyword">table</span>\<span class="keyword">index</span>\<span class="keyword">function</span>\<span class="keyword">view</span>\processor\<span class="keyword">trigger</span>\<span class="keyword">user</span></span><br><span class="line"><span class="keyword">alter</span></span><br><span class="line"><span class="keyword">drop</span></span><br></pre></td></tr></table></figure>
+
 <p>3.DML</p>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span>
-<span class="token keyword">update</span>
-<span class="token keyword">delete</span>
-<span class="token keyword">insert</span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line"><span class="keyword">update</span></span><br><span class="line"><span class="keyword">delete</span></span><br><span class="line"><span class="keyword">insert</span></span><br></pre></td></tr></table></figure>
+
 <p>4.between and:是包含两端的值<br>5.is null,is not null:不能用=或!=号<br>6.unknown:也是一种值，在参与运算时<br>7.嵌套子查询</p>
 <ul>
 <li>in,not in;=some等价于in,但!=some却不等价与not in;any;all</li>
 <li>exists;not exists</li>
 </ul>
 <p>8.创建视图</p>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">view</span> view_name <span class="token keyword">as</span> <span class="token operator">&lt;</span>查询表达式<span class="token operator">></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> view_name <span class="keyword">as</span> &lt;查询表达式&gt;</span><br></pre></td></tr></table></figure>
+
 <p>9.删除操作</p>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">delete</span> <span class="token keyword">from</span> r <span class="token punctuation">[</span><span class="token keyword">where</span> p<span class="token punctuation">]</span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> r [<span class="keyword">where</span> p]</span><br></pre></td></tr></table></figure>
+
 <p>10.插入操作</p>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">insert</span> <span class="token keyword">into</span> r<span class="token punctuation">[</span><span class="token punctuation">(</span>row_name<span class="token punctuation">,</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> r[(row_name,...)] <span class="keyword">values</span>()</span><br></pre></td></tr></table></figure>
+
 <p>11.更新操作</p>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">update</span> r <span class="token keyword">set</span> q <span class="token keyword">where</span> p</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> r <span class="keyword">set</span> q <span class="keyword">where</span> p</span><br></pre></td></tr></table></figure>
+
 <p>12.创建新类型</p>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">type</span> Dollar <span class="token keyword">as</span> numberic<span class="token punctuation">(</span><span class="token number">12</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span> final</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">type</span> Dollar <span class="keyword">as</span> numberic(<span class="number">12</span>,<span class="number">2</span>) <span class="keyword">final</span></span><br></pre></td></tr></table></figure>
+
 <p>13.完整性约束</p>
-<pre class=" language-sql"><code class="language-sql"><span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span><span class="token keyword">check</span><span class="token punctuation">,</span><span class="token keyword">unique</span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">not null,<span class="keyword">check</span>,<span class="keyword">unique</span></span><br></pre></td></tr></table></figure>
+
 <p>14.参照完整性</p>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">foreign</span> <span class="token keyword">key</span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foreign key</span><br></pre></td></tr></table></figure>
+
 <p>15.where中用in比用or效率更快<br>16.在已知返回函数时，添加limit<br>17.在sql语句执行时，进行解析、优化、执行、结果几个步骤<br>18.在做更新是，用id来标记更新，否则会全表扫描<br>19.desc table_name  查看表结构</p>
-<h2 id="0x09、内置函数-聚集函数-：不能组合使用"><a href="#0x09、内置函数-聚集函数-：不能组合使用" class="headerlink" title="0x09、内置函数(聚集函数)：不能组合使用"></a>0x09、内置函数(聚集函数)：不能组合使用</h2><pre class=" language-sql"><code class="language-sql"><span class="token function">max</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">min</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">count</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">avg</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">sum</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>curdate<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token keyword">datetime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token keyword">timestamp</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>curtime<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>year<span class="token punctuation">(</span><span class="token punctuation">)</span>
-concat<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<h2 id="0x09、内置函数-聚集函数-：不能组合使用"><a href="#0x09、内置函数-聚集函数-：不能组合使用" class="headerlink" title="0x09、内置函数(聚集函数)：不能组合使用"></a>0x09、内置函数(聚集函数)：不能组合使用</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">max(),min(),count(),avg(),sum()</span><br><span class="line">now(),curdate(),datetime(),timestamp(),curtime(),year()</span><br><span class="line">concat()</span><br></pre></td></tr></table></figure>
+
 <h2 id="0x10、基本类型"><a href="#0x10、基本类型" class="headerlink" title="0x10、基本类型"></a>0x10、基本类型</h2><p>1.int(-2,147,483,648–2,147,483,647,4字节),samllint(-32,768–32,767,2字节),tinyint(-128–127,1字节),unsigned,bigint(-9223372036854775808–9223372036854775807,8字节)<br>2.char,varchar<br>3.data,time,timestamp<br>4.double,float,numberic<br>5.tiny text,text,medium text,long text<br>6.blob,medium blob,long blob<br>7.enum,set</p>
 <h2 id="0x11、匹配"><a href="#0x11、匹配" class="headerlink" title="0x11、匹配"></a>0x11、匹配</h2><ul>
 <li>%：匹配任意</li>
@@ -621,12 +668,12 @@ concat<span class="token punctuation">(</span><span class="token punctuation">)<
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -659,10 +706,30 @@ concat<span class="token punctuation">(</span><span class="token punctuation">)<
   </span>
   <span class="author" itemprop="copyrightHolder">hackfox</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
 
 
 
@@ -680,8 +747,8 @@ concat<span class="token punctuation">(</span><span class="token punctuation">)<
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script>
-<script src="/js/schemes/muse.js"></script>
-<script src="/js/next-boot.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
 
 
 
@@ -690,6 +757,8 @@ concat<span class="token punctuation">(</span><span class="token punctuation">)<
 
 
 
+  <script src="/js/local-search.js"></script>
+
 
 
 
@@ -704,6 +773,7 @@ concat<span class="token punctuation">(</span><span class="token punctuation">)<
   
 
   
+
 
 </body>
 </html>

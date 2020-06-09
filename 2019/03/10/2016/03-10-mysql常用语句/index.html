@@ -14,24 +14,26 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="1.授权用户mysql&amp;gt; GRANT ALL PRIVILEGES ON *.* TO &apos;zxc&apos;@&apos;%&apos; IDENTIFIED BY &apos;ydp#2015$Z!!!&apos; WITH GRANT OPTION; mysql&amp;gt; FLUSH PRIVILEGES;  2.远程连接shell&amp;gt; mysql -h127.0.0.1 -P3306 -uroot -p  3.导出数据库shell&amp;gt; mysqldu">
+  <meta name="description" content="1.授权用户 12mysql&amp;gt; GRANT ALL PRIVILEGES ON *.* TO &apos;zxc&apos;@&apos;%&apos; IDENTIFIED BY &apos;ydp#2015$Z!!!&apos; WITH GRANT OPTION;mysql&amp;gt; FLUSH PRIVILEGES;  2.远程连接 1shell&amp;gt; mysql -h127.0.0.1 -P3306 -uroot -p  3.导出数据库">
 <meta name="keywords" content="mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql常用语句">
 <meta property="og:url" content="https://xsoer.github.io/2019/03/10/2016/03-10-mysql常用语句/index.html">
 <meta property="og:site_name" content="hackfox">
-<meta property="og:description" content="1.授权用户mysql&amp;gt; GRANT ALL PRIVILEGES ON *.* TO &apos;zxc&apos;@&apos;%&apos; IDENTIFIED BY &apos;ydp#2015$Z!!!&apos; WITH GRANT OPTION; mysql&amp;gt; FLUSH PRIVILEGES;  2.远程连接shell&amp;gt; mysql -h127.0.0.1 -P3306 -uroot -p  3.导出数据库shell&amp;gt; mysqldu">
+<meta property="og:description" content="1.授权用户 12mysql&amp;gt; GRANT ALL PRIVILEGES ON *.* TO &apos;zxc&apos;@&apos;%&apos; IDENTIFIED BY &apos;ydp#2015$Z!!!&apos; WITH GRANT OPTION;mysql&amp;gt; FLUSH PRIVILEGES;  2.远程连接 1shell&amp;gt; mysql -h127.0.0.1 -P3306 -uroot -p  3.导出数据库">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2020-04-19T05:29:39.695Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql常用语句">
-<meta name="twitter:description" content="1.授权用户mysql&amp;gt; GRANT ALL PRIVILEGES ON *.* TO &apos;zxc&apos;@&apos;%&apos; IDENTIFIED BY &apos;ydp#2015$Z!!!&apos; WITH GRANT OPTION; mysql&amp;gt; FLUSH PRIVILEGES;  2.远程连接shell&amp;gt; mysql -h127.0.0.1 -P3306 -uroot -p  3.导出数据库shell&amp;gt; mysqldu">
+<meta name="twitter:description" content="1.授权用户 12mysql&amp;gt; GRANT ALL PRIVILEGES ON *.* TO &apos;zxc&apos;@&apos;%&apos; IDENTIFIED BY &apos;ydp#2015$Z!!!&apos; WITH GRANT OPTION;mysql&amp;gt; FLUSH PRIVILEGES;  2.远程连接 1shell&amp;gt; mysql -h127.0.0.1 -P3306 -uroot -p  3.导出数据库">
 
 <link rel="canonical" href="https://xsoer.github.io/2019/03/10/2016/03-10-mysql常用语句/">
 
@@ -48,6 +50,22 @@
 
   <title>mysql常用语句 | hackfox</title>
   
+    <script>
+      function sendPageView() {
+        if (CONFIG.hostname !== location.hostname) return;
+        var uid = localStorage.getItem('uid') || (Math.random() + '.' + Math.random());
+        localStorage.setItem('uid', uid);
+        navigator.sendBeacon('https://www.google-analytics.com/collect', new URLSearchParams({
+          v  : 1,
+          tid: 'UA-114671402-1',
+          cid: uid,
+          t  : 'pageview',
+          dp : encodeURIComponent(location.pathname)
+        }));
+      }
+      document.addEventListener('pjax:complete', sendPageView);
+      sendPageView();
+    </script>
 
 
 
@@ -105,6 +123,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -124,11 +143,38 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -138,6 +184,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
 
 
     <main class="main">
@@ -195,6 +242,13 @@
             </span>
 
           
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
 
         </div>
       </header>
@@ -206,59 +260,84 @@
 
       
         <ul>
-<li>1.授权用户<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> GRANT ALL PRIVILEGES ON *.* TO <span class="token string">'zxc'</span>@<span class="token string">'%'</span> IDENTIFIED BY <span class="token string">'ydp#2015<span class="token variable">$Z!!!</span>'</span> WITH GRANT OPTION<span class="token punctuation">;</span>
-mysql<span class="token operator">></span> FLUSH PRIVILEGES<span class="token punctuation">;</span></code></pre>
+<li><p>1.授权用户</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; GRANT ALL PRIVILEGES ON *.* TO <span class="string">'zxc'</span>@<span class="string">'%'</span> IDENTIFIED BY <span class="string">'ydp#2015$Z!!!'</span> WITH GRANT OPTION;</span><br><span class="line">mysql&gt; FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
 </li>
-<li>2.远程连接<pre class=" language-bash"><code class="language-bash">shell<span class="token operator">></span> mysql -h127.0.0.1 -P3306 -uroot -p</code></pre>
+<li><p>2.远程连接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; mysql -h127.0.0.1 -P3306 -uroot -p</span><br></pre></td></tr></table></figure>
 </li>
-<li>3.导出数据库<pre class=" language-bash"><code class="language-bash">shell<span class="token operator">></span> mysqldump -h127.0.0.1 -P3306 -uroot -p sqsx <span class="token operator">></span> sqsx.sql</code></pre>
+<li><p>3.导出数据库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; mysqldump -h127.0.0.1 -P3306 -uroot -p sqsx &gt; sqsx.sql</span><br></pre></td></tr></table></figure>
 </li>
-<li>4.导入数据库<pre class=" language-bash"><code class="language-bash">shell<span class="token operator">></span> mysql -uroot -p sqsx <span class="token operator">&lt;</span> sqsx.sql</code></pre>
+<li><p>4.导入数据库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; mysql -uroot -p sqsx &lt; sqsx.sql</span><br></pre></td></tr></table></figure>
 </li>
-<li>5.分析查询<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> explain <span class="token keyword">select</span> * from user<span class="token punctuation">;</span></code></pre>
+<li><p>5.分析查询</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; explain select * from user;</span><br></pre></td></tr></table></figure>
 </li>
-<li>6.查询所有的进程<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show procelist<span class="token punctuation">;</span></code></pre>
+<li><p>6.查询所有的进程</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show procelist;</span><br></pre></td></tr></table></figure>
 </li>
-<li>7.建数据库语句<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> create database dbname default character <span class="token keyword">set</span> utf8 collate utf8_general_ci<span class="token punctuation">;</span></code></pre>
+<li><p>7.建数据库语句</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create database dbname default character <span class="built_in">set</span> utf8 collate utf8_general_ci;</span><br></pre></td></tr></table></figure>
 </li>
-<li>8.创建数据表语句<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> create table dbname.tablename <span class="token punctuation">(</span><span class="token punctuation">)</span> engine<span class="token operator">=</span>Innodb charset<span class="token operator">=</span>utf8<span class="token punctuation">;</span></code></pre>
+<li><p>8.创建数据表语句</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create table dbname.tablename () engine=Innodb charset=utf8;</span><br></pre></td></tr></table></figure>
 </li>
-<li>9.删除数据库<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> drop database dbname<span class="token punctuation">;</span></code></pre>
+<li><p>9.删除数据库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; drop database dbname;</span><br></pre></td></tr></table></figure>
 </li>
-<li>10.查看数据库状态<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> use dbname<span class="token punctuation">;</span>
-mysql<span class="token operator">></span> status<span class="token punctuation">;</span></code></pre>
+<li><p>10.查看数据库状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; use dbname;</span><br><span class="line">mysql&gt; status;</span><br></pre></td></tr></table></figure>
 </li>
-<li>11.查看参数<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show variables like “%sql%”<span class="token punctuation">;</span></code></pre>
+<li><p>11.查看参数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show variables like “%sql%”;</span><br></pre></td></tr></table></figure>
 </li>
-<li>12.查看事件<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show events<span class="token punctuation">;</span></code></pre>
+<li><p>12.查看事件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show events;</span><br></pre></td></tr></table></figure>
 </li>
-<li>13.查看触发器<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show triggers<span class="token punctuation">;</span></code></pre>
+<li><p>13.查看触发器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show triggers;</span><br></pre></td></tr></table></figure>
 </li>
-<li>14.查看所有参数<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show status<span class="token punctuation">;</span></code></pre>
+<li><p>14.查看所有参数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show status;</span><br></pre></td></tr></table></figure>
 </li>
-<li>15.查看打开表<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show <span class="token function">open</span> tables<span class="token punctuation">;</span></code></pre>
+<li><p>15.查看打开表</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show open tables;</span><br></pre></td></tr></table></figure>
 </li>
-<li>16.查看表状态<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show table status<span class="token punctuation">;</span></code></pre>
+<li><p>16.查看表状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show table status;</span><br></pre></td></tr></table></figure>
 </li>
-<li>17.查看主数据状态<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show master status<span class="token punctuation">;</span></code></pre>
+<li><p>17.查看主数据状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show master status;</span><br></pre></td></tr></table></figure>
 </li>
-<li>18.查看从数据库状态<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show slave status<span class="token punctuation">;</span></code></pre>
+<li><p>18.查看从数据库状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show slave status;</span><br></pre></td></tr></table></figure>
 </li>
-<li>19.查看函数状态<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show <span class="token keyword">function</span> status<span class="token punctuation">;</span></code></pre>
+<li><p>19.查看函数状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show <span class="keyword">function</span> status;</span><br></pre></td></tr></table></figure>
 </li>
-<li>20.查看插件<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show plugins<span class="token punctuation">;</span></code></pre>
+<li><p>20.查看插件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show plugins;</span><br></pre></td></tr></table></figure>
 </li>
-<li>21.查看某用户的授权<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show grants <span class="token keyword">for</span> username<span class="token punctuation">;</span></code></pre>
+<li><p>21.查看某用户的授权</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show grants <span class="keyword">for</span> username;</span><br></pre></td></tr></table></figure>
 </li>
-<li>22.查看错误<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show errors<span class="token punctuation">;</span></code></pre>
+<li><p>22.查看错误</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show errors;</span><br></pre></td></tr></table></figure>
 </li>
-<li>23.查看创建表语句<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show create table tablename<span class="token punctuation">;</span></code></pre>
+<li><p>23.查看创建表语句</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show create table tablename;</span><br></pre></td></tr></table></figure>
 </li>
-<li>24.查看表头<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show columns from tablename<span class="token punctuation">;</span></code></pre>
+<li><p>24.查看表头</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show columns from tablename;</span><br></pre></td></tr></table></figure>
 </li>
-<li>25.查看存储引擎<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show engines<span class="token punctuation">;</span></code></pre>
+<li><p>25.查看存储引擎</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show engines;</span><br></pre></td></tr></table></figure>
 </li>
-<li>26.查看表状态<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show table status<span class="token punctuation">;</span></code></pre>
+<li><p>26.查看表状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show table status;</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 
@@ -363,12 +442,12 @@ mysql<span class="token operator">></span> status<span class="token punctuation"
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -401,10 +480,30 @@ mysql<span class="token operator">></span> status<span class="token punctuation"
   </span>
   <span class="author" itemprop="copyrightHolder">hackfox</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
 
 
 
@@ -422,8 +521,8 @@ mysql<span class="token operator">></span> status<span class="token punctuation"
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script>
-<script src="/js/schemes/muse.js"></script>
-<script src="/js/next-boot.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
 
 
 
@@ -432,6 +531,8 @@ mysql<span class="token operator">></span> status<span class="token punctuation"
 
 
 
+  <script src="/js/local-search.js"></script>
+
 
 
 
@@ -446,6 +547,7 @@ mysql<span class="token operator">></span> status<span class="token punctuation"
   
 
   
+
 
 </body>
 </html>

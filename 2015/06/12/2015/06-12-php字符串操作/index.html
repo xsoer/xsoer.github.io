@@ -14,24 +14,26 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="1.打印输出 //有返回值、只能输出一个、可以用在表达式中 print() //无返回值、能输出多个、不能用于表达式中 echo()  2.去除两边的空格 trim($strs) //去除右边的空格 rtrim($strs) //去除左边的空格 ltrim($strs)  3.点链接字符串(.)  4.求字符串长度 strlen($strs)  5.分割字符串为数组 explode(&apos;,&apos;,$s">
+  <meta name="description" content="1.打印输出 1234//有返回值、只能输出一个、可以用在表达式中print()//无返回值、能输出多个、不能用于表达式中echo()  2.去除两边的空格 12345trim($strs)//去除右边的空格rtrim($strs)//去除左边的空格ltrim($strs)  3.点链接字符串(.)  4.求字符串长度 1strlen($strs)  5.分割字符串为数组 1explode(&apos;,">
 <meta name="keywords" content="PHP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PHP字符串操作">
 <meta property="og:url" content="https://xsoer.github.io/2015/06/12/2015/06-12-php字符串操作/index.html">
 <meta property="og:site_name" content="hackfox">
-<meta property="og:description" content="1.打印输出 //有返回值、只能输出一个、可以用在表达式中 print() //无返回值、能输出多个、不能用于表达式中 echo()  2.去除两边的空格 trim($strs) //去除右边的空格 rtrim($strs) //去除左边的空格 ltrim($strs)  3.点链接字符串(.)  4.求字符串长度 strlen($strs)  5.分割字符串为数组 explode(&apos;,&apos;,$s">
+<meta property="og:description" content="1.打印输出 1234//有返回值、只能输出一个、可以用在表达式中print()//无返回值、能输出多个、不能用于表达式中echo()  2.去除两边的空格 12345trim($strs)//去除右边的空格rtrim($strs)//去除左边的空格ltrim($strs)  3.点链接字符串(.)  4.求字符串长度 1strlen($strs)  5.分割字符串为数组 1explode(&apos;,">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2020-04-18T14:58:28.894Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP字符串操作">
-<meta name="twitter:description" content="1.打印输出 //有返回值、只能输出一个、可以用在表达式中 print() //无返回值、能输出多个、不能用于表达式中 echo()  2.去除两边的空格 trim($strs) //去除右边的空格 rtrim($strs) //去除左边的空格 ltrim($strs)  3.点链接字符串(.)  4.求字符串长度 strlen($strs)  5.分割字符串为数组 explode(&apos;,&apos;,$s">
+<meta name="twitter:description" content="1.打印输出 1234//有返回值、只能输出一个、可以用在表达式中print()//无返回值、能输出多个、不能用于表达式中echo()  2.去除两边的空格 12345trim($strs)//去除右边的空格rtrim($strs)//去除左边的空格ltrim($strs)  3.点链接字符串(.)  4.求字符串长度 1strlen($strs)  5.分割字符串为数组 1explode(&apos;,">
 
 <link rel="canonical" href="https://xsoer.github.io/2015/06/12/2015/06-12-php字符串操作/">
 
@@ -48,6 +50,22 @@
 
   <title>PHP字符串操作 | hackfox</title>
   
+    <script>
+      function sendPageView() {
+        if (CONFIG.hostname !== location.hostname) return;
+        var uid = localStorage.getItem('uid') || (Math.random() + '.' + Math.random());
+        localStorage.setItem('uid', uid);
+        navigator.sendBeacon('https://www.google-analytics.com/collect', new URLSearchParams({
+          v  : 1,
+          tid: 'UA-114671402-1',
+          cid: uid,
+          t  : 'pageview',
+          dp : encodeURIComponent(location.pathname)
+        }));
+      }
+      document.addEventListener('pjax:complete', sendPageView);
+      sendPageView();
+    </script>
 
 
 
@@ -105,6 +123,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -124,11 +143,38 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -138,6 +184,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
 
 
     <main class="main">
@@ -195,6 +242,13 @@
             </span>
 
           
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
 
         </div>
       </header>
@@ -207,64 +261,58 @@
       
         <ul>
 <li><p>1.打印输出</p>
-<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//有返回值、只能输出一个、可以用在表达式中</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">//无返回值、能输出多个、不能用于表达式中</span>
-<span class="token keyword">echo</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//有返回值、只能输出一个、可以用在表达式中</span></span><br><span class="line"><span class="keyword">print</span>()</span><br><span class="line"><span class="comment">//无返回值、能输出多个、不能用于表达式中</span></span><br><span class="line"><span class="keyword">echo</span>()</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>2.去除两边的空格</p>
-<pre class=" language-php"><code class="language-php"><span class="token function">trim</span><span class="token punctuation">(</span><span class="token variable">$strs</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">//去除右边的空格</span>
-<span class="token function">rtrim</span><span class="token punctuation">(</span><span class="token variable">$strs</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">//去除左边的空格</span>
-<span class="token function">ltrim</span><span class="token punctuation">(</span><span class="token variable">$strs</span><span class="token punctuation">)</span></code></pre>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">trim($strs)</span><br><span class="line"><span class="comment">//去除右边的空格</span></span><br><span class="line">rtrim($strs)</span><br><span class="line"><span class="comment">//去除左边的空格</span></span><br><span class="line">ltrim($strs)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>3.点链接字符串(.)</p>
 </li>
 <li><p>4.求字符串长度</p>
-<pre class=" language-php"><code class="language-php"><span class="token function">strlen</span><span class="token punctuation">(</span><span class="token variable">$strs</span><span class="token punctuation">)</span></code></pre>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strlen($strs)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>5.分割字符串为数组</p>
-<pre class=" language-php"><code class="language-php"><span class="token function">explode</span><span class="token punctuation">(</span><span class="token string">','</span><span class="token punctuation">,</span><span class="token variable">$strs</span><span class="token punctuation">)</span></code></pre>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">explode(<span class="string">','</span>,$strs)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>6.分割数组为字符串</p>
-<pre class=" language-php"><code class="language-php"><span class="token function">implode</span><span class="token punctuation">(</span><span class="token string">','</span><span class="token punctuation">,</span><span class="token variable">$arr</span><span class="token punctuation">)</span></code></pre>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implode(<span class="string">','</span>,$arr)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>7.转换字符串大小写</p>
-<pre class=" language-php"><code class="language-php"><span class="token function">strtoupper</span><span class="token punctuation">(</span><span class="token variable">$strs</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">strtolower</span><span class="token punctuation">(</span><span class="token variable">$strs</span><span class="token punctuation">)</span></code></pre>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strtoupper($strs),strtolower($strs)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>8.比较两个对象是否相等</p>
-<pre class=" language-php"><code class="language-php"><span class="token operator">!=</span>、<span class="token operator">==</span></code></pre>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!=、==</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>9.比较两个对象及值是否相等</p>
-<pre class=" language-php"><code class="language-php"><span class="token operator">!==</span> 、<span class="token operator">===</span></code></pre>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!== 、===</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>10.区分大小写比较字符串，前者大于后者返回大于零的数，小于返回小于零的数，相等则返回零</p>
-<pre class=" language-php"><code class="language-php"><span class="token function">strcmp</span><span class="token punctuation">(</span><span class="token variable">$str1</span><span class="token punctuation">,</span><span class="token variable">$str2</span><span class="token punctuation">)</span></code></pre>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strcmp($str1,$str2)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>11.不区分大小写比较字符串</p>
-<pre class=" language-php"><code class="language-php"><span class="token function">strcasecmp</span><span class="token punctuation">(</span><span class="token variable">$str1</span><span class="token punctuation">,</span><span class="token variable">$str2</span><span class="token punctuation">)</span></code></pre>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strcasecmp($str1,$str2)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>12.区分大小写比较前n个字符串</p>
-<pre class=" language-php"><code class="language-php"><span class="token function">strncmp</span><span class="token punctuation">(</span><span class="token variable">$str1</span><span class="token punctuation">,</span><span class="token variable">$str2</span><span class="token punctuation">,</span>n<span class="token punctuation">)</span></code></pre>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strncmp($str1,$str2,n)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>13.不区分大小写比较前n个字符串</p>
-<pre class=" language-php"><code class="language-php"><span class="token function">strncasecmp</span><span class="token punctuation">(</span><span class="token variable">$str1</span><span class="token punctuation">,</span><span class="token variable">$str2</span><span class="token punctuation">,</span>n<span class="token punctuation">)</span></code></pre>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strncasecmp($str1,$str2,n)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>14.区分大小写替换字符串内的字符</p>
-<pre class=" language-php"><code class="language-php"><span class="token function">str_replace</span><span class="token punctuation">(</span><span class="token variable">$oldstr</span><span class="token punctuation">,</span><span class="token variable">$newstr</span><span class="token punctuation">,</span><span class="token variable">$strs</span><span class="token punctuation">)</span></code></pre>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str_replace($oldstr,$newstr,$strs)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>15.字符串查找</p>
-<pre class=" language-php"><code class="language-php"><span class="token function">strstr</span><span class="token punctuation">(</span><span class="token variable">$strs</span><span class="token punctuation">,</span><span class="token variable">$findstr</span><span class="token punctuation">)</span></code></pre>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strstr($strs,$findstr)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>16.将字符串内特殊的字符转换为html内的字符</p>
-<pre class=" language-php"><code class="language-php"><span class="token function">htmlspecialchars</span><span class="token punctuation">(</span><span class="token variable">$str</span><span class="token punctuation">)</span></code></pre>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">htmlspecialchars($str)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>17.md5加密</p>
-<pre class=" language-php"><code class="language-php"><span class="token function">md5</span><span class="token punctuation">(</span><span class="token variable">$str</span><span class="token punctuation">)</span></code></pre>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">md5($str)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>18.反转字符串</p>
-<pre class=" language-php"><code class="language-php"><span class="token function">strrev</span><span class="token punctuation">(</span><span class="token variable">$str</span><span class="token punctuation">)</span></code></pre>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strrev($str)</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 
@@ -369,12 +417,12 @@
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -407,10 +455,30 @@
   </span>
   <span class="author" itemprop="copyrightHolder">hackfox</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
 
 
 
@@ -428,8 +496,8 @@
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script>
-<script src="/js/schemes/muse.js"></script>
-<script src="/js/next-boot.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
 
 
 
@@ -438,6 +506,8 @@
 
 
 
+  <script src="/js/local-search.js"></script>
+
 
 
 
@@ -452,6 +522,7 @@
   
 
   
+
 
 </body>
 </html>

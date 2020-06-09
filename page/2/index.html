@@ -14,10 +14,12 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="架构、AI、大数据、数学、python、go">
@@ -46,6 +48,22 @@
 
   <title>hackfox</title>
   
+    <script>
+      function sendPageView() {
+        if (CONFIG.hostname !== location.hostname) return;
+        var uid = localStorage.getItem('uid') || (Math.random() + '.' + Math.random());
+        localStorage.setItem('uid', uid);
+        navigator.sendBeacon('https://www.google-analytics.com/collect', new URLSearchParams({
+          v  : 1,
+          tid: 'UA-114671402-1',
+          cid: uid,
+          t  : 'pageview',
+          dp : encodeURIComponent(location.pathname)
+        }));
+      }
+      document.addEventListener('pjax:complete', sendPageView);
+      sendPageView();
+    </script>
 
 
 
@@ -103,6 +121,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -122,11 +141,38 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -136,6 +182,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
 
 
     <main class="main">
@@ -145,6 +192,270 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2019/03/10/2015/03-10-mysql数据库主从同步/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hackfox">
+      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hackfox">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/10/2015/03-10-mysql数据库主从同步/" class="post-title-link" itemprop="url">mysql数据库主从同步</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-10 18:25:53" itemprop="dateCreated datePublished" datetime="2019-03-10T18:25:53+08:00">2019-03-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-18 22:52:14" itemprop="dateModified" datetime="2020-04-18T22:52:14+08:00">2020-04-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/mysql/" itemprop="url" rel="index"><span itemprop="name">mysql</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="一、同步配置"><a href="#一、同步配置" class="headerlink" title="一、同步配置"></a>一、同步配置</h2><ul>
+<li><p>1.主库和从库创建同步账户</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; grant replication slave, replication client on *.* to repl@<span class="string">'192.168.1.%'</span> identified by <span class="string">'123456'</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2.主库配置/etc/my.cnf</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">server-id=130	<span class="comment">#保证唯一值</span></span><br><span class="line"><span class="built_in">log</span>-bin=mysql-bin</span><br><span class="line">binlog_format=mixed</span><br><span class="line">binlog-do-db=test2</span><br><span class="line">binlog-ignore-db=mysql</span><br><span class="line"><span class="built_in">log</span>-error=/var/lib/mysql/mysql.err</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3.重启主库</p>
+</li>
+<li><p>4.查看主库状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;show master status;</span><br><span class="line">+-------------------------+-----------------+--------------------+-------------------------+</span><br><span class="line">| File            |	 Position | Binlog_Do_DB | Binlog_Ignore_DB |</span><br><span class="line">+-------------------------+----------------+--------------------+--------------------------+</span><br><span class="line">| mysql-bin.000002 |      120 |   test2      |   mysql        |</span><br><span class="line">+-------------------------+----------------+---------------------+------------------------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>5.从库配置 /etc/my.cnf</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">server-id=131 #保证唯一值</span><br><span class="line">log-bin=mysql-bin</span><br><span class="line">binlog_format=mixed</span><br><span class="line">replicate-do-db=test2</span><br><span class="line">replicate-ignore-db=mysql</span><br><span class="line">relay_log=/var/lib/mysql/mysql-relay-bin</span><br><span class="line">log_slave_updates=1</span><br><span class="line">read_only=1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>6.重启从库</p>
+</li>
+<li><p>7.指向主库操作</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> change master to master_host=<span class="string">'192.168.1.201'</span>,</span></span><br><span class="line">master_user='repl',</span><br><span class="line">master_password='123456',</span><br><span class="line">master_log_file='mysql-bin.000002',</span><br><span class="line">master_log_pos=120;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>8.开始同步</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span><span class="bash">start slave;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>9.查看状态</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span><span class="bash">show slave status;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>10.双向主从的话，把主库按照从库在配置一遍即可</p>
+</li>
+</ul>
+<h2 id="二、常见问题"><a href="#二、常见问题" class="headerlink" title="二、常见问题"></a>二、常见问题</h2><ul>
+<li>1.两个数据库版本尽量一致，如果不一致，高版本做从库，此时不可双向主从</li>
+<li>2.主库和从库的数据库名必须相同；</li>
+<li>3.主库和从库的复制可以精确到表，但是在需要更改主库或从库的数据结构时需要立刻重启slave；</li>
+<li>4.不能在mysql配置文件里直接写入master的配置信息，需要用change master命令来完成；</li>
+<li>5.指定replicate_do_db必须在my.ini里配置，不能用change master命令来完成；</li>
+<li>6.如果不及时清理，日积月累二进制日志文件可能会把磁盘空间占满，可以在配置文件里加上expire_logs_days=7，只保留最近7天的日志，建议当slave不再使用时，通过reset slave来取消relaylog；</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2019/03/10/2016/03-10-mysql常用语句/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hackfox">
+      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hackfox">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/10/2016/03-10-mysql常用语句/" class="post-title-link" itemprop="url">mysql常用语句</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-10 18:20:48" itemprop="dateCreated datePublished" datetime="2019-03-10T18:20:48+08:00">2019-03-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-19 13:29:39" itemprop="dateModified" datetime="2020-04-19T13:29:39+08:00">2020-04-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/mysql/" itemprop="url" rel="index"><span itemprop="name">mysql</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li><p>1.授权用户</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; GRANT ALL PRIVILEGES ON *.* TO <span class="string">'zxc'</span>@<span class="string">'%'</span> IDENTIFIED BY <span class="string">'ydp#2015$Z!!!'</span> WITH GRANT OPTION;</span><br><span class="line">mysql&gt; FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2.远程连接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; mysql -h127.0.0.1 -P3306 -uroot -p</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3.导出数据库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; mysqldump -h127.0.0.1 -P3306 -uroot -p sqsx &gt; sqsx.sql</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>4.导入数据库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; mysql -uroot -p sqsx &lt; sqsx.sql</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>5.分析查询</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; explain select * from user;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>6.查询所有的进程</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show procelist;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>7.建数据库语句</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create database dbname default character <span class="built_in">set</span> utf8 collate utf8_general_ci;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>8.创建数据表语句</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create table dbname.tablename () engine=Innodb charset=utf8;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>9.删除数据库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; drop database dbname;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>10.查看数据库状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; use dbname;</span><br><span class="line">mysql&gt; status;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>11.查看参数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show variables like “%sql%”;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>12.查看事件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show events;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>13.查看触发器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show triggers;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>14.查看所有参数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show status;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>15.查看打开表</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show open tables;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>16.查看表状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show table status;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>17.查看主数据状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show master status;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>18.查看从数据库状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show slave status;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>19.查看函数状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show <span class="keyword">function</span> status;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>20.查看插件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show plugins;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>21.查看某用户的授权</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show grants <span class="keyword">for</span> username;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>22.查看错误</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show errors;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>23.查看创建表语句</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show create table tablename;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>24.查看表头</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show columns from tablename;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>25.查看存储引擎</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show engines;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>26.查看表状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show table status;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -759,11 +1070,10 @@
 </ul>
 <h3 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1.基本概念"></a>1.基本概念</h3><h4 id="1-1-创建镜像"><a href="#1-1-创建镜像" class="headerlink" title="1.1 创建镜像"></a>1.1 创建镜像</h4><ul>
 <li><p>1.直接下载镜像</p>
-<pre class=" language-bash"><code class="language-bash">docker pull centos</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull centos</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>2.导入镜像</p>
-<pre class=" language-bash"><code class="language-bash">docker save -o centos.tar centos
-docker load -i centos.tar</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker save -o centos.tar centos</span><br><span class="line">docker load -i centos.tar</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>3.制作新镜像</p>
 <ul>
@@ -786,7 +1096,8 @@ docker load -i centos.tar</code></pre>
 <li>数据有一层一层的image layer组成，元数据则是一些JSON文件，用来描述数据之间的关系和容器配置信息。</li>
 </ul>
 <p>Docker对数据进行来完整性校验，这种完整性对凭证是有镜像仓库提供的。</p>
-<pre class=" language-bash"><code class="language-bash">ll /var/lab/docker</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ll /var/lab/docker</span><br></pre></td></tr></table></figure>
+
 <p>1.总体信息</p>
 <ul>
 <li>从repositories-overlay文件可以看到该存储目录下的所有image以及其对应的layer ID.</li>
@@ -799,24 +1110,29 @@ docker load -i centos.tar</code></pre>
 <li>先通过repositories-overlay获取image对应的layer ID；在根据layer对应的元数据梳理出image包含的所有层，以及层之间的关系；在使用联合挂载技术还原出容器启动所需要的rootfs和一些基本配置信息。</li>
 </ul>
 <p>3.数据组织</p>
-<pre class=" language-bash"><code class="language-bash">docker inspect dockerID</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect dockerID</span><br></pre></td></tr></table></figure>
+
 <h4 id="2-2-扩展知识"><a href="#2-2-扩展知识" class="headerlink" title="2.2 扩展知识"></a>2.2 扩展知识</h4><p>docker引入的联合挂载(Union mount)使镜像分层成为可能；而git式管理，使基础镜像复用成为可能。<br>1.联合挂载</p>
 <ul>
 <li>把多个目录挂载到同一个目录，对外呈现这些目录的联合。·</li>
 </ul>
 <p>2.写时复制</p>
 <h2 id="0x05、仓库进阶"><a href="#0x05、仓库进阶" class="headerlink" title="0x05、仓库进阶"></a>0x05、仓库进阶</h2><h3 id="1-什么是仓库"><a href="#1-什么是仓库" class="headerlink" title="1.什么是仓库"></a>1.什么是仓库</h3><h4 id="1-1-仓库的组成"><a href="#1-1-仓库的组成" class="headerlink" title="1.1 仓库的组成"></a>1.1 仓库的组成</h4><p>仓库的名字通常有两部分组成，中间以斜线分隔。前边是用户名，后边是镜像名。<br>仓库有镜像存储系统和账户管理系统</p>
-<pre class=" language-bash"><code class="language-bash">docker login -u <span class="token operator">&lt;</span>user_name<span class="token operator">></span> -p <span class="token operator">&lt;</span>password<span class="token operator">></span> -e <span class="token operator">&lt;</span>email<span class="token operator">></span> <span class="token operator">&lt;</span>registry domain<span class="token operator">></span></code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker login -u &lt;user_name&gt; -p &lt;password&gt; -e &lt;email&gt; &lt;registry domain&gt;</span><br></pre></td></tr></table></figure>
+
 <h4 id="1-2-仓库镜像"><a href="#1-2-仓库镜像" class="headerlink" title="1.2 仓库镜像"></a>1.2 仓库镜像</h4><p>仓库下面包含一组镜像，彼此之间用标签(tag)区分。一个完整的镜像地址通常有 服务器地址、仓库名称和标签组成。</p>
 <p>1.上传镜像：push</p>
-<pre class=" language-bash"><code class="language-bash">// 表示向本地私有仓库上传镜像。如果不写服务器地址，默认上传到官方Docker Hub。一般需要先登陆在上传。
-docker push localhost::5000/official/ubuntu:14.04</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 表示向本地私有仓库上传镜像。如果不写服务器地址，默认上传到官方Docker Hub。一般需要先登陆在上传。</span><br><span class="line">docker push localhost::5000/official/ubuntu:14.04</span><br></pre></td></tr></table></figure>
+
 <p>2.下载镜像：pull</p>
-<pre class=" language-bash"><code class="language-bash">docker pull ubuntu:14.04</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull ubuntu:14.04</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>3.搜索镜像：search<pre class=" language-bash"><code class="language-bash">docker search ubuntu</code></pre>
+<li><p>3.搜索镜像：search</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker search ubuntu</span><br></pre></td></tr></table></figure>
 </li>
-<li>注：在上传、下载过程中是逐层进行的。下载和搜索不需要登陆</li>
+<li><p>注：在上传、下载过程中是逐层进行的。下载和搜索不需要登陆</p>
+</li>
 </ul>
 <h3 id="1-3-restfulApi介绍"><a href="#1-3-restfulApi介绍" class="headerlink" title="1.3 restfulApi介绍"></a>1.3 restfulApi介绍</h3><h3 id="1-4-上传、下载、鉴权原理"><a href="#1-4-上传、下载、鉴权原理" class="headerlink" title="1.4 上传、下载、鉴权原理"></a>1.4 上传、下载、鉴权原理</h3><h3 id="1-5-私有仓库搭建"><a href="#1-5-私有仓库搭建" class="headerlink" title="1.5 私有仓库搭建"></a>1.5 私有仓库搭建</h3><h2 id="0x06、docker网络"><a href="#0x06、docker网络" class="headerlink" title="0x06、docker网络"></a>0x06、docker网络</h2><h2 id="0x07、容器卷管理"><a href="#0x07、容器卷管理" class="headerlink" title="0x07、容器卷管理"></a>0x07、容器卷管理</h2><p>可以把本地文件目录挂载到容器内</p>
 <h2 id="0x08、DockerAPI"><a href="#0x08、DockerAPI" class="headerlink" title="0x08、DockerAPI"></a>0x08、DockerAPI</h2><h3 id="1-Docker-Remote-API"><a href="#1-Docker-Remote-API" class="headerlink" title="1.Docker Remote API"></a>1.Docker Remote API</h3><h3 id="2-Docker-Registry-API"><a href="#2-Docker-Registry-API" class="headerlink" title="2.Docker Registry API"></a>2.Docker Registry API</h3><h3 id="3-Docker-Hub-API"><a href="#3-Docker-Hub-API" class="headerlink" title="3.Docker Hub API"></a>3.Docker Hub API</h3><h2 id="0x09、Docker安全"><a href="#0x09、Docker安全" class="headerlink" title="0x09、Docker安全"></a>0x09、Docker安全</h2><h3 id="1-包含内容"><a href="#1-包含内容" class="headerlink" title="1.包含内容"></a>1.包含内容</h3><ul>
@@ -1150,29 +1466,30 @@ docker push localhost::5000/official/ubuntu:14.04</code></pre>
 
       
           <h2 id="0x00、安装lzrz"><a href="#0x00、安装lzrz" class="headerlink" title="0x00、安装lzrz"></a>0x00、安装lzrz</h2><ul>
-<li>1.远程连接的服务器端必须要有sz、rz这两个工具，如果没有，可以执行安装。如在CentOS上安装的命令为：<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> yum <span class="token function">install</span> lrzsz</code></pre>
+<li><p>1.远程连接的服务器端必须要有sz、rz这两个工具，如果没有，可以执行安装。如在CentOS上安装的命令为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install lrzsz</span><br></pre></td></tr></table></figure>
 </li>
-<li>2.本地安装lzrz工具。</li>
+<li><p>2.本地安装lzrz工具。</p>
+</li>
 </ul>
-<pre class=" language-bash"><code class="language-bash">brew <span class="token function">install</span> lrzsz</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install lrzsz</span><br></pre></td></tr></table></figure>
+
 <h2 id="0x01、本地下载脚本"><a href="#0x01、本地下载脚本" class="headerlink" title="0x01、本地下载脚本"></a>0x01、本地下载脚本</h2><ul>
-<li>1.由于sz,rz是基于ZMODEM/YMODEM/XMODEM协议的，所以安装iterm2-zmodem<pre class=" language-bash"><code class="language-bash"><span class="token function">cd</span> /usr/local/bin
-<span class="token function">sudo</span> <span class="token function">wget</span> https://raw.github.com/mmastrac/iterm2-zmodem/master/iterm2-send-zmodem.sh
-<span class="token function">sudo</span> <span class="token function">wget</span> https://raw.github.com/mmastrac/iterm2-zmodem/master/iterm2-recv-zmodem.sh
-<span class="token function">sudo</span> <span class="token function">chmod</span> 777 /usr/local/bin/iterm2-*</code></pre>
+<li>1.由于sz,rz是基于ZMODEM/YMODEM/XMODEM协议的，所以安装iterm2-zmodem<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/bin</span><br><span class="line">sudo wget https://raw.github.com/mmastrac/iterm2-zmodem/master/iterm2-send-zmodem.sh</span><br><span class="line">sudo wget https://raw.github.com/mmastrac/iterm2-zmodem/master/iterm2-recv-zmodem.sh</span><br><span class="line">sudo chmod 777 /usr/<span class="built_in">local</span>/bin/iterm2-*</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 <h2 id="0x02、配置iterm2"><a href="#0x02、配置iterm2" class="headerlink" title="0x02、配置iterm2"></a>0x02、配置iterm2</h2><ul>
-<li>1.打开Item2，点击preferences → profiles，选择某个profile，如Default，之后继续选择advanced → triggers，添加编辑添加如下triggers：<br>(Profiles -&gt; Open Profiles -&gt; Edit Profies -&gt; Advanced -&gt; Triggers -&gt; Edit )</li>
-<li>2.rz配置<pre class=" language-bash"><code class="language-bash">Regular Expression: \*\*B0100
-Action: Run Silent Coprocess
-Parameters: /usr/local/bin/iterm2-send-zmodem.sh</code></pre>
+<li><p>1.打开Item2，点击preferences → profiles，选择某个profile，如Default，之后继续选择advanced → triggers，添加编辑添加如下triggers：<br>(Profiles -&gt; Open Profiles -&gt; Edit Profies -&gt; Advanced -&gt; Triggers -&gt; Edit )</p>
 </li>
-<li>3.sz配置</li>
+<li><p>2.rz配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Regular Expression: \*\*B0100</span><br><span class="line">Action: Run Silent Coprocess</span><br><span class="line">Parameters: /usr/<span class="built_in">local</span>/bin/iterm2-send-zmodem.sh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3.sz配置</p>
+</li>
 </ul>
-<pre class=" language-bash"><code class="language-bash">Regular Expression: \*\*B00000000000000
-Action: Run Silent Coprocess
-Parameters: /usr/local/bin/iterm2-recv-zmodem.sh</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Regular Expression: \*\*B00000000000000</span><br><span class="line">Action: Run Silent Coprocess</span><br><span class="line">Parameters: /usr/<span class="built_in">local</span>/bin/iterm2-recv-zmodem.sh</span><br></pre></td></tr></table></figure>
+
 <h2 id="0x03、配置完毕，进行尝试。"><a href="#0x03、配置完毕，进行尝试。" class="headerlink" title="0x03、配置完毕，进行尝试。"></a>0x03、配置完毕，进行尝试。</h2>
       
     </div>
@@ -1306,10 +1623,11 @@ Parameters: /usr/local/bin/iterm2-recv-zmodem.sh</code></pre>
 <li>2.没有switch-case语句</li>
 <li>3.每个条件后都要是用(:)，表示接下来满足条件后要执行的语句</li>
 </ul>
-<h2 id="0x04、关键字"><a href="#0x04、关键字" class="headerlink" title="0x04、关键字"></a>0x04、关键字</h2><pre><code>while,if,else,elif,pass,True,False,None,for,in,do
-break,continue,as,del,from,global,import,is,lambda,not,or
-class,def,self,return,with,yield,nonlocal
-try,except,raise,finally</code></pre><h2 id="0x05、操作符"><a href="#0x05、操作符" class="headerlink" title="0x05、操作符"></a>0x05、操作符</h2><pre><code>&lt;,&gt;,&lt;=,&gt;=,==,!=</code></pre><h2 id="0x06、函数"><a href="#0x06、函数" class="headerlink" title="0x06、函数"></a>0x06、函数</h2><ul>
+<h2 id="0x04、关键字"><a href="#0x04、关键字" class="headerlink" title="0x04、关键字"></a>0x04、关键字</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">while,if,else,elif,pass,True,False,None,for,in,do</span><br><span class="line">break,continue,as,del,from,global,import,is,lambda,not,or</span><br><span class="line">class,def,self,return,with,yield,nonlocal</span><br><span class="line">try,except,raise,finally</span><br></pre></td></tr></table></figure>
+
+<h2 id="0x05、操作符"><a href="#0x05、操作符" class="headerlink" title="0x05、操作符"></a>0x05、操作符</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;,&gt;,&lt;=,&gt;=,==,!=</span><br></pre></td></tr></table></figure>
+
+<h2 id="0x06、函数"><a href="#0x06、函数" class="headerlink" title="0x06、函数"></a>0x06、函数</h2><ul>
 <li>1.range(begin,end,step):</li>
 <li>2.input(“some word”):</li>
 <li>3.len()</li>
@@ -1455,73 +1773,47 @@ try,except,raise,finally</code></pre><h2 id="0x05、操作符"><a href="#0x05、
 </ul>
 </li>
 </ul>
-<pre class=" language-python"><code class="language-python">
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'hello {0}'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span><span class="token string">'world'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">print(<span class="string">'hello &#123;0&#125;'</span>.format(<span class="string">'world'</span>))</span><br><span class="line"></span><br><span class="line">// hello world</span><br></pre></td></tr></table></figure>
 
-<span class="token operator">//</span> hello world
-</code></pre>
 <ul>
-<li>format格式<pre class=" language-python"><code class="language-python"></code></pre>
+<li><p>format格式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#format的格式</span></span><br><span class="line">replacement_field ::= <span class="string">"&#123;"</span> [field_name] [<span class="string">"!"</span> conversion] [<span class="string">":"</span> format_spec] <span class="string">"&#125;"</span></span><br><span class="line">field_name ::= arg_name (<span class="string">"."</span> attribute_name | <span class="string">"["</span> element_index <span class="string">"]"</span>)*</span><br><span class="line">arg_name ::= [identifier | integer]</span><br><span class="line">attribute_name ::= identifier</span><br><span class="line">element_index ::= integer | index_string</span><br><span class="line">index_string ::= &lt;any source character <span class="keyword">except</span> <span class="string">"]"</span>&gt; +</span><br><span class="line">conversion ::= <span class="string">"r"</span> | <span class="string">"s"</span> | <span class="string">"a"</span></span><br><span class="line">format_spec ::= &lt;described <span class="keyword">in</span> the next section&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>format_spec 的格式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">format_spec 　　::= 　　[[fill]align][sign][<span class="comment">#][0][width][,][.precision][type]</span></span><br><span class="line">fill 　　　　　::= 　　&lt;any character&gt;</span><br><span class="line">align 　　　　::= 　　<span class="string">"&lt;"</span> | <span class="string">"&gt;"</span> | <span class="string">"="</span> | <span class="string">"^"</span></span><br><span class="line">sign 　　　　 ::= 　　<span class="string">"+"</span> | <span class="string">"-"</span> | <span class="string">" "</span></span><br><span class="line">width 　　　　 ::= 　　 integer</span><br><span class="line">precision 　　　　::= 　　 integer</span><br><span class="line">type 　　　　::= 　　<span class="string">"b"</span> | <span class="string">"c"</span> | <span class="string">"d"</span> | <span class="string">"e"</span> | <span class="string">"E"</span> | <span class="string">"f"</span> | <span class="string">"F"</span> | <span class="string">"g"</span> | <span class="string">"G"</span> | <span class="string">"n"</span> | <span class="string">"o"</span> | <span class="string">"s"</span> | <span class="string">"x"</span> | <span class="string">"X"</span> | <span class="string">"%"</span></span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
-<p>#format的格式<br>replacement_field ::= “{“ [field_name] [“!” conversion] [“:” format_spec] “}”<br>field_name ::= arg_name (“.” attribute_name | “[“ element_index “]”)*<br>arg_name ::= [identifier | integer]<br>attribute_name ::= identifier<br>element_index ::= integer | index_string<br>index_string ::= &lt;any source character except “]”&gt; +<br>conversion ::= “r” | “s” | “a”<br>format_spec ::= <described in the next section></described></p>
-<pre><code>
-- format_spec 的格式
-```python
-
-format_spec 　　::= 　　[[fill]align][sign][#][0][width][,][.precision][type]
-fill 　　　　　::= 　　&lt;any character&gt;
-align 　　　　::= 　　&quot;&lt;&quot; | &quot;&gt;&quot; | &quot;=&quot; | &quot;^&quot;
-sign 　　　　 ::= 　　&quot;+&quot; | &quot;-&quot; | &quot; &quot;
-width 　　　　 ::= 　　 integer
-precision 　　　　::= 　　 integer
-type 　　　　::= 　　&quot;b&quot; | &quot;c&quot; | &quot;d&quot; | &quot;e&quot; | &quot;E&quot; | &quot;f&quot; | &quot;F&quot; | &quot;g&quot; | &quot;G&quot; | &quot;n&quot; | &quot;o&quot; | &quot;s&quot; | &quot;x&quot; | &quot;X&quot; | &quot;%&quot;
-</code></pre><h3 id="0x01、应用"><a href="#0x01、应用" class="headerlink" title="0x01、应用"></a>0x01、应用</h3><h4 id="一、填充"><a href="#一、填充" class="headerlink" title="一、填充"></a>一、填充</h4><ul>
+<h3 id="0x01、应用"><a href="#0x01、应用" class="headerlink" title="0x01、应用"></a>0x01、应用</h3><h4 id="一、填充"><a href="#一、填充" class="headerlink" title="一、填充"></a>一、填充</h4><ul>
 <li>1.通过位置来填充字符串</li>
 </ul>
-<pre class=" language-python"><code class="language-python">
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'hello {0} i am {1}'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span><span class="token string">'Kevin'</span><span class="token punctuation">,</span><span class="token string">'Tom'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>                  <span class="token comment" spellcheck="true"># hello Kevin i am Tom</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'hello {} i am {}'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span><span class="token string">'Kevin'</span><span class="token punctuation">,</span><span class="token string">'Tom'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>                <span class="token comment" spellcheck="true"># hello Kevin i am Tom</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'hello {0} i am {1} . my name is {0}'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span><span class="token string">'Kevin'</span><span class="token punctuation">,</span><span class="token string">'Tom'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># hello Kevin i am Tom . my name is Kevin</span>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">print(<span class="string">'hello &#123;0&#125; i am &#123;1&#125;'</span>.format(<span class="string">'Kevin'</span>,<span class="string">'Tom'</span>))                  <span class="comment"># hello Kevin i am Tom</span></span><br><span class="line">print(<span class="string">'hello &#123;&#125; i am &#123;&#125;'</span>.format(<span class="string">'Kevin'</span>,<span class="string">'Tom'</span>))                <span class="comment"># hello Kevin i am Tom</span></span><br><span class="line">print(<span class="string">'hello &#123;0&#125; i am &#123;1&#125; . my name is &#123;0&#125;'</span>.format(<span class="string">'Kevin'</span>,<span class="string">'Tom'</span>)) <span class="comment"># hello Kevin i am Tom . my name is Kevin</span></span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>2.通过key来填充</li>
 </ul>
-<pre class=" language-python"><code class="language-python">
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'hello {name1} i am {name2}'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>name1<span class="token operator">=</span><span class="token string">'Kevin'</span><span class="token punctuation">,</span>name2<span class="token operator">=</span><span class="token string">'Tom'</span><span class="token punctuation">)</span> <span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># hello Kevin i am Tom</span>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">print(<span class="string">'hello &#123;name1&#125; i am &#123;name2&#125;'</span>.format(name1=<span class="string">'Kevin'</span>,name2=<span class="string">'Tom'</span>) )    <span class="comment"># hello Kevin i am Tom</span></span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>3.通过下标填充</li>
 </ul>
-<pre class=" language-python"><code class="language-python">
-names<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'Kevin'</span><span class="token punctuation">,</span><span class="token string">'Tom'</span><span class="token punctuation">]</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'hello {names[0]} i am {names[1]}'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>names<span class="token operator">=</span>names<span class="token punctuation">)</span><span class="token punctuation">)</span>                  <span class="token comment" spellcheck="true"># hello Kevin i am Tom</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'hello {0[0]} i am {0[1]}'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>names<span class="token punctuation">)</span><span class="token punctuation">)</span>                                <span class="token comment" spellcheck="true"># hello Kevin i am Tom</span>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">names=[<span class="string">'Kevin'</span>,<span class="string">'Tom'</span>]</span><br><span class="line">print(<span class="string">'hello &#123;names[0]&#125; i am &#123;names[1]&#125;'</span>.format(names=names))                  <span class="comment"># hello Kevin i am Tom</span></span><br><span class="line">print(<span class="string">'hello &#123;0[0]&#125; i am &#123;0[1]&#125;'</span>.format(names))                                <span class="comment"># hello Kevin i am Tom</span></span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>4..通过字典的key    注意访问字典的key，不用引号的</li>
 </ul>
-<pre class=" language-python"><code class="language-python">
-names<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">'name'</span><span class="token punctuation">:</span><span class="token string">'Kevin'</span><span class="token punctuation">,</span><span class="token string">'name2'</span><span class="token punctuation">:</span><span class="token string">'Tom'</span><span class="token punctuation">}</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'hello {names[name]} i am {names[name2]}'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>names<span class="token operator">=</span>names<span class="token punctuation">)</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># hello Kevin i am Tom</span>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">names=&#123;<span class="string">'name'</span>:<span class="string">'Kevin'</span>,<span class="string">'name2'</span>:<span class="string">'Tom'</span>&#125;</span><br><span class="line">print(<span class="string">'hello &#123;names[name]&#125; i am &#123;names[name2]&#125;'</span>.format(names=names))    <span class="comment"># hello Kevin i am Tom</span></span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>5.通过对象的属性</li>
 </ul>
-<pre class=" language-python"><code class="language-python">
-<span class="token keyword">class</span> <span class="token class-name">Names</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    name1<span class="token operator">=</span><span class="token string">'Kevin'</span>
-    name2<span class="token operator">=</span><span class="token string">'Tom'</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'hello {names.name1} i am {names.name2}'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>names<span class="token operator">=</span>Names<span class="token punctuation">)</span><span class="token punctuation">)</span>                  <span class="token comment" spellcheck="true"># hello Kevin i am Tom</span>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Names</span><span class="params">()</span>:</span></span><br><span class="line">    name1=<span class="string">'Kevin'</span></span><br><span class="line">    name2=<span class="string">'Tom'</span></span><br><span class="line">print(<span class="string">'hello &#123;names.name1&#125; i am &#123;names.name2&#125;'</span>.format(names=Names))                  <span class="comment"># hello Kevin i am Tom</span></span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>6.使用魔法参数</li>
 </ul>
-<pre class=" language-python"><code class="language-python">
-args<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'lu'</span><span class="token punctuation">]</span>
-kwargs <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'name1'</span><span class="token punctuation">:</span> <span class="token string">'Kevin'</span><span class="token punctuation">,</span> <span class="token string">'name2'</span><span class="token punctuation">:</span> <span class="token string">'Tom'</span><span class="token punctuation">}</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'hello {name1} {} i am {name2}'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># hello Kevin i am Tom</span>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">args=[<span class="string">'lu'</span>]</span><br><span class="line">kwargs = &#123;<span class="string">'name1'</span>: <span class="string">'Kevin'</span>, <span class="string">'name2'</span>: <span class="string">'Tom'</span>&#125;</span><br><span class="line">print(<span class="string">'hello &#123;name1&#125; &#123;&#125; i am &#123;name2&#125;'</span>.format(*args, **kwargs))  <span class="comment"># hello Kevin i am Tom</span></span><br></pre></td></tr></table></figure>
+
 <h4 id="二、格式转换"><a href="#二、格式转换" class="headerlink" title="二、格式转换"></a>二、格式转换</h4><ul>
 <li>b、d、o、x分别是二进制、十进制、八进制、十六进制。</li>
 </ul>
@@ -1604,26 +1896,23 @@ kwargs <span class="token operator">=</span> <span class="token punctuation">{</
 <h4 id="三、对齐与填充"><a href="#三、对齐与填充" class="headerlink" title="三、对齐与填充"></a>三、对齐与填充</h4><p>|数字|    格式|    输出|    描述|<br>| — | — | — | — | — |<br>|5    |{:0&gt;2}    |05    |数字补零 (填充左边, 宽度为2)|<br>|5    |{:x&lt;4}|5xxx|    数字补x (填充右边, 宽度为4)|<br>|10|{:x^4}|x10x|    数字补x (填充右边, 宽度为4)|<br>|13    |{:10}|13|    右对齐 (默认, 宽度为10)|<br>|13    |{:&lt;10}|13|    左对齐 (宽度为10)|<br>|13    |{:^10}|13|    中间对齐 (宽度为10)|</p>
 <h4 id="四、其他"><a href="#四、其他" class="headerlink" title="四、其他"></a>四、其他</h4><ul>
 <li><p>1.转义{和}符号</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"\{\{ hello {0} \}\}"</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span><span class="token string">'Kevin'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># 跟%中%%转义%一样，formate中用两个大括号来转义</span></code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"\&#123;\&#123; hello &#123;0&#125; \&#125;\&#125;"</span>.format(<span class="string">'Kevin'</span>))</span><br><span class="line"><span class="comment"># 跟%中%%转义%一样，formate中用两个大括号来转义</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>2.format作为函数</p>
-<pre class=" language-python"><code class="language-python">f <span class="token operator">=</span> <span class="token string">'hello {0} i am {1}'</span><span class="token punctuation">.</span>format
-<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token punctuation">(</span><span class="token string">'Kevin'</span><span class="token punctuation">,</span><span class="token string">'Tom'</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">f = <span class="string">'hello &#123;0&#125; i am &#123;1&#125;'</span>.format</span><br><span class="line">print(f(<span class="string">'Kevin'</span>,<span class="string">'Tom'</span>))</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>3.格式化datetime</p>
-<pre class=" language-python"><code class="language-python">now<span class="token operator">=</span>datetime<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'{:%Y-%m-%d %X}'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>now<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">now=datetime.now()</span><br><span class="line">print(<span class="string">'&#123;:%Y-%m-%d %X&#125;'</span>.format(now))</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>4.{}内嵌{}</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'hello {0:>{1}} '</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span><span class="token string">'Kevin'</span><span class="token punctuation">,</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'hello &#123;0:&gt;&#123;1&#125;&#125; '</span>.format(<span class="string">'Kevin'</span>,<span class="number">50</span>))</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>5.叹号的用法</p>
 <ul>
 <li>！后面可以加s r a 分别对应str() repr() ascii()</li>
 <li>作用是在填充前先用对应的函数来处理参数</li>
-<li>差别就是repr带有引号，str()是面向用户的，目的是可读性，repr()是面向python解析器的，返回值表示在python内部的含义<pre class=" language-python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"{!s}"</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span><span class="token string">'2'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 2</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"{!r}"</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span><span class="token string">'2'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># '2'</span></code></pre>
+<li>差别就是repr带有引号，str()是面向用户的，目的是可读性，repr()是面向python解析器的，返回值表示在python内部的含义<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"&#123;!s&#125;"</span>.format(<span class="string">'2'</span>))  <span class="comment"># 2</span></span><br><span class="line">print(<span class="string">"&#123;!r&#125;"</span>.format(<span class="string">'2'</span>))   <span class="comment"># '2'</span></span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 </li>
@@ -2621,1166 +2910,10 @@ kwargs <span class="token operator">=</span> <span class="token punctuation">{</
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2018/08/10/2018/08-10-行与列式数据库/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="hackfox">
-      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hackfox">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/08/10/2018/08-10-行与列式数据库/" class="post-title-link" itemprop="url">行与列式数据库</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-08-10 13:23:49" itemprop="dateCreated datePublished" datetime="2018-08-10T13:23:49+08:00">2018-08-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-09 15:15:22" itemprop="dateModified" datetime="2019-09-09T15:15:22+08:00">2019-09-09</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="行与列式数据库"><a href="#行与列式数据库" class="headerlink" title="行与列式数据库"></a>行与列式数据库</h1><ul>
-<li>作者：<a href="mailto:codehackfox@gmail.com" target="_blank" rel="noopener">codehackfox@gmail.com</a></li>
-<li>时间：2018-08-10 13:23:49</li>
-</ul>
-<h2 id="0x00、简介"><a href="#0x00、简介" class="headerlink" title="0x00、简介"></a>0x00、简介</h2><h5 id="行式数据库"><a href="#行式数据库" class="headerlink" title="行式数据库"></a>行式数据库</h5><ul>
-<li>平常用的结构化关系型数据库，比如mysql、sqlserver等</li>
-<li>一行为一条数据，进行记录存储</li>
-<li>可以进行join查询，可以进行笛卡尔积运算</li>
-</ul>
-<h5 id="列式数据库"><a href="#列式数据库" class="headerlink" title="列式数据库"></a>列式数据库</h5><ul>
-<li>列式数据库是以列相关存储架构进行数据存储的数据库，主要适合于批量数据处理和即时查询。相对应的是行式数据库，数据以行相关的存储体系架构进行空间分配，主要适合于小批量的数据处理，常用于联机事务型数据处理。</li>
-<li>特点<ul>
-<li>因为硬盘寻址时间相较于计算机上其他部件的运行速度来说不是一般的慢，所以常用相同工作负载下的硬盘访问性能来比较行数据库和列数据库。通常，顺序读取数据要比随机访问更快。而且，硬盘寻址时间的提升比起CPU速度的进步要慢得多 (参看 摩尔定律)，在使用硬盘作为存储媒介的系统上这种情况很可能还会持续一段时间。下面简单罗列了一些选择行数据库还是列数据库的权衡依据。当然，如果能够把数据全放在内存中，那么使用内存数据库性能会更好。<ul>
-<li>1.在只需要根据某几列来聚合数据的时候按列的数据组织方式更有效。因为这样只需要读取一部分数据，要比读取全部数据更快。</li>
-<li>2.当只需要修改某一列值的时候按列的数据组织方式更有效。因为可以直接找到某列数据并修改，而与行中的其他列无关。</li>
-<li>3.当需要某行的多列数据的时候按行的数据组织方式更有效。当行中数据不是太多的情况下一次硬盘寻址就可以获得该行的所有数据。</li>
-<li>4.在新增行数据的时候，如果各列都有值，那么按行的数据组织方式会更有效，因为只需要一次硬盘寻址就可以写入整行的全部数据。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h5 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h5><ul>
-<li>面向行的数据存储架构更适用于OLTP-频繁交互事务的场景。</li>
-<li>面向列的数据存储架构更适用于OLAP-(如数据仓库)这样在海量数据（(可能达到 terabyte规模)）中进行有限复杂查询的场景。</li>
-</ul>
-<h2 id="0x01、比较"><a href="#0x01、比较" class="headerlink" title="0x01、比较"></a>0x01、比较</h2><ul>
-<li><img src="/assets/images/2018/13022AD3-DD16-4B84-9099-C03E4F10533D.png" alt="13022AD3-DD16-4B84-9099-C03E4F10533D.png"></li>
-<li><img src="/assets/images/2018/0CD4C6E1-CAB6-44A4-8875-DA4F1C6FCF57.png" alt="0CD4C6E1-CAB6-44A4-8875-DA4F1C6FCF57.png"></li>
-<li>底层存储实例<ul>
-<li><img src="/assets/images/2018/773CBA88-4945-40CA-8628-78BE4CF97B5C.jpg" alt="773CBA88-4945-40CA-8628-78BE4CF97B5C.jpg"></li>
-<li><img src="/assets/images/2018/FA6212EF-26D1-4AB7-B52C-343F8105A3D6.jpg" alt="FA6212EF-26D1-4AB7-B52C-343F8105A3D6.jpg"></li>
-<li><img src="/assets/images/2018/2D9E6EC3-D366-4087-A92F-C9CF9A2BC238.jpg" alt="2D9E6EC3-D366-4087-A92F-C9CF9A2BC238.jpg"></li>
-</ul>
-</li>
-<li>随机读与顺序读<ul>
-<li><img src="/assets/images/2018/CA0D0CF0-F150-47DD-A98F-8BAB0D9B0A02.jpg" alt="CA0D0CF0-F150-47DD-A98F-8BAB0D9B0A02.jpg"></li>
-</ul>
-</li>
-</ul>
-<h2 id="0x02、优缺点"><a href="#0x02、优缺点" class="headerlink" title="0x02、优缺点"></a>0x02、优缺点</h2><h5 id="列数据库"><a href="#列数据库" class="headerlink" title="列数据库"></a>列数据库</h5><ul>
-<li>优点：<ul>
-<li>极高的装载速度（最高可以等于所有硬盘IO 的总和，基本是极限了）</li>
-<li>适合大量的数据而不是小数据</li>
-<li>实时加载数据仅限于增加（删除和更新需要解压缩Block 然后计算然后重新压缩储存</li>
-<li>高效的压缩率，不仅节省储存空间也节省计算内存和CPU。</li>
-<li>非常适合做聚合操作。</li>
-</ul>
-</li>
-<li>缺点：<ul>
-<li>不适合扫描小量数据</li>
-<li>不适合随机的更新</li>
-<li>批量更新情况各异，有的优化的比较好的列式数据库（比如Vertica）表现比较好，有些没有针对更新的数据库表现比较差。</li>
-<li>不适合做含有删除和更新的实时操作</li>
-</ul>
-</li>
-</ul>
-<h5 id="行数据库"><a href="#行数据库" class="headerlink" title="行数据库"></a>行数据库</h5><ul>
-<li>优点<ul>
-<li>适合频繁的增删改数据</li>
-<li>小量数据的频繁维护和简单统计</li>
-</ul>
-</li>
-<li>缺点<ul>
-<li>不适合做统计类操作</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2018/05/18/2018/05-18-docker常用命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="hackfox">
-      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hackfox">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/05/18/2018/05-18-docker常用命令/" class="post-title-link" itemprop="url">docker常用命令</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-05-18 14:29:58" itemprop="dateCreated datePublished" datetime="2018-05-18T14:29:58+08:00">2018-05-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-09 18:26:56" itemprop="dateModified" datetime="2019-09-09T18:26:56+08:00">2019-09-09</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="0x00、常用命令"><a href="#0x00、常用命令" class="headerlink" title="0x00、常用命令"></a>0x00、常用命令</h2><ul>
-<li>查看容器重启次数<ul>
-<li>docker inspect -f “ .RestartCount “ container_id</li>
-</ul>
-</li>
-<li>查看容器最后一次的启动时间<ul>
-<li>docker inspect -f “ .State.StartedAt ” container_id</li>
-</ul>
-</li>
-<li>commit一个镜像<ul>
-<li>docker run –name=”python_env_l” -it image_name /bin/bash</li>
-<li>docker commit -m=”msg” -a=”user_name” 4631e1627784 image_name:2.1</li>
-<li>docker tag  image_name:2.1 image_name:latest</li>
-<li>docker push image_name</li>
-</ul>
-</li>
-<li>Docker构建镜像<ul>
-<li>docker build -t imageName .</li>
-</ul>
-</li>
-<li>打标签<ul>
-<li>Docker tag image user/newName:tag</li>
-</ul>
-</li>
-<li>批量删除无用镜像<ul>
-<li>docker image rm <code>docker images|grep none|awk {&#39;print $3&#39;}</code></li>
-</ul>
-</li>
-<li>批量删除无用容器<ul>
-<li>sudo docker rm <code>sudo docker ps -a |grep Exited| awk {&#39;print $1&#39;}</code></li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2018/03/02/2018/03-02-PHP知识体系/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="hackfox">
-      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hackfox">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/03/02/2018/03-02-PHP知识体系/" class="post-title-link" itemprop="url">PHP知识体系</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-03-02 11:53:29" itemprop="dateCreated datePublished" datetime="2018-03-02T11:53:29+08:00">2018-03-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-09 15:14:35" itemprop="dateModified" datetime="2019-09-09T15:14:35+08:00">2019-09-09</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/PHP/" itemprop="url" rel="index"><span itemprop="name">PHP</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="0x00、关键字"><a href="#0x00、关键字" class="headerlink" title="0x00、关键字"></a>0x00、关键字</h2><ul>
-<li>$ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、public、private、protected</li>
-<li>对象(class)：String、Integer、Float、Boolean、Object、NULL、Resource、Closure()</li>
-<li>函数(function)：<ul>
-<li>通用：die()、var_dump()、for()、foreach()、define()、echo</li>
-<li>函数：function_exists()</li>
-<li>数组：array()、sort()、count()、 implode($arr,’,’)、is_array()、unset()、</li>
-<li>字符串：strlen()、mb_substr()、strpos()、str_replace()、str_word_count()、sprintf()、explode(‘,’,$string)、substr()、iconv_substr</li>
-<li>数据库：query()、mysql()、close()、</li>
-<li>文件：file_exist()、is_file()、is_dir()</li>
-<li>对象： serialize()、unserialize()</li>
-<li>回话：session_start()、setcookie()、session_destroy()、session_unset()、</li>
-<li>日期：date()、strtotime()、date_default_timezone_set()</li>
-<li>socket：</li>
-</ul>
-</li>
-<li>超级全局变量:<ul>
-<li>$GLOBALS<ul>
-<li>$_SERVER</li>
-<li>$_REQUEST</li>
-<li>$_POST</li>
-<li>$_GET</li>
-<li>$_FILES</li>
-<li>$_ENV</li>
-<li>$_COOKIE</li>
-<li>$_SESSION</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>魔术方法：<ul>
-<li><strong>contract()、</strong>decontract、<strong>get()、</strong>set()、 _invoke()</li>
-</ul>
-</li>
-</ul>
-<h2 id="0x01、字符串"><a href="#0x01、字符串" class="headerlink" title="0x01、字符串"></a>0x01、字符串</h2><pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//字符串定义方式</span>
-<span class="token comment" spellcheck="true">// ''只转译 ' / 但是“”转译的比较多</span>
-<span class="token comment" spellcheck="true">// ""可以解析变量</span>
-<span class="token comment" spellcheck="true">// ''速度比较快，不用分析变量，转译内用少。我们优先使用 ''</span>
-<span class="token variable">$str1</span> <span class="token operator">=</span> <span class="token string">'hello'</span><span class="token punctuation">;</span>
-<span class="token variable">$str2</span> <span class="token operator">=</span> <span class="token string">"hello"</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//写大段文本</span>
-<span class="token comment" spellcheck="true">//heredoc    &lt;&lt;&lt;HTML ......HTML; //类似于"" 可以解析文本中的变量</span>
-<span class="token comment" spellcheck="true">//nowdoc    &lt;&lt;&lt;'HTML'......HTML;</span>
-
-<span class="token comment" spellcheck="true">//字符串函数</span>
-<span class="token comment" spellcheck="true">/*
-字符长度计算
-查找字符位置
-字符替换
-提取字符
-分割连接反转字符
-去除增加空格
-HTML代码/数据库安全处理字符
-比较字符
-字符大小写转换
-*/</span>
-<span class="token function">number_format</span><span class="token punctuation">(</span><span class="token string">'123456789'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//123,456,789 使用科学计数法表示字符串</span>
-<span class="token function">str_repeat</span><span class="token punctuation">(</span><span class="token string">' '</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//重复空格10次</span>
-
-<span class="token comment" spellcheck="true">//计算字符串长度</span>
-<span class="token variable">$t1</span> <span class="token operator">=</span> <span class="token string">'abcdefghijklmn abcdefg'</span><span class="token punctuation">;</span>
-<span class="token variable">$t2</span> <span class="token operator">=</span> <span class="token string">'我是中国人'</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token function">strlen</span><span class="token punctuation">(</span><span class="token variable">$t1</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//22    //计算字符长度</span>
-<span class="token keyword">echo</span> <span class="token function">mb_strlen</span><span class="token punctuation">(</span><span class="token variable">$t2</span><span class="token punctuation">,</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'&lt;br />'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//utf-8 必须加 '' //5 //计算字节长度</span>
-
-<span class="token comment" spellcheck="true">//反转字符</span>
-<span class="token keyword">echo</span> <span class="token function">strrev</span><span class="token punctuation">(</span><span class="token variable">$t1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//gfedcba nmlkjihgfedcba 反转字符</span>
-<span class="token comment" spellcheck="true">//reverse 背面，反面 反转 同数组反转array_reverse 字符串是strrve</span>
-
-<span class="token comment" spellcheck="true">//查找自字符串的位置</span>
-<span class="token variable">$t1</span> <span class="token operator">=</span> <span class="token string">'abcdefghijklmn abcd.efg'</span><span class="token punctuation">;</span>
-<span class="token variable">$t3</span> <span class="token operator">=</span> <span class="token string">'d'</span><span class="token punctuation">;</span>
-<span class="token variable">$t4</span> <span class="token operator">=</span> <span class="token string">'bc'</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token function">strpos</span><span class="token punctuation">(</span><span class="token variable">$t1</span><span class="token punctuation">,</span> <span class="token variable">$t3</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'&lt;br />'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//区分大小写，查找第一次出现的位置//返回值为int</span>
-<span class="token keyword">echo</span> <span class="token function">stripos</span><span class="token punctuation">(</span><span class="token variable">$t1</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'&lt;br />'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//不区分大小写，返回字符串在另一个字符串出现的位置</span>
-<span class="token keyword">echo</span> <span class="token function">strrpos</span><span class="token punctuation">(</span><span class="token variable">$t1</span><span class="token punctuation">,</span> <span class="token string">'.'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'&lt;br />'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//区分大小写，最后一次出现的位置 //19</span>
-<span class="token keyword">echo</span> <span class="token function">strrchr</span><span class="token punctuation">(</span><span class="token variable">$t1</span><span class="token punctuation">,</span> <span class="token string">'.'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//查找字符串最后出现的位置,并打印之后的 //.efg</span>
-
-<span class="token comment" spellcheck="true">//字符串替换</span>
-<span class="token variable">$t1</span> <span class="token operator">=</span> <span class="token string">'abcdefghijklmn abcdefg'</span><span class="token punctuation">;</span>
-<span class="token variable">$t5</span> <span class="token operator">=</span> <span class="token string">'opqrsruvw'</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token function">str_replace</span><span class="token punctuation">(</span><span class="token string">'Abc'</span><span class="token punctuation">,</span> <span class="token string">'dEfg'</span><span class="token punctuation">,</span> <span class="token variable">$t1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'&lt;br />'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//区分大小写,如果不同不会进行替换，在$t1中，defg替换掉abc</span>
-<span class="token keyword">echo</span> <span class="token function">str_ireplace</span><span class="token punctuation">(</span><span class="token string">'ABC'</span><span class="token punctuation">,</span> <span class="token string">'HAHAha'</span><span class="token punctuation">,</span> <span class="token variable">$t1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'&lt;BR />'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//进行替换 //不区分大小写</span>
-<span class="token keyword">echo</span> <span class="token function">strtr</span><span class="token punctuation">(</span><span class="token variable">$t1</span><span class="token punctuation">,</span> <span class="token string">'aBCd'</span><span class="token punctuation">,</span> <span class="token string">'HAHAHA'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'&lt;bR />'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//HAHAHA只替换成HbcA,中间BC不被替换，只替换4位// 区分大小写，但是还是会进行替换 //只是截取等长部分，区分大小写，而且之替换相同的</span>
-<span class="token keyword">echo</span> <span class="token function">substr_replace</span><span class="token punctuation">(</span><span class="token variable">$t1</span><span class="token punctuation">,</span> <span class="token variable">$t5</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'&lt;br>'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//$t5从$t1的第4位开始替换，$t1失去3字节的内容，如果没有写3，则默认替换掉$t1从第4位后的所有字节</span>
-<span class="token comment" spellcheck="true">//截取字符串</span>
-<span class="token variable">$t1</span> <span class="token operator">=</span> <span class="token string">'abcdefghijklmn abcdefghijklmnopq'</span><span class="token punctuation">;</span>
-<span class="token variable">$t6</span> <span class="token operator">=</span> <span class="token string">'fg'</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token function">substr</span><span class="token punctuation">(</span><span class="token variable">$t1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'&lt;bR />&lt;br />'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//defgh //从$t1的第3位开始，截取5字节内容，默认截取余下全部</span>
-<span class="token keyword">echo</span> <span class="token function">mb_substr</span><span class="token punctuation">(</span><span class="token variable">$t1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token string">'UTF8'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//从第1位开始，长度为10，字符编码为 UTF-8 截取， 返回值string</span>
-<span class="token keyword">echo</span> <span class="token function">strstr</span><span class="token punctuation">(</span><span class="token variable">$t1</span><span class="token punctuation">,</span> <span class="token variable">$t6</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//从$t1中找到$t6，截取后半截，$t6必须完全存在于$t1中，且区分大小写</span>
-<span class="token keyword">echo</span> <span class="token function">stristr</span><span class="token punctuation">(</span><span class="token variable">$t1</span><span class="token punctuation">,</span> <span class="token string">'FGH'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//同上不区分大小写</span>
-<span class="token keyword">echo</span> <span class="token function">strrchr</span><span class="token punctuation">(</span><span class="token variable">$t1</span><span class="token punctuation">,</span> <span class="token variable">$t6</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'&lt;br />'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//$t6最后一次出现的位置截取到最后</span>
-
-<span class="token comment" spellcheck="true">//分割， 连接， 反转字符串</span>
-<span class="token variable">$t1</span> <span class="token operator">=</span> <span class="token string">'abcde fghijklmn abcde fgh ijklm nopq'</span><span class="token punctuation">;</span>
-<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token function">str_split</span><span class="token punctuation">(</span><span class="token variable">$t1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//返回数组类型, 把$t1按照5个字节分成数组</span>
-<span class="token keyword">echo</span> <span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">/*    array (size=7)
-                  0 => string 'abcde' (length=5)
-                  1 => string 'fghij' (length=5)
-                  2 => string 'klmn ' (length=5)
-                  3 => string 'abcde' (length=5)
-                  4 => string 'fghij' (length=5)
-                  5 => string 'klmno' (length=5)
-                  6 => string 'pq' (length=2)
-        */</span>
-<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">'ij'</span><span class="token punctuation">,</span> <span class="token variable">$t1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">;</span><span class="token comment" spellcheck="true">//将$t1以'ij'进行分割5次，如果后面还出现将不进行分割</span>
-<span class="token variable">$t7</span> <span class="token operator">=</span> <span class="token function">explode</span><span class="token punctuation">(</span><span class="token string">' '</span><span class="token punctuation">,</span> <span class="token variable">$t1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//将$t1以空格分开，返回数组,</span>
-    <span class="token keyword">echo</span> <span class="token variable">$t7</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'&lt;br />'</span><span class="token punctuation">,</span> <span class="token variable">$t7</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'&lt;br />'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//abcde fgh</span>
-    <span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$t7</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">/*    array (size=6)
-              0 => string 'abcde' (length=5)
-              1 => string 'fghijklmn' (length=9)
-              2 => string 'abcde' (length=5)
-              3 => string 'fgh' (length=3)
-              4 => string 'ijklm' (length=5)
-              5 => string 'nopq' (length=4)
-    */</span>
-<span class="token keyword">echo</span> <span class="token function">implode</span><span class="token punctuation">(</span><span class="token variable">$t7</span><span class="token punctuation">,</span> <span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'&lt;br />'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//abcde/fghijklmn/abcde/fgh/ijklm/nopq //将$t7用 / 连接起来，并且以字符串的形式返回</span>
-
-<span class="token comment" spellcheck="true">//空白处理字符串</span>
-<span class="token variable">$t1</span> <span class="token operator">=</span> <span class="token string">'        abcde fghijklmn abcde fgh ijklm nopq         '</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token function">trim</span><span class="token punctuation">(</span><span class="token variable">$t1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'&lt;br />'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//处理$t1 前后 的空白字符，包括 ""空格 "\t"制表符 "\n"换行符 "\r"回车符 "\0"空字节 "\x08"垂直制表符</span>
-<span class="token keyword">echo</span> <span class="token function">ltrim</span><span class="token punctuation">(</span><span class="token variable">$t1</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//处理$t1 前 的空白字符，同上//可查看网页源代码</span>
-<span class="token keyword">echo</span> <span class="token function">rtrim</span><span class="token punctuation">(</span><span class="token variable">$t1</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//处理$t1 后 的空白字符，同上</span>
-<span class="token keyword">ECHO</span> <span class="token function">chunk_split</span><span class="token punctuation">(</span><span class="token string">'abcdefghijklmnopq'</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">','</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'&lt;BR />'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//abc,def,ghi,jkl,mno,pq,//将字符串按照 3个字符+一个，分割开，并连起来</span>
-<span class="token keyword">echo</span> <span class="token function">str_pad</span><span class="token punctuation">(</span><span class="token string">'zxd'</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//将 zxd 填充到6个字节</span>
-<span class="token keyword">echo</span> <span class="token function">str_pad</span><span class="token punctuation">(</span><span class="token string">'zxd'</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token string">'_'</span><span class="token punctuation">,</span><span class="token constant">STR_PAD_LEFT</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'&lt;BR />'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//___zxd 以 _ 对 zxd 进行填充 // STR_PAD_LEFT STR_PAD_BOTH 或者不填则直接填到最后</span>
-
-<span class="token comment" spellcheck="true">//字符转义</span>
-<span class="token variable">$t8</span> <span class="token operator">=</span> <span class="token string">"My name\id Xiaodong'ZHANG"</span><span class="token punctuation">;</span>
-<span class="token variable">$t9</span> <span class="token operator">=</span> <span class="token string">"My name\\id Xiaodong\'ZHANG"</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token function">addslashes</span><span class="token punctuation">(</span><span class="token variable">$t8</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'&lt;br/>'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//My name\\id Xiaodong\'ZHANG 使用反斜线引入字符串 //为了向数据库中输入带有 " ' \ null 的数据的时候使用的,</span>
-<span class="token keyword">echo</span> <span class="token function">stripslashes</span><span class="token punctuation">(</span><span class="token variable">$t9</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//My nameid Xiaodong'ZHANG 反引用一个引用字符串 同上相反，从数据库中提取数据</span>
-
-<span class="token comment" spellcheck="true">//没有搞懂，同以下几个都没搞懂 echo get_magic_quotes_gpc();</span>
-<span class="token keyword">echo</span> <span class="token function">htmlspecialchars</span><span class="token punctuation">(</span><span class="token string">'&lt;h1>HEllp'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//将字符串中的一些字符转换成HTML实体，其中&lt; >被翻译成&lt; ></span>
-<span class="token keyword">echo</span> <span class="token function">htmlspecialchars_decode</span><span class="token punctuation">(</span><span class="token string">'&lt;h1>HEllp'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//&lt;h1>HEllp //同上相反，这个是在网页中显示效果，上则是在源代码中显示效果</span>
-<span class="token keyword">echo</span> <span class="token function">htmlentities</span><span class="token punctuation">(</span><span class="token string">'html&lt;h1>&lt;p>'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//把字符串中所有可以转换的字符换成HTML实体</span>
-<span class="token keyword">echo</span> <span class="token function">html_entity_decode</span><span class="token punctuation">(</span><span class="token string">'&lt; > haha'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//同上 相反</span>
-<span class="token comment" spellcheck="true">// echo '</span><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span></span>nihao<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span></span> <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/></span></span></span>'<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//直接在网页上输出大写的nihao 类似于网页效果</span>
-<span class="token comment" spellcheck="true">// echo '</span><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span></span> nihao<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span></span><span class="token string">','</span><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/></span></span></span>'<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//直接转译成&lt;h1> nihao 并且自带效果</span>
-<span class="token keyword">echo</span> <span class="token string">'heiadk&lt;br />'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//上两行必须屏蔽掉，否则之后的自带h1效果</span>
-
-<span class="token comment" spellcheck="true">//字符串比较</span>
-<span class="token keyword">echo</span> <span class="token function">strcmp</span><span class="token punctuation">(</span><span class="token string">'abcd'</span><span class="token punctuation">,</span> <span class="token string">'abcde'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//-1 //str1大于str2是为正数，相等为0</span>
-<span class="token keyword">echo</span> <span class="token function">strcasecmp</span><span class="token punctuation">(</span><span class="token string">'ABcDe'</span><span class="token punctuation">,</span> <span class="token string">'abcDE'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//0</span>
-
-<span class="token comment" spellcheck="true">//字符串转换大小</span>
-<span class="token keyword">ECHO</span> <span class="token function">strtolower</span><span class="token punctuation">(</span><span class="token string">'ABcDeFg'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//abcdefg</span>
-<span class="token keyword">echo</span> <span class="token function">strtoupper</span><span class="token punctuation">(</span><span class="token string">'strinABcDeFg'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//STRINABCDEFG</span>
-<span class="token keyword">echo</span> <span class="token function">ucfirst</span><span class="token punctuation">(</span><span class="token string">'andjfJSUD'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;BR />'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//AndjfJSUD 首字母为大写</span>
-<span class="token keyword">echo</span> <span class="token function">ucwords</span><span class="token punctuation">(</span><span class="token string">'my name Is zhang XAIO dong'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//My Name Is Zhang XAIO Dong 每个单词的首字母大写</span>
-
-<span class="token comment" spellcheck="true">// 将1234567890转换成1,234,567,8</span>
-<span class="token variable">$str1</span> <span class="token operator">=</span> <span class="token string">'1234567890'</span><span class="token punctuation">;</span>
-<span class="token variable">$str4</span> <span class="token operator">=</span> <span class="token function">strrev</span><span class="token punctuation">(</span><span class="token variable">$str1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token variable">$str2</span> <span class="token operator">=</span> <span class="token function">chunk_split</span><span class="token punctuation">(</span><span class="token variable">$str4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">','</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//098,765,432,1,</span>
-<span class="token variable">$str3</span> <span class="token operator">=</span> <span class="token function">substr</span><span class="token punctuation">(</span><span class="token variable">$str2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token function">strrev</span><span class="token punctuation">(</span><span class="token variable">$str3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token function">number_format</span><span class="token punctuation">(</span><span class="token string">'123456789'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h2 id="0x02、数组"><a href="#0x02、数组" class="headerlink" title="0x02、数组"></a>0x02、数组</h2><h2 id="0x03、类"><a href="#0x03、类" class="headerlink" title="0x03、类"></a>0x03、类</h2><h2 id="0x04、函数"><a href="#0x04、函数" class="headerlink" title="0x04、函数"></a>0x04、函数</h2><h2 id="0x05、文件操作"><a href="#0x05、文件操作" class="headerlink" title="0x05、文件操作"></a>0x05、文件操作</h2><h2 id="0x06、应用"><a href="#0x06、应用" class="headerlink" title="0x06、应用"></a>0x06、应用</h2><ul>
-<li><p>1.交换两个数</p>
-<pre class=" language-php"><code class="language-php"><span class="token variable">$a</span> <span class="token operator">=</span> <span class="token number">123.456</span><span class="token punctuation">;</span>
-<span class="token variable">$b</span> <span class="token operator">=</span> \'abcDEF\'<span class="token punctuation">;</span>
-<span class="token keyword">function</span> <span class="token function">swap</span> <span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token variable">$arg1</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span><span class="token variable">$arg2</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
- <span class="token variable">$w</span><span class="token operator">=</span><span class="token variable">$arg1</span><span class="token punctuation">;</span>
- <span class="token variable">$arg1</span><span class="token operator">=</span><span class="token variable">$arg2</span><span class="token punctuation">;</span>
- <span class="token variable">$arg2</span><span class="token operator">=</span><span class="token variable">$w</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token function">swap</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token variable">$a</span><span class="token punctuation">,</span><span class="token operator">&amp;</span><span class="token variable">$b</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-</li>
-<li><p>2.循环</p>
-<pre class=" language-php"><code class="language-php"><span class="token variable">$a</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span>\'a\'<span class="token punctuation">,</span>\'b\'<span class="token punctuation">,</span>\'c\'<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">foreach</span><span class="token punctuation">(</span><span class="token variable">$a</span> <span class="token keyword">as</span> <span class="token operator">&amp;</span><span class="token variable">$v</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
-<span class="token keyword">foreach</span><span class="token punctuation">(</span><span class="token variable">$a</span> <span class="token keyword">as</span> <span class="token variable">$v</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
-<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//a,b,b</span>
-<span class="token comment" spellcheck="true">//当foreach循环结束的时候，由于$v为引用变量，因而$v 与 $a[ 2 ] 指向了同一个地址空间（共享变量值），</span>
-<span class="token comment" spellcheck="true">//因而之后对$v的任何修改都会直接反映到数组$a中</span></code></pre>
-</li>
-<li><p>3.unset只会删除变量。并不会清空变量值对应的内存空间：（这是与指针不同的地方）</p>
-<pre class=" language-php"><code class="language-php"><span class="token variable">$a</span> <span class="token operator">=</span> <span class="token string">"str"</span><span class="token punctuation">;</span>
-<span class="token variable">$b</span> <span class="token operator">=</span> <span class="token operator">&amp;</span><span class="token variable">$a</span><span class="token punctuation">;</span>
-<span class="token function">unset</span><span class="token punctuation">(</span><span class="token variable">$b</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token variable">$a</span><span class="token punctuation">;</span></code></pre>
-</li>
-<li><p>4.引用作为函数参数传递时，是可以被函数内部更改的</p>
-<pre class=" language-php"><code class="language-php"><span class="token keyword">function</span> <span class="token function">change</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
- <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">is_array</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-     <span class="token variable">$a</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token variable">$test</span> <span class="token operator">=</span> <span class="token function">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">change</span><span class="token punctuation">(</span><span class="token variable">$test</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">print_r</span><span class="token punctuation">(</span><span class="token variable">$test</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-</li>
-</ul>
-<h2 id="0x07、日期"><a href="#0x07、日期" class="headerlink" title="0x07、日期"></a>0x07、日期</h2><ul>
-<li><p>函数:</p>
-<pre class=" language-php"><code class="language-php"><span class="token function">strtotime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">date</span><span class="token punctuation">(</span><span class="token string">'Y-m-d H:i:s'</span><span class="token punctuation">,</span><span class="token function">strtotime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//转化为格式日期</span>
-<span class="token function">date_parse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//把日期时间拆分为数组</span>
-<span class="token function">date_default_timezone_set</span><span class="token punctuation">(</span><span class="token string">'UTC'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//设置时区</span></code></pre>
-</li>
-<li><p>获取上个月第一天及最后一天</p>
-<pre class=" language-php"><code class="language-php"><span class="token keyword">echo</span> <span class="token function">date</span><span class="token punctuation">(</span>\'Y<span class="token operator">-</span>m<span class="token number">-01</span>\'<span class="token punctuation">,</span> <span class="token function">strtotime</span><span class="token punctuation">(</span>\'<span class="token operator">-</span><span class="token number">1</span> month\'<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token string">"&lt;br/>"</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token function">date</span><span class="token punctuation">(</span>\'Y<span class="token operator">-</span>m<span class="token operator">-</span>t\'<span class="token punctuation">,</span> <span class="token function">strtotime</span><span class="token punctuation">(</span>\'<span class="token operator">-</span><span class="token number">1</span> month\'<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token string">"&lt;br/>"</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//获取上个月最后一天时间</span>
-<span class="token variable">$times</span> <span class="token operator">=</span> <span class="token function">date</span><span class="token punctuation">(</span><span class="token string">'d'</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">24</span><span class="token operator">*</span><span class="token number">3600</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token function">date</span><span class="token punctuation">(</span><span class="token string">"Y-m-d H:i:s"</span><span class="token punctuation">,</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token variable">$times</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-</li>
-<li><p>获取当月第一天及最后一天</p>
-<pre class=" language-php"><code class="language-php"><span class="token variable">$BeginDate</span><span class="token operator">=</span><span class="token function">date</span><span class="token punctuation">(</span>\'Y<span class="token operator">-</span>m<span class="token number">-01</span>\'<span class="token punctuation">,</span> <span class="token function">strtotime</span><span class="token punctuation">(</span><span class="token function">date</span><span class="token punctuation">(</span><span class="token string">"Y-m-d"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token variable">$BeginDate</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token string">"&lt;br/>"</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token function">date</span><span class="token punctuation">(</span>\'Y<span class="token operator">-</span>m<span class="token operator">-</span>d\'<span class="token punctuation">,</span> <span class="token function">strtotime</span><span class="token punctuation">(</span><span class="token string">"$BeginDate +1 month -1 day"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token string">"&lt;br/>"</span><span class="token punctuation">;</span></code></pre>
-</li>
-<li><p>获取当前年份、月份、日期及天数</p>
-<pre class=" language-php"><code class="language-php"><span class="token keyword">echo</span> <span class="token string">" 本月共有:"</span><span class="token punctuation">.</span><span class="token function">date</span><span class="token punctuation">(</span><span class="token string">"t"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">"天"</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token string">" 当前年份"</span><span class="token punctuation">.</span><span class="token function">date</span><span class="token punctuation">(</span>\'Y\'<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token string">" 当前月份"</span><span class="token punctuation">.</span><span class="token function">date</span><span class="token punctuation">(</span>\'m\'<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token string">" 当前几号"</span><span class="token punctuation">.</span><span class="token function">date</span><span class="token punctuation">(</span>\'d\'<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token string">"&lt;br/>"</span><span class="token punctuation">;</span></code></pre>
-</li>
-<li><p>使用函数及数组来获取当月第一天及最后一天</p>
-<pre class=" language-php"><code class="language-php"><span class="token keyword">function</span> <span class="token function">getthemonth</span><span class="token punctuation">(</span><span class="token variable">$date</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
- <span class="token variable">$firstday</span> <span class="token operator">=</span> <span class="token function">date</span><span class="token punctuation">(</span>\'Y<span class="token operator">-</span>m<span class="token number">-01</span>\'<span class="token punctuation">,</span> <span class="token function">strtotime</span><span class="token punctuation">(</span><span class="token variable">$date</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token variable">$lastday</span> <span class="token operator">=</span> <span class="token function">date</span><span class="token punctuation">(</span>\'Y<span class="token operator">-</span>m<span class="token operator">-</span>d\'<span class="token punctuation">,</span> <span class="token function">strtotime</span><span class="token punctuation">(</span><span class="token string">"$firstday +1 month -1 day"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token keyword">return</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token variable">$firstday</span><span class="token punctuation">,</span><span class="token variable">$lastday</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token variable">$today</span> <span class="token operator">=</span> <span class="token function">date</span><span class="token punctuation">(</span><span class="token string">"Y-m-d"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token variable">$day</span><span class="token operator">=</span><span class="token function">getthemonth</span><span class="token punctuation">(</span><span class="token variable">$today</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token string">"当月的第一天: "</span><span class="token punctuation">.</span><span class="token variable">$day</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token string">" 当月的最后一天: "</span><span class="token punctuation">.</span><span class="token variable">$day</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token string">"&lt;br/>"</span><span class="token punctuation">;</span></code></pre>
-</li>
-</ul>
-<h2 id="0x08、正则"><a href="#0x08、正则" class="headerlink" title="0x08、正则"></a>0x08、正则</h2><pre class=" language-php"><code class="language-php"><span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;\\s*img\\s+[^>]*?src\\s*=\\s*(\\\'|\\"</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token operator">*</span><span class="token operator">?</span><span class="token punctuation">)</span>\<span class="token package"><span class="token punctuation">\</span><span class="token punctuation">\</span><span class="token punctuation">\</span>1</span><span class="token punctuation">[</span><span class="token operator">^</span><span class="token operator">></span><span class="token punctuation">]</span><span class="token operator">*</span><span class="token operator">?</span>\<span class="token package"><span class="token punctuation">\</span></span><span class="token operator">/</span><span class="token operator">?</span>\<span class="token package"><span class="token punctuation">\</span>s</span><span class="token operator">*</span><span class="token operator">></span><span class="token operator">/</span>i<span class="token string">", "</span> "<span class="token punctuation">,</span> <span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤img标签</span>
-<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/\\s+/"</span><span class="token punctuation">,</span> <span class="token string">" "</span><span class="token punctuation">,</span> <span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤多余回车</span>
-<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;[ ]+/si"</span><span class="token punctuation">,</span><span class="token string">"&lt;"</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤&lt;__("&lt;"号后面带空格)</span>
-<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;\\!--.*?-->/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//注释</span>
-<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(\\!.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤DOCTYPE</span>
-<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(\\/?html.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤html标签</span>
-<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(\\/?head.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤head标签</span>
-<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(\\/?meta.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤meta标签</span>
-<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(\\/?body.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤body标签</span>
-<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(\\/?link.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤link标签</span>
-<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(\\/?form.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤form标签</span>
-<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/cookie/si"</span><span class="token punctuation">,</span><span class="token string">"COOKIE"</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤COOKIE标签</span>
-<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(applet.*?)>(.*?)&lt;(\\/applet.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤applet标签</span>
-<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(\\/?applet.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤applet标签</span>
-<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(style.*?)>(.*?)&lt;(\\/style.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤style标签</span>
-<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(\\/?style.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤style标签</span>
-<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(title.*?)>(.*?)&lt;(\\/title.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤title标签</span>
-<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(\\/?title.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤title标签</span>
-<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(object.*?)>(.*?)&lt;(\\/object.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤object标签</span>
-<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(\\/?objec.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤object标签</span>
-<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(noframes.*?)>(.*?)&lt;(\\/noframes.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤noframes标签</span>
-<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(\\/?noframes.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤noframes标签</span>
-<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(i?frame.*?)>(.*?)&lt;(\\/i?frame.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤frame标签</span>
-<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(\\/?i?frame.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤frame标签</span>
-<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(script.*?)>(.*?)&lt;(\\/script.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤script标签</span>
-<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&lt;(\\/?script.*?)>/si"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤script标签</span>
-<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/javascript/si"</span><span class="token punctuation">,</span><span class="token string">"Javascript"</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤script标签</span>
-<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/vbscript/si"</span><span class="token punctuation">,</span><span class="token string">"Vbscript"</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤script标签</span>
-<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/on([a-z]+)\\s*=/si"</span><span class="token punctuation">,</span><span class="token string">"On\\\\1="</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤script标签</span>
-<span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string">"/&amp;#/si"</span><span class="token punctuation">,</span><span class="token string">"&amp;＃"</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//过滤script标签</span></code></pre>
-<h2 id="0x09、socket"><a href="#0x09、socket" class="headerlink" title="0x09、socket"></a>0x09、socket</h2><pre class=" language-php"><code class="language-php"><span class="token function">socket_accept</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 接受一个Socket连接
-<span class="token function">socket_bind</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 把socket绑定在一个<span class="token constant">IP</span>地址和端口上
-<span class="token function">socket_clear_error</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 清除socket的错误或最后的错误代码
-<span class="token function">socket_close</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 关闭一个socket资源
-<span class="token function">socket_connect</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 开始一个socket连接
-<span class="token function">socket_create_listen</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 在指定端口打开一个socket监听
-<span class="token function">socket_create_pair</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 产生一对没有差别的socket到一个数组里
-<span class="token function">socket_create</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 产生一个socket，相当于产生一个socket的数据结构
-<span class="token function">socket_get_option</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 获取socket选项
-<span class="token function">socket_getpeername</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 获取远程类似主机的ip地址
-<span class="token function">socket_getsockname</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 获取本地socket的ip地址
-<span class="token function">socket_iovec_add</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 添加一个新的向量到一个分散<span class="token operator">/</span>聚合的数组
-<span class="token function">socket_iovec_alloc</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 这个函数创建一个能够发送接收读写的iovec数据结构
-<span class="token function">socket_iovec_delete</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 删除一个已分配的iovec
-<span class="token function">socket_iovec_fetch</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 返回指定的iovec资源的数据
-<span class="token function">socket_iovec_free</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 释放一个iovec资源
-<span class="token function">socket_iovec_set</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 设置iovec的数据新值
-<span class="token function">socket_last_error</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 获取当前socket的最后错误代码
-<span class="token function">socket_listen</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 监听由指定socket的所有连接
-<span class="token function">socket_read</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 读取指定长度的数据
-<span class="token function">socket_readv</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 读取从分散<span class="token operator">/</span>聚合数组过来的数据
-<span class="token function">socket_recv</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 从socket里结束数据到缓存
-<span class="token function">socket_recvfrom</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 接受数据从指定的socket，如果没有指定则默认当前socket
-<span class="token function">socket_recvmsg</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 从iovec里接受消息
-<span class="token function">socket_select</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 多路选择
-<span class="token function">socket_send</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 这个函数发送数据到已连接的socket
-<span class="token function">socket_sendmsg</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 发送消息到socket
-<span class="token function">socket_sendto</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 发送消息到指定地址的socket
-<span class="token function">socket_set_block</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 在socket里设置为块模式
-<span class="token function">socket_set_nonblock</span><span class="token punctuation">(</span><span class="token punctuation">)</span> socket里设置为非块模式
-<span class="token function">socket_set_option</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 设置socket选项
-<span class="token function">socket_shutdown</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 这个函数允许你关闭读、写、或指定的socket
-<span class="token function">socket_strerror</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 返回指定错误号的周详错误
-<span class="token function">socket_write</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 写数据到socket缓存
-<span class="token function">socket_writev</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 写数据到分散<span class="token operator">/</span>聚合数组</code></pre>
-<h2 id="0x10、php-fpm与nginx"><a href="#0x10、php-fpm与nginx" class="headerlink" title="0x10、php-fpm与nginx"></a>0x10、php-fpm与nginx</h2><h2 id="0x11、资源"><a href="#0x11、资源" class="headerlink" title="0x11、资源"></a>0x11、资源</h2><ul>
-<li>PhpDocmentor</li>
-</ul>
-<h2 id="0x12、依赖管理——用于依赖管理的包和框架"><a href="#0x12、依赖管理——用于依赖管理的包和框架" class="headerlink" title="0x12、依赖管理——用于依赖管理的包和框架"></a>0x12、依赖管理——用于依赖管理的包和框架</h2><ul>
-<li>Composer/Packagist : 一个包和依赖管理器</li>
-<li>Composer Installers: 一个多框架Composer库安装器</li>
-<li>Pickle: 可以在任意平台上安装PHP扩展包</li>
-</ul>
-<h2 id="0x13、依赖管理的附加部分——其它依赖管理的相关工具"><a href="#0x13、依赖管理的附加部分——其它依赖管理的相关工具" class="headerlink" title="0x13、依赖管理的附加部分——其它依赖管理的相关工具"></a>0x13、依赖管理的附加部分——其它依赖管理的相关工具</h2><ul>
-<li>Satis : 静态的Composer库生成器</li>
-<li>Composition: 一个运行时检查Composer环境的库</li>
-<li>Version : 一个在语义上分析和比较的库</li>
-<li>NameSpacer : 将下划线转为命名空间的库</li>
-<li>Patch Installer: 使用Composer安装补丁的库</li>
-<li>Composer Checker: 一个验证Composer配置的工具</li>
-</ul>
-<h2 id="0x14、框架——Web开发框架"><a href="#0x14、框架——Web开发框架" class="headerlink" title="0x14、框架——Web开发框架"></a>0x14、框架——Web开发框架</h2><ul>
-<li>Symfony2 : 由独立组件构成的框架</li>
-<li>Zend Framework 2: 同样是由独立组件构成的框架</li>
-<li>Laravel 5: 简洁优雅的PHP Web开发框架</li>
-<li>Aura PHP: 独立组件的框架</li>
-<li>Yii2 : 用于开发大型Web应用的高性能PHP框架</li>
-<li>Nette: 同样是由独立组件构成的框架</li>
-<li>PPI Framework 2: 一个交互性的框架</li>
-<li>Phalcon: 一个作为C扩展的框架</li>
-</ul>
-<h2 id="0x15、框架的附加部分——其它关于Web开发框架的相关工具"><a href="#0x15、框架的附加部分——其它关于Web开发框架的相关工具" class="headerlink" title="0x15、框架的附加部分——其它关于Web开发框架的相关工具"></a>0x15、框架的附加部分——其它关于Web开发框架的相关工具</h2><ul>
-<li>Symfony CMF: 一个创建自定义CMS的内容管理框架</li>
-<li>Knp RAD Bundle: Symfony2的快速应用程序包（RAD）</li>
-</ul>
-<h2 id="0x16、框架组件——来自Web开发框架的组件"><a href="#0x16、框架组件——来自Web开发框架的组件" class="headerlink" title="0x16、框架组件——来自Web开发框架的组件"></a>0x16、框架组件——来自Web开发框架的组件</h2><ul>
-<li>Symfony2 Components: 关于Symphony2的组件</li>
-<li>Zend Framework 2 Components: 关于ZF2的组件</li>
-<li>Aura Components: 一个PHP5.4的组件包</li>
-<li>Hoa Project: 另一个PHP组件包</li>
-</ul>
-<h2 id="0x17、微型框架——微型框架和路由"><a href="#0x17、微型框架——微型框架和路由" class="headerlink" title="0x17、微型框架——微型框架和路由"></a>0x17、微型框架——微型框架和路由</h2><ul>
-<li>Silex: 基于Symphony2组件的微型框架</li>
-<li>Slim: 另一个简单的微型框架</li>
-<li>Bullet PHP: 用于构建REST APIs的微型框架</li>
-<li>Fast Route: 快速路由选择库</li>
-<li>Pux: 另一个快速路由选择库</li>
-</ul>
-<h2 id="0x18、微型框架的附加部分——其它相关的微型框架和路由"><a href="#0x18、微型框架的附加部分——其它相关的微型框架和路由" class="headerlink" title="0x18、微型框架的附加部分——其它相关的微型框架和路由"></a>0x18、微型框架的附加部分——其它相关的微型框架和路由</h2><ul>
-<li>Silex Skeleton: 用于Silex的项目框架</li>
-<li>Silex Web Profiler: 用于Silex的Web调试工具条</li>
-<li>Stack: 用于Silex/Symphony的可堆叠中间件库</li>
-<li>Slim Skeleton: 用于Slim的框架</li>
-<li>Slim View: Slim的自定义视图集</li>
-<li>Slim Middleware: Slim的自定义中间件集合</li>
-</ul>
-<h2 id="0x19、模板——模板和词法分析的库与工具"><a href="#0x19、模板——模板和词法分析的库与工具" class="headerlink" title="0x19、模板——模板和词法分析的库与工具"></a>0x19、模板——模板和词法分析的库与工具</h2><ul>
-<li>Twig: 一种综合的模板语言</li>
-<li>Twig Cache Extension: 用于Twig的模板片段缓存库</li>
-<li>Mustache: PHP实现的Mustache模板语言</li>
-<li>Phly Mustache: 另一个PHP实现的Mustache模板语言</li>
-<li>MtHaml : PHP实现的HAML模板语言</li>
-<li>PHPTAL: PHP实现的TAL模板语言</li>
-<li>Plates: 一个原始的PHP模板库</li>
-<li>Lex: 一个轻量级模板解析器</li>
-</ul>
-<h2 id="0x20、静态站点生成器——生成Web页面内容的预处理工具"><a href="#0x20、静态站点生成器——生成Web页面内容的预处理工具" class="headerlink" title="0x20、静态站点生成器——生成Web页面内容的预处理工具"></a>0x20、静态站点生成器——生成Web页面内容的预处理工具</h2><ul>
-<li>Sculpin: 将Markdown和Twig转换为静态HTML的工具</li>
-<li>Phrozn: 另一款将Textile、Markdown和Twig转为HTML的工具</li>
-<li>HTTP——用于HTTP和抓取网站的库</li>
-<li>Guzzle: 一个完整的HTTP客户端</li>
-<li>Buzz: 另一个HTTP客户端</li>
-<li>Requests: 一个简单的HTTP库</li>
-<li>HTTPFul: 一个链式HTTP客户端</li>
-<li>Goutte: 一个简单的Web抓取器</li>
-<li>PHP VCR: 一个录制和回放HTTP请求的库</li>
-<li>URL——解析URL的库</li>
-<li>Purl: 一个URL操作库</li>
-<li>PHP Domain Parser: 一个本地的后缀解析器</li>
-<li>Email——用于发送和解析Email的库</li>
-<li>SwiftMailer: 一个邮件程序的解决方案</li>
-<li>PHPMailer: 另一个邮件程序的解决方案</li>
-<li>Fetch: 一个IMAP库</li>
-<li>Email Reply Parser: 一个邮件回复解析器库</li>
-<li>Stampie: 关于邮件服务的库，比如SendGrid、PostMark、MailGun和Mandrill</li>
-<li>CssToInlineStyles: 邮件模板中一个内联的CSS库</li>
-</ul>
-<h2 id="0x21、文件——关于文件处理和MIME类型检查"><a href="#0x21、文件——关于文件处理和MIME类型检查" class="headerlink" title="0x21、文件——关于文件处理和MIME类型检查"></a>0x21、文件——关于文件处理和MIME类型检查</h2><ul>
-<li>Gaufrette: 一个文件流的抽象层</li>
-<li>Flysystem: 另一个文件流的抽象层</li>
-<li>Canal: 一个检查互联网媒体类型的库</li>
-<li>Apache MIME Types: 一个解析Apache MIME类型的库</li>
-<li>Ferret: 一个MIME检测库</li>
-<li>Hoa Mime: 另一个MIME检测库</li>
-<li>Lurker: 一个资源跟踪库</li>
-<li>PHP File Locator: 一个在大型项目中定位文件的库</li>
-<li>PHP FFmpeg: 一个用于FFmpeg视频包装的库</li>
-<li>CSV: 一个CSV数据操作库</li>
-</ul>
-<h2 id="0x22、流——处理流的库"><a href="#0x22、流——处理流的库" class="headerlink" title="0x22、流——处理流的库"></a>0x22、流——处理流的库</h2><ul>
-<li>Streamer: 一个简单的面向对象流包装库</li>
-<li>依赖注入——实现依赖注入设计模式的库</li>
-<li>Pimple: 一个小的依赖注入容器</li>
-<li>Auryn: 另一个小的依赖注入容器</li>
-<li>Orno Di: 一个易扩展的依赖注入容器</li>
-<li>PHP DI: 一个使用标注实现的依赖注入</li>
-<li>Acclimate: 依赖注入容器和服务定位器的通用接口</li>
-</ul>
-<h2 id="0x23、图像——处理图像的库"><a href="#0x23、图像——处理图像的库" class="headerlink" title="0x23、图像——处理图像的库"></a>0x23、图像——处理图像的库</h2><ul>
-<li>Imagine: 一个图像处理库</li>
-<li>PHP Image Workshop: 另一个图像处理库</li>
-<li>Intervention Image: 同样还是一个图像处理库</li>
-<li>GIF Frame Extractor: 一个提取GIF动画帧信息的库</li>
-<li>GIF Creator: 从多幅图片中创建GIF动画的库</li>
-<li>Image With Text: 在图像中嵌入文本的库</li>
-<li>Color Extractor: 从图像中提取颜色的库</li>
-</ul>
-<h2 id="0x24、测试——测试代码库和生成测试数据的库"><a href="#0x24、测试——测试代码库和生成测试数据的库" class="headerlink" title="0x24、测试——测试代码库和生成测试数据的库"></a>0x24、测试——测试代码库和生成测试数据的库</h2><ul>
-<li>PHPUnit: 一个单元测试框架</li>
-<li>DBUnit: PHPUnit的代码测试库</li>
-<li>ParaTest: PHPUnit的并行测试库</li>
-<li>PHPSpec: 根据规范的单元测试库</li>
-<li>Codeception: 一个全栈测试框架</li>
-<li>AspectMock: PHPUnit/Codeception的模拟框架</li>
-<li>Atoum: 一个简单的测试库</li>
-<li>Mockery: 一个用于测试的模拟对象库</li>
-<li>Phake: 另一个用于测试的模拟对象库</li>
-<li>Prophecy: 一个强大的模拟框架</li>
-<li>Faker: 一个伪数据生成库</li>
-<li>Samsui: 另一个伪数据生成库</li>
-<li>Alice: 用于生成复杂数据的库</li>
-<li>Behat: 一个行为驱动开发（BDD）的测试框架</li>
-<li>Pho: 另一个行为驱动开发的测试框架</li>
-<li>Mink: Web验收测试</li>
-<li>HTTP Mock: 一个在单元测试中模拟HTTP请求的库</li>
-<li>VFS Stream: 一个用于测试的虚拟文件系统流包装</li>
-<li>VFS: 另一个用于测试的虚拟文件系统</li>
-<li>Locust: 一个Python开发的现代负载测试库</li>
-</ul>
-<h2 id="0x25、持续集成——持续集成的库和应用"><a href="#0x25、持续集成——持续集成的库和应用" class="headerlink" title="0x25、持续集成——持续集成的库和应用"></a>0x25、持续集成——持续集成的库和应用</h2><ul>
-<li>Travis CI: 一个持续集成的平台</li>
-<li>PHPCI: 一个PHP的开源持续集成平台</li>
-<li>Sismo: 一个持续的测试服务器库</li>
-<li>Jenkins: PHP支持的持续集成平台</li>
-<li>JoliCi: PHP开发的由Docker支持的持续集成客户端</li>
-</ul>
-<h2 id="0x26、文档——生成项目文档的库"><a href="#0x26、文档——生成项目文档的库" class="headerlink" title="0x26、文档——生成项目文档的库"></a>0x26、文档——生成项目文档的库</h2><ul>
-<li>Sami: 一个API文档生成器</li>
-<li>APIGen: 另一个API文档生成器</li>
-<li>PHP Documentor 2: 文档生成器</li>
-<li>phpDox: 一个PHP项目的文档生成器（不仅仅是API文档）</li>
-</ul>
-<h2 id="0x27、安全性"><a href="#0x27、安全性" class="headerlink" title="0x27、安全性"></a>0x27、安全性</h2><ul>
-<li>HTML Purifier: 一个标准的HTML过滤器</li>
-<li>RandomLib: 生成随机数和随机字符串的库</li>
-<li>True Random: 使用<a href="http://www.random.org生成随机数的库" target="_blank" rel="noopener">www.random.org生成随机数的库</a></li>
-<li>SecurityMultiTool: 一个PHP安全库</li>
-<li>PHPSecLib: 一个纯的PHP安全通信库</li>
-<li>TCrypto: 一个简单的键值加密存储库</li>
-<li>PHP IDS: 一个结构化的PHP安全层</li>
-<li>PHP SSH: 面向对象的SSH包装库</li>
-<li>IniScan: 一个扫描PHP INI文件安全的工具</li>
-<li>SensioLabs Security Check: 一个根据安全建议检查Composer依赖的Web工具</li>
-<li>Zed: 用于Web应用的集成渗透测试工具</li>
-</ul>
-<h2 id="0x28、密码"><a href="#0x28、密码" class="headerlink" title="0x28、密码"></a>0x28、密码</h2><ul>
-<li>Password Compat: 一个用于新的PHP5.5密码功能的兼容库</li>
-<li>phpass: 一个便携式密码哈希框架</li>
-<li>PHP Password Lib: 一个用于生成和验证密码的库</li>
-<li>Password Policy: 一个PHP和JavaScript的密码规则库</li>
-<li>Password Validator: 验证和升级密码哈希的库</li>
-<li>Zxcvbn PHP: 一个基于Zxcvbn JS的PHP显示密码强度估计库</li>
-</ul>
-<h2 id="0x29、代码分析"><a href="#0x29、代码分析" class="headerlink" title="0x29、代码分析"></a>0x29、代码分析</h2><ul>
-<li>PHP Parser: 一个PHP编写的PHP解析器</li>
-<li>PHPPHP: 一个PHP实现的PHP虚拟机</li>
-<li>PHPSandbox: PHP的沙盒环境</li>
-<li>Dissect: 词法和语法分析的工具集合</li>
-<li>PHP Mess Detector: 一个扫描代码bug、次佳代码和未使用参数的库</li>
-<li>PHP Code Sniffer: 一个检测PHP、CSS和JS代码标准冲突的库</li>
-<li>PHPCPD: 一个检测复制和粘贴代码的库</li>
-<li>PHP Analyser: 一个分析PHP代码中错误的库</li>
-<li>PHP CS Fixer: 一个代码标准库</li>
-<li>PHP Manipulator: 用于分析和修改PHP源代码的库</li>
-<li>PHP Metrics: 一个静态测量库</li>
-<li>PHP Refactoring Browser: 一个用于重构PHP代码的命令行工具</li>
-<li>UBench: 一个简单的小型基准测试库</li>
-<li>Athletic: 一个基于标注的基准测试库</li>
-<li>Mondrian: 使用图论的代码分析工具</li>
-<li>Scrutinizer: 检查PHP代码的Web工具</li>
-<li>PHPLOC: 一个快速评估PHP项目大小的工具</li>
-<li>xHprof: 另一个PHP性能评测工具</li>
-<li>PHPCheckstyle: 一个帮助遵守特定代码规则的工具</li>
-</ul>
-<h2 id="0x30、调试"><a href="#0x30、调试" class="headerlink" title="0x30、调试"></a>0x30、调试</h2><ul>
-<li>xDebug: 一个PHP的调试和分析工具</li>
-<li>PHP Debug Bar: 一个调试工具条</li>
-<li>PHP Console: Web调试控制台</li>
-<li>Barbushin PHP Console: 一个使用Google Chrome的Web调试控制工具</li>
-<li>PHPDBG: 一个交互性的PHP调试器</li>
-<li>Tracy: 一个简单的错误检测、日志和时间测量库</li>
-</ul>
-<h2 id="0x31、构建工具"><a href="#0x31、构建工具" class="headerlink" title="0x31、构建工具"></a>0x31、构建工具</h2><ul>
-<li>Go: 一个简单的PHP构建工具</li>
-<li>Bob: 一个简单的项目自动化工具</li>
-<li>Phake: 一个PHP克隆库</li>
-<li>Box: 用来构建PHAR文件的工具</li>
-<li>Phing: 依据Apache Ant的PHP项目构建系统</li>
-</ul>
-<h2 id="0x32、任务运行器"><a href="#0x32、任务运行器" class="headerlink" title="0x32、任务运行器"></a>0x32、任务运行器</h2><ul>
-<li>Task: 依据Grunt和Gulp的纯PHP任务运行器</li>
-<li>Robo: 面向对象的PHP任务运行器</li>
-<li>Bldr: 构建在Symphony组件上的PHP任务运行器</li>
-</ul>
-<h2 id="0x33、导航"><a href="#0x33、导航" class="headerlink" title="0x33、导航"></a>0x33、导航</h2><ul>
-<li>KnpMenu: 一个菜单库</li>
-<li>Cartographer: 一个站点地图生成库</li>
-</ul>
-<h2 id="0x34、资源管理"><a href="#0x34、资源管理" class="headerlink" title="0x34、资源管理"></a>0x34、资源管理</h2><ul>
-<li>Assetic: 一个资源管理的管道库</li>
-<li>Pipe: 另一个资源管理的管道库</li>
-<li>Munee: 一个资源优化库</li>
-<li>JShrink: 一个JavaScript的最小化库</li>
-<li>Puli: 一个检测资源绝对路径的库</li>
-</ul>
-<h2 id="0x35、地理定位"><a href="#0x35、地理定位" class="headerlink" title="0x35、地理定位"></a>0x35、地理定位</h2><ul>
-<li>GeoCoder: 一个地理编码库</li>
-<li>GeoTools: 一个地理工具相关的库</li>
-<li>PHPGeo: 一个简单的地理库</li>
-<li>GeoJSON: 一个GeoJSON的实现</li>
-</ul>
-<h2 id="0x36、日期和时间"><a href="#0x36、日期和时间" class="headerlink" title="0x36、日期和时间"></a>0x36、日期和时间</h2><ul>
-<li>Carbon: 一个简单的日期时间API扩展</li>
-<li>ExpressiveDate: 另一个日期时间API扩展</li>
-<li>CalendR: 一个日历管理的库</li>
-</ul>
-<h2 id="0x37、事件"><a href="#0x37、事件" class="headerlink" title="0x37、事件"></a>0x37、事件</h2><ul>
-<li>React: 一个事件驱动的非阻塞I/O库</li>
-<li>Rx.PHP: 一个反应扩展库</li>
-<li>Ratchet: 一个Web套接字库</li>
-<li>Hoa WebSocket: 另一个Web套接字库</li>
-<li>Hoa EventSource: 一个事件源库</li>
-<li>Evenement: 一个事件调度库</li>
-<li>FuelPHP Event: 另一个事件调度库</li>
-</ul>
-<h2 id="0x38、日志"><a href="#0x38、日志" class="headerlink" title="0x38、日志"></a>0x38、日志</h2><ul>
-<li>Monolog: 一个完整的日志工具</li>
-<li>KLogger: 一个易于使用的PSR-3日志类</li>
-</ul>
-<h2 id="0x39、电子商务"><a href="#0x39、电子商务" class="headerlink" title="0x39、电子商务"></a>0x39、电子商务</h2><ul>
-<li>OmniPay: 一个多网关支付处理的框架</li>
-<li>Payum: 一个用于支付的抽象库</li>
-<li>Sylius: 一个开源的电子商务解决方案</li>
-<li>Thelia: 另一个开源的电子商务解决方案</li>
-<li>Money: PHP实现的Fowler金钱模式</li>
-<li>Sebastian Money: 一个处理货币价值的库</li>
-<li>Swap: 一个汇率库</li>
-</ul>
-<h2 id="0x40、PDF"><a href="#0x40、PDF" class="headerlink" title="0x40、PDF"></a>0x40、PDF</h2><p>-Snappy: 一个PDF和图像的生成库</p>
-<ul>
-<li>WKHTMLToPDF: 一个将HTML转换为PDF的工具</li>
-</ul>
-<h2 id="0x41、数据库"><a href="#0x41、数据库" class="headerlink" title="0x41、数据库"></a>0x41、数据库</h2><ul>
-<li>Doctrine: 一个完整的DBAL和ORM</li>
-<li>Doctrine Extensions: 一个Doctrine行为的扩展集合</li>
-<li>Propel: 一个快速的ORM，迁移和查询库</li>
-<li>Eloquent: Laravel 4 ORM</li>
-<li>Baum: 一个Eloquent的嵌套集合</li>
-<li>Spot2: MySQL的ORM映射器</li>
-<li>RedBean: 一个轻量级、易配置的ORM</li>
-<li>Pomm: 用于PostgreSQL的一个对象模型管理器</li>
-<li>ProxyManager: 用于数据映射生成代理对象的工具集合</li>
-</ul>
-<h2 id="0x42、迁移"><a href="#0x42、迁移" class="headerlink" title="0x42、迁移"></a>0x42、迁移</h2><ul>
-<li>PHPMig: 一个迁移管理库</li>
-<li>Phinx: 一个数据库迁移管理库</li>
-<li>Migrations: 另一个迁移管理库</li>
-<li>Doctrine Migrations: 用于Doctrine的迁移库</li>
-</ul>
-<h2 id="0x43、NoSQL"><a href="#0x43、NoSQL" class="headerlink" title="0x43、NoSQL"></a>0x43、NoSQL</h2><ul>
-<li>MongoQB: 一个MongoDB的查询构建库</li>
-<li>Monga: 一个MongoDB的抽象库</li>
-<li>Predis: 一个功能完全的Redis库</li>
-</ul>
-<h2 id="0x44、队列"><a href="#0x44、队列" class="headerlink" title="0x44、队列"></a>0x44、队列</h2><ul>
-<li>Pheanstalk: 一个Beanstalkd客户端库</li>
-<li>PHP AMQP: 一个纯PHP AMQP库</li>
-<li>Thumper: 一个RabbitMQ模式库</li>
-<li>Bernard: 一个多后端的抽象库</li>
-</ul>
-<h2 id="0x45、搜索"><a href="#0x45、搜索" class="headerlink" title="0x45、搜索"></a>0x45、搜索</h2><ul>
-<li>ElasticSearch PHP: 用于ElasticSearch的官方客户端库</li>
-<li>Elastica: 另一个ElasticSearch的客户端库</li>
-<li>Solarium: Solr的客户端库</li>
-<li>SphinxQL query builder: Sphinx搜索引擎的查询库</li>
-</ul>
-<h2 id="0x45、命令行"><a href="#0x45、命令行" class="headerlink" title="0x45、命令行"></a>0x45、命令行</h2><ul>
-<li>Boris: 一个微型的PHP REPL</li>
-<li>PsySH: 另一个PHP REPL</li>
-<li>Pecan: 一个事件驱动，非阻塞内核</li>
-<li>GetOpt: 一个命令行选择解析器</li>
-<li>OptParse: 另一个命令行选择解析器</li>
-<li>Commando: 一个简单的命令行选择解析器</li>
-<li>GetOptionKit: 同样还是一个命令行选择解析器</li>
-<li>Cron Expression: 计算cron运行日期的库</li>
-<li>ShellWrap: 一个简单的命令行包装库</li>
-<li>Hoa Console: 另一个命令行库</li>
-<li>Shunt: 一个在多台远程机器上并行运行的命令行库</li>
-<li>Cilex: 构建命令行工具的小型框架</li>
-</ul>
-<h2 id="0x46、身份验证"><a href="#0x46、身份验证" class="headerlink" title="0x46、身份验证"></a>0x46、身份验证</h2><ul>
-<li>Sentry: 一个身份验证和授权的框架</li>
-<li>Sentry Social: 一个用于社交网络身份验证的库</li>
-<li>Opauth: 一个多供应的身份验证框架</li>
-<li>OAuth2: 一个OAuth2身份验证服务器、资源服务器和客户端库</li>
-<li>OAuth2 Server: 一个OAuth2服务器实现</li>
-<li>PHP oAuthLib: 另一个OAuth库</li>
-<li>TwitterOAuth: 同样是一个OAuth库</li>
-<li>TwitterSDK: 一个经过完全测试的Twitter SDK</li>
-<li>Hawk: 一个Hawk HTTP身份验证库</li>
-<li>HybridAuth: 一个开源的社交登录库</li>
-</ul>
-<h2 id="0x47、标记"><a href="#0x47、标记" class="headerlink" title="0x47、标记"></a>0x47、标记</h2><ul>
-<li>Decoda: 一个轻量级的标记解析库</li>
-<li>PHP Markdown: Markdown解析器</li>
-<li>CommonMark PHP: 一个支持CommonMark spec的Markdown解析器</li>
-<li>Dflydev Markdown: 另一个Markdown解析器</li>
-<li>Parsedown: 同样是一个Markdown解析器</li>
-<li>Ciconia: 一个支持Github风格的Markdown解析器</li>
-<li>Cebe Markdown: 一个快速、可扩展的Markdown解析器</li>
-<li>HTML5 PHP: 一个HTML5解析和序列化的库</li>
-</ul>
-<h2 id="0x48、字符串"><a href="#0x48、字符串" class="headerlink" title="0x48、字符串"></a>0x48、字符串</h2><ul>
-<li>ANSI to HTML5: 一个将ANSI转换为HTML5的库</li>
-<li>Patchwork UTF-8: 处理UTF-8格式字符串的便携库</li>
-<li>Hoa String: 另一个UTF-8格式的字符串库</li>
-<li>Stringy: 一个多字节支持的字符串操纵库</li>
-<li>Color Jizz: 一个处理和转换颜色的库</li>
-<li>UUID: 生成UUIDs的库</li>
-<li>Slugify: 一个将字符串转换为slug格式的库</li>
-<li>Urlify: 一个Django URLify.js的PHP端口</li>
-<li>Text: 一个文本处理库</li>
-<li>SQL Formatter: 一个用于格式化SQL语句的库</li>
-<li>UA Parser: 一个用于解析用户字符串的库</li>
-</ul>
-<h2 id="0x49、数字"><a href="#0x49、数字" class="headerlink" title="0x49、数字"></a>0x49、数字</h2><ul>
-<li>Numbers PHP: 一个处理数字的库</li>
-<li>Math: 处理较大数字的库</li>
-<li>ByteUnits: 一个在二进制和测量系统中解析、格式化和转换字节单位的库</li>
-<li>PHP Units of Measure: 一个测量单位间转换的库</li>
-<li>PHP Conversion: 另一个测量单位间转换的库</li>
-<li>LibPhoneNumber for PHP: PHP实现的Google电话号码处理系统库</li>
-</ul>
-<h2 id="0x50、过滤和验证"><a href="#0x50、过滤和验证" class="headerlink" title="0x50、过滤和验证"></a>0x50、过滤和验证</h2><blockquote>
-<p>用于过滤和验证数据的库</p>
-</blockquote>
-<ul>
-<li>Filterus: 一个简单的PHP过滤库</li>
-<li>Respect Validate: 一个简单的验证库</li>
-<li>Valitron: 另一个数据验证库</li>
-<li>Upload: 一个处理文件上传和验证的库</li>
-<li>DMS Filter: 一个基于标注的过滤库</li>
-<li>MetaYaml: 支持YAML、JSON和XML的一个模式验证库</li>
-<li>ISO-codes: 验证不同ISO和ZIP编码的库</li>
-</ul>
-<h2 id="0x51、REST和API"><a href="#0x51、REST和API" class="headerlink" title="0x51、REST和API"></a>0x51、REST和API</h2><ul>
-<li>Apigility: 一个使用Zend Framework2构建的API构建器</li>
-<li>Hateoas: 一个HATEOAS REST的web服务库</li>
-<li>HAL: 一个超文本应用语言（HAL）构建库</li>
-<li>Negotiation: 一个内容协商库</li>
-<li>Drest: 一个将Doctrine实体展现为REST资源结点的库</li>
-<li>Restler: 一个将PHP方法展现为RESTful web API的轻量级框架</li>
-</ul>
-<h2 id="0x52、缓存"><a href="#0x52、缓存" class="headerlink" title="0x52、缓存"></a>0x52、缓存</h2><ul>
-<li>Alternative PHP Cache (APC): PHP的开源操作码缓存</li>
-<li>Cache: 一个缓存库</li>
-<li>Stash: 另一个缓存库</li>
-</ul>
-<h2 id="0x53、数据结构和存储"><a href="#0x53、数据结构和存储" class="headerlink" title="0x53、数据结构和存储"></a>0x53、数据结构和存储</h2><ul>
-<li>Ardent: 一个数据结构库</li>
-<li>PHP Collections: 一个简单的集合库</li>
-<li>Serializer: 用于序列化和反序列化数据的库</li>
-<li>PHP Object Storage: 一个用于对象存储的库</li>
-<li>Fractal: 一个将复杂数据结构转换为JSON输出的库</li>
-<li>Totem: 一个管理和创建数据修改集的库</li>
-<li>PINQ: PHP实时Linq库</li>
-<li>JsonMapper: 一个将内嵌JSON结构映射到PHP类上的库</li>
-</ul>
-<h2 id="0x54、通知"><a href="#0x54、通知" class="headerlink" title="0x54、通知"></a>0x54、通知</h2><ul>
-<li>Nod: 一个通知库</li>
-<li>Notificato: 一个处理推送消息的库</li>
-<li>Notification Pusher: 设备推送通知的独立库</li>
-<li>Notificator: 一个轻量级通知库</li>
-</ul>
-<h2 id="0x55、部署"><a href="#0x55、部署" class="headerlink" title="0x55、部署"></a>0x55、部署</h2><ul>
-<li>Pomander: 一个PHP应用的部署工具</li>
-<li>Rocketeer: PHP的快速和简单部署器</li>
-<li>Envoy: 使用PHP运行SSH任务的工具</li>
-<li>Plum: 一个部署库</li>
-</ul>
-<h2 id="0x56、第三方API"><a href="#0x56、第三方API" class="headerlink" title="0x56、第三方API"></a>0x56、第三方API</h2><ul>
-<li>Amazon Web Service SDK: PHP AWS SDK官方库</li>
-<li>S3 Stream Wrapper: Amazon S3的流包装库</li>
-<li>Stripe: 官方的Stripe PHP库</li>
-<li>Campaign Monitor: 官方的Campaign Monitor PHP库</li>
-<li>Digital Ocean: 一个与Digital Ocean API交互的库</li>
-<li>Github: 一个与Github API交互的库</li>
-<li>PHP Github API: 另一个与Github API交互的库</li>
-<li>Twitter OAuth: 一个与Twitter’s OAuth工作流交互的库</li>
-<li>Twitter REST: 一个与Twitter’s REST API交互的库</li>
-<li>Dropbox SDK: 官方的PHP Dropbox SDK库</li>
-<li>Twilio: 官方的Twilio PHP REST API</li>
-<li>Mailgun: 官方的Mailgun PHP API</li>
-</ul>
-<h2 id="0x57、扩展"><a href="#0x57、扩展" class="headerlink" title="0x57、扩展"></a>0x57、扩展</h2><ul>
-<li>Zephir: 用于开发PHP扩展的一种在PHP和C++间的编译语言</li>
-<li>PHP CPP: 一个用于开发PHP扩展的C++库</li>
-</ul>
-<h2 id="0x58、PHP安装"><a href="#0x58、PHP安装" class="headerlink" title="0x58、PHP安装"></a>0x58、PHP安装</h2><ul>
-<li>HomeBrew: OSX的包管理器</li>
-<li>HomeBrew PHP:一个HomeBrew的PHP接头</li>
-<li>PHP OSX: 用于OSX的PHP安装器</li>
-<li>PHP Brew: 一个PHP的版本管理和安装器</li>
-<li>PHP Env: 一个PHP的版本管理器</li>
-<li>PHP Switch: 另一个PHP的版本管理器</li>
-<li>PHP Build: 一个PHP的版本安装器</li>
-<li>VirtPHP: 一个用来创建和管理独立PHP开发环境的工具</li>
-</ul>
-<h2 id="0x59、开发环境"><a href="#0x59、开发环境" class="headerlink" title="0x59、开发环境"></a>0x59、开发环境</h2><ul>
-<li>Vagrant: 一个便携式的开发环境工具</li>
-<li>Ansible: 一个非常简单的编制框架</li>
-<li>Puppet: 一个服务器自动化框架和应用</li>
-<li>PuPHPet: 用于构建PHP开发虚拟机的Web工具</li>
-<li>Protobox: 另一个用于构建PHP开发虚拟机的Web工具</li>
-<li>Phansible: 一个用Ansible构建PHP开发开发虚拟机的Web工具</li>
-</ul>
-<h2 id="0x60、集成开发环境IDE"><a href="#0x60、集成开发环境IDE" class="headerlink" title="0x60、集成开发环境IDE"></a>0x60、集成开发环境IDE</h2><ul>
-<li>Netbeans: 支持PHP和HTML5的IDE环境</li>
-<li>Eclipse for PHP Developers : 基于Eclipse平台的PHP IDE</li>
-<li>PhpStorm : 商业PHP IDE</li>
-</ul>
-<h2 id="0x61、Web应用"><a href="#0x61、Web应用" class="headerlink" title="0x61、Web应用"></a>0x61、Web应用</h2><ul>
-<li>3V4L: 一个在线的PHP内核</li>
-<li>DBV: 一个数据库版本控制应用</li>
-<li>PHP Queue: 一个管理队列后端的应用</li>
-<li>Composer as a Service: 作为一个zip文件下载Composer包的工具</li>
-<li>MailCatcher: 一个抓取和浏览邮件的Web工具</li>
-</ul>
-<h2 id="0x62、源码解析"><a href="#0x62、源码解析" class="headerlink" title="0x62、源码解析"></a>0x62、源码解析</h2>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2017/09/28/2017/09-28-开机自检/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="hackfox">
-      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hackfox">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2017/09/28/2017/09-28-开机自检/" class="post-title-link" itemprop="url">系统开机自检</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2017-09-28 15:24:23" itemprop="dateCreated datePublished" datetime="2017-09-28T15:24:23+08:00">2017-09-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-09 18:26:29" itemprop="dateModified" datetime="2019-09-09T18:26:29+08:00">2019-09-09</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/操作系统/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="0x00、关于开机自动检测硬盘的原因"><a href="#0x00、关于开机自动检测硬盘的原因" class="headerlink" title="0x00、关于开机自动检测硬盘的原因"></a>0x00、关于开机自动检测硬盘的原因</h2><ul>
-<li>第一种：是你非法关机造成的，比如直接断电的情况。</li>
-<li>第二种：是和硬盘的分区格式有关，FAT32格式在非法关机后会在开机时要求检测硬盘，而且必须检测完毕才不会在下次启动时重新检测。系统有一个文件中记录了检测是否结束的信息，有时即使检测完成了也会因为这个文件没有更新而在下次开机时重新检测。</li>
-<li>第三种：当硬盘出现坏道也会出现开机自动检测硬盘。</li>
-</ul>
-<h2 id="0x01、关于取消开机自动检测硬盘的方法"><a href="#0x01、关于取消开机自动检测硬盘的方法" class="headerlink" title="0x01、关于取消开机自动检测硬盘的方法"></a>0x01、关于取消开机自动检测硬盘的方法</h2><ul>
-<li>方法一： 如果分区是FAT32格式，将其转换成NTFS，方法是在命令提示符下输入：convert X: /fs:ntfs</li>
-<li>方法二： 如果是非正常的关机，然后开机检测时又跳过了，每一次都会运行的。如果不是这个原因的话，您就要检查一下D盘状态是否正常，修正一下硬盘的错误。方法为 “开始”→”运行”，在窗口中输入”chkdskX:/f”(x为盘符)，这个命令可以检查文件系统中的逻辑错误，并进行修复；然后启动”磁盘碎片整理” 对相应的磁盘进行碎片整理，可以消除再次的磁盘扫描。如果还是不行，就可能是硬盘出现了坏道，最简单的方法是把D盘的数据备份一下，然后格式化D盘，就可 以正常使用了。</li>
-<li>方法三：打开”我的电脑”－右键点击X盘选择”属性”－选择”工具”－”查错”中点”开始检查”－选中”自动修复文件系统错误”和”扫描并试图恢复坏扇区”，然后点”开始”。</li>
-<li>方法四：我们知道系统之所以要对磁盘进行扫描是因为在注册表中设置了”脏”字节。在注册表中找到以下分支:</li>
-<li>方法五：如果是硬盘出现坏道，请使用磁盘修复工具进行修复，如使用HDDRegenerate等。</li>
-<li>方法六：一定是你在BIOS设置中选择了每次开机都要检测硬盘,所以才这样,和你的电脑配置是没有关系的。解决方法在开机后按DEL进入BIOS选 择Quick Power On Self Test（快速加电自检测），你的一定设为了Enabled了,选择Disabled，将其关闭就行了。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -3852,12 +2985,12 @@ HTML代码/数据库安全处理字符
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -3890,10 +3023,30 @@ HTML代码/数据库安全处理字符
   </span>
   <span class="author" itemprop="copyrightHolder">hackfox</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
 
 
 
@@ -3911,8 +3064,8 @@ HTML代码/数据库安全处理字符
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script>
-<script src="/js/schemes/muse.js"></script>
-<script src="/js/next-boot.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
 
 
 
@@ -3921,6 +3074,8 @@ HTML代码/数据库安全处理字符
 
 
 
+  <script src="/js/local-search.js"></script>
+
 
 
 
@@ -3935,6 +3090,7 @@ HTML代码/数据库安全处理字符
   
 
   
+
 
 </body>
 </html>

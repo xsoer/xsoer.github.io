@@ -14,24 +14,26 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="0x00、安装lzrz 1.远程连接的服务器端必须要有sz、rz这两个工具，如果没有，可以执行安装。如在CentOS上安装的命令为：sudo yum install lrzsz  2.本地安装lzrz工具。  brew install lrzsz 0x01、本地下载脚本 1.由于sz,rz是基于ZMODEM/YMODEM/XMODEM协议的，所以安装iterm2-zmodemcd /usr/loc">
+  <meta name="description" content="0x00、安装lzrz 1.远程连接的服务器端必须要有sz、rz这两个工具，如果没有，可以执行安装。如在CentOS上安装的命令为： 1sudo yum install lrzsz  2.本地安装lzrz工具。   1brew install lrzsz  0x01、本地下载脚本 1.由于sz,rz是基于ZMODEM/YMODEM/XMODEM协议的，所以安装iterm2-zmodem1234cd">
 <meta name="keywords" content="工具">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iterm2配置lzrz">
 <meta property="og:url" content="https://xsoer.github.io/2019/03/09/2019/03-09-iterm2配置lzrz/index.html">
 <meta property="og:site_name" content="hackfox">
-<meta property="og:description" content="0x00、安装lzrz 1.远程连接的服务器端必须要有sz、rz这两个工具，如果没有，可以执行安装。如在CentOS上安装的命令为：sudo yum install lrzsz  2.本地安装lzrz工具。  brew install lrzsz 0x01、本地下载脚本 1.由于sz,rz是基于ZMODEM/YMODEM/XMODEM协议的，所以安装iterm2-zmodemcd /usr/loc">
+<meta property="og:description" content="0x00、安装lzrz 1.远程连接的服务器端必须要有sz、rz这两个工具，如果没有，可以执行安装。如在CentOS上安装的命令为： 1sudo yum install lrzsz  2.本地安装lzrz工具。   1brew install lrzsz  0x01、本地下载脚本 1.由于sz,rz是基于ZMODEM/YMODEM/XMODEM协议的，所以安装iterm2-zmodem1234cd">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2020-04-18T13:38:54.014Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iterm2配置lzrz">
-<meta name="twitter:description" content="0x00、安装lzrz 1.远程连接的服务器端必须要有sz、rz这两个工具，如果没有，可以执行安装。如在CentOS上安装的命令为：sudo yum install lrzsz  2.本地安装lzrz工具。  brew install lrzsz 0x01、本地下载脚本 1.由于sz,rz是基于ZMODEM/YMODEM/XMODEM协议的，所以安装iterm2-zmodemcd /usr/loc">
+<meta name="twitter:description" content="0x00、安装lzrz 1.远程连接的服务器端必须要有sz、rz这两个工具，如果没有，可以执行安装。如在CentOS上安装的命令为： 1sudo yum install lrzsz  2.本地安装lzrz工具。   1brew install lrzsz  0x01、本地下载脚本 1.由于sz,rz是基于ZMODEM/YMODEM/XMODEM协议的，所以安装iterm2-zmodem1234cd">
 
 <link rel="canonical" href="https://xsoer.github.io/2019/03/09/2019/03-09-iterm2配置lzrz/">
 
@@ -48,6 +50,22 @@
 
   <title>iterm2配置lzrz | hackfox</title>
   
+    <script>
+      function sendPageView() {
+        if (CONFIG.hostname !== location.hostname) return;
+        var uid = localStorage.getItem('uid') || (Math.random() + '.' + Math.random());
+        localStorage.setItem('uid', uid);
+        navigator.sendBeacon('https://www.google-analytics.com/collect', new URLSearchParams({
+          v  : 1,
+          tid: 'UA-114671402-1',
+          cid: uid,
+          t  : 'pageview',
+          dp : encodeURIComponent(location.pathname)
+        }));
+      }
+      document.addEventListener('pjax:complete', sendPageView);
+      sendPageView();
+    </script>
 
 
 
@@ -105,6 +123,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -124,11 +143,38 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -138,6 +184,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
 
 
     <main class="main">
@@ -195,6 +242,13 @@
             </span>
 
           
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
 
         </div>
       </header>
@@ -206,29 +260,30 @@
 
       
         <h2 id="0x00、安装lzrz"><a href="#0x00、安装lzrz" class="headerlink" title="0x00、安装lzrz"></a>0x00、安装lzrz</h2><ul>
-<li>1.远程连接的服务器端必须要有sz、rz这两个工具，如果没有，可以执行安装。如在CentOS上安装的命令为：<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> yum <span class="token function">install</span> lrzsz</code></pre>
+<li><p>1.远程连接的服务器端必须要有sz、rz这两个工具，如果没有，可以执行安装。如在CentOS上安装的命令为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install lrzsz</span><br></pre></td></tr></table></figure>
 </li>
-<li>2.本地安装lzrz工具。</li>
+<li><p>2.本地安装lzrz工具。</p>
+</li>
 </ul>
-<pre class=" language-bash"><code class="language-bash">brew <span class="token function">install</span> lrzsz</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install lrzsz</span><br></pre></td></tr></table></figure>
+
 <h2 id="0x01、本地下载脚本"><a href="#0x01、本地下载脚本" class="headerlink" title="0x01、本地下载脚本"></a>0x01、本地下载脚本</h2><ul>
-<li>1.由于sz,rz是基于ZMODEM/YMODEM/XMODEM协议的，所以安装iterm2-zmodem<pre class=" language-bash"><code class="language-bash"><span class="token function">cd</span> /usr/local/bin
-<span class="token function">sudo</span> <span class="token function">wget</span> https://raw.github.com/mmastrac/iterm2-zmodem/master/iterm2-send-zmodem.sh
-<span class="token function">sudo</span> <span class="token function">wget</span> https://raw.github.com/mmastrac/iterm2-zmodem/master/iterm2-recv-zmodem.sh
-<span class="token function">sudo</span> <span class="token function">chmod</span> 777 /usr/local/bin/iterm2-*</code></pre>
+<li>1.由于sz,rz是基于ZMODEM/YMODEM/XMODEM协议的，所以安装iterm2-zmodem<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/bin</span><br><span class="line">sudo wget https://raw.github.com/mmastrac/iterm2-zmodem/master/iterm2-send-zmodem.sh</span><br><span class="line">sudo wget https://raw.github.com/mmastrac/iterm2-zmodem/master/iterm2-recv-zmodem.sh</span><br><span class="line">sudo chmod 777 /usr/<span class="built_in">local</span>/bin/iterm2-*</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 <h2 id="0x02、配置iterm2"><a href="#0x02、配置iterm2" class="headerlink" title="0x02、配置iterm2"></a>0x02、配置iterm2</h2><ul>
-<li>1.打开Item2，点击preferences → profiles，选择某个profile，如Default，之后继续选择advanced → triggers，添加编辑添加如下triggers：<br>(Profiles -&gt; Open Profiles -&gt; Edit Profies -&gt; Advanced -&gt; Triggers -&gt; Edit )</li>
-<li>2.rz配置<pre class=" language-bash"><code class="language-bash">Regular Expression: \*\*B0100
-Action: Run Silent Coprocess
-Parameters: /usr/local/bin/iterm2-send-zmodem.sh</code></pre>
+<li><p>1.打开Item2，点击preferences → profiles，选择某个profile，如Default，之后继续选择advanced → triggers，添加编辑添加如下triggers：<br>(Profiles -&gt; Open Profiles -&gt; Edit Profies -&gt; Advanced -&gt; Triggers -&gt; Edit )</p>
 </li>
-<li>3.sz配置</li>
+<li><p>2.rz配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Regular Expression: \*\*B0100</span><br><span class="line">Action: Run Silent Coprocess</span><br><span class="line">Parameters: /usr/<span class="built_in">local</span>/bin/iterm2-send-zmodem.sh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3.sz配置</p>
+</li>
 </ul>
-<pre class=" language-bash"><code class="language-bash">Regular Expression: \*\*B00000000000000
-Action: Run Silent Coprocess
-Parameters: /usr/local/bin/iterm2-recv-zmodem.sh</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Regular Expression: \*\*B00000000000000</span><br><span class="line">Action: Run Silent Coprocess</span><br><span class="line">Parameters: /usr/<span class="built_in">local</span>/bin/iterm2-recv-zmodem.sh</span><br></pre></td></tr></table></figure>
+
 <h2 id="0x03、配置完毕，进行尝试。"><a href="#0x03、配置完毕，进行尝试。" class="headerlink" title="0x03、配置完毕，进行尝试。"></a>0x03、配置完毕，进行尝试。</h2>
     </div>
 
@@ -332,12 +387,12 @@ Parameters: /usr/local/bin/iterm2-recv-zmodem.sh</code></pre>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -370,10 +425,30 @@ Parameters: /usr/local/bin/iterm2-recv-zmodem.sh</code></pre>
   </span>
   <span class="author" itemprop="copyrightHolder">hackfox</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
 
 
 
@@ -391,8 +466,8 @@ Parameters: /usr/local/bin/iterm2-recv-zmodem.sh</code></pre>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script>
-<script src="/js/schemes/muse.js"></script>
-<script src="/js/next-boot.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
 
 
 
@@ -401,6 +476,8 @@ Parameters: /usr/local/bin/iterm2-recv-zmodem.sh</code></pre>
 
 
 
+  <script src="/js/local-search.js"></script>
+
 
 
 
@@ -415,6 +492,7 @@ Parameters: /usr/local/bin/iterm2-recv-zmodem.sh</code></pre>
   
 
   
+
 
 </body>
 </html>
