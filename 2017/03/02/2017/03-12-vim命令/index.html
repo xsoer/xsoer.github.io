@@ -19,21 +19,21 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="向下添加一行 1o  向下翻页 1ctrl+f  向上翻页 1ctrl+b  下一个词 1w  行尾 1$  第一个字符行首 1^  行首 10  撤销 1u  文件首 1gg  文件尾 1G  屏首 1ctrl+h  屏中 1ctrl+m  屏尾 1ctrl+l">
+  <meta name="description" content="向下添加一行 1o  向下翻页 1ctrl+f  向上翻页 1ctrl+b">
 <meta name="keywords" content="VIM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VIM使用文档总结">
 <meta property="og:url" content="https://xsoer.github.io/2017/03/02/2017/03-12-vim命令/index.html">
 <meta property="og:site_name" content="hackfox">
-<meta property="og:description" content="向下添加一行 1o  向下翻页 1ctrl+f  向上翻页 1ctrl+b  下一个词 1w  行尾 1$  第一个字符行首 1^  行首 10  撤销 1u  文件首 1gg  文件尾 1G  屏首 1ctrl+h  屏中 1ctrl+m  屏尾 1ctrl+l">
+<meta property="og:description" content="向下添加一行 1o  向下翻页 1ctrl+f  向上翻页 1ctrl+b">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-19T05:35:35.090Z">
+<meta property="og:updated_time" content="2020-06-09T12:49:45.468Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VIM使用文档总结">
-<meta name="twitter:description" content="向下添加一行 1o  向下翻页 1ctrl+f  向上翻页 1ctrl+b  下一个词 1w  行尾 1$  第一个字符行首 1^  行首 10  撤销 1u  文件首 1gg  文件尾 1G  屏首 1ctrl+h  屏中 1ctrl+m  屏尾 1ctrl+l">
+<meta name="twitter:description" content="向下添加一行 1o  向下翻页 1ctrl+f  向上翻页 1ctrl+b">
 
 <link rel="canonical" href="https://xsoer.github.io/2017/03/02/2017/03-12-vim命令/">
 
@@ -204,7 +204,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="hackfox">
-      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+      <meta itemprop="description" content="架构、AI、python、rust">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -229,7 +229,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-19 13:35:35" itemprop="dateModified" datetime="2020-04-19T13:35:35+08:00">2020-04-19</time>
+                <time title="修改时间：2020-06-09 20:49:45" itemprop="dateModified" datetime="2020-06-09T20:49:45+08:00">2020-06-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -268,7 +268,11 @@
 </li>
 <li><p>向上翻页</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctrl+b</span><br></pre></td></tr></table></figure>
+
 </li>
+</ul>
+<a id="more"></a>
+<ul>
 <li><p>下一个词</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w</span><br></pre></td></tr></table></figure>
 </li>
@@ -388,7 +392,7 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <p class="site-author-name" itemprop="name">hackfox</p>
-  <div class="site-description" itemprop="description">架构、AI、大数据、数学、python、go</div>
+  <div class="site-description" itemprop="description">架构、AI、python、rust</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -439,7 +443,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">hackfox</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
         

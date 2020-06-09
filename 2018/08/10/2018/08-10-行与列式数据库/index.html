@@ -19,16 +19,16 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="行与列式数据库 作者：codehackfox@gmail.com 时间：2018-08-10 13:23:49  0x00、简介行式数据库 平常用的结构化关系型数据库，比如mysql、sqlserver等 一行为一条数据，进行记录存储 可以进行join查询，可以进行笛卡尔积运算  列式数据库 列式数据库是以列相关存储架构进行数据存储的数据库，主要适合于批量数据处理和即时查询。相对应的是行式数据库，">
+  <meta name="description" content="行与列式数据库 作者：codehackfox@gmail.com 时间：2018-08-10 13:23:49  0x00、简介行式数据库 平常用的结构化关系型数据库，比如mysql、sqlserver等 一行为一条数据，进行记录存储 可以进行join查询，可以进行笛卡尔积运算">
 <meta name="keywords" content="数据库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="行与列式数据库">
 <meta property="og:url" content="https://xsoer.github.io/2018/08/10/2018/08-10-行与列式数据库/index.html">
 <meta property="og:site_name" content="hackfox">
-<meta property="og:description" content="行与列式数据库 作者：codehackfox@gmail.com 时间：2018-08-10 13:23:49  0x00、简介行式数据库 平常用的结构化关系型数据库，比如mysql、sqlserver等 一行为一条数据，进行记录存储 可以进行join查询，可以进行笛卡尔积运算  列式数据库 列式数据库是以列相关存储架构进行数据存储的数据库，主要适合于批量数据处理和即时查询。相对应的是行式数据库，">
+<meta property="og:description" content="行与列式数据库 作者：codehackfox@gmail.com 时间：2018-08-10 13:23:49  0x00、简介行式数据库 平常用的结构化关系型数据库，比如mysql、sqlserver等 一行为一条数据，进行记录存储 可以进行join查询，可以进行笛卡尔积运算">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://xsoer.github.io/assets/images/2018/13022AD3-DD16-4B84-9099-C03E4F10533D.png">
 <meta property="og:image" content="https://xsoer.github.io/assets/images/2018/0CD4C6E1-CAB6-44A4-8875-DA4F1C6FCF57.png">
@@ -36,10 +36,10 @@
 <meta property="og:image" content="https://xsoer.github.io/assets/images/2018/FA6212EF-26D1-4AB7-B52C-343F8105A3D6.jpg">
 <meta property="og:image" content="https://xsoer.github.io/assets/images/2018/2D9E6EC3-D366-4087-A92F-C9CF9A2BC238.jpg">
 <meta property="og:image" content="https://xsoer.github.io/assets/images/2018/CA0D0CF0-F150-47DD-A98F-8BAB0D9B0A02.jpg">
-<meta property="og:updated_time" content="2019-09-09T07:15:22.949Z">
+<meta property="og:updated_time" content="2020-06-09T12:49:24.033Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="行与列式数据库">
-<meta name="twitter:description" content="行与列式数据库 作者：codehackfox@gmail.com 时间：2018-08-10 13:23:49  0x00、简介行式数据库 平常用的结构化关系型数据库，比如mysql、sqlserver等 一行为一条数据，进行记录存储 可以进行join查询，可以进行笛卡尔积运算  列式数据库 列式数据库是以列相关存储架构进行数据存储的数据库，主要适合于批量数据处理和即时查询。相对应的是行式数据库，">
+<meta name="twitter:description" content="行与列式数据库 作者：codehackfox@gmail.com 时间：2018-08-10 13:23:49  0x00、简介行式数据库 平常用的结构化关系型数据库，比如mysql、sqlserver等 一行为一条数据，进行记录存储 可以进行join查询，可以进行笛卡尔积运算">
 <meta name="twitter:image" content="https://xsoer.github.io/assets/images/2018/13022AD3-DD16-4B84-9099-C03E4F10533D.png">
 
 <link rel="canonical" href="https://xsoer.github.io/2018/08/10/2018/08-10-行与列式数据库/">
@@ -211,7 +211,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="hackfox">
-      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+      <meta itemprop="description" content="架构、AI、python、rust">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -236,7 +236,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-09 15:15:22" itemprop="dateModified" datetime="2019-09-09T15:15:22+08:00">2019-09-09</time>
+                <time title="修改时间：2020-06-09 20:49:24" itemprop="dateModified" datetime="2020-06-09T20:49:24+08:00">2020-06-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -273,9 +273,8 @@
 <h2 id="0x00、简介"><a href="#0x00、简介" class="headerlink" title="0x00、简介"></a>0x00、简介</h2><h5 id="行式数据库"><a href="#行式数据库" class="headerlink" title="行式数据库"></a>行式数据库</h5><ul>
 <li>平常用的结构化关系型数据库，比如mysql、sqlserver等</li>
 <li>一行为一条数据，进行记录存储</li>
-<li>可以进行join查询，可以进行笛卡尔积运算</li>
-</ul>
-<h5 id="列式数据库"><a href="#列式数据库" class="headerlink" title="列式数据库"></a>列式数据库</h5><ul>
+<li>可以进行join查询，可以进行笛卡尔积运算<a id="more"></a>
+<h5 id="列式数据库"><a href="#列式数据库" class="headerlink" title="列式数据库"></a>列式数据库</h5></li>
 <li>列式数据库是以列相关存储架构进行数据存储的数据库，主要适合于批量数据处理和即时查询。相对应的是行式数据库，数据以行相关的存储体系架构进行空间分配，主要适合于小批量的数据处理，常用于联机事务型数据处理。</li>
 <li>特点<ul>
 <li>因为硬盘寻址时间相较于计算机上其他部件的运行速度来说不是一般的慢，所以常用相同工作负载下的硬盘访问性能来比较行数据库和列数据库。通常，顺序读取数据要比随机访问更快。而且，硬盘寻址时间的提升比起CPU速度的进步要慢得多 (参看 摩尔定律)，在使用硬盘作为存储媒介的系统上这种情况很可能还会持续一段时间。下面简单罗列了一些选择行数据库还是列数据库的权衡依据。当然，如果能够把数据全放在内存中，那么使用内存数据库性能会更好。<ul>
@@ -424,7 +423,7 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <p class="site-author-name" itemprop="name">hackfox</p>
-  <div class="site-description" itemprop="description">架构、AI、大数据、数学、python、go</div>
+  <div class="site-description" itemprop="description">架构、AI、python、rust</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -475,7 +474,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">hackfox</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
         

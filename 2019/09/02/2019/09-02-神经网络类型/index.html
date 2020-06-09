@@ -19,21 +19,21 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="0x00、大体类型 1.卷积神经网络 2.循环神经网络 3.深度信念网络 4.生成对抗网络 5.深度强化学习  0x01、卷积神经网络 卷积神经网络属于前面介绍的前馈神经网络之一，它对于图形图像的处理有着独特的效果，在结构上至少包括卷积层和池化层 目前卷积神经网络主要应用于影像中物体检测和识别、视频理解，除此之外，卷积神经网络还被应用于自然语言处理 代表性的卷积神经网络包括LeNet-5、VGG、">
+  <meta name="description" content="0x00、大体类型 1.卷积神经网络  2.循环神经网络  3.深度信念网络  4.生成对抗网络  5.深度强化学习">
 <meta name="keywords" content="AI">
 <meta property="og:type" content="article">
 <meta property="og:title" content="神经网络类型">
 <meta property="og:url" content="https://xsoer.github.io/2019/09/02/2019/09-02-神经网络类型/index.html">
 <meta property="og:site_name" content="hackfox">
-<meta property="og:description" content="0x00、大体类型 1.卷积神经网络 2.循环神经网络 3.深度信念网络 4.生成对抗网络 5.深度强化学习  0x01、卷积神经网络 卷积神经网络属于前面介绍的前馈神经网络之一，它对于图形图像的处理有着独特的效果，在结构上至少包括卷积层和池化层 目前卷积神经网络主要应用于影像中物体检测和识别、视频理解，除此之外，卷积神经网络还被应用于自然语言处理 代表性的卷积神经网络包括LeNet-5、VGG、">
+<meta property="og:description" content="0x00、大体类型 1.卷积神经网络  2.循环神经网络  3.深度信念网络  4.生成对抗网络  5.深度强化学习">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-09T07:00:43.192Z">
+<meta property="og:updated_time" content="2020-06-09T12:48:38.109Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="神经网络类型">
-<meta name="twitter:description" content="0x00、大体类型 1.卷积神经网络 2.循环神经网络 3.深度信念网络 4.生成对抗网络 5.深度强化学习  0x01、卷积神经网络 卷积神经网络属于前面介绍的前馈神经网络之一，它对于图形图像的处理有着独特的效果，在结构上至少包括卷积层和池化层 目前卷积神经网络主要应用于影像中物体检测和识别、视频理解，除此之外，卷积神经网络还被应用于自然语言处理 代表性的卷积神经网络包括LeNet-5、VGG、">
+<meta name="twitter:description" content="0x00、大体类型 1.卷积神经网络  2.循环神经网络  3.深度信念网络  4.生成对抗网络  5.深度强化学习">
 
 <link rel="canonical" href="https://xsoer.github.io/2019/09/02/2019/09-02-神经网络类型/">
 
@@ -204,7 +204,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="hackfox">
-      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+      <meta itemprop="description" content="架构、AI、python、rust">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -229,7 +229,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-09 15:00:43" itemprop="dateModified" datetime="2019-09-09T15:00:43+08:00">2019-09-09</time>
+                <time title="修改时间：2020-06-09 20:48:38" itemprop="dateModified" datetime="2020-06-09T20:48:38+08:00">2020-06-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -260,16 +260,23 @@
 
       
         <h2 id="0x00、大体类型"><a href="#0x00、大体类型" class="headerlink" title="0x00、大体类型"></a>0x00、大体类型</h2><ul>
-<li>1.卷积神经网络</li>
-<li>2.循环神经网络</li>
-<li>3.深度信念网络</li>
-<li>4.生成对抗网络</li>
-<li>5.深度强化学习</li>
-</ul>
-<h2 id="0x01、卷积神经网络"><a href="#0x01、卷积神经网络" class="headerlink" title="0x01、卷积神经网络"></a>0x01、卷积神经网络</h2><ul>
-<li>卷积神经网络属于前面介绍的前馈神经网络之一，它对于图形图像的处理有着独特的效果，在结构上至少包括卷积层和池化层</li>
-<li>目前卷积神经网络主要应用于影像中物体检测和识别、视频理解，除此之外，卷积神经网络还被应用于自然语言处理</li>
-<li>代表性的卷积神经网络包括LeNet-5、VGG、AlexNet 等</li>
+<li><p>1.卷积神经网络</p>
+</li>
+<li><p>2.循环神经网络</p>
+</li>
+<li><p>3.深度信念网络</p>
+</li>
+<li><p>4.生成对抗网络</p>
+</li>
+<li><p>5.深度强化学习</p>
+<a id="more"></a>
+<h2 id="0x01、卷积神经网络"><a href="#0x01、卷积神经网络" class="headerlink" title="0x01、卷积神经网络"></a>0x01、卷积神经网络</h2></li>
+<li><p>卷积神经网络属于前面介绍的前馈神经网络之一，它对于图形图像的处理有着独特的效果，在结构上至少包括卷积层和池化层</p>
+</li>
+<li><p>目前卷积神经网络主要应用于影像中物体检测和识别、视频理解，除此之外，卷积神经网络还被应用于自然语言处理</p>
+</li>
+<li><p>代表性的卷积神经网络包括LeNet-5、VGG、AlexNet 等</p>
+</li>
 </ul>
 <h2 id="0x02、循环神经网络"><a href="#0x02、循环神经网络" class="headerlink" title="0x02、循环神经网络"></a>0x02、循环神经网络</h2><ul>
 <li>不同于卷积神经网络，循环神经网络更擅长于对语言文本的处理。文本的分析处理，更看重时序上的输入与上下文的联系。循环神经网络的内部记忆结构，刚好满足这样的需求场景，因此在文本处理方面循环神经网络更胜一筹。</li>
@@ -380,7 +387,7 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <p class="site-author-name" itemprop="name">hackfox</p>
-  <div class="site-description" itemprop="description">架构、AI、大数据、数学、python、go</div>
+  <div class="site-description" itemprop="description">架构、AI、python、rust</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -431,7 +438,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">hackfox</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
         

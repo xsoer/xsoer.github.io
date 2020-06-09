@@ -19,19 +19,19 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="架构、AI、大数据、数学、python、go">
+  <meta name="description" content="架构、AI、python、rust">
 <meta property="og:type" content="website">
 <meta property="og:title" content="hackfox">
 <meta property="og:url" content="https://xsoer.github.io/page/3/index.html">
 <meta property="og:site_name" content="hackfox">
-<meta property="og:description" content="架构、AI、大数据、数学、python、go">
+<meta property="og:description" content="架构、AI、python、rust">
 <meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hackfox">
-<meta name="twitter:description" content="架构、AI、大数据、数学、python、go">
+<meta name="twitter:description" content="架构、AI、python、rust">
 
 <link rel="canonical" href="https://xsoer.github.io/page/3/">
 
@@ -201,7 +201,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="hackfox">
-      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+      <meta itemprop="description" content="架构、AI、python、rust">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -227,7 +227,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-09 15:15:22" itemprop="dateModified" datetime="2019-09-09T15:15:22+08:00">2019-09-09</time>
+                <time title="修改时间：2020-06-09 20:49:24" itemprop="dateModified" datetime="2020-06-09T20:49:24+08:00">2020-06-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -257,68 +257,15 @@
 <h2 id="0x00、简介"><a href="#0x00、简介" class="headerlink" title="0x00、简介"></a>0x00、简介</h2><h5 id="行式数据库"><a href="#行式数据库" class="headerlink" title="行式数据库"></a>行式数据库</h5><ul>
 <li>平常用的结构化关系型数据库，比如mysql、sqlserver等</li>
 <li>一行为一条数据，进行记录存储</li>
-<li>可以进行join查询，可以进行笛卡尔积运算</li>
-</ul>
-<h5 id="列式数据库"><a href="#列式数据库" class="headerlink" title="列式数据库"></a>列式数据库</h5><ul>
-<li>列式数据库是以列相关存储架构进行数据存储的数据库，主要适合于批量数据处理和即时查询。相对应的是行式数据库，数据以行相关的存储体系架构进行空间分配，主要适合于小批量的数据处理，常用于联机事务型数据处理。</li>
-<li>特点<ul>
-<li>因为硬盘寻址时间相较于计算机上其他部件的运行速度来说不是一般的慢，所以常用相同工作负载下的硬盘访问性能来比较行数据库和列数据库。通常，顺序读取数据要比随机访问更快。而且，硬盘寻址时间的提升比起CPU速度的进步要慢得多 (参看 摩尔定律)，在使用硬盘作为存储媒介的系统上这种情况很可能还会持续一段时间。下面简单罗列了一些选择行数据库还是列数据库的权衡依据。当然，如果能够把数据全放在内存中，那么使用内存数据库性能会更好。<ul>
-<li>1.在只需要根据某几列来聚合数据的时候按列的数据组织方式更有效。因为这样只需要读取一部分数据，要比读取全部数据更快。</li>
-<li>2.当只需要修改某一列值的时候按列的数据组织方式更有效。因为可以直接找到某列数据并修改，而与行中的其他列无关。</li>
-<li>3.当需要某行的多列数据的时候按行的数据组织方式更有效。当行中数据不是太多的情况下一次硬盘寻址就可以获得该行的所有数据。</li>
-<li>4.在新增行数据的时候，如果各列都有值，那么按行的数据组织方式会更有效，因为只需要一次硬盘寻址就可以写入整行的全部数据。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h5 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h5><ul>
-<li>面向行的数据存储架构更适用于OLTP-频繁交互事务的场景。</li>
-<li>面向列的数据存储架构更适用于OLAP-(如数据仓库)这样在海量数据（(可能达到 terabyte规模)）中进行有限复杂查询的场景。</li>
-</ul>
-<h2 id="0x01、比较"><a href="#0x01、比较" class="headerlink" title="0x01、比较"></a>0x01、比较</h2><ul>
-<li><img src="/assets/images/2018/13022AD3-DD16-4B84-9099-C03E4F10533D.png" alt="13022AD3-DD16-4B84-9099-C03E4F10533D.png"></li>
-<li><img src="/assets/images/2018/0CD4C6E1-CAB6-44A4-8875-DA4F1C6FCF57.png" alt="0CD4C6E1-CAB6-44A4-8875-DA4F1C6FCF57.png"></li>
-<li>底层存储实例<ul>
-<li><img src="/assets/images/2018/773CBA88-4945-40CA-8628-78BE4CF97B5C.jpg" alt="773CBA88-4945-40CA-8628-78BE4CF97B5C.jpg"></li>
-<li><img src="/assets/images/2018/FA6212EF-26D1-4AB7-B52C-343F8105A3D6.jpg" alt="FA6212EF-26D1-4AB7-B52C-343F8105A3D6.jpg"></li>
-<li><img src="/assets/images/2018/2D9E6EC3-D366-4087-A92F-C9CF9A2BC238.jpg" alt="2D9E6EC3-D366-4087-A92F-C9CF9A2BC238.jpg"></li>
-</ul>
-</li>
-<li>随机读与顺序读<ul>
-<li><img src="/assets/images/2018/CA0D0CF0-F150-47DD-A98F-8BAB0D9B0A02.jpg" alt="CA0D0CF0-F150-47DD-A98F-8BAB0D9B0A02.jpg"></li>
-</ul>
-</li>
-</ul>
-<h2 id="0x02、优缺点"><a href="#0x02、优缺点" class="headerlink" title="0x02、优缺点"></a>0x02、优缺点</h2><h5 id="列数据库"><a href="#列数据库" class="headerlink" title="列数据库"></a>列数据库</h5><ul>
-<li>优点：<ul>
-<li>极高的装载速度（最高可以等于所有硬盘IO 的总和，基本是极限了）</li>
-<li>适合大量的数据而不是小数据</li>
-<li>实时加载数据仅限于增加（删除和更新需要解压缩Block 然后计算然后重新压缩储存</li>
-<li>高效的压缩率，不仅节省储存空间也节省计算内存和CPU。</li>
-<li>非常适合做聚合操作。</li>
-</ul>
-</li>
-<li>缺点：<ul>
-<li>不适合扫描小量数据</li>
-<li>不适合随机的更新</li>
-<li>批量更新情况各异，有的优化的比较好的列式数据库（比如Vertica）表现比较好，有些没有针对更新的数据库表现比较差。</li>
-<li>不适合做含有删除和更新的实时操作</li>
-</ul>
-</li>
-</ul>
-<h5 id="行数据库"><a href="#行数据库" class="headerlink" title="行数据库"></a>行数据库</h5><ul>
-<li>优点<ul>
-<li>适合频繁的增删改数据</li>
-<li>小量数据的频繁维护和简单统计</li>
-</ul>
-</li>
-<li>缺点<ul>
-<li>不适合做统计类操作</li>
-</ul>
-</li>
-</ul>
-
+<li>可以进行join查询，可以进行笛卡尔积运算
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/08/10/2018/08-10-行与列式数据库/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -342,7 +289,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="hackfox">
-      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+      <meta itemprop="description" content="架构、AI、python、rust">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -448,7 +395,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="hackfox">
-      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+      <meta itemprop="description" content="架构、AI、python、rust">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -474,7 +421,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-09 15:14:35" itemprop="dateModified" datetime="2019-09-09T15:14:35+08:00">2019-09-09</time>
+                <time title="修改时间：2020-06-09 20:49:18" itemprop="dateModified" datetime="2020-06-09T20:49:18+08:00">2020-06-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -528,493 +475,15 @@
 </ul>
 </li>
 <li>魔术方法：<ul>
-<li><strong>contract()、</strong>decontract、<strong>get()、</strong>set()、 _invoke()</li>
-</ul>
-</li>
-</ul>
-<h2 id="0x01、字符串"><a href="#0x01、字符串" class="headerlink" title="0x01、字符串"></a>0x01、字符串</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//字符串定义方式</span></span><br><span class="line"><span class="comment">// ''只转译 ' / 但是“”转译的比较多</span></span><br><span class="line"><span class="comment">// ""可以解析变量</span></span><br><span class="line"><span class="comment">// ''速度比较快，不用分析变量，转译内用少。我们优先使用 ''</span></span><br><span class="line">$str1 = <span class="string">'hello'</span>;</span><br><span class="line">$str2 = <span class="string">"hello"</span>;</span><br><span class="line"><span class="comment">//写大段文本</span></span><br><span class="line"><span class="comment">//heredoc    &lt;&lt;&lt;HTML ......HTML; //类似于"" 可以解析文本中的变量</span></span><br><span class="line"><span class="comment">//nowdoc    &lt;&lt;&lt;'HTML'......HTML;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//字符串函数</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">字符长度计算</span></span><br><span class="line"><span class="comment">查找字符位置</span></span><br><span class="line"><span class="comment">字符替换</span></span><br><span class="line"><span class="comment">提取字符</span></span><br><span class="line"><span class="comment">分割连接反转字符</span></span><br><span class="line"><span class="comment">去除增加空格</span></span><br><span class="line"><span class="comment">HTML代码/数据库安全处理字符</span></span><br><span class="line"><span class="comment">比较字符</span></span><br><span class="line"><span class="comment">字符大小写转换</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">number_format(<span class="string">'123456789'</span>);<span class="comment">//123,456,789 使用科学计数法表示字符串</span></span><br><span class="line">str_repeat(<span class="string">' '</span>, <span class="number">10</span>); <span class="comment">//重复空格10次</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//计算字符串长度</span></span><br><span class="line">$t1 = <span class="string">'abcdefghijklmn abcdefg'</span>;</span><br><span class="line">$t2 = <span class="string">'我是中国人'</span>;</span><br><span class="line"><span class="keyword">echo</span> strlen($t1),<span class="string">'&lt;br /&gt;'</span>; <span class="comment">//22    //计算字符长度</span></span><br><span class="line"><span class="keyword">echo</span> mb_strlen($t2,<span class="string">'utf-8'</span>), <span class="string">'&lt;br /&gt;'</span>; <span class="comment">//utf-8 必须加 '' //5 //计算字节长度</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//反转字符</span></span><br><span class="line"><span class="keyword">echo</span> strrev($t1).<span class="string">'&lt;br /&gt;'</span>;<span class="comment">//gfedcba nmlkjihgfedcba 反转字符</span></span><br><span class="line"><span class="comment">//reverse 背面，反面 反转 同数组反转array_reverse 字符串是strrve</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//查找自字符串的位置</span></span><br><span class="line">$t1 = <span class="string">'abcdefghijklmn abcd.efg'</span>;</span><br><span class="line">$t3 = <span class="string">'d'</span>;</span><br><span class="line">$t4 = <span class="string">'bc'</span>;</span><br><span class="line"><span class="keyword">echo</span> strpos($t1, $t3), <span class="string">'&lt;br /&gt;'</span>; <span class="comment">//区分大小写，查找第一次出现的位置//返回值为int</span></span><br><span class="line"><span class="keyword">echo</span> stripos($t1, <span class="string">'c'</span>), <span class="string">'&lt;br /&gt;'</span>; <span class="comment">//不区分大小写，返回字符串在另一个字符串出现的位置</span></span><br><span class="line"><span class="keyword">echo</span> strrpos($t1, <span class="string">'.'</span>), <span class="string">'&lt;br /&gt;'</span>; <span class="comment">//区分大小写，最后一次出现的位置 //19</span></span><br><span class="line"><span class="keyword">echo</span> strrchr($t1, <span class="string">'.'</span>).<span class="string">'&lt;br /&gt;'</span>;    <span class="comment">//查找字符串最后出现的位置,并打印之后的 //.efg</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//字符串替换</span></span><br><span class="line">$t1 = <span class="string">'abcdefghijklmn abcdefg'</span>;</span><br><span class="line">$t5 = <span class="string">'opqrsruvw'</span>;</span><br><span class="line"><span class="keyword">echo</span> str_replace(<span class="string">'Abc'</span>, <span class="string">'dEfg'</span>, $t1), <span class="string">'&lt;br /&gt;'</span>; <span class="comment">//区分大小写,如果不同不会进行替换，在$t1中，defg替换掉abc</span></span><br><span class="line"><span class="keyword">echo</span> str_ireplace(<span class="string">'ABC'</span>, <span class="string">'HAHAha'</span>, $t1), <span class="string">'&lt;BR /&gt;'</span>;<span class="comment">//进行替换 //不区分大小写</span></span><br><span class="line"><span class="keyword">echo</span> strtr($t1, <span class="string">'aBCd'</span>, <span class="string">'HAHAHA'</span>),<span class="string">'&lt;bR /&gt;'</span>; <span class="comment">//HAHAHA只替换成HbcA,中间BC不被替换，只替换4位// 区分大小写，但是还是会进行替换 //只是截取等长部分，区分大小写，而且之替换相同的</span></span><br><span class="line"><span class="keyword">echo</span> substr_replace($t1, $t5, <span class="number">4</span>, <span class="number">3</span>),<span class="string">'&lt;br&gt;'</span>; <span class="comment">//$t5从$t1的第4位开始替换，$t1失去3字节的内容，如果没有写3，则默认替换掉$t1从第4位后的所有字节</span></span><br><span class="line"><span class="comment">//截取字符串</span></span><br><span class="line">$t1 = <span class="string">'abcdefghijklmn abcdefghijklmnopq'</span>;</span><br><span class="line">$t6 = <span class="string">'fg'</span>;</span><br><span class="line"><span class="keyword">echo</span> substr($t1, <span class="number">3</span>, <span class="number">5</span>),<span class="string">'&lt;bR /&gt;&lt;br /&gt;'</span>; <span class="comment">//defgh //从$t1的第3位开始，截取5字节内容，默认截取余下全部</span></span><br><span class="line"><span class="keyword">echo</span> mb_substr($t1, <span class="number">1</span>, <span class="number">10</span>, <span class="string">'UTF8'</span>); <span class="comment">//从第1位开始，长度为10，字符编码为 UTF-8 截取， 返回值string</span></span><br><span class="line"><span class="keyword">echo</span> strstr($t1, $t6),<span class="string">'&lt;br /&gt;'</span>; <span class="comment">//从$t1中找到$t6，截取后半截，$t6必须完全存在于$t1中，且区分大小写</span></span><br><span class="line"><span class="keyword">echo</span> stristr($t1, <span class="string">'FGH'</span>),<span class="string">'&lt;br /&gt;'</span>; <span class="comment">//同上不区分大小写</span></span><br><span class="line"><span class="keyword">echo</span> strrchr($t1, $t6), <span class="string">'&lt;br /&gt;'</span>;<span class="comment">//$t6最后一次出现的位置截取到最后</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//分割， 连接， 反转字符串</span></span><br><span class="line">$t1 = <span class="string">'abcde fghijklmn abcde fgh ijklm nopq'</span>;</span><br><span class="line">var_dump(str_split($t1, <span class="number">5</span>)); <span class="comment">//返回数组类型, 把$t1按照5个字节分成数组</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'&lt;br /&gt;'</span>;</span><br><span class="line">        <span class="comment">/*    array (size=7)</span></span><br><span class="line"><span class="comment">                  0 =&gt; string 'abcde' (length=5)</span></span><br><span class="line"><span class="comment">                  1 =&gt; string 'fghij' (length=5)</span></span><br><span class="line"><span class="comment">                  2 =&gt; string 'klmn ' (length=5)</span></span><br><span class="line"><span class="comment">                  3 =&gt; string 'abcde' (length=5)</span></span><br><span class="line"><span class="comment">                  4 =&gt; string 'fghij' (length=5)</span></span><br><span class="line"><span class="comment">                  5 =&gt; string 'klmno' (length=5)</span></span><br><span class="line"><span class="comment">                  6 =&gt; string 'pq' (length=2)</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">var_dump(split(<span class="string">'ij'</span>, $t1, <span class="number">5</span>)) ;<span class="comment">//将$t1以'ij'进行分割5次，如果后面还出现将不进行分割</span></span><br><span class="line">$t7 = explode(<span class="string">' '</span>, $t1); <span class="comment">//将$t1以空格分开，返回数组,</span></span><br><span class="line">    <span class="keyword">echo</span> $t7[<span class="number">0</span>], <span class="string">'&lt;br /&gt;'</span>, $t7[<span class="number">3</span>], <span class="string">'&lt;br /&gt;'</span>;<span class="comment">//abcde fgh</span></span><br><span class="line">    var_dump($t7);</span><br><span class="line">    <span class="comment">/*    array (size=6)</span></span><br><span class="line"><span class="comment">              0 =&gt; string 'abcde' (length=5)</span></span><br><span class="line"><span class="comment">              1 =&gt; string 'fghijklmn' (length=9)</span></span><br><span class="line"><span class="comment">              2 =&gt; string 'abcde' (length=5)</span></span><br><span class="line"><span class="comment">              3 =&gt; string 'fgh' (length=3)</span></span><br><span class="line"><span class="comment">              4 =&gt; string 'ijklm' (length=5)</span></span><br><span class="line"><span class="comment">              5 =&gt; string 'nopq' (length=4)</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="keyword">echo</span> implode($t7, <span class="string">'/'</span>), <span class="string">'&lt;br /&gt;'</span>;<span class="comment">//abcde/fghijklmn/abcde/fgh/ijklm/nopq //将$t7用 / 连接起来，并且以字符串的形式返回</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//空白处理字符串</span></span><br><span class="line">$t1 = <span class="string">'        abcde fghijklmn abcde fgh ijklm nopq         '</span>;</span><br><span class="line"><span class="keyword">echo</span> trim($t1), <span class="string">'&lt;br /&gt;'</span>;<span class="comment">//处理$t1 前后 的空白字符，包括 ""空格 "\t"制表符 "\n"换行符 "\r"回车符 "\0"空字节 "\x08"垂直制表符</span></span><br><span class="line"><span class="keyword">echo</span> ltrim($t1),<span class="string">'&lt;br /&gt;'</span>;<span class="comment">//处理$t1 前 的空白字符，同上//可查看网页源代码</span></span><br><span class="line"><span class="keyword">echo</span> rtrim($t1),<span class="string">'&lt;br /&gt;'</span>;<span class="comment">//处理$t1 后 的空白字符，同上</span></span><br><span class="line"><span class="keyword">ECHO</span> chunk_split(<span class="string">'abcdefghijklmnopq'</span>, <span class="number">3</span>, <span class="string">','</span>),<span class="string">'&lt;BR /&gt;'</span>;<span class="comment">//abc,def,ghi,jkl,mno,pq,//将字符串按照 3个字符+一个，分割开，并连起来</span></span><br><span class="line"><span class="keyword">echo</span> str_pad(<span class="string">'zxd'</span>, <span class="number">6</span>),<span class="string">'&lt;br /&gt;'</span>;<span class="comment">//将 zxd 填充到6个字节</span></span><br><span class="line"><span class="keyword">echo</span> str_pad(<span class="string">'zxd'</span>, <span class="number">6</span>, <span class="string">'_'</span>,STR_PAD_LEFT),<span class="string">'&lt;BR /&gt;'</span>; <span class="comment">//___zxd 以 _ 对 zxd 进行填充 // STR_PAD_LEFT STR_PAD_BOTH 或者不填则直接填到最后</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//字符转义</span></span><br><span class="line">$t8 = <span class="string">"My name\id Xiaodong'ZHANG"</span>;</span><br><span class="line">$t9 = <span class="string">"My name\\id Xiaodong\'ZHANG"</span>;</span><br><span class="line"><span class="keyword">echo</span> addslashes($t8),<span class="string">'&lt;br/&gt;'</span>; <span class="comment">//My name\\id Xiaodong\'ZHANG 使用反斜线引入字符串 //为了向数据库中输入带有 " ' \ null 的数据的时候使用的,</span></span><br><span class="line"><span class="keyword">echo</span> stripslashes($t9),<span class="string">'&lt;br /&gt;'</span>;<span class="comment">//My nameid Xiaodong'ZHANG 反引用一个引用字符串 同上相反，从数据库中提取数据</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//没有搞懂，同以下几个都没搞懂 echo get_magic_quotes_gpc();</span></span><br><span class="line"><span class="keyword">echo</span> htmlspecialchars(<span class="string">'&lt;h1&gt;HEllp'</span>),<span class="string">'&lt;br /&gt;'</span>;<span class="comment">//将字符串中的一些字符转换成HTML实体，其中&lt; &gt;被翻译成&lt; &gt;</span></span><br><span class="line"><span class="keyword">echo</span> htmlspecialchars_decode(<span class="string">'&lt;h1&gt;HEllp'</span>),<span class="string">'&lt;br /&gt;'</span>;<span class="comment">//&lt;h1&gt;HEllp //同上相反，这个是在网页中显示效果，上则是在源代码中显示效果</span></span><br><span class="line"><span class="keyword">echo</span> htmlentities(<span class="string">'html&lt;h1&gt;&lt;p&gt;'</span>),<span class="string">'&lt;br /&gt;'</span>;<span class="comment">//把字符串中所有可以转换的字符换成HTML实体</span></span><br><span class="line"><span class="keyword">echo</span> html_entity_decode(<span class="string">'&lt; &gt; haha'</span>),<span class="string">'&lt;br /&gt;'</span>;<span class="comment">//同上 相反</span></span><br><span class="line"><span class="comment">// echo '&lt;h1&gt;nihao&lt;h1&gt; &lt;br /&gt;';//直接在网页上输出大写的nihao 类似于网页效果</span></span><br><span class="line"><span class="comment">// echo '&lt;h1&gt; nihao&lt;h1&gt;','&lt;br /&gt;';//直接转译成&lt;h1&gt; nihao 并且自带效果</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'heiadk&lt;br /&gt;'</span>;<span class="comment">//上两行必须屏蔽掉，否则之后的自带h1效果</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//字符串比较</span></span><br><span class="line"><span class="keyword">echo</span> strcmp(<span class="string">'abcd'</span>, <span class="string">'abcde'</span>).<span class="string">'&lt;br /&gt;'</span>; <span class="comment">//-1 //str1大于str2是为正数，相等为0</span></span><br><span class="line"><span class="keyword">echo</span> strcasecmp(<span class="string">'ABcDe'</span>, <span class="string">'abcDE'</span>).<span class="string">'&lt;br /&gt;'</span>; <span class="comment">//0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//字符串转换大小</span></span><br><span class="line"><span class="keyword">ECHO</span> strtolower(<span class="string">'ABcDeFg'</span>).<span class="string">'&lt;br /&gt;'</span>; <span class="comment">//abcdefg</span></span><br><span class="line"><span class="keyword">echo</span> strtoupper(<span class="string">'strinABcDeFg'</span>).<span class="string">'&lt;br /&gt;'</span>;<span class="comment">//STRINABCDEFG</span></span><br><span class="line"><span class="keyword">echo</span> ucfirst(<span class="string">'andjfJSUD'</span>).<span class="string">'&lt;BR /&gt;'</span>; <span class="comment">//AndjfJSUD 首字母为大写</span></span><br><span class="line"><span class="keyword">echo</span> ucwords(<span class="string">'my name Is zhang XAIO dong'</span>).<span class="string">'&lt;br /&gt;'</span>; <span class="comment">//My Name Is Zhang XAIO Dong 每个单词的首字母大写</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 将1234567890转换成1,234,567,8</span></span><br><span class="line">$str1 = <span class="string">'1234567890'</span>;</span><br><span class="line">$str4 = strrev($str1);</span><br><span class="line">$str2 = chunk_split($str4, <span class="number">3</span>, <span class="string">','</span>); <span class="comment">//098,765,432,1,</span></span><br><span class="line">$str3 = substr($str2, <span class="number">2</span>, <span class="number">11</span>);</span><br><span class="line"><span class="keyword">echo</span> strrev($str3);</span><br><span class="line"><span class="keyword">echo</span> number_format(<span class="string">'123456789'</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="0x02、数组"><a href="#0x02、数组" class="headerlink" title="0x02、数组"></a>0x02、数组</h2><h2 id="0x03、类"><a href="#0x03、类" class="headerlink" title="0x03、类"></a>0x03、类</h2><h2 id="0x04、函数"><a href="#0x04、函数" class="headerlink" title="0x04、函数"></a>0x04、函数</h2><h2 id="0x05、文件操作"><a href="#0x05、文件操作" class="headerlink" title="0x05、文件操作"></a>0x05、文件操作</h2><h2 id="0x06、应用"><a href="#0x06、应用" class="headerlink" title="0x06、应用"></a>0x06、应用</h2><ul>
-<li><p>1.交换两个数</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$a = <span class="number">123.456</span>;</span><br><span class="line">$b = \<span class="string">'abcDEF\';</span></span><br><span class="line"><span class="string">function swap (&amp;$arg1, &amp;$arg2)</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">   $w=$arg1;</span></span><br><span class="line"><span class="string">   $arg1=$arg2;</span></span><br><span class="line"><span class="string">   $arg2=$w;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">swap(&amp;$a,&amp;$b);</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>2.循环</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$a = <span class="keyword">array</span>(\<span class="string">'a\',\'b\',\'c\');</span></span><br><span class="line"><span class="string">foreach($a as &amp;$v)&#123;&#125;</span></span><br><span class="line"><span class="string">foreach($a as $v)&#123;&#125;</span></span><br><span class="line"><span class="string">var_dump($a); //a,b,b</span></span><br><span class="line"><span class="string">//当foreach循环结束的时候，由于$v为引用变量，因而$v 与 $a[ 2 ] 指向了同一个地址空间（共享变量值），</span></span><br><span class="line"><span class="string">//因而之后对$v的任何修改都会直接反映到数组$a中</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>3.unset只会删除变量。并不会清空变量值对应的内存空间：（这是与指针不同的地方）</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$a = <span class="string">"str"</span>;</span><br><span class="line">$b = &amp;$a;</span><br><span class="line"><span class="keyword">unset</span>($b);</span><br><span class="line"><span class="keyword">echo</span> $a;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>4.引用作为函数参数传递时，是可以被函数内部更改的</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">change</span><span class="params">(&amp;$a)</span></span>&#123;</span><br><span class="line">   <span class="keyword">if</span>(is_array($a))&#123;</span><br><span class="line">       $a = <span class="keyword">array</span>();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">$test = range(<span class="number">1</span>,<span class="number">10</span>);</span><br><span class="line">change($test);</span><br><span class="line">print_r($test);</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="0x07、日期"><a href="#0x07、日期" class="headerlink" title="0x07、日期"></a>0x07、日期</h2><ul>
-<li><p>函数:</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">strtotime();</span><br><span class="line">date(<span class="string">'Y-m-d H:i:s'</span>,strtotime()); <span class="comment">//转化为格式日期</span></span><br><span class="line">date_parse(); <span class="comment">//把日期时间拆分为数组</span></span><br><span class="line">date_default_timezone_set(<span class="string">'UTC'</span>); <span class="comment">//设置时区</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>获取上个月第一天及最后一天</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> date(\<span class="string">'Y-m-01\', strtotime(\'-1 month\'));</span></span><br><span class="line"><span class="string">echo "&lt;br/&gt;";</span></span><br><span class="line"><span class="string">echo date(\'Y-m-t\', strtotime(\'-1 month\'));</span></span><br><span class="line"><span class="string">echo "&lt;br/&gt;";</span></span><br><span class="line"><span class="string">//获取上个月最后一天时间</span></span><br><span class="line"><span class="string">$times = date('</span>d<span class="string">')*24*3600;</span></span><br><span class="line"><span class="string">echo date("Y-m-d H:i:s",time()-$times);</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>获取当月第一天及最后一天</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$BeginDate=date(\<span class="string">'Y-m-01\', strtotime(date("Y-m-d")));</span></span><br><span class="line"><span class="string">echo $BeginDate;</span></span><br><span class="line"><span class="string">echo "&lt;br/&gt;";</span></span><br><span class="line"><span class="string">echo date(\'Y-m-d\', strtotime("$BeginDate +1 month -1 day"));</span></span><br><span class="line"><span class="string">echo "&lt;br/&gt;";</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>获取当前年份、月份、日期及天数</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="string">" 本月共有:"</span>.date(<span class="string">"t"</span>).<span class="string">"天"</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">" 当前年份"</span>.date(\<span class="string">'Y\');</span></span><br><span class="line"><span class="string">echo " 当前月份".date(\'m\');</span></span><br><span class="line"><span class="string">echo " 当前几号".date(\'d\');</span></span><br><span class="line"><span class="string">echo "&lt;br/&gt;";</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用函数及数组来获取当月第一天及最后一天</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getthemonth</span><span class="params">($date)</span></span>&#123;</span><br><span class="line">   $firstday = date(\<span class="string">'Y-m-01\', strtotime($date));</span></span><br><span class="line"><span class="string">   $lastday = date(\'Y-m-d\', strtotime("$firstday +1 month -1 day"));</span></span><br><span class="line"><span class="string">   return array($firstday,$lastday);</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">$today = date("Y-m-d");</span></span><br><span class="line"><span class="string">$day=getthemonth($today);</span></span><br><span class="line"><span class="string">echo "当月的第一天: ".$day[0]." 当月的最后一天: ".$day[1];</span></span><br><span class="line"><span class="string">echo "&lt;br/&gt;";</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="0x08、正则"><a href="#0x08、正则" class="headerlink" title="0x08、正则"></a>0x08、正则</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">$str=preg_replace(<span class="string">"/&lt;\\s*img\\s+[^&gt;]*?src\\s*=\\s*(\\\'|\\"</span>)(.*?)\\\\<span class="number">1</span>[^&gt;]*?\\/?\\s*&gt;/i<span class="string">", "</span> <span class="string">", $str); //过滤img标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/\\s+/<span class="string">", "</span> <span class="string">", $str); //过滤多余回车</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;[ ]+/si<span class="string">","</span>&lt;<span class="string">",$str); //过滤&lt;__("</span>&lt;<span class="string">"号后面带空格)</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;\\!--.*?--&gt;/si<span class="string">","</span><span class="string">",$str); //注释</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(\\!.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤DOCTYPE</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(\\/?html.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤html标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(\\/?head.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤head标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(\\/?meta.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤meta标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(\\/?body.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤body标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(\\/?link.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤link标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(\\/?form.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤form标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/cookie/si<span class="string">","</span>COOKIE<span class="string">",$str); //过滤COOKIE标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(applet.*?)&gt;(.*?)&lt;(\\/applet.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤applet标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(\\/?applet.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤applet标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(style.*?)&gt;(.*?)&lt;(\\/style.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤style标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(\\/?style.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤style标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(title.*?)&gt;(.*?)&lt;(\\/title.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤title标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(\\/?title.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤title标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(object.*?)&gt;(.*?)&lt;(\\/object.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤object标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(\\/?objec.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤object标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(noframes.*?)&gt;(.*?)&lt;(\\/noframes.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤noframes标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(\\/?noframes.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤noframes标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(i?frame.*?)&gt;(.*?)&lt;(\\/i?frame.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤frame标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(\\/?i?frame.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤frame标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(script.*?)&gt;(.*?)&lt;(\\/script.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤script标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&lt;(\\/?script.*?)&gt;/si<span class="string">","</span><span class="string">",$str); //过滤script标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/javascript/si<span class="string">","</span>Javascript<span class="string">",$str); //过滤script标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/vbscript/si<span class="string">","</span>Vbscript<span class="string">",$str); //过滤script标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/on([a-z]+)\\s*=/si<span class="string">","</span>On\\\\<span class="number">1</span>=<span class="string">",$str); //过滤script标签</span></span><br><span class="line"><span class="string">$str=preg_replace("</span>/&amp;<span class="comment">#/si","&amp;＃",$str); //过滤script标签</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="0x09、socket"><a href="#0x09、socket" class="headerlink" title="0x09、socket"></a>0x09、socket</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">socket_accept() 接受一个Socket连接</span><br><span class="line">socket_bind() 把socket绑定在一个IP地址和端口上</span><br><span class="line">socket_clear_error() 清除socket的错误或最后的错误代码</span><br><span class="line">socket_close() 关闭一个socket资源</span><br><span class="line">socket_connect() 开始一个socket连接</span><br><span class="line">socket_create_listen() 在指定端口打开一个socket监听</span><br><span class="line">socket_create_pair() 产生一对没有差别的socket到一个数组里</span><br><span class="line">socket_create() 产生一个socket，相当于产生一个socket的数据结构</span><br><span class="line">socket_get_option() 获取socket选项</span><br><span class="line">socket_getpeername() 获取远程类似主机的ip地址</span><br><span class="line">socket_getsockname() 获取本地socket的ip地址</span><br><span class="line">socket_iovec_add() 添加一个新的向量到一个分散/聚合的数组</span><br><span class="line">socket_iovec_alloc() 这个函数创建一个能够发送接收读写的iovec数据结构</span><br><span class="line">socket_iovec_delete() 删除一个已分配的iovec</span><br><span class="line">socket_iovec_fetch() 返回指定的iovec资源的数据</span><br><span class="line">socket_iovec_free() 释放一个iovec资源</span><br><span class="line">socket_iovec_set() 设置iovec的数据新值</span><br><span class="line">socket_last_error() 获取当前socket的最后错误代码</span><br><span class="line">socket_listen() 监听由指定socket的所有连接</span><br><span class="line">socket_read() 读取指定长度的数据</span><br><span class="line">socket_readv() 读取从分散/聚合数组过来的数据</span><br><span class="line">socket_recv() 从socket里结束数据到缓存</span><br><span class="line">socket_recvfrom() 接受数据从指定的socket，如果没有指定则默认当前socket</span><br><span class="line">socket_recvmsg() 从iovec里接受消息</span><br><span class="line">socket_select() 多路选择</span><br><span class="line">socket_send() 这个函数发送数据到已连接的socket</span><br><span class="line">socket_sendmsg() 发送消息到socket</span><br><span class="line">socket_sendto() 发送消息到指定地址的socket</span><br><span class="line">socket_set_block() 在socket里设置为块模式</span><br><span class="line">socket_set_nonblock() socket里设置为非块模式</span><br><span class="line">socket_set_option() 设置socket选项</span><br><span class="line">socket_shutdown() 这个函数允许你关闭读、写、或指定的socket</span><br><span class="line">socket_strerror() 返回指定错误号的周详错误</span><br><span class="line">socket_write() 写数据到socket缓存</span><br><span class="line">socket_writev() 写数据到分散/聚合数组</span><br></pre></td></tr></table></figure>
-
-<h2 id="0x10、php-fpm与nginx"><a href="#0x10、php-fpm与nginx" class="headerlink" title="0x10、php-fpm与nginx"></a>0x10、php-fpm与nginx</h2><h2 id="0x11、资源"><a href="#0x11、资源" class="headerlink" title="0x11、资源"></a>0x11、资源</h2><ul>
-<li>PhpDocmentor</li>
-</ul>
-<h2 id="0x12、依赖管理——用于依赖管理的包和框架"><a href="#0x12、依赖管理——用于依赖管理的包和框架" class="headerlink" title="0x12、依赖管理——用于依赖管理的包和框架"></a>0x12、依赖管理——用于依赖管理的包和框架</h2><ul>
-<li>Composer/Packagist : 一个包和依赖管理器</li>
-<li>Composer Installers: 一个多框架Composer库安装器</li>
-<li>Pickle: 可以在任意平台上安装PHP扩展包</li>
-</ul>
-<h2 id="0x13、依赖管理的附加部分——其它依赖管理的相关工具"><a href="#0x13、依赖管理的附加部分——其它依赖管理的相关工具" class="headerlink" title="0x13、依赖管理的附加部分——其它依赖管理的相关工具"></a>0x13、依赖管理的附加部分——其它依赖管理的相关工具</h2><ul>
-<li>Satis : 静态的Composer库生成器</li>
-<li>Composition: 一个运行时检查Composer环境的库</li>
-<li>Version : 一个在语义上分析和比较的库</li>
-<li>NameSpacer : 将下划线转为命名空间的库</li>
-<li>Patch Installer: 使用Composer安装补丁的库</li>
-<li>Composer Checker: 一个验证Composer配置的工具</li>
-</ul>
-<h2 id="0x14、框架——Web开发框架"><a href="#0x14、框架——Web开发框架" class="headerlink" title="0x14、框架——Web开发框架"></a>0x14、框架——Web开发框架</h2><ul>
-<li>Symfony2 : 由独立组件构成的框架</li>
-<li>Zend Framework 2: 同样是由独立组件构成的框架</li>
-<li>Laravel 5: 简洁优雅的PHP Web开发框架</li>
-<li>Aura PHP: 独立组件的框架</li>
-<li>Yii2 : 用于开发大型Web应用的高性能PHP框架</li>
-<li>Nette: 同样是由独立组件构成的框架</li>
-<li>PPI Framework 2: 一个交互性的框架</li>
-<li>Phalcon: 一个作为C扩展的框架</li>
-</ul>
-<h2 id="0x15、框架的附加部分——其它关于Web开发框架的相关工具"><a href="#0x15、框架的附加部分——其它关于Web开发框架的相关工具" class="headerlink" title="0x15、框架的附加部分——其它关于Web开发框架的相关工具"></a>0x15、框架的附加部分——其它关于Web开发框架的相关工具</h2><ul>
-<li>Symfony CMF: 一个创建自定义CMS的内容管理框架</li>
-<li>Knp RAD Bundle: Symfony2的快速应用程序包（RAD）</li>
-</ul>
-<h2 id="0x16、框架组件——来自Web开发框架的组件"><a href="#0x16、框架组件——来自Web开发框架的组件" class="headerlink" title="0x16、框架组件——来自Web开发框架的组件"></a>0x16、框架组件——来自Web开发框架的组件</h2><ul>
-<li>Symfony2 Components: 关于Symphony2的组件</li>
-<li>Zend Framework 2 Components: 关于ZF2的组件</li>
-<li>Aura Components: 一个PHP5.4的组件包</li>
-<li>Hoa Project: 另一个PHP组件包</li>
-</ul>
-<h2 id="0x17、微型框架——微型框架和路由"><a href="#0x17、微型框架——微型框架和路由" class="headerlink" title="0x17、微型框架——微型框架和路由"></a>0x17、微型框架——微型框架和路由</h2><ul>
-<li>Silex: 基于Symphony2组件的微型框架</li>
-<li>Slim: 另一个简单的微型框架</li>
-<li>Bullet PHP: 用于构建REST APIs的微型框架</li>
-<li>Fast Route: 快速路由选择库</li>
-<li>Pux: 另一个快速路由选择库</li>
-</ul>
-<h2 id="0x18、微型框架的附加部分——其它相关的微型框架和路由"><a href="#0x18、微型框架的附加部分——其它相关的微型框架和路由" class="headerlink" title="0x18、微型框架的附加部分——其它相关的微型框架和路由"></a>0x18、微型框架的附加部分——其它相关的微型框架和路由</h2><ul>
-<li>Silex Skeleton: 用于Silex的项目框架</li>
-<li>Silex Web Profiler: 用于Silex的Web调试工具条</li>
-<li>Stack: 用于Silex/Symphony的可堆叠中间件库</li>
-<li>Slim Skeleton: 用于Slim的框架</li>
-<li>Slim View: Slim的自定义视图集</li>
-<li>Slim Middleware: Slim的自定义中间件集合</li>
-</ul>
-<h2 id="0x19、模板——模板和词法分析的库与工具"><a href="#0x19、模板——模板和词法分析的库与工具" class="headerlink" title="0x19、模板——模板和词法分析的库与工具"></a>0x19、模板——模板和词法分析的库与工具</h2><ul>
-<li>Twig: 一种综合的模板语言</li>
-<li>Twig Cache Extension: 用于Twig的模板片段缓存库</li>
-<li>Mustache: PHP实现的Mustache模板语言</li>
-<li>Phly Mustache: 另一个PHP实现的Mustache模板语言</li>
-<li>MtHaml : PHP实现的HAML模板语言</li>
-<li>PHPTAL: PHP实现的TAL模板语言</li>
-<li>Plates: 一个原始的PHP模板库</li>
-<li>Lex: 一个轻量级模板解析器</li>
-</ul>
-<h2 id="0x20、静态站点生成器——生成Web页面内容的预处理工具"><a href="#0x20、静态站点生成器——生成Web页面内容的预处理工具" class="headerlink" title="0x20、静态站点生成器——生成Web页面内容的预处理工具"></a>0x20、静态站点生成器——生成Web页面内容的预处理工具</h2><ul>
-<li>Sculpin: 将Markdown和Twig转换为静态HTML的工具</li>
-<li>Phrozn: 另一款将Textile、Markdown和Twig转为HTML的工具</li>
-<li>HTTP——用于HTTP和抓取网站的库</li>
-<li>Guzzle: 一个完整的HTTP客户端</li>
-<li>Buzz: 另一个HTTP客户端</li>
-<li>Requests: 一个简单的HTTP库</li>
-<li>HTTPFul: 一个链式HTTP客户端</li>
-<li>Goutte: 一个简单的Web抓取器</li>
-<li>PHP VCR: 一个录制和回放HTTP请求的库</li>
-<li>URL——解析URL的库</li>
-<li>Purl: 一个URL操作库</li>
-<li>PHP Domain Parser: 一个本地的后缀解析器</li>
-<li>Email——用于发送和解析Email的库</li>
-<li>SwiftMailer: 一个邮件程序的解决方案</li>
-<li>PHPMailer: 另一个邮件程序的解决方案</li>
-<li>Fetch: 一个IMAP库</li>
-<li>Email Reply Parser: 一个邮件回复解析器库</li>
-<li>Stampie: 关于邮件服务的库，比如SendGrid、PostMark、MailGun和Mandrill</li>
-<li>CssToInlineStyles: 邮件模板中一个内联的CSS库</li>
-</ul>
-<h2 id="0x21、文件——关于文件处理和MIME类型检查"><a href="#0x21、文件——关于文件处理和MIME类型检查" class="headerlink" title="0x21、文件——关于文件处理和MIME类型检查"></a>0x21、文件——关于文件处理和MIME类型检查</h2><ul>
-<li>Gaufrette: 一个文件流的抽象层</li>
-<li>Flysystem: 另一个文件流的抽象层</li>
-<li>Canal: 一个检查互联网媒体类型的库</li>
-<li>Apache MIME Types: 一个解析Apache MIME类型的库</li>
-<li>Ferret: 一个MIME检测库</li>
-<li>Hoa Mime: 另一个MIME检测库</li>
-<li>Lurker: 一个资源跟踪库</li>
-<li>PHP File Locator: 一个在大型项目中定位文件的库</li>
-<li>PHP FFmpeg: 一个用于FFmpeg视频包装的库</li>
-<li>CSV: 一个CSV数据操作库</li>
-</ul>
-<h2 id="0x22、流——处理流的库"><a href="#0x22、流——处理流的库" class="headerlink" title="0x22、流——处理流的库"></a>0x22、流——处理流的库</h2><ul>
-<li>Streamer: 一个简单的面向对象流包装库</li>
-<li>依赖注入——实现依赖注入设计模式的库</li>
-<li>Pimple: 一个小的依赖注入容器</li>
-<li>Auryn: 另一个小的依赖注入容器</li>
-<li>Orno Di: 一个易扩展的依赖注入容器</li>
-<li>PHP DI: 一个使用标注实现的依赖注入</li>
-<li>Acclimate: 依赖注入容器和服务定位器的通用接口</li>
-</ul>
-<h2 id="0x23、图像——处理图像的库"><a href="#0x23、图像——处理图像的库" class="headerlink" title="0x23、图像——处理图像的库"></a>0x23、图像——处理图像的库</h2><ul>
-<li>Imagine: 一个图像处理库</li>
-<li>PHP Image Workshop: 另一个图像处理库</li>
-<li>Intervention Image: 同样还是一个图像处理库</li>
-<li>GIF Frame Extractor: 一个提取GIF动画帧信息的库</li>
-<li>GIF Creator: 从多幅图片中创建GIF动画的库</li>
-<li>Image With Text: 在图像中嵌入文本的库</li>
-<li>Color Extractor: 从图像中提取颜色的库</li>
-</ul>
-<h2 id="0x24、测试——测试代码库和生成测试数据的库"><a href="#0x24、测试——测试代码库和生成测试数据的库" class="headerlink" title="0x24、测试——测试代码库和生成测试数据的库"></a>0x24、测试——测试代码库和生成测试数据的库</h2><ul>
-<li>PHPUnit: 一个单元测试框架</li>
-<li>DBUnit: PHPUnit的代码测试库</li>
-<li>ParaTest: PHPUnit的并行测试库</li>
-<li>PHPSpec: 根据规范的单元测试库</li>
-<li>Codeception: 一个全栈测试框架</li>
-<li>AspectMock: PHPUnit/Codeception的模拟框架</li>
-<li>Atoum: 一个简单的测试库</li>
-<li>Mockery: 一个用于测试的模拟对象库</li>
-<li>Phake: 另一个用于测试的模拟对象库</li>
-<li>Prophecy: 一个强大的模拟框架</li>
-<li>Faker: 一个伪数据生成库</li>
-<li>Samsui: 另一个伪数据生成库</li>
-<li>Alice: 用于生成复杂数据的库</li>
-<li>Behat: 一个行为驱动开发（BDD）的测试框架</li>
-<li>Pho: 另一个行为驱动开发的测试框架</li>
-<li>Mink: Web验收测试</li>
-<li>HTTP Mock: 一个在单元测试中模拟HTTP请求的库</li>
-<li>VFS Stream: 一个用于测试的虚拟文件系统流包装</li>
-<li>VFS: 另一个用于测试的虚拟文件系统</li>
-<li>Locust: 一个Python开发的现代负载测试库</li>
-</ul>
-<h2 id="0x25、持续集成——持续集成的库和应用"><a href="#0x25、持续集成——持续集成的库和应用" class="headerlink" title="0x25、持续集成——持续集成的库和应用"></a>0x25、持续集成——持续集成的库和应用</h2><ul>
-<li>Travis CI: 一个持续集成的平台</li>
-<li>PHPCI: 一个PHP的开源持续集成平台</li>
-<li>Sismo: 一个持续的测试服务器库</li>
-<li>Jenkins: PHP支持的持续集成平台</li>
-<li>JoliCi: PHP开发的由Docker支持的持续集成客户端</li>
-</ul>
-<h2 id="0x26、文档——生成项目文档的库"><a href="#0x26、文档——生成项目文档的库" class="headerlink" title="0x26、文档——生成项目文档的库"></a>0x26、文档——生成项目文档的库</h2><ul>
-<li>Sami: 一个API文档生成器</li>
-<li>APIGen: 另一个API文档生成器</li>
-<li>PHP Documentor 2: 文档生成器</li>
-<li>phpDox: 一个PHP项目的文档生成器（不仅仅是API文档）</li>
-</ul>
-<h2 id="0x27、安全性"><a href="#0x27、安全性" class="headerlink" title="0x27、安全性"></a>0x27、安全性</h2><ul>
-<li>HTML Purifier: 一个标准的HTML过滤器</li>
-<li>RandomLib: 生成随机数和随机字符串的库</li>
-<li>True Random: 使用<a href="http://www.random.org生成随机数的库" target="_blank" rel="noopener">www.random.org生成随机数的库</a></li>
-<li>SecurityMultiTool: 一个PHP安全库</li>
-<li>PHPSecLib: 一个纯的PHP安全通信库</li>
-<li>TCrypto: 一个简单的键值加密存储库</li>
-<li>PHP IDS: 一个结构化的PHP安全层</li>
-<li>PHP SSH: 面向对象的SSH包装库</li>
-<li>IniScan: 一个扫描PHP INI文件安全的工具</li>
-<li>SensioLabs Security Check: 一个根据安全建议检查Composer依赖的Web工具</li>
-<li>Zed: 用于Web应用的集成渗透测试工具</li>
-</ul>
-<h2 id="0x28、密码"><a href="#0x28、密码" class="headerlink" title="0x28、密码"></a>0x28、密码</h2><ul>
-<li>Password Compat: 一个用于新的PHP5.5密码功能的兼容库</li>
-<li>phpass: 一个便携式密码哈希框架</li>
-<li>PHP Password Lib: 一个用于生成和验证密码的库</li>
-<li>Password Policy: 一个PHP和JavaScript的密码规则库</li>
-<li>Password Validator: 验证和升级密码哈希的库</li>
-<li>Zxcvbn PHP: 一个基于Zxcvbn JS的PHP显示密码强度估计库</li>
-</ul>
-<h2 id="0x29、代码分析"><a href="#0x29、代码分析" class="headerlink" title="0x29、代码分析"></a>0x29、代码分析</h2><ul>
-<li>PHP Parser: 一个PHP编写的PHP解析器</li>
-<li>PHPPHP: 一个PHP实现的PHP虚拟机</li>
-<li>PHPSandbox: PHP的沙盒环境</li>
-<li>Dissect: 词法和语法分析的工具集合</li>
-<li>PHP Mess Detector: 一个扫描代码bug、次佳代码和未使用参数的库</li>
-<li>PHP Code Sniffer: 一个检测PHP、CSS和JS代码标准冲突的库</li>
-<li>PHPCPD: 一个检测复制和粘贴代码的库</li>
-<li>PHP Analyser: 一个分析PHP代码中错误的库</li>
-<li>PHP CS Fixer: 一个代码标准库</li>
-<li>PHP Manipulator: 用于分析和修改PHP源代码的库</li>
-<li>PHP Metrics: 一个静态测量库</li>
-<li>PHP Refactoring Browser: 一个用于重构PHP代码的命令行工具</li>
-<li>UBench: 一个简单的小型基准测试库</li>
-<li>Athletic: 一个基于标注的基准测试库</li>
-<li>Mondrian: 使用图论的代码分析工具</li>
-<li>Scrutinizer: 检查PHP代码的Web工具</li>
-<li>PHPLOC: 一个快速评估PHP项目大小的工具</li>
-<li>xHprof: 另一个PHP性能评测工具</li>
-<li>PHPCheckstyle: 一个帮助遵守特定代码规则的工具</li>
-</ul>
-<h2 id="0x30、调试"><a href="#0x30、调试" class="headerlink" title="0x30、调试"></a>0x30、调试</h2><ul>
-<li>xDebug: 一个PHP的调试和分析工具</li>
-<li>PHP Debug Bar: 一个调试工具条</li>
-<li>PHP Console: Web调试控制台</li>
-<li>Barbushin PHP Console: 一个使用Google Chrome的Web调试控制工具</li>
-<li>PHPDBG: 一个交互性的PHP调试器</li>
-<li>Tracy: 一个简单的错误检测、日志和时间测量库</li>
-</ul>
-<h2 id="0x31、构建工具"><a href="#0x31、构建工具" class="headerlink" title="0x31、构建工具"></a>0x31、构建工具</h2><ul>
-<li>Go: 一个简单的PHP构建工具</li>
-<li>Bob: 一个简单的项目自动化工具</li>
-<li>Phake: 一个PHP克隆库</li>
-<li>Box: 用来构建PHAR文件的工具</li>
-<li>Phing: 依据Apache Ant的PHP项目构建系统</li>
-</ul>
-<h2 id="0x32、任务运行器"><a href="#0x32、任务运行器" class="headerlink" title="0x32、任务运行器"></a>0x32、任务运行器</h2><ul>
-<li>Task: 依据Grunt和Gulp的纯PHP任务运行器</li>
-<li>Robo: 面向对象的PHP任务运行器</li>
-<li>Bldr: 构建在Symphony组件上的PHP任务运行器</li>
-</ul>
-<h2 id="0x33、导航"><a href="#0x33、导航" class="headerlink" title="0x33、导航"></a>0x33、导航</h2><ul>
-<li>KnpMenu: 一个菜单库</li>
-<li>Cartographer: 一个站点地图生成库</li>
-</ul>
-<h2 id="0x34、资源管理"><a href="#0x34、资源管理" class="headerlink" title="0x34、资源管理"></a>0x34、资源管理</h2><ul>
-<li>Assetic: 一个资源管理的管道库</li>
-<li>Pipe: 另一个资源管理的管道库</li>
-<li>Munee: 一个资源优化库</li>
-<li>JShrink: 一个JavaScript的最小化库</li>
-<li>Puli: 一个检测资源绝对路径的库</li>
-</ul>
-<h2 id="0x35、地理定位"><a href="#0x35、地理定位" class="headerlink" title="0x35、地理定位"></a>0x35、地理定位</h2><ul>
-<li>GeoCoder: 一个地理编码库</li>
-<li>GeoTools: 一个地理工具相关的库</li>
-<li>PHPGeo: 一个简单的地理库</li>
-<li>GeoJSON: 一个GeoJSON的实现</li>
-</ul>
-<h2 id="0x36、日期和时间"><a href="#0x36、日期和时间" class="headerlink" title="0x36、日期和时间"></a>0x36、日期和时间</h2><ul>
-<li>Carbon: 一个简单的日期时间API扩展</li>
-<li>ExpressiveDate: 另一个日期时间API扩展</li>
-<li>CalendR: 一个日历管理的库</li>
-</ul>
-<h2 id="0x37、事件"><a href="#0x37、事件" class="headerlink" title="0x37、事件"></a>0x37、事件</h2><ul>
-<li>React: 一个事件驱动的非阻塞I/O库</li>
-<li>Rx.PHP: 一个反应扩展库</li>
-<li>Ratchet: 一个Web套接字库</li>
-<li>Hoa WebSocket: 另一个Web套接字库</li>
-<li>Hoa EventSource: 一个事件源库</li>
-<li>Evenement: 一个事件调度库</li>
-<li>FuelPHP Event: 另一个事件调度库</li>
-</ul>
-<h2 id="0x38、日志"><a href="#0x38、日志" class="headerlink" title="0x38、日志"></a>0x38、日志</h2><ul>
-<li>Monolog: 一个完整的日志工具</li>
-<li>KLogger: 一个易于使用的PSR-3日志类</li>
-</ul>
-<h2 id="0x39、电子商务"><a href="#0x39、电子商务" class="headerlink" title="0x39、电子商务"></a>0x39、电子商务</h2><ul>
-<li>OmniPay: 一个多网关支付处理的框架</li>
-<li>Payum: 一个用于支付的抽象库</li>
-<li>Sylius: 一个开源的电子商务解决方案</li>
-<li>Thelia: 另一个开源的电子商务解决方案</li>
-<li>Money: PHP实现的Fowler金钱模式</li>
-<li>Sebastian Money: 一个处理货币价值的库</li>
-<li>Swap: 一个汇率库</li>
-</ul>
-<h2 id="0x40、PDF"><a href="#0x40、PDF" class="headerlink" title="0x40、PDF"></a>0x40、PDF</h2><p>-Snappy: 一个PDF和图像的生成库</p>
-<ul>
-<li>WKHTMLToPDF: 一个将HTML转换为PDF的工具</li>
-</ul>
-<h2 id="0x41、数据库"><a href="#0x41、数据库" class="headerlink" title="0x41、数据库"></a>0x41、数据库</h2><ul>
-<li>Doctrine: 一个完整的DBAL和ORM</li>
-<li>Doctrine Extensions: 一个Doctrine行为的扩展集合</li>
-<li>Propel: 一个快速的ORM，迁移和查询库</li>
-<li>Eloquent: Laravel 4 ORM</li>
-<li>Baum: 一个Eloquent的嵌套集合</li>
-<li>Spot2: MySQL的ORM映射器</li>
-<li>RedBean: 一个轻量级、易配置的ORM</li>
-<li>Pomm: 用于PostgreSQL的一个对象模型管理器</li>
-<li>ProxyManager: 用于数据映射生成代理对象的工具集合</li>
-</ul>
-<h2 id="0x42、迁移"><a href="#0x42、迁移" class="headerlink" title="0x42、迁移"></a>0x42、迁移</h2><ul>
-<li>PHPMig: 一个迁移管理库</li>
-<li>Phinx: 一个数据库迁移管理库</li>
-<li>Migrations: 另一个迁移管理库</li>
-<li>Doctrine Migrations: 用于Doctrine的迁移库</li>
-</ul>
-<h2 id="0x43、NoSQL"><a href="#0x43、NoSQL" class="headerlink" title="0x43、NoSQL"></a>0x43、NoSQL</h2><ul>
-<li>MongoQB: 一个MongoDB的查询构建库</li>
-<li>Monga: 一个MongoDB的抽象库</li>
-<li>Predis: 一个功能完全的Redis库</li>
-</ul>
-<h2 id="0x44、队列"><a href="#0x44、队列" class="headerlink" title="0x44、队列"></a>0x44、队列</h2><ul>
-<li>Pheanstalk: 一个Beanstalkd客户端库</li>
-<li>PHP AMQP: 一个纯PHP AMQP库</li>
-<li>Thumper: 一个RabbitMQ模式库</li>
-<li>Bernard: 一个多后端的抽象库</li>
-</ul>
-<h2 id="0x45、搜索"><a href="#0x45、搜索" class="headerlink" title="0x45、搜索"></a>0x45、搜索</h2><ul>
-<li>ElasticSearch PHP: 用于ElasticSearch的官方客户端库</li>
-<li>Elastica: 另一个ElasticSearch的客户端库</li>
-<li>Solarium: Solr的客户端库</li>
-<li>SphinxQL query builder: Sphinx搜索引擎的查询库</li>
-</ul>
-<h2 id="0x45、命令行"><a href="#0x45、命令行" class="headerlink" title="0x45、命令行"></a>0x45、命令行</h2><ul>
-<li>Boris: 一个微型的PHP REPL</li>
-<li>PsySH: 另一个PHP REPL</li>
-<li>Pecan: 一个事件驱动，非阻塞内核</li>
-<li>GetOpt: 一个命令行选择解析器</li>
-<li>OptParse: 另一个命令行选择解析器</li>
-<li>Commando: 一个简单的命令行选择解析器</li>
-<li>GetOptionKit: 同样还是一个命令行选择解析器</li>
-<li>Cron Expression: 计算cron运行日期的库</li>
-<li>ShellWrap: 一个简单的命令行包装库</li>
-<li>Hoa Console: 另一个命令行库</li>
-<li>Shunt: 一个在多台远程机器上并行运行的命令行库</li>
-<li>Cilex: 构建命令行工具的小型框架</li>
-</ul>
-<h2 id="0x46、身份验证"><a href="#0x46、身份验证" class="headerlink" title="0x46、身份验证"></a>0x46、身份验证</h2><ul>
-<li>Sentry: 一个身份验证和授权的框架</li>
-<li>Sentry Social: 一个用于社交网络身份验证的库</li>
-<li>Opauth: 一个多供应的身份验证框架</li>
-<li>OAuth2: 一个OAuth2身份验证服务器、资源服务器和客户端库</li>
-<li>OAuth2 Server: 一个OAuth2服务器实现</li>
-<li>PHP oAuthLib: 另一个OAuth库</li>
-<li>TwitterOAuth: 同样是一个OAuth库</li>
-<li>TwitterSDK: 一个经过完全测试的Twitter SDK</li>
-<li>Hawk: 一个Hawk HTTP身份验证库</li>
-<li>HybridAuth: 一个开源的社交登录库</li>
-</ul>
-<h2 id="0x47、标记"><a href="#0x47、标记" class="headerlink" title="0x47、标记"></a>0x47、标记</h2><ul>
-<li>Decoda: 一个轻量级的标记解析库</li>
-<li>PHP Markdown: Markdown解析器</li>
-<li>CommonMark PHP: 一个支持CommonMark spec的Markdown解析器</li>
-<li>Dflydev Markdown: 另一个Markdown解析器</li>
-<li>Parsedown: 同样是一个Markdown解析器</li>
-<li>Ciconia: 一个支持Github风格的Markdown解析器</li>
-<li>Cebe Markdown: 一个快速、可扩展的Markdown解析器</li>
-<li>HTML5 PHP: 一个HTML5解析和序列化的库</li>
-</ul>
-<h2 id="0x48、字符串"><a href="#0x48、字符串" class="headerlink" title="0x48、字符串"></a>0x48、字符串</h2><ul>
-<li>ANSI to HTML5: 一个将ANSI转换为HTML5的库</li>
-<li>Patchwork UTF-8: 处理UTF-8格式字符串的便携库</li>
-<li>Hoa String: 另一个UTF-8格式的字符串库</li>
-<li>Stringy: 一个多字节支持的字符串操纵库</li>
-<li>Color Jizz: 一个处理和转换颜色的库</li>
-<li>UUID: 生成UUIDs的库</li>
-<li>Slugify: 一个将字符串转换为slug格式的库</li>
-<li>Urlify: 一个Django URLify.js的PHP端口</li>
-<li>Text: 一个文本处理库</li>
-<li>SQL Formatter: 一个用于格式化SQL语句的库</li>
-<li>UA Parser: 一个用于解析用户字符串的库</li>
-</ul>
-<h2 id="0x49、数字"><a href="#0x49、数字" class="headerlink" title="0x49、数字"></a>0x49、数字</h2><ul>
-<li>Numbers PHP: 一个处理数字的库</li>
-<li>Math: 处理较大数字的库</li>
-<li>ByteUnits: 一个在二进制和测量系统中解析、格式化和转换字节单位的库</li>
-<li>PHP Units of Measure: 一个测量单位间转换的库</li>
-<li>PHP Conversion: 另一个测量单位间转换的库</li>
-<li>LibPhoneNumber for PHP: PHP实现的Google电话号码处理系统库</li>
-</ul>
-<h2 id="0x50、过滤和验证"><a href="#0x50、过滤和验证" class="headerlink" title="0x50、过滤和验证"></a>0x50、过滤和验证</h2><blockquote>
-<p>用于过滤和验证数据的库</p>
-</blockquote>
-<ul>
-<li>Filterus: 一个简单的PHP过滤库</li>
-<li>Respect Validate: 一个简单的验证库</li>
-<li>Valitron: 另一个数据验证库</li>
-<li>Upload: 一个处理文件上传和验证的库</li>
-<li>DMS Filter: 一个基于标注的过滤库</li>
-<li>MetaYaml: 支持YAML、JSON和XML的一个模式验证库</li>
-<li>ISO-codes: 验证不同ISO和ZIP编码的库</li>
-</ul>
-<h2 id="0x51、REST和API"><a href="#0x51、REST和API" class="headerlink" title="0x51、REST和API"></a>0x51、REST和API</h2><ul>
-<li>Apigility: 一个使用Zend Framework2构建的API构建器</li>
-<li>Hateoas: 一个HATEOAS REST的web服务库</li>
-<li>HAL: 一个超文本应用语言（HAL）构建库</li>
-<li>Negotiation: 一个内容协商库</li>
-<li>Drest: 一个将Doctrine实体展现为REST资源结点的库</li>
-<li>Restler: 一个将PHP方法展现为RESTful web API的轻量级框架</li>
-</ul>
-<h2 id="0x52、缓存"><a href="#0x52、缓存" class="headerlink" title="0x52、缓存"></a>0x52、缓存</h2><ul>
-<li>Alternative PHP Cache (APC): PHP的开源操作码缓存</li>
-<li>Cache: 一个缓存库</li>
-<li>Stash: 另一个缓存库</li>
-</ul>
-<h2 id="0x53、数据结构和存储"><a href="#0x53、数据结构和存储" class="headerlink" title="0x53、数据结构和存储"></a>0x53、数据结构和存储</h2><ul>
-<li>Ardent: 一个数据结构库</li>
-<li>PHP Collections: 一个简单的集合库</li>
-<li>Serializer: 用于序列化和反序列化数据的库</li>
-<li>PHP Object Storage: 一个用于对象存储的库</li>
-<li>Fractal: 一个将复杂数据结构转换为JSON输出的库</li>
-<li>Totem: 一个管理和创建数据修改集的库</li>
-<li>PINQ: PHP实时Linq库</li>
-<li>JsonMapper: 一个将内嵌JSON结构映射到PHP类上的库</li>
-</ul>
-<h2 id="0x54、通知"><a href="#0x54、通知" class="headerlink" title="0x54、通知"></a>0x54、通知</h2><ul>
-<li>Nod: 一个通知库</li>
-<li>Notificato: 一个处理推送消息的库</li>
-<li>Notification Pusher: 设备推送通知的独立库</li>
-<li>Notificator: 一个轻量级通知库</li>
-</ul>
-<h2 id="0x55、部署"><a href="#0x55、部署" class="headerlink" title="0x55、部署"></a>0x55、部署</h2><ul>
-<li>Pomander: 一个PHP应用的部署工具</li>
-<li>Rocketeer: PHP的快速和简单部署器</li>
-<li>Envoy: 使用PHP运行SSH任务的工具</li>
-<li>Plum: 一个部署库</li>
-</ul>
-<h2 id="0x56、第三方API"><a href="#0x56、第三方API" class="headerlink" title="0x56、第三方API"></a>0x56、第三方API</h2><ul>
-<li>Amazon Web Service SDK: PHP AWS SDK官方库</li>
-<li>S3 Stream Wrapper: Amazon S3的流包装库</li>
-<li>Stripe: 官方的Stripe PHP库</li>
-<li>Campaign Monitor: 官方的Campaign Monitor PHP库</li>
-<li>Digital Ocean: 一个与Digital Ocean API交互的库</li>
-<li>Github: 一个与Github API交互的库</li>
-<li>PHP Github API: 另一个与Github API交互的库</li>
-<li>Twitter OAuth: 一个与Twitter’s OAuth工作流交互的库</li>
-<li>Twitter REST: 一个与Twitter’s REST API交互的库</li>
-<li>Dropbox SDK: 官方的PHP Dropbox SDK库</li>
-<li>Twilio: 官方的Twilio PHP REST API</li>
-<li>Mailgun: 官方的Mailgun PHP API</li>
-</ul>
-<h2 id="0x57、扩展"><a href="#0x57、扩展" class="headerlink" title="0x57、扩展"></a>0x57、扩展</h2><ul>
-<li>Zephir: 用于开发PHP扩展的一种在PHP和C++间的编译语言</li>
-<li>PHP CPP: 一个用于开发PHP扩展的C++库</li>
-</ul>
-<h2 id="0x58、PHP安装"><a href="#0x58、PHP安装" class="headerlink" title="0x58、PHP安装"></a>0x58、PHP安装</h2><ul>
-<li>HomeBrew: OSX的包管理器</li>
-<li>HomeBrew PHP:一个HomeBrew的PHP接头</li>
-<li>PHP OSX: 用于OSX的PHP安装器</li>
-<li>PHP Brew: 一个PHP的版本管理和安装器</li>
-<li>PHP Env: 一个PHP的版本管理器</li>
-<li>PHP Switch: 另一个PHP的版本管理器</li>
-<li>PHP Build: 一个PHP的版本安装器</li>
-<li>VirtPHP: 一个用来创建和管理独立PHP开发环境的工具</li>
-</ul>
-<h2 id="0x59、开发环境"><a href="#0x59、开发环境" class="headerlink" title="0x59、开发环境"></a>0x59、开发环境</h2><ul>
-<li>Vagrant: 一个便携式的开发环境工具</li>
-<li>Ansible: 一个非常简单的编制框架</li>
-<li>Puppet: 一个服务器自动化框架和应用</li>
-<li>PuPHPet: 用于构建PHP开发虚拟机的Web工具</li>
-<li>Protobox: 另一个用于构建PHP开发虚拟机的Web工具</li>
-<li>Phansible: 一个用Ansible构建PHP开发开发虚拟机的Web工具</li>
-</ul>
-<h2 id="0x60、集成开发环境IDE"><a href="#0x60、集成开发环境IDE" class="headerlink" title="0x60、集成开发环境IDE"></a>0x60、集成开发环境IDE</h2><ul>
-<li>Netbeans: 支持PHP和HTML5的IDE环境</li>
-<li>Eclipse for PHP Developers : 基于Eclipse平台的PHP IDE</li>
-<li>PhpStorm : 商业PHP IDE</li>
-</ul>
-<h2 id="0x61、Web应用"><a href="#0x61、Web应用" class="headerlink" title="0x61、Web应用"></a>0x61、Web应用</h2><ul>
-<li>3V4L: 一个在线的PHP内核</li>
-<li>DBV: 一个数据库版本控制应用</li>
-<li>PHP Queue: 一个管理队列后端的应用</li>
-<li>Composer as a Service: 作为一个zip文件下载Composer包的工具</li>
-<li>MailCatcher: 一个抓取和浏览邮件的Web工具</li>
-</ul>
-<h2 id="0x62、源码解析"><a href="#0x62、源码解析" class="headerlink" title="0x62、源码解析"></a>0x62、源码解析</h2>
+<li><strong>contract()、</strong>decontract、<strong>get()、</strong>set()、 _invoke()
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/03/02/2018/03-02-PHP知识体系/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1038,7 +507,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="hackfox">
-      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+      <meta itemprop="description" content="架构、AI、python、rust">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1064,7 +533,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-09 18:26:29" itemprop="dateModified" datetime="2019-09-09T18:26:29+08:00">2019-09-09</time>
+                <time title="修改时间：2020-06-09 20:49:50" itemprop="dateModified" datetime="2020-06-09T20:49:50+08:00">2020-06-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1088,19 +557,19 @@
 
       
           <h2 id="0x00、关于开机自动检测硬盘的原因"><a href="#0x00、关于开机自动检测硬盘的原因" class="headerlink" title="0x00、关于开机自动检测硬盘的原因"></a>0x00、关于开机自动检测硬盘的原因</h2><ul>
-<li>第一种：是你非法关机造成的，比如直接断电的情况。</li>
-<li>第二种：是和硬盘的分区格式有关，FAT32格式在非法关机后会在开机时要求检测硬盘，而且必须检测完毕才不会在下次启动时重新检测。系统有一个文件中记录了检测是否结束的信息，有时即使检测完成了也会因为这个文件没有更新而在下次开机时重新检测。</li>
-<li>第三种：当硬盘出现坏道也会出现开机自动检测硬盘。</li>
-</ul>
-<h2 id="0x01、关于取消开机自动检测硬盘的方法"><a href="#0x01、关于取消开机自动检测硬盘的方法" class="headerlink" title="0x01、关于取消开机自动检测硬盘的方法"></a>0x01、关于取消开机自动检测硬盘的方法</h2><ul>
-<li>方法一： 如果分区是FAT32格式，将其转换成NTFS，方法是在命令提示符下输入：convert X: /fs:ntfs</li>
-<li>方法二： 如果是非正常的关机，然后开机检测时又跳过了，每一次都会运行的。如果不是这个原因的话，您就要检查一下D盘状态是否正常，修正一下硬盘的错误。方法为 “开始”→”运行”，在窗口中输入”chkdskX:/f”(x为盘符)，这个命令可以检查文件系统中的逻辑错误，并进行修复；然后启动”磁盘碎片整理” 对相应的磁盘进行碎片整理，可以消除再次的磁盘扫描。如果还是不行，就可能是硬盘出现了坏道，最简单的方法是把D盘的数据备份一下，然后格式化D盘，就可 以正常使用了。</li>
-<li>方法三：打开”我的电脑”－右键点击X盘选择”属性”－选择”工具”－”查错”中点”开始检查”－选中”自动修复文件系统错误”和”扫描并试图恢复坏扇区”，然后点”开始”。</li>
-<li>方法四：我们知道系统之所以要对磁盘进行扫描是因为在注册表中设置了”脏”字节。在注册表中找到以下分支:</li>
-<li>方法五：如果是硬盘出现坏道，请使用磁盘修复工具进行修复，如使用HDDRegenerate等。</li>
-<li>方法六：一定是你在BIOS设置中选择了每次开机都要检测硬盘,所以才这样,和你的电脑配置是没有关系的。解决方法在开机后按DEL进入BIOS选 择Quick Power On Self Test（快速加电自检测），你的一定设为了Enabled了,选择Disabled，将其关闭就行了。</li>
-</ul>
-
+<li><p>第一种：是你非法关机造成的，比如直接断电的情况。</p>
+</li>
+<li><p>第二种：是和硬盘的分区格式有关，FAT32格式在非法关机后会在开机时要求检测硬盘，而且必须检测完毕才不会在下次启动时重新检测。系统有一个文件中记录了检测是否结束的信息，有时即使检测完成了也会因为这个文件没有更新而在下次开机时重新检测。</p>
+</li>
+<li><p>第三种：当硬盘出现坏道也会出现开机自动检测硬盘。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2017/09/28/2017/09-28-开机自检/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1124,7 +593,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="hackfox">
-      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+      <meta itemprop="description" content="架构、AI、python、rust">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1150,7 +619,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-19 13:36:39" itemprop="dateModified" datetime="2020-04-19T13:36:39+08:00">2020-04-19</time>
+                <time title="修改时间：2020-06-09 20:49:48" itemprop="dateModified" datetime="2020-06-09T20:49:48+08:00">2020-06-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1178,21 +647,14 @@
 
 <p>当然，最重要的还是如何使用cron来表示什么时候什么频次来执行任务。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*  *  * *  *   <span class="built_in">command</span></span><br><span class="line">分 时 日 月 周   命令</span><br></pre></td></tr></table></figure>
-
-<p>如上表示，有5个位置符来表示，后边跟需要执行的命令。</p>
-<ul>
-<li>第一列：分(0-59)</li>
-<li>第二列：时(0-23)</li>
-<li>第三列：日(1-31)</li>
-<li>第四列：月(1-12)</li>
-<li>第五列：周(0-6,0为星期天)</li>
-</ul>
-<p>除了以上的表示方法，还可以结合一些特殊的符号来表示</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* ：   表示任何时刻</span><br><span class="line">, ：   表示在这几个选项内</span><br><span class="line">－ ：  表示一个范围，如第二列里： 3-5，就表示3到5点</span><br><span class="line">/n ：  表示每个n的单位执行一次，如第二列里，*/1, 就表示每隔1个小时执行一次命令。也可以写成1-23/1.</span><br></pre></td></tr></table></figure>
-
-<h3 id="二、示例"><a href="#二、示例" class="headerlink" title="二、示例"></a>二、示例</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">* * * * *                           每分钟执行一次</span><br><span class="line">0 */1 * * *                         每分钟执行一次</span><br><span class="line">43 21 * * *                         21:43 执行</span><br><span class="line">15 05 * * *                         05:15 执行</span><br><span class="line">0 17 * * *                          17:00 执行</span><br><span class="line">0 17 * * 1                          每周一的 17:00 执行</span><br><span class="line">0,10 17 * * 0,2,3                   每周日,周二,周三的 17:00和 17:10 执行</span><br><span class="line">0-10 17 1 * *                       毎月1日从 17:00到7:10 毎隔1分钟 执行</span><br><span class="line">0 0 1,15 * 1                        毎月1日和 15日和 一日的 0:00 执行</span><br><span class="line">42 4 1 * *                          毎月1日的 4:42分 执行</span><br><span class="line">0 21 * * 1-6                        周一到周六 21:00 执行</span><br><span class="line">0,10,20,30,40,50 * * * *            每隔10分 执行</span><br><span class="line">*/10 * * * *                        每隔10分 执行</span><br><span class="line">* 1 * * *                           从1:0到1:59 每隔1分钟 执行</span><br><span class="line">0 1 * * *                           1:00 执行</span><br><span class="line">0 * * * *                           毎时0分 每隔1小时 执行</span><br><span class="line">2 8-20/3 * * *                      8:02,11:02,14:02,17:02,20:02 执行</span><br><span class="line">30 5 1,15 * *                       1日 和 15日的 5:30 执行</span><br></pre></td></tr></table></figure>
-
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2017/07/20/2017/07-20-crontab表示法/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1216,7 +678,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="hackfox">
-      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+      <meta itemprop="description" content="架构、AI、python、rust">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1242,7 +704,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-19 13:35:35" itemprop="dateModified" datetime="2020-04-19T13:35:35+08:00">2020-04-19</time>
+                <time title="修改时间：2020-06-09 20:49:45" itemprop="dateModified" datetime="2020-06-09T20:49:45+08:00">2020-06-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1274,38 +736,17 @@
 </li>
 <li><p>向上翻页</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctrl+b</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>下一个词</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>行尾</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>第一个字符行首</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>行首</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>撤销</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">u</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>文件首</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gg</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>文件尾</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">G</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>屏首</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctrl+h</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>屏中</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctrl+m</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>屏尾</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctrl+l</span><br></pre></td></tr></table></figure></li>
-</ul>
 
+</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2017/03/02/2017/03-12-vim命令/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1329,7 +770,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="hackfox">
-      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+      <meta itemprop="description" content="架构、AI、python、rust">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1432,7 +873,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="hackfox">
-      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+      <meta itemprop="description" content="架构、AI、python、rust">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1458,7 +899,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-19 13:30:21" itemprop="dateModified" datetime="2020-04-19T13:30:21+08:00">2020-04-19</time>
+                <time title="修改时间：2020-06-09 20:50:00" itemprop="dateModified" datetime="2020-06-09T20:50:00+08:00">2020-06-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1595,243 +1036,14 @@
 <td>稳定</td>
 </tr>
 </tbody></table>
-<ul>
-<li><p>3.术语解释</p>
-<ul>
-<li>稳定性：如果a=b，且a在b前面，排序后a仍然在b前面，则说算法是稳定的；否则就是不稳定的。</li>
-<li>内排序：所有排序操作都在内存中完成；</li>
-<li>外排序：由于数据太大，因此把数据放在磁盘中，而排序通过磁盘和内存的数据传输才能进行；</li>
-<li>时间复杂度：一个算法执行所耗费的时间。</li>
-<li>空间复杂度：运行完一个程序所需内存的大小。</li>
-</ul>
-</li>
-<li><p>4.关于时间复杂度的排序:</p>
-<ul>
-<li>(O(n^2))排序:各类简单排序：直接插入、直接选择和冒泡排序；</li>
-<li>(O(nlog2n))排序:快速排序、堆排序和归并排序；</li>
-<li>O(n1+§))排序，§是介于0和1之间的常数:希尔排序</li>
-<li>(O(n))排序:基数排序、桶、箱排序。</li>
-</ul>
-</li>
-<li><p>5.关于稳定性的排序：</p>
-<ul>
-<li>稳定的排序算法：冒泡排序、插入排序、归并排序和基数排序</li>
-<li>不是稳定的排序算法：选择排序、快速排序、希尔排序、堆排序</li>
-</ul>
-</li>
-</ul>
-<h2 id="0X01、冒泡排序"><a href="#0X01、冒泡排序" class="headerlink" title="0X01、冒泡排序"></a>0X01、冒泡排序</h2><p>冒泡排序是一种流行但是低效的排序算法，它的作用是反复交换相邻的未按次序排列的元素。</p>
-<h4 id="1-算法描述"><a href="#1-算法描述" class="headerlink" title="1.算法描述"></a>1.算法描述</h4><ul>
-<li><p>语言描述</p>
-<ul>
-<li>1.比较相邻的元素。如果第一个比第二个大，就交换它们两个；</li>
-<li>2.对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对，这样在最后的元素应该会是最大的数；</li>
-<li>3.针对所有的元素重复以上的步骤，除了最后一个；</li>
-<li>4.重复步骤1~3，直到排序完成。</li>
-</ul>
-</li>
-<li><p>伪代码描述</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">BUBBLE-SORT(A)</span><br><span class="line">1  for i = 1 to A.length - 1</span><br><span class="line">2    for j = A.length downto i+1</span><br><span class="line">3       if A[j] &lt; A[j-1]</span><br><span class="line">4           exchange A[j] with A[j-1]</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h4 id="2-复杂度"><a href="#2-复杂度" class="headerlink" title="2.复杂度"></a>2.复杂度</h4><ul>
-<li>时间复杂度<ul>
-<li>最佳情况：T(n) = O(n)</li>
-<li>最差情况：T(n) = O(n^2)</li>
-<li>平均情况：T(n) = O(n^2)</li>
-</ul>
-</li>
-<li>空间复杂度：O(1)</li>
-</ul>
-<h4 id="3-代码实现如下"><a href="#3-代码实现如下" class="headerlink" title="3.代码实现如下"></a>3.代码实现如下</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bubble_sort</span><span class="params">(a: list)</span>:</span></span><br><span class="line">    cnt = len(a)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> cnt:</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, cnt):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i<span class="number">-1</span>, cnt<span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">if</span> a[j] &gt; a[j+<span class="number">1</span>]:</span><br><span class="line">                a[j], a[j+<span class="number">1</span>] = a[j+<span class="number">1</span>] , a[j]</span><br><span class="line"></span><br><span class="line">    <span class="comment">#for i in range(cnt-2):</span></span><br><span class="line">    <span class="comment">#    for j in range(cnt-1, i, -1):</span></span><br><span class="line">    <span class="comment">#        if a[j] &lt; a[j-1]:</span></span><br><span class="line">    <span class="comment">#            a[j], a[j-1] = a[j-1], a[j]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    a = [<span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">45</span>, <span class="number">76</span>, <span class="number">47</span>, <span class="number">34</span>, <span class="number">5</span>, <span class="number">23</span>]</span><br><span class="line">    bubble_sort(a)</span><br><span class="line">    print(a)</span><br></pre></td></tr></table></figure>
-
-<h2 id="0X02、插入排序"><a href="#0X02、插入排序" class="headerlink" title="0X02、插入排序"></a>0X02、插入排序</h2><p>插入排序(Insertion-Sort)是一种简单有效的排序方法。整体思想就是把后边一个待排的元素和前边已经排序好的元素做比较，如果比这元素大，就把前边的元素依次后移，直到找到一个比待排元素小的值，在其后边插入既可。然后在排序下一个待排元素。</p>
-<h4 id="1-算法思路"><a href="#1-算法思路" class="headerlink" title="1.算法思路"></a>1.算法思路</h4><ul>
-<li><p>语言描述</p>
-<ul>
-<li>1.从第一个元素开始，该元素可以认为已经被排序；</li>
-<li>2.取出下一个元素，在已经排序的元素序列中从后向前扫描；</li>
-<li>3.如果该元素（已排序）大于新元素，将该元素移到下一位置；</li>
-<li>4.重复步骤3，直到找到已排序的元素小于或者等于新元素的位置；</li>
-<li>4.将新元素插入到该位置后；</li>
-<li>5.重复步骤2~5。</li>
-</ul>
-</li>
-<li><p>伪代码描述</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">INSERTION-SORT(A):</span><br><span class="line">1  for j = 2 to A.length:</span><br><span class="line">2    key = A[j]</span><br><span class="line">3    i = j - 1</span><br><span class="line">4    while i &gt; 0 and A[i] &gt; key:</span><br><span class="line">5        A[i+1] = A[i]</span><br><span class="line">6        i = i - 1</span><br><span class="line">7    A[i+1] = key</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-算法复杂度"><a href="#2-算法复杂度" class="headerlink" title="2.算法复杂度"></a>2.算法复杂度</h4><ul>
-<li>时间复杂度：<ul>
-<li>最佳情况：T(n) = O(n)。</li>
-<li>最坏情况：T(n) = O(n^2)。</li>
-<li>平均情况：T(n) = O(n^2)。</li>
-</ul>
-</li>
-<li>空间复杂度：<ul>
-<li>O(1)。因为其要占用一个存储空间来放置key。</li>
-</ul>
-</li>
-</ul>
-<h4 id="3-算法实现"><a href="#3-算法实现" class="headerlink" title="3.算法实现"></a>3.算法实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">insert_sort</span><span class="params">(a: list)</span>:</span></span><br><span class="line">    cnt = len(a)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> cnt:</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(cnt - <span class="number">1</span>):</span><br><span class="line">        value = a[i+<span class="number">1</span>]</span><br><span class="line">        pre_index = i</span><br><span class="line">        <span class="keyword">while</span> (pre_index &gt;= <span class="number">0</span> <span class="keyword">and</span> value &lt; a[pre_index]):</span><br><span class="line">            a[pre_index + <span class="number">1</span>] = a[pre_index]</span><br><span class="line">            pre_index -= <span class="number">1</span></span><br><span class="line">        a[pre_index+<span class="number">1</span>] = value</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    a = [<span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">45</span>, <span class="number">76</span>, <span class="number">47</span>, <span class="number">34</span>, <span class="number">5</span>, <span class="number">23</span>]</span><br><span class="line">    insert_sort(a)</span><br><span class="line">    print(a)</span><br></pre></td></tr></table></figure>
-
-<h2 id="0X03、选择排序"><a href="#0X03、选择排序" class="headerlink" title="0X03、选择排序"></a>0X03、选择排序</h2><p>表现最稳定的排序算法之一，因为无论什么数据进去都是O(n2)的时间复杂度，所以用到它的时候，数据规模越小越好。唯一的好处可能就是不占用额外的内存空间了吧。理论上讲，选择排序可能也是平时排序一般人想到的最多的排序方法了吧。<br>选择排序(Selection-sort)是一种简单直观的排序算法。它的工作原理：首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。</p>
-<h4 id="1-算法分析"><a href="#1-算法分析" class="headerlink" title="1.算法分析"></a>1.算法分析</h4><ul>
-<li>1.初始状态：无序区为R[1..n]，有序区为空；</li>
-<li>2.第i趟排序(i=1,2,3…n-1)开始时，当前有序区和无序区分别为R[1..i-1]和R(i..n）。该趟排序从当前无序区中-选出关键字最小的记录 R[k]，将它与无序区的第1个记录R交换，使R[1..i]和R[i+1..n)分别变为记录个数增加1个的新有序区和记录个数减少1个的新无序区；</li>
-<li>3.n-1趟结束，数组有序化了。</li>
-</ul>
-<h4 id="2-算法复杂度-1"><a href="#2-算法复杂度-1" class="headerlink" title="2.算法复杂度"></a>2.算法复杂度</h4><ul>
-<li>最佳情况：T(n) = O(n2)</li>
-<li>最差情况：T(n) = O(n2)</li>
-<li>平均情况：T(n) = O(n2)</li>
-</ul>
-<h4 id="3-算法实现-1"><a href="#3-算法实现-1" class="headerlink" title="3.算法实现"></a>3.算法实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">selection_sort</span><span class="params">(a: list)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    选择排序</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    cnt = len(a)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> cnt:</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(cnt):</span><br><span class="line">        minIndex = i</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(cnt)[i:]:</span><br><span class="line">            <span class="keyword">if</span> a[j] &lt; a[minIndex]:</span><br><span class="line">                a[minIndex], a[j] = a[j], a[minIndex]</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    a = [<span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">45</span>, <span class="number">76</span>, <span class="number">47</span>, <span class="number">34</span>, <span class="number">5</span>, <span class="number">23</span>]</span><br><span class="line">    selection_sort(a)</span><br><span class="line">    print(a)</span><br></pre></td></tr></table></figure>
-
-<h2 id="0X04、希尔排序"><a href="#0X04、希尔排序" class="headerlink" title="0X04、希尔排序"></a>0X04、希尔排序</h2><p>希尔排序是希尔（Donald Shell）于1959年提出的一种排序算法。希尔排序也是一种插入排序，它是简单插入排序经过改进之后的一个更高效的版本，也称为缩小增量排序，同时该算法是冲破O(n2）的第一批算法之一。它与插入排序的不同之处在于，它会优先比较距离较远的元素。希尔排序又叫缩小增量排序。<br>希尔排序是把记录按下表的一定增量分组，对每组使用直接插入排序算法排序；随着增量逐渐减少，每组包含的关键词越来越多，当增量减至1时，整个文件恰被分成一组，算法便终止。</p>
-<h4 id="1-算法思路-1"><a href="#1-算法思路-1" class="headerlink" title="1.算法思路"></a>1.算法思路</h4><p>我们来看下希尔排序的基本步骤，在此我们选择增量gap=length/2，缩小增量继续以gap = gap/2的方式，这种增量选择我们可以用一个序列来表示，{n/2,(n/2)/2…1}，称为增量序列。希尔排序的增量序列的选择与证明是个数学难题，我们选择的这个增量序列是比较常用的，也是希尔建议的增量，称为希尔增量，但其实这个增量序列不是最优的。此处我们做示例使用希尔增量。<br>先将整个待排序的记录序列分割成为若干子序列分别进行直接插入排序，具体算法描述：</p>
-<ul>
-<li>选择一个增量序列t1，t2，…，tk，其中ti&gt;tj，tk=1；</li>
-<li>按增量序列个数k，对序列进行k 趟排序；</li>
-<li>每趟排序，根据对应的增量ti，将待排序列分割成若干长度为m 的子序列，分别对各子表进行直接插入排序。仅增量因子为1 时，整个序列作为一个表来处理，表长度即为整个序列的长度。</li>
-</ul>
-<h4 id="2-算法复杂度-2"><a href="#2-算法复杂度-2" class="headerlink" title="2.算法复杂度"></a>2.算法复杂度</h4><ul>
-<li>最佳情况：T(n) = O(nlog2 n)</li>
-<li>最坏情况：T(n) = O(nlog2 n)</li>
-<li>平均情况：T(n) =O(nlog2n)　</li>
-</ul>
-<h4 id="3-算法实现-2"><a href="#3-算法实现-2" class="headerlink" title="3.算法实现"></a>3.算法实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">shell_sort</span><span class="params">(a: list)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    希尔排序</span></span><br><span class="line"><span class="string">    算法思路：</span></span><br><span class="line"><span class="string">    时间复杂度：O(n^2)，最好：O(n)，最坏：O(n^2)</span></span><br><span class="line"><span class="string">    空间复杂度：O(1)</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    cnt = len(a)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> cnt:</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    gap = cnt // <span class="number">2</span></span><br><span class="line">    <span class="keyword">while</span> gap &gt; <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(gap, cnt, <span class="number">1</span>):</span><br><span class="line">            tmp = a[i]</span><br><span class="line">            pre_index = i - gap</span><br><span class="line">            <span class="keyword">while</span> pre_index &gt;= <span class="number">0</span> <span class="keyword">and</span> a[pre_index] &gt; tmp:</span><br><span class="line">                a[pre_index+gap] = a[pre_index]</span><br><span class="line">                pre_index -= gap</span><br><span class="line">            a[pre_index+gap] = tmp</span><br><span class="line">        gap //= <span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    a = [<span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">45</span>, <span class="number">76</span>, <span class="number">47</span>, <span class="number">34</span>, <span class="number">5</span>, <span class="number">23</span>]</span><br><span class="line">    shell_sort(a)</span><br><span class="line">    print(a)</span><br></pre></td></tr></table></figure>
-
-<h2 id="0X05、归并排序"><a href="#0X05、归并排序" class="headerlink" title="0X05、归并排序"></a>0X05、归并排序</h2><p>归并排序是分治思想的一种实现。这里分治模式的每层递归时都有三个步骤：</p>
-<ul>
-<li>分解原问题为若干子问题，这些子问题是原问题的规模较小的实例。</li>
-<li>解决这些子问题，递归的求解各个子问题。然而，若小问题的规模足够小，则直接求解。</li>
-<li>合并这些子问题的解成原问题的解。<br>这便是分治模式的思想。把大问题拆分成几个规模较小的子问题，把子问题在拆分成几个在小的问题，直至可以直接求解。然后把所有子问题的解合并就是原问题的解。</li>
-</ul>
-<h4 id="1-算法思想"><a href="#1-算法思想" class="headerlink" title="1.算法思想"></a>1.算法思想</h4><p>归并排序完全是分治思想的实现。</p>
-<ul>
-<li><p>语言描述</p>
-<ul>
-<li>分解。分解待排序的n个元素的序列成各具n/2个元素的两个子序列。</li>
-<li>解决。使用归并排序递归地排序两个子序列。</li>
-<li>合并。合并两个已排序的子序列以产生已排序的答案。</li>
-</ul>
-</li>
-<li><p>伪代码描述</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">MERGE(A,p,q,r)</span><br><span class="line">1  n1 = p - q + 1</span><br><span class="line">2  n2 = r - q</span><br><span class="line">3  let L[1..n1+1] and R[1..n2+1] to be new arrays</span><br><span class="line">4  for i = 1 to n1</span><br><span class="line">5    L[i] = A[p+i-1]</span><br><span class="line">6  for j = 1 to n2</span><br><span class="line">7    R[j] = A[q+j]</span><br><span class="line">8  L[n1+1] = ∞</span><br><span class="line">9  R[n2+1] = ∞</span><br><span class="line">10 i = 1</span><br><span class="line">11 j = 1</span><br><span class="line">12 for k = p to r</span><br><span class="line">13   if L[i] &lt;= R[j]</span><br><span class="line">14      A[k] = L[i]</span><br><span class="line">15      i = i+1</span><br><span class="line">16   else</span><br><span class="line">17      A[k] = R[j]</span><br><span class="line">18      j = j+1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MERGE-SORT(A,p,r)</span><br><span class="line">1  if p &lt; r</span><br><span class="line">2     q = (p+r)/2</span><br><span class="line">3     MERGE-SORT(A,p,q)</span><br><span class="line">4     MERGE-SORT(A,q+1,r)</span><br><span class="line">5     MERGE(A,p,q,r)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h4 id="2-算法复杂度-3"><a href="#2-算法复杂度-3" class="headerlink" title="2.算法复杂度"></a>2.算法复杂度</h4><ul>
-<li>时间复杂度<ul>
-<li>最佳情况：T(n) = O(n)</li>
-<li>最差情况：T(n) = O(nlogn)</li>
-<li>平均情况：T(n) = O(nlogn)</li>
-</ul>
-</li>
-<li>空间复杂度<ul>
-<li>O(1)</li>
-</ul>
-</li>
-</ul>
-<h4 id="3-算法实现-3"><a href="#3-算法实现-3" class="headerlink" title="3.算法实现"></a>3.算法实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge_sort</span><span class="params">(a: list)</span>:</span></span><br><span class="line">    cnt = len(a)</span><br><span class="line">    <span class="keyword">if</span> cnt &lt; <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    mid = cnt // <span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> merge(merge_sort(a[:mid]), merge_sort(a[mid:]))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(left: list, right: list)</span>:</span></span><br><span class="line">    result = []</span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    j = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; len(left) <span class="keyword">and</span> j &lt; len(right):</span><br><span class="line">        <span class="keyword">if</span> left[i] &lt;= right[j]:</span><br><span class="line">            result.append(left[i])</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            result.append(right[j])</span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">    result += left[i:]</span><br><span class="line">    result += right[j:]</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    a = [<span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">45</span>, <span class="number">76</span>, <span class="number">47</span>, <span class="number">34</span>, <span class="number">5</span>, <span class="number">23</span>]</span><br><span class="line">    print(merge_sort(a))</span><br></pre></td></tr></table></figure>
-
-<h2 id="0X06、快速排序"><a href="#0X06、快速排序" class="headerlink" title="0X06、快速排序"></a>0X06、快速排序</h2><p>通过一趟排序将待排记录分隔成独立的两部分，其中一部分记录的关键字均比另一部分的关键字小，则可分别对这两部分记录继续进行排序，以达到整个序列有序。</p>
-<h4 id="1-算法思路-2"><a href="#1-算法思路-2" class="headerlink" title="1.算法思路"></a>1.算法思路</h4><p>快速排序使用分治法来把一个串（list）分为两个子串（sub-lists）。具体算法描述如下：</p>
-<ul>
-<li><p>语言描述</p>
-<ul>
-<li>从数列中挑出一个元素，称为 “基准”（pivot）</li>
-<li>重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作；</li>
-<li>递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序。</li>
-</ul>
-</li>
-<li><p>伪代码描述</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">QUICKSORT(A,p,r)</span><br><span class="line">1  if p &lt; r</span><br><span class="line">2    q = PARTITION(A,p,r)</span><br><span class="line">3    QUICKSORT(A,p,q-1)</span><br><span class="line">4    QUICKSORT(A,q+1,r)</span><br><span class="line"></span><br><span class="line">PARTITION(A,p,r)</span><br><span class="line">1  x = A[r]</span><br><span class="line">2  i = p-1</span><br><span class="line">3  for j = p to r-1</span><br><span class="line">4    if A[j] &lt;= x</span><br><span class="line">5        i = i+1</span><br><span class="line">6        exchange A[i] with A[j]</span><br><span class="line">7  exchange A[i+1] with A[r]</span><br><span class="line">8  return i+1</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-算法复杂度-4"><a href="#2-算法复杂度-4" class="headerlink" title="2.算法复杂度"></a>2.算法复杂度</h4><ul>
-<li>时间复杂度<ul>
-<li>最佳情况：T(n) = O(nlogn)</li>
-<li>最差情况：T(n) = O(n2)</li>
-<li>平均情况：T(n) = O(nlogn)　</li>
-</ul>
-</li>
-<li>空间复杂度<ul>
-<li>O(1)</li>
-</ul>
-</li>
-</ul>
-<h4 id="3-算法实现-4"><a href="#3-算法实现-4" class="headerlink" title="3.算法实现"></a>3.算法实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quick_sort</span><span class="params">(array, l, r)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> l &lt; r:</span><br><span class="line">        q = partition(array, l, r)</span><br><span class="line">        quick_sort(array, l, q)</span><br><span class="line">        quick_sort(array, q + <span class="number">1</span>, r)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">partition</span><span class="params">(array, l, r)</span>:</span></span><br><span class="line">    i = l - <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(l, r):</span><br><span class="line">        <span class="keyword">if</span> array[j] &lt;= array[r]:</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">            array[i], array[j] = array[j], array[i]</span><br><span class="line">    array[i+<span class="number">1</span>], array[r] = array[r], array[i+<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">return</span> i</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quicksort</span><span class="params">(arr)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(arr) &lt;= <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> arr</span><br><span class="line">    pivot = arr[len(arr) // <span class="number">2</span>]</span><br><span class="line">    left = [x <span class="keyword">for</span> x <span class="keyword">in</span> arr <span class="keyword">if</span> x &lt; pivot]</span><br><span class="line">    middle = [x <span class="keyword">for</span> x <span class="keyword">in</span> arr <span class="keyword">if</span> x == pivot]</span><br><span class="line">    right = [x <span class="keyword">for</span> x <span class="keyword">in</span> arr <span class="keyword">if</span> x &gt; pivot]</span><br><span class="line">    <span class="keyword">return</span> quicksort(left) + middle + quicksort(right)</span><br><span class="line"></span><br><span class="line">print(quicksort([<span class="number">3</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">10</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    a = [<span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">45</span>, <span class="number">76</span>, <span class="number">47</span>, <span class="number">34</span>, <span class="number">5</span>, <span class="number">23</span>]</span><br><span class="line">    quick_sort(a, <span class="number">0</span>, len(a) - <span class="number">1</span>)</span><br><span class="line">    print(a)</span><br></pre></td></tr></table></figure>
-
-<h2 id="0X07、计数排序"><a href="#0X07、计数排序" class="headerlink" title="0X07、计数排序"></a>0X07、计数排序</h2><p>计数排序的核心在于将输入的数据值转化为键存储在额外开辟的数组空间中。 作为一种线性时间复杂度的排序，计数排序要求输入的数据必须是有确定范围的整数。<br>计数排序(Counting sort)是一种稳定的排序算法。计数排序使用一个额外的数组C，其中第i个元素是待排序数组A中值等于i的元素的个数。然后根据数组C来将A中的元素排到正确的位置。它只能对整数进行排序。</p>
-<h4 id="1-算法思路-3"><a href="#1-算法思路-3" class="headerlink" title="1.算法思路"></a>1.算法思路</h4><ul>
-<li>找出待排序的数组中最大和最小的元素；</li>
-<li>统计数组中每个值为i的元素出现的次数，存入数组C的第i项；</li>
-<li>对所有的计数累加（从C中的第一个元素开始，每一项和前一项相加）；</li>
-<li>反向填充目标数组：将每个元素i放在新数组的第C(i)项，每放一个元素就将C(i)减去1。</li>
-</ul>
-<h4 id="2-算法复杂度-5"><a href="#2-算法复杂度-5" class="headerlink" title="2.算法复杂度"></a>2.算法复杂度</h4><p>当输入的元素是n 个0到k之间的整数时，它的运行时间是 O(n + k)。计数排序不是比较排序，排序的速度快于任何比较排序算法。由于用来计数的数组C的长度取决于待排序数组中数据的范围（等于待排序数组的最大值与最小值的差加上1），这使得计数排序对于数据范围很大的数组，需要大量时间和内存。<br>最佳情况：T(n) = O(n+k) 最差情况：T(n) = O(n+k) 平均情况：T(n) = O(n+k)</p>
-<h4 id="3-算法实现-5"><a href="#3-算法实现-5" class="headerlink" title="3.算法实现"></a>3.算法实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">count_sort</span><span class="params">(array)</span>:</span></span><br><span class="line">    leng = len(array)</span><br><span class="line">    c = []</span><br><span class="line">    res = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">100</span>):</span><br><span class="line">        c.append(<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, leng):</span><br><span class="line">        c[array[i]] = c[array[i]]+<span class="number">1</span></span><br><span class="line">        res.append(<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">100</span>):</span><br><span class="line">        c[i] = c[i<span class="number">-1</span>]+c[i]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(leng<span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">        res[c[array[i]]<span class="number">-1</span>] = array[i]</span><br><span class="line">        c[array[i]] = c[array[i]]<span class="number">-1</span></span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    a = [<span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">45</span>, <span class="number">76</span>, <span class="number">47</span>, <span class="number">34</span>, <span class="number">5</span>, <span class="number">23</span>]</span><br><span class="line">    print(count_sort(a))</span><br></pre></td></tr></table></figure>
-
-<h2 id="0X08、基数排序"><a href="#0X08、基数排序" class="headerlink" title="0X08、基数排序"></a>0X08、基数排序</h2><p>基数排序也是非比较的排序算法，对每一位进行排序，从最低位开始排序，复杂度为O(kn),为数组长度，k为数组中的数的最大的位数；<br>基数排序是按照低位先排序，然后收集；再按照高位排序，然后再收集；依次类推，直到最高位。有时候有些属性是有优先级顺序的，先按低优先级排序，再按高优先级排序。最后的次序就是高优先级高的在前，高优先级相同的低优先级高的在前。基数排序基于分别排序，分别收集，所以是稳定的。</p>
-<h4 id="1-算法思路-4"><a href="#1-算法思路-4" class="headerlink" title="1.算法思路"></a>1.算法思路</h4><ul>
-<li>取得数组中的最大数，并取得位数；</li>
-<li>arr为原始数组，从最低位开始取每个位组成radix数组；</li>
-<li>对radix进行计数排序（利用计数排序适用于小范围数的特点）</li>
-</ul>
-<h4 id="2-算法复杂度-6"><a href="#2-算法复杂度-6" class="headerlink" title="2.算法复杂度"></a>2.算法复杂度</h4><p>最佳情况：T(n) = O(n * k) 最差情况：T(n) = O(n * k) 平均情况：T(n) = O(n * k)<br>基数排序有两种方法：<br>MSD 从高位开始进行排序 LSD 从低位开始进行排序<br>基数排序 vs 计数排序 vs 桶排序<br>这三种排序算法都利用了桶的概念，但对桶的使用方法上有明显差异：</p>
-<ul>
-<li>基数排序：根据键值的每位数字来分配桶</li>
-<li>计数排序：每个桶只存储单一键值</li>
-<li>桶排序：每个桶存储一定范围的数值</li>
-</ul>
-<h4 id="3-算法实现-6"><a href="#3-算法实现-6" class="headerlink" title="3.算法实现"></a>3.算法实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">radix_sort</span><span class="params">(lists, radix=<span class="number">10</span>)</span>:</span></span><br><span class="line">    k = int(math.ceil(math.log(max(lists), radix)))</span><br><span class="line">    bucket = [[] <span class="keyword">for</span> i <span class="keyword">in</span> range(radix)]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, k+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> lists:</span><br><span class="line">            bucket[j//(radix**(i<span class="number">-1</span>)) % (radix**i)].append(j)</span><br><span class="line">        <span class="keyword">del</span> lists[:]</span><br><span class="line">        <span class="keyword">for</span> z <span class="keyword">in</span> bucket:</span><br><span class="line">            lists += z</span><br><span class="line">            <span class="keyword">del</span> z[:]</span><br><span class="line">    <span class="keyword">return</span> lists</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    a = [<span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">45</span>, <span class="number">76</span>, <span class="number">47</span>, <span class="number">34</span>, <span class="number">5</span>, <span class="number">23</span>]</span><br><span class="line">    radix_sort(a)</span><br><span class="line">    print(a)</span><br></pre></td></tr></table></figure>
-
-<h2 id="0X09、桶排序"><a href="#0X09、桶排序" class="headerlink" title="0X09、桶排序"></a>0X09、桶排序</h2><p>桶排序是计数排序的升级版。它利用了函数的映射关系，高效与否的关键就在于这个映射函数的确定。<br>桶排序 (Bucket sort)的工作的原理：假设输入数据服从均匀分布，将数据分到有限数量的桶里，每个桶再分别排序（有可能再使用别的排序算法或是以递归方式继续使用桶排序进行排</p>
-<h4 id="1-算法思路-5"><a href="#1-算法思路-5" class="headerlink" title="1.算法思路"></a>1.算法思路</h4><ul>
-<li>人为设置一个BucketSize，作为每个桶所能放置多少个不同数值（例如当BucketSize==5时，该桶可以存放｛1,2,3,4,5｝这几种数字，但是容量不限，即可以存放100个3）；</li>
-<li>遍历输入数据，并且把数据一个一个放到对应的桶里去；</li>
-<li>对每个不是空的桶进行排序，可以使用其它排序方法，也可以递归使用桶排序；</li>
-<li>从不是空的桶里把排好序的数据拼接起来。<br>注意，如果递归使用桶排序为各个桶排序，则当桶数量为1时要手动减小BucketSize增加下一循环桶的数量，否则会陷入死循环，导致内存溢出。</li>
-</ul>
-<h4 id="2-算法复杂度-7"><a href="#2-算法复杂度-7" class="headerlink" title="2.算法复杂度"></a>2.算法复杂度</h4><p>桶排序最好情况下使用线性时间O(n)，桶排序的时间复杂度，取决与对各个桶之间数据进行排序的时间复杂度，因为其它部分的时间复杂度都为O(n)。很显然，桶划分的越小，各个桶之间的数据越少，排序所用的时间也会越少。但相应的空间消耗就会增大。<br>最佳情况：T(n) = O(n+k) 最差情况：T(n) = O(n+k) 平均情况：T(n) = O(n2)　</p>
-<h4 id="3-算法实现-7"><a href="#3-算法实现-7" class="headerlink" title="3.算法实现"></a>3.算法实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">node</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, k)</span>:</span></span><br><span class="line">        self.key = k</span><br><span class="line">        self.next = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bucket_sort</span><span class="params">(lista)</span>:</span></span><br><span class="line">    h = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">10</span>):</span><br><span class="line">        h.append(node(<span class="number">0</span>))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(lista)):</span><br><span class="line">        tmp = node(lista[i])</span><br><span class="line">        map = lista[i]//<span class="number">10</span></span><br><span class="line">        p = h[map]</span><br><span class="line">        <span class="keyword">if</span> p.key <span class="keyword">is</span> <span class="number">0</span>:</span><br><span class="line">            h[map].next = tmp</span><br><span class="line">            h[map].key = h[map].key+<span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">while</span>(p.next != <span class="literal">None</span> <span class="keyword">and</span> p.next.key &lt;= tmp.key):</span><br><span class="line">                p = p.next</span><br><span class="line">            tmp.next = p.next</span><br><span class="line">            p.next = tmp</span><br><span class="line">            h[map].key = h[map].key+<span class="number">1</span></span><br><span class="line">    k = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">10</span>):</span><br><span class="line">        q = h[i].next</span><br><span class="line">        <span class="keyword">while</span>(q != <span class="literal">None</span>):</span><br><span class="line">            lista[k] = q.key</span><br><span class="line">            k = k+<span class="number">1</span></span><br><span class="line">            q = q.next</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    a = [<span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">45</span>, <span class="number">76</span>, <span class="number">47</span>, <span class="number">34</span>, <span class="number">5</span>, <span class="number">23</span>]</span><br><span class="line">    bucket_sort(a)</span><br><span class="line">    print(a)</span><br></pre></td></tr></table></figure>
-
-<h2 id="0X10、堆排序"><a href="#0X10、堆排序" class="headerlink" title="0X10、堆排序"></a>0X10、堆排序</h2><p>堆排序(heap-sort),和归并排序一样，不同于插入排序的是，堆排序的时间复杂度是O(nlogn)。与插入排序相同，不同于堆排序的是，堆排序具有空间原址性：任何时候都需要常数个额外的元素空间来存储临时数据。<br>其思想便是引用一种成为堆的数据结构。常见的有大根堆（最大堆）和小根堆（最小堆）。在排序中一般使用大根堆，小根堆通常构建优先队列。</p>
-<ul>
-<li>大根堆：<ul>
-<li>除了根以外的所有节点i都满足：A[PARENT(i)]&gt;=A[i]</li>
-</ul>
-</li>
-<li>小根堆：<ul>
-<li>除了根以外的所有节点i都满足：A[PARENT(i)]&lt;=A[i]</li>
-</ul>
-</li>
-</ul>
-<h4 id="1-算法思路-6"><a href="#1-算法思路-6" class="headerlink" title="1.算法思路"></a>1.算法思路</h4><ul>
-<li>伪代码描述</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"># 用于维护最大根堆的性质</span><br><span class="line"># 对于树高为h的大根堆，其时间复杂度为O(h)</span><br><span class="line">MAX-HEAPIFY(A,i)</span><br><span class="line">1  l = LEFT(i)</span><br><span class="line">2  r = RIGHT(i)</span><br><span class="line">3  if l &lt;= A.heap-size and A[l] &gt; A[i]</span><br><span class="line">4    largest = l</span><br><span class="line">5  else larget = r</span><br><span class="line">6  if r &lt;= A.heap-size and A[r] &gt; A[largest]</span><br><span class="line">7    largest = r</span><br><span class="line">8  if largest != i</span><br><span class="line">9    exchange A[i] with A[largest]</span><br><span class="line">10   MAX-HEAPIFY(A,largest)</span><br><span class="line"></span><br><span class="line"># 建堆</span><br><span class="line">BUILD-MAX-HEAP(A)</span><br><span class="line">1  A.heap-size = A.length</span><br><span class="line">2  for i = ⌊A.length/2⌋ downto 1</span><br><span class="line">3    MAX-HEAPIFY(A, i)</span><br><span class="line"></span><br><span class="line"># 堆排序</span><br><span class="line">HEAP-SORT(A)</span><br><span class="line">1  BUILD-MAX-HEAP(A)</span><br><span class="line">2  for i = A.length downto 2</span><br><span class="line">3    exchange A[1] with A[i]</span><br><span class="line">4    MAX-HEAPIFY(A, 1)</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-算法复杂度-8"><a href="#2-算法复杂度-8" class="headerlink" title="2.算法复杂度"></a>2.算法复杂度</h4><ul>
-<li>时间复杂度<ul>
-<li>最佳情况：T(n) = O(nlogn)</li>
-<li>最差情况：T(n) = O(nlogn)</li>
-<li>平均情况：T(n) = O(nlogn)</li>
-</ul>
-</li>
-<li>空间复杂度<ul>
-<li>O(1)</li>
-</ul>
-</li>
-</ul>
-<h4 id="3-算法实现-8"><a href="#3-算法实现-8" class="headerlink" title="3.算法实现"></a>3.算法实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">swap_param</span><span class="params">(L, i, j)</span>:</span></span><br><span class="line">    L[i], L[j] = L[j], L[i]</span><br><span class="line">    <span class="keyword">return</span> L</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">heap_adjust</span><span class="params">(L, start, end)</span>:</span></span><br><span class="line">    temp = L[start]</span><br><span class="line"></span><br><span class="line">    i = start</span><br><span class="line">    j = <span class="number">2</span> * i</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> j &lt;= end:</span><br><span class="line">        <span class="keyword">if</span> (j &lt; end) <span class="keyword">and</span> (L[j] &lt; L[j + <span class="number">1</span>]):</span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> temp &lt; L[j]:</span><br><span class="line">            L[i] = L[j]</span><br><span class="line">            i = j</span><br><span class="line">            j = <span class="number">2</span> * i</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    L[i] = temp</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">heap_sort</span><span class="params">(L)</span>:</span></span><br><span class="line">    L_length = len(L) - <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    first_sort_count = L_length // <span class="number">2</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(first_sort_count):</span><br><span class="line">        heap_adjust(L, first_sort_count - i, L_length)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(L_length - <span class="number">1</span>):</span><br><span class="line">        L = swap_param(L, <span class="number">1</span>, L_length - i)</span><br><span class="line">        heap_adjust(L, <span class="number">1</span>, L_length - i - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> [L[i] <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(L))]</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    a = [<span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">45</span>, <span class="number">76</span>, <span class="number">47</span>, <span class="number">34</span>, <span class="number">5</span>, <span class="number">23</span>]</span><br><span class="line">    L = deque(a)</span><br><span class="line">    L.appendleft(<span class="number">0</span>)</span><br><span class="line">    print(heap_sort(L))</span><br></pre></td></tr></table></figure>
-
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2016/05/10/2016/05-10-排序算法汇总/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1855,7 +1067,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="hackfox">
-      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+      <meta itemprop="description" content="架构、AI、python、rust">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1950,7 +1162,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="hackfox">
-      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+      <meta itemprop="description" content="架构、AI、python、rust">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1976,7 +1188,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-19 13:27:38" itemprop="dateModified" datetime="2020-04-19T13:27:38+08:00">2020-04-19</time>
+                <time title="修改时间：2020-06-09 20:50:30" itemprop="dateModified" datetime="2020-06-09T20:50:30+08:00">2020-06-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -2006,306 +1218,14 @@
 <li>关系模型</li>
 </ul>
 <p>2.关系模型：用表来描述数据与数据间的关系<br>3.数据完整性和数据保护<br>4.mysql 1.0诞生于1995年<br>5.mysql以守护进程运行</p>
-<h2 id="0x01、结构体系"><a href="#0x01、结构体系" class="headerlink" title="0x01、结构体系"></a>0x01、结构体系</h2><p>1.连接器<br>进行身份验证、线程重用,连接限制,检查内存,数据缓存；管理用户的连接，线程处理等需要缓存的需求。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show variables like <span class="string">"%connection%"</span>;</span><br></pre></td></tr></table></figure>
-
-<p>2.连接池组件</p>
-<p>3.缓存<br>全局和引擎特定的缓存和缓冲区</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show variables like <span class="string">'%query_cache%'</span>;</span><br></pre></td></tr></table></figure>
-
-<p>4.权限</p>
-<p>5.表管理器</p>
-<p>6.日志管理</p>
-<p>7.sql接口组件<br>进行DML、DDL,存储过程、视图、触发器等操作和管理；用户通过SQL命令来查询所需结果。</p>
-<p>8.插件式存储引擎</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show engines;</span><br></pre></td></tr></table></figure>
-
-<p>9.解析器<br>查询翻译对象的特权；SQL命令传递到解析器的时候会被解析器验证和解析</p>
-<p>10.优化器<br>访问路径的统计数据</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select @@optimizer_switch;</span><br></pre></td></tr></table></figure>
-
-<p>11.管理服务与工具组件<br>备份和恢复的安全性，复制，集群，管理，配置，迁移和元数据</p>
-<p>12.物理文件</p>
-<ul>
-<li><p>1.日志文件</p>
-<ul>
-<li>错误日志：errorlog</li>
-<li>二进制日志：binlog</li>
-<li>更新日志：update log</li>
-<li>查询日志：query log</li>
-<li>慢查询日志：slow query log</li>
-<li>innodb在线redo日志：innodb redo log</li>
-</ul>
-</li>
-<li><p>2.数据文件</p>
-<ul>
-<li>frm:任何存储引擎都有一个，存储表结构定义信息</li>
-<li>MYD:MYISAM存储引擎专用，存储数据</li>
-<li>MYI:MYISAM存储引擎专用，存储索引信息</li>
-<li>idb和idbdata:innodb存储引擎存储数据，.idb存储独享表空间数据，idbdata存储共享表空间数据</li>
-</ul>
-</li>
-<li><p>3.replication相关文件：</p>
-<ul>
-<li>master.info文件：存在于slave端的数据目录下，存放master端的ip，用户，连接密码和接口等数据</li>
-<li>relay log和relay log index</li>
-<li>relay-log.info文件</li>
-</ul>
-</li>
-<li><p>4.其他文件</p>
-<ul>
-<li>system config file:my.cnf</li>
-<li>pid file:存放mysql进程</li>
-<li>socket file:unix\linux环境下才有，可以不用tcp协议连接而用unix的socket来连接mysql</li>
-</ul>
-</li>
-</ul>
-<h2 id="0x02、系统架构"><a href="#0x02、系统架构" class="headerlink" title="0x02、系统架构"></a>0x02、系统架构</h2><h3 id="1-逻辑模块"><a href="#1-逻辑模块" class="headerlink" title="1.逻辑模块"></a>1.逻辑模块</h3><p>1.SQL Layer:权限判断、sql解析、执行计划优化、query cache的处理</p>
-<ul>
-<li>初始化模块：在mysql server启动时，对整个系统做各种各样的优化，如：各种buffer、cache结构的初始化和内存空间申请，各种系统变量初始化，各种存储引擎初始化等</li>
-<li>核心API:提供一些需要非常高效的底层操作功能的优化实现,包括各种底层数据结构的实现，特殊算法的实现，字符串处理，数字处理等，小文件I/O，格式化输出，以及最重要的内存管理部分</li>
-<li>网络交换模块：抽象出底层网络交互所使用的接口api， 实现底层网络数据的接收与发送，以方便其他各个模块调用，以及对这一部分的维护。</li>
-<li>Client&amp;Server 交换协议模块：任何C/S结构的软件系统， 都肯定会有自己独有的信息交互协议，MySQL也不例外。MySQL的Client &amp; Server 交互协议模块部分，实现了客户端与MySQL交互过程中的所有协议。当然这些协议都是建立在现有的OS和网络协议之上的，如TCP/IP以及Unix Socket</li>
-<li>用户模块：主要包括用户的登录连接权限控制和用户的授权管理</li>
-<li>访问控制模块：根据用户模块中各用户的授权信息， 以及数据库自身特有的各种约束， 来控制用户对数据的访问。 用户模块和访问控制模块两者结合起来， 组成了MySQL整个数据库系统的权限安全管理的功能</li>
-<li>连接管理、连接线程和线程管理：负责监听对MySQL Server的各种请求，接收连接请求，转发所有连接请求到线程管理模块。每一个连接上MySQL Server的客户端请求都会被分配（或创建）一个连接线程为其单独服务。而连接线程的主要工作就是负责 MySQL Server与客户端的通信，接受客户端的命令请求，传递Server端的结果信息等。线程管理模块则负责管理维护这些连接线程。包括线程的创建，线程的cache等</li>
-<li>Query解析和转发模块：MySQL中我们习惯将所有Client端发送给Server端的命令都称为query， 在 MySQL Server里面，连接线程接收到客户端的一个 Query后，会直接将该 query传递给专门负责将各种Query进行分类然后转发给各个对应的处理模块， 这个模块就是query解析和转发模块。 其主要工作就是将query语句进行语义和语法的分析， 然后按照不同的操作类型进行分类，然后做出针对性的转发。</li>
-<li>Query Cache模块：主要功能是将客户端提交给MySQL的Select类query请求的返回结果集cache到内存中， 与该query的一个hash值做一个对应。该Query所取数据的基表发生任何数据的变化之后， MySQL会自动使该query的Cache 失效。在读写比例非常高的应用系统中， Query Cache对性能的提高是非常显著的。当然它对内存的消耗也是非常大的。</li>
-<li>Query优化器模块：根据客户端请求的query语句，和数据库中的一些统计信息，在一系列算法的基础上进行分析，得出一个最优的策略，告诉后面的程序如何取得这个query语句的结果。</li>
-<li>表变更管理模块：主要是负责完成一些DML和 DDL的query，如： update， delte， insert，create table， alter table等语句的处理</li>
-<li>表维护模块：表的状态检查，错误修复，以及优化和分析等工作都是表维护模块需要做的事情。</li>
-<li>系统状态管理模块：负责在客户端请求系统状态的时候， 将各种状态数据返回给用户， 像DBA常用的各种show status命令， show variables命令等， 所得到的结果都是由这个模块返回的</li>
-<li>表管理器：表管理器的工作主要就是维护.frm等文件，以及一个cache，该cache中的主要内容是各个表的结构信息。此外它还维护table级别的锁管理。</li>
-<li>日志记录模块：日志记录模块主要负责整个系统级别的逻辑层的日志的记录，包括error log， binary log， slow query log等</li>
-<li>复制模块：可分为 Master 模块和 Slave 模块两部分， Master 模块主要负责在Replication环境中读取Master端的binary日志， 以及与 Slave端的I/O线程交互等工作。Slave模块比Master模块所要做的事情稍多一些，在系统中主要体现在两个线程上面。一个是负责从Master请求和接受binary日志， 并写入本地relay log中的I/O线程。 另外一个是负责从relay log中读取相关日志事件， 然后解析成可以在Slave端正确执行并得到和Master端完全相同的结果的命令并再交给Slave执行的SQL线程。</li>
-<li>存储引擎接口模块：</li>
-</ul>
-<p>2.Storage Engine Layer</p>
-<ul>
-<li><p>MYISAM</p>
-<ul>
-<li>支持三种索引：B-tree索引、R-tree索引、Full-text索引</li>
-<li>数据存放格式：静态固定长度(FIXED)、动态可变长度(DYNAMIC)、压缩格式(COMPRESSED)三种格式，同过创建表时指定ROW_FORMAT指定</li>
-<li>不支持事务，表级锁</li>
-</ul>
-</li>
-<li><p>innodb</p>
-<ul>
-<li>支持事务安装：四个级别READ UNCOMMITTED， READ COMMITTED， REPEATABLE READ和SERIALIZABLE。</li>
-<li>数据多版本读取：</li>
-<li>锁定机制的改进：实现了行级锁</li>
-<li>支持外键</li>
-<li>存在表空间概念：<ul>
-<li>共享表空间：必须存在，innodb的undo信息和其他一些元数据信息都是存放在共享表空间里面的。 共享表空间的数据文件是可以设置为固定大小和可自动扩展大小两种形式</li>
-<li>独享表空间</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>NDB Cluster</p>
-<ul>
-<li>负责管理各个节点的Manage节点主机</li>
-<li>SQL 层的SQL服务器节点</li>
-<li>Storage层的NDB数据节点，也就是上面说的NDB Cluster</li>
-</ul>
-</li>
-</ul>
-<h2 id="0x03、安全"><a href="#0x03、安全" class="headerlink" title="0x03、安全"></a>0x03、安全</h2><h3 id="1-网络"><a href="#1-网络" class="headerlink" title="1.网络"></a>1.网络</h3><h3 id="2-主机"><a href="#2-主机" class="headerlink" title="2.主机"></a>2.主机</h3><h3 id="3-数据库"><a href="#3-数据库" class="headerlink" title="3.数据库"></a>3.数据库</h3><h3 id="4-代码"><a href="#4-代码" class="headerlink" title="4.代码"></a>4.代码</h3><h3 id="5-权限"><a href="#5-权限" class="headerlink" title="5.权限"></a>5.权限</h3><ul>
-<li>1.有关权限信息主要存储在几个被称为 grant tables 的系统表中，即： mysql.User， mysql.db， mysql.Host， mysql.table_priv和mysql.column_priv</li>
-<li>2.由于权限信息数据量比较小，而且访问又非常频繁，所以Mysql在启动的时候，就会将所有的权限信息都Load到内存中保存在几个特定的结构中。</li>
-<li>3.议读者一般情况下尽量使用GRANT， REVOKE， CREATE USER以及DROP USER命令来进行用户和权限的变更操作， 尽量减少直接修改grant tables来实现用户和权限变更的操作</li>
-<li>4.查询权限：SHOW GRANTS FOR ‘username’@’hostname’</li>
-<li>5.权限级别：分为五个级别<ul>
-<li><strong><code>Global Level:</code></strong> 称为全局权限控制， 所有权限信息都保存在mysql.user表中。 Global Level的所有权限都是针对整个mysqld的，对所有的数据库下的所有表及所有字段都有效。如果一个权限是以Global Level来授予的，则会覆盖其他所有级别的相同权限设置。只需要在执行GRANT命令的时候，用“ <em>.</em>”来指定适用范围是Global的即可，当有多个权限需要授予的时候，也并不需要多次重复执行GRANT命令，只需要一次将所有需要的权限名称通过逗号（ “ ,”）分隔开即可，</li>
-<li><strong><code>Database Level:</code></strong> Database Level是在Global Level之下，其他三个Level之上的权限级别，其作用域即为所指定整个数据库中的所有对象。与Global Level的权限相比， Database Level主要少了以下几个权限：CREATE USER，FILE，PROCESS，RELOAD，REPLICATION CLIENT，REPLICATION SLAVE， SHOW DATABASES， SHUTDOWN， SUPER和USAGE这几个权限，没有增加任何权限。<ul>
-<li>1.执行GRANT命令的时候，通过“ database.*”来限定权限作用域为database整个数据库</li>
-<li>2.先通过USE命令选定需要授权的数据库，然后通过“ *”来限定作用域，这样授权的作用域实际上就是当前选定的整个数据库</li>
-</ul>
-</li>
-<li><strong><code>Table Level:</code></strong> Database Level之下就是 Table Level的权限了， Table Level的权限可以被 GlobalLevel和Database Level的权限所覆盖， 同时也能覆盖Column Level和Routine Level的权限.权限作用范围是授权语句中所指定数据库的指定表。仅有ALTER， CREATE， DELETE， DROP， INDEX， INSERT， SELECT UPDATE这八种权限</li>
-<li><strong><code>Column Level:</code></strong> 权限作用范围就更小了，仅仅是某个表的指定的某个（活某些）列。<ul>
-<li>由于权限的覆盖原则， Column Level的权限同样可以被 Global， Database， Table这三个级别的权限中的相同级别所覆盖</li>
-<li>而且由于 Column Level所针对的权限和 Routine Level的权限作用域没有重合部分，所以不会有覆盖与被覆盖的关系。</li>
-<li>针对Column Level级别的权限仅有INSERT， SELECT和UPDATE这三种。</li>
-<li>Column Level的权限授权语句语法基本和Table Level差不多，只是需要在权限名称后面将需要授权的列名列表通过括号括起来</li>
-<li>某个用户在向某个表插入（ INSERT）数据的时候，如果该用户在该表中某列上面没有INSERT权限，则该列的数据将以默认值填充。这一点和很多其他的数据库都有一些区别，是MySQL自己在SQL上面所做的扩展</li>
-</ul>
-</li>
-<li><strong><code>Routine Level:</code></strong> 权限主要只有 EXECUTE和 ALTER ROUTINE两种<ul>
-<li>主要针对的对象是procedure和function这两种对象</li>
-<li>在授予 Routine Level权限的时候，需要指定数据库和相关对象</li>
-</ul>
-</li>
-<li><strong><code>GRANT权限:</code></strong> 拥有GRANT权限的用户可以将自身所拥有的任何权限全部授予其他任何用户是一个非常特殊也非常重要的权限。<ul>
-<li>GRANT权限的授予方式也和其他任何权限都不太一样，通常都是通过在执行GRANT授权语句的时候在最后添加WITH GRANT OPTION子句达到授予GRANT权限的目的</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>以上五个Level的权限中， Table、 Column和Routine三者在授权中所依赖（或者引用）的对象必须是已经存在的，而不像Database Level的权限授予，可以在当前不存在该数据库的时候就完成授权</p>
-<h3 id="6-访问控制原理"><a href="#6-访问控制原理" class="headerlink" title="6.访问控制原理"></a>6.访问控制原理</h3><ul>
-<li><p>1.两个模块：用户管理模块和访问控制模块</p>
-</li>
-<li><p>2.用户管理模块：</p>
-<ul>
-<li>主要是有user表</li>
-<li>如果指定用户访问，需有-h选项指定连接ip，mysql默认用localhost指定连接</li>
-<li>权限更新：FLUSH PRIVILEGES会强行让MySQL更新Load到内存中的权限信息；<ul>
-<li>GRANT、 REVOKE或者CREATE USER和DROP USER操作会直接更新内存中俄权限信息；</li>
-<li>重启MySQL会让MySQL完全从grant tables中读取权限信息</li>
-<li>于Global Level的权限信息的修改，仅仅只有更改之后新建连接才会用到，对于已经连接上的session并不会受到影响。</li>
-<li>而对于Database Level的权限信息的修改，只有当客户端请求执行了“ USE database_name” 命令之后，才会在重新校验中使用到新的权限信息。</li>
-<li>所以有些时候如果在做了比较紧急的Global和Database这两个Level的权限变更之后，可能需要通过“ KILL” 命令将已经连接在MySQL中的session 杀掉强迫他们重新连接以使用更新后的权限。</li>
-<li>对于Table Level和Column Level的权限，则会在下一次需要使用到该权限的Query被请求的时候生效，也就是说，对于应用来讲，这两个Level的权限，更新之后立刻就生效了，而不会需要执行“ KILL” 命令</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>3.访问控制模块：</p>
-<ul>
-<li>MySQL 接收到客户端的请求之后， 访问控制模块是需要校验该用户是否满足提交的请求所需要的权限。 权限校验过程是从最大范围的权限往最小范围的权限开始依次校验所涉及到的每个对象的每个权限</li>
-<li>MySQL首先会查找存储在内存结构中的权限数据，首先查找 Global Level 权限，如果所需权限在 Global Level 都有定义（ GRANT或者 REVOKE），则完成权限校验（通过或者拒绝） ，如果没有找到所有权限的定义，则会继续往后查找Database Level 权限，进行 Global Level 未定义的所需权限的校验，如果仍然没有能够找到所有所需权限的定义， MySQL 会继续往更小范围的权限定义域查找，也就是 Table Level，最后则是 Column Level 或者 Routine Level</li>
-<li>MySQL的权限是授予“ username@hostname” 的，也就是说，至少需要用户名和主机名二者才能确定一个访问者的权限。又由于hostname可以是一个含有通配符的域名，也可以是一个含有通配符的IP地址段。那么如果同一个用户有两条权限信息，一条是针对特定域名的， 另外一个是含有通配符的域名， 而且前者属于后者包含。 这时候MySQL如何来确定权限信息呢？实际上MySQL永远优先考虑更精确范围的权限。 在MySQL内部会按照username和hostname作一个排序， 对于相同username的权限， 其host信息越接近访问者的来源host， 则排序位置越靠前， 则越早被校验使用到。 而且， MySQL在权限校验过程中，只要找到匹配的权限之后， 就不会再继续往后查找是否还有匹配的权限信息， 而直接完成校验过程</li>
-</ul>
-</li>
-</ul>
-<h3 id="7-访问授权策略"><a href="#7-访问授权策略" class="headerlink" title="7.访问授权策略"></a>7.访问授权策略</h3><p>1.了解来访主机：<br>2.了解用户需求：<br>3.要用工作分类<br>4.确保只有绝对必要者拥有Grant Option权限</p>
-<h3 id="8-安全设置注意项"><a href="#8-安全设置注意项" class="headerlink" title="8.安全设置注意项"></a>8.安全设置注意项</h3><p>1.确认mysql是否需要联网，通过使用“ –skip-networking” 参数选项，让MySQL不通过TCP/IP监听网络请求，而仅仅通过命名管道或共享内存(在Windows中)或Unix套接字文件(在Unix中)来和客户端连接交互<br>2.通过使用“ –skip-networking” 参数选项，让MySQL不通过TCP/IP监听网络请求，而仅仅通过命名管道或共享内存(在Windows中)或Unix套接字文件(在Unix中)来和客户端连接交互<br>3.使用SSL加密通道。<br>4.访问授权限定来访主机信息。<br>5.OS安全方面：关闭MySQL Server主机上面任何不需要的服务，这不仅能从安全方面减少潜在隐患，还能减轻主机的部分负担，尽可能提高性能。<br>6.用非root用户运行MySQL<br>7.文件和进程安全。MySQL相关的数据和日志文件和所在的文件夹属主和所属组都设置为mysql，且禁用其他所有用户（除了拥有超级权限的用户，如root）的读写权限。以防止数据或者日志文件被窃取或破坏。<br>8.确保MySQL Server所在的主机上所必要运行的其他应用或者服务足够安全，避免因为其他应用或者服务存在安全漏洞而被入侵者攻破防线<br>9.用户设置：密码复杂<br>10.安全参数：不需要使用的功能模块尽量都不要启用，如果不需要使用用户自定义函数，就不要在启动的时候使用“ –allow-suspicious-udfs” 参数选项，以防止被别有居心的潜在威胁者利用此功能而对MySQL的安全造成威胁；</p>
-<ul>
-<li>不需要从本地文件中Load数据到数据库中，就使用“ –local-infile=0” 禁用掉可以从客户端机器上Load文件到数据库中；</li>
-<li>使用新的密码规则和校验规则（不要使用“ –old-passwords”启动数据库） ，这项功能是为了兼容旧版本的密码校验方式的，如无额数必要，不要使用该功能，旧版本的密码加密方式要比新的方式在安全方面弱很多</li>
-</ul>
-<h2 id="0x04、存储管理器"><a href="#0x04、存储管理器" class="headerlink" title="0x04、存储管理器"></a>0x04、存储管理器</h2><p>1.权限及完整性管理器<br>2.事务管理器</p>
-<ul>
-<li>原子性</li>
-<li>一致性</li>
-<li>持久性</li>
-<li></li>
-</ul>
-<p>3.文件管理器<br>4.缓冲管理器<br>5.数据文件<br>6.数据字典<br>7.索引</p>
-<h2 id="0x05、查询处理器"><a href="#0x05、查询处理器" class="headerlink" title="0x05、查询处理器"></a>0x05、查询处理器</h2><p>1.DDL解释器<br>2.DML编译器<br>3.查询计算引擎<br>4.预处理</p>
-<h2 id="0x06、关系型数据库"><a href="#0x06、关系型数据库" class="headerlink" title="0x06、关系型数据库"></a>0x06、关系型数据库</h2><p>1.数据库<br>2.表、元组、类型、主键、外键、码、关系、属性<br>3.范式<br>4.数据抽象：物理层、逻辑层、视图层<br>5.关系运算：选择、投影、并、差、笛卡儿积、交、自然连接、除<br>6.外连接：左外连接、右外连接</p>
-<h2 id="0x07、关键字-SQL"><a href="#0x07、关键字-SQL" class="headerlink" title="0x07、关键字(SQL)"></a>0x07、关键字(SQL)</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span>,<span class="keyword">delete</span>,<span class="keyword">drop</span>,<span class="keyword">select</span>,<span class="keyword">insert</span>,<span class="keyword">update</span>,<span class="keyword">set</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">database</span>,<span class="keyword">table</span>,<span class="keyword">index</span>,<span class="keyword">function</span>,process,<span class="keyword">trigger</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">show</span>,<span class="keyword">status</span>,<span class="keyword">processlist</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">where</span>,<span class="keyword">distinct</span>,<span class="keyword">as</span>,<span class="keyword">with</span>,<span class="keyword">or</span>,<span class="keyword">and</span>,<span class="keyword">like</span>,<span class="keyword">not</span> <span class="keyword">like</span>,<span class="keyword">between</span> <span class="keyword">and</span>,<span class="keyword">order</span> <span class="keyword">by</span>(DESE,ASE),<span class="keyword">group</span> <span class="keyword">by</span>,<span class="keyword">having</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">union</span>,<span class="keyword">union</span> <span class="keyword">all</span>,<span class="keyword">except</span>,<span class="keyword">except</span> <span class="keyword">all</span>,<span class="keyword">unique</span>,<span class="keyword">check</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">in</span>,<span class="keyword">not</span> <span class="keyword">in</span></span><br><span class="line"></span><br><span class="line">primary <span class="keyword">key</span>,<span class="keyword">foreign</span> <span class="keyword">key</span>,<span class="keyword">not</span> <span class="literal">null</span>,<span class="keyword">default</span>,<span class="keyword">auto</span> <span class="keyword">increment</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">grant</span>,<span class="keyword">revoke</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="0x08、SQL语句"><a href="#0x08、SQL语句" class="headerlink" title="0x08、SQL语句"></a>0x08、SQL语句</h2><p>1.DDL和DML</p>
-<ul>
-<li>创建操作</li>
-<li>权限操作<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">grant</span> &lt;权限列表&gt; <span class="keyword">on</span> &lt;关系名或视图&gt; <span class="keyword">to</span> &lt;用户或角色&gt;</span><br><span class="line"><span class="keyword">revoke</span> &lt;权限列表&gt; <span class="keyword">on</span> &lt;关系名或试图&gt; <span class="keyword">from</span> &lt;用户或角色&gt;</span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">all</span> <span class="keyword">privileges</span> <span class="keyword">on</span> *.* <span class="keyword">to</span> <span class="string">'root'</span>@<span class="string">'%'</span> identify <span class="keyword">by</span> <span class="string">"password"</span>;<span class="keyword">flush</span> <span class="keyword">privileges</span>;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>2.DDL：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">database</span>\<span class="keyword">table</span>\<span class="keyword">index</span>\<span class="keyword">function</span>\<span class="keyword">view</span>\processor\<span class="keyword">trigger</span>\<span class="keyword">user</span></span><br><span class="line"><span class="keyword">alter</span></span><br><span class="line"><span class="keyword">drop</span></span><br></pre></td></tr></table></figure>
-
-<p>3.DML</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line"><span class="keyword">update</span></span><br><span class="line"><span class="keyword">delete</span></span><br><span class="line"><span class="keyword">insert</span></span><br></pre></td></tr></table></figure>
-
-<p>4.between and:是包含两端的值<br>5.is null,is not null:不能用=或!=号<br>6.unknown:也是一种值，在参与运算时<br>7.嵌套子查询</p>
-<ul>
-<li>in,not in;=some等价于in,但!=some却不等价与not in;any;all</li>
-<li>exists;not exists</li>
-</ul>
-<p>8.创建视图</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> view_name <span class="keyword">as</span> &lt;查询表达式&gt;</span><br></pre></td></tr></table></figure>
-
-<p>9.删除操作</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> r [<span class="keyword">where</span> p]</span><br></pre></td></tr></table></figure>
-
-<p>10.插入操作</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> r[(row_name,...)] <span class="keyword">values</span>()</span><br></pre></td></tr></table></figure>
-
-<p>11.更新操作</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> r <span class="keyword">set</span> q <span class="keyword">where</span> p</span><br></pre></td></tr></table></figure>
-
-<p>12.创建新类型</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">type</span> Dollar <span class="keyword">as</span> numberic(<span class="number">12</span>,<span class="number">2</span>) <span class="keyword">final</span></span><br></pre></td></tr></table></figure>
-
-<p>13.完整性约束</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">not null,<span class="keyword">check</span>,<span class="keyword">unique</span></span><br></pre></td></tr></table></figure>
-
-<p>14.参照完整性</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foreign key</span><br></pre></td></tr></table></figure>
-
-<p>15.where中用in比用or效率更快<br>16.在已知返回函数时，添加limit<br>17.在sql语句执行时，进行解析、优化、执行、结果几个步骤<br>18.在做更新是，用id来标记更新，否则会全表扫描<br>19.desc table_name  查看表结构</p>
-<h2 id="0x09、内置函数-聚集函数-：不能组合使用"><a href="#0x09、内置函数-聚集函数-：不能组合使用" class="headerlink" title="0x09、内置函数(聚集函数)：不能组合使用"></a>0x09、内置函数(聚集函数)：不能组合使用</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">max(),min(),count(),avg(),sum()</span><br><span class="line">now(),curdate(),datetime(),timestamp(),curtime(),year()</span><br><span class="line">concat()</span><br></pre></td></tr></table></figure>
-
-<h2 id="0x10、基本类型"><a href="#0x10、基本类型" class="headerlink" title="0x10、基本类型"></a>0x10、基本类型</h2><p>1.int(-2,147,483,648–2,147,483,647,4字节),samllint(-32,768–32,767,2字节),tinyint(-128–127,1字节),unsigned,bigint(-9223372036854775808–9223372036854775807,8字节)<br>2.char,varchar<br>3.data,time,timestamp<br>4.double,float,numberic<br>5.tiny text,text,medium text,long text<br>6.blob,medium blob,long blob<br>7.enum,set</p>
-<h2 id="0x11、匹配"><a href="#0x11、匹配" class="headerlink" title="0x11、匹配"></a>0x11、匹配</h2><ul>
-<li>%：匹配任意</li>
-<li>_：匹配任意一个字符</li>
-</ul>
-<h2 id="0x12、存储过程"><a href="#0x12、存储过程" class="headerlink" title="0x12、存储过程"></a>0x12、存储过程</h2><h2 id="0x13、索引"><a href="#0x13、索引" class="headerlink" title="0x13、索引"></a>0x13、索引</h2><p>1.最适合索引的是在where之后的<br>2.使用唯一索引<br>3.使用短索引<br>4.利用最左前缀<br>5.不要过度索引</p>
-<h2 id="0x14、数据库设计问题"><a href="#0x14、数据库设计问题" class="headerlink" title="0x14、数据库设计问题"></a>0x14、数据库设计问题</h2><p>1.数据冗余与不一致<br>2.数据访问困难<br>3.数据孤立<br>4.并发访问异常·<br>5.安全性问题<br>    原则：<br>    1.完整性：完整性约束、参照完整性、断言、授权<br>    2.原子性<br>6.实体集、联系集、属性<br>7.区分实体集内实体的方法：主键<br>8.适度冗余—减少join使用（查询频繁，更新较少字段）<br>9.大字段垂直拆分—（summary表优化）：字段大，访问少<br>10.大表水平拆分—基于类型的分拆优化<br>11.优化数据类型<br>    #1.用更小的数据类型，减小存储空间和io资源<br>    #2.选择合适的数据库类型加速比较</p>
-<p>12.规范的对象命名</p>
-<h2 id="0x15、数据库设计步骤"><a href="#0x15、数据库设计步骤" class="headerlink" title="0x15、数据库设计步骤"></a>0x15、数据库设计步骤</h2><p>1.刻画未来数据库用户的需求：需求规格说明书<br>2.概念设计阶段：实体-联系模型图(确保数据需求都被满足，并且不互相冲突),重点是如何描述数据及其相互关系<br>3.功能需求规则说明书：确保设计模式满足功能需求<br>4.逻辑设计阶段<br>5.物理设计阶段</p>
-<h2 id="0x16、mysql存储引擎"><a href="#0x16、mysql存储引擎" class="headerlink" title="0x16、mysql存储引擎"></a>0x16、mysql存储引擎</h2><p>1.Innodb:事务安全<br>2.Myisam：非事务安全</p>
-<h2 id="0x17、事务-锁"><a href="#0x17、事务-锁" class="headerlink" title="0x17、事务/锁"></a>0x17、事务/锁</h2><p>1.在同一个事务中，最好不使用不同存储引擎的表<br>2.DDL语句不能回滚<br>3.锁定机制直接影响数据库的并发处理能力和性能</p>
-<ul>
-<li>1.三种锁：行级锁、页级锁和表级锁</li>
-<li>2.行级锁：锁定粒度最小，支持并发量大，消耗资源多，容易发生死锁。有Innodb，，NDB Cluster存储引擎</li>
-<li>3.页级锁：处于行级锁和表级锁之间。有BerkeleyDB存储引擎</li>
-<li>4.表级锁：最大粒度锁，实现逻辑简单，负面影响小，获取和释放锁速度很快，极少死锁，并发量小。有Myisam，Memory，csv存储引擎<ul>
-<li>1)分为读锁定和写锁定，通过四个队列来维护两种锁定：<ul>
-<li>Current  read-lock queue</li>
-<li>Pending  read-lock queue</li>
-<li>Current  write-lock queue</li>
-<li>Pending  write-lock queue</li>
-</ul>
-</li>
-<li>2)读锁定：满足下面条件后会立即通过，如果任何一个没有满足，都会被迫进入等待队列<ul>
-<li>1.请求锁定的资源当前没有被写锁定</li>
-<li>2.写锁定等待队列（ Pending write-lock queue）中没有更高优先级的写锁定等待</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="0x18、备份-复制"><a href="#0x18、备份-复制" class="headerlink" title="0x18、备份/复制"></a>0x18、备份/复制</h2><p>1.逻辑备份</p>
-<ul>
-<li>1.用mysqldump导出sql文件</li>
-<li>2.生成特定分割文件</li>
-</ul>
-<p>2.物理备份</p>
-<ul>
-<li>1.备份物理数据文件，日志文件及配置文件等</li>
-</ul>
-<h2 id="0x19、优化建议"><a href="#0x19、优化建议" class="headerlink" title="0x19、优化建议"></a>0x19、优化建议</h2><p>1.如果opened_tables太大,应该把my.cnf中的table_cache变大<br>2.如果Key_reads太大,则应该把my.cnf中key_buffer_size变大.可以用Key_reads/Key_read_requests计算出cache失败率<br>3.如果Handler_read_rnd太大,则你写的SQL语句里很多查询都是要扫描整个表,而没有发挥索引的键的作用<br>4.如果Threads_created太大,就要增加my.cnf中thread_cache_size的值.可以用Threads_created/Connections计算cache命中率<br>5.如果Created_tmp_disk_tables太大,就要增加my.cnf中tmp_table_size的值,用基于内存的临时表代替基于磁盘的</p>
-<h2 id="0x20、information-schema表"><a href="#0x20、information-schema表" class="headerlink" title="0x20、information_schema表"></a>0x20、information_schema表</h2><ul>
-<li><strong><code>CHARACTER_SETS</code></strong> — 关于字符集信息</li>
-<li><strong><code>COLLATIONS</code></strong> — 关于每个字符集的（排序）规则信息</li>
-<li><strong><code>COLLATION_CHARACTER_SET_APPLICABILITY</code></strong> — 关于字符集和每种（排序）规则的对应关系信息</li>
-<li><strong><code>COLUMNS</code></strong> — 关于表中的列信息</li>
-<li><strong><code>COLUMN_PRIVILEGES</code></strong> — 关于MySQL对应账号所有列权限信息</li>
-<li><strong><code>ENGINES</code></strong> — 关于存储引擎的信息</li>
-<li><strong><code>EVENTS</code></strong> — 关于计划事件信息</li>
-<li><strong><code>FILES</code></strong> — 从7.8版本（未使用MySQL Cluster版本的情况下）开始，此表会显示关于InnoDB数据文件信息。早前的版本中此表都显示的是关于NDB数据文件的存储信息。</li>
-<li><strong><code>GLOBAL_STATUS</code></strong> — 关于服务端状态信息，7.6版本之后此表开始将被存放在PERFORMANCE_SCHEMA数据库中</li>
-<li><strong><code>GLOBAL_VARIABLES</code></strong> — 关于服务端全局变量信息，7.6版本之后此表开始将被存放在PERFORMANCE_SCHEMA数据库中</li>
-<li><strong><code>KEY_COLUMN_USAGE</code></strong> — 关于含有约束的键值列信息</li>
-<li><strong><code>OPTIMIZER_TRACE</code></strong> — 关于内部优化器执行语句的追踪信息，启用相应追踪功能需要启动设置optimizer_trace变量</li>
-<li><strong><code>PARAMETERS</code></strong> — 提供关于存储过程和功能函数所使用的参数及功能函数返回值信息</li>
-<li><strong><code>PLUGINS</code></strong> — 关于服务端插件信息</li>
-<li><strong><code>PROCESSLIST</code></strong> — 关于正在运行的线程信息</li>
-<li><strong><code>REFERENTIAL_CONSTRAINTS</code></strong> — 关于外键信息</li>
-<li><strong><code>ROUTINES</code></strong> — 关于存储过程和功能函数的相关信息</li>
-<li><strong><code>SCHEMATA</code></strong> — 关于数据库的信息</li>
-<li><strong><code>SCHEMA_PRIVILEGES</code></strong> — 关于MySQL用户账号所有的数据库权限</li>
-<li><strong><code>SESSION_STATUS</code></strong> — 关于当前连接的状态信息，7.6版本之后此表开始将被存放在PERFORMANCE_SCHEMA数据库中</li>
-<li><strong><code>SESSION_VARIABLES</code></strong> — 关于当前连接的会话变量信息，7.6版本之后此表开始将被存放在PERFORMANCE_SCHEMA数据库中</li>
-<li><strong><code>STATISTICS</code></strong> – 关于表索引的统计信息</li>
-<li><strong><code>TABLES</code></strong> — 关于数据库中表的信息</li>
-<li><strong><code>TABLESPACES</code></strong> — 提供了活动的表空间的信息，注意此表不提供关于InnoDB表空间的元数据信息，你需要去INNODB_SYS_TABLESPACES和INNODB_SYS_DATAFILES下查看，当然MySQL 5.7.8以后，FILES表也提供了InnoDB表空间相关的元数据信息。</li>
-<li><strong><code>TABLE_CONSTRAINTS</code></strong> — 关于表上的约束信息</li>
-<li><strong><code>TABLE_PRIVILEGES</code></strong> — 关于由MySQL用户账号所有的对应表权限信息</li>
-<li><strong><code>TRIGGERS</code></strong> — 关于数据库中触发器信息</li>
-<li><strong><code>USER_PRIVILEGES</code></strong> — 关于MySQL用户账号所有的全局性的权限信息</li>
-<li><strong><code>VIEWS</code></strong> — 关于数据库中视图信息</li>
-<li><strong><code>INNODB_XXXX表</code></strong> — 这些表被用于监控正在进行的InnoDB活动，可以用于在出现问题前探测到这些低效的性能及承载问题。</li>
-</ul>
-<h2 id="0x21、配置参数-show-variables"><a href="#0x21、配置参数-show-variables" class="headerlink" title="0x21、配置参数:show variables;"></a>0x21、配置参数:show variables;</h2><p>auto_increment_increment:自增长键的步长<br>auto_increment_offset:自增长键的起始值<br>autocommit:<br>automatic_sp_privileges:<br>back_log:指定MySQL可能的连接数量。指出在MySQL暂时停止响应新请求之前的短时间内多少个请求可以被存在堆栈中。如果系统在一个短时间内有很多连接，则需要增大该参数的值，该参数值指定到来的TCP/IP连接的侦听队列的大小。不同的操作系统在这个队列大小上有它自己的限制。 试图设定back_log高于你的操作系统的限制将是无效的。<br>basedir:MySQL主程序所在路径，即：–basedir参数的值。<br>big_tables:<br>bind_address:<br>binlog_cache_size:<br>binlog_checksum, CRC32<br>binlog_direct_non_transactional_updates<br>binlog_format, STATEMENT<br>binlog_max_flush_queue_time<br>binlog_order_commits, ON<br>binlog_row_image, FULL<br>binlog_rows_query_log_events<br>binlog_stmt_cache_size, 32768<br>block_encryption_mode, aes-128-ecb<br>bulk_insert_buffer_size, 8388608<br>character_set_client, utf8<br>character_set_connection, utf8<br>character_set_database, utf8<br>character_set_filesystem, binary<br>character_set_results, utf8<br>character_set_server, latin1<br>character_set_system：指定系统字符类型 utf8<br>character_sets_dir:指定字符集路径，如： f:\wamp\bin\mysql\mysql5.6.17\share\charsets<br>collation_connection, utf8_general_ci<br>collation_database, utf8_general_ci<br>collation_server, latin1_swedish_ci<br>completion_type, NO_CHAIN<br>concurrent_insert：如果开启该参数，MySQL则允许在执行 SELECT 操作的同时进行 INSERT 操作。如果要关闭该参数，可以在启动 mysqld 时加载 –safe 选项，或者使用 –skip-new 选项。默认为： AUTO<br>connect_timeout：指定MySQL服务等待应答一个连接报文的最大秒数，超出该时间，MySQL向客户端返回 bad handshake。默认为10<br>core_file<br>datadir：指定数据库路径。即为 –datadir 选项的值，如： f:\wamp\bin\mysql\mysql5.6.17\data<br>date_format, %Y-%m-%d<br>datetime_format, %Y-%m-%d %H:%i:%s<br>default_storage_engine, InnoDB<br>default_tmp_storage_engine, InnoDB<br>default_week_format<br>delay_key_write：该参数只对 MyISAM 类型数据表有效。有如下的取值种类：<br>    off: 如果在建表语句中使用 CREATE TABLE … DELAYED_KEY_WRITES，则全部忽略DELAYED_KEY_WRITES;<br>    on: 如果在建表语句中使用 CREATE TABLE … DELAYED_KEY_WRITES，则使用该选项(默认);<br>    all: 所有打开的数据表都将按照 DELAYED_KEY_WRITES 处理。<br>    如果 DELAYED_KEY_WRITES 开启，对于已经打开的数据表而言，在每次索引更新时都不刷新带有<br>    DELAYED_KEY_WRITES 选项的数据表的key buffer，除非该数据表关闭。该参数会大幅提升写入键值的速<br>    度。如果使用该参数，则应该检查所有数据表：myisamchk –fast –force 。默认为ON<br>delayed_insert_limit：在插入delayed_insert_limit行后，INSERT DELAYED处理模块将检查是否有未执行的SELECT语句。如果有，在继续处理前执行允许这些语句。默认为 100<br>delayed_insert_timeout：一个INSERT DELAYED线程应该在终止之前等待INSERT语句的时间。默认为300<br>delayed_queue_size：为处理INSERT DELAYED分配的队列大小(以行为单位)。如果排队满了，任何进行INSERT DELAYED的客户必须等待队列空间释放后才能继续。默认为1000<br>disconnect_on_expired_password, ON<br>div_precision_increment, 4<br>end_markers_in_json<br>enforce_gtid_consistency<br>eq_range_index_dive_limit, 10<br>error_count<br>event_scheduler<br>expire_logs_days<br>explicit_defaults_for_timestamp, ON<br>external_user,<br>flush：在启动MySQL时加载 –flush 参数打开该功能。默认为 OFF<br>flush_time：如果该设置为非0值，那么每flush_time秒，所有打开的表将被关，以释放资源和sync到磁盘。注意：只建议在使用 Windows9x/Me 或者当前操作系统资源严重不足时才使用该参数!默认为 0<br>foreign_key_checks， ON<br>ft_boolean_syntax：搜索引擎维护员希望更改允许用于逻辑全文搜索的操作符。这些则由变量 ft_boolean_syntax 控制。默认为 + -&gt;&lt;()~*:””&amp;|<br>ft_max_word_len：指定被索引的关键词的最大长度。注意：在更改该参数值后，索引必须重建! 默认为84<br>ft_min_word_len：指定被索引的关键词的最小长度。注意：在更改该参数值后，索引必须重建! 默认为4<br>ft_query_expansion_limit, 20<br>ft_stopword_file：从 ft_stopword_file 变量指定的文件中读取列表。在修改了 stopword 列表后，必须重建 FULLTEXT 索引。默认为 (built-in)<br>general_log<br>general_log_file, f:\wamp\bin\mysql\mysql5.6.17\data\zxc-PC.log<br>group_concat_max_len, 1024<br>gtid_executed,<br>gtid_mode<br>gtid_next, AUTOMATIC<br>gtid_owned,<br>gtid_purged,<br>have_compress, YES<br>have_crypt, NO<br>have_dynamic_loading, YES<br>have_geometry, YES<br>have_openssl：YES， 使MySQL支持SSL加密协议。 DISABLED，则不支持<br>have_profiling, YES<br>have_query_cache, YES<br>have_rtree_keys, YES<br>have_ssl, DISABLED<br>have_symlink, YES<br>host_cache_size, 279<br>hostname, zxc-PC<br>identity<br>ignore_builtin_innodb<br>ignore_db_dirs,<br>init_connect,<br>init_file：指定一个包含SQL查询语句的文件，该文件在MySQL启动时将被加载，文件中的SQL语句也会被执行。<br>init_slave,<br>innodb_adaptive_flushing, ON<br>innodb_adaptive_flushing_lwm, 10<br>innodb_adaptive_hash_index, ON<br>innodb_adaptive_max_sleep_delay, 150000<br>innodb_additional_mem_pool_size, 8388608<br>innodb_api_bk_commit_interval, 5<br>innodb_api_disable_rowlock<br>innodb_api_enable_binlog<br>innodb_api_enable_mdl<br>innodb_api_trx_level<br>innodb_autoextend_increment, 64<br>innodb_autoinc_lock_mode, 1<br>innodb_buffer_pool_dump_at_shutdown<br>innodb_buffer_pool_dump_now<br>innodb_buffer_pool_filename, ib_buffer_pool<br>innodb_buffer_pool_instances, 8<br>innodb_buffer_pool_load_abort<br>innodb_buffer_pool_load_at_startup<br>innodb_buffer_pool_load_now<br>innodb_buffer_pool_size, 134217728<br>innodb_change_buffer_max_size, 25<br>innodb_change_buffering, all<br>innodb_checksum_algorithm, innodb<br>innodb_checksums, ON<br>innodb_cmp_per_index_enabled<br>innodb_commit_concurrency<br>innodb_compression_failure_threshold_pct, 5<br>innodb_compression_level, 6<br>innodb_compression_pad_pct_max, 50<br>innodb_concurrency_tickets, 5000<br>innodb_data_file_path, ibdata1:12M:autoextend<br>innodb_data_home_dir,<br>innodb_disable_sort_file_cache<br>innodb_doublewrite, ON<br>innodb_fast_shutdown, 1<br>innodb_file_format, Antelope<br>innodb_file_format_check, ON<br>innodb_file_format_max, Antelope<br>innodb_file_per_table, ON<br>innodb_flush_log_at_timeout, 1<br>innodb_flush_log_at_trx_commit, 1<br>innodb_flush_method,<br>innodb_flush_neighbors, 1<br>innodb_flushing_avg_loops, 30<br>innodb_force_load_corrupted<br>innodb_force_recovery<br>innodb_ft_aux_table,<br>innodb_ft_cache_size, 8000000<br>innodb_ft_enable_diag_print<br>innodb_ft_enable_stopword, ON<br>innodb_ft_max_token_size, 84<br>innodb_ft_min_token_size, 3<br>innodb_ft_num_word_optimize, 2000<br>innodb_ft_result_cache_limit, 2000000000<br>innodb_ft_server_stopword_table,<br>innodb_ft_sort_pll_degree, 2<br>innodb_ft_total_cache_size, 640000000<br>innodb_ft_user_stopword_table,<br>innodb_io_capacity, 200<br>innodb_io_capacity_max, 2000<br>innodb_large_prefix<br>innodb_lock_wait_timeout, 50<br>innodb_locks_unsafe_for_binlog<br>innodb_log_buffer_size, 8388608<br>innodb_log_compressed_pages, ON<br>innodb_log_file_size, 50331648<br>innodb_log_files_in_group, 2<br>innodb_log_group_home_dir, .<br>innodb_lru_scan_depth, 1024<br>innodb_max_dirty_pages_pct, 75<br>innodb_max_dirty_pages_pct_lwm<br>innodb_max_purge_lag<br>innodb_max_purge_lag_delay<br>innodb_mirrored_log_groups, 1<br>innodb_monitor_disable,<br>innodb_monitor_enable,<br>innodb_monitor_reset,<br>innodb_monitor_reset_all,<br>innodb_old_blocks_pct, 37<br>innodb_old_blocks_time, 1000<br>innodb_online_alter_log_max_size, 134217728<br>innodb_open_files, 2000<br>innodb_optimize_fulltext_only<br>innodb_page_size, 16384<br>innodb_print_all_deadlocks<br>innodb_purge_batch_size, 300<br>innodb_purge_threads, 1<br>innodb_random_read_ahead<br>innodb_read_ahead_threshold, 56<br>innodb_read_io_threads, 4<br>innodb_read_only<br>innodb_replication_delay<br>innodb_rollback_on_timeout<br>innodb_rollback_segments, 128<br>innodb_sort_buffer_size, 1048576<br>innodb_spin_wait_delay, 6<br>innodb_stats_auto_recalc, ON<br>innodb_stats_method, nulls_equal<br>innodb_stats_on_metadata<br>innodb_stats_persistent, ON<br>innodb_stats_persistent_sample_pages, 20<br>innodb_stats_sample_pages, 8<br>innodb_stats_transient_sample_pages, 8<br>innodb_status_output<br>innodb_status_output_locks<br>innodb_strict_mode<br>innodb_support_xa, ON<br>innodb_sync_array_size, 1<br>innodb_sync_spin_loops, 30<br>innodb_table_locks, ON<br>innodb_thread_concurrency<br>innodb_thread_sleep_delay, 10000<br>innodb_undo_directory, .<br>innodb_undo_logs, 128<br>innodb_undo_tablespaces<br>innodb_use_native_aio, ON<br>innodb_use_sys_malloc, ON<br>innodb_version, 5.6.17<br>innodb_write_io_threads, 4<br>insert_id<br>interactive_timeout：服务器在关上它前在一个交互连接上等待行动的秒数。一个交互的客户被定义为对mysql_real_connect()使用CLIENT_INTERACTIVE选项的客户。也可见wait_timeout。默认为 28800<br>join_buffer_size：用于全部联合(join)的缓冲区大小(不是用索引的联结)。缓冲区对2个表间的每个全部联结分配一次缓冲区，当增加索引不可能时，增加该值可得到一个更快的全部联结。(通常得到快速联结的最佳方法是增加索引。)默认为 262144<br>keep_files_on_create<br>key_buffer_size：用于索引块的缓冲区大小，增加它可得到更好处理的索引(对所有读和多重写)，到你能负担得起那样多。如果你使它太大，系统将开始变慢慢。必须为OS文件系统缓存留下一些空间。为了在写入多个行时得到更多的速度。默认为 8388608<br>key_cache_age_threshold, 300<br>key_cache_block_size, 1024<br>key_cache_division_limit, 100<br>large_files_support：开启大文件支持。默认为 ON<br>large_page_size<br>large_pages<br>last_insert_id<br>lc_messages, en_US<br>lc_messages_dir, f:\wamp\bin\mysql\mysql5.6.17\share<br>lc_time_names, en_US<br>license, GPL<br>local_infile, ON<br>lock_wait_timeout, 31536000<br>log_bin：开启 binary log。默认为 OFF<br>log_bin_basename,<br>log_bin_index,<br>log_bin_trust_function_creators<br>log_bin_use_v1_row_events<br>log_error, f:\wamp\bin\mysql\mysql5.6.17\data\zxc-PC.err<br>log_output, FILE<br>log_queries_not_using_indexes<br>log_slave_updates：如果使用链状同步或者多台Slave之间进行同步则需要开启此参数。默认为 OFF<br>log_slow_admin_statements<br>log_slow_slave_statements<br>log_throttle_queries_not_using_indexes<br>log_warnings, 1<br>long_query_time：如果一个查询所用时间超过该参数值，则该查询操作将被记录在Slow_queries中。默认为 10.000000<br>low_priority_updates<br>lower_case_file_system, ON<br>lower_case_table_names：1: MySQL总使用小写字母进行SQL操作;0: 关闭该功能。默认为 1<br>master_info_repository, FILE<br>master_verify_checksum<br>max_allowed_packet：一个查询语句包的最大尺寸。消息缓冲区被初始化为net_buffer_length字节，但是可在需要时增加到max_allowed_packet个字节。该值太小则会在处理大包时产生错误。如果使用大的BLOB列，必须增加该值。默认为 4194304<br>max_binlog_cache_size：指定binary log缓存的最大容量，如果设置的过小，则在执行复杂查询语句时MySQL会出错。默认为 18446744073709547520<br>max_binlog_size：指定binary log文件的最大容量。默认为 1073741824<br>max_binlog_stmt_cache_size, 18446744073709547520<br>max_connect_errors：对于同一主机，如果有超出该参数值个数的中断错误连接，则该主机将被禁止连接。如需对该主机进行解禁，执行：FLUSH HOST。默认为 100<br>max_connections：允许同时连接MySQL服务器的客户数量。如果超出该值，MySQL会返回Too many connections错误，但通常情况下，MySQL能够自行解决。默认为 151<br>max_delayed_threads：不要启动多于的这个数字的线程来处理INSERT DELAYED语句。如果你试图在所有INSERT DELAYED线程在用后向一张新表插入数据，行将被插入，就像DELAYED属性没被指定那样。默认为 20<br>max_error_count, 64<br>max_heap_table_size：内存表所能使用的最大容量。默认为 16777216<br>max_insert_delayed_threads, 20<br>max_join_size：如果要查询多于max_join_size个记录的联合将返回一个错误。如果要执行没有一个WHERE的语句并且耗费大量时间，且返回上百万行的联结，则需要加大该参数值。默认为 18446744073709551615<br>max_length_for_sort_data, 1024<br>max_prepared_stmt_count, 16382<br>max_relay_log_size<br>max_seeks_for_key, 4294967295<br>max_sort_length：在排序BLOB或TEXT值时使用的字节数(每个值仅头max_sort_length个字节被使用;其余的被忽略)。默认为 1024<br>max_sp_recursion_depth<br>max_tmp_tables：(该参数目前还没有作用)。一个客户能同时保持打开的临时表的最大数量。默认为 32<br>max_user_connections：指定来自同一用户的最多连接数。设置为0则代表不限制。默认为 0<br>max_write_lock_count：当出现max_write_lock_count个写入锁定数量后，开始允许一些被锁定的读操作开始执行。避免写入锁定过多，读取操作处于长时间等待状态。默认为 4294967295<br>metadata_locks_cache_size, 1024<br>metadata_locks_hash_instances, 8<br>min_examined_row_limit<br>multi_range_count, 256<br>myisam_data_pointer_size, 6<br>myisam_max_sort_file_size, 2146435072<br>myisam_mmap_size, 18446744073709551615<br>myisam_recover_options<br>myisam_repair_threads, 1<br>myisam_sort_buffer_size, 8388608<br>myisam_stats_method, nulls_unequal<br>myisam_use_mmap<br>named_pipe<br>net_buffer_length, 16384<br>net_read_timeout, 30<br>net_retry_count, 10<br>net_write_timeout, 60<br>new<br>old<br>old_alter_table<br>old_passwords<br>open_files_limit, 7048<br>optimizer_prune_level, 1<br>optimizer_search_depth, 62<br>optimizer_switch, index_merge=on,index_merge_union=on,index_merge_sort_union=on,index_merge_intersection=on,engine_condition_pushdown=on,index_condition_pushdown=on,mrr=on,mrr_cost_based=on,block_nested_loop=on,batched_key_access=off,materialization=on,semijoin=on,loosescan=on,firstmatch=on,subquery_materialization_cost_based=on,use_index_extensions=on<br>optimizer_trace, enabled=off,one_line=off<br>optimizer_trace_features, greedy_search=on,range_optimizer=on,dynamic_range=on,repeated_subselect=on<br>optimizer_trace_limit, 1<br>optimizer_trace_max_mem_size, 16384<br>optimizer_trace_offset, -1<br>performance_schema, ON<br>performance_schema_accounts_size, 100<br>performance_schema_digests_size, 10000<br>performance_schema_events_stages_history_long_size, 10000<br>performance_schema_events_stages_history_size, 10<br>performance_schema_events_statements_history_long_size, 10000<br>performance_schema_events_statements_history_size, 10<br>performance_schema_events_waits_history_long_size, 10000<br>performance_schema_events_waits_history_size, 10<br>performance_schema_hosts_size, 100<br>performance_schema_max_cond_classes, 80<br>performance_schema_max_cond_instances, 3504<br>performance_schema_max_file_classes, 50<br>performance_schema_max_file_handles, 32768<br>performance_schema_max_file_instances, 7693<br>performance_schema_max_mutex_classes, 200<br>performance_schema_max_mutex_instances, 15906<br>performance_schema_max_rwlock_classes, 40<br>performance_schema_max_rwlock_instances, 9102<br>performance_schema_max_socket_classes, 10<br>performance_schema_max_socket_instances, 322<br>performance_schema_max_stage_classes, 150<br>performance_schema_max_statement_classes, 168<br>performance_schema_max_table_handles, 4000<br>performance_schema_max_table_instances, 12500<br>performance_schema_max_thread_classes, 50<br>performance_schema_max_thread_instances, 402<br>performance_schema_session_connect_attrs_size, 512<br>performance_schema_setup_actors_size, 100<br>performance_schema_setup_objects_size, 100<br>performance_schema_users_size, 100<br>pid_file, f:\wamp\bin\mysql\mysql5.6.17\data\zxc-PC.pid<br>plugin_dir, f:\wamp\bin\mysql\mysql5.6.17\lib\plugin<br>port, 3306<br>preload_buffer_size, 32768<br>profiling<br>profiling_history_size, 15<br>protocol_version, 10<br>proxy_user,<br>pseudo_slave_mode<br>pseudo_thread_id, 2<br>query_alloc_block_size, 8192<br>query_cache_limit, 1048576<br>query_cache_min_res_unit, 4096<br>query_cache_size, 1048576<br>query_cache_type<br>query_cache_wlock_invalidate<br>query_prealloc_size, 8192<br>rand_seed1<br>rand_seed2<br>range_alloc_block_size, 4096<br>read_buffer_size, 131072<br>read_only<br>read_rnd_buffer_size, 262144<br>relay_log,<br>relay_log_basename,<br>relay_log_index,<br>relay_log_info_file, relay-log.info<br>relay_log_info_repository, FILE<br>relay_log_purge, ON<br>relay_log_recovery<br>relay_log_space_limit<br>report_host,<br>report_password,<br>report_port, 3306<br>report_user,<br>rpl_stop_slave_timeout, 31536000<br>secure_auth, ON<br>secure_file_priv,<br>server_id<br>server_id_bits, 32<br>server_uuid, 5c0971e1-3985-11e5-849c-dc0ea17af70f<br>shared_memory<br>shared_memory_base_name, MYSQL<br>skip_external_locking, ON<br>skip_name_resolve<br>skip_networking<br>skip_show_database<br>slave_allow_batching<br>slave_checkpoint_group, 512<br>slave_checkpoint_period, 300<br>slave_compressed_protocol<br>slave_exec_mode, STRICT<br>slave_load_tmpdir, C:\WINDOWS\TEMP<br>slave_max_allowed_packet, 1073741824<br>slave_net_timeout, 3600<br>slave_parallel_workers<br>slave_pending_jobs_size_max, 16777216<br>slave_rows_search_algorithms, TABLE_SCAN,INDEX_SCAN<br>slave_skip_errors<br>slave_sql_verify_checksum, ON<br>slave_transaction_retries, 10<br>slave_type_conversions,<br>slow_launch_time, 2<br>slow_query_log<br>slow_query_log_file, f:\wamp\bin\mysql\mysql5.6.17\data\zxc-PC-slow.log<br>socket, MySQL<br>sort_buffer_size, 262144<br>sql_auto_is_null<br>sql_big_selects, ON<br>sql_buffer_result<br>sql_log_bin, ON<br>sql_log_off<br>sql_mode, NO_ENGINE_SUBSTITUTION<br>sql_notes, ON<br>sql_quote_show_create, ON<br>sql_safe_updates, ON<br>sql_select_limit, 18446744073709551615<br>sql_slave_skip_counter<br>sql_warnings<br>ssl_ca,<br>ssl_capath,<br>ssl_cert,<br>ssl_cipher,<br>ssl_crl,<br>ssl_crlpath,<br>ssl_key,<br>storage_engine, InnoDB<br>stored_program_cache, 256<br>sync_binlog<br>sync_frm, ON<br>sync_master_info, 10000<br>sync_relay_log, 10000<br>sync_relay_log_info, 10000<br>system_time_zone,<br>table_definition_cache, 1400<br>table_open_cache, 2000<br>table_open_cache_instances, 1<br>thread_cache_size, 9<br>thread_concurrency, 10<br>thread_handling, one-thread-per-connection<br>thread_stack, 262144<br>time_format, %H:%i:%s<br>time_zone, SYSTEM<br>timed_mutexes<br>timestamp, 1449802723.239825<br>tmp_table_size, 16777216<br>tmpdir, C:\WINDOWS\TEMP<br>transaction_alloc_block_size, 8192<br>transaction_allow_batching<br>transaction_prealloc_size, 4096<br>tx_isolation, REPEATABLE-READ<br>tx_read_only<br>unique_checks, ON<br>updatable_views_with_limit, YES<br>version, 5.6.17<br>version_comment, MySQL Community Server (GPL)<br>version_compile_machine, x86_64<br>version_compile_os, Win64<br>wait_timeout, 28800<br>warning_count, 1</p>
-<h2 id="0x22、性能指标-show-status"><a href="#0x22、性能指标-show-status" class="headerlink" title="0x22、性能指标:show status;"></a>0x22、性能指标:show status;</h2><p>  Aborted_clients：由于客户端没有正确关闭连接导致客户端终止而中断的连接数。global<br>  Aborted_connects:试图连接到MySQL服务器而失败的连接数。global<br>  Binlog_cache_disk_use:使用临时二进制日志缓存但超过binlog_cache_size值并使用临时文件来保存事务中的语句的事务数量.global<br>  Binlog_cache_use:使用临时二进制日志缓存的事务数量.global<br>  Binlog_stmt_cache_disk_use:<br>  Binlog_stmt_cache_use:<br>  Bytes_received:从所有客户端接收到的字节数。both<br>  Bytes_sent:发送给所有客户端的字节数。both<br>  Com_admin_commands:<br>  Com_alter_db:<br>  Com_alter_db_upgrade:<br>  Com_alter_event:<br>  Com_alter_function:<br>  Com_alter_procedure<br>  Com_alter_server<br>  Com_alter_table<br>  Com_alter_tablespace<br>  Com_alter_user<br>  Com_analyze<br>  Com_assign_to_keycache<br>  Com_begin<br>  Com_binlog<br>  Com_call_procedure<br>  Com_change_db, 1<br>  Com_change_master<br>  Com_check<br>  Com_checksum<br>  Com_commit<br>  Com_create_db<br>  Com_create_event<br>  Com_create_function<br>  Com_create_index<br>  Com_create_procedure<br>  Com_create_server<br>  Com_create_table<br>  Com_create_trigger<br>  Com_create_udf<br>  Com_create_user<br>  Com_create_view<br>  Com_dealloc_sql<br>  Com_delete<br>  Com_delete_multi<br>  Com_do<br>  Com_drop_db<br>  Com_drop_event<br>  Com_drop_function<br>  Com_drop_index<br>  Com_drop_procedure<br>  Com_drop_server<br>  Com_drop_table<br>  Com_drop_trigger<br>  Com_drop_user<br>  Com_drop_view<br>  Com_empty_query<br>  Com_execute_sql<br>  Com_flush<br>  Com_get_diagnostics<br>  Com_grant<br>  Com_ha_close<br>  Com_ha_open<br>  Com_ha_read<br>  Com_help<br>  Com_insert<br>  Com_insert_select<br>  Com_install_plugin<br>  Com_kill<br>  Com_load<br>  Com_lock_tables<br>  Com_optimize<br>  Com_preload_keys<br>  Com_prepare_sql<br>  Com_purge<br>  Com_purge_before_date<br>  Com_release_savepoint<br>  Com_rename_table<br>  Com_rename_user<br>  Com_repair<br>  Com_replace<br>  Com_replace_select<br>  Com_reset<br>  Com_resignal<br>  Com_revoke<br>  Com_revoke_all<br>  Com_rollback<br>  Com_rollback_to_savepoint<br>  Com_savepoint<br>  Com_select, 3<br>  Com_set_option, 6<br>  Com_show_binlog_events<br>  Com_show_binlogs<br>  Com_show_charsets<br>  Com_show_collations<br>  Com_show_create_db<br>  Com_show_create_event<br>  Com_show_create_func<br>  Com_show_create_proc<br>  Com_show_create_table<br>  Com_show_create_trigger<br>  Com_show_databases<br>  Com_show_engine_logs<br>  Com_show_engine_mutex<br>  Com_show_engine_status<br>  Com_show_errors<br>  Com_show_events<br>  Com_show_fields<br>  Com_show_function_code<br>  Com_show_function_status<br>  Com_show_grants<br>  Com_show_keys<br>  Com_show_master_status<br>  Com_show_open_tables<br>  Com_show_plugins<br>  Com_show_privileges<br>  Com_show_procedure_code<br>  Com_show_procedure_status<br>  Com_show_processlist<br>  Com_show_profile<br>  Com_show_profiles<br>  Com_show_relaylog_events<br>  Com_show_slave_hosts<br>  Com_show_slave_status<br>  Com_show_status, 2<br>  Com_show_storage_engines<br>  Com_show_table_status<br>  Com_show_tables<br>  Com_show_triggers<br>  Com_show_variables, 6<br>  Com_show_warnings<br>  Com_signal<br>  Com_slave_start<br>  Com_slave_stop<br>  Com_stmt_close<br>  Com_stmt_execute<br>  Com_stmt_fetch<br>  Com_stmt_prepare<br>  Com_stmt_reprepare<br>  Com_stmt_reset<br>  Com_stmt_send_long_data<br>  Com_truncate<br>  Com_uninstall_plugin<br>  Com_unlock_tables<br>  Com_update<br>  Com_update_multi<br>  Com_xa_commit<br>  Com_xa_end<br>  Com_xa_prepare<br>  Com_xa_recover<br>  Com_xa_rollback<br>  Com_xa_start<br>  Compression<br>  Connection_errors_accept<br>  Connection_errors_internal<br>  Connection_errors_max_connections<br>  Connection_errors_peer_address<br>  Connection_errors_select<br>  Connection_errors_tcpwrap<br>  Connections:试图连接到(不管是否成功)MySQL服务器的连接数.global<br>  Created_tmp_disk_tables:服务器执行语句时在硬盘上自动创建的临时表的数量.both<br>  Created_tmp_files:mysqld已经创建的临时文件的数量.global<br>  Created_tmp_tables:服务器执行语句时自动创建的内存中的临时表的数量。如果Created_tmp_disk_tables较大，你可能要增加tmp_table_size值使临时 表基于内存而不基于硬盘.both<br>  Delayed_errors:用INSERT DELAYED写的出现错误的行数(可能为duplicate key)。global<br>  Delayed_insert_threads:使用的INSERT DELAYED处理器线程数.global<br>  Delayed_writes:写入的INSERT DELAYED行数.global<br>  Flush_commands:执行的FLUSH语句数.global<br>  Handler_commit:内部提交语句数.both<br>  Handler_delete:行从表中删除的次数.both<br>  Handler_discover:MySQL服务器可以问NDB CLUSTER存储引擎是否知道某一名字的表。这被称作发现。Handler_discover说明通过该方法发现的次数。both<br>  Handler_external_lock:<br>  Handler_mrr_init:<br>  Handler_prepare:A counter for the prepare phase of two-phase commit operations.both<br>  Handler_read_first:索引中第一条被读的次数。如果较高，它建议服务器正执行大量全索引扫描；例如，SELECT col1 FROM foo，假定col1有索引。both<br>  Handler_read_key:根据键读一行的请求数。如果较高，说明查询和表的索引正确。both<br>  Handler_read_last:<br>  Handler_read_next:按照键顺序读下一行的请求数。如果你用范围约束或如果执行索引扫描来查询索引列，该值增加.both<br>  Handler_read_prev:按照键顺序读前一行的请求数。该读方法主要用于优化ORDER BY … DESC.both<br>  Handler_read_rnd:根据固定位置读一行的请求数。如果你正执行大量查询并需要对结果进行排序该值较高。你可能使用了大量需要MySQL扫描整个表的查询或你的连接没有正确使用键.both<br>  Handler_read_rnd_next:在数据文件中读下一行的请求数。如果你正进行大量的表扫描，该值较高。通常说明你的表索引不正确或写入的查询没有利用索引。both<br>  Handler_rollback:内部ROLLBACK语句的数量.both<br>  Handler_savepoint:在一个存储引擎放置一个保存点的请求数量。both<br>  Handler_savepoint_rollback:在一个存储引擎的要求回滚到一个保存点数目。both<br>  Handler_update:在表内更新一行的请求数。both<br>  Handler_write:在表内插入一行的请求数。both<br>  Innodb_available_undo_logs:<br>  Innodb_buffer_pool_bytes_data:<br>  Innodb_buffer_pool_bytes_dirty<br>  Innodb_buffer_pool_dump_status, not started<br>  Innodb_buffer_pool_load_status, not started<br>  Innodb_buffer_pool_pages_data:包含数据的页数(脏或干净)。global<br>  Innodb_buffer_pool_pages_dirty:当前的脏页数。global<br>  Innodb_buffer_pool_pages_flushed:要求清空的缓冲池页数.global<br>  Innodb_buffer_pool_pages_free:空页数。global<br>  Innodb_buffer_pool_pages_misc:忙的页数，因为它们已经被分配优先用作管理，例如行锁定或适用的哈希索引。该值还可以计算为Innodb_buffer_pool_pages_total – Innodb_buffer_pool_pages_free – Innodb_buffer_pool_pages_data。global<br>  Innodb_buffer_pool_pages_total:缓冲池总大小（页数）。global<br>  Innodb_buffer_pool_read_ahead:<br>  Innodb_buffer_pool_read_ahead_evicted<br>  Innodb_buffer_pool_read_ahead_rnd:InnoDB初始化的“随机”read-aheads数。当查询以随机顺序扫描表的一大部分时发生。global<br>  Innodb_buffer_pool_read_requests:InnoDB已经完成的逻辑读请求数。global<br>  Innodb_buffer_pool_reads:不能满足InnoDB必须单页读取的缓冲池中的逻辑读数量。global<br>  Innodb_buffer_pool_wait_free:一般情况，通过后台向InnoDB缓冲池写。但是，如果需要读或创建页，并且没有干净的页可用，则它还需要先等待页面清空。该计数器对等待实例进行记数。如果已经适当设置缓冲池大小，该值应小。global<br>  Innodb_buffer_pool_write_requests:向InnoDB缓冲池的写数量。global<br>  Innodb_data_fsyncs:fsync()操作数。global<br>  Innodb_data_pending_fsyncs:当前挂起的fsync()操作数。global<br>  Innodb_data_pending_reads:当前挂起的读数。global<br>  Innodb_data_pending_writes:当前挂起的写数。global<br>  Innodb_data_read:    至此已经读取的数据数量（字节）。global<br>  Innodb_data_reads:数据读总数量。global<br>  Innodb_data_writes:数据读写数量。global<br>  Innodb_data_written:至此已经写入的数据量（字节）。global<br>  Innodb_dblwr_pages_written:已经执行的双写操作数量.global<br>  Innodb_dblwr_writes:双写操作已经写好的页数.global<br>  Innodb_have_atomic_builtins:<br>  Innodb_log_waits<br>  Innodb_log_write_requests:日志写请求数。global<br>  Innodb_log_writes:向日志文件的物理写数量。global<br>  Innodb_num_open_files:<br>  Innodb_os_log_fsyncs:向日志文件完成的fsync()写数量。global<br>  Innodb_os_log_pending_fsyncs:挂起的日志文件fsync()操作数量。global<br>  Innodb_os_log_pending_writes:挂起的日志文件写操作.global<br>  Innodb_os_log_written:写入日志文件的字节数。global<br>  Innodb_page_size:编译的InnoDB页大小(默认16KB)。许多值用页来记数；页的大小很容易转换为字节。global<br>  Innodb_pages_created:创建的页数。global<br>  Innodb_pages_read:读取的页数。global<br>  Innodb_pages_written:写入的页数。global<br>  Innodb_row_lock_current_waits:当前等待的待锁定的行数。global<br>  Innodb_row_lock_time:行锁定花费的总时间，单位毫秒。global<br>  Innodb_row_lock_time_avg:    行锁定的平均时间，单位毫秒。global<br>  Innodb_row_lock_time_max:行锁定的最长时间，单位毫秒。global<br>  Innodb_row_lock_waits:一行锁定必须等待的时间数。global<br>  Innodb_rows_deleted:从InnoDB表删除的行数。global<br>  Innodb_rows_inserted:插入到InnoDB表的行数。global<br>  Innodb_rows_read:    从InnoDB表读取的行数。global<br>  Innodb_rows_updated:    InnoDB表内更新的行数。global<br>  Innodb_truncated_status_writes:<br>  Key_blocks_not_flushed:键缓存内已经更改但还没有清空到硬盘上的键的数据块数量。global<br>  Key_blocks_unused:键缓存内未使用的块数量。你可以使用该值来确定使用了多少键缓存.global<br>  Key_blocks_used:键缓存内使用的块数量。该值为高水平线标记，说明已经同时最多使用了多少块。global<br>  Key_read_requests:从缓存读键的数据块的请求数。global<br>  Key_reads:从硬盘读取键的数据块的次数。如果Key_reads较大，则Key_buffer_size值可能太小。可以用Key_reads/Key_read_requests计算缓存损失率。global<br>  Key_write_requests:将键的数据块写入缓存的请求数。global<br>  Key_writes:向硬盘写入将键的数据块的物理写操作的次数。global<br>  Last_query_cost:用查询优化器计算的最后编译的查询的总成本。用于对比同一查询的不同查询方案的成本。默认值0表示还没有编译查询。 默认值是0。Last_query_cost具有会话范围。global<br>  Last_query_partial_plans:<br>  Max_used_connections:服务器启动后已经同时使用的连接的最大数量。global<br>  Not_flushed_delayed_rows<br>  Open_files:打开的文件的数目。global<br>  Open_streams:打开的流的数量(主要用于记录)。global<br>  Open_table_definitions:缓存的.frm文件数量.global<br>  Open_tables:当前打开的表的数量。both<br>  Opened_files:文件打开的数量。不包括诸如套接字或管道其他类型的文件。 也不包括存储引擎用来做自己的内部功能的文件。global<br>  Opened_table_definitions:已经缓存的.frm文件数量.both<br>  Opened_tables:已经打开的表的数量。如果Opened_tables较大，table_cache 值可能太小。both<br>  Performance_schema_accounts_lost:<br>  Performance_schema_cond_classes_lost:<br>  Performance_schema_cond_instances_lost:<br>  Performance_schema_digest_lost:<br>  Performance_schema_file_classes_lost:<br>  Performance_schema_file_handles_lost:<br>  Performance_schema_file_instances_lost:<br>  Performance_schema_hosts_lost:<br>  Performance_schema_locker_lost:<br>  Performance_schema_mutex_classes_lost:<br>  Performance_schema_mutex_instances_lost:<br>  Performance_schema_rwlock_classes_lost:<br>  Performance_schema_rwlock_instances_lost:<br>  Performance_schema_session_connect_attrs_lost:<br>  Performance_schema_socket_classes_lost:<br>  Performance_schema_socket_instances_lost:<br>  Performance_schema_stage_classes_lost:<br>  Performance_schema_statement_classes_lost:<br>  Performance_schema_table_handles_lost:<br>  Performance_schema_table_instances_lost:<br>  Performance_schema_thread_classes_lost:<br>  Performance_schema_thread_instances_lost:<br>  Performance_schema_users_lost:<br>  Prepared_stmt_count:当前的预处理语句的数量。 (最大数为系统变量: max_prepared_stmt_count).global<br>  Qcache_free_blocks:查询缓存内自由内存块的数量。global<br>  Qcache_free_memory:用于查询缓存的自由内存的数量。global<br>  Qcache_hits:查询缓存被访问的次数。global<br>  Qcache_inserts:加入到缓存的查询数量。global<br>  Qcache_lowmem_prunes:由于内存较少从缓存删除的查询数量。global<br>  Qcache_not_cached:非缓存查询数(不可缓存，或由于query_cache_type设定值未缓存)。global<br>  Qcache_queries_in_cache:登记到缓存内的查询的数量.global<br>  Qcache_total_blocks:查询缓存内的总块数。global<br>  Queries:服务器执行的请求个数，包含存储过程中的请求。global<br>  Questions:已经发送给服务器的查询的个数。global<br>  Select_full_join:没有使用索引的联接的数量。如果该值不为0,你应仔细检查表的索引.both<br>  Select_full_range_join:在引用的表中使用范围搜索的联接的数量。both<br>  Select_range:在第一个表中使用范围的联接的数量。一般情况不是关键问题，即使该值相当大。both<br>  Select_range_check:在每一行数据后对键值进行检查的不带键值的联接的数量。如果不为0，你应仔细检查表的索引。both<br>  Select_scan:对第一个表进行完全扫描的联接的数量。both<br>  Slave_heartbeat_period:复制的心跳间隔.global<br>  Slave_last_heartbeat:<br>  Slave_open_temp_tables:从服务器打开的临时表数量.global<br>  Slave_received_heartbeats:从服务器心跳数.global<br>  Slave_retried_transactions:本次启动以来从服务器复制线程重试次数.global<br>  Slave_running:如果该服务器是连接到主服务器的从服务器，则该值为ON。global<br>  Slow_launch_threads:创建时间超过slow_launch_time秒的线程数。both<br>  Slow_queries:查询时间超过long_query_time秒的查询的个数。both<br>  Sort_merge_passes:排序算法已经执行的合并的数量。如果这个变量值较大，应考虑增加sort_buffer_size系统变量的值。both<br>  Sort_range:在范围内执行的排序的数量.both<br>  Sort_rows:已经排序的行数。both<br>  Sort_scan:通过扫描表完成的排序的数量。both<br>  Ssl_accept_renegotiates:<br>  Ssl_accepts<br>  Ssl_callback_cache_hits<br>  Ssl_cipher<br>  Ssl_cipher_list<br>  Ssl_client_connects<br>  Ssl_connect_renegotiates<br>  Ssl_ctx_verify_depth<br>  Ssl_ctx_verify_mode<br>  Ssl_default_timeout<br>  Ssl_finished_accepts<br>  Ssl_finished_connects<br>  Ssl_server_not_after<br>  Ssl_server_not_before<br>  Ssl_session_cache_hits<br>  Ssl_session_cache_misses<br>  Ssl_session_cache_mode NONE<br>  Ssl_session_cache_overflows<br>  Ssl_session_cache_size<br>  Ssl_session_cache_timeouts<br>  Ssl_sessions_reused<br>  Ssl_used_session_cache_entries<br>  Ssl_verify_depth<br>  Ssl_verify_mode<br>  Ssl_version,<br>  Table_locks_immediate:立即获得的表的锁的次数。global<br>  Table_locks_waited:不能立即获得的表的锁的次数。如果该值较高，并且有性能问题，你应首先优化查询，然后拆分表或使用复制。global<br>  Table_open_cache_hits:<br>  Table_open_cache_misses<br>  Table_open_cache_overflows<br>  Tc_log_max_pages_used<br>  Tc_log_page_size<br>  Tc_log_page_waits<br>  Threads_cached:线程缓存内的线程的数量。global<br>  Threads_connected:当前打开的连接的数量。global<br>  Threads_created:创建用来处理连接的线程数。如果Threads_created较大，你可能要增加thread_cache_size值。缓存访问率的计算方法Threads_created/Connections。global<br>  Threads_running:激活的（非睡眠状态）线程数。global<br>  Uptime:服务器已经运行的时间（以秒为单位）。global<br>  Uptime_since_flush_status:最近一次使用FLUSH STATUS 的时间（以秒为单位）。global</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2015/10/12/2015/10-12-mysql技术/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -2382,7 +1302,7 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <p class="site-author-name" itemprop="name">hackfox</p>
-  <div class="site-description" itemprop="description">架构、AI、大数据、数学、python、go</div>
+  <div class="site-description" itemprop="description">架构、AI、python、rust</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -2433,7 +1353,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">hackfox</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
         

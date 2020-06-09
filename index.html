@@ -19,19 +19,19 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="架构、AI、大数据、数学、python、go">
+  <meta name="description" content="架构、AI、python、rust">
 <meta property="og:type" content="website">
 <meta property="og:title" content="hackfox">
 <meta property="og:url" content="https://xsoer.github.io/index.html">
 <meta property="og:site_name" content="hackfox">
-<meta property="og:description" content="架构、AI、大数据、数学、python、go">
+<meta property="og:description" content="架构、AI、python、rust">
 <meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hackfox">
-<meta name="twitter:description" content="架构、AI、大数据、数学、python、go">
+<meta name="twitter:description" content="架构、AI、python、rust">
 
 <link rel="canonical" href="https://xsoer.github.io/">
 
@@ -201,7 +201,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="hackfox">
-      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+      <meta itemprop="description" content="架构、AI、python、rust">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -227,7 +227,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-10 22:40:11" itemprop="dateModified" datetime="2019-11-10T22:40:11+08:00">2019-11-10</time>
+                <time title="修改时间：2020-06-09 20:47:22" itemprop="dateModified" datetime="2020-06-09T20:47:22+08:00">2020-06-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -257,30 +257,14 @@
 <li>1.直接加载cProfile模块来运行代码进行输出分析。</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 方式一</span></span><br><span class="line"><span class="comment"># 直接输出调用的函数、运行时长、cpu占用等情况</span></span><br><span class="line">python -m cProfile main.py</span><br><span class="line"><span class="comment"># 如果调用链路太长，则可以指定输出到文件内，如下所示。不过输出内容为二进制，不可以直接查看。</span></span><br><span class="line">python -m cProfile -o profile.out main.py</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方式二</span></span><br><span class="line"><span class="keyword">import</span> cProfile</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    cProfile.run(<span class="string">"test()"</span>)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>2.为了解决分析内容格式是二进制的，python自带了可以分析的工具pstats。示例代码如下</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> pstats</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建Stats对象</span></span><br><span class="line">p = pstats.Stats(<span class="string">"profile/profile.out"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># strip_dirs(): 去掉无关的路径信息</span></span><br><span class="line"><span class="comment"># sort_stats(): 排序，支持的方式和上述的一致</span></span><br><span class="line"><span class="comment"># print_stats(): 打印分析结果，可以指定打印前几行,也可以指定小数，为百分比，</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 和直接运行cProfile.run("test()")的结果是一样的</span></span><br><span class="line">p.strip_dirs().sort_stats(<span class="number">-1</span>).print_stats()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 按照函数名排序，只打印前3行函数的信息, 参数还可为小数,表示前百分之几的函数信息</span></span><br><span class="line">p.strip_dirs().sort_stats(<span class="string">"name"</span>).print_stats(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 按照运行时间和函数名进行排序</span></span><br><span class="line">p.strip_dirs().sort_stats(<span class="string">"cumulative"</span>, <span class="string">"name"</span>).print_stats(<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果想知道有哪些函数调用了sum_num</span></span><br><span class="line">p.print_callers(<span class="number">0.5</span>, <span class="string">"test"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看test()函数中调用了哪些函数</span></span><br><span class="line">p.print_callees(<span class="string">"test"</span>)</span><br></pre></td></tr></table></figure>
-
-<h2 id="0x03、可视化分析"><a href="#0x03、可视化分析" class="headerlink" title="0x03、可视化分析"></a>0x03、可视化分析</h2><p>上面的分析只能做初步的统计查看，并不能有直观的查看和分析。所有一下提供了函数堆栈调用图及每步所花费的时间占比等。</p>
-<ul>
-<li>1.安装gprof2dot</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">pip install gprof2dot</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>2.安装graphviz包。</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> mac下</span></span><br><span class="line">brew install graphviz</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>3.对输出的out文件进行分析</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">gprof2dot -f pstats profile.out | dot -Tpng -o profile.png</span><br></pre></td></tr></table></figure>
-
-<p>其效果如下图<br><img src="/assets/images/2019/10-08-profile.png" alt="cprofile分析图"></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/10/08/2019/10-08-python性能分析工具/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -304,7 +288,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="hackfox">
-      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+      <meta itemprop="description" content="架构、AI、python、rust">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -330,7 +314,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-09 18:18:34" itemprop="dateModified" datetime="2019-09-09T18:18:34+08:00">2019-09-09</time>
+                <time title="修改时间：2020-06-09 20:48:20" itemprop="dateModified" datetime="2020-06-09T20:48:20+08:00">2020-06-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -362,53 +346,15 @@
 <li>6.mongoshake</li>
 </ul>
 <h2 id="0x02、定时任务"><a href="#0x02、定时任务" class="headerlink" title="0x02、定时任务"></a>0x02、定时任务</h2><p>定时任务工具是作为数据同步的最基本也是最常用的工具。其不但用于定时的数据同步，而且作为定时的处理其他任务，比如爬虫等。</p>
-<h3 id="1-Airflow"><a href="#1-Airflow" class="headerlink" title="1.Airflow"></a>1.<a href="https://airflow.apache.org/" target="_blank" rel="noopener">Airflow</a></h3><h3 id="2-gocron"><a href="#2-gocron" class="headerlink" title="2.gocron"></a>2.<a href="https://github.com/ouqiang/gocron" target="_blank" rel="noopener">gocron</a></h3><h2 id="0x03、cannel-otter"><a href="#0x03、cannel-otter" class="headerlink" title="0x03、cannel/otter"></a>0x03、cannel/otter</h2><ul>
-<li>阿里巴巴分布式数据库同步系统</li>
-<li><a href="https://github.com/alibaba/otter" target="_blank" rel="noopener">官网</a></li>
-<li>主要同步mysql数据，读取解析mysql binlog，然后同步导入到新的mysql库内</li>
-</ul>
-<h2 id="0x04、Datax"><a href="#0x04、Datax" class="headerlink" title="0x04、Datax"></a>0x04、Datax</h2><ul>
-<li>阿里巴巴开源离线同步Datax</li>
-<li><a href="https://github.com/alibaba/DataX" target="_blank" rel="noopener">官网</a></li>
-<li>抽象为读取的reader源和写入的write源，支持开发新插件</li>
-<li>直接读取写入，用json格式来描述，不支持中间做转换</li>
-</ul>
-<h2 id="0x05、Sqoop"><a href="#0x05、Sqoop" class="headerlink" title="0x05、Sqoop"></a>0x05、Sqoop</h2><ul>
-<li><a href="https://sqoop.apache.org/" target="_blank" rel="noopener">https://sqoop.apache.org/</a></li>
-<li><a href="https://github.com/apache/sqoop" target="_blank" rel="noopener">https://github.com/apache/sqoop</a></li>
-<li>定位是从hadoop与关系型数据库的同步。</li>
-<li>Sqoop 启用了一个 MapReduce 作业（极其容错的分布式并行计算）来执行任务</li>
-<li>Sqoop 的另一大优势是其传输大量结构化或半结构化数据的过程是完全自动化的。</li>
-<li><img src="/assets/images/2019/09-06-sqool.png" alt="架构图"></li>
-</ul>
-<h2 id="0x06、Nifi"><a href="#0x06、Nifi" class="headerlink" title="0x06、Nifi"></a>0x06、Nifi</h2><ul>
-<li>NiFi 项目在创建过程中遵循了一些理念<ul>
-<li>1）精细化管理信息流的能力；</li>
-<li>2）跟踪数据相关事件和信息的能力，比如数据从哪里来，在路径中发生了什么；</li>
-<li>3）保证控制和数据面的安全能力</li>
-</ul>
-</li>
-<li>优势<ul>
-<li>有保证的数据交付</li>
-<li>支持背压（back-pressure）机制的数据缓冲</li>
-<li>有优先级的队列</li>
-<li>QoS</li>
-<li>数据溯源（Data provenance）：NiFi 对数据流路径上的每次变化都会保留日志记录，从而保证结果的可追溯，以及数据的恢复、重播、审计和评估。</li>
-<li>通过日志记录数据的历史细节</li>
-<li>支持交互式命令和控制台，并对系统变化提供可视化的反馈</li>
-<li>支持流模板（Flow templates）</li>
-<li>支持插入式（Pluggable）/ 多角色（multi-role）的安全机制</li>
-<li>支持对数据操作的扩展</li>
-<li>支持集群管理</li>
-</ul>
-</li>
-</ul>
-<h2 id="0x07、mongoshake"><a href="#0x07、mongoshake" class="headerlink" title="0x07、mongoshake"></a>0x07、mongoshake</h2><ul>
-<li><a href="https://github.com/alibaba/MongoShake" target="_blank" rel="noopener">https://github.com/alibaba/MongoShake</a></li>
-<li>alibaba开源的同步mogndb的服务</li>
-<li><img src="/assets/images/2019/09-06-mongoshake.png" alt="架构图"></li>
-</ul>
-
+<h3 id="1-Airflow"><a href="#1-Airflow" class="headerlink" title="1.Airflow"></a>1.<a href="https://airflow.apache.org/" target="_blank" rel="noopener">Airflow</a></h3><h3 id="2-gocron"><a href="#2-gocron" class="headerlink" title="2.gocron"></a>2.<a href="https://github.com/ouqiang/gocron" target="_blank" rel="noopener">gocron</a></h3>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/09/06/2019/09-06-数据同步工具/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -432,7 +378,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="hackfox">
-      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+      <meta itemprop="description" content="架构、AI、python、rust">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -458,7 +404,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-21 15:25:22" itemprop="dateModified" datetime="2019-09-21T15:25:22+08:00">2019-09-21</time>
+                <time title="修改时间：2020-06-09 20:48:26" itemprop="dateModified" datetime="2020-06-09T20:48:26+08:00">2020-06-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -493,80 +439,14 @@
 <li>恢复会话：</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux at [-t 会话名]</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>列出所有会话：</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux ls</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>关闭会话</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux kill-session -t 会话名</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-tmux内快捷键"><a href="#2-tmux内快捷键" class="headerlink" title="2.tmux内快捷键"></a>2.tmux内快捷键</h3><ul>
-<li>会话</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:new&lt;回车&gt;  启动新会话</span><br><span class="line">s           列出所有会话</span><br><span class="line"><span class="meta">$</span><span class="bash">           重命名当前会话</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>窗口 (标签页)</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">c 创建一个新窗口</span><br><span class="line">, 重命名当前窗口</span><br><span class="line">w 列出所有窗口</span><br><span class="line"><span class="meta">%</span><span class="bash"> 水平分割窗口</span></span><br><span class="line">" 竖直分割窗口</span><br><span class="line">n 选择下一个窗口</span><br><span class="line">p 选择上一个窗口</span><br><span class="line">0~9 选择0~9对应的窗口</span><br><span class="line">h 将光标移入左侧的窗格*</span><br><span class="line">j 将光标移入下方的窗格*</span><br><span class="line">l 将光标移入右侧的窗格*</span><br><span class="line">k 将光标移入上方的窗格*</span><br><span class="line">q 显示窗格的编号</span><br><span class="line">o 在窗格间切换</span><br><span class="line">&#125; 与下一个窗格交换位置</span><br><span class="line">&#123; 与上一个窗格交换位置</span><br><span class="line">! 在新窗口中显示当前窗格</span><br><span class="line">x 关闭当前窗格</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>调整窗口排序</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">swap-window -s 3 -t 1  交换 3 号和 1 号窗口</span><br><span class="line">swap-window -t 1       交换当前和 1 号窗口</span><br><span class="line">move-window -t 1       移动当前窗口到 1 号</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>窗格（分割窗口）</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">%</span><span class="bash">  垂直分割</span></span><br><span class="line">"  水平分割</span><br><span class="line">o  交换窗格</span><br><span class="line">x  关闭窗格</span><br><span class="line">⍽  左边这个符号代表空格键 - 切换布局</span><br><span class="line">q 显示每个窗格是第几个，当数字出现的时候按数字几就选中第几个窗格</span><br><span class="line">&#123; 与上一个窗格交换位置</span><br><span class="line">&#125; 与下一个窗格交换位置</span><br><span class="line">z 切换窗格最大化/最小化</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>杂项</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">d  退出 tmux（tmux 仍在后台运行）</span><br><span class="line">t  窗口中央显示一个数字时钟</span><br><span class="line">?  列出所有快捷键</span><br><span class="line">:  命令提示符</span><br></pre></td></tr></table></figure>
-
-<h2 id="0x02、配置文件"><a href="#0x02、配置文件" class="headerlink" title="0x02、配置文件"></a>0x02、配置文件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">设置前缀为Ctrl + a</span></span><br><span class="line">set -g prefix C-a</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">解除Ctrl+b 与前缀的对应关系</span></span><br><span class="line">unbind C-b</span><br><span class="line">bind C-a send-prefix # 绑定Ctrl+a为新的指令前缀</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置序号从1开始</span></span><br><span class="line">set -g base-index 1</span><br><span class="line">set -g pane-base-index 1</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">将r 设置为加载配置文件，并显示<span class="string">"reloaded!"</span>信息</span></span><br><span class="line">bind r source-file ~/.tmux.conf \; display "Reloaded!"</span><br><span class="line"></span><br><span class="line">bind-key k select-pane -U # up</span><br><span class="line">bind-key j select-pane -D # down</span><br><span class="line">bind-key h select-pane -L # left</span><br><span class="line">bind-key l select-pane -R # right</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">set -g mouse on # 支持鼠标选取文本等</span><br><span class="line"></span><br><span class="line">set -g status-interval 2 # 状态栏刷新时间</span><br><span class="line">set -g status-justify left # 状态栏列表左对齐</span><br><span class="line">setw -g monitor-activity on # 非当前窗口有内容更新时在状态栏通知</span><br><span class="line"></span><br><span class="line">set -g status-bg black # 设置状态栏背景黑色</span><br><span class="line">set -g status-fg yellow # 设置状态栏前景黄色</span><br><span class="line">set -g status-style "bg=black, fg=yellow" # 状态栏前景背景色</span><br><span class="line"></span><br><span class="line">set -g status-left "#[bg=#FF661D] " # 状态栏左侧内容</span><br><span class="line">set -g status-right "#S #[fg=green,bg=black]#(tmux-mem-cpu-load --colors --interval 2)#[default]"</span><br><span class="line">set -g status-left-length 300 # 状态栏左边长度300</span><br><span class="line">set -g status-right-length 500 # 状态栏右边长度500</span><br><span class="line"></span><br><span class="line">set -wg window-status-format " #I #W " # 状态栏窗口名称格式</span><br><span class="line">set -wg window-status-current-format " #I:#W#F " # 状态栏当前窗口名称格式(#I：序号，#w：窗口名称，#F：间隔符)</span><br><span class="line">set -wg window-status-separator "" # 状态栏窗口名称之间的间隔</span><br><span class="line">set -wg window-status-current-style "bg=red" # 状态栏当前窗口名称的样式</span><br><span class="line">set -wg window-status-last-style "fg=yellow" # 状态栏最后一个窗口名称的样式</span><br><span class="line"></span><br><span class="line">set -g message-style "bg=#202529, fg=#91A8BA" # 指定消息通知的前景、后景色</span><br></pre></td></tr></table></figure>
-
-<h2 id="0x03、复制到系统"><a href="#0x03、复制到系统" class="headerlink" title="0x03、复制到系统"></a>0x03、复制到系统</h2><p>在 Mac 下使用 tmux，希望能够复制到系统粘贴板，可以通过下面的方式实现：</p>
-<ul>
-<li>1.安装 rettach-to-user-namespace</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install reattach-to-user-namespace</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>2.修改 ~/.tmux.conf</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">set-option -g default-command "reattach-to-user-namespace -l zsh"</span><br><span class="line"><span class="meta">#</span><span class="bash"> buffer缓存复制到Mac系统粘贴板</span></span><br><span class="line">bind y run "tmux save-buffer - | reattach-to-user-namespace pbcopy" \; display-message "Copied tmux buffer to system clipboard"</span><br><span class="line"><span class="meta">#</span><span class="bash"> Mac系统粘贴板内容复制到会话</span></span><br><span class="line">bind C-v run "reattach-to-user-namespace pbpaste | tmux load-buffer - \; paste-buffer -d"</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>3.使用<br>在 tmux 中复制之后，按 prefix + y 就可以把 tmux 内复制的内容放到系统粘贴板了</p>
-</li>
-<li><p>4.复制模式<br>tmux中操作文本，自然离不开复制模式，通常使用复制模式的步骤如下：</p>
-<ul>
-<li><ol>
-<li>输入 `+[ 进入复制模式</li>
-</ol>
-</li>
-<li><ol start="2">
-<li>按下 空格键 开始复制，移动光标选择复制区域</li>
-</ol>
-</li>
-<li><ol start="3">
-<li>按下 回车键 复制选中文本并退出复制模式</li>
-</ol>
-</li>
-<li><ol start="4">
-<li>按下 `+] 粘贴文本</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/09/05/2019/09-05-tmux配置/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -590,7 +470,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="hackfox">
-      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+      <meta itemprop="description" content="架构、AI、python、rust">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -616,7 +496,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-09 18:41:02" itemprop="dateModified" datetime="2019-09-09T18:41:02+08:00">2019-09-09</time>
+                <time title="修改时间：2020-06-09 20:48:34" itemprop="dateModified" datetime="2020-06-09T20:48:34+08:00">2020-06-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -645,65 +525,15 @@
 <li>3.tmux</li>
 <li>4.vim</li>
 <li>5.Chrome</li>
-<li>6.输入法</li>
-</ul>
-<h2 id="0x01、vscode"><a href="#0x01、vscode" class="headerlink" title="0x01、vscode"></a>0x01、vscode</h2><h4 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h4><ul>
-<li>Dash</li>
-<li>clock in status bar</li>
-<li>Docker</li>
-<li>ESlint</li>
-<li>File Utils</li>
-<li>filesize</li>
-<li>GitLens</li>
-<li>Go</li>
-<li>python</li>
-<li>IntelliJ IDEA keybingdings</li>
-<li>LaTex Workshop</li>
-<li>leetCode</li>
-<li>open in browser</li>
-<li>Path Intelligence</li>
-<li>Remote - Container</li>
-<li>Remote - SSH</li>
-<li>Remote - SSH:Editing Configuration</li>
-<li>Remote - SSH:Explore</li>
-<li>Remote - WSL</li>
-<li>Remote Development</li>
-<li>Settings Sync</li>
-<li>Shades of Purple</li>
-<li>SQLTools</li>
-<li>Stackoverflow Instant Search</li>
-<li>TabNine</li>
-<li>Vetur</li>
-<li>YAML</li>
-</ul>
-<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"workbench.activityBar.visible"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"editor.scrollBeyondLastLine"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"files.autoSave"</span>: <span class="string">"onFocusChange"</span>,</span><br><span class="line">    <span class="attr">"workbench.colorTheme"</span>: <span class="string">"Shades of Purple"</span>,</span><br><span class="line">    <span class="attr">"terminal.integrated.cursorStyle"</span>: <span class="string">"line"</span>,</span><br><span class="line">    <span class="attr">"workbench.statusBar.feedback.visible"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"clock.dateFormat"</span>: <span class="string">"yyyy-mm-dd HH:MM:ss"</span>,</span><br><span class="line">    <span class="attr">"extensions.ignoreRecommendations"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"files.exclude"</span>: &#123;</span><br><span class="line">        <span class="attr">"**/__pycache__"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">"**/*.pyc"</span>: <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"breadcrumbs.enabled"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"editor.fontSize"</span>: <span class="number">15</span>,</span><br><span class="line">    <span class="attr">"editor.fontFamily"</span>: <span class="string">"'Source Code Pro',Menlo, Monaco, 'Courier New', monospace"</span>,</span><br><span class="line">    <span class="attr">"terminal.external.osxExec"</span>: <span class="string">"iterm.app"</span>,</span><br><span class="line">    <span class="attr">"terminal.integrated.copyOnSelection"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"terminal.integrated.fontSize"</span>: <span class="number">15</span>,</span><br><span class="line">    <span class="attr">"terminal.integrated.fontFamily"</span>: <span class="string">"'Source Code Pro'"</span>,</span><br><span class="line">    <span class="attr">"terminal.integrated.scrollback"</span>: <span class="number">3000</span>,</span><br><span class="line">    <span class="attr">"terminal.integrated.shell.osx"</span>: <span class="string">"/bin/zsh"</span>,</span><br><span class="line">    <span class="attr">"python.pythonPath"</span>: <span class="string">"~/anaconda3/bin/python"</span>,</span><br><span class="line">    <span class="attr">"python.linting.pylintEnabled"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"leetcode.defaultLanguage"</span>: <span class="string">"python3"</span>,</span><br><span class="line">    <span class="attr">"leetcode.outputFolder"</span>: <span class="string">"leecode"</span>,</span><br><span class="line">    <span class="attr">"leetcode.hideSolved"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"breadcrumbs.symbolSortOrder"</span>: <span class="string">"name"</span>,</span><br><span class="line">    // Theme Setup.</span><br><span class="line">    // "workbench.iconTheme": "vscode-icons",</span><br><span class="line">    "editor.lineHeight": 24.65,</span><br><span class="line">    "editor.letterSpacing": 0.5,</span><br><span class="line">    "editor.fontWeight": "400",</span><br><span class="line">    "editor.fontLigatures": true,</span><br><span class="line">    "editor.cursorStyle": "line",</span><br><span class="line">    // "editor.cursorWidth": 1,</span><br><span class="line">    "editor.cursorBlinking": "solid",</span><br><span class="line">    "editor.renderWhitespace": "all",</span><br><span class="line">    "editor.snippetSuggestions": "top",</span><br><span class="line">    "editor.glyphMargin": true,</span><br><span class="line">    "workbench.editor.enablePreview": false,</span><br><span class="line">    "explorer.confirmDragAndDrop": false,</span><br><span class="line">    "files.trimTrailingWhitespace": true,</span><br><span class="line">    "files.trimFinalNewlines": true,</span><br><span class="line">    // Formatting Optional.</span><br><span class="line">    // "editor.formatOnSave": true,</span><br><span class="line">    "eslint.run": "onType",</span><br><span class="line">    "eslint.autoFixOnSave": true,</span><br><span class="line">    // MacOS Only Settings.</span><br><span class="line">    "workbench.fontAliasing": "auto",</span><br><span class="line">    "terminal.integrated.macOptionIsMeta": true,</span><br><span class="line">    // SOP's highlight matching tag setting.</span><br><span class="line">    "workbench.statusBar.visible": true,</span><br><span class="line">    "python.dataScience.sendSelectionToInteractiveWindow": true,</span><br><span class="line">    "terminal.integrated.rendererType": "dom",</span><br><span class="line">    "git.ignoreLegacyWarning": true,</span><br><span class="line">    "GithubGistExplorer.explorer.gistSortBy": "Last Updated",</span><br><span class="line">    "GithubGistExplorer.explorer.gistAscending": false,</span><br><span class="line">    "GithubGistExplorer.explorer.subscriptionSortBy": "Last Updated",</span><br><span class="line">    "GithubGistExplorer.explorer.subscriptionAscending": false,</span><br><span class="line">    "GithubGistExplorer.github.token": "b70cb2a4a71195fab3c47a8ae0a1209441a46075",</span><br><span class="line">    "GithubGistExplorer.github.username": "xsoer",</span><br><span class="line">    "sync.gist": "20a9cb9d32319e38ded959f092109cd5",</span><br><span class="line">    "window.zoomLevel": 0,</span><br><span class="line">    "go.formatTool": "goimports",</span><br><span class="line">    "go.useLanguageServer": true,</span><br><span class="line">    "http.proxy": "http://127.0.0.1:1087"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="0x02、omyzsh"><a href="#0x02、omyzsh" class="headerlink" title="0x02、omyzsh"></a>0x02、omyzsh</h2><h4 id="插件-1"><a href="#插件-1" class="headerlink" title="插件"></a>插件</h4><ul>
-<li>git</li>
-<li>autojump</li>
-<li>zsh-syntax-highlighting</li>
-<li>zsh-autosuggestions</li>
-</ul>
-<h4 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">plugins=(git zsh-autosuggestions zsh-syntax-highlighting)</span><br><span class="line"></span><br><span class="line">[ -f /usr/<span class="built_in">local</span>/etc/profile.d/autojump.sh ] &amp;&amp; . /usr/<span class="built_in">local</span>/etc/profile.d/autojump.sh</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -z <span class="string">"<span class="variable">$TMUX</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line">    tmux attach -t default || tmux new -s default</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="0x03、tmux"><a href="#0x03、tmux" class="headerlink" title="0x03、tmux"></a>0x03、tmux</h2><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install tmux</span><br></pre></td></tr></table></figure>
-
-<h4 id="配置文件-1"><a href="#配置文件-1" class="headerlink" title="配置文件"></a>配置文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">#设置前缀为Ctrl + a</span><br><span class="line">set -g prefix C-a</span><br><span class="line"></span><br><span class="line">#解除Ctrl+b 与前缀的对应关系</span><br><span class="line">unbind C-b</span><br><span class="line">bind C-a send-prefix # 绑定Ctrl+a为新的指令前缀</span><br><span class="line"></span><br><span class="line"># 设置序号从1开始</span><br><span class="line">set -g base-index 1</span><br><span class="line">set -g pane-base-index 1</span><br><span class="line"></span><br><span class="line">#将r 设置为加载配置文件，并显示&quot;reloaded!&quot;信息</span><br><span class="line">bind r source-file ~/.tmux.conf \; display &quot;Reloaded!&quot;</span><br><span class="line"></span><br><span class="line">bind-key k select-pane -U # up</span><br><span class="line">bind-key j select-pane -D # down</span><br><span class="line">bind-key h select-pane -L # left</span><br><span class="line">bind-key l select-pane -R # right</span><br><span class="line"></span><br><span class="line">set -g mouse on # 支持鼠标选取文本等</span><br><span class="line"></span><br><span class="line">set -g status-interval 2 # 状态栏刷新时间</span><br><span class="line">set -g status-justify left # 状态栏列表左对齐</span><br><span class="line">setw -g monitor-activity on # 非当前窗口有内容更新时在状态栏通知</span><br><span class="line"></span><br><span class="line">set -g status-bg black # 设置状态栏背景黑色</span><br><span class="line">set -g status-fg yellow # 设置状态栏前景黄色</span><br><span class="line">set -g status-style &quot;bg=black, fg=yellow&quot; # 状态栏前景背景色</span><br><span class="line"></span><br><span class="line">set -g status-left &quot;#[bg=#FF661D] ❐ #S &quot; # 状态栏左侧内容</span><br><span class="line">set -g status-right &quot;#S #[fg=green,bg=black]#(tmux-mem-cpu-load --colors --interval 2)#[default]&quot;</span><br><span class="line">set -g status-left-length 300 # 状态栏左边长度300</span><br><span class="line">set -g status-right-length 500 # 状态栏右边长度500</span><br><span class="line"></span><br><span class="line">set -wg window-status-format &quot; #I #W &quot; # 状态栏窗口名称格式</span><br><span class="line">set -wg window-status-current-format &quot; #I:#W#F &quot; # 状态栏当前窗口名称格式(#I：序号，#w：窗口名称，#F：间隔符)</span><br><span class="line">set -wg window-status-separator &quot;&quot; # 状态栏窗口名称之间的间隔</span><br><span class="line">set -wg window-status-current-style &quot;bg=red&quot; # 状态栏当前窗口名称的样式</span><br><span class="line">set -wg window-status-last-style &quot;fg=yellow&quot; # 状态栏最后一个窗口名称的样式</span><br><span class="line"></span><br><span class="line">set -g message-style &quot;bg=#202529, fg=#91A8BA&quot; # 指定消息通知的前景、后景色</span><br></pre></td></tr></table></figure>
-
-<h2 id="0x04、vim"><a href="#0x04、vim" class="headerlink" title="0x04、vim"></a>0x04、vim</h2><h4 id="配置文件-2"><a href="#配置文件-2" class="headerlink" title="配置文件"></a>配置文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">set nocompatible</span><br><span class="line">syntax on</span><br><span class="line">filetype plugin indent on</span><br><span class="line">set ic</span><br><span class="line">set hlsearch</span><br><span class="line">set encoding=utf-8</span><br><span class="line">set fileencodings=utf-8,ucs-bom,GB2312,big5</span><br><span class="line">set cursorline</span><br><span class="line">set autoindent</span><br><span class="line">set smartindent</span><br><span class="line">set scrolloff=4</span><br><span class="line">set showmatch</span><br><span class="line">set nu</span><br><span class="line"></span><br><span class="line">let python_highlight_all=1</span><br><span class="line">au Filetype python set tabstop=4</span><br><span class="line">au Filetype python set softtabstop=4</span><br><span class="line">au Filetype python set shiftwidth=4</span><br><span class="line">au Filetype python set textwidth=79</span><br><span class="line">au Filetype python set expandtab</span><br><span class="line">au Filetype python set autoindent</span><br><span class="line">au Filetype python set fileformat=unix</span><br><span class="line">autocmd Filetype python set foldmethod=indent</span><br><span class="line">autocmd Filetype python set foldlevel=99</span><br></pre></td></tr></table></figure>
-
-<h2 id="0x05、chrome"><a href="#0x05、chrome" class="headerlink" title="0x05、chrome"></a>0x05、chrome</h2><h4 id="插件-2"><a href="#插件-2" class="headerlink" title="插件"></a>插件</h4><ul>
-<li>vimium</li>
-<li>Evernote web Clipper</li>
-<li>JSONview</li>
-<li>OctTree</li>
-<li>Sourcegraph</li>
-<li>沙拉查词</li>
-</ul>
-<h2 id="0x06、输入法"><a href="#0x06、输入法" class="headerlink" title="0x06、输入法"></a>0x06、输入法</h2><ul>
-<li>RIME</li>
-</ul>
-
+<li>6.输入法
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/09/05/2019/09-05-mac开发环境配置/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -727,7 +557,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="hackfox">
-      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+      <meta itemprop="description" content="架构、AI、python、rust">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -753,7 +583,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-09 15:00:43" itemprop="dateModified" datetime="2019-09-09T15:00:43+08:00">2019-09-09</time>
+                <time title="修改时间：2020-06-09 20:48:38" itemprop="dateModified" datetime="2020-06-09T20:48:38+08:00">2020-06-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -777,37 +607,23 @@
 
       
           <h2 id="0x00、大体类型"><a href="#0x00、大体类型" class="headerlink" title="0x00、大体类型"></a>0x00、大体类型</h2><ul>
-<li>1.卷积神经网络</li>
-<li>2.循环神经网络</li>
-<li>3.深度信念网络</li>
-<li>4.生成对抗网络</li>
-<li>5.深度强化学习</li>
-</ul>
-<h2 id="0x01、卷积神经网络"><a href="#0x01、卷积神经网络" class="headerlink" title="0x01、卷积神经网络"></a>0x01、卷积神经网络</h2><ul>
-<li>卷积神经网络属于前面介绍的前馈神经网络之一，它对于图形图像的处理有着独特的效果，在结构上至少包括卷积层和池化层</li>
-<li>目前卷积神经网络主要应用于影像中物体检测和识别、视频理解，除此之外，卷积神经网络还被应用于自然语言处理</li>
-<li>代表性的卷积神经网络包括LeNet-5、VGG、AlexNet 等</li>
-</ul>
-<h2 id="0x02、循环神经网络"><a href="#0x02、循环神经网络" class="headerlink" title="0x02、循环神经网络"></a>0x02、循环神经网络</h2><ul>
-<li>不同于卷积神经网络，循环神经网络更擅长于对语言文本的处理。文本的分析处理，更看重时序上的输入与上下文的联系。循环神经网络的内部记忆结构，刚好满足这样的需求场景，因此在文本处理方面循环神经网络更胜一筹。</li>
-<li>目前循环神经网络的主要落地场景在机器翻译、情感分析等NLP 领域。特别是近几年媒体曝光较多的新闻写稿机器人，也是基于循环神经网络的一个应用。除此之外，循环神经网络还可以实现自动作诗、自动写歌词，甚至自动写代码。</li>
-</ul>
-<h2 id="0x03、深度信念网络"><a href="#0x03、深度信念网络" class="headerlink" title="0x03、深度信念网络"></a>0x03、深度信念网络</h2><ul>
-<li>是一种生成模型，由多个受限玻尔兹曼机组成，采用逐层的方式进行训练，其结构可以理解为由多层简单学习模型组合而成的复合模型。深度信念网络是一个可以对训练的数据样本进行深层次表达的图形模型。</li>
-</ul>
-<h2 id="0x04、生成对抗网络"><a href="#0x04、生成对抗网络" class="headerlink" title="0x04、生成对抗网络"></a>0x04、生成对抗网络</h2><ul>
-<li>生成对抗网络将对抗的思想引入机器学习领域，对抗的双方为判别模型和生成模型</li>
-<li>判别模型的职责是准确区分真实数据和生成数据，而生成模型负责生成符合真实数据概率分布的新数据</li>
-<li>生成对抗网络主要用于样本数据概率分布的建模，并生成与训练数据相同分布的新数据<ul>
-<li>目前，GAN 主要应用于图像与视觉领域，以及自然语言处理领域，例如，提升图像分辨率、还原遮挡或破损图像、基于文本描述生成图像等。</li>
-</ul>
+<li><p>1.卷积神经网络</p>
 </li>
-</ul>
-<h2 id="0x05、深度强化学习"><a href="#0x05、深度强化学习" class="headerlink" title="0x05、深度强化学习"></a>0x05、深度强化学习</h2><ul>
-<li>与其他机器学习的差异在于，深度强化学习更加注重基于环境的改变而调整自身的行为</li>
-<li>深度强化学习的运行机制由四个基本组件组成：环境、代理、动作、反馈。通过四者的关系，强调代理如何在环境给予的奖励或者惩罚的刺激下，逐渐改变自己的行为动作，使得尽可能使用环境，从而达到环境给予的奖励值最大，逐步形成符合最大利益的惯性行为。</li>
-</ul>
-
+<li><p>2.循环神经网络</p>
+</li>
+<li><p>3.深度信念网络</p>
+</li>
+<li><p>4.生成对抗网络</p>
+</li>
+<li><p>5.深度强化学习</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/09/02/2019/09-02-神经网络类型/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -831,7 +647,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="hackfox">
-      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+      <meta itemprop="description" content="架构、AI、python、rust">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -857,7 +673,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-09 18:39:27" itemprop="dateModified" datetime="2019-09-09T18:39:27+08:00">2019-09-09</time>
+                <time title="修改时间：2020-06-09 20:48:40" itemprop="dateModified" datetime="2020-06-09T20:48:40+08:00">2020-06-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -885,332 +701,15 @@
 </ul>
 <h3 id="2-产品定位"><a href="#2-产品定位" class="headerlink" title="2.产品定位"></a>2.产品定位</h3><ul>
 <li>Fast Analytics on Fast Data。</li>
-<li>在快速修改的数据上进行快速分析</li>
-</ul>
-<h3 id="3-产生之前"><a href="#3-产生之前" class="headerlink" title="3.产生之前"></a>3.产生之前</h3><p>在有kudu之前，数据分类为：</p>
-<ul>
-<li>静态数据<ul>
-<li>以HDFS引擎作为存储引擎，适⽤用于⾼吞吐量的离线大数据分析场景</li>
-<li>这类存储的局限性是数据无法进行行随机的读写</li>
-</ul>
-</li>
-<li>动态数据<ul>
-<li>以HBase、Cassandra 作为存储引擎，适⽤用于⼤大数据随机读写场景</li>
-<li>这类存储的局限性是批量量读取吞吐量量远不不如 HDFS，不不适⽤用于批量量数据分 析的场景</li>
-</ul>
-</li>
-</ul>
-<p>而既要满足随机读写和大数据分析的解决方案如下：</p>
-<p><img src="/assets/images/2019/07-12-hbase-hdfs.png" alt="解决方案图"></p>
-<p>而以上的方案问题是：</p>
-<ul>
-<li>架构复杂<ul>
-<li>流转涉及环节太多，运维成本很高</li>
-<li>每个环节需要保证高可用，需要维护多个副本，存储空间也有一定的浪费</li>
-<li>数据在多个系统上，对数据安全策略、监控等都提出了挑战</li>
-</ul>
-</li>
-<li>时效性低<ul>
-<li>从 HBase 导出成静态文件是周期性</li>
-</ul>
-</li>
-<li>难以应对后续的更新<ul>
-<li>已经从 HBase 导出到 HDFS，新到的变更数据就难以处理</li>
-</ul>
-</li>
-</ul>
-<p>所以产生了新的解决方案，那就是kudu，其定位如下：<br><img src="/assets/images/2019/07-12-kudu-position.png" alt="kudu定位"></p>
-<p>而其gap了hdfs和hbase之间的<br><img src="/assets/images/2019/07-12-kudu-gap.png" alt="kudugap"></p>
-<h3 id="4-架构图"><a href="#4-架构图" class="headerlink" title="4.架构图"></a>4.架构图</h3><p>kudu的整体架构图如下<br><img src="/assets/images/2019/07-12-kudu-architecture.png" alt="架构图"></p>
-<h3 id="5-基本概念"><a href="#5-基本概念" class="headerlink" title="5.基本概念"></a>5.基本概念</h3><p>下面了解一些kudu里的一些基本概念。</p>
-<ul>
-<li>Table<ul>
-<li>数据存储，没有库的概念</li>
-<li>有对应的schema结构</li>
-<li>字段是强类型</li>
-<li>需要设置主键</li>
-<li>分隔为N个tablets</li>
-</ul>
-</li>
-<li>Tablet<ul>
-<li>Table按照行切分后存储的位置</li>
-<li>一个tablet会多副本到其他server上，并且有一个会是leader</li>
-<li>如果leader失效，会用raft一致性协议重新选举</li>
-<li>任何一组副本内的tablet都可以读，但是只能从leader写入</li>
-</ul>
-</li>
-<li>Mater<ul>
-<li>持续追踪所有的tablet、tablet server、catalog table、其他的集群meta信息</li>
-<li>可以部署多个master，但只有一个是active</li>
-<li>如果active时效了，用raft协议在选举出一个</li>
-<li>Master信息也会存储在一个tablet上，并且被复制同步到其他master机器上</li>
-<li>Tablet servers会发送心跳包到master机器(默认是一秒一次)</li>
-</ul>
-</li>
-<li>Tablet Server<ul>
-<li>用来存储tablet数据并且向client提供服务</li>
-<li>一个tablet会在多个tablet server上</li>
-<li>一个tablet server会有多个tablet</li>
-</ul>
-</li>
-<li>Catelog table<ul>
-<li>是kudu元数据的中心，存储了关于table和tablet的信息</li>
-<li>不允许被直接读写</li>
-<li>table<ul>
-<li>table schemas,</li>
-<li>Locations</li>
-<li>states</li>
-</ul>
-</li>
-<li>tablet<ul>
-<li>Tablet list</li>
-<li>Tablet server上有哪些tablet</li>
-<li>States</li>
-<li>Start and end keys</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Raft一致性协议算法<ul>
-<li>分布式服务高可用性进行多副本</li>
-<li>通过raft来选举出leader</li>
-<li>多副本数据都可以读，但只有leader可以写</li>
-<li>写入时只有当大多数follower确认成功，才算写入成功</li>
-<li>在一组副本中(通常是3或5个)，允许有(N-1)/2的失败</li>
-</ul>
-</li>
-</ul>
-<h3 id="6-使用场景"><a href="#6-使用场景" class="headerlink" title="6.使用场景"></a>6.使用场景</h3><ul>
-<li>流式实时计算<ul>
-<li>流式计算场景通常有持续不断地大量写入</li>
-<li>与此同时这些数据还要支持近乎实时的读、写以及更新操作</li>
-</ul>
-</li>
-<li>时间序列存储<ul>
-<li>hash分片设计能够很好地避免TSDB类请求的局部热点问题</li>
-<li>高效的Scan性能让Kudu能够比Hbase更好的支持查询操作</li>
-</ul>
-</li>
-<li>历史数据共存<ul>
-<li>Impala可以同时支持HDFS、Kudu等多个底层存储引擎</li>
-<li>不必把所有的数据都迁移到Kudu</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<h2 id="0x01、设计模式"><a href="#0x01、设计模式" class="headerlink" title="0x01、设计模式"></a>0x01、设计模式</h2></blockquote>
-<h3 id="1-数据类型"><a href="#1-数据类型" class="headerlink" title="1.数据类型"></a>1.数据类型</h3><ul>
-<li>boolean</li>
-<li>8-bit signed integer</li>
-<li>16-bit signed integer</li>
-<li>32-bit signed integer</li>
-<li>64-bit signed integer</li>
-<li>unixtime_micros (64-bit microseconds since the Unix epoch)</li>
-<li>single-precision (32-bit) IEEE-754 floating-point number</li>
-<li>double-precision (64-bit) IEEE-754 floating-point number</li>
-<li>decimal (see Decimal Type for details)</li>
-<li>UTF-8 encoded string (up to 64KB uncompressed)</li>
-<li>binary (up to 64KB uncompressed)</li>
-</ul>
-<h3 id="2-主键设计"><a href="#2-主键设计" class="headerlink" title="2.主键设计"></a>2.主键设计</h3><ul>
-<li>单列或多列<ul>
-<li>可以设置一列为主键，也同时设置多列为主键</li>
-</ul>
-</li>
-<li>唯一性<ul>
-<li>数据是全表唯一的</li>
-</ul>
-</li>
-<li>不可被更改性<ul>
-<li>在schema建成后，主键不能够修改</li>
-<li>其值不能被更改，不同即新增</li>
-</ul>
-</li>
-<li>主键索引<ul>
-<li>为主键建立B+索引</li>
-</ul>
-</li>
-</ul>
-<h3 id="3-分区设计-Partition"><a href="#3-分区设计-Partition" class="headerlink" title="3.分区设计(Partition)"></a>3.分区设计(Partition)</h3><ul>
-<li><p>表分区类型</p>
-<ul>
-<li>hash<ul>
-<li>按照某一个或几个值的hash进行分区</li>
-<li>可指定分区的个数</li>
-</ul>
-</li>
-<li>range<ul>
-<li>按照某一个字段值的范围分区</li>
-<li>可以动态的增删</li>
-</ul>
-</li>
-<li>multilevel<ul>
-<li>可以同时按照hash、range结合来分区</li>
-<li>既分散热点数据又可动态增删</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>比如建立如下一个表</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> metrics (</span><br><span class="line">    host <span class="keyword">STRING</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    metric <span class="keyword">STRING</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    <span class="built_in">time</span> INT64 <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    <span class="keyword">value</span> <span class="keyword">DOUBLE</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    PRIMARY <span class="keyword">KEY</span> (host, metric, <span class="built_in">time</span>),</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>按照range来分区如下<br><img src="/assets/images/2019/07-12-range.png" alt="range"></p>
-</li>
-<li><p>按照hash分区如下<br><img src="/assets/images/2019/07-12-hash.png" alt="hash"></p>
-</li>
-<li><p>同时按照range和hash来分区<br><img src="/assets/images/2019/07-12-hash-range.png" alt="rang-hash"></p>
-</li>
-<li><p>同时按照hash和hash来分区<br><img src="/assets/images/2019/07-12-hash-hash.png" alt="hash-hash"></p>
-</li>
-<li><p>那么hash与range的优缺点是<br><img src="/assets/images/2019/07-12-hash-range-good-bad.png" alt="hash-range-good-bad"></p>
-</li>
-</ul>
-<h3 id="4-字段编码"><a href="#4-字段编码" class="headerlink" title="4.字段编码"></a>4.字段编码</h3><ul>
-<li><p>编码的类型如下<br><img src="/assets/images/2019/07-12-encoding.png" alt="encoding"></p>
-</li>
-<li><p>每中字段适用及默认的编码类型如下<br><img src="/assets/images/2019/07-12-field-encoding.png" alt="field-encoding"></p>
-</li>
-</ul>
-<h3 id="5-数据压缩"><a href="#5-数据压缩" class="headerlink" title="5.数据压缩"></a>5.数据压缩</h3><ul>
-<li>编码类型有一下几种<ul>
-<li>LZ4<ul>
-<li>可以设置为默认</li>
-</ul>
-</li>
-<li>zlib</li>
-<li>snappy</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<h2 id="0x02、存储结构"><a href="#0x02、存储结构" class="headerlink" title="0x02、存储结构"></a>0x02、存储结构</h2></blockquote>
-<ul>
-<li>逻辑结构图如下<br><img src="/assets/images/2019/07-12-store-tree.png" alt="store-tree"></li>
-</ul>
-<blockquote>
-<h2 id="0x03、读写流程"><a href="#0x03、读写流程" class="headerlink" title="0x03、读写流程"></a>0x03、读写流程</h2></blockquote>
-<h3 id="1-锁类型"><a href="#1-锁类型" class="headerlink" title="1.锁类型"></a>1.锁类型</h3><ul>
-<li>共享锁(读锁)<ul>
-<li>获得后只能够进行读操作</li>
-<li>其他读可以，任何写等待</li>
-</ul>
-</li>
-<li>互斥锁(写锁)<ul>
-<li>只能获得锁的对象进行写</li>
-<li>任何读等待，其他写等待</li>
-</ul>
-</li>
-<li>MVCC(Multi-Version Concurrency Control)<ul>
-<li>每一个写操作都会创建一个新版本的数据</li>
-<li>读操作会从有限多个版本的数据中挑选一个最合适的结果直接返回</li>
-<li>读写操作之间的冲突就不再需要被关注，而管理和快速挑选数据的版本就成了 MVCC 需要解决的主要问题。</li>
-</ul>
-</li>
-</ul>
-<h3 id="2-存储数据"><a href="#2-存储数据" class="headerlink" title="2.存储数据"></a>2.存储数据</h3><p><img src="/assets/images/2019/07-12-insert-data.png" alt="insert-data"><br><img src="/assets/images/2019/07-12-store-data.png" alt="store-data"><br>fluash示例如下<br><img src="/assets/images/2019/07-12-flush.png" alt="flush"></p>
-<h3 id="3-compaction"><a href="#3-compaction" class="headerlink" title="3.compaction"></a>3.compaction</h3><p><img src="/assets/images/2019/07-12-compation.png" alt="compation"></p>
-<h3 id="4-kudu-api"><a href="#4-kudu-api" class="headerlink" title="4.kudu api"></a>4.kudu api</h3><p><img src="/assets/images/2019/07-12-kuduapi.png" alt="kuduapi"></p>
-<blockquote>
-<h2 id="0x04、impala结合"><a href="#0x04、impala结合" class="headerlink" title="0x04、impala结合"></a>0x04、impala结合</h2></blockquote>
-<h3 id="1-功能简介"><a href="#1-功能简介" class="headerlink" title="1.功能简介"></a>1.功能简介</h3><ul>
-<li>支持存储<ul>
-<li>HDFS、Hbase、Kudu、Hive</li>
-<li>csv、file</li>
-</ul>
-</li>
-<li>结构概念<ul>
-<li>库、表、视图、角色</li>
-<li>权限、函数</li>
-</ul>
-</li>
-<li>多种类型<ul>
-<li>array、bigint、boolean、char</li>
-<li>map、struct</li>
-</ul>
-</li>
-</ul>
-<h3 id="2-表的概念"><a href="#2-表的概念" class="headerlink" title="2.表的概念"></a>2.表的概念</h3><ul>
-<li>内部表<ul>
-<li>通过impala创建的表都是内部表(internal)</li>
-<li>修改表结构对应的底层表也会进行变动</li>
-<li>删除表底层表也删除</li>
-</ul>
-</li>
-<li>外部表<ul>
-<li>不同过impala创建的表都是外部表(external)</li>
-<li>要操作这些表，需要在impala建立表的映射关系</li>
-<li>通过sql修改表结构或者删除表不会删除底层表，删除的只是表的映射关系</li>
-</ul>
-</li>
-</ul>
-<h3 id="3-建表示例"><a href="#3-建表示例" class="headerlink" title="3.建表示例"></a>3.建表示例</h3><p><img src="/assets/images/2019/07-12-impala-create.png" alt="impala-create"></p>
-<h3 id="4-属性操作"><a href="#4-属性操作" class="headerlink" title="4.属性操作"></a>4.属性操作</h3><p><img src="/assets/images/2019/07-12-impala-property.png" alt="impala-property"></p>
-<h3 id="5-常用操作"><a href="#5-常用操作" class="headerlink" title="5.常用操作"></a>5.常用操作</h3><p><img src="/assets/images/2019/07-12-impala-op.png" alt="impala-op"></p>
-<h3 id="6-python-api"><a href="#6-python-api" class="headerlink" title="6.python api"></a>6.python api</h3><p><img src="/assets/images/2019/07-12-impalaapi.png" alt="api"></p>
-<blockquote>
-<h2 id="0x05、限制条件"><a href="#0x05、限制条件" class="headerlink" title="0x05、限制条件"></a>0x05、限制条件</h2></blockquote>
-<h3 id="1-表限制"><a href="#1-表限制" class="headerlink" title="1.表限制"></a>1.表限制</h3><ul>
-<li>表的备份数必须为奇数，最⼤大为7</li>
-<li>备份数在设置后不不可修改</li>
-<li>删除表后空间会⽴立⻢马释放</li>
-<li>建表时partition总数限制为60个，后续可以添加</li>
-</ul>
-<h3 id="2-列限制"><a href="#2-列限制" class="headerlink" title="2.列限制"></a>2.列限制</h3><ul>
-<li>部分数据类型不支持，如CHAR, VARCHAR, DATE, ARRAY等</li>
-<li>数据类型以及是否可为空等列列属性不支持修改</li>
-<li>一张表最多有300列列</li>
-<li>删除列列的时候不会立马清除空间，需要执⾏Compaction操作，但是 Compaction操作不⽀持手动执行</li>
-</ul>
-<h3 id="3-主键限制"><a href="#3-主键限制" class="headerlink" title="3.主键限制"></a>3.主键限制</h3><ul>
-<li>表创建后主键不不可更更改</li>
-<li>主键字段必须在其他字段之前定义</li>
-<li>⼀行对应的主键内容不可以被Update操作修改。要修改⼀行的主键值，需 要删除并新增⼀行新数据，并且该操作无法保持原子性</li>
-<li>主键的类型不支持DOUBLE、FLOAT、BOOL，且必须是非空的(NOT NULL)</li>
-<li>不支持⾃自动⽣生成主键</li>
-<li>每行对应的主键存储单元(CELL)最⼤为16KB</li>
-</ul>
-<h3 id="4-单元限制"><a href="#4-单元限制" class="headerlink" title="4.单元限制"></a>4.单元限制</h3><ul>
-<li>单元对应的数据最⼤大为64KB，并且是在压缩前</li>
-</ul>
-<h3 id="5-分片限制"><a href="#5-分片限制" class="headerlink" title="5.分片限制"></a>5.分片限制</h3><ul>
-<li>分⽚只支持手动指定，⾃自动分⽚不支持</li>
-<li>分片设定不不⽀支持修改，修改分⽚设定需要”建新表-导数据-删老表”操作;</li>
-<li>丢掉多数备份的Tablets需要⼿手动修复。</li>
-<li>Range⽀持删除或新增</li>
-</ul>
-<h3 id="6-容量建议"><a href="#6-容量建议" class="headerlink" title="6.容量建议"></a>6.容量建议</h3><ul>
-<li>建议tablet servers的最⼤大数量量为100;</li>
-<li>建议masters的最⼤大数量量为3;</li>
-<li>建议每个tablet server存储的数据最大为8T</li>
-<li>每个tablet server存储的tablets数量建议在1000以内;</li>
-<li>每个表分片后的tablets存储在单个tablet server的最⼤大数量为60。</li>
-</ul>
-<h3 id="7-Impala集成限制"><a href="#7-Impala集成限制" class="headerlink" title="7.Impala集成限制"></a>7.Impala集成限制</h3><ul>
-<li>不支持varchar、array、map、struct等类型</li>
-<li>Impala⼤小写不不敏敏感，kudu是⼤小写敏敏感，所以表名及字段最好都是小写</li>
-<li>!=和like查询是kudu把数据全部给impala，然后在过滤的，相⽐其他操作效率要低</li>
-<li>Updates、inserts、deletes都是⾮非事务的</li>
-<li>一条sql的并发执⾏行行数在于tablets的个数，所以推荐⾄至少有10个tablets</li>
-</ul>
-<h3 id="8-其他限制"><a href="#8-其他限制" class="headerlink" title="8.其他限制"></a>8.其他限制</h3><ul>
-<li>主键有索引，不支持⼆级索引(Secondary indexes)</li>
-<li>不支持多⾏行行的事务操作</li>
-<li>关系型数据的一些功能，如外键，不支持;</li>
-<li>列和表的名字强制为UTF-8编码，并且最大256字节</li>
-</ul>
-<blockquote>
-<h2 id="0x06、文档资源"><a href="#0x06、文档资源" class="headerlink" title="0x06、文档资源"></a>0x06、文档资源</h2></blockquote>
-<ul>
-<li><a href="https://kudu.apache.org/kudu.pdf" target="_blank" rel="noopener">https://kudu.apache.org/kudu.pdf</a></li>
-<li><a href="https://www.cloudera.com/documentation/enterprise/latest/PDF/cloudera-kudu.pdf" target="_blank" rel="noopener">https://www.cloudera.com/documentation/enterprise/latest/PDF/cloudera-kudu.pdf</a></li>
-<li><a href="https://kudu.apache.org/docs/" target="_blank" rel="noopener">https://kudu.apache.org/docs/</a></li>
-<li><a href="https://github.com/apache/kudu/blob/master/docs/design-docs/tablet.md" target="_blank" rel="noopener">https://github.com/apache/kudu/blob/master/docs/design-docs/tablet.md</a></li>
-<li><a href="https://github.com/apache/kudu/blob/master/docs/design-docs/cfile.md" target="_blank" rel="noopener">https://github.com/apache/kudu/blob/master/docs/design-docs/cfile.md</a></li>
-<li><a href="https://raft.github.io/raft.pdf" target="_blank" rel="noopener">https://raft.github.io/raft.pdf</a></li>
-<li><a href="https://impala.apache.org/docs/build/impala-2.8.pdf" target="_blank" rel="noopener">https://impala.apache.org/docs/build/impala-2.8.pdf</a></li>
-<li><a href="https://www.cloudera.com/documentation/enterprise/5-10-x/topics/impala_tutorial.html" target="_blank" rel="noopener">https://www.cloudera.com/documentation/enterprise/5-10-x/topics/impala_tutorial.html</a></li>
-</ul>
-
+<li>在快速修改的数据上进行快速分析
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/07/12/2019/07-12-kudu简介/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1234,7 +733,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="hackfox">
-      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+      <meta itemprop="description" content="架构、AI、python、rust">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1260,7 +759,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-09 15:02:05" itemprop="dateModified" datetime="2019-09-09T15:02:05+08:00">2019-09-09</time>
+                <time title="修改时间：2020-06-09 20:48:44" itemprop="dateModified" datetime="2020-06-09T20:48:44+08:00">2020-06-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1284,94 +783,48 @@
 
       
           <h3 id="0x00、插件"><a href="#0x00、插件" class="headerlink" title="0x00、插件"></a>0x00、插件</h3><ul>
-<li>github<ul>
+<li><p>github</p>
+<ul>
 <li>sourcegraph</li>
 <li>octotree</li>
 </ul>
 </li>
-<li>剪切网页<ul>
+<li><p>剪切网页</p>
+<ul>
 <li>evernote</li>
 </ul>
 </li>
-<li>调试接口<ul>
+<li><p>调试接口</p>
+<ul>
 <li>JSONview</li>
 </ul>
 </li>
-<li>词典<ul>
+<li><p>词典</p>
+<ul>
 <li>沙拉查词</li>
 </ul>
 </li>
-<li>广告<ul>
+<li><p>广告</p>
+<ul>
 <li>广告终结者</li>
 </ul>
 </li>
-<li>产品原型<ul>
+<li><p>产品原型</p>
+<ul>
 <li>axure</li>
 </ul>
 </li>
-<li>多tab管理<ul>
-<li>Toby</li>
-</ul>
-</li>
-</ul>
-<h3 id="0x01、工具网站"><a href="#0x01、工具网站" class="headerlink" title="0x01、工具网站"></a>0x01、工具网站</h3><ul>
-<li>json格式化<ul>
-<li><a href="https://json.cn" target="_blank" rel="noopener">https://json.cn</a></li>
-<li><a href="http://json.parser.online.fr" target="_blank" rel="noopener">http://json.parser.online.fr</a></li>
-</ul>
-</li>
-<li>随机密码生成<ul>
-<li><a href="https://www.sexauth.com/" target="_blank" rel="noopener">https://www.sexauth.com/</a></li>
-<li><a href="https://suijimimashengcheng.51240.com/" target="_blank" rel="noopener">https://suijimimashengcheng.51240.com/</a></li>
-<li><a href="https://www.dashlane.com/zh/features/password-generator" target="_blank" rel="noopener">https://www.dashlane.com/zh/features/password-generator</a></li>
-</ul>
-</li>
-<li>正则表达式<ul>
-<li><a href="https://regexr.com/" target="_blank" rel="noopener">https://regexr.com/</a></li>
-<li><a href="http://wangwl.net/static/projects/visualRegex" target="_blank" rel="noopener">http://wangwl.net/static/projects/visualRegex</a></li>
-</ul>
-</li>
-<li>问题讨论<ul>
-<li><a href="https://stackoverflow.com" target="_blank" rel="noopener">https://stackoverflow.com</a></li>
-<li><a href="https://stackexchange.com/" target="_blank" rel="noopener">https://stackexchange.com/</a></li>
-</ul>
-</li>
-<li>文章<ul>
-<li><a href="https://medium.com/" target="_blank" rel="noopener">https://medium.com/</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="0x02、前沿科技网站"><a href="#0x02、前沿科技网站" class="headerlink" title="0x02、前沿科技网站"></a>0x02、前沿科技网站</h3><ul>
-<li>论文<ul>
-<li><a href="https://arxiv.org/" target="_blank" rel="noopener">https://arxiv.org/</a></li>
-<li><a href="https://www.nature.com/" target="_blank" rel="noopener">https://www.nature.com/</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="0x03、github系列"><a href="#0x03、github系列" class="headerlink" title="0x03、github系列"></a>0x03、github系列</h3><ul>
-<li><p>图书</p>
+<li><p>多tab管理</p>
 <ul>
-<li><a href="https://github.com/royeo/free-programming-books.pdf" target="_blank" rel="noopener">https://github.com/royeo/free-programming-books.pdf</a></li>
-<li><a href="https://github.com/threerocks/studyFiles" target="_blank" rel="noopener">https://github.com/threerocks/studyFiles</a></li>
-<li><a href="https://github.com/justjavac/free-programming-books-zh_CN" target="_blank" rel="noopener">https://github.com/justjavac/free-programming-books-zh_CN</a></li>
-<li><a href="https://github.com/it-ebooks/it-ebooks-archive" target="_blank" rel="noopener">https://github.com/it-ebooks/it-ebooks-archive</a></li>
-<li><a href="https://github.com/shivam-jha/DockerBooks" target="_blank" rel="noopener">https://github.com/shivam-jha/DockerBooks</a></li>
-<li><a href="https://github.com/EbookFoundation/free-programming-books/blob/master/free-programming-books-zh.md" target="_blank" rel="noopener">https://github.com/EbookFoundation/free-programming-books/blob/master/free-programming-books-zh.md</a></li>
-<li><a href="https://github.com/zhiwoeryi/eBook-3" target="_blank" rel="noopener">https://github.com/zhiwoeryi/eBook-3</a></li>
-</ul>
-</li>
-<li><p>awesome系列</p>
-<ul>
-<li><a href="https://github.com/sindresorhus/awesome" target="_blank" rel="noopener">https://github.com/sindresorhus/awesome</a></li>
-</ul>
-</li>
-<li><p>算法</p>
-<ul>
-<li><a href="https://github.com/linyiqun/DataMiningAlgorithm" target="_blank" rel="noopener">https://github.com/linyiqun/DataMiningAlgorithm</a></li>
-</ul>
-</li>
-</ul>
-
+<li>Toby
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/04/23/2019/04-23-浏览器工具集/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1395,7 +848,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="hackfox">
-      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+      <meta itemprop="description" content="架构、AI、python、rust">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1421,7 +874,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-09 15:32:07" itemprop="dateModified" datetime="2019-09-09T15:32:07+08:00">2019-09-09</time>
+                <time title="修改时间：2020-06-09 20:48:47" itemprop="dateModified" datetime="2020-06-09T20:48:47+08:00">2020-06-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1445,7 +898,8 @@
 
       
           <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
-<li>支持的查询存储<ul>
+<li><p>支持的查询存储</p>
+<ul>
 <li>关系型数据库</li>
 <li>数据仓库</li>
 <li>Kudu</li>
@@ -1454,253 +908,24 @@
 <li>HDFS</li>
 </ul>
 </li>
-<li>可以单独部署一个集群，读取远程数据源。</li>
-<li>支持的操作<ul>
+<li><p>可以单独部署一个集群，读取远程数据源。</p>
+</li>
+<li><p>支持的操作</p>
+<ul>
 <li>运行impala-shell进入交互模式<ul>
 <li><code>/usr/bin/impala-shell</code></li>
 </ul>
 </li>
 <li>ODBC、JDBC</li>
-<li>Hue web-based user interface.</li>
-</ul>
-</li>
-</ul>
-<h2 id="数据表"><a href="#数据表" class="headerlink" title="数据表"></a>数据表</h2><ul>
-<li>分为外部表和内部表</li>
-<li>内部表<ul>
-<li>通过impala创建的表都是内部表(internal)</li>
-<li>修改表结构对应的底层表也会进行变动</li>
-</ul>
-</li>
-<li>外部表<ul>
-<li>不同过impala创建的表都是外部表(external)</li>
-<li>要操作这些表，需要在impala建立表的映射关系</li>
-<li>通过sql修改表结构或者删除表不会删除底层表，删除的只是表的映射关系</li>
-</ul>
-</li>
-</ul>
-<h2 id="SQL语法"><a href="#SQL语法" class="headerlink" title="SQL语法"></a>SQL语法</h2><ul>
-<li>sql示例</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- This line is a comment about a table.</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> ...;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">This is a multi-line comment about a query.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">select</span> ...;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> t <span class="comment">/* This is an embedded comment about a query. */</span> <span class="keyword">where</span> ...;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> t <span class="comment">-- This is a trailing comment within a multi-line command.</span></span><br><span class="line"><span class="keyword">where</span> ...;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>外部表映射</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">EXTERNAL</span> <span class="keyword">TABLE</span> my_mapping_table</span><br><span class="line"><span class="keyword">STORED</span> <span class="keyword">AS</span> KUDU</span><br><span class="line">TBLPROPERTIES (</span><br><span class="line">  <span class="string">'kudu.table_name'</span> = <span class="string">'my_kudu_table'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>创建内部表</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> my_first_table</span><br><span class="line">(</span><br><span class="line">  <span class="keyword">id</span> <span class="built_in">BIGINT</span>,</span><br><span class="line">  <span class="keyword">name</span> <span class="keyword">STRING</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span>(<span class="keyword">id</span>)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">PARTITION</span> <span class="keyword">BY</span> <span class="keyword">HASH</span> <span class="keyword">PARTITIONS</span> <span class="number">16</span></span><br><span class="line"><span class="keyword">STORED</span> <span class="keyword">AS</span> KUDU;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>用select来建表</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> new_table</span><br><span class="line">PRIMARY <span class="keyword">KEY</span> (ts, <span class="keyword">name</span>)</span><br><span class="line"><span class="keyword">PARTITION</span> <span class="keyword">BY</span> <span class="keyword">HASH</span>(<span class="keyword">name</span>) <span class="keyword">PARTITIONS</span> <span class="number">8</span></span><br><span class="line"><span class="keyword">STORED</span> <span class="keyword">AS</span> KUDU</span><br><span class="line"><span class="keyword">AS</span> <span class="keyword">SELECT</span> ts, <span class="keyword">name</span>, <span class="keyword">value</span> <span class="keyword">FROM</span> old_table;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>复杂点的partition</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> cust_behavior (</span><br><span class="line">  <span class="keyword">id</span> <span class="built_in">BIGINT</span>,</span><br><span class="line">  sku <span class="keyword">STRING</span>,</span><br><span class="line">  salary <span class="keyword">STRING</span>,</span><br><span class="line">  edu_level <span class="built_in">INT</span>,</span><br><span class="line">  usergender <span class="keyword">STRING</span>,</span><br><span class="line">  <span class="string">`group`</span> <span class="keyword">STRING</span>,</span><br><span class="line">  city <span class="keyword">STRING</span>,</span><br><span class="line">  postcode <span class="keyword">STRING</span>,</span><br><span class="line">  last_purchase_price <span class="built_in">FLOAT</span>,</span><br><span class="line">  last_purchase_date <span class="built_in">BIGINT</span>,</span><br><span class="line">  <span class="keyword">category</span> <span class="keyword">STRING</span>,</span><br><span class="line">  rating <span class="built_in">INT</span>,</span><br><span class="line">  fulfilled_date <span class="built_in">BIGINT</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="keyword">id</span>, sku)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">PARTITION</span> <span class="keyword">BY</span> <span class="keyword">HASH</span> (<span class="keyword">id</span>) <span class="keyword">PARTITIONS</span> <span class="number">4</span>,</span><br><span class="line"><span class="keyword">RANGE</span> (sku)</span><br><span class="line">(</span><br><span class="line">  <span class="keyword">PARTITION</span> <span class="keyword">VALUES</span> &lt; <span class="string">'g'</span>,</span><br><span class="line">  <span class="keyword">PARTITION</span> <span class="string">'g'</span> &lt;= <span class="keyword">VALUES</span> &lt; <span class="string">'o'</span>,</span><br><span class="line">  <span class="keyword">PARTITION</span> <span class="string">'o'</span> &lt;= <span class="keyword">VALUES</span> &lt; <span class="string">'u'</span>,</span><br><span class="line">  <span class="keyword">PARTITION</span> <span class="string">'u'</span> &lt;= <span class="keyword">VALUES</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">STORED</span> <span class="keyword">AS</span> KUDU;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>多个hash分区</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> cust_behavior (</span><br><span class="line">  <span class="keyword">id</span> <span class="built_in">BIGINT</span>,</span><br><span class="line">  sku <span class="keyword">STRING</span>,</span><br><span class="line">  salary <span class="keyword">STRING</span>,</span><br><span class="line">  edu_level <span class="built_in">INT</span>,</span><br><span class="line">  usergender <span class="keyword">STRING</span>,</span><br><span class="line">  <span class="string">`group`</span> <span class="keyword">STRING</span>,</span><br><span class="line">  city <span class="keyword">STRING</span>,</span><br><span class="line">  postcode <span class="keyword">STRING</span>,</span><br><span class="line">  last_purchase_price <span class="built_in">FLOAT</span>,</span><br><span class="line">  last_purchase_date <span class="built_in">BIGINT</span>,</span><br><span class="line">  <span class="keyword">category</span> <span class="keyword">STRING</span>,</span><br><span class="line">  rating <span class="built_in">INT</span>,</span><br><span class="line">  fulfilled_date <span class="built_in">BIGINT</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="keyword">id</span>, sku)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">PARTITION</span> <span class="keyword">BY</span> <span class="keyword">HASH</span> (<span class="keyword">id</span>) <span class="keyword">PARTITIONS</span> <span class="number">4</span>,</span><br><span class="line">             <span class="keyword">HASH</span> (sku) <span class="keyword">PARTITIONS</span> <span class="number">4</span></span><br><span class="line"><span class="keyword">STORED</span> <span class="keyword">AS</span> KUDU;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>多个range分区</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> sales_by_year (</span><br><span class="line">  <span class="keyword">year</span> <span class="built_in">INT</span>, sale_id <span class="built_in">INT</span>, amount <span class="built_in">INT</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (sale_id, <span class="keyword">year</span>)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">PARTITION</span> <span class="keyword">BY</span> <span class="keyword">RANGE</span> (<span class="keyword">year</span>) (</span><br><span class="line">  <span class="keyword">PARTITION</span> <span class="keyword">VALUE</span> = <span class="number">2012</span>,</span><br><span class="line">  <span class="keyword">PARTITION</span> <span class="keyword">VALUE</span> = <span class="number">2013</span>,</span><br><span class="line">  <span class="keyword">PARTITION</span> <span class="keyword">VALUE</span> = <span class="number">2014</span>,</span><br><span class="line">  <span class="keyword">PARTITION</span> <span class="keyword">VALUE</span> = <span class="number">2015</span>,</span><br><span class="line">  <span class="keyword">PARTITION</span> <span class="keyword">VALUE</span> = <span class="number">2016</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">STORED</span> <span class="keyword">AS</span> KUDU;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>添加ragne分区</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> sales_by_year <span class="keyword">ADD</span> <span class="keyword">RANGE</span> <span class="keyword">PARTITION</span> <span class="keyword">VALUE</span> = <span class="number">2017</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>删除一个range分区</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> sales_by_year <span class="keyword">DROP</span> <span class="keyword">RANGE</span> <span class="keyword">PARTITION</span> <span class="keyword">VALUE</span> = <span class="number">2012</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>操作元</p>
-<ul>
-<li>Arithmetic Operators</li>
-<li>BETWEEN Operator</li>
-<li>Comparison Operators</li>
-<li>EXISTS Operator</li>
-<li>ILIKE Operator</li>
-<li>IN Operator</li>
-<li>IREGEXP Operator</li>
-<li>IS DISTINCT FROM Operator</li>
-<li>IS NULL Operator</li>
-<li>IS TRUE Operator</li>
-<li>LIKE Operator</li>
-<li>Logical Operators</li>
-<li>REGEXP Operator</li>
-<li>RLIKE Operator</li>
-</ul>
-</li>
-</ul>
-<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ul>
-<li>ARRAY Complex Type (CDH 5.5 or higher only)</li>
-<li>BIGINT</li>
-<li>BOOLEAN</li>
-<li>CHAR</li>
-<li>DECIMAL</li>
-<li>DOUBLE</li>
-<li>FLOAT</li>
-<li>INT</li>
-<li>MAP Complex Type (CDH 5.5 or higher only)</li>
-<li>REAL</li>
-<li>SMALLINT</li>
-<li>STRING</li>
-<li>STRUCT Complex Type (CDH 5.5 or higher only)</li>
-<li>TIMESTAMP</li>
-<li>TINYINT</li>
-<li>VARCHAR</li>
-<li>Complex Types (CDH 5.5 or higher only)</li>
-<li><code>PS:注意</code><ul>
-<li>Currently, the data types CHAR, VARCHAR, ARRAY, MAP, and STRUCT cannot be used with Kudu tables.</li>
-</ul>
-</li>
-</ul>
-<h2 id="SQL-Statements"><a href="#SQL-Statements" class="headerlink" title="SQL Statements"></a>SQL Statements</h2><ul>
-<li>DDL Statements</li>
-<li>DML Statements</li>
-<li>ALTER DATABASE</li>
-<li>ALTER TABLE</li>
-<li>ALTER VIEW</li>
-<li>COMMENT</li>
-<li>COMPUTE STATS</li>
-<li>CREATE DATABASE</li>
-<li>CREATE FUNCTION</li>
-<li>CREATE ROLE</li>
-<li>CREATE TABLE</li>
-<li>CREATE VIEW</li>
-<li>DELETE</li>
-<li>DESCRIBE</li>
-<li>DROP DATABASE</li>
-<li>DROP FUNCTION</li>
-<li>DROP ROLE</li>
-<li>DROP STATS</li>
-<li>DROP TABLE</li>
-<li>DROP VIEW</li>
-<li>EXPLAIN</li>
-<li>GRANT</li>
-<li>INSERT<ul>
-<li>VALUES Clause</li>
-<li>Inserting Into Partitioned Tables with PARTITION Clause<ul>
-<li>Static Partition Inserts</li>
-<li>Dynamic Partition Inserts</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>INVALIDATE METADATA</li>
-<li>LOAD DATA</li>
-<li>REFRESH</li>
-<li>REFRESH AUTHORIZATION</li>
-<li>REFRESH FUNCTIONS</li>
-<li>REVOKE</li>
-<li>SELECT<ul>
-<li>Joins</li>
-<li>ORDER BY Clause</li>
-<li>GROUP BY Clause</li>
-<li>HAVING Clause</li>
-<li>LIMIT Clause</li>
-<li>OFFSET Clause</li>
-<li>UNION Clause</li>
-<li>Subqueries</li>
-<li>TABLESAMPLE Clause</li>
-<li>WITH Clause</li>
-<li>DISTINCT Operator</li>
-</ul>
-</li>
-<li>SET<ul>
-<li>ABORT_ON_ERROR</li>
-<li>ALLOW_ERASURE_CODED_FILES</li>
-<li>ALLOW_UNSUPPORTED_FORMATS</li>
-<li>APPX_COUNT_DISTINCT</li>
-<li>BATCH_SIZE</li>
-<li>BUFFER_POOL_LIMIT</li>
-<li>COMPRESSION_CODEC</li>
-<li>COMPUTE_STATS_MIN_SAMPLE_SIZE</li>
-<li>DEBUG_ACTION</li>
-<li>DECIMAL_V2</li>
-<li>DEFAULT_FILE_FORMAT</li>
-<li>DEFAULT_JOIN_DISTRIBUTION_MODE</li>
-<li>DEFAULT_SPILLABLE_BUFFER_SIZE</li>
-<li>DISABLE_CODEGEN</li>
-<li>DISABLE_CODEGEN_ROWS_THRESHOLD</li>
-<li>DISABLE_ROW_RUNTIME_FILTERING</li>
-<li>DISABLE_STREAMING_PREAGGREGATIONS</li>
-<li>DISABLE_UNSAFE_SPILLS</li>
-<li>ENABLE_EXPR_REWRITES</li>
-<li>EXEC_SINGLE_NODE_ROWS_THRESHOLD</li>
-<li>EXEC_TIME_LIMIT_S</li>
-<li>EXPLAIN_LEVEL</li>
-<li>HBASE_CACHE_BLOCKS</li>
-<li>HBASE_CACHING</li>
-<li>IDLE_SESSION_TIMEOUT</li>
-<li>KUDU_READ_MODE</li>
-<li>LIVE_PROGRESS</li>
-<li>LIVE_SUMMARY</li>
-<li>MAX_ERRORS</li>
-<li>MAX_MEM_ESTIMATE_FOR_ADMISSION</li>
-<li>MAX_NUM_RUNTIME_FILTERS</li>
-<li>MAX_ROW_SIZE</li>
-<li>MAX_SCAN_RANGE_LENGTH</li>
-<li>MEM_LIMIT</li>
-<li>MIN_SPILLABLE_BUFFER_SIZE</li>
-<li>MT_DOP</li>
-<li>NUM_NODES</li>
-<li>NUM_ROWS_PRODUCED_LIMIT</li>
-<li>NUM_SCANNER_THREADS</li>
-<li>OPTIMIZE_PARTITION_KEY_SCANS</li>
-<li>PARQUET_COMPRESSION_CODEC</li>
-<li>PARQUET_ANNOTATE_STRINGS_UTF8</li>
-<li>PARQUET_ARRAY_RESOLUTION</li>
-<li>PARQUET_DICTIONARY_FILTERING</li>
-<li>PARQUET_FALLBACK_SCHEMA_RESOLUTION</li>
-<li>PARQUET_FILE_SIZE</li>
-<li>PARQUET_READ_STATISTICS</li>
-<li>PREFETCH_MODE</li>
-<li>QUERY_TIMEOUT_S</li>
-<li>REPLICA_PREFERENCE</li>
-<li>REQUEST_POOL</li>
-<li>RESOURCE_TRACE_RATIO</li>
-<li>RUNTIME_BLOOM_FILTER_SIZE</li>
-<li>RUNTIME_FILTER_MAX_SIZE</li>
-<li>RUNTIME_FILTER_MIN_SIZE</li>
-<li>RUNTIME_FILTER_MODE</li>
-<li>RUNTIME_FILTER_WAIT_TIME_MS</li>
-<li>S3_SKIP_INSERT_STAGING</li>
-<li>SCAN_BYTES_LIMIT</li>
-<li>SCHEDULE_RANDOM_REPLICA</li>
-<li>SCRATCH_LIMIT</li>
-<li>SHUFFLE_DISTINCT_EXPRS</li>
-<li>SUPPORT_START_OVER</li>
-<li>SYNC_DDL</li>
-<li>THREAD_RESERVATION_AGGREGATE_LIMIT</li>
-<li>THREAD_RESERVATION_LIMIT</li>
-<li>TIMEZONE</li>
-<li>TOPN_BYTES_LIMIT</li>
-</ul>
-</li>
-<li>SHOW<ul>
-<li>SHOW FILES Statement</li>
-<li>SHOW ROLES Statement</li>
-<li>SHOW CURRENT ROLE</li>
-<li>SHOW ROLE GRANT Statement</li>
-<li>SHOW GRANT ROLE Statement</li>
-<li>SHOW GRANT USER Statement</li>
-<li>SHOW DATABASES</li>
-<li>SHOW TABLES Statement</li>
-<li>SHOW CREATE TABLE Statement</li>
-<li>SHOW CREATE VIEW Statement</li>
-<li>SHOW TABLE STATS Statement</li>
-<li>SHOW COLUMN STATS Statement</li>
-<li>SHOW PARTITIONS Statement</li>
-<li>SHOW FUNCTIONS Statement</li>
-</ul>
-</li>
-<li>SHUTDOWN</li>
-<li>TRUNCATE TABLE</li>
-<li>UPDATE</li>
-<li>UPSERT</li>
-<li>USE</li>
-<li>Optimizer Hints</li>
-</ul>
-<h2 id="内建函数"><a href="#内建函数" class="headerlink" title="内建函数"></a>内建函数</h2>
+<li>Hue web-based user interface.
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/04/22/2019/04-22-Impala系统性文档/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1724,7 +949,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="hackfox">
-      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+      <meta itemprop="description" content="架构、AI、python、rust">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1750,7 +975,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-09 15:03:01" itemprop="dateModified" datetime="2019-09-09T15:03:01+08:00">2019-09-09</time>
+                <time title="修改时间：2020-06-09 20:48:51" itemprop="dateModified" datetime="2020-06-09T20:48:51+08:00">2020-06-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1807,11 +1032,15 @@
 </ul>
 </li>
 <li>thefuck<ul>
-<li>命令出错自动完善</li>
-</ul>
-</li>
-</ul>
-
+<li>命令出错自动完善
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/04/22/2019/04-22-终端命令工具集/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1835,7 +1064,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="hackfox">
-      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+      <meta itemprop="description" content="架构、AI、python、rust">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1861,7 +1090,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-09 15:05:22" itemprop="dateModified" datetime="2019-09-09T15:05:22+08:00">2019-09-09</time>
+                <time title="修改时间：2020-06-09 20:49:03" itemprop="dateModified" datetime="2020-06-09T20:49:03+08:00">2020-06-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1895,66 +1124,14 @@
 </ul>
 </li>
 <li><p>contst：只读不可改，声明即赋值 其所声明的对象的属性是可以改变的。</p>
-</li>
-</ul>
-<h2 id="0x01、箭头函数"><a href="#0x01、箭头函数" class="headerlink" title="0x01、箭头函数"></a>0x01、箭头函数</h2><p>()-&gt;{</p>
-<p>}</p>
-<h2 id="0x02、字符串"><a href="#0x02、字符串" class="headerlink" title="0x02、字符串"></a>0x02、字符串</h2><ul>
-<li>模版字符串(``)</li>
-<li>新增几个方法</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'my string'</span>.startsWith(<span class="string">'my'</span>); <span class="comment">//true</span></span><br><span class="line"><span class="string">'my string'</span>.endsWith(<span class="string">'my'</span>); <span class="comment">// false</span></span><br><span class="line"><span class="string">'my string'</span>.includes(<span class="string">'str'</span>); <span class="comment">// true</span></span><br><span class="line"><span class="string">'my '</span>.repeat(<span class="number">3</span>); <span class="comment">// 'my my my '</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="0x03、数组"><a href="#0x03、数组" class="headerlink" title="0x03、数组"></a>0x03、数组</h2><blockquote>
-<p>Array 对象增加了一些新的静态方法，Array 原型上也增加了一些新方法</p>
-</blockquote>
-<ul>
-<li>from 从类数组和可遍历对象中创建 Array 的实例</li>
-<li>find 返回回调返回 true 的第一个元素。</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">9</span>, <span class="number">2</span>, <span class="number">10</span>, <span class="number">8</span>].find(<span class="function"><span class="params">n</span> =&gt;</span> n === <span class="number">10</span>) <span class="comment">// 10</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>findIndex 返回回调函数返回 true的第一个元素的下标。</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">5</span>, <span class="number">1</span>, <span class="number">10</span>, <span class="number">8</span>].findIndex(<span class="function"><span class="params">n</span> =&gt;</span> n === <span class="number">10</span>) <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>fill 用所给参数”覆盖”数组的元素。</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>].fill(<span class="number">7</span>) <span class="comment">// [7, 7, 7]</span></span><br><span class="line">[<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>].fill(<span class="number">7</span>, <span class="number">1</span>, <span class="number">3</span>) <span class="comment">// [0, 7, 7, 7, 0]</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="0x04、新增Map和Set结构"><a href="#0x04、新增Map和Set结构" class="headerlink" title="0x04、新增Map和Set结构"></a>0x04、新增Map和Set结构</h2><h2 id="0x05、Math新增几个方法"><a href="#0x05、Math新增几个方法" class="headerlink" title="0x05、Math新增几个方法"></a>0x05、Math新增几个方法</h2><ul>
-<li>Math.sign 返回数字的符号，结果为 1、-1 或 0。</li>
-<li>Math.trunc 返回无小数位的数字</li>
-<li>Math.cbrt 返回数字的立方根。</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Math</span>.sign(<span class="number">5</span>); <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">Math</span>.sign(<span class="number">-9</span>); <span class="comment">// -1</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Math</span>.trunc(<span class="number">5.9</span>); <span class="comment">// 5</span></span><br><span class="line"><span class="built_in">Math</span>.trunc(<span class="number">5.123</span>); <span class="comment">// 5</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Math</span>.cbrt(<span class="number">64</span>); <span class="comment">// 4</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="0x06、扩展运算符-…"><a href="#0x06、扩展运算符-…" class="headerlink" title="0x06、扩展运算符(…)"></a>0x06、扩展运算符(…)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> values = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">let</span> some = [...values, <span class="number">8</span>]; <span class="comment">// [1, 2, 4, 8]</span></span><br><span class="line"><span class="keyword">let</span> more = [...values, <span class="number">8</span>, ...values]; <span class="comment">// [1, 2, 4, 8, 1, 2, 4]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ES5 equivalent:</span></span><br><span class="line"><span class="keyword">let</span> values = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>];</span><br><span class="line"><span class="comment">// Iterate, push, sweat, repeat...</span></span><br><span class="line"><span class="comment">// Iterate, push, sweat, repeat...</span></span><br></pre></td></tr></table></figure>
-
-<p>扩展语法在传参数调用函数时也非常有用</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> values = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>];</span><br><span class="line"></span><br><span class="line">doSomething(...values);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params">x, y, z</span>) </span>&#123;</span><br><span class="line">   <span class="comment">// x = 1, y = 2, z = 4</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES5 equivalent:</span></span><br><span class="line">doSomething.apply(<span class="literal">null</span>, values);</span><br></pre></td></tr></table></figure>
-
-<h2 id="0x07、解构赋值"><a href="#0x07、解构赋值" class="headerlink" title="0x07、解构赋值"></a>0x07、解构赋值</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> [x, y] = [<span class="number">1</span>, <span class="number">2</span>]; <span class="comment">// x = 1, y = 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ES5 equivalent:</span></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line"><span class="keyword">var</span> x = arr[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">var</span> y = arr[<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用这个语法，可以一次性给多个变量赋值。一个很好的附加用处是可以很简单地交换变量值：</span></span><br><span class="line"><span class="keyword">let</span> x = <span class="number">1</span>,</span><br><span class="line">    y = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">[x, y] = [y, x]; <span class="comment">// x = 2, y = 1</span></span><br><span class="line"><span class="comment">//解构也可以用于对象。注意对象中必须存在对应的键：</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">x</span>: <span class="number">1</span>, <span class="attr">y</span>: <span class="number">2</span>&#125;;</span><br><span class="line"><span class="keyword">let</span> &#123;x, y&#125; = obj; <span class="comment">// x = 1, y = 2</span></span><br><span class="line"><span class="comment">//你也可以使用该机制来修改变量名：</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">x</span>: <span class="number">1</span>, <span class="attr">y</span>: <span class="number">2</span>&#125;;</span><br><span class="line"><span class="keyword">let</span> &#123;<span class="attr">x</span>: a, <span class="attr">y</span>: b&#125; = obj; <span class="comment">// a = 1, b = 2</span></span><br><span class="line"><span class="comment">//另一个有趣的模式是模拟多个返回值：</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> [<span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> [x, y] = doSomething(); <span class="comment">// x = 1, y = 2</span></span><br><span class="line"><span class="comment">//解构可以用来为参数对象赋默认值。通过对象字面量，可以模拟命名参数：</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params">&#123;y = <span class="number">1</span>, z = <span class="number">0</span>&#125;</span>) </span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(y, z);</span><br><span class="line">&#125;</span><br><span class="line">doSomething(&#123;<span class="attr">y</span>: <span class="number">2</span>&#125;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="0x08、参数"><a href="#0x08、参数" class="headerlink" title="0x08、参数"></a>0x08、参数</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//可以设置默认参数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params">x, y = <span class="number">2</span></span>) </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> x * y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">doSomething(<span class="number">5</span>); <span class="comment">// 10</span></span><br><span class="line">doSomething(<span class="number">5</span>, <span class="literal">undefined</span>); <span class="comment">// 10</span></span><br><span class="line">doSomething(<span class="number">5</span>, <span class="number">3</span>); <span class="comment">// 15</span></span><br><span class="line"><span class="comment">//看起来很简洁，对吧？ 我肯定你之前在 ES5 中曾经需要给某些参数赋默认值：</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">   y = y === <span class="literal">undefined</span> ? <span class="number">2</span> : y;</span><br><span class="line">   <span class="keyword">return</span> x * y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="0x09、模块"><a href="#0x09、模块" class="headerlink" title="0x09、模块"></a>0x09、模块</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">类的创建围绕 <span class="class"><span class="keyword">class</span> 和 <span class="title">constructor</span> 关键词。以下是个简短的示例：</span></span><br><span class="line"><span class="class"><span class="title">class</span> <span class="title">Vehicle</span> </span>&#123;</span><br><span class="line">   <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">      <span class="keyword">this</span>.name = name;</span><br><span class="line">      <span class="keyword">this</span>.kind = <span class="string">'vehicle'</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   getName() &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create an instance</span></span><br><span class="line"><span class="keyword">let</span> myVehicle = <span class="keyword">new</span> Vehicle(<span class="string">'rocky'</span>);</span><br></pre></td></tr></table></figure>
-
-<p>注意类的定义不是一般的对象，因此，类的成员间没有逗号。 创造一个类的对象时，需要使用 new 关键词。继承一个基类时，使用 extends：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span> <span class="keyword">extends</span> <span class="title">Vehicle</span> </span>&#123;</span><br><span class="line">   <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">      <span class="keyword">super</span>(name);</span><br><span class="line">      <span class="keyword">this</span>.kind = <span class="string">'car'</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> myCar = <span class="keyword">new</span> Car(<span class="string">'bumpy'</span>);</span><br><span class="line"></span><br><span class="line">myCar.getName(); <span class="comment">// 'bumpy'</span></span><br><span class="line">myCar <span class="keyword">instanceof</span> Car; <span class="comment">// true</span></span><br><span class="line">myCar <span class="keyword">instanceof</span> Vehicle; <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-
-<p>从衍生类中，你可以使用从任何构造函数或方法中使用 super 来获取它的基类：</p>
-<blockquote>
-<p>使用 super() 调用父类构造函数。 调用其它成员，举个例子，使用 super.getName() 。</p>
-</blockquote>
-<h2 id="0x10、记号"><a href="#0x10、记号" class="headerlink" title="0x10、记号"></a>0x10、记号</h2><blockquote>
-<p>记号是一个新的原生数据类型，像 Number 和 String 一样。你可以使用记号为对象属性创建唯一标识或创建唯一的常量。</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> MY_CONSTANT = <span class="built_in">Symbol</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj = &#123;&#125;;</span><br><span class="line">obj[MY_CONSTANT] = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//记号与 const 配合很合适，因为它们都有不可改变的特性。</span></span><br><span class="line"><span class="keyword">const</span> CHINESE = <span class="built_in">Symbol</span>();</span><br><span class="line"><span class="keyword">const</span> ENGLISH = <span class="built_in">Symbol</span>();</span><br><span class="line"><span class="keyword">const</span> SPANISH = <span class="built_in">Symbol</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">switch</span>(language) &#123;</span><br><span class="line">   <span class="keyword">case</span> CHINESE:</span><br><span class="line">      <span class="comment">//</span></span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">   <span class="keyword">case</span> ENGLISH:</span><br><span class="line">      <span class="comment">//</span></span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">   <span class="keyword">case</span> SPANISH:</span><br><span class="line">      <span class="comment">//</span></span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">   <span class="keyword">default</span>:</span><br><span class="line">      <span class="comment">//</span></span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//你可以为 symbol 添加描述。虽然不可以通过描述获取 symbol，但是可用于代码调试。</span></span><br><span class="line"><span class="keyword">const</span> CONST_1 = <span class="built_in">Symbol</span>(<span class="string">'my symbol'</span>);</span><br><span class="line"><span class="keyword">const</span> CONST_2 = <span class="built_in">Symbol</span>(<span class="string">'my symbol'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> CONST_1 === <span class="string">'symbol'</span>; <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">CONST_1 === CONST_2; <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
-
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/03/10/2019/03-10-ES6标准概览/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -2031,7 +1208,7 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <p class="site-author-name" itemprop="name">hackfox</p>
-  <div class="site-description" itemprop="description">架构、AI、大数据、数学、python、go</div>
+  <div class="site-description" itemprop="description">架构、AI、python、rust</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -2082,7 +1259,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">hackfox</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
         

@@ -19,7 +19,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="一、同步配置 1.主库和从库创建同步账户 1mysql&amp;gt; grant replication slave, replication client on *.* to repl@&apos;192.168.1.%&apos; identified by &apos;123456&apos;;  2.主库配置/etc/my.cnf 123456server-id=130	#保证唯一值log-bin=mysql-binbinlog_fo">
@@ -30,7 +30,7 @@
 <meta property="og:site_name" content="hackfox">
 <meta property="og:description" content="一、同步配置 1.主库和从库创建同步账户 1mysql&amp;gt; grant replication slave, replication client on *.* to repl@&apos;192.168.1.%&apos; identified by &apos;123456&apos;;  2.主库配置/etc/my.cnf 123456server-id=130	#保证唯一值log-bin=mysql-binbinlog_fo">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-18T14:52:14.230Z">
+<meta property="og:updated_time" content="2020-06-09T12:50:13.531Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql数据库主从同步">
 <meta name="twitter:description" content="一、同步配置 1.主库和从库创建同步账户 1mysql&amp;gt; grant replication slave, replication client on *.* to repl@&apos;192.168.1.%&apos; identified by &apos;123456&apos;;  2.主库配置/etc/my.cnf 123456server-id=130	#保证唯一值log-bin=mysql-binbinlog_fo">
@@ -204,7 +204,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="hackfox">
-      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+      <meta itemprop="description" content="架构、AI、python、rust">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -229,7 +229,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-18 22:52:14" itemprop="dateModified" datetime="2020-04-18T22:52:14+08:00">2020-04-18</time>
+                <time title="修改时间：2020-06-09 20:50:13" itemprop="dateModified" datetime="2020-06-09T20:50:13+08:00">2020-06-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -265,7 +265,11 @@
 </li>
 <li><p>2.主库配置/etc/my.cnf</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">server-id=130	<span class="comment">#保证唯一值</span></span><br><span class="line"><span class="built_in">log</span>-bin=mysql-bin</span><br><span class="line">binlog_format=mixed</span><br><span class="line">binlog-do-db=test2</span><br><span class="line">binlog-ignore-db=mysql</span><br><span class="line"><span class="built_in">log</span>-error=/var/lib/mysql/mysql.err</span><br></pre></td></tr></table></figure>
+
 </li>
+</ul>
+<a id="more"></a>
+<ul>
 <li><p>3.重启主库</p>
 </li>
 <li><p>4.查看主库状态</p>
@@ -386,7 +390,7 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <p class="site-author-name" itemprop="name">hackfox</p>
-  <div class="site-description" itemprop="description">架构、AI、大数据、数学、python、go</div>
+  <div class="site-description" itemprop="description">架构、AI、python、rust</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -437,7 +441,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">hackfox</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
         
