@@ -1,1355 +1,2763 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
-    <meta charset="utf-8">
-    <meta name="keywords" content="hackfox">
-    <meta name="description" content="hackfox">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="renderer" content="webkit|ie-stand|ie-comp">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>hackfox</title>
-    <link rel="icon" type="image/png" href="/favicon.png">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
-    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
-    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/matery.css">
-    <link rel="stylesheet" type="text/css" href="/css/my.css">
-    
-    <script src="/libs/jquery/jquery.min.js"></script>
-    
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="架构、AI、大数据、数学、python、go">
+<meta property="og:type" content="website">
+<meta property="og:title" content="hackfox">
+<meta property="og:url" content="https://xsoer.github.io/index.html">
+<meta property="og:site_name" content="hackfox">
+<meta property="og:description" content="架构、AI、大数据、数学、python、go">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hackfox">
+<meta name="twitter:description" content="架构、AI、大数据、数学、python、go">
+
+<link rel="canonical" href="https://xsoer.github.io/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>hackfox</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
 <link rel="stylesheet" href="/css/prism-duotone-dark.css" type="text/css"></head>
 
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
 
-<body>
-    <header class="navbar-fixed">
-    <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="nav-wrapper head-container">
-            <div class="brand-logo">
-                <a href="/" class="waves-effect waves-light">
-                    
-                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
-                    
-                    <span class="logo-span">hackfox</span>
-                </a>
-            </div>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">hackfox</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">专注 慎思 博学</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2019/10/08/2019/10-08-python性能分析工具/">
 
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
-<ul class="right nav-menu">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hackfox">
+      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hackfox">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/10/08/2019/10-08-python性能分析工具/" class="post-title-link" itemprop="url">python性能分析工具cProfile</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-08 22:09:33" itemprop="dateCreated datePublished" datetime="2019-10-08T22:09:33+08:00">2019-10-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-10 22:40:11" itemprop="dateModified" datetime="2019-11-10T22:40:11+08:00">2019-11-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="0x00、cProfile简介"><a href="#0x00、cProfile简介" class="headerlink" title="0x00、cProfile简介"></a>0x00、cProfile简介</h2><ul>
+<li>cProfile是python自带的模块，对运行的代码做性能分析。可以输出运行时长，</li>
+</ul>
+<h2 id="0x01、分析示例"><a href="#0x01、分析示例" class="headerlink" title="0x01、分析示例"></a>0x01、分析示例</h2><ul>
+<li>1.直接加载cProfile模块来运行代码进行输出分析。</li>
+</ul>
+<pre class=" language-python"><code class="language-python">
+<span class="token comment" spellcheck="true"># 方式一</span>
+<span class="token comment" spellcheck="true"># 直接输出调用的函数、运行时长、cpu占用等情况</span>
+python <span class="token operator">-</span>m cProfile main<span class="token punctuation">.</span>py
+<span class="token comment" spellcheck="true"># 如果调用链路太长，则可以指定输出到文件内，如下所示。不过输出内容为二进制，不可以直接查看。</span>
+python <span class="token operator">-</span>m cProfile <span class="token operator">-</span>o profile<span class="token punctuation">.</span>out main<span class="token punctuation">.</span>py
+
+<span class="token comment" spellcheck="true"># 方式二</span>
+<span class="token keyword">import</span> cProfile
+
+<span class="token keyword">def</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">pass</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    cProfile<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token string">"test()"</span><span class="token punctuation">)</span>
+</code></pre>
+<ul>
+<li>2.为了解决分析内容格式是二进制的，python自带了可以分析的工具pstats。示例代码如下</li>
+</ul>
+<pre class=" language-python"><code class="language-python">
+<span class="token keyword">import</span> pstats
+
+<span class="token comment" spellcheck="true"># 创建Stats对象</span>
+p <span class="token operator">=</span> pstats<span class="token punctuation">.</span>Stats<span class="token punctuation">(</span><span class="token string">"profile/profile.out"</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># strip_dirs(): 去掉无关的路径信息</span>
+<span class="token comment" spellcheck="true"># sort_stats(): 排序，支持的方式和上述的一致</span>
+<span class="token comment" spellcheck="true"># print_stats(): 打印分析结果，可以指定打印前几行,也可以指定小数，为百分比，</span>
+
+<span class="token comment" spellcheck="true"># 和直接运行cProfile.run("test()")的结果是一样的</span>
+p<span class="token punctuation">.</span>strip_dirs<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>sort_stats<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>print_stats<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 按照函数名排序，只打印前3行函数的信息, 参数还可为小数,表示前百分之几的函数信息</span>
+p<span class="token punctuation">.</span>strip_dirs<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>sort_stats<span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>print_stats<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 按照运行时间和函数名进行排序</span>
+p<span class="token punctuation">.</span>strip_dirs<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>sort_stats<span class="token punctuation">(</span><span class="token string">"cumulative"</span><span class="token punctuation">,</span> <span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>print_stats<span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 如果想知道有哪些函数调用了sum_num</span>
+p<span class="token punctuation">.</span>print_callers<span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token string">"test"</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 查看test()函数中调用了哪些函数</span>
+p<span class="token punctuation">.</span>print_callees<span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="0x03、可视化分析"><a href="#0x03、可视化分析" class="headerlink" title="0x03、可视化分析"></a>0x03、可视化分析</h2><p>上面的分析只能做初步的统计查看，并不能有直观的查看和分析。所有一下提供了函数堆栈调用图及每步所花费的时间占比等。</p>
+<ul>
+<li>1.安装gprof2dot</li>
+</ul>
+<pre class=" language-shell"><code class="language-shell">
+pip install gprof2dot
+</code></pre>
+<ul>
+<li>2.安装graphviz包。</li>
+</ul>
+<pre class=" language-shell"><code class="language-shell">
+# mac下
+brew install graphviz
+</code></pre>
+<ul>
+<li>3.对输出的out文件进行分析</li>
+</ul>
+<pre class=" language-shell"><code class="language-shell">
+gprof2dot -f pstats profile.out | dot -Tpng -o profile.png
+</code></pre>
+<p>其效果如下图<br><img src="/assets/images/2019/10-08-profile.png" alt="cprofile分析图"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
   
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/" class="waves-effect waves-light">
-      
-      <i class="fas fa-home" style="zoom: 0.6;"></i>
-      
-      <span>首页</span>
-    </a>
-    
-  </li>
   
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/tags" class="waves-effect waves-light">
-      
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
-      
-      <span>标签</span>
-    </a>
-    
-  </li>
   
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/categories" class="waves-effect waves-light">
+
       
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
-      
-      <span>分类</span>
-    </a>
-    
-  </li>
   
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/archives" class="waves-effect waves-light">
-      
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
-      
-      <span>归档</span>
-    </a>
-    
-  </li>
   
-  <li class="hide-on-med-and-down nav-item">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2019/09/06/2019/09-06-数据同步工具/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hackfox">
+      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hackfox">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/09/06/2019/09-06-数据同步工具/" class="post-title-link" itemprop="url">数据同步工具</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-06 22:10:12" itemprop="dateCreated datePublished" datetime="2019-09-06T22:10:12+08:00">2019-09-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-09-09 18:18:34" itemprop="dateModified" datetime="2019-09-09T18:18:34+08:00">2019-09-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/工具/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
     
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-    </a>
     
-  </li>
-  
-  <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
-    </a>
-  </li>
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="0x00、总览"><a href="#0x00、总览" class="headerlink" title="0x00、总览"></a>0x00、总览</h2><ul>
+<li>1.定时任务</li>
+<li>2.canal/otter</li>
+<li>3.Datax</li>
+<li>4.Sqoop</li>
+<li>5.NiFi</li>
+<li>6.mongoshake</li>
+</ul>
+<h2 id="0x02、定时任务"><a href="#0x02、定时任务" class="headerlink" title="0x02、定时任务"></a>0x02、定时任务</h2><p>定时任务工具是作为数据同步的最基本也是最常用的工具。其不但用于定时的数据同步，而且作为定时的处理其他任务，比如爬虫等。</p>
+<h3 id="1-Airflow"><a href="#1-Airflow" class="headerlink" title="1.Airflow"></a>1.<a href="https://airflow.apache.org/" target="_blank" rel="noopener">Airflow</a></h3><h3 id="2-gocron"><a href="#2-gocron" class="headerlink" title="2.gocron"></a>2.<a href="https://github.com/ouqiang/gocron" target="_blank" rel="noopener">gocron</a></h3><h2 id="0x03、cannel-otter"><a href="#0x03、cannel-otter" class="headerlink" title="0x03、cannel/otter"></a>0x03、cannel/otter</h2><ul>
+<li>阿里巴巴分布式数据库同步系统</li>
+<li><a href="https://github.com/alibaba/otter" target="_blank" rel="noopener">官网</a></li>
+<li>主要同步mysql数据，读取解析mysql binlog，然后同步导入到新的mysql库内</li>
+</ul>
+<h2 id="0x04、Datax"><a href="#0x04、Datax" class="headerlink" title="0x04、Datax"></a>0x04、Datax</h2><ul>
+<li>阿里巴巴开源离线同步Datax</li>
+<li><a href="https://github.com/alibaba/DataX" target="_blank" rel="noopener">官网</a></li>
+<li>抽象为读取的reader源和写入的write源，支持开发新插件</li>
+<li>直接读取写入，用json格式来描述，不支持中间做转换</li>
+</ul>
+<h2 id="0x05、Sqoop"><a href="#0x05、Sqoop" class="headerlink" title="0x05、Sqoop"></a>0x05、Sqoop</h2><ul>
+<li><a href="https://sqoop.apache.org/" target="_blank" rel="noopener">https://sqoop.apache.org/</a></li>
+<li><a href="https://github.com/apache/sqoop" target="_blank" rel="noopener">https://github.com/apache/sqoop</a></li>
+<li>定位是从hadoop与关系型数据库的同步。</li>
+<li>Sqoop 启用了一个 MapReduce 作业（极其容错的分布式并行计算）来执行任务</li>
+<li>Sqoop 的另一大优势是其传输大量结构化或半结构化数据的过程是完全自动化的。</li>
+<li><img src="/assets/images/2019/09-06-sqool.png" alt="架构图"></li>
+</ul>
+<h2 id="0x06、Nifi"><a href="#0x06、Nifi" class="headerlink" title="0x06、Nifi"></a>0x06、Nifi</h2><ul>
+<li>NiFi 项目在创建过程中遵循了一些理念<ul>
+<li>1）精细化管理信息流的能力；</li>
+<li>2）跟踪数据相关事件和信息的能力，比如数据从哪里来，在路径中发生了什么；</li>
+<li>3）保证控制和数据面的安全能力</li>
+</ul>
+</li>
+<li>优势<ul>
+<li>有保证的数据交付</li>
+<li>支持背压（back-pressure）机制的数据缓冲</li>
+<li>有优先级的队列</li>
+<li>QoS</li>
+<li>数据溯源（Data provenance）：NiFi 对数据流路径上的每次变化都会保留日志记录，从而保证结果的可追溯，以及数据的恢复、重播、审计和评估。</li>
+<li>通过日志记录数据的历史细节</li>
+<li>支持交互式命令和控制台，并对系统变化提供可视化的反馈</li>
+<li>支持流模板（Flow templates）</li>
+<li>支持插入式（Pluggable）/ 多角色（multi-role）的安全机制</li>
+<li>支持对数据操作的扩展</li>
+<li>支持集群管理</li>
+</ul>
+</li>
+</ul>
+<h2 id="0x07、mongoshake"><a href="#0x07、mongoshake" class="headerlink" title="0x07、mongoshake"></a>0x07、mongoshake</h2><ul>
+<li><a href="https://github.com/alibaba/MongoShake" target="_blank" rel="noopener">https://github.com/alibaba/MongoShake</a></li>
+<li>alibaba开源的同步mogndb的服务</li>
+<li><img src="/assets/images/2019/09-06-mongoshake.png" alt="架构图"></li>
 </ul>
 
-<div id="mobile-nav" class="side-nav sidenav">
-
-    <div class="mobile-head bg-color">
-        
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
-        
-        <div class="logo-name">hackfox</div>
-        <div class="logo-desc">
-            
-            架构、AI、大数据、数学、python、go
-            
-        </div>
+      
     </div>
 
     
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
-    <ul class="menu-list mobile-menu-list">
-        
-        <li class="m-nav-item">
-	  
-		<a href="/" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-home"></i>
-			
-			首页
-		</a>
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2019/09/05/2019/09-05-tmux配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hackfox">
+      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hackfox">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
           
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/tags" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-tags"></i>
-			
-			标签
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/categories" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-bookmark"></i>
-			
-			分类
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/archives" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-archive"></i>
-			
-			归档
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
-          
-        </li>
-        
-        
-    </ul>
-</div>
-
-        </div>
-
-        
-    </nav>
-
-</header>
-
-    
-<style>
-    .carousel-control {
-        width: 45px;
-        height: 45px;
-        line-height: 55px;
-        border-radius: 45px;
-        background: transparent;
-        cursor: pointer;
-        z-index: 100;
-    }
-
-    #prev-cover {
-        position: absolute;
-        top: 48%;
-        left: 8px;
-    }
-
-    #next-cover {
-        position: absolute;
-        top: 48%;
-        right: 8px;;
-    }
-
-    #prev-cover i {
-        margin-right: 3px;
-    }
-
-    #next-cover i {
-        margin-left: 3px;
-    }
-
-    .carousel-control:hover {
-        background-color:rgba(0, 0, 0, .4);
-    }
-
-    .carousel-control i {
-        color: #fff;
-        font-size: 2.4rem;
-    }
-    
-    html, body {
-        height:100%;
-    }
-
-    #page {
-        height:100%;
-        min-height: 100%;
-        width:100%;
-    }
-</style>
-
-
-
-<div id="page" class="carousel carousel-slider center index-cover" data-indicators="true" style="margin-top: -64px;">
-    
-
-    <div class="carousel-item red white-text bg-cover about-cover">
-        <div class="container" style="right: 0px;left: 0px;">
-            <div class="row">
-    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
-        <div class="brand">
-            <div class="title center-align">
-                
-                专注 慎思 博学
-                
-            </div>
-
-            <div class="description center-align">
-                
-                架构、AI、大数据、数学、python、go
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<script>
-    // 每天切换 banner 图.  Switch banner image every day.
-    $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
-</script>
-
-
-            <div class="cover-btns">
-                
-                <a href="http://github.com/xsoer/" class="waves-effect waves-light btn" target="_blank">
-                    <i class="fab fa-github-alt"></i>Github
-                </a>
-                
-            </div>
-            <div class="cover-social-link">
-    <a href="https://github.com/xsoer" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
-
-
-
-    <a href="mailto:codehackfox@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-        </div>
-        <div class="container" style="bottom: 0; position: absolute; top: unset; height: 45px;">
-            <div class="cover-btns" style="top: unset;">
-                <a href="#indexCard" class="waves-effect waves-light btn scroll-down">
-                    <i class="fas fa-angle-double-down"></i>开始阅读
-                </a>
-            </div>
-        </div>
-    </div>
-
-    
-</div>
-
-<script>
-$(function () {
-    let coverSlider = $('.carousel');
-    coverSlider.carousel({
-        duration: Number('120'),
-        fullWidth: true,
-        indicators: 'true' === 'true'
-    });
-
-    let carouselIntervalId;
-    
-    // Loop to call the next cover article picture.
-    let autoCarousel = function() {
-        carouselIntervalId = setInterval(function () {
-            coverSlider.carousel('next');
-        }, 5000);
-    };
-    autoCarousel();
-    
-
-    let restartPlay = function () {
-        
-        clearInterval(carouselIntervalId);
-        autoCarousel();
-        
-    };
-
-    
-    // prev and next cover post.
-    $('#prev-cover').click(function () {
-        coverSlider.carousel('prev');
-        restartPlay();
-    });
-    $('#next-cover').click(function () {
-        coverSlider.carousel('next');
-        restartPlay();
-    });
-    
-});
-</script>
-
-
-
-<main class="content">
-
-    
-    <div id="indexCard" class="index-card">
-        <div class="container ">
-            <div class="card">
-                <div class="card-content">
-                    
-                        <div class="dream">
-    
-    <div class="title center-align">
-        <i class="far fa-lightbulb"></i>&nbsp;&nbsp;我的梦想
-    </div>
-    
-    <div class="row">
-        <div class="col l8 offset-l2 m10 offset-m1 s10 offset-s1 center-align text">
-            不是每个人都应该像我这样去建造一座水晶大教堂，但是每个人都应该拥有自己的梦想，设计自己的梦想，追求自己的梦想，实现自己的梦想。梦想是生命的灵魂，是心灵的灯塔，是引导人走向成功的信仰。有了崇高的梦想，只要矢志不渝地追求，梦想就会成为现实，奋斗就会变成壮举，生命就会创造奇迹。——罗伯·舒乐
-        </div>
-    </div>
-</div>
-                    
-
-                    
-
-                    
-
-                    <div id="recommend-sections" class="recommend">
-                        
-
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-
-    
-
-    <!-- 所有文章卡片 -->
-    <article id="articles" class="container articles">
-        <div class="row article-row">
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/10/08/2019/10-08-python性能分析工具/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="python性能分析工具cProfile">
-                            
-                            <span class="card-title">python性能分析工具cProfile</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                0x00、cProfile简介
-cProfile是python自带的模块，对运行的代码做性能分析。可以输出运行时长，
-
-0x01、分析示例
-1.直接加载cProfile模块来运行代码进行输出分析。
-
-
-# 方式一
-# 直接输出调用的函数、运
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-08
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/python/" class="post-category">
-                                    python
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/python/">
-                            <span class="chip bg-color">python</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/09/06/2019/09-06-数据同步工具/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="数据同步工具">
-                            
-                            <span class="card-title">数据同步工具</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                0x00、总览
-1.定时任务
-2.canal/otter
-3.Datax
-4.Sqoop
-5.NiFi
-6.mongoshake
-
-0x02、定时任务定时任务工具是作为数据同步的最基本也是最常用的工具。其不但用于定时的数据同步，而且作为定时
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-09-06
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/工具/" class="post-category">
-                                    工具
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/工具/">
-                            <span class="chip bg-color">工具</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/09/05/2019/09-05-tmux配置/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="tmux配置">
-                            
-                            <span class="card-title">tmux配置</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                0x00、简介
-终端复用神器
-
-0x01、快捷键1.tmux命令
-启动新会话
-
-tmux [new -s 会话名 -n 窗口名]
-
-恢复会话：
-
-tmux at [-t 会话名]
-
-列出所有会话：
-
-tmux ls
-
-关闭会话
-
-tmux 
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-09-05
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/工具/" class="post-category">
-                                    工具
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/工具/">
-                            <span class="chip bg-color">工具</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/09/05/2019/09-05-mac开发环境配置/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Mac开发环境配置">
-                            
-                            <span class="card-title">Mac开发环境配置</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                0X00、Mac软件
-1.vscode
-2.omyzsh
-3.tmux
-4.vim
-5.Chrome
-6.输入法
-
-0x01、vscode插件
-Dash
-clock in status bar
-Docker
-ESlint
-File Util
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-09-05
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/工具/" class="post-category">
-                                    工具
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/工具/">
-                            <span class="chip bg-color">工具</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/09/02/2019/09-02-神经网络类型/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="神经网络类型">
-                            
-                            <span class="card-title">神经网络类型</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                0x00、大体类型
-1.卷积神经网络
-2.循环神经网络
-3.深度信念网络
-4.生成对抗网络
-5.深度强化学习
-
-0x01、卷积神经网络
-卷积神经网络属于前面介绍的前馈神经网络之一，它对于图形图像的处理有着独特的效果，在结构上至少包括卷积层和
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-09-02
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/AI/" class="post-category">
-                                    AI
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/AI/">
-                            <span class="chip bg-color">AI</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/07/12/2019/07-12-kudu简介/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="kudu简介">
-                            
-                            <span class="card-title">kudu简介</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                0x00、总体概览1.历史发展
-2012年10月由Cloudera公司发起创建,2015年10月对外公布，2015年12月进入apache基金会进行孵化，后续进入快速发展轨道。
-
-2.产品定位
-Fast Analytics on Fast 
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-07-12
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/kudu/" class="post-category">
-                                    kudu
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/kudu/">
-                            <span class="chip bg-color">kudu</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/04/23/2019/04-23-浏览器工具集/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="浏览器工具集">
-                            
-                            <span class="card-title">浏览器工具集</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                0x00、插件
-github
-sourcegraph
-octotree
-
-
-剪切网页
-evernote
-
-
-调试接口
-JSONview
-
-
-词典
-沙拉查词
-
-
-广告
-广告终结者
-
-
-产品原型
-axure
-
-
-多tab管理
-Toby
-
-
-
-0
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-04-23
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/工具/" class="post-category">
-                                    工具
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/工具/">
-                            <span class="chip bg-color">工具</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/04/22/2019/04-22-Impala系统性文档/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Impala操作手册">
-                            
-                            <span class="card-title">Impala操作手册</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                简介
-支持的查询存储
-关系型数据库
-数据仓库
-Kudu
-Hive
-Hbase
-HDFS
-
-
-可以单独部署一个集群，读取远程数据源。
-支持的操作
-运行impala-shell进入交互模式
-/usr/bin/impala-shell
-
-
-ODB
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-04-22
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/数据库/" class="post-category">
-                                    数据库
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/数据库/">
-                            <span class="chip bg-color">数据库</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/04/22/2019/04-22-终端命令工具集/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="终端命令工具集">
-                            
-                            <span class="card-title">终端命令工具集</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                0x00、工具
-autojump
-自动跳转文件夹，不用cd
-
-
-tree
-以树状图列出当前目录结构
-
-
-you-get
-视频下载
-
-
-tldr
-命令示例文档
-
-
-htop
-更强大的top
-
-
-git
-版本控制工具
-
-
-vim
-编辑器
-
-
-t
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-04-22
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/工具/" class="post-category">
-                                    工具
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/工具/">
-                            <span class="chip bg-color">工具</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/03/10/2019/03-10-ES6标准概览/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="ES6标准概览">
-                            
-                            <span class="card-title">ES6标准概览</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                0x00、变量
-新增两个关键字：let、const
-
-
-let与var的区别
-
-作用域不同()
-变量是否可以提升不
-
-
-contst：只读不可改，声明即赋值 其所声明的对象的属性是可以改变的。
-
-
-0x01、箭头函数()-&gt;{
-}
-0
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-03-10
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/javascript/" class="post-category">
-                                    javascript
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/javascript/">
-                            <span class="chip bg-color">javascript</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/03/10/2015/03-10-mysql数据库主从同步/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="mysql数据库主从同步">
-                            
-                            <span class="card-title">mysql数据库主从同步</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                0x00、同步步骤
-1.主库和从库创建同步账户mysql> grant replication slave, replication client on *.* to repl@'192.168.1.%' identified by '12
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-03-10
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/mysql/" class="post-category">
-                                    mysql
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/mysql/">
-                            <span class="chip bg-color">mysql</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/03/10/2016/03-10-mysql常用语句/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="mysql常用语句">
-                            
-                            <span class="card-title">mysql常用语句</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                0x00、常用语句
-1.授权用户mysql> GRANT ALL PRIVILEGES ON *.* TO 'zxc'@'%' IDENTIFIED BY 'ydp#2015$Z!!!' WITH GRANT OPTION;
-mysql> 
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-03-10
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/mysql/" class="post-category">
-                                    mysql
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/mysql/">
-                            <span class="chip bg-color">mysql</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-        </div>
-    </article>
-
-</main>
-
-
-<div class="container paging">
-    <div class="row">
-        <div class="col s6 m4 l4">
-            
-            <a class="left btn-floating btn-large disabled">
-                <i class="fas fa-angle-left"></i>
-            </a>
-            
-        </div>
-        <div class="page-info col m4 l4 hide-on-small-only">
-            <div class="center-align b-text-gray">1 / 3</div>
-        </div>
-        <div class="col s6 m4 l4">
-            
-            <a href="/page/2/"
-               class="right btn-floating btn-large waves-effect waves-light bg-color">
-                <i class="fas fa-angle-right"></i>
-            </a>
-            
-        </div>
-    </div>
-</div>
-
-
-
-
-    <footer class="page-footer bg-color">
-    <div class="container row center-align">
-        <div class="col s12 m8 l8 copy-right">
-            Copyright&nbsp;&copy;
-            <span id="year">年份</span>
-            <a href="https://xsoer.github.io" target="_blank">hackfox</a>
-            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
-            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
-            <br>
-            
-            
-            
-            
-            
-            
-            <span id="busuanzi_container_site_pv">
-                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
-                    class="white-color"></span>&nbsp;次
+            <a href="/2019/09/05/2019/09-05-tmux配置/" class="post-title-link" itemprop="url">tmux配置</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-05 18:01:57" itemprop="dateCreated datePublished" datetime="2019-09-05T18:01:57+08:00">2019-09-05</time>
             </span>
-            
-            
-            <span id="busuanzi_container_site_uv">
-                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
-                    class="white-color"></span>&nbsp;人
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-09-21 15:25:22" itemprop="dateModified" datetime="2019-09-21T15:25:22+08:00">2019-09-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/工具/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
+                </span>
             </span>
-            
-            <br>
-            
-            <span id="sitetime">载入运行时间...</span>
-            <script>
-                function siteTime() {
-                    window.setTimeout("siteTime()", 1000);
-                    var seconds = 1000;
-                    var minutes = seconds * 60;
-                    var hours = minutes * 60;
-                    var days = hours * 24;
-                    var years = days * 365;
-                    var today = new Date();
-                    var startYear = "2019";
-                    var startMonth = "09";
-                    var startDate = "09";
-                    var startHour = "0";
-                    var startMinute = "0";
-                    var startSecond = "0";
-                    var todayYear = today.getFullYear();
-                    var todayMonth = today.getMonth() + 1;
-                    var todayDate = today.getDate();
-                    var todayHour = today.getHours();
-                    var todayMinute = today.getMinutes();
-                    var todaySecond = today.getSeconds();
-                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
-                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
-                    var diff = t2 - t1;
-                    var diffYears = Math.floor(diff / years);
-                    var diffDays = Math.floor((diff / days) - diffYears * 365);
-                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
-                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
-                        minutes);
-                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
-                        diffMinutes * minutes) / seconds);
-                    if (startYear == todayYear) {
-                        document.getElementById("year").innerHTML = todayYear;
-                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
-                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
-                    } else {
-                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
-                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
-                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
-                    }
-                }
-                setInterval(siteTime, 1000);
-            </script>
-            
-            <br>
-            
+
+          
+
         </div>
-        <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/xsoer" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="0x00、简介"><a href="#0x00、简介" class="headerlink" title="0x00、简介"></a>0x00、简介</h2><ul>
+<li>终端复用神器</li>
+</ul>
+<h2 id="0x01、快捷键"><a href="#0x01、快捷键" class="headerlink" title="0x01、快捷键"></a>0x01、快捷键</h2><h3 id="1-tmux命令"><a href="#1-tmux命令" class="headerlink" title="1.tmux命令"></a>1.tmux命令</h3><ul>
+<li>启动新会话</li>
+</ul>
+<pre class=" language-shell"><code class="language-shell">tmux [new -s 会话名 -n 窗口名]</code></pre>
+<ul>
+<li>恢复会话：</li>
+</ul>
+<pre class=" language-shell"><code class="language-shell">tmux at [-t 会话名]</code></pre>
+<ul>
+<li>列出所有会话：</li>
+</ul>
+<pre class=" language-shell"><code class="language-shell">tmux ls</code></pre>
+<ul>
+<li>关闭会话</li>
+</ul>
+<pre class=" language-shell"><code class="language-shell">tmux kill-session -t 会话名</code></pre>
+<h3 id="2-tmux内快捷键"><a href="#2-tmux内快捷键" class="headerlink" title="2.tmux内快捷键"></a>2.tmux内快捷键</h3><ul>
+<li>会话</li>
+</ul>
+<pre class=" language-shell"><code class="language-shell">:new<回车>  启动新会话
+s           列出所有会话
+$           重命名当前会话</code></pre>
+<ul>
+<li>窗口 (标签页)</li>
+</ul>
+<pre class=" language-shell"><code class="language-shell">c 创建一个新窗口
+, 重命名当前窗口
+w 列出所有窗口
+% 水平分割窗口
+" 竖直分割窗口
+n 选择下一个窗口
+p 选择上一个窗口
+0~9 选择0~9对应的窗口
+h 将光标移入左侧的窗格*
+j 将光标移入下方的窗格*
+l 将光标移入右侧的窗格*
+k 将光标移入上方的窗格*
+q 显示窗格的编号
+o 在窗格间切换
+} 与下一个窗格交换位置
+{ 与上一个窗格交换位置
+! 在新窗口中显示当前窗格
+x 关闭当前窗格</code></pre>
+<ul>
+<li>调整窗口排序</li>
+</ul>
+<pre class=" language-shell"><code class="language-shell">swap-window -s 3 -t 1  交换 3 号和 1 号窗口
+swap-window -t 1       交换当前和 1 号窗口
+move-window -t 1       移动当前窗口到 1 号</code></pre>
+<ul>
+<li>窗格（分割窗口）</li>
+</ul>
+<pre class=" language-shell"><code class="language-shell">%  垂直分割
+"  水平分割
+o  交换窗格
+x  关闭窗格
+⍽  左边这个符号代表空格键 - 切换布局
+q 显示每个窗格是第几个，当数字出现的时候按数字几就选中第几个窗格
+{ 与上一个窗格交换位置
+} 与下一个窗格交换位置
+z 切换窗格最大化/最小化</code></pre>
+<ul>
+<li>杂项</li>
+</ul>
+<pre class=" language-shell"><code class="language-shell">d  退出 tmux（tmux 仍在后台运行）
+t  窗口中央显示一个数字时钟
+?  列出所有快捷键
+:  命令提示符</code></pre>
+<h2 id="0x02、配置文件"><a href="#0x02、配置文件" class="headerlink" title="0x02、配置文件"></a>0x02、配置文件</h2><pre class=" language-shell"><code class="language-shell">#设置前缀为Ctrl + a
+set -g prefix C-a
+
+#解除Ctrl+b 与前缀的对应关系
+unbind C-b
+bind C-a send-prefix # 绑定Ctrl+a为新的指令前缀
+
+# 设置序号从1开始
+set -g base-index 1
+set -g pane-base-index 1
+
+#将r 设置为加载配置文件，并显示"reloaded!"信息
+bind r source-file ~/.tmux.conf \; display "Reloaded!"
+
+bind-key k select-pane -U # up
+bind-key j select-pane -D # down
+bind-key h select-pane -L # left
+bind-key l select-pane -R # right
 
 
+set -g mouse on # 支持鼠标选取文本等
 
-    <a href="mailto:codehackfox@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
+set -g status-interval 2 # 状态栏刷新时间
+set -g status-justify left # 状态栏列表左对齐
+setw -g monitor-activity on # 非当前窗口有内容更新时在状态栏通知
 
+set -g status-bg black # 设置状态栏背景黑色
+set -g status-fg yellow # 设置状态栏前景黄色
+set -g status-style "bg=black, fg=yellow" # 状态栏前景背景色
 
+set -g status-left "#[bg=#FF661D] " # 状态栏左侧内容
+set -g status-right "#S #[fg=green,bg=black]#(tmux-mem-cpu-load --colors --interval 2)#[default]"
+set -g status-left-length 300 # 状态栏左边长度300
+set -g status-right-length 500 # 状态栏右边长度500
 
+set -wg window-status-format " #I #W " # 状态栏窗口名称格式
+set -wg window-status-current-format " #I:#W#F " # 状态栏当前窗口名称格式(#I：序号，#w：窗口名称，#F：间隔符)
+set -wg window-status-separator "" # 状态栏窗口名称之间的间隔
+set -wg window-status-current-style "bg=red" # 状态栏当前窗口名称的样式
+set -wg window-status-last-style "fg=yellow" # 状态栏最后一个窗口名称的样式
 
+set -g message-style "bg=#202529, fg=#91A8BA" # 指定消息通知的前景、后景色
+</code></pre>
+<h2 id="0x03、复制到系统"><a href="#0x03、复制到系统" class="headerlink" title="0x03、复制到系统"></a>0x03、复制到系统</h2><p>在 Mac 下使用 tmux，希望能够复制到系统粘贴板，可以通过下面的方式实现：</p>
+<ul>
+<li>1.安装 rettach-to-user-namespace</li>
+</ul>
+<pre class=" language-shell"><code class="language-shell">brew install reattach-to-user-namespace</code></pre>
+<ul>
+<li>2.修改 ~/.tmux.conf</li>
+</ul>
+<pre class=" language-shell"><code class="language-shell">set-option -g default-command "reattach-to-user-namespace -l zsh"
+# buffer缓存复制到Mac系统粘贴板
+bind y run "tmux save-buffer - | reattach-to-user-namespace pbcopy" \; display-message "Copied tmux buffer to system clipboard"
+# Mac系统粘贴板内容复制到会话
+bind C-v run "reattach-to-user-namespace pbpaste | tmux load-buffer - \; paste-buffer -d"</code></pre>
+<ul>
+<li><p>3.使用<br>在 tmux 中复制之后，按 prefix + y 就可以把 tmux 内复制的内容放到系统粘贴板了</p>
+</li>
+<li><p>4.复制模式<br>tmux中操作文本，自然离不开复制模式，通常使用复制模式的步骤如下：</p>
+<ul>
+<li><ol>
+<li>输入 `+[ 进入复制模式</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>按下 空格键 开始复制，移动光标选择复制区域</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>按下 回车键 复制选中文本并退出复制模式</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>按下 `+] 粘贴文本</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
 
-
-
-
-
-
-
-
-
-</div>
+      
     </div>
-</footer>
 
-<div class="progress-bar"></div>
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2019/09/05/2019/09-05-mac开发环境配置/">
 
-    <!-- 搜索遮罩框 -->
-<div id="searchModal" class="modal">
-    <div class="modal-content">
-        <div class="search-header">
-            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
-                   class="search-input">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hackfox">
+      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hackfox">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/09/05/2019/09-05-mac开发环境配置/" class="post-title-link" itemprop="url">Mac开发环境配置</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-05 16:12:25" itemprop="dateCreated datePublished" datetime="2019-09-05T16:12:25+08:00">2019-09-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-09-09 18:41:02" itemprop="dateModified" datetime="2019-09-09T18:41:02+08:00">2019-09-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/工具/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
+                </span>
+            </span>
+
+          
+
         </div>
-        <div id="searchResult"></div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="0X00、Mac软件"><a href="#0X00、Mac软件" class="headerlink" title="0X00、Mac软件"></a>0X00、Mac软件</h2><ul>
+<li>1.vscode</li>
+<li>2.omyzsh</li>
+<li>3.tmux</li>
+<li>4.vim</li>
+<li>5.Chrome</li>
+<li>6.输入法</li>
+</ul>
+<h2 id="0x01、vscode"><a href="#0x01、vscode" class="headerlink" title="0x01、vscode"></a>0x01、vscode</h2><h4 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h4><ul>
+<li>Dash</li>
+<li>clock in status bar</li>
+<li>Docker</li>
+<li>ESlint</li>
+<li>File Utils</li>
+<li>filesize</li>
+<li>GitLens</li>
+<li>Go</li>
+<li>python</li>
+<li>IntelliJ IDEA keybingdings</li>
+<li>LaTex Workshop</li>
+<li>leetCode</li>
+<li>open in browser</li>
+<li>Path Intelligence</li>
+<li>Remote - Container</li>
+<li>Remote - SSH</li>
+<li>Remote - SSH:Editing Configuration</li>
+<li>Remote - SSH:Explore</li>
+<li>Remote - WSL</li>
+<li>Remote Development</li>
+<li>Settings Sync</li>
+<li>Shades of Purple</li>
+<li>SQLTools</li>
+<li>Stackoverflow Instant Search</li>
+<li>TabNine</li>
+<li>Vetur</li>
+<li>YAML</li>
+</ul>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"workbench.activityBar.visible"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"editor.scrollBeyondLastLine"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token property">"files.autoSave"</span><span class="token operator">:</span> <span class="token string">"onFocusChange"</span><span class="token punctuation">,</span>
+    <span class="token property">"workbench.colorTheme"</span><span class="token operator">:</span> <span class="token string">"Shades of Purple"</span><span class="token punctuation">,</span>
+    <span class="token property">"terminal.integrated.cursorStyle"</span><span class="token operator">:</span> <span class="token string">"line"</span><span class="token punctuation">,</span>
+    <span class="token property">"workbench.statusBar.feedback.visible"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token property">"clock.dateFormat"</span><span class="token operator">:</span> <span class="token string">"yyyy-mm-dd HH:MM:ss"</span><span class="token punctuation">,</span>
+    <span class="token property">"extensions.ignoreRecommendations"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token property">"files.exclude"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"**/__pycache__"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token property">"**/*.pyc"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"breadcrumbs.enabled"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"editor.fontSize"</span><span class="token operator">:</span> <span class="token number">15</span><span class="token punctuation">,</span>
+    <span class="token property">"editor.fontFamily"</span><span class="token operator">:</span> <span class="token string">"'Source Code Pro',Menlo, Monaco, 'Courier New', monospace"</span><span class="token punctuation">,</span>
+    <span class="token property">"terminal.external.osxExec"</span><span class="token operator">:</span> <span class="token string">"iterm.app"</span><span class="token punctuation">,</span>
+    <span class="token property">"terminal.integrated.copyOnSelection"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"terminal.integrated.fontSize"</span><span class="token operator">:</span> <span class="token number">15</span><span class="token punctuation">,</span>
+    <span class="token property">"terminal.integrated.fontFamily"</span><span class="token operator">:</span> <span class="token string">"'Source Code Pro'"</span><span class="token punctuation">,</span>
+    <span class="token property">"terminal.integrated.scrollback"</span><span class="token operator">:</span> <span class="token number">3000</span><span class="token punctuation">,</span>
+    <span class="token property">"terminal.integrated.shell.osx"</span><span class="token operator">:</span> <span class="token string">"/bin/zsh"</span><span class="token punctuation">,</span>
+    <span class="token property">"python.pythonPath"</span><span class="token operator">:</span> <span class="token string">"~/anaconda3/bin/python"</span><span class="token punctuation">,</span>
+    <span class="token property">"python.linting.pylintEnabled"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"leetcode.defaultLanguage"</span><span class="token operator">:</span> <span class="token string">"python3"</span><span class="token punctuation">,</span>
+    <span class="token property">"leetcode.outputFolder"</span><span class="token operator">:</span> <span class="token string">"leecode"</span><span class="token punctuation">,</span>
+    <span class="token property">"leetcode.hideSolved"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"breadcrumbs.symbolSortOrder"</span><span class="token operator">:</span> <span class="token string">"name"</span><span class="token punctuation">,</span>
+    // Theme Setup.
+    // <span class="token property">"workbench.iconTheme"</span><span class="token operator">:</span> <span class="token string">"vscode-icons"</span><span class="token punctuation">,</span>
+    <span class="token property">"editor.lineHeight"</span><span class="token operator">:</span> <span class="token number">24.65</span><span class="token punctuation">,</span>
+    <span class="token property">"editor.letterSpacing"</span><span class="token operator">:</span> <span class="token number">0.5</span><span class="token punctuation">,</span>
+    <span class="token property">"editor.fontWeight"</span><span class="token operator">:</span> <span class="token string">"400"</span><span class="token punctuation">,</span>
+    <span class="token property">"editor.fontLigatures"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"editor.cursorStyle"</span><span class="token operator">:</span> <span class="token string">"line"</span><span class="token punctuation">,</span>
+    // <span class="token property">"editor.cursorWidth"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token property">"editor.cursorBlinking"</span><span class="token operator">:</span> <span class="token string">"solid"</span><span class="token punctuation">,</span>
+    <span class="token property">"editor.renderWhitespace"</span><span class="token operator">:</span> <span class="token string">"all"</span><span class="token punctuation">,</span>
+    <span class="token property">"editor.snippetSuggestions"</span><span class="token operator">:</span> <span class="token string">"top"</span><span class="token punctuation">,</span>
+    <span class="token property">"editor.glyphMargin"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"workbench.editor.enablePreview"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token property">"explorer.confirmDragAndDrop"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token property">"files.trimTrailingWhitespace"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"files.trimFinalNewlines"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    // Formatting Optional.
+    // <span class="token property">"editor.formatOnSave"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"eslint.run"</span><span class="token operator">:</span> <span class="token string">"onType"</span><span class="token punctuation">,</span>
+    <span class="token property">"eslint.autoFixOnSave"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    // MacOS Only Settings.
+    <span class="token property">"workbench.fontAliasing"</span><span class="token operator">:</span> <span class="token string">"auto"</span><span class="token punctuation">,</span>
+    <span class="token property">"terminal.integrated.macOptionIsMeta"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    // SOP's highlight matching tag setting.
+    <span class="token property">"workbench.statusBar.visible"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"python.dataScience.sendSelectionToInteractiveWindow"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"terminal.integrated.rendererType"</span><span class="token operator">:</span> <span class="token string">"dom"</span><span class="token punctuation">,</span>
+    <span class="token property">"git.ignoreLegacyWarning"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"GithubGistExplorer.explorer.gistSortBy"</span><span class="token operator">:</span> <span class="token string">"Last Updated"</span><span class="token punctuation">,</span>
+    <span class="token property">"GithubGistExplorer.explorer.gistAscending"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token property">"GithubGistExplorer.explorer.subscriptionSortBy"</span><span class="token operator">:</span> <span class="token string">"Last Updated"</span><span class="token punctuation">,</span>
+    <span class="token property">"GithubGistExplorer.explorer.subscriptionAscending"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token property">"GithubGistExplorer.github.token"</span><span class="token operator">:</span> <span class="token string">"b70cb2a4a71195fab3c47a8ae0a1209441a46075"</span><span class="token punctuation">,</span>
+    <span class="token property">"GithubGistExplorer.github.username"</span><span class="token operator">:</span> <span class="token string">"xsoer"</span><span class="token punctuation">,</span>
+    <span class="token property">"sync.gist"</span><span class="token operator">:</span> <span class="token string">"20a9cb9d32319e38ded959f092109cd5"</span><span class="token punctuation">,</span>
+    <span class="token property">"window.zoomLevel"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token property">"go.formatTool"</span><span class="token operator">:</span> <span class="token string">"goimports"</span><span class="token punctuation">,</span>
+    <span class="token property">"go.useLanguageServer"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"http.proxy"</span><span class="token operator">:</span> <span class="token string">"http://127.0.0.1:1087"</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="0x02、omyzsh"><a href="#0x02、omyzsh" class="headerlink" title="0x02、omyzsh"></a>0x02、omyzsh</h2><h4 id="插件-1"><a href="#插件-1" class="headerlink" title="插件"></a>插件</h4><ul>
+<li>git</li>
+<li>autojump</li>
+<li>zsh-syntax-highlighting</li>
+<li>zsh-autosuggestions</li>
+</ul>
+<h4 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h4><pre class=" language-bash"><code class="language-bash">plugins<span class="token operator">=</span><span class="token punctuation">(</span>git zsh-autosuggestions zsh-syntax-highlighting<span class="token punctuation">)</span>
+
+<span class="token punctuation">[</span> -f /usr/local/etc/profile.d/autojump.sh <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">.</span> /usr/local/etc/profile.d/autojump.sh
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> -z <span class="token string">"<span class="token variable">$TMUX</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+    tmux attach -t default <span class="token operator">||</span> tmux new -s default
+<span class="token keyword">fi</span></code></pre>
+<h2 id="0x03、tmux"><a href="#0x03、tmux" class="headerlink" title="0x03、tmux"></a>0x03、tmux</h2><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre class=" language-bash"><code class="language-bash">brew <span class="token function">install</span> tmux</code></pre>
+<h4 id="配置文件-1"><a href="#配置文件-1" class="headerlink" title="配置文件"></a>配置文件</h4><pre class=" language-conf"><code class="language-conf">#设置前缀为Ctrl + a
+set -g prefix C-a
+
+#解除Ctrl+b 与前缀的对应关系
+unbind C-b
+bind C-a send-prefix # 绑定Ctrl+a为新的指令前缀
+
+# 设置序号从1开始
+set -g base-index 1
+set -g pane-base-index 1
+
+#将r 设置为加载配置文件，并显示"reloaded!"信息
+bind r source-file ~/.tmux.conf \; display "Reloaded!"
+
+bind-key k select-pane -U # up
+bind-key j select-pane -D # down
+bind-key h select-pane -L # left
+bind-key l select-pane -R # right
+
+set -g mouse on # 支持鼠标选取文本等
+
+set -g status-interval 2 # 状态栏刷新时间
+set -g status-justify left # 状态栏列表左对齐
+setw -g monitor-activity on # 非当前窗口有内容更新时在状态栏通知
+
+set -g status-bg black # 设置状态栏背景黑色
+set -g status-fg yellow # 设置状态栏前景黄色
+set -g status-style "bg=black, fg=yellow" # 状态栏前景背景色
+
+set -g status-left "#[bg=#FF661D] ❐ #S " # 状态栏左侧内容
+set -g status-right "#S #[fg=green,bg=black]#(tmux-mem-cpu-load --colors --interval 2)#[default]"
+set -g status-left-length 300 # 状态栏左边长度300
+set -g status-right-length 500 # 状态栏右边长度500
+
+set -wg window-status-format " #I #W " # 状态栏窗口名称格式
+set -wg window-status-current-format " #I:#W#F " # 状态栏当前窗口名称格式(#I：序号，#w：窗口名称，#F：间隔符)
+set -wg window-status-separator "" # 状态栏窗口名称之间的间隔
+set -wg window-status-current-style "bg=red" # 状态栏当前窗口名称的样式
+set -wg window-status-last-style "fg=yellow" # 状态栏最后一个窗口名称的样式
+
+set -g message-style "bg=#202529, fg=#91A8BA" # 指定消息通知的前景、后景色</code></pre>
+<h2 id="0x04、vim"><a href="#0x04、vim" class="headerlink" title="0x04、vim"></a>0x04、vim</h2><h4 id="配置文件-2"><a href="#配置文件-2" class="headerlink" title="配置文件"></a>配置文件</h4><pre class=" language-conf"><code class="language-conf">set nocompatible
+syntax on
+filetype plugin indent on
+set ic
+set hlsearch
+set encoding=utf-8
+set fileencodings=utf-8,ucs-bom,GB2312,big5
+set cursorline
+set autoindent
+set smartindent
+set scrolloff=4
+set showmatch
+set nu
+
+let python_highlight_all=1
+au Filetype python set tabstop=4
+au Filetype python set softtabstop=4
+au Filetype python set shiftwidth=4
+au Filetype python set textwidth=79
+au Filetype python set expandtab
+au Filetype python set autoindent
+au Filetype python set fileformat=unix
+autocmd Filetype python set foldmethod=indent
+autocmd Filetype python set foldlevel=99</code></pre>
+<h2 id="0x05、chrome"><a href="#0x05、chrome" class="headerlink" title="0x05、chrome"></a>0x05、chrome</h2><h4 id="插件-2"><a href="#插件-2" class="headerlink" title="插件"></a>插件</h4><ul>
+<li>vimium</li>
+<li>Evernote web Clipper</li>
+<li>JSONview</li>
+<li>OctTree</li>
+<li>Sourcegraph</li>
+<li>沙拉查词</li>
+</ul>
+<h2 id="0x06、输入法"><a href="#0x06、输入法" class="headerlink" title="0x06、输入法"></a>0x06、输入法</h2><ul>
+<li>RIME</li>
+</ul>
+
+      
     </div>
-</div>
 
-<script src="/js/search.js"></script>
-<script type="text/javascript">
-$(function () {
-    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
-});
-</script>
-    <!-- 回到顶部按钮 -->
-<div id="backTop" class="top-scroll">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-</div>
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2019/09/02/2019/09-02-神经网络类型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hackfox">
+      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hackfox">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/09/02/2019/09-02-神经网络类型/" class="post-title-link" itemprop="url">神经网络类型</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-02 09:47:18" itemprop="dateCreated datePublished" datetime="2019-09-02T09:47:18+08:00">2019-09-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-09-09 15:00:43" itemprop="dateModified" datetime="2019-09-09T15:00:43+08:00">2019-09-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="0x00、大体类型"><a href="#0x00、大体类型" class="headerlink" title="0x00、大体类型"></a>0x00、大体类型</h2><ul>
+<li>1.卷积神经网络</li>
+<li>2.循环神经网络</li>
+<li>3.深度信念网络</li>
+<li>4.生成对抗网络</li>
+<li>5.深度强化学习</li>
+</ul>
+<h2 id="0x01、卷积神经网络"><a href="#0x01、卷积神经网络" class="headerlink" title="0x01、卷积神经网络"></a>0x01、卷积神经网络</h2><ul>
+<li>卷积神经网络属于前面介绍的前馈神经网络之一，它对于图形图像的处理有着独特的效果，在结构上至少包括卷积层和池化层</li>
+<li>目前卷积神经网络主要应用于影像中物体检测和识别、视频理解，除此之外，卷积神经网络还被应用于自然语言处理</li>
+<li>代表性的卷积神经网络包括LeNet-5、VGG、AlexNet 等</li>
+</ul>
+<h2 id="0x02、循环神经网络"><a href="#0x02、循环神经网络" class="headerlink" title="0x02、循环神经网络"></a>0x02、循环神经网络</h2><ul>
+<li>不同于卷积神经网络，循环神经网络更擅长于对语言文本的处理。文本的分析处理，更看重时序上的输入与上下文的联系。循环神经网络的内部记忆结构，刚好满足这样的需求场景，因此在文本处理方面循环神经网络更胜一筹。</li>
+<li>目前循环神经网络的主要落地场景在机器翻译、情感分析等NLP 领域。特别是近几年媒体曝光较多的新闻写稿机器人，也是基于循环神经网络的一个应用。除此之外，循环神经网络还可以实现自动作诗、自动写歌词，甚至自动写代码。</li>
+</ul>
+<h2 id="0x03、深度信念网络"><a href="#0x03、深度信念网络" class="headerlink" title="0x03、深度信念网络"></a>0x03、深度信念网络</h2><ul>
+<li>是一种生成模型，由多个受限玻尔兹曼机组成，采用逐层的方式进行训练，其结构可以理解为由多层简单学习模型组合而成的复合模型。深度信念网络是一个可以对训练的数据样本进行深层次表达的图形模型。</li>
+</ul>
+<h2 id="0x04、生成对抗网络"><a href="#0x04、生成对抗网络" class="headerlink" title="0x04、生成对抗网络"></a>0x04、生成对抗网络</h2><ul>
+<li>生成对抗网络将对抗的思想引入机器学习领域，对抗的双方为判别模型和生成模型</li>
+<li>判别模型的职责是准确区分真实数据和生成数据，而生成模型负责生成符合真实数据概率分布的新数据</li>
+<li>生成对抗网络主要用于样本数据概率分布的建模，并生成与训练数据相同分布的新数据<ul>
+<li>目前，GAN 主要应用于图像与视觉领域，以及自然语言处理领域，例如，提升图像分辨率、还原遮挡或破损图像、基于文本描述生成图像等。</li>
+</ul>
+</li>
+</ul>
+<h2 id="0x05、深度强化学习"><a href="#0x05、深度强化学习" class="headerlink" title="0x05、深度强化学习"></a>0x05、深度强化学习</h2><ul>
+<li>与其他机器学习的差异在于，深度强化学习更加注重基于环境的改变而调整自身的行为</li>
+<li>深度强化学习的运行机制由四个基本组件组成：环境、代理、动作、反馈。通过四者的关系，强调代理如何在环境给予的奖励或者惩罚的刺激下，逐渐改变自己的行为动作，使得尽可能使用环境，从而达到环境给予的奖励值最大，逐步形成符合最大利益的惯性行为。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2019/07/12/2019/07-12-kudu简介/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hackfox">
+      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hackfox">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/07/12/2019/07-12-kudu简介/" class="post-title-link" itemprop="url">kudu简介</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-07-12 10:13:23" itemprop="dateCreated datePublished" datetime="2019-07-12T10:13:23+08:00">2019-07-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-09-09 18:39:27" itemprop="dateModified" datetime="2019-09-09T18:39:27+08:00">2019-09-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/kudu/" itemprop="url" rel="index"><span itemprop="name">kudu</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="0x00、总体概览"><a href="#0x00、总体概览" class="headerlink" title="0x00、总体概览"></a>0x00、总体概览</h2><h3 id="1-历史发展"><a href="#1-历史发展" class="headerlink" title="1.历史发展"></a>1.历史发展</h3><ul>
+<li>2012年10月由Cloudera公司发起创建,2015年10月对外公布，2015年12月进入apache基金会进行孵化，后续进入快速发展轨道。</li>
+</ul>
+<h3 id="2-产品定位"><a href="#2-产品定位" class="headerlink" title="2.产品定位"></a>2.产品定位</h3><ul>
+<li>Fast Analytics on Fast Data。</li>
+<li>在快速修改的数据上进行快速分析</li>
+</ul>
+<h3 id="3-产生之前"><a href="#3-产生之前" class="headerlink" title="3.产生之前"></a>3.产生之前</h3><p>在有kudu之前，数据分类为：</p>
+<ul>
+<li>静态数据<ul>
+<li>以HDFS引擎作为存储引擎，适⽤用于⾼吞吐量的离线大数据分析场景</li>
+<li>这类存储的局限性是数据无法进行行随机的读写</li>
+</ul>
+</li>
+<li>动态数据<ul>
+<li>以HBase、Cassandra 作为存储引擎，适⽤用于⼤大数据随机读写场景</li>
+<li>这类存储的局限性是批量量读取吞吐量量远不不如 HDFS，不不适⽤用于批量量数据分 析的场景</li>
+</ul>
+</li>
+</ul>
+<p>而既要满足随机读写和大数据分析的解决方案如下：</p>
+<p><img src="/assets/images/2019/07-12-hbase-hdfs.png" alt="解决方案图"></p>
+<p>而以上的方案问题是：</p>
+<ul>
+<li>架构复杂<ul>
+<li>流转涉及环节太多，运维成本很高</li>
+<li>每个环节需要保证高可用，需要维护多个副本，存储空间也有一定的浪费</li>
+<li>数据在多个系统上，对数据安全策略、监控等都提出了挑战</li>
+</ul>
+</li>
+<li>时效性低<ul>
+<li>从 HBase 导出成静态文件是周期性</li>
+</ul>
+</li>
+<li>难以应对后续的更新<ul>
+<li>已经从 HBase 导出到 HDFS，新到的变更数据就难以处理</li>
+</ul>
+</li>
+</ul>
+<p>所以产生了新的解决方案，那就是kudu，其定位如下：<br><img src="/assets/images/2019/07-12-kudu-position.png" alt="kudu定位"></p>
+<p>而其gap了hdfs和hbase之间的<br><img src="/assets/images/2019/07-12-kudu-gap.png" alt="kudugap"></p>
+<h3 id="4-架构图"><a href="#4-架构图" class="headerlink" title="4.架构图"></a>4.架构图</h3><p>kudu的整体架构图如下<br><img src="/assets/images/2019/07-12-kudu-architecture.png" alt="架构图"></p>
+<h3 id="5-基本概念"><a href="#5-基本概念" class="headerlink" title="5.基本概念"></a>5.基本概念</h3><p>下面了解一些kudu里的一些基本概念。</p>
+<ul>
+<li>Table<ul>
+<li>数据存储，没有库的概念</li>
+<li>有对应的schema结构</li>
+<li>字段是强类型</li>
+<li>需要设置主键</li>
+<li>分隔为N个tablets</li>
+</ul>
+</li>
+<li>Tablet<ul>
+<li>Table按照行切分后存储的位置</li>
+<li>一个tablet会多副本到其他server上，并且有一个会是leader</li>
+<li>如果leader失效，会用raft一致性协议重新选举</li>
+<li>任何一组副本内的tablet都可以读，但是只能从leader写入</li>
+</ul>
+</li>
+<li>Mater<ul>
+<li>持续追踪所有的tablet、tablet server、catalog table、其他的集群meta信息</li>
+<li>可以部署多个master，但只有一个是active</li>
+<li>如果active时效了，用raft协议在选举出一个</li>
+<li>Master信息也会存储在一个tablet上，并且被复制同步到其他master机器上</li>
+<li>Tablet servers会发送心跳包到master机器(默认是一秒一次)</li>
+</ul>
+</li>
+<li>Tablet Server<ul>
+<li>用来存储tablet数据并且向client提供服务</li>
+<li>一个tablet会在多个tablet server上</li>
+<li>一个tablet server会有多个tablet</li>
+</ul>
+</li>
+<li>Catelog table<ul>
+<li>是kudu元数据的中心，存储了关于table和tablet的信息</li>
+<li>不允许被直接读写</li>
+<li>table<ul>
+<li>table schemas,</li>
+<li>Locations</li>
+<li>states</li>
+</ul>
+</li>
+<li>tablet<ul>
+<li>Tablet list</li>
+<li>Tablet server上有哪些tablet</li>
+<li>States</li>
+<li>Start and end keys</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Raft一致性协议算法<ul>
+<li>分布式服务高可用性进行多副本</li>
+<li>通过raft来选举出leader</li>
+<li>多副本数据都可以读，但只有leader可以写</li>
+<li>写入时只有当大多数follower确认成功，才算写入成功</li>
+<li>在一组副本中(通常是3或5个)，允许有(N-1)/2的失败</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-使用场景"><a href="#6-使用场景" class="headerlink" title="6.使用场景"></a>6.使用场景</h3><ul>
+<li>流式实时计算<ul>
+<li>流式计算场景通常有持续不断地大量写入</li>
+<li>与此同时这些数据还要支持近乎实时的读、写以及更新操作</li>
+</ul>
+</li>
+<li>时间序列存储<ul>
+<li>hash分片设计能够很好地避免TSDB类请求的局部热点问题</li>
+<li>高效的Scan性能让Kudu能够比Hbase更好的支持查询操作</li>
+</ul>
+</li>
+<li>历史数据共存<ul>
+<li>Impala可以同时支持HDFS、Kudu等多个底层存储引擎</li>
+<li>不必把所有的数据都迁移到Kudu</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<h2 id="0x01、设计模式"><a href="#0x01、设计模式" class="headerlink" title="0x01、设计模式"></a>0x01、设计模式</h2></blockquote>
+<h3 id="1-数据类型"><a href="#1-数据类型" class="headerlink" title="1.数据类型"></a>1.数据类型</h3><ul>
+<li>boolean</li>
+<li>8-bit signed integer</li>
+<li>16-bit signed integer</li>
+<li>32-bit signed integer</li>
+<li>64-bit signed integer</li>
+<li>unixtime_micros (64-bit microseconds since the Unix epoch)</li>
+<li>single-precision (32-bit) IEEE-754 floating-point number</li>
+<li>double-precision (64-bit) IEEE-754 floating-point number</li>
+<li>decimal (see Decimal Type for details)</li>
+<li>UTF-8 encoded string (up to 64KB uncompressed)</li>
+<li>binary (up to 64KB uncompressed)</li>
+</ul>
+<h3 id="2-主键设计"><a href="#2-主键设计" class="headerlink" title="2.主键设计"></a>2.主键设计</h3><ul>
+<li>单列或多列<ul>
+<li>可以设置一列为主键，也同时设置多列为主键</li>
+</ul>
+</li>
+<li>唯一性<ul>
+<li>数据是全表唯一的</li>
+</ul>
+</li>
+<li>不可被更改性<ul>
+<li>在schema建成后，主键不能够修改</li>
+<li>其值不能被更改，不同即新增</li>
+</ul>
+</li>
+<li>主键索引<ul>
+<li>为主键建立B+索引</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-分区设计-Partition"><a href="#3-分区设计-Partition" class="headerlink" title="3.分区设计(Partition)"></a>3.分区设计(Partition)</h3><ul>
+<li><p>表分区类型</p>
+<ul>
+<li>hash<ul>
+<li>按照某一个或几个值的hash进行分区</li>
+<li>可指定分区的个数</li>
+</ul>
+</li>
+<li>range<ul>
+<li>按照某一个字段值的范围分区</li>
+<li>可以动态的增删</li>
+</ul>
+</li>
+<li>multilevel<ul>
+<li>可以同时按照hash、range结合来分区</li>
+<li>既分散热点数据又可动态增删</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>比如建立如下一个表</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> metrics <span class="token punctuation">(</span>
+  host STRING <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+  metric STRING <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+  time INT64 <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+  <span class="token keyword">value</span> <span class="token keyword">DOUBLE</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+  <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span>host<span class="token punctuation">,</span> metric<span class="token punctuation">,</span> time<span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+</li>
+<li><p>按照range来分区如下<br><img src="/assets/images/2019/07-12-range.png" alt="range"></p>
+</li>
+<li><p>按照hash分区如下<br><img src="/assets/images/2019/07-12-hash.png" alt="hash"></p>
+</li>
+<li><p>同时按照range和hash来分区<br><img src="/assets/images/2019/07-12-hash-range.png" alt="rang-hash"></p>
+</li>
+<li><p>同时按照hash和hash来分区<br><img src="/assets/images/2019/07-12-hash-hash.png" alt="hash-hash"></p>
+</li>
+<li><p>那么hash与range的优缺点是<br><img src="/assets/images/2019/07-12-hash-range-good-bad.png" alt="hash-range-good-bad"></p>
+</li>
+</ul>
+<h3 id="4-字段编码"><a href="#4-字段编码" class="headerlink" title="4.字段编码"></a>4.字段编码</h3><ul>
+<li><p>编码的类型如下<br><img src="/assets/images/2019/07-12-encoding.png" alt="encoding"></p>
+</li>
+<li><p>每中字段适用及默认的编码类型如下<br><img src="/assets/images/2019/07-12-field-encoding.png" alt="field-encoding"></p>
+</li>
+</ul>
+<h3 id="5-数据压缩"><a href="#5-数据压缩" class="headerlink" title="5.数据压缩"></a>5.数据压缩</h3><ul>
+<li>编码类型有一下几种<ul>
+<li>LZ4<ul>
+<li>可以设置为默认</li>
+</ul>
+</li>
+<li>zlib</li>
+<li>snappy</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<h2 id="0x02、存储结构"><a href="#0x02、存储结构" class="headerlink" title="0x02、存储结构"></a>0x02、存储结构</h2></blockquote>
+<ul>
+<li>逻辑结构图如下<br><img src="/assets/images/2019/07-12-store-tree.png" alt="store-tree"></li>
+</ul>
+<blockquote>
+<h2 id="0x03、读写流程"><a href="#0x03、读写流程" class="headerlink" title="0x03、读写流程"></a>0x03、读写流程</h2></blockquote>
+<h3 id="1-锁类型"><a href="#1-锁类型" class="headerlink" title="1.锁类型"></a>1.锁类型</h3><ul>
+<li>共享锁(读锁)<ul>
+<li>获得后只能够进行读操作</li>
+<li>其他读可以，任何写等待</li>
+</ul>
+</li>
+<li>互斥锁(写锁)<ul>
+<li>只能获得锁的对象进行写</li>
+<li>任何读等待，其他写等待</li>
+</ul>
+</li>
+<li>MVCC(Multi-Version Concurrency Control)<ul>
+<li>每一个写操作都会创建一个新版本的数据</li>
+<li>读操作会从有限多个版本的数据中挑选一个最合适的结果直接返回</li>
+<li>读写操作之间的冲突就不再需要被关注，而管理和快速挑选数据的版本就成了 MVCC 需要解决的主要问题。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-存储数据"><a href="#2-存储数据" class="headerlink" title="2.存储数据"></a>2.存储数据</h3><p><img src="/assets/images/2019/07-12-insert-data.png" alt="insert-data"><br><img src="/assets/images/2019/07-12-store-data.png" alt="store-data"><br>fluash示例如下<br><img src="/assets/images/2019/07-12-flush.png" alt="flush"></p>
+<h3 id="3-compaction"><a href="#3-compaction" class="headerlink" title="3.compaction"></a>3.compaction</h3><p><img src="/assets/images/2019/07-12-compation.png" alt="compation"></p>
+<h3 id="4-kudu-api"><a href="#4-kudu-api" class="headerlink" title="4.kudu api"></a>4.kudu api</h3><p><img src="/assets/images/2019/07-12-kuduapi.png" alt="kuduapi"></p>
+<blockquote>
+<h2 id="0x04、impala结合"><a href="#0x04、impala结合" class="headerlink" title="0x04、impala结合"></a>0x04、impala结合</h2></blockquote>
+<h3 id="1-功能简介"><a href="#1-功能简介" class="headerlink" title="1.功能简介"></a>1.功能简介</h3><ul>
+<li>支持存储<ul>
+<li>HDFS、Hbase、Kudu、Hive</li>
+<li>csv、file</li>
+</ul>
+</li>
+<li>结构概念<ul>
+<li>库、表、视图、角色</li>
+<li>权限、函数</li>
+</ul>
+</li>
+<li>多种类型<ul>
+<li>array、bigint、boolean、char</li>
+<li>map、struct</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-表的概念"><a href="#2-表的概念" class="headerlink" title="2.表的概念"></a>2.表的概念</h3><ul>
+<li>内部表<ul>
+<li>通过impala创建的表都是内部表(internal)</li>
+<li>修改表结构对应的底层表也会进行变动</li>
+<li>删除表底层表也删除</li>
+</ul>
+</li>
+<li>外部表<ul>
+<li>不同过impala创建的表都是外部表(external)</li>
+<li>要操作这些表，需要在impala建立表的映射关系</li>
+<li>通过sql修改表结构或者删除表不会删除底层表，删除的只是表的映射关系</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-建表示例"><a href="#3-建表示例" class="headerlink" title="3.建表示例"></a>3.建表示例</h3><p><img src="/assets/images/2019/07-12-impala-create.png" alt="impala-create"></p>
+<h3 id="4-属性操作"><a href="#4-属性操作" class="headerlink" title="4.属性操作"></a>4.属性操作</h3><p><img src="/assets/images/2019/07-12-impala-property.png" alt="impala-property"></p>
+<h3 id="5-常用操作"><a href="#5-常用操作" class="headerlink" title="5.常用操作"></a>5.常用操作</h3><p><img src="/assets/images/2019/07-12-impala-op.png" alt="impala-op"></p>
+<h3 id="6-python-api"><a href="#6-python-api" class="headerlink" title="6.python api"></a>6.python api</h3><p><img src="/assets/images/2019/07-12-impalaapi.png" alt="api"></p>
+<blockquote>
+<h2 id="0x05、限制条件"><a href="#0x05、限制条件" class="headerlink" title="0x05、限制条件"></a>0x05、限制条件</h2></blockquote>
+<h3 id="1-表限制"><a href="#1-表限制" class="headerlink" title="1.表限制"></a>1.表限制</h3><ul>
+<li>表的备份数必须为奇数，最⼤大为7</li>
+<li>备份数在设置后不不可修改</li>
+<li>删除表后空间会⽴立⻢马释放</li>
+<li>建表时partition总数限制为60个，后续可以添加</li>
+</ul>
+<h3 id="2-列限制"><a href="#2-列限制" class="headerlink" title="2.列限制"></a>2.列限制</h3><ul>
+<li>部分数据类型不支持，如CHAR, VARCHAR, DATE, ARRAY等</li>
+<li>数据类型以及是否可为空等列列属性不支持修改</li>
+<li>一张表最多有300列列</li>
+<li>删除列列的时候不会立马清除空间，需要执⾏Compaction操作，但是 Compaction操作不⽀持手动执行</li>
+</ul>
+<h3 id="3-主键限制"><a href="#3-主键限制" class="headerlink" title="3.主键限制"></a>3.主键限制</h3><ul>
+<li>表创建后主键不不可更更改</li>
+<li>主键字段必须在其他字段之前定义</li>
+<li>⼀行对应的主键内容不可以被Update操作修改。要修改⼀行的主键值，需 要删除并新增⼀行新数据，并且该操作无法保持原子性</li>
+<li>主键的类型不支持DOUBLE、FLOAT、BOOL，且必须是非空的(NOT NULL)</li>
+<li>不支持⾃自动⽣生成主键</li>
+<li>每行对应的主键存储单元(CELL)最⼤为16KB</li>
+</ul>
+<h3 id="4-单元限制"><a href="#4-单元限制" class="headerlink" title="4.单元限制"></a>4.单元限制</h3><ul>
+<li>单元对应的数据最⼤大为64KB，并且是在压缩前</li>
+</ul>
+<h3 id="5-分片限制"><a href="#5-分片限制" class="headerlink" title="5.分片限制"></a>5.分片限制</h3><ul>
+<li>分⽚只支持手动指定，⾃自动分⽚不支持</li>
+<li>分片设定不不⽀支持修改，修改分⽚设定需要”建新表-导数据-删老表”操作;</li>
+<li>丢掉多数备份的Tablets需要⼿手动修复。</li>
+<li>Range⽀持删除或新增</li>
+</ul>
+<h3 id="6-容量建议"><a href="#6-容量建议" class="headerlink" title="6.容量建议"></a>6.容量建议</h3><ul>
+<li>建议tablet servers的最⼤大数量量为100;</li>
+<li>建议masters的最⼤大数量量为3;</li>
+<li>建议每个tablet server存储的数据最大为8T</li>
+<li>每个tablet server存储的tablets数量建议在1000以内;</li>
+<li>每个表分片后的tablets存储在单个tablet server的最⼤大数量为60。</li>
+</ul>
+<h3 id="7-Impala集成限制"><a href="#7-Impala集成限制" class="headerlink" title="7.Impala集成限制"></a>7.Impala集成限制</h3><ul>
+<li>不支持varchar、array、map、struct等类型</li>
+<li>Impala⼤小写不不敏敏感，kudu是⼤小写敏敏感，所以表名及字段最好都是小写</li>
+<li>!=和like查询是kudu把数据全部给impala，然后在过滤的，相⽐其他操作效率要低</li>
+<li>Updates、inserts、deletes都是⾮非事务的</li>
+<li>一条sql的并发执⾏行行数在于tablets的个数，所以推荐⾄至少有10个tablets</li>
+</ul>
+<h3 id="8-其他限制"><a href="#8-其他限制" class="headerlink" title="8.其他限制"></a>8.其他限制</h3><ul>
+<li>主键有索引，不支持⼆级索引(Secondary indexes)</li>
+<li>不支持多⾏行行的事务操作</li>
+<li>关系型数据的一些功能，如外键，不支持;</li>
+<li>列和表的名字强制为UTF-8编码，并且最大256字节</li>
+</ul>
+<blockquote>
+<h2 id="0x06、文档资源"><a href="#0x06、文档资源" class="headerlink" title="0x06、文档资源"></a>0x06、文档资源</h2></blockquote>
+<ul>
+<li><a href="https://kudu.apache.org/kudu.pdf" target="_blank" rel="noopener">https://kudu.apache.org/kudu.pdf</a></li>
+<li><a href="https://www.cloudera.com/documentation/enterprise/latest/PDF/cloudera-kudu.pdf" target="_blank" rel="noopener">https://www.cloudera.com/documentation/enterprise/latest/PDF/cloudera-kudu.pdf</a></li>
+<li><a href="https://kudu.apache.org/docs/" target="_blank" rel="noopener">https://kudu.apache.org/docs/</a></li>
+<li><a href="https://github.com/apache/kudu/blob/master/docs/design-docs/tablet.md" target="_blank" rel="noopener">https://github.com/apache/kudu/blob/master/docs/design-docs/tablet.md</a></li>
+<li><a href="https://github.com/apache/kudu/blob/master/docs/design-docs/cfile.md" target="_blank" rel="noopener">https://github.com/apache/kudu/blob/master/docs/design-docs/cfile.md</a></li>
+<li><a href="https://raft.github.io/raft.pdf" target="_blank" rel="noopener">https://raft.github.io/raft.pdf</a></li>
+<li><a href="https://impala.apache.org/docs/build/impala-2.8.pdf" target="_blank" rel="noopener">https://impala.apache.org/docs/build/impala-2.8.pdf</a></li>
+<li><a href="https://www.cloudera.com/documentation/enterprise/5-10-x/topics/impala_tutorial.html" target="_blank" rel="noopener">https://www.cloudera.com/documentation/enterprise/5-10-x/topics/impala_tutorial.html</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2019/04/23/2019/04-23-浏览器工具集/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hackfox">
+      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hackfox">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/23/2019/04-23-浏览器工具集/" class="post-title-link" itemprop="url">浏览器工具集</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-23 12:21:23" itemprop="dateCreated datePublished" datetime="2019-04-23T12:21:23+08:00">2019-04-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-09-09 15:02:05" itemprop="dateModified" datetime="2019-09-09T15:02:05+08:00">2019-09-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/工具/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="0x00、插件"><a href="#0x00、插件" class="headerlink" title="0x00、插件"></a>0x00、插件</h3><ul>
+<li>github<ul>
+<li>sourcegraph</li>
+<li>octotree</li>
+</ul>
+</li>
+<li>剪切网页<ul>
+<li>evernote</li>
+</ul>
+</li>
+<li>调试接口<ul>
+<li>JSONview</li>
+</ul>
+</li>
+<li>词典<ul>
+<li>沙拉查词</li>
+</ul>
+</li>
+<li>广告<ul>
+<li>广告终结者</li>
+</ul>
+</li>
+<li>产品原型<ul>
+<li>axure</li>
+</ul>
+</li>
+<li>多tab管理<ul>
+<li>Toby</li>
+</ul>
+</li>
+</ul>
+<h3 id="0x01、工具网站"><a href="#0x01、工具网站" class="headerlink" title="0x01、工具网站"></a>0x01、工具网站</h3><ul>
+<li>json格式化<ul>
+<li><a href="https://json.cn" target="_blank" rel="noopener">https://json.cn</a></li>
+<li><a href="http://json.parser.online.fr" target="_blank" rel="noopener">http://json.parser.online.fr</a></li>
+</ul>
+</li>
+<li>随机密码生成<ul>
+<li><a href="https://www.sexauth.com/" target="_blank" rel="noopener">https://www.sexauth.com/</a></li>
+<li><a href="https://suijimimashengcheng.51240.com/" target="_blank" rel="noopener">https://suijimimashengcheng.51240.com/</a></li>
+<li><a href="https://www.dashlane.com/zh/features/password-generator" target="_blank" rel="noopener">https://www.dashlane.com/zh/features/password-generator</a></li>
+</ul>
+</li>
+<li>正则表达式<ul>
+<li><a href="https://regexr.com/" target="_blank" rel="noopener">https://regexr.com/</a></li>
+<li><a href="http://wangwl.net/static/projects/visualRegex" target="_blank" rel="noopener">http://wangwl.net/static/projects/visualRegex</a></li>
+</ul>
+</li>
+<li>问题讨论<ul>
+<li><a href="https://stackoverflow.com" target="_blank" rel="noopener">https://stackoverflow.com</a></li>
+<li><a href="https://stackexchange.com/" target="_blank" rel="noopener">https://stackexchange.com/</a></li>
+</ul>
+</li>
+<li>文章<ul>
+<li><a href="https://medium.com/" target="_blank" rel="noopener">https://medium.com/</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="0x02、前沿科技网站"><a href="#0x02、前沿科技网站" class="headerlink" title="0x02、前沿科技网站"></a>0x02、前沿科技网站</h3><ul>
+<li>论文<ul>
+<li><a href="https://arxiv.org/" target="_blank" rel="noopener">https://arxiv.org/</a></li>
+<li><a href="https://www.nature.com/" target="_blank" rel="noopener">https://www.nature.com/</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="0x03、github系列"><a href="#0x03、github系列" class="headerlink" title="0x03、github系列"></a>0x03、github系列</h3><ul>
+<li><p>图书</p>
+<ul>
+<li><a href="https://github.com/royeo/free-programming-books.pdf" target="_blank" rel="noopener">https://github.com/royeo/free-programming-books.pdf</a></li>
+<li><a href="https://github.com/threerocks/studyFiles" target="_blank" rel="noopener">https://github.com/threerocks/studyFiles</a></li>
+<li><a href="https://github.com/justjavac/free-programming-books-zh_CN" target="_blank" rel="noopener">https://github.com/justjavac/free-programming-books-zh_CN</a></li>
+<li><a href="https://github.com/it-ebooks/it-ebooks-archive" target="_blank" rel="noopener">https://github.com/it-ebooks/it-ebooks-archive</a></li>
+<li><a href="https://github.com/shivam-jha/DockerBooks" target="_blank" rel="noopener">https://github.com/shivam-jha/DockerBooks</a></li>
+<li><a href="https://github.com/EbookFoundation/free-programming-books/blob/master/free-programming-books-zh.md" target="_blank" rel="noopener">https://github.com/EbookFoundation/free-programming-books/blob/master/free-programming-books-zh.md</a></li>
+<li><a href="https://github.com/zhiwoeryi/eBook-3" target="_blank" rel="noopener">https://github.com/zhiwoeryi/eBook-3</a></li>
+</ul>
+</li>
+<li><p>awesome系列</p>
+<ul>
+<li><a href="https://github.com/sindresorhus/awesome" target="_blank" rel="noopener">https://github.com/sindresorhus/awesome</a></li>
+</ul>
+</li>
+<li><p>算法</p>
+<ul>
+<li><a href="https://github.com/linyiqun/DataMiningAlgorithm" target="_blank" rel="noopener">https://github.com/linyiqun/DataMiningAlgorithm</a></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2019/04/22/2019/04-22-Impala系统性文档/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hackfox">
+      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hackfox">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/22/2019/04-22-Impala系统性文档/" class="post-title-link" itemprop="url">Impala操作手册</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-22 20:08:24" itemprop="dateCreated datePublished" datetime="2019-04-22T20:08:24+08:00">2019-04-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-09-09 15:32:07" itemprop="dateModified" datetime="2019-09-09T15:32:07+08:00">2019-09-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
+<li>支持的查询存储<ul>
+<li>关系型数据库</li>
+<li>数据仓库</li>
+<li>Kudu</li>
+<li>Hive</li>
+<li>Hbase</li>
+<li>HDFS</li>
+</ul>
+</li>
+<li>可以单独部署一个集群，读取远程数据源。</li>
+<li>支持的操作<ul>
+<li>运行impala-shell进入交互模式<ul>
+<li><code>/usr/bin/impala-shell</code></li>
+</ul>
+</li>
+<li>ODBC、JDBC</li>
+<li>Hue web-based user interface.</li>
+</ul>
+</li>
+</ul>
+<h2 id="数据表"><a href="#数据表" class="headerlink" title="数据表"></a>数据表</h2><ul>
+<li>分为外部表和内部表</li>
+<li>内部表<ul>
+<li>通过impala创建的表都是内部表(internal)</li>
+<li>修改表结构对应的底层表也会进行变动</li>
+</ul>
+</li>
+<li>外部表<ul>
+<li>不同过impala创建的表都是外部表(external)</li>
+<li>要操作这些表，需要在impala建立表的映射关系</li>
+<li>通过sql修改表结构或者删除表不会删除底层表，删除的只是表的映射关系</li>
+</ul>
+</li>
+</ul>
+<h2 id="SQL语法"><a href="#SQL语法" class="headerlink" title="SQL语法"></a>SQL语法</h2><ul>
+<li>sql示例</li>
+</ul>
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- This line is a comment about a table.</span>
+<span class="token keyword">create</span> <span class="token keyword">table</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">/*
+This is a multi-line comment about a query.
+*/</span>
+<span class="token keyword">select</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">;</span>
+
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> t <span class="token comment" spellcheck="true">/* This is an embedded comment about a query. */</span> <span class="token keyword">where</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">;</span>
+
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> t <span class="token comment" spellcheck="true">-- This is a trailing comment within a multi-line command.</span>
+<span class="token keyword">where</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">;</span></code></pre>
+<ul>
+<li>外部表映射</li>
+</ul>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">CREATE</span> EXTERNAL <span class="token keyword">TABLE</span> my_mapping_table
+STORED <span class="token keyword">AS</span> KUDU
+TBLPROPERTIES <span class="token punctuation">(</span>
+  <span class="token string">'kudu.table_name'</span> <span class="token operator">=</span> <span class="token string">'my_kudu_table'</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<ul>
+<li><p>创建内部表</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> my_first_table
+<span class="token punctuation">(</span>
+id <span class="token keyword">BIGINT</span><span class="token punctuation">,</span>
+name STRING<span class="token punctuation">,</span>
+<span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">PARTITION</span> <span class="token keyword">BY</span> <span class="token keyword">HASH</span> PARTITIONS <span class="token number">16</span>
+STORED <span class="token keyword">AS</span> KUDU<span class="token punctuation">;</span></code></pre>
+</li>
+<li><p>用select来建表</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> new_table
+<span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span>ts<span class="token punctuation">,</span> name<span class="token punctuation">)</span>
+<span class="token keyword">PARTITION</span> <span class="token keyword">BY</span> <span class="token keyword">HASH</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> PARTITIONS <span class="token number">8</span>
+STORED <span class="token keyword">AS</span> KUDU
+<span class="token keyword">AS</span> <span class="token keyword">SELECT</span> ts<span class="token punctuation">,</span> name<span class="token punctuation">,</span> <span class="token keyword">value</span> <span class="token keyword">FROM</span> old_table<span class="token punctuation">;</span></code></pre>
+</li>
+<li><p>复杂点的partition</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> cust_behavior <span class="token punctuation">(</span>
+id <span class="token keyword">BIGINT</span><span class="token punctuation">,</span>
+sku STRING<span class="token punctuation">,</span>
+salary STRING<span class="token punctuation">,</span>
+edu_level <span class="token keyword">INT</span><span class="token punctuation">,</span>
+usergender STRING<span class="token punctuation">,</span>
+<span class="token punctuation">`</span><span class="token keyword">group</span><span class="token punctuation">`</span> STRING<span class="token punctuation">,</span>
+city STRING<span class="token punctuation">,</span>
+postcode STRING<span class="token punctuation">,</span>
+last_purchase_price <span class="token keyword">FLOAT</span><span class="token punctuation">,</span>
+last_purchase_date <span class="token keyword">BIGINT</span><span class="token punctuation">,</span>
+category STRING<span class="token punctuation">,</span>
+rating <span class="token keyword">INT</span><span class="token punctuation">,</span>
+fulfilled_date <span class="token keyword">BIGINT</span><span class="token punctuation">,</span>
+<span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span>id<span class="token punctuation">,</span> sku<span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">PARTITION</span> <span class="token keyword">BY</span> <span class="token keyword">HASH</span> <span class="token punctuation">(</span>id<span class="token punctuation">)</span> PARTITIONS <span class="token number">4</span><span class="token punctuation">,</span>
+RANGE <span class="token punctuation">(</span>sku<span class="token punctuation">)</span>
+<span class="token punctuation">(</span>
+<span class="token keyword">PARTITION</span> <span class="token keyword">VALUES</span> <span class="token operator">&lt;</span> <span class="token string">'g'</span><span class="token punctuation">,</span>
+<span class="token keyword">PARTITION</span> <span class="token string">'g'</span> <span class="token operator">&lt;=</span> <span class="token keyword">VALUES</span> <span class="token operator">&lt;</span> <span class="token string">'o'</span><span class="token punctuation">,</span>
+<span class="token keyword">PARTITION</span> <span class="token string">'o'</span> <span class="token operator">&lt;=</span> <span class="token keyword">VALUES</span> <span class="token operator">&lt;</span> <span class="token string">'u'</span><span class="token punctuation">,</span>
+<span class="token keyword">PARTITION</span> <span class="token string">'u'</span> <span class="token operator">&lt;=</span> <span class="token keyword">VALUES</span>
+<span class="token punctuation">)</span>
+STORED <span class="token keyword">AS</span> KUDU<span class="token punctuation">;</span></code></pre>
+</li>
+<li><p>多个hash分区</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> cust_behavior <span class="token punctuation">(</span>
+id <span class="token keyword">BIGINT</span><span class="token punctuation">,</span>
+sku STRING<span class="token punctuation">,</span>
+salary STRING<span class="token punctuation">,</span>
+edu_level <span class="token keyword">INT</span><span class="token punctuation">,</span>
+usergender STRING<span class="token punctuation">,</span>
+<span class="token punctuation">`</span><span class="token keyword">group</span><span class="token punctuation">`</span> STRING<span class="token punctuation">,</span>
+city STRING<span class="token punctuation">,</span>
+postcode STRING<span class="token punctuation">,</span>
+last_purchase_price <span class="token keyword">FLOAT</span><span class="token punctuation">,</span>
+last_purchase_date <span class="token keyword">BIGINT</span><span class="token punctuation">,</span>
+category STRING<span class="token punctuation">,</span>
+rating <span class="token keyword">INT</span><span class="token punctuation">,</span>
+fulfilled_date <span class="token keyword">BIGINT</span><span class="token punctuation">,</span>
+<span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span>id<span class="token punctuation">,</span> sku<span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">PARTITION</span> <span class="token keyword">BY</span> <span class="token keyword">HASH</span> <span class="token punctuation">(</span>id<span class="token punctuation">)</span> PARTITIONS <span class="token number">4</span><span class="token punctuation">,</span>
+           <span class="token keyword">HASH</span> <span class="token punctuation">(</span>sku<span class="token punctuation">)</span> PARTITIONS <span class="token number">4</span>
+STORED <span class="token keyword">AS</span> KUDU<span class="token punctuation">;</span></code></pre>
+</li>
+<li><p>多个range分区</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> sales_by_year <span class="token punctuation">(</span>
+year <span class="token keyword">INT</span><span class="token punctuation">,</span> sale_id <span class="token keyword">INT</span><span class="token punctuation">,</span> amount <span class="token keyword">INT</span><span class="token punctuation">,</span>
+<span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span>sale_id<span class="token punctuation">,</span> year<span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">PARTITION</span> <span class="token keyword">BY</span> RANGE <span class="token punctuation">(</span>year<span class="token punctuation">)</span> <span class="token punctuation">(</span>
+<span class="token keyword">PARTITION</span> <span class="token keyword">VALUE</span> <span class="token operator">=</span> <span class="token number">2012</span><span class="token punctuation">,</span>
+<span class="token keyword">PARTITION</span> <span class="token keyword">VALUE</span> <span class="token operator">=</span> <span class="token number">2013</span><span class="token punctuation">,</span>
+<span class="token keyword">PARTITION</span> <span class="token keyword">VALUE</span> <span class="token operator">=</span> <span class="token number">2014</span><span class="token punctuation">,</span>
+<span class="token keyword">PARTITION</span> <span class="token keyword">VALUE</span> <span class="token operator">=</span> <span class="token number">2015</span><span class="token punctuation">,</span>
+<span class="token keyword">PARTITION</span> <span class="token keyword">VALUE</span> <span class="token operator">=</span> <span class="token number">2016</span>
+<span class="token punctuation">)</span>
+STORED <span class="token keyword">AS</span> KUDU<span class="token punctuation">;</span></code></pre>
+</li>
+<li><p>添加ragne分区</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> sales_by_year <span class="token keyword">ADD</span> RANGE <span class="token keyword">PARTITION</span> <span class="token keyword">VALUE</span> <span class="token operator">=</span> <span class="token number">2017</span><span class="token punctuation">;</span></code></pre>
+</li>
+<li><p>删除一个range分区</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> sales_by_year <span class="token keyword">DROP</span> RANGE <span class="token keyword">PARTITION</span> <span class="token keyword">VALUE</span> <span class="token operator">=</span> <span class="token number">2012</span><span class="token punctuation">;</span></code></pre>
+</li>
+<li><p>操作元</p>
+<ul>
+<li>Arithmetic Operators</li>
+<li>BETWEEN Operator</li>
+<li>Comparison Operators</li>
+<li>EXISTS Operator</li>
+<li>ILIKE Operator</li>
+<li>IN Operator</li>
+<li>IREGEXP Operator</li>
+<li>IS DISTINCT FROM Operator</li>
+<li>IS NULL Operator</li>
+<li>IS TRUE Operator</li>
+<li>LIKE Operator</li>
+<li>Logical Operators</li>
+<li>REGEXP Operator</li>
+<li>RLIKE Operator</li>
+</ul>
+</li>
+</ul>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ul>
+<li>ARRAY Complex Type (CDH 5.5 or higher only)</li>
+<li>BIGINT</li>
+<li>BOOLEAN</li>
+<li>CHAR</li>
+<li>DECIMAL</li>
+<li>DOUBLE</li>
+<li>FLOAT</li>
+<li>INT</li>
+<li>MAP Complex Type (CDH 5.5 or higher only)</li>
+<li>REAL</li>
+<li>SMALLINT</li>
+<li>STRING</li>
+<li>STRUCT Complex Type (CDH 5.5 or higher only)</li>
+<li>TIMESTAMP</li>
+<li>TINYINT</li>
+<li>VARCHAR</li>
+<li>Complex Types (CDH 5.5 or higher only)</li>
+<li><code>PS:注意</code><ul>
+<li>Currently, the data types CHAR, VARCHAR, ARRAY, MAP, and STRUCT cannot be used with Kudu tables.</li>
+</ul>
+</li>
+</ul>
+<h2 id="SQL-Statements"><a href="#SQL-Statements" class="headerlink" title="SQL Statements"></a>SQL Statements</h2><ul>
+<li>DDL Statements</li>
+<li>DML Statements</li>
+<li>ALTER DATABASE</li>
+<li>ALTER TABLE</li>
+<li>ALTER VIEW</li>
+<li>COMMENT</li>
+<li>COMPUTE STATS</li>
+<li>CREATE DATABASE</li>
+<li>CREATE FUNCTION</li>
+<li>CREATE ROLE</li>
+<li>CREATE TABLE</li>
+<li>CREATE VIEW</li>
+<li>DELETE</li>
+<li>DESCRIBE</li>
+<li>DROP DATABASE</li>
+<li>DROP FUNCTION</li>
+<li>DROP ROLE</li>
+<li>DROP STATS</li>
+<li>DROP TABLE</li>
+<li>DROP VIEW</li>
+<li>EXPLAIN</li>
+<li>GRANT</li>
+<li>INSERT<ul>
+<li>VALUES Clause</li>
+<li>Inserting Into Partitioned Tables with PARTITION Clause<ul>
+<li>Static Partition Inserts</li>
+<li>Dynamic Partition Inserts</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>INVALIDATE METADATA</li>
+<li>LOAD DATA</li>
+<li>REFRESH</li>
+<li>REFRESH AUTHORIZATION</li>
+<li>REFRESH FUNCTIONS</li>
+<li>REVOKE</li>
+<li>SELECT<ul>
+<li>Joins</li>
+<li>ORDER BY Clause</li>
+<li>GROUP BY Clause</li>
+<li>HAVING Clause</li>
+<li>LIMIT Clause</li>
+<li>OFFSET Clause</li>
+<li>UNION Clause</li>
+<li>Subqueries</li>
+<li>TABLESAMPLE Clause</li>
+<li>WITH Clause</li>
+<li>DISTINCT Operator</li>
+</ul>
+</li>
+<li>SET<ul>
+<li>ABORT_ON_ERROR</li>
+<li>ALLOW_ERASURE_CODED_FILES</li>
+<li>ALLOW_UNSUPPORTED_FORMATS</li>
+<li>APPX_COUNT_DISTINCT</li>
+<li>BATCH_SIZE</li>
+<li>BUFFER_POOL_LIMIT</li>
+<li>COMPRESSION_CODEC</li>
+<li>COMPUTE_STATS_MIN_SAMPLE_SIZE</li>
+<li>DEBUG_ACTION</li>
+<li>DECIMAL_V2</li>
+<li>DEFAULT_FILE_FORMAT</li>
+<li>DEFAULT_JOIN_DISTRIBUTION_MODE</li>
+<li>DEFAULT_SPILLABLE_BUFFER_SIZE</li>
+<li>DISABLE_CODEGEN</li>
+<li>DISABLE_CODEGEN_ROWS_THRESHOLD</li>
+<li>DISABLE_ROW_RUNTIME_FILTERING</li>
+<li>DISABLE_STREAMING_PREAGGREGATIONS</li>
+<li>DISABLE_UNSAFE_SPILLS</li>
+<li>ENABLE_EXPR_REWRITES</li>
+<li>EXEC_SINGLE_NODE_ROWS_THRESHOLD</li>
+<li>EXEC_TIME_LIMIT_S</li>
+<li>EXPLAIN_LEVEL</li>
+<li>HBASE_CACHE_BLOCKS</li>
+<li>HBASE_CACHING</li>
+<li>IDLE_SESSION_TIMEOUT</li>
+<li>KUDU_READ_MODE</li>
+<li>LIVE_PROGRESS</li>
+<li>LIVE_SUMMARY</li>
+<li>MAX_ERRORS</li>
+<li>MAX_MEM_ESTIMATE_FOR_ADMISSION</li>
+<li>MAX_NUM_RUNTIME_FILTERS</li>
+<li>MAX_ROW_SIZE</li>
+<li>MAX_SCAN_RANGE_LENGTH</li>
+<li>MEM_LIMIT</li>
+<li>MIN_SPILLABLE_BUFFER_SIZE</li>
+<li>MT_DOP</li>
+<li>NUM_NODES</li>
+<li>NUM_ROWS_PRODUCED_LIMIT</li>
+<li>NUM_SCANNER_THREADS</li>
+<li>OPTIMIZE_PARTITION_KEY_SCANS</li>
+<li>PARQUET_COMPRESSION_CODEC</li>
+<li>PARQUET_ANNOTATE_STRINGS_UTF8</li>
+<li>PARQUET_ARRAY_RESOLUTION</li>
+<li>PARQUET_DICTIONARY_FILTERING</li>
+<li>PARQUET_FALLBACK_SCHEMA_RESOLUTION</li>
+<li>PARQUET_FILE_SIZE</li>
+<li>PARQUET_READ_STATISTICS</li>
+<li>PREFETCH_MODE</li>
+<li>QUERY_TIMEOUT_S</li>
+<li>REPLICA_PREFERENCE</li>
+<li>REQUEST_POOL</li>
+<li>RESOURCE_TRACE_RATIO</li>
+<li>RUNTIME_BLOOM_FILTER_SIZE</li>
+<li>RUNTIME_FILTER_MAX_SIZE</li>
+<li>RUNTIME_FILTER_MIN_SIZE</li>
+<li>RUNTIME_FILTER_MODE</li>
+<li>RUNTIME_FILTER_WAIT_TIME_MS</li>
+<li>S3_SKIP_INSERT_STAGING</li>
+<li>SCAN_BYTES_LIMIT</li>
+<li>SCHEDULE_RANDOM_REPLICA</li>
+<li>SCRATCH_LIMIT</li>
+<li>SHUFFLE_DISTINCT_EXPRS</li>
+<li>SUPPORT_START_OVER</li>
+<li>SYNC_DDL</li>
+<li>THREAD_RESERVATION_AGGREGATE_LIMIT</li>
+<li>THREAD_RESERVATION_LIMIT</li>
+<li>TIMEZONE</li>
+<li>TOPN_BYTES_LIMIT</li>
+</ul>
+</li>
+<li>SHOW<ul>
+<li>SHOW FILES Statement</li>
+<li>SHOW ROLES Statement</li>
+<li>SHOW CURRENT ROLE</li>
+<li>SHOW ROLE GRANT Statement</li>
+<li>SHOW GRANT ROLE Statement</li>
+<li>SHOW GRANT USER Statement</li>
+<li>SHOW DATABASES</li>
+<li>SHOW TABLES Statement</li>
+<li>SHOW CREATE TABLE Statement</li>
+<li>SHOW CREATE VIEW Statement</li>
+<li>SHOW TABLE STATS Statement</li>
+<li>SHOW COLUMN STATS Statement</li>
+<li>SHOW PARTITIONS Statement</li>
+<li>SHOW FUNCTIONS Statement</li>
+</ul>
+</li>
+<li>SHUTDOWN</li>
+<li>TRUNCATE TABLE</li>
+<li>UPDATE</li>
+<li>UPSERT</li>
+<li>USE</li>
+<li>Optimizer Hints</li>
+</ul>
+<h2 id="内建函数"><a href="#内建函数" class="headerlink" title="内建函数"></a>内建函数</h2>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2019/04/22/2019/04-22-终端命令工具集/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hackfox">
+      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hackfox">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/22/2019/04-22-终端命令工具集/" class="post-title-link" itemprop="url">终端命令工具集</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-22 15:27:45" itemprop="dateCreated datePublished" datetime="2019-04-22T15:27:45+08:00">2019-04-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-09-09 15:03:01" itemprop="dateModified" datetime="2019-09-09T15:03:01+08:00">2019-09-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/工具/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="0x00、工具"><a href="#0x00、工具" class="headerlink" title="0x00、工具"></a>0x00、工具</h2><ul>
+<li>autojump<ul>
+<li>自动跳转文件夹，不用cd</li>
+</ul>
+</li>
+<li>tree<ul>
+<li>以树状图列出当前目录结构</li>
+</ul>
+</li>
+<li>you-get<ul>
+<li>视频下载</li>
+</ul>
+</li>
+<li>tldr<ul>
+<li>命令示例文档</li>
+</ul>
+</li>
+<li>htop<ul>
+<li>更强大的top</li>
+</ul>
+</li>
+<li>git<ul>
+<li>版本控制工具</li>
+</ul>
+</li>
+<li>vim<ul>
+<li>编辑器</li>
+</ul>
+</li>
+<li>tmux<ul>
+<li>终端复用神器</li>
+</ul>
+</li>
+<li>thefuck<ul>
+<li>命令出错自动完善</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2019/03/10/2019/03-10-ES6标准概览/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hackfox">
+      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hackfox">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/10/2019/03-10-ES6标准概览/" class="post-title-link" itemprop="url">ES6标准概览</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-10 19:58:51" itemprop="dateCreated datePublished" datetime="2019-03-10T19:58:51+08:00">2019-03-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-09-09 15:05:22" itemprop="dateModified" datetime="2019-09-09T15:05:22+08:00">2019-09-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="0x00、变量"><a href="#0x00、变量" class="headerlink" title="0x00、变量"></a>0x00、变量</h2><blockquote>
+<p>新增两个关键字：let、const</p>
+</blockquote>
+<ul>
+<li><p>let与var的区别</p>
+<ul>
+<li>作用域不同()</li>
+<li>变量是否可以提升不</li>
+</ul>
+</li>
+<li><p>contst：只读不可改，声明即赋值 其所声明的对象的属性是可以改变的。</p>
+</li>
+</ul>
+<h2 id="0x01、箭头函数"><a href="#0x01、箭头函数" class="headerlink" title="0x01、箭头函数"></a>0x01、箭头函数</h2><p>()-&gt;{</p>
+<p>}</p>
+<h2 id="0x02、字符串"><a href="#0x02、字符串" class="headerlink" title="0x02、字符串"></a>0x02、字符串</h2><ul>
+<li>模版字符串(``)</li>
+<li>新增几个方法</li>
+</ul>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token string">'my string'</span><span class="token punctuation">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token string">'my'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//true</span>
+<span class="token string">'my string'</span><span class="token punctuation">.</span><span class="token function">endsWith</span><span class="token punctuation">(</span><span class="token string">'my'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// false</span>
+<span class="token string">'my string'</span><span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span><span class="token string">'str'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// true</span>
+<span class="token string">'my '</span><span class="token punctuation">.</span><span class="token function">repeat</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 'my my my '</span></code></pre>
+<h2 id="0x03、数组"><a href="#0x03、数组" class="headerlink" title="0x03、数组"></a>0x03、数组</h2><blockquote>
+<p>Array 对象增加了一些新的静态方法，Array 原型上也增加了一些新方法</p>
+</blockquote>
+<ul>
+<li>from 从类数组和可遍历对象中创建 Array 的实例</li>
+<li>find 返回回调返回 true 的第一个元素。</li>
+</ul>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token punctuation">[</span><span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>n <span class="token operator">=</span><span class="token operator">></span> n <span class="token operator">===</span> <span class="token number">10</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 10</span></code></pre>
+<ul>
+<li>findIndex 返回回调函数返回 true的第一个元素的下标。</li>
+</ul>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">findIndex</span><span class="token punctuation">(</span>n <span class="token operator">=</span><span class="token operator">></span> n <span class="token operator">===</span> <span class="token number">10</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 2</span></code></pre>
+<ul>
+<li>fill 用所给参数”覆盖”数组的元素。</li>
+</ul>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// [7, 7, 7]</span>
+<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// [0, 7, 7, 7, 0]</span></code></pre>
+<h2 id="0x04、新增Map和Set结构"><a href="#0x04、新增Map和Set结构" class="headerlink" title="0x04、新增Map和Set结构"></a>0x04、新增Map和Set结构</h2><h2 id="0x05、Math新增几个方法"><a href="#0x05、Math新增几个方法" class="headerlink" title="0x05、Math新增几个方法"></a>0x05、Math新增几个方法</h2><ul>
+<li>Math.sign 返回数字的符号，结果为 1、-1 或 0。</li>
+<li>Math.trunc 返回无小数位的数字</li>
+<li>Math.cbrt 返回数字的立方根。</li>
+</ul>
+<pre class=" language-javascript"><code class="language-javascript">Math<span class="token punctuation">.</span><span class="token function">sign</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 1</span>
+Math<span class="token punctuation">.</span><span class="token function">sign</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// -1</span>
+
+Math<span class="token punctuation">.</span><span class="token function">trunc</span><span class="token punctuation">(</span><span class="token number">5.9</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 5</span>
+Math<span class="token punctuation">.</span><span class="token function">trunc</span><span class="token punctuation">(</span><span class="token number">5.123</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 5</span>
+
+Math<span class="token punctuation">.</span><span class="token function">cbrt</span><span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 4</span></code></pre>
+<h2 id="0x06、扩展运算符-…"><a href="#0x06、扩展运算符-…" class="headerlink" title="0x06、扩展运算符(…)"></a>0x06、扩展运算符(…)</h2><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> values <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> some <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>values<span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// [1, 2, 4, 8]</span>
+<span class="token keyword">let</span> more <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>values<span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token operator">...</span>values<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// [1, 2, 4, 8, 1, 2, 4]</span>
+
+<span class="token comment" spellcheck="true">// ES5 equivalent:</span>
+<span class="token keyword">let</span> values <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Iterate, push, sweat, repeat...</span>
+<span class="token comment" spellcheck="true">// Iterate, push, sweat, repeat...</span></code></pre>
+<p>扩展语法在传参数调用函数时也非常有用</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> values <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token operator">...</span>values<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">doSomething</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> z<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token comment" spellcheck="true">// x = 1, y = 2, z = 4</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// ES5 equivalent:</span>
+doSomething<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> values<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h2 id="0x07、解构赋值"><a href="#0x07、解构赋值" class="headerlink" title="0x07、解构赋值"></a>0x07、解构赋值</h2><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> <span class="token punctuation">[</span>x<span class="token punctuation">,</span> y<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// x = 1, y = 2</span>
+
+<span class="token comment" spellcheck="true">// ES5 equivalent:</span>
+<span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> x <span class="token operator">=</span> arr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> y <span class="token operator">=</span> arr<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//使用这个语法，可以一次性给多个变量赋值。一个很好的附加用处是可以很简单地交换变量值：</span>
+<span class="token keyword">let</span> x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    y <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">[</span>x<span class="token punctuation">,</span> y<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span>y<span class="token punctuation">,</span> x<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// x = 2, y = 1</span>
+<span class="token comment" spellcheck="true">//解构也可以用于对象。注意对象中必须存在对应的键：</span>
+<span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>x<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> <span class="token punctuation">{</span>x<span class="token punctuation">,</span> y<span class="token punctuation">}</span> <span class="token operator">=</span> obj<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// x = 1, y = 2</span>
+<span class="token comment" spellcheck="true">//你也可以使用该机制来修改变量名：</span>
+<span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>x<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> <span class="token punctuation">{</span>x<span class="token punctuation">:</span> a<span class="token punctuation">,</span> y<span class="token punctuation">:</span> b<span class="token punctuation">}</span> <span class="token operator">=</span> obj<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// a = 1, b = 2</span>
+<span class="token comment" spellcheck="true">//另一个有趣的模式是模拟多个返回值：</span>
+<span class="token keyword">function</span> <span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> <span class="token punctuation">[</span>x<span class="token punctuation">,</span> y<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// x = 1, y = 2</span>
+<span class="token comment" spellcheck="true">//解构可以用来为参数对象赋默认值。通过对象字面量，可以模拟命名参数：</span>
+<span class="token keyword">function</span> <span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">{</span>y <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> z <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>y<span class="token punctuation">,</span> z<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">{</span>y<span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h2 id="0x08、参数"><a href="#0x08、参数" class="headerlink" title="0x08、参数"></a>0x08、参数</h2><pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//可以设置默认参数</span>
+<span class="token keyword">function</span> <span class="token function">doSomething</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">return</span> x <span class="token operator">*</span> y<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 10</span>
+<span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> undefined<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 10</span>
+<span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 15</span>
+<span class="token comment" spellcheck="true">//看起来很简洁，对吧？ 我肯定你之前在 ES5 中曾经需要给某些参数赋默认值：</span>
+<span class="token keyword">function</span> <span class="token function">doSomething</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   y <span class="token operator">=</span> y <span class="token operator">===</span> undefined <span class="token operator">?</span> <span class="token number">2</span> <span class="token punctuation">:</span> y<span class="token punctuation">;</span>
+   <span class="token keyword">return</span> x <span class="token operator">*</span> y<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="0x09、模块"><a href="#0x09、模块" class="headerlink" title="0x09、模块"></a>0x09、模块</h2><pre class=" language-javascript"><code class="language-javascript">类的创建围绕 <span class="token keyword">class</span> 和 constructor 关键词。以下是个简短的示例：
+<span class="token keyword">class</span> <span class="token class-name">Vehicle</span> <span class="token punctuation">{</span>
+   <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>kind <span class="token operator">=</span> <span class="token string">'vehicle'</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+   <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// Create an instance</span>
+<span class="token keyword">let</span> myVehicle <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vehicle</span><span class="token punctuation">(</span><span class="token string">'rocky'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>注意类的定义不是一般的对象，因此，类的成员间没有逗号。 创造一个类的对象时，需要使用 new 关键词。继承一个基类时，使用 extends：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">class</span> <span class="token class-name">Car</span> <span class="token keyword">extends</span> <span class="token class-name">Vehicle</span> <span class="token punctuation">{</span>
+   <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">super</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>kind <span class="token operator">=</span> <span class="token string">'car'</span>
+   <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> myCar <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Car</span><span class="token punctuation">(</span><span class="token string">'bumpy'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+myCar<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 'bumpy'</span>
+myCar <span class="token keyword">instanceof</span> <span class="token class-name">Car</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// true</span>
+myCar <span class="token keyword">instanceof</span> <span class="token class-name">Vehicle</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//true</span></code></pre>
+<p>从衍生类中，你可以使用从任何构造函数或方法中使用 super 来获取它的基类：</p>
+<blockquote>
+<p>使用 super() 调用父类构造函数。 调用其它成员，举个例子，使用 super.getName() 。</p>
+</blockquote>
+<h2 id="0x10、记号"><a href="#0x10、记号" class="headerlink" title="0x10、记号"></a>0x10、记号</h2><blockquote>
+<p>记号是一个新的原生数据类型，像 Number 和 String 一样。你可以使用记号为对象属性创建唯一标识或创建唯一的常量。</p>
+</blockquote>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span> MY_CONSTANT <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+obj<span class="token punctuation">[</span>MY_CONSTANT<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//记号与 const 配合很合适，因为它们都有不可改变的特性。</span>
+<span class="token keyword">const</span> CHINESE <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> ENGLISH <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> SPANISH <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">switch</span><span class="token punctuation">(</span>language<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">case</span> CHINESE<span class="token punctuation">:</span>
+      <span class="token comment" spellcheck="true">//</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+   <span class="token keyword">case</span> ENGLISH<span class="token punctuation">:</span>
+      <span class="token comment" spellcheck="true">//</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+   <span class="token keyword">case</span> SPANISH<span class="token punctuation">:</span>
+      <span class="token comment" spellcheck="true">//</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+   <span class="token keyword">default</span><span class="token punctuation">:</span>
+      <span class="token comment" spellcheck="true">//</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">//你可以为 symbol 添加描述。虽然不可以通过描述获取 symbol，但是可用于代码调试。</span>
+<span class="token keyword">const</span> CONST_1 <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">'my symbol'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> CONST_2 <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">'my symbol'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">typeof</span> CONST_1 <span class="token operator">===</span> <span class="token string">'symbol'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// true</span>
+
+CONST_1 <span class="token operator">===</span> CONST_2<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// false</span></code></pre>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2019/03/10/2015/03-10-mysql数据库主从同步/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hackfox">
+      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hackfox">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/10/2015/03-10-mysql数据库主从同步/" class="post-title-link" itemprop="url">mysql数据库主从同步</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-10 18:25:53" itemprop="dateCreated datePublished" datetime="2019-03-10T18:25:53+08:00">2019-03-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-18 22:52:14" itemprop="dateModified" datetime="2020-04-18T22:52:14+08:00">2020-04-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/mysql/" itemprop="url" rel="index"><span itemprop="name">mysql</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="一、同步配置"><a href="#一、同步配置" class="headerlink" title="一、同步配置"></a>一、同步配置</h2><ul>
+<li>1.主库和从库创建同步账户<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> grant replication slave, replication client on *.* to repl@<span class="token string">'192.168.1.%'</span> identified by <span class="token string">'123456'</span><span class="token punctuation">;</span></code></pre>
+</li>
+<li>2.主库配置/etc/my.cnf<pre class=" language-bash"><code class="language-bash">server-id<span class="token operator">=</span>130    <span class="token comment" spellcheck="true">#保证唯一值</span>
+log-bin<span class="token operator">=</span>mysql-bin
+binlog_format<span class="token operator">=</span>mixed
+binlog-do-db<span class="token operator">=</span>test2
+binlog-ignore-db<span class="token operator">=</span>mysql
+log-error<span class="token operator">=</span>/var/lib/mysql/mysql.err</code></pre>
+</li>
+<li>3.重启主库</li>
+<li>4.查看主库状态<pre class=" language-bash"><code class="language-bash">  mysql<span class="token operator">></span>show master status<span class="token punctuation">;</span>
+  +-------------------------+-----------------+--------------------+-------------------------+
+  <span class="token operator">|</span> File            <span class="token operator">|</span>     Position <span class="token operator">|</span> Binlog_Do_DB <span class="token operator">|</span> Binlog_Ignore_DB <span class="token operator">|</span>
+  +-------------------------+----------------+--------------------+--------------------------+
+  <span class="token operator">|</span> mysql-bin.000002 <span class="token operator">|</span>      120 <span class="token operator">|</span>   test2      <span class="token operator">|</span>   mysql        <span class="token operator">|</span>
+  +-------------------------+----------------+---------------------+------------------------+
+  1 row <span class="token keyword">in</span> <span class="token keyword">set</span> <span class="token punctuation">(</span>0.00 sec<span class="token punctuation">)</span></code></pre>
+</li>
+<li>5.从库配置 /etc/my.cnf<pre class=" language-shell"><code class="language-shell">server-id=131 #保证唯一值
+log-bin=mysql-bin
+binlog_format=mixed
+replicate-do-db=test2
+replicate-ignore-db=mysql
+relay_log=/var/lib/mysql/mysql-relay-bin
+log_slave_updates=1
+read_only=1</code></pre>
+</li>
+<li>6.重启从库</li>
+<li>7.指向主库操作<pre class=" language-shell"><code class="language-shell">mysql> change master to master_host='192.168.1.201',
+master_user='repl',
+master_password='123456',
+master_log_file='mysql-bin.000002',
+master_log_pos=120;</code></pre>
+</li>
+<li>8.开始同步<pre class=" language-shell"><code class="language-shell">mysql>start slave;</code></pre>
+</li>
+<li>9.查看状态<pre class=" language-shell"><code class="language-shell">mysql>show slave status;</code></pre>
+</li>
+<li>10.双向主从的话，把主库按照从库在配置一遍即可</li>
+</ul>
+<h2 id="二、常见问题"><a href="#二、常见问题" class="headerlink" title="二、常见问题"></a>二、常见问题</h2><ul>
+<li>1.两个数据库版本尽量一致，如果不一致，高版本做从库，此时不可双向主从</li>
+<li>2.主库和从库的数据库名必须相同；</li>
+<li>3.主库和从库的复制可以精确到表，但是在需要更改主库或从库的数据结构时需要立刻重启slave；</li>
+<li>4.不能在mysql配置文件里直接写入master的配置信息，需要用change master命令来完成；</li>
+<li>5.指定replicate_do_db必须在my.ini里配置，不能用change master命令来完成；</li>
+<li>6.如果不及时清理，日积月累二进制日志文件可能会把磁盘空间占满，可以在配置文件里加上expire_logs_days=7，只保留最近7天的日志，建议当slave不再使用时，通过reset slave来取消relaylog；</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2019/03/10/2016/03-10-mysql常用语句/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hackfox">
+      <meta itemprop="description" content="架构、AI、大数据、数学、python、go">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hackfox">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/10/2016/03-10-mysql常用语句/" class="post-title-link" itemprop="url">mysql常用语句</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-10 18:20:48" itemprop="dateCreated datePublished" datetime="2019-03-10T18:20:48+08:00">2019-03-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-19 13:29:39" itemprop="dateModified" datetime="2020-04-19T13:29:39+08:00">2020-04-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/mysql/" itemprop="url" rel="index"><span itemprop="name">mysql</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li>1.授权用户<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> GRANT ALL PRIVILEGES ON *.* TO <span class="token string">'zxc'</span>@<span class="token string">'%'</span> IDENTIFIED BY <span class="token string">'ydp#2015<span class="token variable">$Z!!!</span>'</span> WITH GRANT OPTION<span class="token punctuation">;</span>
+mysql<span class="token operator">></span> FLUSH PRIVILEGES<span class="token punctuation">;</span></code></pre>
+</li>
+<li>2.远程连接<pre class=" language-bash"><code class="language-bash">shell<span class="token operator">></span> mysql -h127.0.0.1 -P3306 -uroot -p</code></pre>
+</li>
+<li>3.导出数据库<pre class=" language-bash"><code class="language-bash">shell<span class="token operator">></span> mysqldump -h127.0.0.1 -P3306 -uroot -p sqsx <span class="token operator">></span> sqsx.sql</code></pre>
+</li>
+<li>4.导入数据库<pre class=" language-bash"><code class="language-bash">shell<span class="token operator">></span> mysql -uroot -p sqsx <span class="token operator">&lt;</span> sqsx.sql</code></pre>
+</li>
+<li>5.分析查询<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> explain <span class="token keyword">select</span> * from user<span class="token punctuation">;</span></code></pre>
+</li>
+<li>6.查询所有的进程<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show procelist<span class="token punctuation">;</span></code></pre>
+</li>
+<li>7.建数据库语句<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> create database dbname default character <span class="token keyword">set</span> utf8 collate utf8_general_ci<span class="token punctuation">;</span></code></pre>
+</li>
+<li>8.创建数据表语句<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> create table dbname.tablename <span class="token punctuation">(</span><span class="token punctuation">)</span> engine<span class="token operator">=</span>Innodb charset<span class="token operator">=</span>utf8<span class="token punctuation">;</span></code></pre>
+</li>
+<li>9.删除数据库<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> drop database dbname<span class="token punctuation">;</span></code></pre>
+</li>
+<li>10.查看数据库状态<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> use dbname<span class="token punctuation">;</span>
+mysql<span class="token operator">></span> status<span class="token punctuation">;</span></code></pre>
+</li>
+<li>11.查看参数<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show variables like “%sql%”<span class="token punctuation">;</span></code></pre>
+</li>
+<li>12.查看事件<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show events<span class="token punctuation">;</span></code></pre>
+</li>
+<li>13.查看触发器<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show triggers<span class="token punctuation">;</span></code></pre>
+</li>
+<li>14.查看所有参数<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show status<span class="token punctuation">;</span></code></pre>
+</li>
+<li>15.查看打开表<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show <span class="token function">open</span> tables<span class="token punctuation">;</span></code></pre>
+</li>
+<li>16.查看表状态<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show table status<span class="token punctuation">;</span></code></pre>
+</li>
+<li>17.查看主数据状态<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show master status<span class="token punctuation">;</span></code></pre>
+</li>
+<li>18.查看从数据库状态<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show slave status<span class="token punctuation">;</span></code></pre>
+</li>
+<li>19.查看函数状态<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show <span class="token keyword">function</span> status<span class="token punctuation">;</span></code></pre>
+</li>
+<li>20.查看插件<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show plugins<span class="token punctuation">;</span></code></pre>
+</li>
+<li>21.查看某用户的授权<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show grants <span class="token keyword">for</span> username<span class="token punctuation">;</span></code></pre>
+</li>
+<li>22.查看错误<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show errors<span class="token punctuation">;</span></code></pre>
+</li>
+<li>23.查看创建表语句<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show create table tablename<span class="token punctuation">;</span></code></pre>
+</li>
+<li>24.查看表头<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show columns from tablename<span class="token punctuation">;</span></code></pre>
+</li>
+<li>25.查看存储引擎<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show engines<span class="token punctuation">;</span></code></pre>
+</li>
+<li>26.查看表状态<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">></span> show table status<span class="token punctuation">;</span></code></pre>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
 
-    <script src="/libs/materialize/materialize.min.js"></script>
-    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
-    <script src="/libs/aos/aos.js"></script>
-    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
-    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
-    <script src="/js/matery.js"></script>
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-114671402-1"></script>
+
+          </div>
+          
+
 <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-        dataLayer.push(arguments);
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
     }
-
-    gtag('js', new Date());
-    gtag('config', 'UA-114671402-1');
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
 </script>
 
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
 
-    <!-- Baidu Analytics -->
+  <aside class="sidebar">
+    <div class="sidebar-inner">
 
-    <!-- Baidu Push -->
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
 
-<script>
-    (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
-    
-    
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
-    
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">hackfox</p>
+  <div class="site-description" itemprop="description">架构、AI、大数据、数学、python、go</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
 
-    
 
-    
 
-    
+      </div>
 
-    
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
 
-    
-    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
-    
-    
-    
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
-    
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hackfox</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
 
 </body>
-
 </html>
