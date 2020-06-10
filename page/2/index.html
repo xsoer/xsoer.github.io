@@ -136,6 +136,11 @@
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
+        <li class="menu-item menu-item-manual">
+
+    <a href="/manual/" rel="section"><i class="fa fa-server fa-fw"></i>手册</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
@@ -143,7 +148,7 @@
   </li>
         <li class="menu-item menu-item-tools">
 
-    <a href="/tools/" rel="section"><i class="fa fa-server fa-fw"></i>工具</a>
+    <a href="/tools/" rel="section"><i class="fa fa-gavel fa-fw"></i>工具</a>
 
   </li>
         <li class="menu-item menu-item-books">
@@ -211,300 +216,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2019/03/10/2015/03-10-mysql数据库主从同步/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="hackfox">
-      <meta itemprop="description" content="架构、AI、python、rust">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hackfox">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/03/10/2015/03-10-mysql数据库主从同步/" class="post-title-link" itemprop="url">mysql数据库主从同步</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-03-10 18:25:53" itemprop="dateCreated datePublished" datetime="2019-03-10T18:25:53+08:00">2019-03-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-09 20:50:13" itemprop="dateModified" datetime="2020-06-09T20:50:13+08:00">2020-06-09</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/mysql/" itemprop="url" rel="index"><span itemprop="name">mysql</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="一、同步配置"><a href="#一、同步配置" class="headerlink" title="一、同步配置"></a>一、同步配置</h2><ul>
-<li><p>1.主库和从库创建同步账户</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; grant replication slave, replication client on *.* to repl@<span class="string">'192.168.1.%'</span> identified by <span class="string">'123456'</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>2.主库配置/etc/my.cnf</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">server-id=130	<span class="comment">#保证唯一值</span></span><br><span class="line"><span class="built_in">log</span>-bin=mysql-bin</span><br><span class="line">binlog_format=mixed</span><br><span class="line">binlog-do-db=test2</span><br><span class="line">binlog-ignore-db=mysql</span><br><span class="line"><span class="built_in">log</span>-error=/var/lib/mysql/mysql.err</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/03/10/2015/03-10-mysql数据库主从同步/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2019/03/10/2016/03-10-mysql常用语句/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="hackfox">
-      <meta itemprop="description" content="架构、AI、python、rust">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hackfox">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/03/10/2016/03-10-mysql常用语句/" class="post-title-link" itemprop="url">mysql常用语句</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-03-10 18:20:48" itemprop="dateCreated datePublished" datetime="2019-03-10T18:20:48+08:00">2019-03-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-09 20:49:57" itemprop="dateModified" datetime="2020-06-09T20:49:57+08:00">2020-06-09</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/mysql/" itemprop="url" rel="index"><span itemprop="name">mysql</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li><p>1.授权用户</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; GRANT ALL PRIVILEGES ON *.* TO <span class="string">'zxc'</span>@<span class="string">'%'</span> IDENTIFIED BY <span class="string">'ydp#2015$Z!!!'</span> WITH GRANT OPTION;</span><br><span class="line">mysql&gt; FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>2.远程连接</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; mysql -h127.0.0.1 -P3306 -uroot -p</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>3.导出数据库</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; mysqldump -h127.0.0.1 -P3306 -uroot -p sqsx &gt; sqsx.sql</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/03/10/2016/03-10-mysql常用语句/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2019/03/10/2019/03-10-数据库基础/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="hackfox">
-      <meta itemprop="description" content="架构、AI、python、rust">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hackfox">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/03/10/2019/03-10-数据库基础/" class="post-title-link" itemprop="url">数据库基础</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-03-10 18:19:34" itemprop="dateCreated datePublished" datetime="2019-03-10T18:19:34+08:00">2019-03-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-09 20:49:11" itemprop="dateModified" datetime="2020-06-09T20:49:11+08:00">2020-06-09</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="1-数据库中的事务是什么-事务的隔离级别-脏读、幻读、不可重复读是什么意思？"><a href="#1-数据库中的事务是什么-事务的隔离级别-脏读、幻读、不可重复读是什么意思？" class="headerlink" title="1.数据库中的事务是什么?事务的隔离级别?脏读、幻读、不可重复读是什么意思？"></a>1.数据库中的事务是什么?事务的隔离级别?脏读、幻读、不可重复读是什么意思？</h3><ul>
-<li><p>数据库事务</p>
-<ul>
-<li>将一组相关操作组合为一个要么全部成功要么全部失败的单元</li>
-<li>具有ACID（原子性、一致性、隔离性和持久性）属性<ul>
-<li>原子性(Atomicity)：原子性是指事务包含的所有操作要么全部成功，要么全部失败回滚</li>
-<li>一致性(Consistent)：一致性是指事务必须使数据库从一个一致性状态变换到另一个一致性状态，也就是说一个事务执行之前和执行之后都必须于一致性状态</li>
-<li>隔离性(Isolation)：隔离性是当多个用户并发访问数据库时，比如操作同一张表时，数据库为每一个用户开启的事务，不能被其他事务的操作所扰，多个并发事务之间要相互隔离。</li>
-<li>持久性(Duration)：持久性是指一个事务一旦被提交了，那么对数据库中的数据的改变就是永久性的，即便是在数据库系统遇到故障的情况下也不会丢失提交事务的操作。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>事物隔离级别</p>
-<ul>
-<li>Serializable (串行化)：可避免脏读、不可重复读、幻读的发生。</li>
-<li>Repeatable read (可重复读)：可避免脏读、不可重复读的发生。</li>
-<li>Read committed (读已提交)：可避免脏读的发生。</li>
-<li>Read uncommitted (读未提交)：最低级别，任何情况都无法保证。</li>
-</ul>
-</li>
-<li><p>脏读、幻读、不可重复读</p>
-<ul>
-<li>脏读：脏读是指在一个事务处理过程里读取了另一个未提交的事务中的数据</li>
-<li>不可重复读：不可重复读是指在对于数据库中的某个数据，一个事务范围内多次查询却返回了不同的数据值，这是由于在查询间隔，被另一个事务修改并提交了。</li>
-<li>幻读：是事务非独立执行时发生的一种现象。例如事务T1对一个表中所有的行的某个数据项做了从“1”修改为“2”的操作，这时事务T2又对这个表中插入了一行数据项，而这个数据项的数值还是为“1”并且提交给数据库。而操作事务T1的用户如果再查看刚刚修改的数据，会发现还有一行没有修改，其实这行是从事务T2中添加的，就好像产生幻觉一样，这就是发生了幻读。</li>
-</ul>
-</li>
-<li><p>备注：</p>
-<ul>
-<li>不可重复读和脏读的区别是，脏读是某一事务读取了另一个事务未提交的脏数据，而不可重复读则是读取了前一事务提交的数据。</li>
-<li>幻读和不可重复读都是读取了另一条已经提交的事务（这点就脏读不同），所不同的是不可重复读查询的都是同一个数据项，而幻读针对的是一批数据整体（比如数据的个数）</li>
-<li>当前事务的隔离级别：select @@tx_isolation;
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/03/10/2019/03-10-数据库基础/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2019/03/10/2019/04-09-人工智能学习路径/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -536,7 +247,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-09 20:48:55" itemprop="dateModified" datetime="2020-06-09T20:48:55+08:00">2020-06-09</time>
+                <time title="修改时间：2020-06-10 13:54:19" itemprop="dateModified" datetime="2020-06-10T13:54:19+08:00">2020-06-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -648,7 +359,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-09 20:49:06" itemprop="dateModified" datetime="2020-06-09T20:49:06+08:00">2020-06-09</time>
+                <time title="修改时间：2020-06-10 13:44:43" itemprop="dateModified" datetime="2020-06-10T13:44:43+08:00">2020-06-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -671,29 +382,230 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="0x00、命令"><a href="#0x00、命令" class="headerlink" title="0x00、命令"></a>0x00、命令</h2><ul>
-<li><p>Management Commands:</p>
+          <h2 id="0x01、简介"><a href="#0x01、简介" class="headerlink" title="0x01、简介"></a>0x01、简介</h2><h3 id="1-链接映射"><a href="#1-链接映射" class="headerlink" title="1.链接映射"></a>1.链接映射</h3><p>docker有一个连接系统允许将多个容器连接在一起，共享连接信息。docker连接会创建一个父子关系，其中父容器可以看到子容器的信息。</p>
+<h3 id="2-容器与虚拟机是互补的。"><a href="#2-容器与虚拟机是互补的。" class="headerlink" title="2.容器与虚拟机是互补的。"></a>2.容器与虚拟机是互补的。</h3><p>虚拟机是用来进行硬件资源划分的完美解决方案，它利用了硬件虚拟化技术，例如VT-x、AMD-V或者privilege level（权限等级）会同时通过一个hypervisor层来实现对资源的彻底隔离；而容器则是操作系统级别的虚拟化，利用的是内核的Cgroup和Namespace特性，此功能完全通过软件来实现，仅仅是进程本身就可以与其他进程隔离开，不需要任何辅助。</p>
+<p>Docker容器与主机共享操作系统内核，不同的容器之间可以共享部分系统资源，因此容器更加轻量级，消耗的资源也更少。而虚拟机会独占分配给自己的资源，几乎不存在资源共享，各个虚拟机实例之间近乎完全隔离，因此虚拟机更加重量级，也会消耗更多的资源。\</p>
+<h3 id="3-最小组成"><a href="#3-最小组成" class="headerlink" title="3.最小组成"></a>3.最小组成</h3><p>对于Linux容器的最小组成，可以由以下公式来表示：</p>
 <ul>
-<li><strong><code>config</code></strong>      Manage Docker configs</li>
-<li><strong><code>container</code></strong>   Manage containers</li>
-<li><strong><code>image</code></strong>       Manage images</li>
-<li><strong><code>network</code></strong>     Manage networks</li>
-<li><strong><code>node</code></strong>        Manage Swarm nodes</li>
-<li><strong><code>plugin</code></strong>      Manage plugins</li>
-<li><strong><code>secret</code></strong>      Manage Docker secrets</li>
-<li><strong><code>service</code></strong>     Manage services</li>
-<li><strong><code>stack</code></strong>       Manage Docker stacks</li>
-<li><strong><code>swarm</code></strong>       Manage Swarm</li>
-<li><strong><code>system</code></strong>      Manage Docker</li>
-<li><strong><code>volume</code></strong>      Manage volumes
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/03/10/2019/03-10-docker基础文档/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+<li>容器=cgroup+namespace+rootfs+容器引擎（用户态工具）</li>
+</ul>
+<p>其中各项的功能分别为：</p>
+<ul>
+<li>Cgroup：资源控制。</li>
+<li>Namespace：访问隔离。</li>
+<li>rootfs：文件系统隔离。</li>
+<li>容器引擎：生命周期控制。</li>
+</ul>
+<p>目前市场上所有Linux容器项目都包含以上组件。</p>
+<h2 id="0x02、Cgroups"><a href="#0x02、Cgroups" class="headerlink" title="0x02、Cgroups"></a>0x02、Cgroups</h2><p>Cgroup是control group的简写，属于Linux内核提供的一个特性，用于限制和隔离一组进程对系统资源的使用，也就是做资源QoS，这些资源主要包括CPU、内存、block I/O和网络带宽。</p>
+<p>从实现的角度来看，Cgroup实现了一个通用的进程分组的框架，而不同资源的具体管理则是由各个Cgroup子系统实现的。</p>
+<p>Cgroup中实现的子系统及其作用如下：</p>
+<ul>
+<li>devices：设备权限控制。</li>
+<li>cpuset：分配指定的CPU和内存节点。</li>
+<li>cpu：控制CPU占用率。</li>
+<li>cpuacct：统计CPU使用情况。</li>
+<li>memory：限制内存的使用上限。</li>
+<li>freezer：冻结（暂停）Cgroup中的进程。</li>
+<li>net_cls：配合tc（traffic controller）限制网络带宽。</li>
+<li>net_prio：设置进程的网络流量优先级。</li>
+<li>huge_tlb：限制HugeTLB的使用。</li>
+<li>perf_event：允许Perf工具基于Cgroup分组</li>
+<li>做性能监测。</li>
+</ul>
+<h4 id="Cgroups子系统"><a href="#Cgroups子系统" class="headerlink" title="Cgroups子系统"></a>Cgroups子系统</h4><h5 id="cpuset子系统"><a href="#cpuset子系统" class="headerlink" title="cpuset子系统"></a>cpuset子系统</h5><ul>
+<li>cpuset可以为一组进程分配指定的CPU和内存节点。</li>
+</ul>
+<ul>
+<li><p>cpu子系统</p>
+<ul>
+<li>子系统用于限制进程的CPU占用率。实际上它有三个功能，分别通过不同的接口来提供。<ul>
+<li>CPU比重分配。这个特性使用的接口是cpu.shares。</li>
+<li>CPU带宽限制。这个特性使用的接口是cpu.cfs_period_us和cpu.cfs_quota_us，这两个接口的单位是微秒</li>
+<li>实时进程的CPU带宽限制。以上两个特性都只能限制普通进程，若要限制实时进程，就要使用cpu.rt_period_us和cpu.rt_runtime_us这两个接口了。使用方法和上面类似。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>cpuacct子系统</p>
+<ul>
+<li>cpuacct子系统用来统计各个Cgroup的CPU使用情况</li>
+</ul>
+</li>
+<li><p>memory子系统</p>
+<ul>
+<li>memory子系统用来限制Cgroup所能使用的内存上限</li>
+</ul>
+</li>
+<li><p>blkio子系统</p>
+<ul>
+<li>blkio子系统用来限制Cgroup的block I/O带宽</li>
+</ul>
+</li>
+<li><p>devices子系统</p>
+<ul>
+<li>devices子系统用来控制Cgroup的进程对哪些设备有访问权限</li>
+</ul>
+</li>
+</ul>
+<h2 id="0x03、Namespace"><a href="#0x03、Namespace" class="headerlink" title="0x03、Namespace"></a>0x03、Namespace</h2><p>Namespace是将内核的全局资源做封装，使得每个Namespace都有一份独立的资源，因此不同的进程在各自的Namespace内对同一种资源的使用不会互相干扰</p>
+<p>目前Linux内核总共实现了6种Namespace：</p>
+<ul>
+<li>IPC：隔离System V IPC和POSIX消息队列。</li>
+<li>Network：隔离网络资源。</li>
+<li>Mount：隔离文件系统挂载点。</li>
+<li>PID：隔离进程ID。</li>
+<li>UTS：隔离主机名和域名。</li>
+<li>User：隔离用户ID和组ID。</li>
+</ul>
+<p>对Namespace的操作，主要是通过clone、setns和unshare这3个系统调用来完成的。</p>
+<h4 id="1-子命名空间"><a href="#1-子命名空间" class="headerlink" title="1.子命名空间"></a>1.子命名空间</h4><p>1.UTS Namespace</p>
+<ul>
+<li>UTS Namespace用于对主机名和域名进行隔离，也就是uname系统调用使用的结构体struct utsname里的nodename和domainname这两个字段，UTS这个名字也是由此而来的。</li>
+</ul>
+<p>2.IPC Namespace</p>
+<ul>
+<li>IPC是Inter-Process Communication的简写，也就是进程间通信。Linux提供了很多种进程间通信的机制，IPC Namespace针对的是SystemV IPC和Posix消息队列。</li>
+</ul>
+<p>3.PID Namespace</p>
+<ul>
+<li>PID Namespace用于隔离进程PID号，这样一来，不同的Namespace里的进程PID号就可以是一样的了。</li>
+</ul>
+<p>4.Mount Namespace</p>
+<ul>
+<li>Mount Namespace用来隔离文件系统挂载点，每个进程能看到的文件系统都记录在/proc/$$/mounts里。</li>
+</ul>
+<p>5.Network Namespace</p>
+<ul>
+<li>这个Namespace会对网络相关的系统资源进行隔离，每个Network Namespace都有自己的网络设备、IP地址、路由表、/proc/net目录、端口号等。</li>
+</ul>
+<p>6.User Namespace</p>
+<ul>
+<li>User Namespace用来隔离用户和组ID，也就是说一个进程在Namespace里的用户和组ID与它在host里的ID可以不一样，这样说可能读者还不理解有什么实际的用处。</li>
+</ul>
+<p>Namespace和Cgroup的使用是很灵活的，同时这里面又有不少需要注意的地方，因此直接操作Namespace和Cgroup并不是很容易。正是因为这些原因，Docker通过Libcontainer来处理这些底层的事情。这样一来，Docker只需要简单地调用Libcontainer的API，就能将完整的容器搭建起来</p>
+<h2 id="0x04、Images"><a href="#0x04、Images" class="headerlink" title="0x04、Images"></a>0x04、Images</h2><ul>
+<li>是启动融资的rootfs,只读模版</li>
+</ul>
+<h3 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1.基本概念"></a>1.基本概念</h3><h4 id="1-1-创建镜像"><a href="#1-1-创建镜像" class="headerlink" title="1.1 创建镜像"></a>1.1 创建镜像</h4><ul>
+<li><p>1.直接下载镜像</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull centos</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2.导入镜像</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker save -o centos.tar centos</span><br><span class="line">docker load -i centos.tar</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3.制作新镜像</p>
+<ul>
+<li>docker import 用于导入包含根文件系统的归档，并将之变成docker镜像</li>
+<li>docker commit 可以增量的生成镜像，可以把容器保存为一个镜像</li>
+<li>docker build 可以用Dockerfile来制作镜像</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-2-传输镜像"><a href="#1-2-传输镜像" class="headerlink" title="1.2 传输镜像"></a>1.2 传输镜像</h4><ul>
+<li>1.用Docker镜像仓库做中转</li>
+<li>2.docker export/docker save生成tar包</li>
+<li>3.Dockerfile文件</li>
+</ul>
+<h4 id="1-3-运行镜像"><a href="#1-3-运行镜像" class="headerlink" title="1.3 运行镜像"></a>1.3 运行镜像</h4><ul>
+<li>docker run 来运营一个镜像成为容器</li>
+</ul>
+<h3 id="2-组织结构"><a href="#2-组织结构" class="headerlink" title="2.组织结构"></a>2.组织结构</h3><h4 id="2-1-数据内容"><a href="#2-1-数据内容" class="headerlink" title="2.1 数据内容"></a>2.1 数据内容</h4><p>包含着数据和元数据。</p>
+<ul>
+<li>数据有一层一层的image layer组成，元数据则是一些JSON文件，用来描述数据之间的关系和容器配置信息。</li>
+</ul>
+<p>Docker对数据进行来完整性校验，这种完整性对凭证是有镜像仓库提供的。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ll /var/lab/docker</span><br></pre></td></tr></table></figure>
+
+<p>1.总体信息</p>
+<ul>
+<li>从repositories-overlay文件可以看到该存储目录下的所有image以及其对应的layer ID.</li>
+</ul>
+<p>2.数据和元数据</p>
+<ul>
+<li>graph和overlay目录包含本地镜像库中所有元数据和数据信息</li>
+<li>对于不同的存储驱动，数据的存储位置和存储结构是不同的。</li>
+<li>元数据包含json和layersize两个文件，其中json包含来必要的层次和配置信息，layersize文件包含来该层的大小。</li>
+<li>先通过repositories-overlay获取image对应的layer ID；在根据layer对应的元数据梳理出image包含的所有层，以及层之间的关系；在使用联合挂载技术还原出容器启动所需要的rootfs和一些基本配置信息。</li>
+</ul>
+<p>3.数据组织</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect dockerID</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2-扩展知识"><a href="#2-2-扩展知识" class="headerlink" title="2.2 扩展知识"></a>2.2 扩展知识</h4><p>docker引入的联合挂载(Union mount)使镜像分层成为可能；而git式管理，使基础镜像复用成为可能。<br>1.联合挂载</p>
+<ul>
+<li>把多个目录挂载到同一个目录，对外呈现这些目录的联合。·</li>
+</ul>
+<p>2.写时复制</p>
+<h2 id="0x05、仓库进阶"><a href="#0x05、仓库进阶" class="headerlink" title="0x05、仓库进阶"></a>0x05、仓库进阶</h2><h3 id="1-什么是仓库"><a href="#1-什么是仓库" class="headerlink" title="1.什么是仓库"></a>1.什么是仓库</h3><h4 id="1-1-仓库的组成"><a href="#1-1-仓库的组成" class="headerlink" title="1.1 仓库的组成"></a>1.1 仓库的组成</h4><p>仓库的名字通常有两部分组成，中间以斜线分隔。前边是用户名，后边是镜像名。<br>仓库有镜像存储系统和账户管理系统</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker login -u &lt;user_name&gt; -p &lt;password&gt; -e &lt;email&gt; &lt;registry domain&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-2-仓库镜像"><a href="#1-2-仓库镜像" class="headerlink" title="1.2 仓库镜像"></a>1.2 仓库镜像</h4><p>仓库下面包含一组镜像，彼此之间用标签(tag)区分。一个完整的镜像地址通常有 服务器地址、仓库名称和标签组成。</p>
+<p>1.上传镜像：push</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 表示向本地私有仓库上传镜像。如果不写服务器地址，默认上传到官方Docker Hub。一般需要先登陆在上传。</span><br><span class="line">docker push localhost::5000/official/ubuntu:14.04</span><br></pre></td></tr></table></figure>
+
+<p>2.下载镜像：pull</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull ubuntu:14.04</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>3.搜索镜像：search</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker search ubuntu</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注：在上传、下载过程中是逐层进行的。下载和搜索不需要登陆</p>
+</li>
+</ul>
+<h3 id="1-3-restfulApi介绍"><a href="#1-3-restfulApi介绍" class="headerlink" title="1.3 restfulApi介绍"></a>1.3 restfulApi介绍</h3><h3 id="1-4-上传、下载、鉴权原理"><a href="#1-4-上传、下载、鉴权原理" class="headerlink" title="1.4 上传、下载、鉴权原理"></a>1.4 上传、下载、鉴权原理</h3><h3 id="1-5-私有仓库搭建"><a href="#1-5-私有仓库搭建" class="headerlink" title="1.5 私有仓库搭建"></a>1.5 私有仓库搭建</h3><h2 id="0x06、docker网络"><a href="#0x06、docker网络" class="headerlink" title="0x06、docker网络"></a>0x06、docker网络</h2><h2 id="0x07、容器卷管理"><a href="#0x07、容器卷管理" class="headerlink" title="0x07、容器卷管理"></a>0x07、容器卷管理</h2><p>可以把本地文件目录挂载到容器内</p>
+<h2 id="0x08、DockerAPI"><a href="#0x08、DockerAPI" class="headerlink" title="0x08、DockerAPI"></a>0x08、DockerAPI</h2><h3 id="1-Docker-Remote-API"><a href="#1-Docker-Remote-API" class="headerlink" title="1.Docker Remote API"></a>1.Docker Remote API</h3><h3 id="2-Docker-Registry-API"><a href="#2-Docker-Registry-API" class="headerlink" title="2.Docker Registry API"></a>2.Docker Registry API</h3><h3 id="3-Docker-Hub-API"><a href="#3-Docker-Hub-API" class="headerlink" title="3.Docker Hub API"></a>3.Docker Hub API</h3><h2 id="0x09、Docker安全"><a href="#0x09、Docker安全" class="headerlink" title="0x09、Docker安全"></a>0x09、Docker安全</h2><h3 id="1-包含内容"><a href="#1-包含内容" class="headerlink" title="1.包含内容"></a>1.包含内容</h3><ul>
+<li>容器的安全性</li>
+<li>镜像的安全性</li>
+<li>Docker daemon的安全性</li>
+</ul>
+<h3 id="2-容器安全"><a href="#2-容器安全" class="headerlink" title="2.容器安全"></a>2.容器安全</h3><ul>
+<li>Cgroup<ul>
+<li>限制CPU：指定CPU权重、使用上限</li>
+<li>限制内存</li>
+<li>限制块设备I/O</li>
+</ul>
+</li>
+<li>ulimit<ul>
+<li>core dump文件大小</li>
+<li>进程数据段大小</li>
+<li>可创建文件大小</li>
+<li>常驻内存集大小</li>
+<li>打开文件数量</li>
+<li>进程栈的大小</li>
+<li>CPU时间</li>
+<li>单个用户的最大进程数</li>
+<li>进程的最大虚拟内存</li>
+</ul>
+</li>
+<li>容器组网<ul>
+<li>将容器隔离在不同的网络内</li>
+</ul>
+</li>
+<li>容器+虚拟化</li>
+<li>镜像签名</li>
+<li>日志审计</li>
+<li>监控</li>
+<li>文件系统级保护</li>
+<li>capability<ul>
+<li>可以作用在进程上；也可以作用在程序文件上</li>
+<li>与sudo不同，sudo可以配置某个用户可以执行某个命令或更改某个文件；而capablity则是让某个程序拥有某种能力</li>
+<li>每个进程有三个和能力有关的位图：Inheritable(I)、Permitted(P)和Effective(E)</li>
+</ul>
+</li>
+<li>SELinux</li>
+<li>APPArmor</li>
+<li>Seccomp</li>
+<li>grsecurity</li>
+</ul>
+<h3 id="3-安全加固"><a href="#3-安全加固" class="headerlink" title="3.安全加固"></a>3.安全加固</h3><h3 id="4-安全遗留问题"><a href="#4-安全遗留问题" class="headerlink" title="4.安全遗留问题"></a>4.安全遗留问题</h3><h2 id="0x10、Libcontainer"><a href="#0x10、Libcontainer" class="headerlink" title="0x10、Libcontainer"></a>0x10、Libcontainer</h2><p>容器引擎：一种驱动和管理容器生命周期的runtime工具</p>
+<h2 id="0x11、Docker实战"><a href="#0x11、Docker实战" class="headerlink" title="0x11、Docker实战"></a>0x11、Docker实战</h2><p>部署web服务</p>
+<h2 id="0x12、Docker集群"><a href="#0x12、Docker集群" class="headerlink" title="0x12、Docker集群"></a>0x12、Docker集群</h2><ul>
+<li>Compose</li>
+<li>Machine</li>
+<li>Swarm</li>
+</ul>
+<h2 id="0x13、Docker生态圈"><a href="#0x13、Docker生态圈" class="headerlink" title="0x13、Docker生态圈"></a>0x13、Docker生态圈</h2>
       
     </div>
 
@@ -743,7 +655,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-09 20:49:00" itemprop="dateModified" datetime="2020-06-09T20:49:00+08:00">2020-06-09</time>
+                <time title="修改时间：2020-06-10 13:54:12" itemprop="dateModified" datetime="2020-06-10T13:54:12+08:00">2020-06-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -844,7 +756,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-09 20:49:12" itemprop="dateModified" datetime="2020-06-09T20:49:12+08:00">2020-06-09</time>
+                <time title="修改时间：2020-06-10 13:54:01" itemprop="dateModified" datetime="2020-06-10T13:54:01+08:00">2020-06-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -932,7 +844,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-09 20:49:39" itemprop="dateModified" datetime="2020-06-09T20:49:39+08:00">2020-06-09</time>
+                <time title="修改时间：2020-06-10 13:53:46" itemprop="dateModified" datetime="2020-06-10T13:53:46+08:00">2020-06-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1062,7 +974,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-09 20:49:33" itemprop="dateModified" datetime="2020-06-09T20:49:33+08:00">2020-06-09</time>
+                <time title="修改时间：2020-06-10 13:53:55" itemprop="dateModified" datetime="2020-06-10T13:53:55+08:00">2020-06-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1070,7 +982,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
                 </span>
             </span>
 
@@ -1152,7 +1064,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-09 20:49:27" itemprop="dateModified" datetime="2020-06-09T20:49:27+08:00">2020-06-09</time>
+                <time title="修改时间：2020-06-10 13:53:41" itemprop="dateModified" datetime="2020-06-10T13:53:41+08:00">2020-06-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1187,7 +1099,7 @@
 </li>
 </ul>
 </li>
-<li><p><img src="/assets/images/2018/%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E4%BD%9C%E7%94%A8.png" alt="数据模型作用"></p>
+<li><p><img data-src="/assets/images/2018/%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E4%BD%9C%E7%94%A8.png" alt="数据模型作用"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2018/08/12/2018/08-12-数据建模/#more" rel="contents">
@@ -1210,10 +1122,296 @@
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2018/08/10/2018/08-10-行与列式数据库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hackfox">
+      <meta itemprop="description" content="架构、AI、python、rust">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hackfox">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/08/10/2018/08-10-行与列式数据库/" class="post-title-link" itemprop="url">行与列式数据库</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-08-10 13:23:49" itemprop="dateCreated datePublished" datetime="2018-08-10T13:23:49+08:00">2018-08-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-10 13:53:36" itemprop="dateModified" datetime="2020-06-10T13:53:36+08:00">2020-06-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="行与列式数据库"><a href="#行与列式数据库" class="headerlink" title="行与列式数据库"></a>行与列式数据库</h1><ul>
+<li>作者：<a href="mailto:codehackfox@gmail.com" target="_blank" rel="noopener">codehackfox@gmail.com</a></li>
+<li>时间：2018-08-10 13:23:49</li>
+</ul>
+<h2 id="0x00、简介"><a href="#0x00、简介" class="headerlink" title="0x00、简介"></a>0x00、简介</h2><h5 id="行式数据库"><a href="#行式数据库" class="headerlink" title="行式数据库"></a>行式数据库</h5><ul>
+<li>平常用的结构化关系型数据库，比如mysql、sqlserver等</li>
+<li>一行为一条数据，进行记录存储</li>
+<li>可以进行join查询，可以进行笛卡尔积运算
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/08/10/2018/08-10-行与列式数据库/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2018/03/02/2018/03-02-PHP知识体系/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hackfox">
+      <meta itemprop="description" content="架构、AI、python、rust">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hackfox">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/03/02/2018/03-02-PHP知识体系/" class="post-title-link" itemprop="url">PHP知识体系</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-03-02 11:53:29" itemprop="dateCreated datePublished" datetime="2018-03-02T11:53:29+08:00">2018-03-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-10 13:53:34" itemprop="dateModified" datetime="2020-06-10T13:53:34+08:00">2020-06-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP/" itemprop="url" rel="index"><span itemprop="name">PHP</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="0x00、关键字"><a href="#0x00、关键字" class="headerlink" title="0x00、关键字"></a>0x00、关键字</h2><ul>
+<li>$ 、echo、 print、null、global、GLOBALS[‘y’]、static、function、public、private、protected</li>
+<li>对象(class)：String、Integer、Float、Boolean、Object、NULL、Resource、Closure()</li>
+<li>函数(function)：<ul>
+<li>通用：die()、var_dump()、for()、foreach()、define()、echo</li>
+<li>函数：function_exists()</li>
+<li>数组：array()、sort()、count()、 implode($arr,’,’)、is_array()、unset()、</li>
+<li>字符串：strlen()、mb_substr()、strpos()、str_replace()、str_word_count()、sprintf()、explode(‘,’,$string)、substr()、iconv_substr</li>
+<li>数据库：query()、mysql()、close()、</li>
+<li>文件：file_exist()、is_file()、is_dir()</li>
+<li>对象： serialize()、unserialize()</li>
+<li>回话：session_start()、setcookie()、session_destroy()、session_unset()、</li>
+<li>日期：date()、strtotime()、date_default_timezone_set()</li>
+<li>socket：</li>
+</ul>
+</li>
+<li>超级全局变量:<ul>
+<li>$GLOBALS<ul>
+<li>$_SERVER</li>
+<li>$_REQUEST</li>
+<li>$_POST</li>
+<li>$_GET</li>
+<li>$_FILES</li>
+<li>$_ENV</li>
+<li>$_COOKIE</li>
+<li>$_SESSION</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>魔术方法：<ul>
+<li><strong>contract()、</strong>decontract、<strong>get()、</strong>set()、 _invoke()
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/03/02/2018/03-02-PHP知识体系/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2017/09/28/2017/09-28-开机自检/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hackfox">
+      <meta itemprop="description" content="架构、AI、python、rust">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hackfox">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/09/28/2017/09-28-开机自检/" class="post-title-link" itemprop="url">系统开机自检</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-09-28 15:24:23" itemprop="dateCreated datePublished" datetime="2017-09-28T15:24:23+08:00">2017-09-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-10 13:53:31" itemprop="dateModified" datetime="2020-06-10T13:53:31+08:00">2020-06-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/操作系统/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="0x00、关于开机自动检测硬盘的原因"><a href="#0x00、关于开机自动检测硬盘的原因" class="headerlink" title="0x00、关于开机自动检测硬盘的原因"></a>0x00、关于开机自动检测硬盘的原因</h2><ul>
+<li><p>第一种：是你非法关机造成的，比如直接断电的情况。</p>
+</li>
+<li><p>第二种：是和硬盘的分区格式有关，FAT32格式在非法关机后会在开机时要求检测硬盘，而且必须检测完毕才不会在下次启动时重新检测。系统有一个文件中记录了检测是否结束的信息，有时即使检测完成了也会因为这个文件没有更新而在下次开机时重新检测。</p>
+</li>
+<li><p>第三种：当硬盘出现坏道也会出现开机自动检测硬盘。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2017/09/28/2017/09-28-开机自检/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1279,7 +1477,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

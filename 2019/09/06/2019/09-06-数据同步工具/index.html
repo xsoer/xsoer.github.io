@@ -30,13 +30,10 @@
 <meta property="og:site_name" content="hackfox">
 <meta property="og:description" content="0x00、总览 1.定时任务 2.canal/otter 3.Datax 4.Sqoop 5.NiFi 6.mongoshake  0x02、定时任务定时任务工具是作为数据同步的最基本也是最常用的工具。其不但用于定时的数据同步，而且作为定时的处理其他任务，比如爬虫等。 1.Airflow2.gocron">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/09-06-sqool.png">
-<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/09-06-mongoshake.png">
-<meta property="og:updated_time" content="2020-06-09T12:48:20.950Z">
+<meta property="og:updated_time" content="2020-06-10T05:55:01.951Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据同步工具">
 <meta name="twitter:description" content="0x00、总览 1.定时任务 2.canal/otter 3.Datax 4.Sqoop 5.NiFi 6.mongoshake  0x02、定时任务定时任务工具是作为数据同步的最基本也是最常用的工具。其不但用于定时的数据同步，而且作为定时的处理其他任务，比如爬虫等。 1.Airflow2.gocron">
-<meta name="twitter:image" content="https://xsoer.github.io/assets/images/2019/09-06-sqool.png">
 
 <link rel="canonical" href="https://xsoer.github.io/2019/09/06/2019/09-06-数据同步工具/">
 
@@ -141,6 +138,11 @@
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
+        <li class="menu-item menu-item-manual">
+
+    <a href="/manual/" rel="section"><i class="fa fa-server fa-fw"></i>手册</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
@@ -148,7 +150,7 @@
   </li>
         <li class="menu-item menu-item-tools">
 
-    <a href="/tools/" rel="section"><i class="fa fa-server fa-fw"></i>工具</a>
+    <a href="/tools/" rel="section"><i class="fa fa-gavel fa-fw"></i>工具</a>
 
   </li>
         <li class="menu-item menu-item-books">
@@ -247,7 +249,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-09 20:48:20" itemprop="dateModified" datetime="2020-06-09T20:48:20+08:00">2020-06-09</time>
+                <time title="修改时间：2020-06-10 13:55:01" itemprop="dateModified" datetime="2020-06-10T13:55:01+08:00">2020-06-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -304,7 +306,7 @@
 <li>定位是从hadoop与关系型数据库的同步。</li>
 <li>Sqoop 启用了一个 MapReduce 作业（极其容错的分布式并行计算）来执行任务</li>
 <li>Sqoop 的另一大优势是其传输大量结构化或半结构化数据的过程是完全自动化的。</li>
-<li><img src="/assets/images/2019/09-06-sqool.png" alt="架构图"></li>
+<li><img data-src="/assets/images/2019/09-06-sqool.png" alt="架构图"></li>
 </ul>
 <h2 id="0x06、Nifi"><a href="#0x06、Nifi" class="headerlink" title="0x06、Nifi"></a>0x06、Nifi</h2><ul>
 <li>NiFi 项目在创建过程中遵循了一些理念<ul>
@@ -331,7 +333,7 @@
 <h2 id="0x07、mongoshake"><a href="#0x07、mongoshake" class="headerlink" title="0x07、mongoshake"></a>0x07、mongoshake</h2><ul>
 <li><a href="https://github.com/alibaba/MongoShake" target="_blank" rel="noopener">https://github.com/alibaba/MongoShake</a></li>
 <li>alibaba开源的同步mogndb的服务</li>
-<li><img src="/assets/images/2019/09-06-mongoshake.png" alt="架构图"></li>
+<li><img data-src="/assets/images/2019/09-06-mongoshake.png" alt="架构图"></li>
 </ul>
 
     </div>
@@ -407,6 +409,7 @@
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -467,7 +470,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -667,6 +670,25 @@ window.addEventListener('pjax:success', () => {
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '7c7b02623259a39014a0',
+      clientSecret: '07c01a3277dab0956ad91bad7d24b91a7e773990',
+      repo        : 'xsoer.github.io',
+      owner       : 'xsoer',
+      admin       : ['xsoer'],
+      id          : 'c7d9577515978767826a116ceab426bb',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
     </div>
 </body>

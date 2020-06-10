@@ -30,32 +30,10 @@
 <meta property="og:site_name" content="hackfox">
 <meta property="og:description" content="0x00、总体概览1.历史发展 2012年10月由Cloudera公司发起创建,2015年10月对外公布，2015年12月进入apache基金会进行孵化，后续进入快速发展轨道。  2.产品定位 Fast Analytics on Fast Data。 在快速修改的数据上进行快速分析">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-hbase-hdfs.png">
-<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-kudu-position.png">
-<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-kudu-gap.png">
-<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-kudu-architecture.png">
-<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-range.png">
-<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-hash.png">
-<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-hash-range.png">
-<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-hash-hash.png">
-<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-hash-range-good-bad.png">
-<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-encoding.png">
-<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-field-encoding.png">
-<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-store-tree.png">
-<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-insert-data.png">
-<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-store-data.png">
-<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-flush.png">
-<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-compation.png">
-<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-kuduapi.png">
-<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-impala-create.png">
-<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-impala-property.png">
-<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-impala-op.png">
-<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-impalaapi.png">
-<meta property="og:updated_time" content="2020-06-09T12:48:40.738Z">
+<meta property="og:updated_time" content="2020-06-10T05:54:29.266Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kudu简介">
 <meta name="twitter:description" content="0x00、总体概览1.历史发展 2012年10月由Cloudera公司发起创建,2015年10月对外公布，2015年12月进入apache基金会进行孵化，后续进入快速发展轨道。  2.产品定位 Fast Analytics on Fast Data。 在快速修改的数据上进行快速分析">
-<meta name="twitter:image" content="https://xsoer.github.io/assets/images/2019/07-12-hbase-hdfs.png">
 
 <link rel="canonical" href="https://xsoer.github.io/2019/07/12/2019/07-12-kudu简介/">
 
@@ -160,6 +138,11 @@
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
+        <li class="menu-item menu-item-manual">
+
+    <a href="/manual/" rel="section"><i class="fa fa-server fa-fw"></i>手册</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
@@ -167,7 +150,7 @@
   </li>
         <li class="menu-item menu-item-tools">
 
-    <a href="/tools/" rel="section"><i class="fa fa-server fa-fw"></i>工具</a>
+    <a href="/tools/" rel="section"><i class="fa fa-gavel fa-fw"></i>工具</a>
 
   </li>
         <li class="menu-item menu-item-books">
@@ -266,7 +249,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-09 20:48:40" itemprop="dateModified" datetime="2020-06-09T20:48:40+08:00">2020-06-09</time>
+                <time title="修改时间：2020-06-10 13:54:29" itemprop="dateModified" datetime="2020-06-10T13:54:29+08:00">2020-06-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -318,7 +301,7 @@
 </li>
 </ul>
 <p>而既要满足随机读写和大数据分析的解决方案如下：</p>
-<p><img src="/assets/images/2019/07-12-hbase-hdfs.png" alt="解决方案图"></p>
+<p><img data-src="/assets/images/2019/07-12-hbase-hdfs.png" alt="解决方案图"></p>
 <p>而以上的方案问题是：</p>
 <ul>
 <li>架构复杂<ul>
@@ -336,9 +319,9 @@
 </ul>
 </li>
 </ul>
-<p>所以产生了新的解决方案，那就是kudu，其定位如下：<br><img src="/assets/images/2019/07-12-kudu-position.png" alt="kudu定位"></p>
-<p>而其gap了hdfs和hbase之间的<br><img src="/assets/images/2019/07-12-kudu-gap.png" alt="kudugap"></p>
-<h3 id="4-架构图"><a href="#4-架构图" class="headerlink" title="4.架构图"></a>4.架构图</h3><p>kudu的整体架构图如下<br><img src="/assets/images/2019/07-12-kudu-architecture.png" alt="架构图"></p>
+<p>所以产生了新的解决方案，那就是kudu，其定位如下：<br><img data-src="/assets/images/2019/07-12-kudu-position.png" alt="kudu定位"></p>
+<p>而其gap了hdfs和hbase之间的<br><img data-src="/assets/images/2019/07-12-kudu-gap.png" alt="kudugap"></p>
+<h3 id="4-架构图"><a href="#4-架构图" class="headerlink" title="4.架构图"></a>4.架构图</h3><p>kudu的整体架构图如下<br><img data-src="/assets/images/2019/07-12-kudu-architecture.png" alt="架构图"></p>
 <h3 id="5-基本概念"><a href="#5-基本概念" class="headerlink" title="5.基本概念"></a>5.基本概念</h3><p>下面了解一些kudu里的一些基本概念。</p>
 <ul>
 <li>Table<ul>
@@ -471,21 +454,21 @@
 <li><p>比如建立如下一个表</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> metrics (</span><br><span class="line">    host <span class="keyword">STRING</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    metric <span class="keyword">STRING</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    <span class="built_in">time</span> INT64 <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    <span class="keyword">value</span> <span class="keyword">DOUBLE</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    PRIMARY <span class="keyword">KEY</span> (host, metric, <span class="built_in">time</span>),</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>按照range来分区如下<br><img src="/assets/images/2019/07-12-range.png" alt="range"></p>
+<li><p>按照range来分区如下<br><img data-src="/assets/images/2019/07-12-range.png" alt="range"></p>
 </li>
-<li><p>按照hash分区如下<br><img src="/assets/images/2019/07-12-hash.png" alt="hash"></p>
+<li><p>按照hash分区如下<br><img data-src="/assets/images/2019/07-12-hash.png" alt="hash"></p>
 </li>
-<li><p>同时按照range和hash来分区<br><img src="/assets/images/2019/07-12-hash-range.png" alt="rang-hash"></p>
+<li><p>同时按照range和hash来分区<br><img data-src="/assets/images/2019/07-12-hash-range.png" alt="rang-hash"></p>
 </li>
-<li><p>同时按照hash和hash来分区<br><img src="/assets/images/2019/07-12-hash-hash.png" alt="hash-hash"></p>
+<li><p>同时按照hash和hash来分区<br><img data-src="/assets/images/2019/07-12-hash-hash.png" alt="hash-hash"></p>
 </li>
-<li><p>那么hash与range的优缺点是<br><img src="/assets/images/2019/07-12-hash-range-good-bad.png" alt="hash-range-good-bad"></p>
+<li><p>那么hash与range的优缺点是<br><img data-src="/assets/images/2019/07-12-hash-range-good-bad.png" alt="hash-range-good-bad"></p>
 </li>
 </ul>
 <h3 id="4-字段编码"><a href="#4-字段编码" class="headerlink" title="4.字段编码"></a>4.字段编码</h3><ul>
-<li><p>编码的类型如下<br><img src="/assets/images/2019/07-12-encoding.png" alt="encoding"></p>
+<li><p>编码的类型如下<br><img data-src="/assets/images/2019/07-12-encoding.png" alt="encoding"></p>
 </li>
-<li><p>每中字段适用及默认的编码类型如下<br><img src="/assets/images/2019/07-12-field-encoding.png" alt="field-encoding"></p>
+<li><p>每中字段适用及默认的编码类型如下<br><img data-src="/assets/images/2019/07-12-field-encoding.png" alt="field-encoding"></p>
 </li>
 </ul>
 <h3 id="5-数据压缩"><a href="#5-数据压缩" class="headerlink" title="5.数据压缩"></a>5.数据压缩</h3><ul>
@@ -502,7 +485,7 @@
 <blockquote>
 <h2 id="0x02、存储结构"><a href="#0x02、存储结构" class="headerlink" title="0x02、存储结构"></a>0x02、存储结构</h2></blockquote>
 <ul>
-<li>逻辑结构图如下<br><img src="/assets/images/2019/07-12-store-tree.png" alt="store-tree"></li>
+<li>逻辑结构图如下<br><img data-src="/assets/images/2019/07-12-store-tree.png" alt="store-tree"></li>
 </ul>
 <blockquote>
 <h2 id="0x03、读写流程"><a href="#0x03、读写流程" class="headerlink" title="0x03、读写流程"></a>0x03、读写流程</h2></blockquote>
@@ -524,9 +507,9 @@
 </ul>
 </li>
 </ul>
-<h3 id="2-存储数据"><a href="#2-存储数据" class="headerlink" title="2.存储数据"></a>2.存储数据</h3><p><img src="/assets/images/2019/07-12-insert-data.png" alt="insert-data"><br><img src="/assets/images/2019/07-12-store-data.png" alt="store-data"><br>fluash示例如下<br><img src="/assets/images/2019/07-12-flush.png" alt="flush"></p>
-<h3 id="3-compaction"><a href="#3-compaction" class="headerlink" title="3.compaction"></a>3.compaction</h3><p><img src="/assets/images/2019/07-12-compation.png" alt="compation"></p>
-<h3 id="4-kudu-api"><a href="#4-kudu-api" class="headerlink" title="4.kudu api"></a>4.kudu api</h3><p><img src="/assets/images/2019/07-12-kuduapi.png" alt="kuduapi"></p>
+<h3 id="2-存储数据"><a href="#2-存储数据" class="headerlink" title="2.存储数据"></a>2.存储数据</h3><p><img data-src="/assets/images/2019/07-12-insert-data.png" alt="insert-data"><br><img data-src="/assets/images/2019/07-12-store-data.png" alt="store-data"><br>fluash示例如下<br><img data-src="/assets/images/2019/07-12-flush.png" alt="flush"></p>
+<h3 id="3-compaction"><a href="#3-compaction" class="headerlink" title="3.compaction"></a>3.compaction</h3><p><img data-src="/assets/images/2019/07-12-compation.png" alt="compation"></p>
+<h3 id="4-kudu-api"><a href="#4-kudu-api" class="headerlink" title="4.kudu api"></a>4.kudu api</h3><p><img data-src="/assets/images/2019/07-12-kuduapi.png" alt="kuduapi"></p>
 <blockquote>
 <h2 id="0x04、impala结合"><a href="#0x04、impala结合" class="headerlink" title="0x04、impala结合"></a>0x04、impala结合</h2></blockquote>
 <h3 id="1-功能简介"><a href="#1-功能简介" class="headerlink" title="1.功能简介"></a>1.功能简介</h3><ul>
@@ -560,10 +543,10 @@
 </ul>
 </li>
 </ul>
-<h3 id="3-建表示例"><a href="#3-建表示例" class="headerlink" title="3.建表示例"></a>3.建表示例</h3><p><img src="/assets/images/2019/07-12-impala-create.png" alt="impala-create"></p>
-<h3 id="4-属性操作"><a href="#4-属性操作" class="headerlink" title="4.属性操作"></a>4.属性操作</h3><p><img src="/assets/images/2019/07-12-impala-property.png" alt="impala-property"></p>
-<h3 id="5-常用操作"><a href="#5-常用操作" class="headerlink" title="5.常用操作"></a>5.常用操作</h3><p><img src="/assets/images/2019/07-12-impala-op.png" alt="impala-op"></p>
-<h3 id="6-python-api"><a href="#6-python-api" class="headerlink" title="6.python api"></a>6.python api</h3><p><img src="/assets/images/2019/07-12-impalaapi.png" alt="api"></p>
+<h3 id="3-建表示例"><a href="#3-建表示例" class="headerlink" title="3.建表示例"></a>3.建表示例</h3><p><img data-src="/assets/images/2019/07-12-impala-create.png" alt="impala-create"></p>
+<h3 id="4-属性操作"><a href="#4-属性操作" class="headerlink" title="4.属性操作"></a>4.属性操作</h3><p><img data-src="/assets/images/2019/07-12-impala-property.png" alt="impala-property"></p>
+<h3 id="5-常用操作"><a href="#5-常用操作" class="headerlink" title="5.常用操作"></a>5.常用操作</h3><p><img data-src="/assets/images/2019/07-12-impala-op.png" alt="impala-op"></p>
+<h3 id="6-python-api"><a href="#6-python-api" class="headerlink" title="6.python api"></a>6.python api</h3><p><img data-src="/assets/images/2019/07-12-impalaapi.png" alt="api"></p>
 <blockquote>
 <h2 id="0x05、限制条件"><a href="#0x05、限制条件" class="headerlink" title="0x05、限制条件"></a>0x05、限制条件</h2></blockquote>
 <h3 id="1-表限制"><a href="#1-表限制" class="headerlink" title="1.表限制"></a>1.表限制</h3><ul>
@@ -682,8 +665,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019/04/23/2019/04-23-浏览器工具集/" rel="prev" title="浏览器工具集">
-      <i class="fa fa-chevron-left"></i> 浏览器工具集
+    <a href="/2019/04/22/2019/04-22-Impala系统性文档/" rel="prev" title="Impala操作手册">
+      <i class="fa fa-chevron-left"></i> Impala操作手册
     </a></div>
       <div class="post-nav-item">
     <a href="/2019/09/02/2019/09-02-神经网络类型/" rel="next" title="神经网络类型">
@@ -701,6 +684,7 @@
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -761,7 +745,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -961,6 +945,25 @@ window.addEventListener('pjax:success', () => {
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '7c7b02623259a39014a0',
+      clientSecret: '07c01a3277dab0956ad91bad7d24b91a7e773990',
+      repo        : 'xsoer.github.io',
+      owner       : 'xsoer',
+      admin       : ['xsoer'],
+      id          : 'a8d92e8b560b4accfaadc44137553eae',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
     </div>
 </body>

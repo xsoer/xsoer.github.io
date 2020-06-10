@@ -30,7 +30,7 @@
 <meta property="og:site_name" content="hackfox">
 <meta property="og:description" content="0x00、基本概念0x01、基本类型 1.数字:numbers int,double,float,bool,complex 1)可同时为多个变量赋值 2)一个变量可以通过赋值指向不同类型的对象 3)数值的除法(/)总时返回浮点数，要获得整数用(//)   2.字符串:string 1)可以用’’或”” 2)可以使用()转义 3)不想转义需要字符串前加r 4)可以使用(+)号连接，用(*)可以重复">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-09T12:49:39.255Z">
+<meta property="og:updated_time" content="2020-06-10T05:53:46.560Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python总结">
 <meta name="twitter:description" content="0x00、基本概念0x01、基本类型 1.数字:numbers int,double,float,bool,complex 1)可同时为多个变量赋值 2)一个变量可以通过赋值指向不同类型的对象 3)数值的除法(/)总时返回浮点数，要获得整数用(//)   2.字符串:string 1)可以用’’或”” 2)可以使用()转义 3)不想转义需要字符串前加r 4)可以使用(+)号连接，用(*)可以重复">
@@ -138,6 +138,11 @@
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
+        <li class="menu-item menu-item-manual">
+
+    <a href="/manual/" rel="section"><i class="fa fa-server fa-fw"></i>手册</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
@@ -145,7 +150,7 @@
   </li>
         <li class="menu-item menu-item-tools">
 
-    <a href="/tools/" rel="section"><i class="fa fa-server fa-fw"></i>工具</a>
+    <a href="/tools/" rel="section"><i class="fa fa-gavel fa-fw"></i>工具</a>
 
   </li>
         <li class="menu-item menu-item-books">
@@ -244,7 +249,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-09 20:49:39" itemprop="dateModified" datetime="2020-06-09T20:49:39+08:00">2020-06-09</time>
+                <time title="修改时间：2020-06-10 13:53:46" itemprop="dateModified" datetime="2020-06-10T13:53:46+08:00">2020-06-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -478,6 +483,7 @@
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -538,7 +544,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -738,6 +744,25 @@ window.addEventListener('pjax:success', () => {
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '7c7b02623259a39014a0',
+      clientSecret: '07c01a3277dab0956ad91bad7d24b91a7e773990',
+      repo        : 'xsoer.github.io',
+      owner       : 'xsoer',
+      admin       : ['xsoer'],
+      id          : '5e987d3dbfbc8f44c0a8814944442fd9',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
     </div>
 </body>

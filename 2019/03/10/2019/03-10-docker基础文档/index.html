@@ -22,18 +22,18 @@
     var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="0x00、命令 Management Commands:  config      Manage Docker configs container   Manage containers image       Manage images network     Manage networks node        Manage Swarm nodes plugin      Manage pl">
+  <meta name="description" content="0x01、简介1.链接映射docker有一个连接系统允许将多个容器连接在一起，共享连接信息。docker连接会创建一个父子关系，其中父容器可以看到子容器的信息。 2.容器与虚拟机是互补的。虚拟机是用来进行硬件资源划分的完美解决方案，它利用了硬件虚拟化技术，例如VT-x、AMD-V或者privilege level（权限等级）会同时通过一个hypervisor层来实现对资源的彻底隔离；而容器则是操作">
 <meta name="keywords" content="docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker基础文档">
 <meta property="og:url" content="https://xsoer.github.io/2019/03/10/2019/03-10-docker基础文档/index.html">
 <meta property="og:site_name" content="hackfox">
-<meta property="og:description" content="0x00、命令 Management Commands:  config      Manage Docker configs container   Manage containers image       Manage images network     Manage networks node        Manage Swarm nodes plugin      Manage pl">
+<meta property="og:description" content="0x01、简介1.链接映射docker有一个连接系统允许将多个容器连接在一起，共享连接信息。docker连接会创建一个父子关系，其中父容器可以看到子容器的信息。 2.容器与虚拟机是互补的。虚拟机是用来进行硬件资源划分的完美解决方案，它利用了硬件虚拟化技术，例如VT-x、AMD-V或者privilege level（权限等级）会同时通过一个hypervisor层来实现对资源的彻底隔离；而容器则是操作">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-09T12:49:06.415Z">
+<meta property="og:updated_time" content="2020-06-10T05:44:43.277Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker基础文档">
-<meta name="twitter:description" content="0x00、命令 Management Commands:  config      Manage Docker configs container   Manage containers image       Manage images network     Manage networks node        Manage Swarm nodes plugin      Manage pl">
+<meta name="twitter:description" content="0x01、简介1.链接映射docker有一个连接系统允许将多个容器连接在一起，共享连接信息。docker连接会创建一个父子关系，其中父容器可以看到子容器的信息。 2.容器与虚拟机是互补的。虚拟机是用来进行硬件资源划分的完美解决方案，它利用了硬件虚拟化技术，例如VT-x、AMD-V或者privilege level（权限等级）会同时通过一个hypervisor层来实现对资源的彻底隔离；而容器则是操作">
 
 <link rel="canonical" href="https://xsoer.github.io/2019/03/10/2019/03-10-docker基础文档/">
 
@@ -138,6 +138,11 @@
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
+        <li class="menu-item menu-item-manual">
+
+    <a href="/manual/" rel="section"><i class="fa fa-server fa-fw"></i>手册</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
@@ -145,7 +150,7 @@
   </li>
         <li class="menu-item menu-item-tools">
 
-    <a href="/tools/" rel="section"><i class="fa fa-server fa-fw"></i>工具</a>
+    <a href="/tools/" rel="section"><i class="fa fa-gavel fa-fw"></i>工具</a>
 
   </li>
         <li class="menu-item menu-item-books">
@@ -244,7 +249,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-09 20:49:06" itemprop="dateModified" datetime="2020-06-09T20:49:06+08:00">2020-06-09</time>
+                <time title="修改时间：2020-06-10 13:44:43" itemprop="dateModified" datetime="2020-06-10T13:44:43+08:00">2020-06-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -274,147 +279,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="0x00、命令"><a href="#0x00、命令" class="headerlink" title="0x00、命令"></a>0x00、命令</h2><ul>
-<li><p>Management Commands:</p>
-<ul>
-<li><strong><code>config</code></strong>      Manage Docker configs</li>
-<li><strong><code>container</code></strong>   Manage containers</li>
-<li><strong><code>image</code></strong>       Manage images</li>
-<li><strong><code>network</code></strong>     Manage networks</li>
-<li><strong><code>node</code></strong>        Manage Swarm nodes</li>
-<li><strong><code>plugin</code></strong>      Manage plugins</li>
-<li><strong><code>secret</code></strong>      Manage Docker secrets</li>
-<li><strong><code>service</code></strong>     Manage services</li>
-<li><strong><code>stack</code></strong>       Manage Docker stacks</li>
-<li><strong><code>swarm</code></strong>       Manage Swarm</li>
-<li><strong><code>system</code></strong>      Manage Docker</li>
-<li><strong><code>volume</code></strong>      Manage volumes<a id="more"></a>
-<br>
-</li>
-</ul>
-</li>
-<li><p>Commands:</p>
-<ul>
-<li><strong><code>attach</code></strong>      Attach local standard input, output, and error streams to a running container</li>
-<li><strong><code>build</code></strong>       Build an image from a Dockerfile</li>
-<li><strong><code>commit</code></strong>      Create a new image from a container’s changes</li>
-<li><strong><code>cp</code></strong>          Copy files/folders between a container and the local filesystem</li>
-<li><strong><code>create</code></strong>      Create a new container</li>
-<li><strong><code>diff</code></strong>        Inspect changes to files or directories on a container’s filesystem</li>
-<li><strong><code>events</code></strong>      Get real time events from the server</li>
-<li><strong><code>exec</code></strong>        Run a command in a running container</li>
-<li><strong><code>export</code></strong>      Export a container’s filesystem as a tar archive</li>
-<li><strong><code>history</code></strong>     Show the history of an image</li>
-<li><strong><code>images</code></strong>      List images</li>
-<li><strong><code>import</code></strong>      Import the contents from a tarball to create a filesystem image</li>
-<li><strong><code>info</code></strong>        Display system-wide information</li>
-<li><strong><code>inspect</code></strong>     Return low-level information on Docker objects</li>
-<li><strong><code>kill</code></strong>        Kill one or more running containers</li>
-<li><strong><code>load</code></strong>        Load an image from a tar archive or STDIN</li>
-<li><strong><code>login</code></strong>       Log in to a Docker registry</li>
-<li><strong><code>logout</code></strong>      Log out from a Docker registry</li>
-<li><strong><code>logs</code></strong>        Fetch the logs of a container</li>
-<li><strong><code>pause</code></strong>       Pause all processes within one or more containers</li>
-<li><strong><code>port</code></strong>        List port mappings or a specific mapping for the container</li>
-<li><strong><code>ps</code></strong>          List containers</li>
-<li><strong><code>pull</code></strong>        Pull an image or a repository from a registry</li>
-<li><strong><code>push</code></strong>        Push an image or a repository to a registry</li>
-<li><strong><code>rename</code></strong>      Rename a container</li>
-<li><strong><code>restart</code></strong>     Restart one or more containers</li>
-<li><strong><code>rm</code></strong>          Remove one or more containers</li>
-<li><strong><code>rmi</code></strong>         Remove one or more images</li>
-<li><strong><code>run</code></strong>         Run a command in a new container</li>
-<li><strong><code>save</code></strong>        Save one or more images to a tar archive (streamed to STDOUT by default)</li>
-<li><strong><code>search</code></strong>      Search the Docker Hub for images</li>
-<li><strong><code>start</code></strong>       Start one or more stopped containers</li>
-<li><strong><code>stats</code></strong>       Display a live stream of container(s) resource usage statistics</li>
-<li><strong><code>stop</code></strong>        Stop one or more running containers</li>
-<li><strong><code>tag</code></strong>         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE</li>
-<li><strong><code>top</code></strong>         Display the running processes of a container</li>
-<li><strong><code>unpause</code></strong>     Unpause all processes within one or more containers</li>
-<li><strong><code>update</code></strong>      Update configuration of one or more containers</li>
-<li><strong><code>version</code></strong>     Show the Docker version information</li>
-<li><strong><code>wait</code></strong>        Block until one or more containers stop, then print their exit codes</li>
-</ul>
-</li>
-</ul>
-<br>
-
-<ul>
-<li><strong><code>docker images</code></strong>       // 查看存在多少镜像</li>
-<li><strong><code>docker ps</code></strong>           // 查看镜像运行情况</li>
-<li><strong><code>docker run -t -i</code></strong>    // 运行镜像。并进行交互模式。</li>
-<li><strong><code>docker stop</code></strong>         // 停止运行镜像，后边跟镜像ID或name</li>
-<li><strong><code>docker search</code></strong>       // 搜索镜像仓库</li>
-<li><strong><code>docker pull</code></strong>         // 拉取镜像</li>
-<li><strong><code>docker inspect</code></strong>      // 查看镜像的json文件，即全部详细信息</li>
-<li><strong><code>docker port</code></strong>         // 查看docker与宿主机的端口映射关系</li>
-<li><strong><code>docker commit</code></strong>       // 用来生成新的版本</li>
-<li><strong><code>docker build</code></strong>        // 用docker file来创建镜像</li>
-<li><strong><code>docker tag</code></strong>          // 设置镜像标签</li>
-</ul>
-<br>
-
-<ul>
-<li>容器生命周期管理<ul>
-<li><strong><code>create</code></strong></li>
-<li><strong><code>run</code></strong></li>
-<li><strong><code>start/stop/restart</code></strong></li>
-<li><strong><code>pause/unpause</code></strong></li>
-<li><strong><code>exec</code></strong></li>
-<li><strong><code>rm</code></strong></li>
-<li><strong><code>kill</code></strong></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>容器操作</p>
-<ul>
-<li><strong><code>ps</code></strong></li>
-<li><strong><code>inspect</code></strong></li>
-<li><strong><code>top</code></strong></li>
-<li><strong><code>attach</code></strong></li>
-<li><strong><code>events</code></strong></li>
-<li><strong><code>logs</code></strong></li>
-<li><strong><code>wait</code></strong></li>
-<li><strong><code>export</code></strong></li>
-<li><strong><code>port</code></strong></li>
-</ul>
-</li>
-<li><p>容器rootfs命令</p>
-<ul>
-<li><strong><code>commit</code></strong></li>
-<li><strong><code>cp</code></strong></li>
-<li><strong><code>diff</code></strong></li>
-</ul>
-</li>
-<li><p>镜像仓库</p>
-<ul>
-<li><strong><code>login</code></strong></li>
-<li><strong><code>pull</code></strong></li>
-<li><strong><code>push</code></strong></li>
-<li><strong><code>search</code></strong></li>
-</ul>
-</li>
-<li><p>本地镜像管理</p>
-<ul>
-<li><strong><code>images</code></strong></li>
-<li><strong><code>rmi</code></strong></li>
-<li><strong><code>tag</code></strong></li>
-<li><strong><code>build</code></strong></li>
-<li><strong><code>history</code></strong></li>
-<li><strong><code>save</code></strong></li>
-<li><strong><code>import</code></strong></li>
-</ul>
-</li>
-<li><p>信息</p>
-<ul>
-<li><strong><code>info</code></strong></li>
-<li><strong><code>version</code></strong></li>
-</ul>
-</li>
-</ul>
-<h2 id="0x01、简介"><a href="#0x01、简介" class="headerlink" title="0x01、简介"></a>0x01、简介</h2><h3 id="1-链接映射"><a href="#1-链接映射" class="headerlink" title="1.链接映射"></a>1.链接映射</h3><p>docker有一个连接系统允许将多个容器连接在一起，共享连接信息。docker连接会创建一个父子关系，其中父容器可以看到子容器的信息。</p>
+        <h2 id="0x01、简介"><a href="#0x01、简介" class="headerlink" title="0x01、简介"></a>0x01、简介</h2><h3 id="1-链接映射"><a href="#1-链接映射" class="headerlink" title="1.链接映射"></a>1.链接映射</h3><p>docker有一个连接系统允许将多个容器连接在一起，共享连接信息。docker连接会创建一个父子关系，其中父容器可以看到子容器的信息。</p>
 <h3 id="2-容器与虚拟机是互补的。"><a href="#2-容器与虚拟机是互补的。" class="headerlink" title="2.容器与虚拟机是互补的。"></a>2.容器与虚拟机是互补的。</h3><p>虚拟机是用来进行硬件资源划分的完美解决方案，它利用了硬件虚拟化技术，例如VT-x、AMD-V或者privilege level（权限等级）会同时通过一个hypervisor层来实现对资源的彻底隔离；而容器则是操作系统级别的虚拟化，利用的是内核的Cgroup和Namespace特性，此功能完全通过软件来实现，仅仅是进程本身就可以与其他进程隔离开，不需要任何辅助。</p>
 <p>Docker容器与主机共享操作系统内核，不同的容器之间可以共享部分系统资源，因此容器更加轻量级，消耗的资源也更少。而虚拟机会独占分配给自己的资源，几乎不存在资源共享，各个虚拟机实例之间近乎完全隔离，因此虚拟机更加重量级，也会消耗更多的资源。\</p>
 <h3 id="3-最小组成"><a href="#3-最小组成" class="headerlink" title="3.最小组成"></a>3.最小组成</h3><p>对于Linux容器的最小组成，可以由以下公式来表示：</p>
@@ -757,7 +622,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00、命令"><span class="nav-number">1.</span> <span class="nav-text">0x00、命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01、简介"><span class="nav-number">2.</span> <span class="nav-text">0x01、简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-链接映射"><span class="nav-number">2.1.</span> <span class="nav-text">1.链接映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-容器与虚拟机是互补的。"><span class="nav-number">2.2.</span> <span class="nav-text">2.容器与虚拟机是互补的。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-最小组成"><span class="nav-number">2.3.</span> <span class="nav-text">3.最小组成</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02、Cgroups"><span class="nav-number">3.</span> <span class="nav-text">0x02、Cgroups</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Cgroups子系统"><span class="nav-number">3.0.1.</span> <span class="nav-text">Cgroups子系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#cpuset子系统"><span class="nav-number">3.0.1.1.</span> <span class="nav-text">cpuset子系统</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03、Namespace"><span class="nav-number">4.</span> <span class="nav-text">0x03、Namespace</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-子命名空间"><span class="nav-number">4.0.1.</span> <span class="nav-text">1.子命名空间</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04、Images"><span class="nav-number">5.</span> <span class="nav-text">0x04、Images</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-基本概念"><span class="nav-number">5.1.</span> <span class="nav-text">1.基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-创建镜像"><span class="nav-number">5.1.1.</span> <span class="nav-text">1.1 创建镜像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-传输镜像"><span class="nav-number">5.1.2.</span> <span class="nav-text">1.2 传输镜像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-运行镜像"><span class="nav-number">5.1.3.</span> <span class="nav-text">1.3 运行镜像</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-组织结构"><span class="nav-number">5.2.</span> <span class="nav-text">2.组织结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-数据内容"><span class="nav-number">5.2.1.</span> <span class="nav-text">2.1 数据内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-扩展知识"><span class="nav-number">5.2.2.</span> <span class="nav-text">2.2 扩展知识</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x05、仓库进阶"><span class="nav-number">6.</span> <span class="nav-text">0x05、仓库进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-什么是仓库"><span class="nav-number">6.1.</span> <span class="nav-text">1.什么是仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-仓库的组成"><span class="nav-number">6.1.1.</span> <span class="nav-text">1.1 仓库的组成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-仓库镜像"><span class="nav-number">6.1.2.</span> <span class="nav-text">1.2 仓库镜像</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-restfulApi介绍"><span class="nav-number">6.2.</span> <span class="nav-text">1.3 restfulApi介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-上传、下载、鉴权原理"><span class="nav-number">6.3.</span> <span class="nav-text">1.4 上传、下载、鉴权原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-私有仓库搭建"><span class="nav-number">6.4.</span> <span class="nav-text">1.5 私有仓库搭建</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x06、docker网络"><span class="nav-number">7.</span> <span class="nav-text">0x06、docker网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x07、容器卷管理"><span class="nav-number">8.</span> <span class="nav-text">0x07、容器卷管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x08、DockerAPI"><span class="nav-number">9.</span> <span class="nav-text">0x08、DockerAPI</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Docker-Remote-API"><span class="nav-number">9.1.</span> <span class="nav-text">1.Docker Remote API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Docker-Registry-API"><span class="nav-number">9.2.</span> <span class="nav-text">2.Docker Registry API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Docker-Hub-API"><span class="nav-number">9.3.</span> <span class="nav-text">3.Docker Hub API</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x09、Docker安全"><span class="nav-number">10.</span> <span class="nav-text">0x09、Docker安全</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-包含内容"><span class="nav-number">10.1.</span> <span class="nav-text">1.包含内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-容器安全"><span class="nav-number">10.2.</span> <span class="nav-text">2.容器安全</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-安全加固"><span class="nav-number">10.3.</span> <span class="nav-text">3.安全加固</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-安全遗留问题"><span class="nav-number">10.4.</span> <span class="nav-text">4.安全遗留问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x10、Libcontainer"><span class="nav-number">11.</span> <span class="nav-text">0x10、Libcontainer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x11、Docker实战"><span class="nav-number">12.</span> <span class="nav-text">0x11、Docker实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x12、Docker集群"><span class="nav-number">13.</span> <span class="nav-text">0x12、Docker集群</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x13、Docker生态圈"><span class="nav-number">14.</span> <span class="nav-text">0x13、Docker生态圈</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01、简介"><span class="nav-number">1.</span> <span class="nav-text">0x01、简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-链接映射"><span class="nav-number">1.1.</span> <span class="nav-text">1.链接映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-容器与虚拟机是互补的。"><span class="nav-number">1.2.</span> <span class="nav-text">2.容器与虚拟机是互补的。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-最小组成"><span class="nav-number">1.3.</span> <span class="nav-text">3.最小组成</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02、Cgroups"><span class="nav-number">2.</span> <span class="nav-text">0x02、Cgroups</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Cgroups子系统"><span class="nav-number">2.0.1.</span> <span class="nav-text">Cgroups子系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#cpuset子系统"><span class="nav-number">2.0.1.1.</span> <span class="nav-text">cpuset子系统</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03、Namespace"><span class="nav-number">3.</span> <span class="nav-text">0x03、Namespace</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-子命名空间"><span class="nav-number">3.0.1.</span> <span class="nav-text">1.子命名空间</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04、Images"><span class="nav-number">4.</span> <span class="nav-text">0x04、Images</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-基本概念"><span class="nav-number">4.1.</span> <span class="nav-text">1.基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-创建镜像"><span class="nav-number">4.1.1.</span> <span class="nav-text">1.1 创建镜像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-传输镜像"><span class="nav-number">4.1.2.</span> <span class="nav-text">1.2 传输镜像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-运行镜像"><span class="nav-number">4.1.3.</span> <span class="nav-text">1.3 运行镜像</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-组织结构"><span class="nav-number">4.2.</span> <span class="nav-text">2.组织结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-数据内容"><span class="nav-number">4.2.1.</span> <span class="nav-text">2.1 数据内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-扩展知识"><span class="nav-number">4.2.2.</span> <span class="nav-text">2.2 扩展知识</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x05、仓库进阶"><span class="nav-number">5.</span> <span class="nav-text">0x05、仓库进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-什么是仓库"><span class="nav-number">5.1.</span> <span class="nav-text">1.什么是仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-仓库的组成"><span class="nav-number">5.1.1.</span> <span class="nav-text">1.1 仓库的组成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-仓库镜像"><span class="nav-number">5.1.2.</span> <span class="nav-text">1.2 仓库镜像</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-restfulApi介绍"><span class="nav-number">5.2.</span> <span class="nav-text">1.3 restfulApi介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-上传、下载、鉴权原理"><span class="nav-number">5.3.</span> <span class="nav-text">1.4 上传、下载、鉴权原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-私有仓库搭建"><span class="nav-number">5.4.</span> <span class="nav-text">1.5 私有仓库搭建</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x06、docker网络"><span class="nav-number">6.</span> <span class="nav-text">0x06、docker网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x07、容器卷管理"><span class="nav-number">7.</span> <span class="nav-text">0x07、容器卷管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x08、DockerAPI"><span class="nav-number">8.</span> <span class="nav-text">0x08、DockerAPI</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Docker-Remote-API"><span class="nav-number">8.1.</span> <span class="nav-text">1.Docker Remote API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Docker-Registry-API"><span class="nav-number">8.2.</span> <span class="nav-text">2.Docker Registry API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Docker-Hub-API"><span class="nav-number">8.3.</span> <span class="nav-text">3.Docker Hub API</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x09、Docker安全"><span class="nav-number">9.</span> <span class="nav-text">0x09、Docker安全</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-包含内容"><span class="nav-number">9.1.</span> <span class="nav-text">1.包含内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-容器安全"><span class="nav-number">9.2.</span> <span class="nav-text">2.容器安全</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-安全加固"><span class="nav-number">9.3.</span> <span class="nav-text">3.安全加固</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-安全遗留问题"><span class="nav-number">9.4.</span> <span class="nav-text">4.安全遗留问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x10、Libcontainer"><span class="nav-number">10.</span> <span class="nav-text">0x10、Libcontainer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x11、Docker实战"><span class="nav-number">11.</span> <span class="nav-text">0x11、Docker实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x12、Docker集群"><span class="nav-number">12.</span> <span class="nav-text">0x12、Docker集群</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x13、Docker生态圈"><span class="nav-number">13.</span> <span class="nav-text">0x13、Docker生态圈</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -771,7 +636,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

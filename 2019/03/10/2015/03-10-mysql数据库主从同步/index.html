@@ -30,7 +30,7 @@
 <meta property="og:site_name" content="hackfox">
 <meta property="og:description" content="一、同步配置 1.主库和从库创建同步账户 1mysql&amp;gt; grant replication slave, replication client on *.* to repl@&apos;192.168.1.%&apos; identified by &apos;123456&apos;;  2.主库配置/etc/my.cnf 123456server-id=130	#保证唯一值log-bin=mysql-binbinlog_fo">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-09T12:50:13.531Z">
+<meta property="og:updated_time" content="2020-06-10T05:53:06.934Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql数据库主从同步">
 <meta name="twitter:description" content="一、同步配置 1.主库和从库创建同步账户 1mysql&amp;gt; grant replication slave, replication client on *.* to repl@&apos;192.168.1.%&apos; identified by &apos;123456&apos;;  2.主库配置/etc/my.cnf 123456server-id=130	#保证唯一值log-bin=mysql-binbinlog_fo">
@@ -138,6 +138,11 @@
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
+        <li class="menu-item menu-item-manual">
+
+    <a href="/manual/" rel="section"><i class="fa fa-server fa-fw"></i>手册</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
@@ -145,7 +150,7 @@
   </li>
         <li class="menu-item menu-item-tools">
 
-    <a href="/tools/" rel="section"><i class="fa fa-server fa-fw"></i>工具</a>
+    <a href="/tools/" rel="section"><i class="fa fa-gavel fa-fw"></i>工具</a>
 
   </li>
         <li class="menu-item menu-item-books">
@@ -244,7 +249,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-09 20:50:13" itemprop="dateModified" datetime="2020-06-09T20:50:13+08:00">2020-06-09</time>
+                <time title="修改时间：2020-06-10 13:53:06" itemprop="dateModified" datetime="2020-06-10T13:53:06+08:00">2020-06-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -370,8 +375,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019/03/10/2016/03-10-mysql常用语句/" rel="prev" title="mysql常用语句">
-      <i class="fa fa-chevron-left"></i> mysql常用语句
+    <a href="/2019/03/10/2019/03-10-数据库基础/" rel="prev" title="数据库基础">
+      <i class="fa fa-chevron-left"></i> 数据库基础
     </a></div>
       <div class="post-nav-item">
     <a href="/2019/03/10/2019/03-10-ES6标准概览/" rel="next" title="ES6标准概览">
@@ -389,6 +394,7 @@
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -449,7 +455,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -649,6 +655,25 @@ window.addEventListener('pjax:success', () => {
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '7c7b02623259a39014a0',
+      clientSecret: '07c01a3277dab0956ad91bad7d24b91a7e773990',
+      repo        : 'xsoer.github.io',
+      owner       : 'xsoer',
+      admin       : ['xsoer'],
+      id          : '4f9e3e146b131f39d61546c9662e7d14',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
     </div>
 </body>

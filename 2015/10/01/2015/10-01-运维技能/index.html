@@ -30,7 +30,7 @@
 <meta property="og:site_name" content="hackfox">
 <meta property="og:description" content="0x00、初级运维 1.CPU、内存、磁盘、IO、文件系统 2.系统安装：设备选择、规划磁盘分区、定制化安装 3.基础知识：基本命令、文本编辑器、用户与组、权限管理 4.磁盘管理：磁盘分区和文件系统、磁盘阵列管理、逻辑卷管理 5.软件管理：软件安装、服务管理、进程管理">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-09T12:50:27.989Z">
+<meta property="og:updated_time" content="2020-06-10T05:53:16.348Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="运维技能">
 <meta name="twitter:description" content="0x00、初级运维 1.CPU、内存、磁盘、IO、文件系统 2.系统安装：设备选择、规划磁盘分区、定制化安装 3.基础知识：基本命令、文本编辑器、用户与组、权限管理 4.磁盘管理：磁盘分区和文件系统、磁盘阵列管理、逻辑卷管理 5.软件管理：软件安装、服务管理、进程管理">
@@ -138,6 +138,11 @@
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
+        <li class="menu-item menu-item-manual">
+
+    <a href="/manual/" rel="section"><i class="fa fa-server fa-fw"></i>手册</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
@@ -145,7 +150,7 @@
   </li>
         <li class="menu-item menu-item-tools">
 
-    <a href="/tools/" rel="section"><i class="fa fa-server fa-fw"></i>工具</a>
+    <a href="/tools/" rel="section"><i class="fa fa-gavel fa-fw"></i>工具</a>
 
   </li>
         <li class="menu-item menu-item-books">
@@ -244,7 +249,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-09 20:50:27" itemprop="dateModified" datetime="2020-06-09T20:50:27+08:00">2020-06-09</time>
+                <time title="修改时间：2020-06-10 13:53:16" itemprop="dateModified" datetime="2020-06-10T13:53:16+08:00">2020-06-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -473,6 +478,7 @@
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -533,7 +539,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -733,6 +739,25 @@ window.addEventListener('pjax:success', () => {
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '7c7b02623259a39014a0',
+      clientSecret: '07c01a3277dab0956ad91bad7d24b91a7e773990',
+      repo        : 'xsoer.github.io',
+      owner       : 'xsoer',
+      admin       : ['xsoer'],
+      id          : 'cccfc413a30ac7e7035c1d26487f1e20',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
     </div>
 </body>
