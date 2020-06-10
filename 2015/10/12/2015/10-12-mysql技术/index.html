@@ -19,7 +19,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="0x00、数据库基本概念1.数据模型：描述数据、数据关系、数据语义及一致性约束的概念工具集  网络模型 层次模型 关系模型  2.关系模型：用表来描述数据与数据间的关系3.数据完整性和数据保护4.mysql 1.0诞生于1995年5.mysql以守护进程运行">
@@ -268,6 +268,20 @@
               </span>
               <span class="post-meta-item-text">阅读次数：</span>
               <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>36k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>33 分钟</span>
             </span>
 
         </div>
@@ -707,7 +721,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00、数据库基本概念"><span class="nav-number">1.</span> <span class="nav-text">0x00、数据库基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01、结构体系"><span class="nav-number">2.</span> <span class="nav-text">0x01、结构体系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02、系统架构"><span class="nav-number">3.</span> <span class="nav-text">0x02、系统架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-逻辑模块"><span class="nav-number">3.1.</span> <span class="nav-text">1.逻辑模块</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03、安全"><span class="nav-number">4.</span> <span class="nav-text">0x03、安全</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-网络"><span class="nav-number">4.1.</span> <span class="nav-text">1.网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-主机"><span class="nav-number">4.2.</span> <span class="nav-text">2.主机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-数据库"><span class="nav-number">4.3.</span> <span class="nav-text">3.数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-代码"><span class="nav-number">4.4.</span> <span class="nav-text">4.代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-权限"><span class="nav-number">4.5.</span> <span class="nav-text">5.权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-访问控制原理"><span class="nav-number">4.6.</span> <span class="nav-text">6.访问控制原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-访问授权策略"><span class="nav-number">4.7.</span> <span class="nav-text">7.访问授权策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-安全设置注意项"><span class="nav-number">4.8.</span> <span class="nav-text">8.安全设置注意项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04、存储管理器"><span class="nav-number">5.</span> <span class="nav-text">0x04、存储管理器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x05、查询处理器"><span class="nav-number">6.</span> <span class="nav-text">0x05、查询处理器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x06、关系型数据库"><span class="nav-number">7.</span> <span class="nav-text">0x06、关系型数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x07、关键字-SQL"><span class="nav-number">8.</span> <span class="nav-text">0x07、关键字(SQL)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x08、SQL语句"><span class="nav-number">9.</span> <span class="nav-text">0x08、SQL语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x09、内置函数-聚集函数-：不能组合使用"><span class="nav-number">10.</span> <span class="nav-text">0x09、内置函数(聚集函数)：不能组合使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x10、基本类型"><span class="nav-number">11.</span> <span class="nav-text">0x10、基本类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x11、匹配"><span class="nav-number">12.</span> <span class="nav-text">0x11、匹配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x12、存储过程"><span class="nav-number">13.</span> <span class="nav-text">0x12、存储过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x13、索引"><span class="nav-number">14.</span> <span class="nav-text">0x13、索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x14、数据库设计问题"><span class="nav-number">15.</span> <span class="nav-text">0x14、数据库设计问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x15、数据库设计步骤"><span class="nav-number">16.</span> <span class="nav-text">0x15、数据库设计步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x16、mysql存储引擎"><span class="nav-number">17.</span> <span class="nav-text">0x16、mysql存储引擎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x17、事务-锁"><span class="nav-number">18.</span> <span class="nav-text">0x17、事务/锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x18、备份-复制"><span class="nav-number">19.</span> <span class="nav-text">0x18、备份/复制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x19、优化建议"><span class="nav-number">20.</span> <span class="nav-text">0x19、优化建议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x20、information-schema表"><span class="nav-number">21.</span> <span class="nav-text">0x20、information_schema表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x21、配置参数-show-variables"><span class="nav-number">22.</span> <span class="nav-text">0x21、配置参数:show variables;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x22、性能指标-show-status"><span class="nav-number">23.</span> <span class="nav-text">0x22、性能指标:show status;</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00、数据库基本概念"><span class="nav-text">0x00、数据库基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01、结构体系"><span class="nav-text">0x01、结构体系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02、系统架构"><span class="nav-text">0x02、系统架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-逻辑模块"><span class="nav-text">1.逻辑模块</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03、安全"><span class="nav-text">0x03、安全</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-网络"><span class="nav-text">1.网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-主机"><span class="nav-text">2.主机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-数据库"><span class="nav-text">3.数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-代码"><span class="nav-text">4.代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-权限"><span class="nav-text">5.权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-访问控制原理"><span class="nav-text">6.访问控制原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-访问授权策略"><span class="nav-text">7.访问授权策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-安全设置注意项"><span class="nav-text">8.安全设置注意项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04、存储管理器"><span class="nav-text">0x04、存储管理器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x05、查询处理器"><span class="nav-text">0x05、查询处理器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x06、关系型数据库"><span class="nav-text">0x06、关系型数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x07、关键字-SQL"><span class="nav-text">0x07、关键字(SQL)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x08、SQL语句"><span class="nav-text">0x08、SQL语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x09、内置函数-聚集函数-：不能组合使用"><span class="nav-text">0x09、内置函数(聚集函数)：不能组合使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x10、基本类型"><span class="nav-text">0x10、基本类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x11、匹配"><span class="nav-text">0x11、匹配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x12、存储过程"><span class="nav-text">0x12、存储过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x13、索引"><span class="nav-text">0x13、索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x14、数据库设计问题"><span class="nav-text">0x14、数据库设计问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x15、数据库设计步骤"><span class="nav-text">0x15、数据库设计步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x16、mysql存储引擎"><span class="nav-text">0x16、mysql存储引擎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x17、事务-锁"><span class="nav-text">0x17、事务/锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x18、备份-复制"><span class="nav-text">0x18、备份/复制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x19、优化建议"><span class="nav-text">0x19、优化建议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x20、information-schema表"><span class="nav-text">0x20、information_schema表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x21、配置参数-show-variables"><span class="nav-text">0x21、配置参数:show variables;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x22、性能指标-show-status"><span class="nav-text">0x22、性能指标:show status;</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -727,12 +741,12 @@
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -788,6 +802,18 @@
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">hackfox</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">134k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">2:02</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>

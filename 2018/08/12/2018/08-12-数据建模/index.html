@@ -19,7 +19,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="0x00、数据模型 为什么要建模  定义如何存储信息，如何操作信息，以及信息的完整性等约束功能 影响了数据的形态和使用方式 需要满足不同的业务场景需要 联机事务处理(OLTP):满足业务线需要，频繁的维护更新数据，强一致性 联机分析处理(OLAP):满足决策层需要，更多纬度的视角查询，满足统计决策">
@@ -268,6 +268,20 @@
               </span>
               <span class="post-meta-item-text">阅读次数：</span>
               <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>22k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>20 分钟</span>
             </span>
 
         </div>
@@ -1305,7 +1319,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00、数据模型"><span class="nav-number">1.</span> <span class="nav-text">0x00、数据模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01、数据建模"><span class="nav-number">2.</span> <span class="nav-text">0x01、数据建模</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02、数据存储历史"><span class="nav-number">3.</span> <span class="nav-text">0x02、数据存储历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03、层次模型"><span class="nav-number">4.</span> <span class="nav-text">0x03、层次模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04、网状模型"><span class="nav-number">5.</span> <span class="nav-text">0x04、网状模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x05、关系模型"><span class="nav-number">6.</span> <span class="nav-text">0x05、关系模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x06、面向对象模型"><span class="nav-number">7.</span> <span class="nav-text">0x06、面向对象模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x07、数据仓库与操作型数据库的区别"><span class="nav-number">8.</span> <span class="nav-text">0x07、数据仓库与操作型数据库的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x08、数据仓库简介"><span class="nav-number">9.</span> <span class="nav-text">0x08、数据仓库简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x09、ETL"><span class="nav-number">10.</span> <span class="nav-text">0x09、ETL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x10、仓库建模阶段解析"><span class="nav-number">11.</span> <span class="nav-text">0x10、仓库建模阶段解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x11、数据仓库建模方法"><span class="nav-number">12.</span> <span class="nav-text">0x11、数据仓库建模方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x12、范式模型-ER模型、实体模型"><span class="nav-number">13.</span> <span class="nav-text">0x12、范式模型(ER模型、实体模型)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x13、维度建模"><span class="nav-number">14.</span> <span class="nav-text">0x13、维度建模</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x14、范式模型和纬度模型区别"><span class="nav-number">15.</span> <span class="nav-text">0x14、范式模型和纬度模型区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x15、数据层"><span class="nav-number">16.</span> <span class="nav-text">0x15、数据层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x16、查询方式"><span class="nav-number">17.</span> <span class="nav-text">0x16、查询方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x17、数据仓库"><span class="nav-number">18.</span> <span class="nav-text">0x17、数据仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x18、数据迁移注意点"><span class="nav-number">19.</span> <span class="nav-text">0x18、数据迁移注意点</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00、数据模型"><span class="nav-text">0x00、数据模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01、数据建模"><span class="nav-text">0x01、数据建模</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02、数据存储历史"><span class="nav-text">0x02、数据存储历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03、层次模型"><span class="nav-text">0x03、层次模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04、网状模型"><span class="nav-text">0x04、网状模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x05、关系模型"><span class="nav-text">0x05、关系模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x06、面向对象模型"><span class="nav-text">0x06、面向对象模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x07、数据仓库与操作型数据库的区别"><span class="nav-text">0x07、数据仓库与操作型数据库的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x08、数据仓库简介"><span class="nav-text">0x08、数据仓库简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x09、ETL"><span class="nav-text">0x09、ETL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x10、仓库建模阶段解析"><span class="nav-text">0x10、仓库建模阶段解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x11、数据仓库建模方法"><span class="nav-text">0x11、数据仓库建模方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x12、范式模型-ER模型、实体模型"><span class="nav-text">0x12、范式模型(ER模型、实体模型)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x13、维度建模"><span class="nav-text">0x13、维度建模</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x14、范式模型和纬度模型区别"><span class="nav-text">0x14、范式模型和纬度模型区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x15、数据层"><span class="nav-text">0x15、数据层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x16、查询方式"><span class="nav-text">0x16、查询方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x17、数据仓库"><span class="nav-text">0x17、数据仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x18、数据迁移注意点"><span class="nav-text">0x18、数据迁移注意点</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1325,12 +1339,12 @@
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1386,6 +1400,18 @@
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">hackfox</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">134k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">2:02</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
