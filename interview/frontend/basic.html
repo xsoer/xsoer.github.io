@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="0x00、HTML0x01、CSS1.基础 display:none和visibility:hidden有什么区别 html引入样式的方式有几种 什么是盒模型 CSS选择符有哪些？哪些属性可以继承？优先级算法如何计算？ CSS什么是伪类，伪类有那些，有什么作用？ flex布局是什么，都有哪些语法，相比grid布局有什么不同？ css如何动态计算高度或宽度？  2.sass 什么是SASS？ sas">
+<meta name="keywords" content="面试,前端">
+<meta property="og:type" content="website">
+<meta property="og:title" content="前端面试题">
+<meta property="og:url" content="https://xsoer.github.io/interview/frontend/basic.html">
+<meta property="og:site_name" content="hackfox">
+<meta property="og:description" content="0x00、HTML0x01、CSS1.基础 display:none和visibility:hidden有什么区别 html引入样式的方式有几种 什么是盒模型 CSS选择符有哪些？哪些属性可以继承？优先级算法如何计算？ CSS什么是伪类，伪类有那些，有什么作用？ flex布局是什么，都有哪些语法，相比grid布局有什么不同？ css如何动态计算高度或宽度？  2.sass 什么是SASS？ sas">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-06-11T04:12:54.194Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端面试题">
+<meta name="twitter:description" content="0x00、HTML0x01、CSS1.基础 display:none和visibility:hidden有什么区别 html引入样式的方式有几种 什么是盒模型 CSS选择符有哪些？哪些属性可以继承？优先级算法如何计算？ CSS什么是伪类，伪类有那些，有什么作用？ flex布局是什么，都有哪些语法，相比grid布局有什么不同？ css如何动态计算高度或宽度？  2.sass 什么是SASS？ sas">
+
+<link rel="canonical" href="https://xsoer.github.io/interview/frontend/basic">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>前端面试题 | hackfox
+</title>
+  
+    <script>
+      function sendPageView() {
+        if (CONFIG.hostname !== location.hostname) return;
+        var uid = localStorage.getItem('uid') || (Math.random() + '.' + Math.random());
+        localStorage.setItem('uid', uid);
+        navigator.sendBeacon('https://www.google-analytics.com/collect', new URLSearchParams({
+          v  : 1,
+          tid: 'UA-114671402-1',
+          cid: uid,
+          t  : 'pageview',
+          dp : encodeURIComponent(location.pathname)
+        }));
+      }
+      document.addEventListener('pjax:complete', sendPageView);
+      sendPageView();
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="stylesheet" href="/css/prism-duotone-dark.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">hackfox</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">专注 慎思 博学</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-man">
+
+    <a href="/man/" rel="section"><i class="fa fa-server fa-fw"></i>手册</a>
+
+  </li>
+        <li class="menu-item menu-item-algorithms">
+
+    <a href="/algorithms/" rel="section"><i class="fa fa-cogs fa-fw"></i>算法</a>
+
+  </li>
+        <li class="menu-item menu-item-interview">
+
+    <a href="/interview/" rel="section"><i class="fa fa-code fa-fw"></i>面试</a>
+
+  </li>
+        <li class="menu-item menu-item-tools">
+
+    <a href="/tools/" rel="section"><i class="fa fa-gavel fa-fw"></i>工具</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>书籍</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">前端面试题
+</h1>
+
+<div class="post-meta">
+  
+  <ul class="breadcrumb">
+          
+            <li><a href="/interview/">INTERVIEW</a></li>
+            <li><a href="/interview/frontend/">FRONTEND</a></li>
+            <li>BASIC</li>
+          
+  </ul>
+
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+          <h2 id="0x00、HTML"><a href="#0x00、HTML" class="headerlink" title="0x00、HTML"></a>0x00、HTML</h2><h2 id="0x01、CSS"><a href="#0x01、CSS" class="headerlink" title="0x01、CSS"></a>0x01、CSS</h2><h4 id="1-基础"><a href="#1-基础" class="headerlink" title="1.基础"></a>1.基础</h4><ul>
+<li>display:none和visibility:hidden有什么区别</li>
+<li>html引入样式的方式有几种</li>
+<li>什么是盒模型</li>
+<li>CSS选择符有哪些？哪些属性可以继承？优先级算法如何计算？</li>
+<li>CSS什么是伪类，伪类有那些，有什么作用？</li>
+<li>flex布局是什么，都有哪些语法，相比grid布局有什么不同？</li>
+<li>css如何动态计算高度或宽度？</li>
+</ul>
+<h4 id="2-sass"><a href="#2-sass" class="headerlink" title="2.sass"></a>2.sass</h4><ul>
+<li>什么是SASS？</li>
+<li>sass的优缺点</li>
+<li>SASS中的嵌套规则是什么？</li>
+<li>有哪些运算符，都有什么作用？</li>
+<li>如何在SASS中引用父选择器？</li>
+</ul>
+<h2 id="0x02、JS"><a href="#0x02、JS" class="headerlink" title="0x02、JS"></a>0x02、JS</h2><h4 id="1-基础-1"><a href="#1-基础-1" class="headerlink" title="1.基础"></a>1.基础</h4><ul>
+<li>介绍js有哪些内置对象？</li>
+<li>null，undefined 的区别？</li>
+<li>使用 typeof bar === “object” 判断 bar 是不是一个对象有神马潜在的弊端？如何避免这种弊端？</li>
+<li>如何将字符串转化为数字，例如’12.3b’</li>
+<li>字符串转化为数组，数组转化为字符串</li>
+<li>如何判断一个对象中是否存在某个属性。</li>
+<li>空数据组的boolean值</li>
+<li>字符串替换值用什么方法？全部替换如何做？</li>
+<li>什么是原型链</li>
+</ul>
+<h4 id="2-es6"><a href="#2-es6" class="headerlink" title="2.es6"></a>2.es6</h4><ul>
+<li>新增了什么语法</li>
+</ul>
+<h4 id="3-typescript"><a href="#3-typescript" class="headerlink" title="3.typescript"></a>3.typescript</h4><ul>
+<li>您对Typescript中的类有什么了解？列出类的一些功能。</li>
+<li>如何从TypeScript中的子类调用基类构造函数？</li>
+<li>内部模块和外部模块有什么区别？</li>
+<li>请解释Typescript中的装饰器？</li>
+<li>TypeScript类中属性/方法的默认可见性是什么？</li>
+<li>如何在TypeScript中检查null和undefined？</li>
+<li>readonly 和 const 有什么区别？</li>
+</ul>
+<h2 id="0x03、Vue"><a href="#0x03、Vue" class="headerlink" title="0x03、Vue"></a>0x03、Vue</h2><h2 id="0x04、React"><a href="#0x04、React" class="headerlink" title="0x04、React"></a>0x04、React</h2><ul>
+<li>React 中 refs 的作用是什么？</li>
+<li>createElement 与 cloneElement 的区别是什么？</li>
+<li>组件的生命周期有哪些，生命周期的函数有哪些？</li>
+<li>什么情况下组件会被更新</li>
+<li>指令有哪些</li>
+<li>子父组件如何通信</li>
+</ul>
+<h2 id="0x05、综合"><a href="#0x05、综合" class="headerlink" title="0x05、综合"></a>0x05、综合</h2><h4 id="1-性能"><a href="#1-性能" class="headerlink" title="1.性能"></a>1.性能</h4><ul>
+<li>前端性能优化有哪些？</li>
+<li>cookie和session</li>
+<li>本地存储类型及限制</li>
+<li>webpack打包如何优化</li>
+</ul>
+<h4 id="2-网络"><a href="#2-网络" class="headerlink" title="2.网络"></a>2.网络</h4><ul>
+<li>网络请求流程</li>
+</ul>
+<h4 id="3-安全"><a href="#3-安全" class="headerlink" title="3.安全"></a>3.安全</h4><ul>
+<li>数据提交</li>
+<li>跨域问题如何解决</li>
+</ul>
+<h4 id="4-业务场景"><a href="#4-业务场景" class="headerlink" title="4.业务场景"></a>4.业务场景</h4><ul>
+<li>单点登录实现</li>
+</ul>
+<h4 id="5-正则表达式"><a href="#5-正则表达式" class="headerlink" title="5.正则表达式"></a>5.正则表达式</h4><ul>
+<li>判断是否是数字、正数</li>
+<li>替换变量</li>
+</ul>
+<h2 id="0x06、小程序"><a href="#0x06、小程序" class="headerlink" title="0x06、小程序"></a>0x06、小程序</h2><h4 id="1-uniapp"><a href="#1-uniapp" class="headerlink" title="1.uniapp"></a>1.uniapp</h4><h4 id="2-Taro"><a href="#2-Taro" class="headerlink" title="2.Taro"></a>2.Taro</h4><ul>
+<li>为什么要用这个</li>
+<li>坑在哪里</li>
+<li>设计稿尺寸问题</li>
+</ul>
+
+      </div>
+      
+      
+      
+    </div>
+    
+  <ul class="breadcrumb">
+          
+            <li><a href="/interview/">INTERVIEW</a></li>
+            <li><a href="/interview/frontend/">FRONTEND</a></li>
+            <li>BASIC</li>
+          
+  </ul>
+
+    
+    
+    
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00、HTML"><span class="nav-text">0x00、HTML</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01、CSS"><span class="nav-text">0x01、CSS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-基础"><span class="nav-text">1.基础</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-sass"><span class="nav-text">2.sass</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02、JS"><span class="nav-text">0x02、JS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-基础-1"><span class="nav-text">1.基础</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-es6"><span class="nav-text">2.es6</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-typescript"><span class="nav-text">3.typescript</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03、Vue"><span class="nav-text">0x03、Vue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04、React"><span class="nav-text">0x04、React</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x05、综合"><span class="nav-text">0x05、综合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-性能"><span class="nav-text">1.性能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-网络"><span class="nav-text">2.网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-安全"><span class="nav-text">3.安全</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-业务场景"><span class="nav-text">4.业务场景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-正则表达式"><span class="nav-text">5.正则表达式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x06、小程序"><span class="nav-text">0x06、小程序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-uniapp"><span class="nav-text">1.uniapp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Taro"><span class="nav-text">2.Taro</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">hackfox</p>
+  <div class="site-description" itemprop="description">架构、AI、python、rust</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xsoer" title="GitHub → https://github.com/xsoer" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:codehackfox@gmail.com" title="E-Mail → mailto:codehackfox@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/5746784/hackfox-code" title="StackOverflow → https://stackoverflow.com/users/5746784/hackfox-code" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://hackfox.vip" title="http://hackfox.vip" rel="noopener" target="_blank">hackfox</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hackfox</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">134k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">2:02</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '7c7b02623259a39014a0',
+      clientSecret: '07c01a3277dab0956ad91bad7d24b91a7e773990',
+      repo        : 'xsoer.github.io',
+      owner       : 'xsoer',
+      admin       : ['xsoer'],
+      id          : 'b5a45d61fcc6daa39c931bd75607b00c',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+    </div>
+</body>
+</html>
