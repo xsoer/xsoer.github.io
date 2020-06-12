@@ -226,7 +226,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2019/10/08/2019/10-08-python性能分析工具/">
+    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/python/python性能分析工具cprofile/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -240,7 +240,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2019/10/08/2019/10-08-python性能分析工具/" class="post-title-link" itemprop="url">python性能分析工具cProfile</a>
+            <a href="/python/python性能分析工具cprofile/" class="post-title-link" itemprop="url">python性能分析工具cProfile</a>
         </h2>
 
         <div class="post-meta">
@@ -257,7 +257,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-10 13:54:58" itemprop="dateModified" datetime="2020-06-10T13:54:58+08:00">2020-06-10</time>
+                <time title="修改时间：2020-06-12 14:16:00" itemprop="dateModified" datetime="2020-06-12T14:16:00+08:00">2020-06-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -303,7 +303,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 方式一</span></span><br><span class="line"><span class="comment"># 直接输出调用的函数、运行时长、cpu占用等情况</span></span><br><span class="line">python -m cProfile main.py</span><br><span class="line"><span class="comment"># 如果调用链路太长，则可以指定输出到文件内，如下所示。不过输出内容为二进制，不可以直接查看。</span></span><br><span class="line">python -m cProfile -o profile.out main.py</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方式二</span></span><br><span class="line"><span class="keyword">import</span> cProfile</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    cProfile.run(<span class="string">"test()"</span>)</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2019/10/08/2019/10-08-python性能分析工具/#more" rel="contents">
+              <a class="btn" href="/python/python性能分析工具cprofile/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -327,7 +327,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2019/09/06/2019/09-06-数据同步工具/">
+    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/storage/数据同步工具/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -341,7 +341,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2019/09/06/2019/09-06-数据同步工具/" class="post-title-link" itemprop="url">数据同步工具</a>
+            <a href="/storage/数据同步工具/" class="post-title-link" itemprop="url">数据同步工具</a>
         </h2>
 
         <div class="post-meta">
@@ -358,7 +358,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-10 13:55:01" itemprop="dateModified" datetime="2020-06-10T13:55:01+08:00">2020-06-10</time>
+                <time title="修改时间：2020-06-12 14:16:40" itemprop="dateModified" datetime="2020-06-12T14:16:40+08:00">2020-06-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -366,7 +366,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
+                  <a href="/categories/storage/" itemprop="url" rel="index"><span itemprop="name">storage</span></a>
                 </span>
             </span>
 
@@ -407,7 +407,7 @@
 <h3 id="1-Airflow"><a href="#1-Airflow" class="headerlink" title="1.Airflow"></a>1.<a href="https://airflow.apache.org/" target="_blank" rel="noopener">Airflow</a></h3><h3 id="2-gocron"><a href="#2-gocron" class="headerlink" title="2.gocron"></a>2.<a href="https://github.com/ouqiang/gocron" target="_blank" rel="noopener">gocron</a></h3>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2019/09/06/2019/09-06-数据同步工具/#more" rel="contents">
+              <a class="btn" href="/storage/数据同步工具/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -431,7 +431,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2019/09/05/2019/09-05-tmux配置/">
+    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/tool/tmux配置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -445,7 +445,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2019/09/05/2019/09-05-tmux配置/" class="post-title-link" itemprop="url">tmux配置</a>
+            <a href="/tool/tmux配置/" class="post-title-link" itemprop="url">tmux配置</a>
         </h2>
 
         <div class="post-meta">
@@ -462,7 +462,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-10 13:54:51" itemprop="dateModified" datetime="2020-06-10T13:54:51+08:00">2020-06-10</time>
+                <time title="修改时间：2020-06-12 14:16:49" itemprop="dateModified" datetime="2020-06-12T14:16:49+08:00">2020-06-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -470,7 +470,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
+                  <a href="/categories/tool/" itemprop="url" rel="index"><span itemprop="name">tool</span></a>
                 </span>
             </span>
 
@@ -513,7 +513,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux at [-t 会话名]</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2019/09/05/2019/09-05-tmux配置/#more" rel="contents">
+              <a class="btn" href="/tool/tmux配置/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -537,7 +537,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2019/09/05/2019/09-05-mac开发环境配置/">
+    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/tool/mac开发环境配置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -551,7 +551,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2019/09/05/2019/09-05-mac开发环境配置/" class="post-title-link" itemprop="url">Mac开发环境配置</a>
+            <a href="/tool/mac开发环境配置/" class="post-title-link" itemprop="url">Mac开发环境配置</a>
         </h2>
 
         <div class="post-meta">
@@ -568,7 +568,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-10 14:01:34" itemprop="dateModified" datetime="2020-06-10T14:01:34+08:00">2020-06-10</time>
+                <time title="修改时间：2020-06-12 14:16:44" itemprop="dateModified" datetime="2020-06-12T14:16:44+08:00">2020-06-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -576,7 +576,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
+                  <a href="/categories/tool/" itemprop="url" rel="index"><span itemprop="name">tool</span></a>
                 </span>
             </span>
 
@@ -614,7 +614,7 @@
 <li>6.输入法
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2019/09/05/2019/09-05-mac开发环境配置/#more" rel="contents">
+              <a class="btn" href="/tool/mac开发环境配置/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -638,7 +638,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2019/09/02/2019/09-02-神经网络类型/">
+    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/ai/神经网络类型/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -652,7 +652,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2019/09/02/2019/09-02-神经网络类型/" class="post-title-link" itemprop="url">神经网络类型</a>
+            <a href="/ai/神经网络类型/" class="post-title-link" itemprop="url">神经网络类型</a>
         </h2>
 
         <div class="post-meta">
@@ -669,7 +669,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-10 13:54:32" itemprop="dateModified" datetime="2020-06-10T13:54:32+08:00">2020-06-10</time>
+                <time title="修改时间：2020-06-12 14:13:08" itemprop="dateModified" datetime="2020-06-12T14:13:08+08:00">2020-06-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -677,7 +677,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
+                  <a href="/categories/ai/" itemprop="url" rel="index"><span itemprop="name">ai</span></a>
                 </span>
             </span>
 
@@ -718,7 +718,7 @@
 <li><p>5.深度强化学习</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2019/09/02/2019/09-02-神经网络类型/#more" rel="contents">
+              <a class="btn" href="/ai/神经网络类型/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -742,7 +742,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2019/07/12/2019/07-12-kudu简介/">
+    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/storage/kudu简介/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -756,7 +756,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2019/07/12/2019/07-12-kudu简介/" class="post-title-link" itemprop="url">kudu简介</a>
+            <a href="/storage/kudu简介/" class="post-title-link" itemprop="url">kudu简介</a>
         </h2>
 
         <div class="post-meta">
@@ -773,7 +773,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-10 13:54:29" itemprop="dateModified" datetime="2020-06-10T13:54:29+08:00">2020-06-10</time>
+                <time title="修改时间：2020-06-12 14:16:27" itemprop="dateModified" datetime="2020-06-12T14:16:27+08:00">2020-06-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -781,7 +781,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/kudu/" itemprop="url" rel="index"><span itemprop="name">kudu</span></a>
+                  <a href="/categories/storage/" itemprop="url" rel="index"><span itemprop="name">storage</span></a>
                 </span>
             </span>
 
@@ -818,7 +818,7 @@
 <li>在快速修改的数据上进行快速分析
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2019/07/12/2019/07-12-kudu简介/#more" rel="contents">
+              <a class="btn" href="/storage/kudu简介/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -842,7 +842,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2019/04/22/2019/04-22-Impala系统性文档/">
+    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/storage/impala操作手册/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -856,7 +856,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2019/04/22/2019/04-22-Impala系统性文档/" class="post-title-link" itemprop="url">Impala操作手册</a>
+            <a href="/storage/impala操作手册/" class="post-title-link" itemprop="url">Impala操作手册</a>
         </h2>
 
         <div class="post-meta">
@@ -873,7 +873,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-10 13:54:23" itemprop="dateModified" datetime="2020-06-10T13:54:23+08:00">2020-06-10</time>
+                <time title="修改时间：2020-06-12 14:16:23" itemprop="dateModified" datetime="2020-06-12T14:16:23+08:00">2020-06-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -881,7 +881,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+                  <a href="/categories/storage/" itemprop="url" rel="index"><span itemprop="name">storage</span></a>
                 </span>
             </span>
 
@@ -933,7 +933,7 @@
 <li>Hue web-based user interface.
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2019/04/22/2019/04-22-Impala系统性文档/#more" rel="contents">
+              <a class="btn" href="/storage/impala操作手册/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -957,7 +957,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2019/03/10/2019/03-10-ES6标准概览/">
+    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/js/es6标准概览/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -971,7 +971,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2019/03/10/2019/03-10-ES6标准概览/" class="post-title-link" itemprop="url">ES6标准概览</a>
+            <a href="/js/es6标准概览/" class="post-title-link" itemprop="url">ES6标准概览</a>
         </h2>
 
         <div class="post-meta">
@@ -988,7 +988,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-10 13:54:08" itemprop="dateModified" datetime="2020-06-10T13:54:08+08:00">2020-06-10</time>
+                <time title="修改时间：2020-06-12 14:13:53" itemprop="dateModified" datetime="2020-06-12T14:13:53+08:00">2020-06-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -996,7 +996,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a>
+                  <a href="/categories/js/" itemprop="url" rel="index"><span itemprop="name">js</span></a>
                 </span>
             </span>
 
@@ -1038,7 +1038,7 @@
 <li><p>contst：只读不可改，声明即赋值 其所声明的对象的属性是可以改变的。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2019/03/10/2019/03-10-ES6标准概览/#more" rel="contents">
+              <a class="btn" href="/js/es6标准概览/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1062,7 +1062,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2019/03/10/2015/03-10-mysql数据库主从同步/">
+    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/mysql/mysql数据库主从同步/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1076,7 +1076,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2019/03/10/2015/03-10-mysql数据库主从同步/" class="post-title-link" itemprop="url">mysql数据库主从同步</a>
+            <a href="/mysql/mysql数据库主从同步/" class="post-title-link" itemprop="url">mysql数据库主从同步</a>
         </h2>
 
         <div class="post-meta">
@@ -1093,7 +1093,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-10 13:53:06" itemprop="dateModified" datetime="2020-06-10T13:53:06+08:00">2020-06-10</time>
+                <time title="修改时间：2020-06-12 14:17:01" itemprop="dateModified" datetime="2020-06-12T14:17:01+08:00">2020-06-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1141,7 +1141,7 @@
 </ul>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2019/03/10/2015/03-10-mysql数据库主从同步/#more" rel="contents">
+              <a class="btn" href="/mysql/mysql数据库主从同步/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1165,7 +1165,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/2019/03/10/2019/03-10-数据库基础/">
+    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/storage/数据库基础/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1179,7 +1179,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2019/03/10/2019/03-10-数据库基础/" class="post-title-link" itemprop="url">数据库基础</a>
+            <a href="/storage/数据库基础/" class="post-title-link" itemprop="url">数据库基础</a>
         </h2>
 
         <div class="post-meta">
@@ -1196,7 +1196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-10 13:54:05" itemprop="dateModified" datetime="2020-06-10T13:54:05+08:00">2020-06-10</time>
+                <time title="修改时间：2020-06-12 14:16:18" itemprop="dateModified" datetime="2020-06-12T14:16:18+08:00">2020-06-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1204,7 +1204,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+                  <a href="/categories/storage/" itemprop="url" rel="index"><span itemprop="name">storage</span></a>
                 </span>
             </span>
 
@@ -1268,7 +1268,7 @@
 <li>当前事务的隔离级别：select @@tx_isolation;
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2019/03/10/2019/03-10-数据库基础/#more" rel="contents">
+              <a class="btn" href="/storage/数据库基础/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1357,18 +1357,18 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1429,13 +1429,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">134k</span>
+    <span title="站点总字数">114k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:02</span>
+    <span title="站点阅读时长">1:44</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>

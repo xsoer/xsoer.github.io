@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="0x00、总体概览1.历史发展 2012年10月由Cloudera公司发起创建,2015年10月对外公布，2015年12月进入apache基金会进行孵化，后续进入快速发展轨道。  2.产品定位 Fast Analytics on Fast Data。 在快速修改的数据上进行快速分析">
+<meta name="keywords" content="kudu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="kudu简介">
+<meta property="og:url" content="https://xsoer.github.io/storage/kudu简介/index.html">
+<meta property="og:site_name" content="hackfox">
+<meta property="og:description" content="0x00、总体概览1.历史发展 2012年10月由Cloudera公司发起创建,2015年10月对外公布，2015年12月进入apache基金会进行孵化，后续进入快速发展轨道。  2.产品定位 Fast Analytics on Fast Data。 在快速修改的数据上进行快速分析">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-06-12T06:16:27.253Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="kudu简介">
+<meta name="twitter:description" content="0x00、总体概览1.历史发展 2012年10月由Cloudera公司发起创建,2015年10月对外公布，2015年12月进入apache基金会进行孵化，后续进入快速发展轨道。  2.产品定位 Fast Analytics on Fast Data。 在快速修改的数据上进行快速分析">
+
+<link rel="canonical" href="https://xsoer.github.io/storage/kudu简介/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>kudu简介 | hackfox</title>
+  
+    <script>
+      function sendPageView() {
+        if (CONFIG.hostname !== location.hostname) return;
+        var uid = localStorage.getItem('uid') || (Math.random() + '.' + Math.random());
+        localStorage.setItem('uid', uid);
+        navigator.sendBeacon('https://www.google-analytics.com/collect', new URLSearchParams({
+          v  : 1,
+          tid: 'UA-114671402-1',
+          cid: uid,
+          t  : 'pageview',
+          dp : encodeURIComponent(location.pathname)
+        }));
+      }
+      document.addEventListener('pjax:complete', sendPageView);
+      sendPageView();
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="stylesheet" href="/css/prism-duotone-dark.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">hackfox</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">专注 慎思 博学</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-man">
+
+    <a href="/man/" rel="section"><i class="fa fa-server fa-fw"></i>手册</a>
+
+  </li>
+        <li class="menu-item menu-item-algorithms">
+
+    <a href="/algorithms/" rel="section"><i class="fa fa-cogs fa-fw"></i>算法</a>
+
+  </li>
+        <li class="menu-item menu-item-interview">
+
+    <a href="/interview/" rel="section"><i class="fa fa-code fa-fw"></i>面试</a>
+
+  </li>
+        <li class="menu-item menu-item-tools">
+
+    <a href="/tools/" rel="section"><i class="fa fa-gavel fa-fw"></i>工具</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>书籍</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/storage/kudu简介/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hackfox">
+      <meta itemprop="description" content="架构、AI、python、rust">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hackfox">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          kudu简介
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-07-12 10:13:23" itemprop="dateCreated datePublished" datetime="2019-07-12T10:13:23+08:00">2019-07-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-12 14:16:27" itemprop="dateModified" datetime="2020-06-12T14:16:27+08:00">2020-06-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/storage/" itemprop="url" rel="index"><span itemprop="name">storage</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="0x00、总体概览"><a href="#0x00、总体概览" class="headerlink" title="0x00、总体概览"></a>0x00、总体概览</h2><h3 id="1-历史发展"><a href="#1-历史发展" class="headerlink" title="1.历史发展"></a>1.历史发展</h3><ul>
+<li>2012年10月由Cloudera公司发起创建,2015年10月对外公布，2015年12月进入apache基金会进行孵化，后续进入快速发展轨道。</li>
+</ul>
+<h3 id="2-产品定位"><a href="#2-产品定位" class="headerlink" title="2.产品定位"></a>2.产品定位</h3><ul>
+<li>Fast Analytics on Fast Data。</li>
+<li>在快速修改的数据上进行快速分析<a id="more"></a>
+<h3 id="3-产生之前"><a href="#3-产生之前" class="headerlink" title="3.产生之前"></a>3.产生之前</h3></li>
+</ul>
+<p>在有kudu之前，数据分类为：</p>
+<ul>
+<li>静态数据<ul>
+<li>以HDFS引擎作为存储引擎，适⽤用于⾼吞吐量的离线大数据分析场景</li>
+<li>这类存储的局限性是数据无法进行行随机的读写</li>
+</ul>
+</li>
+<li>动态数据<ul>
+<li>以HBase、Cassandra 作为存储引擎，适⽤用于⼤大数据随机读写场景</li>
+<li>这类存储的局限性是批量量读取吞吐量量远不不如 HDFS，不不适⽤用于批量量数据分 析的场景</li>
+</ul>
+</li>
+</ul>
+<p>而既要满足随机读写和大数据分析的解决方案如下：</p>
+<p><img data-src="/assets/images/2019/07-12-hbase-hdfs.png" alt="解决方案图"></p>
+<p>而以上的方案问题是：</p>
+<ul>
+<li>架构复杂<ul>
+<li>流转涉及环节太多，运维成本很高</li>
+<li>每个环节需要保证高可用，需要维护多个副本，存储空间也有一定的浪费</li>
+<li>数据在多个系统上，对数据安全策略、监控等都提出了挑战</li>
+</ul>
+</li>
+<li>时效性低<ul>
+<li>从 HBase 导出成静态文件是周期性</li>
+</ul>
+</li>
+<li>难以应对后续的更新<ul>
+<li>已经从 HBase 导出到 HDFS，新到的变更数据就难以处理</li>
+</ul>
+</li>
+</ul>
+<p>所以产生了新的解决方案，那就是kudu，其定位如下：<br><img data-src="/assets/images/2019/07-12-kudu-position.png" alt="kudu定位"></p>
+<p>而其gap了hdfs和hbase之间的<br><img data-src="/assets/images/2019/07-12-kudu-gap.png" alt="kudugap"></p>
+<h3 id="4-架构图"><a href="#4-架构图" class="headerlink" title="4.架构图"></a>4.架构图</h3><p>kudu的整体架构图如下<br><img data-src="/assets/images/2019/07-12-kudu-architecture.png" alt="架构图"></p>
+<h3 id="5-基本概念"><a href="#5-基本概念" class="headerlink" title="5.基本概念"></a>5.基本概念</h3><p>下面了解一些kudu里的一些基本概念。</p>
+<ul>
+<li>Table<ul>
+<li>数据存储，没有库的概念</li>
+<li>有对应的schema结构</li>
+<li>字段是强类型</li>
+<li>需要设置主键</li>
+<li>分隔为N个tablets</li>
+</ul>
+</li>
+<li>Tablet<ul>
+<li>Table按照行切分后存储的位置</li>
+<li>一个tablet会多副本到其他server上，并且有一个会是leader</li>
+<li>如果leader失效，会用raft一致性协议重新选举</li>
+<li>任何一组副本内的tablet都可以读，但是只能从leader写入</li>
+</ul>
+</li>
+<li>Mater<ul>
+<li>持续追踪所有的tablet、tablet server、catalog table、其他的集群meta信息</li>
+<li>可以部署多个master，但只有一个是active</li>
+<li>如果active时效了，用raft协议在选举出一个</li>
+<li>Master信息也会存储在一个tablet上，并且被复制同步到其他master机器上</li>
+<li>Tablet servers会发送心跳包到master机器(默认是一秒一次)</li>
+</ul>
+</li>
+<li>Tablet Server<ul>
+<li>用来存储tablet数据并且向client提供服务</li>
+<li>一个tablet会在多个tablet server上</li>
+<li>一个tablet server会有多个tablet</li>
+</ul>
+</li>
+<li>Catelog table<ul>
+<li>是kudu元数据的中心，存储了关于table和tablet的信息</li>
+<li>不允许被直接读写</li>
+<li>table<ul>
+<li>table schemas,</li>
+<li>Locations</li>
+<li>states</li>
+</ul>
+</li>
+<li>tablet<ul>
+<li>Tablet list</li>
+<li>Tablet server上有哪些tablet</li>
+<li>States</li>
+<li>Start and end keys</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Raft一致性协议算法<ul>
+<li>分布式服务高可用性进行多副本</li>
+<li>通过raft来选举出leader</li>
+<li>多副本数据都可以读，但只有leader可以写</li>
+<li>写入时只有当大多数follower确认成功，才算写入成功</li>
+<li>在一组副本中(通常是3或5个)，允许有(N-1)/2的失败</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-使用场景"><a href="#6-使用场景" class="headerlink" title="6.使用场景"></a>6.使用场景</h3><ul>
+<li>流式实时计算<ul>
+<li>流式计算场景通常有持续不断地大量写入</li>
+<li>与此同时这些数据还要支持近乎实时的读、写以及更新操作</li>
+</ul>
+</li>
+<li>时间序列存储<ul>
+<li>hash分片设计能够很好地避免TSDB类请求的局部热点问题</li>
+<li>高效的Scan性能让Kudu能够比Hbase更好的支持查询操作</li>
+</ul>
+</li>
+<li>历史数据共存<ul>
+<li>Impala可以同时支持HDFS、Kudu等多个底层存储引擎</li>
+<li>不必把所有的数据都迁移到Kudu</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<h2 id="0x01、设计模式"><a href="#0x01、设计模式" class="headerlink" title="0x01、设计模式"></a>0x01、设计模式</h2></blockquote>
+<h3 id="1-数据类型"><a href="#1-数据类型" class="headerlink" title="1.数据类型"></a>1.数据类型</h3><ul>
+<li>boolean</li>
+<li>8-bit signed integer</li>
+<li>16-bit signed integer</li>
+<li>32-bit signed integer</li>
+<li>64-bit signed integer</li>
+<li>unixtime_micros (64-bit microseconds since the Unix epoch)</li>
+<li>single-precision (32-bit) IEEE-754 floating-point number</li>
+<li>double-precision (64-bit) IEEE-754 floating-point number</li>
+<li>decimal (see Decimal Type for details)</li>
+<li>UTF-8 encoded string (up to 64KB uncompressed)</li>
+<li>binary (up to 64KB uncompressed)</li>
+</ul>
+<h3 id="2-主键设计"><a href="#2-主键设计" class="headerlink" title="2.主键设计"></a>2.主键设计</h3><ul>
+<li>单列或多列<ul>
+<li>可以设置一列为主键，也同时设置多列为主键</li>
+</ul>
+</li>
+<li>唯一性<ul>
+<li>数据是全表唯一的</li>
+</ul>
+</li>
+<li>不可被更改性<ul>
+<li>在schema建成后，主键不能够修改</li>
+<li>其值不能被更改，不同即新增</li>
+</ul>
+</li>
+<li>主键索引<ul>
+<li>为主键建立B+索引</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-分区设计-Partition"><a href="#3-分区设计-Partition" class="headerlink" title="3.分区设计(Partition)"></a>3.分区设计(Partition)</h3><ul>
+<li><p>表分区类型</p>
+<ul>
+<li>hash<ul>
+<li>按照某一个或几个值的hash进行分区</li>
+<li>可指定分区的个数</li>
+</ul>
+</li>
+<li>range<ul>
+<li>按照某一个字段值的范围分区</li>
+<li>可以动态的增删</li>
+</ul>
+</li>
+<li>multilevel<ul>
+<li>可以同时按照hash、range结合来分区</li>
+<li>既分散热点数据又可动态增删</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>比如建立如下一个表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> metrics (</span><br><span class="line">    host <span class="keyword">STRING</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    metric <span class="keyword">STRING</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    <span class="built_in">time</span> INT64 <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    <span class="keyword">value</span> <span class="keyword">DOUBLE</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    PRIMARY <span class="keyword">KEY</span> (host, metric, <span class="built_in">time</span>),</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>按照range来分区如下<br><img data-src="/assets/images/2019/07-12-range.png" alt="range"></p>
+</li>
+<li><p>按照hash分区如下<br><img data-src="/assets/images/2019/07-12-hash.png" alt="hash"></p>
+</li>
+<li><p>同时按照range和hash来分区<br><img data-src="/assets/images/2019/07-12-hash-range.png" alt="rang-hash"></p>
+</li>
+<li><p>同时按照hash和hash来分区<br><img data-src="/assets/images/2019/07-12-hash-hash.png" alt="hash-hash"></p>
+</li>
+<li><p>那么hash与range的优缺点是<br><img data-src="/assets/images/2019/07-12-hash-range-good-bad.png" alt="hash-range-good-bad"></p>
+</li>
+</ul>
+<h3 id="4-字段编码"><a href="#4-字段编码" class="headerlink" title="4.字段编码"></a>4.字段编码</h3><ul>
+<li><p>编码的类型如下<br><img data-src="/assets/images/2019/07-12-encoding.png" alt="encoding"></p>
+</li>
+<li><p>每中字段适用及默认的编码类型如下<br><img data-src="/assets/images/2019/07-12-field-encoding.png" alt="field-encoding"></p>
+</li>
+</ul>
+<h3 id="5-数据压缩"><a href="#5-数据压缩" class="headerlink" title="5.数据压缩"></a>5.数据压缩</h3><ul>
+<li>编码类型有一下几种<ul>
+<li>LZ4<ul>
+<li>可以设置为默认</li>
+</ul>
+</li>
+<li>zlib</li>
+<li>snappy</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<h2 id="0x02、存储结构"><a href="#0x02、存储结构" class="headerlink" title="0x02、存储结构"></a>0x02、存储结构</h2></blockquote>
+<ul>
+<li>逻辑结构图如下<br><img data-src="/assets/images/2019/07-12-store-tree.png" alt="store-tree"></li>
+</ul>
+<blockquote>
+<h2 id="0x03、读写流程"><a href="#0x03、读写流程" class="headerlink" title="0x03、读写流程"></a>0x03、读写流程</h2></blockquote>
+<h3 id="1-锁类型"><a href="#1-锁类型" class="headerlink" title="1.锁类型"></a>1.锁类型</h3><ul>
+<li>共享锁(读锁)<ul>
+<li>获得后只能够进行读操作</li>
+<li>其他读可以，任何写等待</li>
+</ul>
+</li>
+<li>互斥锁(写锁)<ul>
+<li>只能获得锁的对象进行写</li>
+<li>任何读等待，其他写等待</li>
+</ul>
+</li>
+<li>MVCC(Multi-Version Concurrency Control)<ul>
+<li>每一个写操作都会创建一个新版本的数据</li>
+<li>读操作会从有限多个版本的数据中挑选一个最合适的结果直接返回</li>
+<li>读写操作之间的冲突就不再需要被关注，而管理和快速挑选数据的版本就成了 MVCC 需要解决的主要问题。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-存储数据"><a href="#2-存储数据" class="headerlink" title="2.存储数据"></a>2.存储数据</h3><p><img data-src="/assets/images/2019/07-12-insert-data.png" alt="insert-data"><br><img data-src="/assets/images/2019/07-12-store-data.png" alt="store-data"><br>fluash示例如下<br><img data-src="/assets/images/2019/07-12-flush.png" alt="flush"></p>
+<h3 id="3-compaction"><a href="#3-compaction" class="headerlink" title="3.compaction"></a>3.compaction</h3><p><img data-src="/assets/images/2019/07-12-compation.png" alt="compation"></p>
+<h3 id="4-kudu-api"><a href="#4-kudu-api" class="headerlink" title="4.kudu api"></a>4.kudu api</h3><p><img data-src="/assets/images/2019/07-12-kuduapi.png" alt="kuduapi"></p>
+<blockquote>
+<h2 id="0x04、impala结合"><a href="#0x04、impala结合" class="headerlink" title="0x04、impala结合"></a>0x04、impala结合</h2></blockquote>
+<h3 id="1-功能简介"><a href="#1-功能简介" class="headerlink" title="1.功能简介"></a>1.功能简介</h3><ul>
+<li>支持存储<ul>
+<li>HDFS、Hbase、Kudu、Hive</li>
+<li>csv、file</li>
+</ul>
+</li>
+<li>结构概念<ul>
+<li>库、表、视图、角色</li>
+<li>权限、函数</li>
+</ul>
+</li>
+<li>多种类型<ul>
+<li>array、bigint、boolean、char</li>
+<li>map、struct</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-表的概念"><a href="#2-表的概念" class="headerlink" title="2.表的概念"></a>2.表的概念</h3><ul>
+<li>内部表<ul>
+<li>通过impala创建的表都是内部表(internal)</li>
+<li>修改表结构对应的底层表也会进行变动</li>
+<li>删除表底层表也删除</li>
+</ul>
+</li>
+<li>外部表<ul>
+<li>不同过impala创建的表都是外部表(external)</li>
+<li>要操作这些表，需要在impala建立表的映射关系</li>
+<li>通过sql修改表结构或者删除表不会删除底层表，删除的只是表的映射关系</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-建表示例"><a href="#3-建表示例" class="headerlink" title="3.建表示例"></a>3.建表示例</h3><p><img data-src="/assets/images/2019/07-12-impala-create.png" alt="impala-create"></p>
+<h3 id="4-属性操作"><a href="#4-属性操作" class="headerlink" title="4.属性操作"></a>4.属性操作</h3><p><img data-src="/assets/images/2019/07-12-impala-property.png" alt="impala-property"></p>
+<h3 id="5-常用操作"><a href="#5-常用操作" class="headerlink" title="5.常用操作"></a>5.常用操作</h3><p><img data-src="/assets/images/2019/07-12-impala-op.png" alt="impala-op"></p>
+<h3 id="6-python-api"><a href="#6-python-api" class="headerlink" title="6.python api"></a>6.python api</h3><p><img data-src="/assets/images/2019/07-12-impalaapi.png" alt="api"></p>
+<blockquote>
+<h2 id="0x05、限制条件"><a href="#0x05、限制条件" class="headerlink" title="0x05、限制条件"></a>0x05、限制条件</h2></blockquote>
+<h3 id="1-表限制"><a href="#1-表限制" class="headerlink" title="1.表限制"></a>1.表限制</h3><ul>
+<li>表的备份数必须为奇数，最⼤大为7</li>
+<li>备份数在设置后不不可修改</li>
+<li>删除表后空间会⽴立⻢马释放</li>
+<li>建表时partition总数限制为60个，后续可以添加</li>
+</ul>
+<h3 id="2-列限制"><a href="#2-列限制" class="headerlink" title="2.列限制"></a>2.列限制</h3><ul>
+<li>部分数据类型不支持，如CHAR, VARCHAR, DATE, ARRAY等</li>
+<li>数据类型以及是否可为空等列列属性不支持修改</li>
+<li>一张表最多有300列列</li>
+<li>删除列列的时候不会立马清除空间，需要执⾏Compaction操作，但是 Compaction操作不⽀持手动执行</li>
+</ul>
+<h3 id="3-主键限制"><a href="#3-主键限制" class="headerlink" title="3.主键限制"></a>3.主键限制</h3><ul>
+<li>表创建后主键不不可更更改</li>
+<li>主键字段必须在其他字段之前定义</li>
+<li>⼀行对应的主键内容不可以被Update操作修改。要修改⼀行的主键值，需 要删除并新增⼀行新数据，并且该操作无法保持原子性</li>
+<li>主键的类型不支持DOUBLE、FLOAT、BOOL，且必须是非空的(NOT NULL)</li>
+<li>不支持⾃自动⽣生成主键</li>
+<li>每行对应的主键存储单元(CELL)最⼤为16KB</li>
+</ul>
+<h3 id="4-单元限制"><a href="#4-单元限制" class="headerlink" title="4.单元限制"></a>4.单元限制</h3><ul>
+<li>单元对应的数据最⼤大为64KB，并且是在压缩前</li>
+</ul>
+<h3 id="5-分片限制"><a href="#5-分片限制" class="headerlink" title="5.分片限制"></a>5.分片限制</h3><ul>
+<li>分⽚只支持手动指定，⾃自动分⽚不支持</li>
+<li>分片设定不不⽀支持修改，修改分⽚设定需要”建新表-导数据-删老表”操作;</li>
+<li>丢掉多数备份的Tablets需要⼿手动修复。</li>
+<li>Range⽀持删除或新增</li>
+</ul>
+<h3 id="6-容量建议"><a href="#6-容量建议" class="headerlink" title="6.容量建议"></a>6.容量建议</h3><ul>
+<li>建议tablet servers的最⼤大数量量为100;</li>
+<li>建议masters的最⼤大数量量为3;</li>
+<li>建议每个tablet server存储的数据最大为8T</li>
+<li>每个tablet server存储的tablets数量建议在1000以内;</li>
+<li>每个表分片后的tablets存储在单个tablet server的最⼤大数量为60。</li>
+</ul>
+<h3 id="7-Impala集成限制"><a href="#7-Impala集成限制" class="headerlink" title="7.Impala集成限制"></a>7.Impala集成限制</h3><ul>
+<li>不支持varchar、array、map、struct等类型</li>
+<li>Impala⼤小写不不敏敏感，kudu是⼤小写敏敏感，所以表名及字段最好都是小写</li>
+<li>!=和like查询是kudu把数据全部给impala，然后在过滤的，相⽐其他操作效率要低</li>
+<li>Updates、inserts、deletes都是⾮非事务的</li>
+<li>一条sql的并发执⾏行行数在于tablets的个数，所以推荐⾄至少有10个tablets</li>
+</ul>
+<h3 id="8-其他限制"><a href="#8-其他限制" class="headerlink" title="8.其他限制"></a>8.其他限制</h3><ul>
+<li>主键有索引，不支持⼆级索引(Secondary indexes)</li>
+<li>不支持多⾏行行的事务操作</li>
+<li>关系型数据的一些功能，如外键，不支持;</li>
+<li>列和表的名字强制为UTF-8编码，并且最大256字节</li>
+</ul>
+<blockquote>
+<h2 id="0x06、文档资源"><a href="#0x06、文档资源" class="headerlink" title="0x06、文档资源"></a>0x06、文档资源</h2></blockquote>
+<ul>
+<li><a href="https://kudu.apache.org/kudu.pdf" target="_blank" rel="noopener">https://kudu.apache.org/kudu.pdf</a></li>
+<li><a href="https://www.cloudera.com/documentation/enterprise/latest/PDF/cloudera-kudu.pdf" target="_blank" rel="noopener">https://www.cloudera.com/documentation/enterprise/latest/PDF/cloudera-kudu.pdf</a></li>
+<li><a href="https://kudu.apache.org/docs/" target="_blank" rel="noopener">https://kudu.apache.org/docs/</a></li>
+<li><a href="https://github.com/apache/kudu/blob/master/docs/design-docs/tablet.md" target="_blank" rel="noopener">https://github.com/apache/kudu/blob/master/docs/design-docs/tablet.md</a></li>
+<li><a href="https://github.com/apache/kudu/blob/master/docs/design-docs/cfile.md" target="_blank" rel="noopener">https://github.com/apache/kudu/blob/master/docs/design-docs/cfile.md</a></li>
+<li><a href="https://raft.github.io/raft.pdf" target="_blank" rel="noopener">https://raft.github.io/raft.pdf</a></li>
+<li><a href="https://impala.apache.org/docs/build/impala-2.8.pdf" target="_blank" rel="noopener">https://impala.apache.org/docs/build/impala-2.8.pdf</a></li>
+<li><a href="https://www.cloudera.com/documentation/enterprise/5-10-x/topics/impala_tutorial.html" target="_blank" rel="noopener">https://www.cloudera.com/documentation/enterprise/5-10-x/topics/impala_tutorial.html</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechat.png" alt="hackfox 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="hackfox 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>hackfox
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xsoer.github.io/storage/kudu简介/" title="kudu简介">https://xsoer.github.io/storage/kudu简介/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/kudu/" rel="tag"># kudu</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/storage/impala操作手册/" rel="prev" title="Impala操作手册">
+      <i class="fa fa-chevron-left"></i> Impala操作手册
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/ai/神经网络类型/" rel="next" title="神经网络类型">
+      神经网络类型 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00、总体概览"><span class="nav-text">0x00、总体概览</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-历史发展"><span class="nav-text">1.历史发展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-产品定位"><span class="nav-text">2.产品定位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-产生之前"><span class="nav-text">3.产生之前</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-架构图"><span class="nav-text">4.架构图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-基本概念"><span class="nav-text">5.基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-使用场景"><span class="nav-text">6.使用场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01、设计模式"><span class="nav-text">0x01、设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-数据类型"><span class="nav-text">1.数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-主键设计"><span class="nav-text">2.主键设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-分区设计-Partition"><span class="nav-text">3.分区设计(Partition)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-字段编码"><span class="nav-text">4.字段编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-数据压缩"><span class="nav-text">5.数据压缩</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02、存储结构"><span class="nav-text">0x02、存储结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03、读写流程"><span class="nav-text">0x03、读写流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-锁类型"><span class="nav-text">1.锁类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-存储数据"><span class="nav-text">2.存储数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-compaction"><span class="nav-text">3.compaction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-kudu-api"><span class="nav-text">4.kudu api</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04、impala结合"><span class="nav-text">0x04、impala结合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-功能简介"><span class="nav-text">1.功能简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-表的概念"><span class="nav-text">2.表的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-建表示例"><span class="nav-text">3.建表示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-属性操作"><span class="nav-text">4.属性操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-常用操作"><span class="nav-text">5.常用操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-python-api"><span class="nav-text">6.python api</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x05、限制条件"><span class="nav-text">0x05、限制条件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-表限制"><span class="nav-text">1.表限制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-列限制"><span class="nav-text">2.列限制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-主键限制"><span class="nav-text">3.主键限制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-单元限制"><span class="nav-text">4.单元限制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-分片限制"><span class="nav-text">5.分片限制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-容量建议"><span class="nav-text">6.容量建议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Impala集成限制"><span class="nav-text">7.Impala集成限制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-其他限制"><span class="nav-text">8.其他限制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x06、文档资源"><span class="nav-text">0x06、文档资源</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">hackfox</p>
+  <div class="site-description" itemprop="description">架构、AI、python、rust</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xsoer" title="GitHub → https://github.com/xsoer" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:codehackfox@gmail.com" title="E-Mail → mailto:codehackfox@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/5746784/hackfox-code" title="StackOverflow → https://stackoverflow.com/users/5746784/hackfox-code" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://hackfox.vip" title="http://hackfox.vip" rel="noopener" target="_blank">hackfox</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hackfox</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">114k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:44</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '7c7b02623259a39014a0',
+      clientSecret: '07c01a3277dab0956ad91bad7d24b91a7e773990',
+      repo        : 'xsoer.github.io',
+      owner       : 'xsoer',
+      admin       : ['xsoer'],
+      id          : '0b925fddb57c95aa60145b8e4389a82e',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+    </div>
+</body>
+</html>

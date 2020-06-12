@@ -22,18 +22,17 @@
     var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="1.授权用户 12mysql&amp;gt; GRANT ALL PRIVILEGES ON *.* TO &apos;zxc&apos;@&apos;%&apos; IDENTIFIED BY &apos;ydp#2015$Z!!!&apos; WITH GRANT OPTION;mysql&amp;gt; FLUSH PRIVILEGES;  2.远程连接 1shell&amp;gt; mysql -h127.0.0.1 -P3306 -uroot -p  3.导出数据库">
-<meta name="keywords" content="mysql">
+  <meta name="description" content="一、权限登录类 1.授权用户 123456-- 授权用户GRANT ALL PRIVILEGES ON *.* TO &apos;username&apos;@&apos;%&apos; IDENTIFIED BY &apos;password&apos; WITH GRANT OPTION;FLUSH PRIVILEGES;-- 查看某个用户的权限show grants for username;  2.远程连接 1mysql -h192.168.1.1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="mysql常用语句">
 <meta property="og:url" content="https://xsoer.github.io/man/mysql/commands.html">
 <meta property="og:site_name" content="hackfox">
-<meta property="og:description" content="1.授权用户 12mysql&amp;gt; GRANT ALL PRIVILEGES ON *.* TO &apos;zxc&apos;@&apos;%&apos; IDENTIFIED BY &apos;ydp#2015$Z!!!&apos; WITH GRANT OPTION;mysql&amp;gt; FLUSH PRIVILEGES;  2.远程连接 1shell&amp;gt; mysql -h127.0.0.1 -P3306 -uroot -p  3.导出数据库">
+<meta property="og:description" content="一、权限登录类 1.授权用户 123456-- 授权用户GRANT ALL PRIVILEGES ON *.* TO &apos;username&apos;@&apos;%&apos; IDENTIFIED BY &apos;password&apos; WITH GRANT OPTION;FLUSH PRIVILEGES;-- 查看某个用户的权限show grants for username;  2.远程连接 1mysql -h192.168.1.1">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-10T05:56:15.118Z">
+<meta property="og:updated_time" content="2020-06-11T09:33:27.026Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql常用语句">
-<meta name="twitter:description" content="1.授权用户 12mysql&amp;gt; GRANT ALL PRIVILEGES ON *.* TO &apos;zxc&apos;@&apos;%&apos; IDENTIFIED BY &apos;ydp#2015$Z!!!&apos; WITH GRANT OPTION;mysql&amp;gt; FLUSH PRIVILEGES;  2.远程连接 1shell&amp;gt; mysql -h127.0.0.1 -P3306 -uroot -p  3.导出数据库">
+<meta name="twitter:description" content="一、权限登录类 1.授权用户 123456-- 授权用户GRANT ALL PRIVILEGES ON *.* TO &apos;username&apos;@&apos;%&apos; IDENTIFIED BY &apos;password&apos; WITH GRANT OPTION;FLUSH PRIVILEGES;-- 查看某个用户的权限show grants for username;  2.远程连接 1mysql -h192.168.1.1">
 
 <link rel="canonical" href="https://xsoer.github.io/man/mysql/commands">
 
@@ -255,88 +254,117 @@
       
       
       <div class="post-body">
-          <ul>
+          <h2 id="一、权限登录类"><a href="#一、权限登录类" class="headerlink" title="一、权限登录类"></a>一、权限登录类</h2><ul>
 <li><p>1.授权用户</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; GRANT ALL PRIVILEGES ON *.* TO <span class="string">'zxc'</span>@<span class="string">'%'</span> IDENTIFIED BY <span class="string">'ydp#2015$Z!!!'</span> WITH GRANT OPTION;</span><br><span class="line">mysql&gt; FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 授权用户</span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> <span class="keyword">PRIVILEGES</span> <span class="keyword">ON</span> *.* <span class="keyword">TO</span> <span class="string">'username'</span>@<span class="string">'%'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'password'</span> <span class="keyword">WITH</span> <span class="keyword">GRANT</span> <span class="keyword">OPTION</span>;</span><br><span class="line"><span class="keyword">FLUSH</span> <span class="keyword">PRIVILEGES</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查看某个用户的权限</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">grants</span> <span class="keyword">for</span> username;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>2.远程连接</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; mysql -h127.0.0.1 -P3306 -uroot -p</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -h192.168.1.1 -P3306 -uroot -p</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>3.导出数据库</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; mysqldump -h127.0.0.1 -P3306 -uroot -p sqsx &gt; sqsx.sql</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -h192.168.1.1-P3306 -uroot -p db_name &gt; db_name.sql</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>4.导入数据库</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p db_name &lt; db_name.sql</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>5.分析查询</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">explain</span> <span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">user</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>6.查询所有的进程</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> procelist;</span><br><span class="line"><span class="keyword">show</span> <span class="keyword">full</span> procelist;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-<a id="more"></a>
+<h2 id="二、DDL"><a href="#二、DDL" class="headerlink" title="二、DDL"></a>二、DDL</h2><blockquote>
+<p>数据库</p>
+</blockquote>
 <ul>
-<li><p>4.导入数据库</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; mysql -uroot -p sqsx &lt; sqsx.sql</span><br></pre></td></tr></table></figure>
+<li><p>1.建数据库语句</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> db_name <span class="keyword">default</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8mb4 <span class="keyword">collate</span> utf8_general_ci;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>5.分析查询</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; explain select * from user;</span><br></pre></td></tr></table></figure>
+<li><p>3.删除数据库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">database</span> db_name;</span><br></pre></td></tr></table></figure>
+
 </li>
-<li><p>6.查询所有的进程</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show procelist;</span><br></pre></td></tr></table></figure>
+</ul>
+<blockquote>
+<p>表操作</p>
+</blockquote>
+<ul>
+<li><p>2.创建数据表语句</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`user_info`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">bigint</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT <span class="keyword">COMMENT</span> <span class="string">'主键ID'</span>,</span><br><span class="line">  <span class="string">`user_id`</span> <span class="built_in">char</span>(<span class="number">32</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'id'</span>,</span><br><span class="line">  <span class="string">`user_name`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'姓名'</span>,</span><br><span class="line">  <span class="string">`create_time`</span> datetime <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span> <span class="keyword">COMMENT</span> <span class="string">'创建时间'</span>,</span><br><span class="line">  <span class="string">`update_time`</span> datetime <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span> <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CURRENT_TIMESTAMP</span> <span class="keyword">COMMENT</span> <span class="string">'最后更新时间'</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>) <span class="keyword">USING</span> BTREE,</span><br><span class="line">  <span class="keyword">UNIQUE</span> <span class="keyword">KEY</span> <span class="string">`idx_user`</span> (<span class="string">`user_id`</span>) <span class="keyword">USING</span> BTREE</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8mb4 ROW_FORMAT=DYNAMIC <span class="keyword">COMMENT</span>=<span class="string">'用户信息表'</span>;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>7.建数据库语句</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create database dbname default character <span class="built_in">set</span> utf8 collate utf8_general_ci;</span><br></pre></td></tr></table></figure>
+<li><p>3.查看数据表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查看所有表</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">tables</span>;</span><br><span class="line"><span class="comment">-- 查看建表语句</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> <span class="keyword">table</span> table_name;</span><br><span class="line"><span class="comment">-- 查看表字段及描述</span></span><br><span class="line">desc table_name;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>8.创建数据表语句</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create table dbname.tablename () engine=Innodb charset=utf8;</span><br></pre></td></tr></table></figure>
+<li><p>4.查看字段</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">columns</span> <span class="keyword">from</span> table_name;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>9.删除数据库</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; drop database dbname;</span><br></pre></td></tr></table></figure>
+<li><p>5.查看索引</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">index</span> <span class="keyword">from</span> table_name;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>10.查看数据库状态</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; use dbname;</span><br><span class="line">mysql&gt; status;</span><br></pre></td></tr></table></figure>
+<li><p>6.删除表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 删除表结构，表结构和数据全部删除</span></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> table_name;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>11.查看参数</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show variables like “%sql%”;</span><br></pre></td></tr></table></figure>
+<li><p>7.新增字段</p>
 </li>
-<li><p>12.查看事件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show events;</span><br></pre></td></tr></table></figure>
+<li><p>8.修改字段</p>
 </li>
-<li><p>13.查看触发器</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show triggers;</span><br></pre></td></tr></table></figure>
+<li><p>9.删除字段</p>
 </li>
-<li><p>14.查看所有参数</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show status;</span><br></pre></td></tr></table></figure>
+<li><p>10.添加索引</p>
 </li>
-<li><p>15.查看打开表</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show open tables;</span><br></pre></td></tr></table></figure>
+<li><p>11.删除索引</p>
 </li>
-<li><p>16.查看表状态</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show table status;</span><br></pre></td></tr></table></figure>
+</ul>
+<h2 id="三、DML"><a href="#三、DML" class="headerlink" title="三、DML"></a>三、DML</h2><ul>
+<li><p>1.查询</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>17.查看主数据状态</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show master status;</span><br></pre></td></tr></table></figure>
+<li><p>2.新增</p>
 </li>
-<li><p>18.查看从数据库状态</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show slave status;</span><br></pre></td></tr></table></figure>
+<li><p>3.修改</p>
 </li>
-<li><p>19.查看函数状态</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show <span class="keyword">function</span> status;</span><br></pre></td></tr></table></figure>
+</ul>
+<ul>
+<li>4.删除<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 全部删除数据，不删表结构。不做表优化</span></span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> table_name;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 按条件删除</span></span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> table_name <span class="keyword">where</span> is_deleted = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 按条件限制删除</span></span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> table_name <span class="keyword">where</span> is_deleted = <span class="number">1</span> <span class="keyword">limit</span> <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 删除表数据，并优化表空间</span></span><br><span class="line"><span class="keyword">truncate</span> <span class="keyword">table</span> table_name;</span><br></pre></td></tr></table></figure>
+
 </li>
-<li><p>20.查看插件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show plugins;</span><br></pre></td></tr></table></figure>
+</ul>
+<p>*</p>
+<h2 id="四、参数状态"><a href="#四、参数状态" class="headerlink" title="四、参数状态"></a>四、参数状态</h2><ul>
+<li><p>1.查看参数</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查看所有参数</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">variables</span>;</span><br><span class="line"><span class="comment">-- 过滤参数</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">variables</span> <span class="keyword">like</span> <span class="string">'%sql%'</span>;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>21.查看某用户的授权</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show grants <span class="keyword">for</span> username;</span><br></pre></td></tr></table></figure>
+<li><p>2.查看事件</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">events</span>;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>22.查看错误</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show errors;</span><br></pre></td></tr></table></figure>
+<li><p>3.查看触发器</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">triggers</span>;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>23.查看创建表语句</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show create table tablename;</span><br></pre></td></tr></table></figure>
+<li><p>4.查看所有状态</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">status</span>;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>24.查看表头</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show columns from tablename;</span><br></pre></td></tr></table></figure>
+<li><p>5.查看打开表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">open</span> <span class="keyword">tables</span>;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>25.查看存储引擎</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show engines;</span><br></pre></td></tr></table></figure>
+<li><p>6.查看表状态</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 在某个db下执行</span></span><br><span class="line"><span class="comment">-- 可以查看表的存储引擎，表空间，自增主键，创建和更新时间等</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">table</span> <span class="keyword">status</span>;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>26.查看表状态</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show table status;</span><br></pre></td></tr></table></figure>
+<li><p>7.查看数据库状态</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查看主库</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">master</span> <span class="keyword">status</span>;</span><br><span class="line"><span class="comment">-- 查看从库</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">slave</span> <span class="keyword">status</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>8.查看函数状态</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">function</span> <span class="keyword">status</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>9.查看插件</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> plugins;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>10.查看错误</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">errors</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>11.查看存储引擎</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">engines</span>;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -409,6 +437,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、权限登录类"><span class="nav-text">一、权限登录类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、DDL"><span class="nav-text">二、DDL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、DML"><span class="nav-text">三、DML</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、参数状态"><span class="nav-text">四、参数状态</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -422,18 +451,18 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -494,13 +523,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">134k</span>
+    <span title="站点总字数">114k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:02</span>
+    <span title="站点阅读时长">1:44</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
