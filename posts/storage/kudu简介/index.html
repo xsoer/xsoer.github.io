@@ -22,18 +22,18 @@
     var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="0x00、总体概览1.历史发展 2012年10月由Cloudera公司发起创建,2015年10月对外公布，2015年12月进入apache基金会进行孵化，后续进入快速发展轨道。  2.产品定位 Fast Analytics on Fast Data。 在快速修改的数据上进行快速分析">
+  <meta name="description" content="捻角羚的舞蹈">
 <meta name="keywords" content="kudu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="kudu简介">
 <meta property="og:url" content="https://xsoer.github.io/posts/storage/kudu简介/index.html">
 <meta property="og:site_name" content="hackfox">
-<meta property="og:description" content="0x00、总体概览1.历史发展 2012年10月由Cloudera公司发起创建,2015年10月对外公布，2015年12月进入apache基金会进行孵化，后续进入快速发展轨道。  2.产品定位 Fast Analytics on Fast Data。 在快速修改的数据上进行快速分析">
+<meta property="og:description" content="捻角羚的舞蹈">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-12T06:16:27.253Z">
+<meta property="og:updated_time" content="2020-06-13T02:04:49.500Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kudu简介">
-<meta name="twitter:description" content="0x00、总体概览1.历史发展 2012年10月由Cloudera公司发起创建,2015年10月对外公布，2015年12月进入apache基金会进行孵化，后续进入快速发展轨道。  2.产品定位 Fast Analytics on Fast Data。 在快速修改的数据上进行快速分析">
+<meta name="twitter:description" content="捻角羚的舞蹈">
 
 <link rel="canonical" href="https://xsoer.github.io/posts/storage/kudu简介/">
 
@@ -259,7 +259,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-12 14:16:27" itemprop="dateModified" datetime="2020-06-12T14:16:27+08:00">2020-06-12</time>
+                <time title="修改时间：2020-06-13 10:04:49" itemprop="dateModified" datetime="2020-06-13T10:04:49+08:00">2020-06-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -284,14 +284,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>4.2k</span>
+              <span>8.7k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
+              <span>8 分钟</span>
             </span>
 
         </div>
@@ -303,12 +303,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="0x00、总体概览"><a href="#0x00、总体概览" class="headerlink" title="0x00、总体概览"></a>0x00、总体概览</h2><h3 id="1-历史发展"><a href="#1-历史发展" class="headerlink" title="1.历史发展"></a>1.历史发展</h3><ul>
+        <center>
+捻角羚的舞蹈
+</center>
+
+<a id="more"></a>
+
+<h2 id="0x00、总体概览"><a href="#0x00、总体概览" class="headerlink" title="0x00、总体概览"></a>0x00、总体概览</h2><h3 id="1-历史发展"><a href="#1-历史发展" class="headerlink" title="1.历史发展"></a>1.历史发展</h3><ul>
 <li>2012年10月由Cloudera公司发起创建,2015年10月对外公布，2015年12月进入apache基金会进行孵化，后续进入快速发展轨道。</li>
 </ul>
 <h3 id="2-产品定位"><a href="#2-产品定位" class="headerlink" title="2.产品定位"></a>2.产品定位</h3><ul>
 <li>Fast Analytics on Fast Data。</li>
-<li>在快速修改的数据上进行快速分析<a id="more"></a>
+<li>在快速修改的数据上进行快速分析<!-- more -->
 <h3 id="3-产生之前"><a href="#3-产生之前" class="headerlink" title="3.产生之前"></a>3.产生之前</h3></li>
 </ul>
 <p>在有kudu之前，数据分类为：</p>
@@ -421,9 +427,7 @@
 </ul>
 </li>
 </ul>
-<blockquote>
-<h2 id="0x01、设计模式"><a href="#0x01、设计模式" class="headerlink" title="0x01、设计模式"></a>0x01、设计模式</h2></blockquote>
-<h3 id="1-数据类型"><a href="#1-数据类型" class="headerlink" title="1.数据类型"></a>1.数据类型</h3><ul>
+<h2 id="0x01、设计模式"><a href="#0x01、设计模式" class="headerlink" title="0x01、设计模式"></a>0x01、设计模式</h2><h3 id="1-数据类型"><a href="#1-数据类型" class="headerlink" title="1.数据类型"></a>1.数据类型</h3><ul>
 <li>boolean</li>
 <li>8-bit signed integer</li>
 <li>16-bit signed integer</li>
@@ -506,14 +510,10 @@
 </ul>
 </li>
 </ul>
-<blockquote>
-<h2 id="0x02、存储结构"><a href="#0x02、存储结构" class="headerlink" title="0x02、存储结构"></a>0x02、存储结构</h2></blockquote>
-<ul>
+<h2 id="0x02、存储结构"><a href="#0x02、存储结构" class="headerlink" title="0x02、存储结构"></a>0x02、存储结构</h2><ul>
 <li>逻辑结构图如下<br><img data-src="/assets/images/2019/07-12-store-tree.png" alt="store-tree"></li>
 </ul>
-<blockquote>
-<h2 id="0x03、读写流程"><a href="#0x03、读写流程" class="headerlink" title="0x03、读写流程"></a>0x03、读写流程</h2></blockquote>
-<h3 id="1-锁类型"><a href="#1-锁类型" class="headerlink" title="1.锁类型"></a>1.锁类型</h3><ul>
+<h2 id="0x03、读写流程"><a href="#0x03、读写流程" class="headerlink" title="0x03、读写流程"></a>0x03、读写流程</h2><h3 id="1-锁类型"><a href="#1-锁类型" class="headerlink" title="1.锁类型"></a>1.锁类型</h3><ul>
 <li>共享锁(读锁)<ul>
 <li>获得后只能够进行读操作</li>
 <li>其他读可以，任何写等待</li>
@@ -533,10 +533,10 @@
 </ul>
 <h3 id="2-存储数据"><a href="#2-存储数据" class="headerlink" title="2.存储数据"></a>2.存储数据</h3><p><img data-src="/assets/images/2019/07-12-insert-data.png" alt="insert-data"><br><img data-src="/assets/images/2019/07-12-store-data.png" alt="store-data"><br>fluash示例如下<br><img data-src="/assets/images/2019/07-12-flush.png" alt="flush"></p>
 <h3 id="3-compaction"><a href="#3-compaction" class="headerlink" title="3.compaction"></a>3.compaction</h3><p><img data-src="/assets/images/2019/07-12-compation.png" alt="compation"></p>
-<h3 id="4-kudu-api"><a href="#4-kudu-api" class="headerlink" title="4.kudu api"></a>4.kudu api</h3><p><img data-src="/assets/images/2019/07-12-kuduapi.png" alt="kuduapi"></p>
-<blockquote>
-<h2 id="0x04、impala结合"><a href="#0x04、impala结合" class="headerlink" title="0x04、impala结合"></a>0x04、impala结合</h2></blockquote>
-<h3 id="1-功能简介"><a href="#1-功能简介" class="headerlink" title="1.功能简介"></a>1.功能简介</h3><ul>
+<h3 id="4-kudu-api"><a href="#4-kudu-api" class="headerlink" title="4.kudu api"></a>4.kudu api</h3><!-- ![kuduapi](/assets/images/2019/07-12-kuduapi.png) -->
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">```python</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">import</span> kudu</span><br><span class="line"><span class="keyword">from</span> kudu.client <span class="keyword">import</span> Partitioning</span><br><span class="line"></span><br><span class="line"><span class="comment"># Connect to Kudu master server(s).</span></span><br><span class="line">client = kudu.connect(host=<span class="string">'192.168.96.162'</span>, port=<span class="number">7051</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Define a schema for a new table.</span></span><br><span class="line">builder = kudu.schema_builder()</span><br><span class="line">builder.add_column(<span class="string">'key'</span>).type(kudu.int64).nullable(<span class="literal">False</span>).primary_key()</span><br><span class="line">builder.add_column(<span class="string">'ts_val'</span>, type_=kudu.unixtime_micros, nullable=<span class="literal">False</span>, compression=<span class="string">'lz4'</span>)</span><br><span class="line">schema = builder.build()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Define the partitioning schema.</span></span><br><span class="line">partitioning = Partitioning().add_hash_partitions(column_names=[<span class="string">'key'</span>], num_buckets=<span class="number">3</span>).set_range_partition_columns([<span class="string">'year'</span>]).add_range_partition(&#123;<span class="string">'year'</span>:<span class="number">2018</span>&#125;,&#123;<span class="string">'year'</span>:<span class="number">2019</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Delete table if it already exists.</span></span><br><span class="line"><span class="keyword">if</span> client.table_exists(<span class="string">'python-example'</span>):</span><br><span class="line">  client.delete_table(<span class="string">'python-example'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a new table.</span></span><br><span class="line">client.create_table(<span class="string">'python-example'</span>, schema, partitioning)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Open a table.</span></span><br><span class="line">table = client.table(<span class="string">'python-example'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a new session so that we can apply write operations.</span></span><br><span class="line">session = client.new_session()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Insert a row.</span></span><br><span class="line">op = table.new_insert(&#123;<span class="string">'key'</span>: <span class="number">1</span>, <span class="string">'ts_val'</span>: datetime.utcnow()&#125;)</span><br><span class="line">session.apply(op)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Upsert a row.</span></span><br><span class="line">op = table.new_upsert(&#123;<span class="string">'key'</span>: <span class="number">2</span>, <span class="string">'ts_val'</span>: <span class="string">"2016-01-01T00:00:00.000000"</span>&#125;)</span><br><span class="line">session.apply(op)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Update a row.</span></span><br><span class="line">op = table.new_update(&#123;<span class="string">'key'</span>: <span class="number">1</span>, <span class="string">'ts_val'</span>: (<span class="string">"2017-01-01"</span>, <span class="string">"%Y-%m-%d"</span>)&#125;)</span><br><span class="line">session.apply(op)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Delete a row.</span></span><br><span class="line">op = table.new_delete(&#123;<span class="string">'key'</span>: <span class="number">2</span>&#125;)</span><br><span class="line">session.apply(op)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Flush write operations, if failures occur, print them.</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">  session.flush()</span><br><span class="line"><span class="keyword">except</span> kudu.KuduBadStatus:</span><br><span class="line">  print(session.get_pending_errors())</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a scanner and add a predicate.</span></span><br><span class="line">scanner = table.scanner()</span><br><span class="line">scanner.add_predicate(table[<span class="string">'ts_val'</span>] == datetime(<span class="number">2017</span>, <span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Open scanner and print all tuples.</span></span><br><span class="line"><span class="comment"># <span class="doctag">Note:</span> This doesn't scale for large scans</span></span><br><span class="line"><span class="comment"># The expected output: [(1, datetime.datetime(2017, 1, 1, 0, 0, tzinfo=&lt;UTC&gt;))]</span></span><br><span class="line">print(scanner.open().read_all_tuples())</span><br></pre></td></tr></table></figure>
+
+<h2 id="0x04、impala结合"><a href="#0x04、impala结合" class="headerlink" title="0x04、impala结合"></a>0x04、impala结合</h2><h3 id="1-功能简介"><a href="#1-功能简介" class="headerlink" title="1.功能简介"></a>1.功能简介</h3><ul>
 <li>支持存储<ul>
 <li>HDFS、Hbase、Kudu、Hive</li>
 <li>csv、file</li>
@@ -567,13 +567,17 @@
 </ul>
 </li>
 </ul>
-<h3 id="3-建表示例"><a href="#3-建表示例" class="headerlink" title="3.建表示例"></a>3.建表示例</h3><p><img data-src="/assets/images/2019/07-12-impala-create.png" alt="impala-create"></p>
-<h3 id="4-属性操作"><a href="#4-属性操作" class="headerlink" title="4.属性操作"></a>4.属性操作</h3><p><img data-src="/assets/images/2019/07-12-impala-property.png" alt="impala-property"></p>
-<h3 id="5-常用操作"><a href="#5-常用操作" class="headerlink" title="5.常用操作"></a>5.常用操作</h3><p><img data-src="/assets/images/2019/07-12-impala-op.png" alt="impala-op"></p>
+<h3 id="3-建表示例"><a href="#3-建表示例" class="headerlink" title="3.建表示例"></a>3.建表示例</h3><!-- ![impala-create](/assets/images/2019/07-12-impala-create.png) -->
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*  创建内部表 */</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> default.weibo_user_profile (</span><br><span class="line">  user_id <span class="built_in">BIGINT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">ENCODING</span> AUTO_ENCODING COMPRESSION LZ4,</span><br><span class="line">  crawler_time <span class="keyword">STRING</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">ENCODING</span> AUTO_ENCODING COMPRESSION LZ4,</span><br><span class="line">  <span class="keyword">year</span> <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">ENCODING</span> AUTO_ENCODING COMPRESSION LZ4,</span><br><span class="line">  nick_name <span class="keyword">STRING</span> <span class="literal">NULL</span> <span class="keyword">ENCODING</span> AUTO_ENCODING COMPRESSION LZ4,</span><br><span class="line">  user_type <span class="built_in">INT</span> <span class="literal">NULL</span> <span class="keyword">ENCODING</span> AUTO_ENCODING COMPRESSION LZ4,</span><br><span class="line">  gender <span class="built_in">INT</span> <span class="literal">NULL</span> <span class="keyword">ENCODING</span> AUTO_ENCODING COMPRESSION LZ4,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (user_id, crawler_time, <span class="keyword">year</span>)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">PARTITION</span> <span class="keyword">BY</span></span><br><span class="line"><span class="keyword">HASH</span> (user_id, crawler_time) <span class="keyword">PARTITIONS</span> <span class="number">10</span>,</span><br><span class="line"><span class="keyword">RANGE</span> (<span class="keyword">year</span>) (</span><br><span class="line">    <span class="keyword">PARTITION</span> <span class="keyword">VALUE</span> = <span class="number">2018</span>,</span><br><span class="line">    <span class="keyword">PARTITION</span> <span class="keyword">VALUE</span> = <span class="number">2019</span>,</span><br><span class="line">    <span class="keyword">PARTITION</span> <span class="keyword">VALUE</span> = <span class="number">2020</span>,</span><br><span class="line">    <span class="keyword">PARTITION</span> <span class="keyword">VALUE</span> = <span class="number">2021</span>,</span><br><span class="line">    <span class="keyword">PARTITION</span> <span class="keyword">VALUE</span> = <span class="number">2022</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">STORED</span> <span class="keyword">AS</span> KUDU</span><br><span class="line">TBLPROPERTIES (</span><br><span class="line">    <span class="string">'kudu.master_addresses'</span>=<span class="string">'192.168.168.110:7051,192.168.168.111:7051,192.168.168.112:7051'</span>,</span><br><span class="line">    <span class="string">'kudu.table_name'</span>=<span class="string">'user_profile'</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">/*创建外部表*/</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">EXTERNAL</span> <span class="keyword">TABLE</span> <span class="string">`user_profile`</span> <span class="keyword">STORED</span> <span class="keyword">AS</span> KUDU</span><br><span class="line">TBLPROPERTIES(</span><br><span class="line">    <span class="string">'kudu.table_name'</span> = <span class="string">'user_profile'</span>,</span><br><span class="line">    <span class="string">'kudu.master_addresses'</span> = <span class="string">'192.168.168.110:7051,192.168.168.111:7051,192.168.168.112:7051'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">/* select建表 */</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> new_table</span><br><span class="line">PRIMARY <span class="keyword">KEY</span> (ts, <span class="keyword">name</span>)</span><br><span class="line"><span class="keyword">PARTITION</span> <span class="keyword">BY</span> <span class="keyword">HASH</span>(<span class="keyword">name</span>) <span class="keyword">PARTITIONS</span> <span class="number">8</span></span><br><span class="line"><span class="keyword">STORED</span> <span class="keyword">AS</span> KUDU</span><br><span class="line"><span class="keyword">AS</span> <span class="keyword">SELECT</span> ts, <span class="keyword">name</span>, <span class="keyword">value</span> <span class="keyword">FROM</span> old_table;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-属性操作"><a href="#4-属性操作" class="headerlink" title="4.属性操作"></a>4.属性操作</h3><!-- ![impala-property](/assets/images/2019/07-12-impala-property.png) -->
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 修改impala表的名字 */</span></span><br><span class="line"> <span class="keyword">ALTER</span> <span class="keyword">TABLE</span> my_table <span class="keyword">RENAME</span> <span class="keyword">TO</span> my_new_table;</span><br><span class="line"></span><br><span class="line"> <span class="comment">/* 修改kudu表的名字 */</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> my_internal_table</span><br><span class="line"><span class="keyword">SET</span> TBLPROPERTIES(<span class="string">'kudu.table_name'</span> = <span class="string">'new_name'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 修改kudu master地址 */</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> my_table <span class="keyword">SET</span> TBLPROPERTIES(<span class="string">'kudu.master_addresses'</span> =</span><br><span class="line"><span class="string">'kudu-original-master.example.com:7051,</span></span><br><span class="line"><span class="string">kudu-new-master.example.com:7051'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 修改内部表改为外部表 */</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> my_table <span class="keyword">SET</span> TBLPROPERTIES(<span class="string">'EXTERNAL'</span> = <span class="string">'TRUE'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 添加range */</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> sales_by_year <span class="keyword">ADD</span> <span class="keyword">RANGE</span> <span class="keyword">PARTITION</span> <span class="keyword">VALUE</span> = <span class="number">2017</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 删除range */</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> sales_by_year <span class="keyword">DROP</span> <span class="keyword">RANGE</span> <span class="keyword">PARTITION</span> <span class="keyword">VALUE</span> = <span class="number">2012</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 添加字段 */</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> table_name <span class="keyword">add</span> <span class="keyword">column</span> want_see_num <span class="built_in">INT</span> <span class="keyword">DEFAULT</span> <span class="number">0</span> <span class="keyword">ENCODING</span> AUTO_ENCODING COMPRESSION DEFAULT_COMPRESSION <span class="keyword">COMMENT</span> <span class="string">'想看数量'</span>;</span><br><span class="line"><span class="comment">/* 删除字段 */</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> table_name <span class="keyword">drop</span> comment_id;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-常用操作"><a href="#5-常用操作" class="headerlink" title="5.常用操作"></a>5.常用操作</h3><!-- ![impala-op](/assets/images/2019/07-12-impala-op.png) -->
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 查询 */</span></span><br><span class="line"><span class="keyword">select</span> user_id, create_time <span class="keyword">from</span> user_profile <span class="keyword">where</span> user_id=<span class="number">123456</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* join查询 */</span></span><br><span class="line"><span class="keyword">SELECT</span> t1.c1, t2.c2 <span class="keyword">FROM</span> t1 <span class="keyword">JOIN</span> t2</span><br><span class="line">  <span class="keyword">ON</span> t1.id = t2.id <span class="keyword">and</span> t1.type_flag = t2.type_flag</span><br><span class="line">  <span class="keyword">WHERE</span> t1.c1 &gt; <span class="number">100</span>;</span><br><span class="line"><span class="keyword">SELECT</span> t1.c1, t2.c2 <span class="keyword">FROM</span> t1 <span class="keyword">JOIN</span> t2</span><br><span class="line">  <span class="keyword">USING</span> (<span class="keyword">id</span>, type_flag)</span><br><span class="line">  <span class="keyword">WHERE</span> t1.c1 &gt; <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 半链接 */</span></span><br><span class="line"><span class="keyword">SELECT</span> t1.c1, t1.c2, t1.c2 <span class="keyword">FROM</span> t1 <span class="keyword">LEFT</span> <span class="keyword">SEMI</span> <span class="keyword">JOIN</span> t2 <span class="keyword">ON</span> t1.id = t2.id;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 反链接 */</span></span><br><span class="line"><span class="keyword">select</span> x <span class="keyword">from</span> t1 <span class="keyword">left</span> <span class="keyword">anti</span> <span class="keyword">join</span> t2 <span class="keyword">on</span> (t1.x = t2.y);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 插入数据 */</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> my_first_table <span class="keyword">VALUES</span> (<span class="number">99</span>, <span class="string">"sarah"</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> my_first_table <span class="keyword">VALUES</span> (<span class="number">1</span>, <span class="string">"john"</span>), (<span class="number">2</span>, <span class="string">"jane"</span>), (<span class="number">3</span>, <span class="string">"jim"</span>);</span><br><span class="line"><span class="keyword">insert</span> overwrite <span class="keyword">table</span> new_table <span class="keyword">select</span> * <span class="keyword">from</span> default.test_table <span class="keyword">limit</span> <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* upsert操作 */</span></span><br><span class="line">UPSERT INTO kudu_table (pk, c1, c2, c3) <span class="keyword">VALUES</span> (<span class="number">0</span>, <span class="string">'hello'</span>, <span class="number">50</span>, <span class="literal">true</span>), (<span class="number">1</span>, <span class="string">'world'</span>, <span class="number">-1</span>, <span class="literal">false</span>);</span><br><span class="line">UPSERT INTO production_table <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> staging_table;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 修改 */</span></span><br><span class="line"><span class="keyword">UPDATE</span> kudu_table <span class="keyword">SET</span> c3 = <span class="literal">NULL</span> <span class="keyword">WHERE</span> c1 &gt; <span class="number">100</span> <span class="keyword">AND</span> c3 <span class="keyword">IS</span> <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 删除数据 */</span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> my_first_table <span class="keyword">WHERE</span> <span class="keyword">id</span> &lt; <span class="number">3</span>;</span><br><span class="line"><span class="keyword">DELETE</span> c <span class="keyword">FROM</span> my_second_table c, stock_symbols s <span class="keyword">WHERE</span> c.name = s.symbol;</span><br></pre></td></tr></table></figure>
+
 <h3 id="6-python-api"><a href="#6-python-api" class="headerlink" title="6.python api"></a>6.python api</h3><p><img data-src="/assets/images/2019/07-12-impalaapi.png" alt="api"></p>
-<blockquote>
-<h2 id="0x05、限制条件"><a href="#0x05、限制条件" class="headerlink" title="0x05、限制条件"></a>0x05、限制条件</h2></blockquote>
-<h3 id="1-表限制"><a href="#1-表限制" class="headerlink" title="1.表限制"></a>1.表限制</h3><ul>
+<h2 id="0x05、限制条件"><a href="#0x05、限制条件" class="headerlink" title="0x05、限制条件"></a>0x05、限制条件</h2><h3 id="1-表限制"><a href="#1-表限制" class="headerlink" title="1.表限制"></a>1.表限制</h3><ul>
 <li>表的备份数必须为奇数，最⼤大为7</li>
 <li>备份数在设置后不不可修改</li>
 <li>删除表后空间会⽴立⻢马释放</li>
@@ -622,9 +626,7 @@
 <li>关系型数据的一些功能，如外键，不支持;</li>
 <li>列和表的名字强制为UTF-8编码，并且最大256字节</li>
 </ul>
-<blockquote>
-<h2 id="0x06、文档资源"><a href="#0x06、文档资源" class="headerlink" title="0x06、文档资源"></a>0x06、文档资源</h2></blockquote>
-<ul>
+<h2 id="0x06、文档资源"><a href="#0x06、文档资源" class="headerlink" title="0x06、文档资源"></a>0x06、文档资源</h2><ul>
 <li><a href="https://kudu.apache.org/kudu.pdf" target="_blank" rel="noopener">https://kudu.apache.org/kudu.pdf</a></li>
 <li><a href="https://www.cloudera.com/documentation/enterprise/latest/PDF/cloudera-kudu.pdf" target="_blank" rel="noopener">https://www.cloudera.com/documentation/enterprise/latest/PDF/cloudera-kudu.pdf</a></li>
 <li><a href="https://kudu.apache.org/docs/" target="_blank" rel="noopener">https://kudu.apache.org/docs/</a></li>
@@ -689,8 +691,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/storage/impala操作手册/" rel="prev" title="Impala操作手册">
-      <i class="fa fa-chevron-left"></i> Impala操作手册
+    <a href="/posts/storage/impala简介/" rel="prev" title="impala简介">
+      <i class="fa fa-chevron-left"></i> impala简介
     </a></div>
       <div class="post-nav-item">
     <a href="/posts/ai/神经网络类型/" rel="next" title="神经网络类型">
@@ -769,18 +771,18 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">28</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-count">23</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -841,13 +843,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">114k</span>
+    <span title="站点总字数">117k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:44</span>
+    <span title="站点阅读时长">1:47</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>

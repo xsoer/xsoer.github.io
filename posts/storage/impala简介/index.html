@@ -22,20 +22,20 @@
     var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="简介 支持的查询存储  关系型数据库 数据仓库 Kudu Hive Hbase HDFS   可以单独部署一个集群，读取远程数据源。  支持的操作  运行impala-shell进入交互模式 /usr/bin/impala-shell   ODBC、JDBC Hue web-based user interface.">
-<meta name="keywords" content="数据库">
+  <meta name="description" content="黑斑羚的舞蹈">
+<meta name="keywords" content="数据库,impala">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Impala操作手册">
-<meta property="og:url" content="https://xsoer.github.io/posts/storage/impala操作手册/index.html">
+<meta property="og:title" content="impala简介">
+<meta property="og:url" content="https://xsoer.github.io/posts/storage/impala简介/index.html">
 <meta property="og:site_name" content="hackfox">
-<meta property="og:description" content="简介 支持的查询存储  关系型数据库 数据仓库 Kudu Hive Hbase HDFS   可以单独部署一个集群，读取远程数据源。  支持的操作  运行impala-shell进入交互模式 /usr/bin/impala-shell   ODBC、JDBC Hue web-based user interface.">
+<meta property="og:description" content="黑斑羚的舞蹈">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-12T06:16:23.175Z">
+<meta property="og:updated_time" content="2020-06-13T02:04:21.221Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Impala操作手册">
-<meta name="twitter:description" content="简介 支持的查询存储  关系型数据库 数据仓库 Kudu Hive Hbase HDFS   可以单独部署一个集群，读取远程数据源。  支持的操作  运行impala-shell进入交互模式 /usr/bin/impala-shell   ODBC、JDBC Hue web-based user interface.">
+<meta name="twitter:title" content="impala简介">
+<meta name="twitter:description" content="黑斑羚的舞蹈">
 
-<link rel="canonical" href="https://xsoer.github.io/posts/storage/impala操作手册/">
+<link rel="canonical" href="https://xsoer.github.io/posts/storage/impala简介/">
 
 
 <script id="page-configurations">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>Impala操作手册 | hackfox</title>
+  <title>impala简介 | hackfox</title>
   
     <script>
       function sendPageView() {
@@ -229,7 +229,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/posts/storage/impala操作手册/">
+    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/posts/storage/impala简介/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -242,7 +242,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Impala操作手册
+          impala简介
         </h1>
 
         <div class="post-meta">
@@ -259,7 +259,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-12 14:16:23" itemprop="dateModified" datetime="2020-06-12T14:16:23+08:00">2020-06-12</time>
+                <time title="修改时间：2020-06-13 10:04:21" itemprop="dateModified" datetime="2020-06-13T10:04:21+08:00">2020-06-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -284,7 +284,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>4.8k</span>
+              <span>4.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -303,9 +303,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
-<li><p>支持的查询存储</p>
-<ul>
+        <center>
+黑斑羚的舞蹈
+</center>
+
+<a id="more"></a>
+
+<h2 id="0x00、简介"><a href="#0x00、简介" class="headerlink" title="0x00、简介"></a>0x00、简介</h2><ul>
+<li>支持查询的存储类型<ul>
 <li>关系型数据库</li>
 <li>数据仓库</li>
 <li>Kudu</li>
@@ -314,46 +319,40 @@
 <li>HDFS</li>
 </ul>
 </li>
-<li><p>可以单独部署一个集群，读取远程数据源。</p>
-</li>
-<li><p>支持的操作</p>
-<ul>
+<li>可以单独部署一个集群，读取远程数据源。</li>
+<li>支持的链接操作<ul>
 <li>运行impala-shell进入交互模式<ul>
 <li><code>/usr/bin/impala-shell</code></li>
 </ul>
 </li>
 <li>ODBC、JDBC</li>
-<li>Hue web-based user interface.<a id="more"></a>
-<h2 id="数据表"><a href="#数据表" class="headerlink" title="数据表"></a>数据表</h2></li>
+<li>Hue web-based user interface.</li>
 </ul>
 </li>
-<li><p>分为外部表和内部表</p>
-</li>
-<li><p>内部表</p>
-<ul>
+</ul>
+<!-- more -->
+
+<h2 id="0x01、数据表"><a href="#0x01、数据表" class="headerlink" title="0x01、数据表"></a>0x01、数据表</h2><ul>
+<li>分为外部表和内部表</li>
+<li>内部表<ul>
 <li>通过impala创建的表都是内部表(internal)</li>
 <li>修改表结构对应的底层表也会进行变动</li>
 </ul>
 </li>
-<li><p>外部表</p>
-<ul>
+<li>外部表<ul>
 <li>不同过impala创建的表都是外部表(external)</li>
 <li>要操作这些表，需要在impala建立表的映射关系</li>
 <li>通过sql修改表结构或者删除表不会删除底层表，删除的只是表的映射关系</li>
 </ul>
 </li>
 </ul>
-<h2 id="SQL语法"><a href="#SQL语法" class="headerlink" title="SQL语法"></a>SQL语法</h2><ul>
-<li>sql示例</li>
-</ul>
+<h2 id="0x02、SQL语法"><a href="#0x02、SQL语法" class="headerlink" title="0x02、SQL语法"></a>0x02、SQL语法</h2><ul>
+<li><p>sql示例</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- This line is a comment about a table.</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> ...;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">This is a multi-line comment about a query.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">select</span> ...;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> t <span class="comment">/* This is an embedded comment about a query. */</span> <span class="keyword">where</span> ...;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> t <span class="comment">-- This is a trailing comment within a multi-line command.</span></span><br><span class="line"><span class="keyword">where</span> ...;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>外部表映射</li>
-</ul>
+</li>
+<li><p>外部表映射</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">EXTERNAL</span> <span class="keyword">TABLE</span> my_mapping_table</span><br><span class="line"><span class="keyword">STORED</span> <span class="keyword">AS</span> KUDU</span><br><span class="line">TBLPROPERTIES (</span><br><span class="line">  <span class="string">'kudu.table_name'</span> = <span class="string">'my_kudu_table'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<ul>
+</li>
 <li><p>创建内部表</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> my_first_table</span><br><span class="line">(</span><br><span class="line">  <span class="keyword">id</span> <span class="built_in">BIGINT</span>,</span><br><span class="line">  <span class="keyword">name</span> <span class="keyword">STRING</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span>(<span class="keyword">id</span>)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">PARTITION</span> <span class="keyword">BY</span> <span class="keyword">HASH</span> <span class="keyword">PARTITIONS</span> <span class="number">16</span></span><br><span class="line"><span class="keyword">STORED</span> <span class="keyword">AS</span> KUDU;</span><br></pre></td></tr></table></figure>
 </li>
@@ -394,7 +393,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ul>
+<h2 id="0x03、数据类型"><a href="#0x03、数据类型" class="headerlink" title="0x03、数据类型"></a>0x03、数据类型</h2><ul>
 <li>ARRAY Complex Type (CDH 5.5 or higher only)</li>
 <li>BIGINT</li>
 <li>BOOLEAN</li>
@@ -417,7 +416,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="SQL-Statements"><a href="#SQL-Statements" class="headerlink" title="SQL Statements"></a>SQL Statements</h2><ul>
+<h2 id="0x04、SQL-Statements"><a href="#0x04、SQL-Statements" class="headerlink" title="0x04、SQL Statements"></a>0x04、SQL Statements</h2><ul>
 <li>DDL Statements</li>
 <li>DML Statements</li>
 <li>ALTER DATABASE</li>
@@ -564,7 +563,7 @@
 <li>USE</li>
 <li>Optimizer Hints</li>
 </ul>
-<h2 id="内建函数"><a href="#内建函数" class="headerlink" title="内建函数"></a>内建函数</h2>
+
     </div>
 
     
@@ -599,7 +598,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://xsoer.github.io/posts/storage/impala操作手册/" title="Impala操作手册">https://xsoer.github.io/posts/storage/impala操作手册/</a>
+    <a href="https://xsoer.github.io/posts/storage/impala简介/" title="impala简介">https://xsoer.github.io/posts/storage/impala简介/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -611,6 +610,7 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/数据库/" rel="tag"># 数据库</a>
+              <a href="/tags/impala/" rel="tag"># impala</a>
           </div>
 
         
@@ -685,7 +685,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据表"><span class="nav-text">数据表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL语法"><span class="nav-text">SQL语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-Statements"><span class="nav-text">SQL Statements</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内建函数"><span class="nav-text">内建函数</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00、简介"><span class="nav-text">0x00、简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01、数据表"><span class="nav-text">0x01、数据表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02、SQL语法"><span class="nav-text">0x02、SQL语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03、数据类型"><span class="nav-text">0x03、数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04、SQL-Statements"><span class="nav-text">0x04、SQL Statements</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -699,18 +699,18 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">28</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-count">23</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -771,13 +771,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">114k</span>
+    <span title="站点总字数">117k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:44</span>
+    <span title="站点阅读时长">1:47</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
@@ -922,7 +922,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo        : 'xsoer.github.io',
       owner       : 'xsoer',
       admin       : ['xsoer'],
-      id          : 'c4915ddb07b19da030f3cd989a8c4a84',
+      id          : 'fb8e5372d22451ea2dffe1cd110e5f57',
         language: 'zh-CN',
       distractionFreeMode: true
     });

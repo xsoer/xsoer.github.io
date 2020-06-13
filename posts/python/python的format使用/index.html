@@ -22,18 +22,18 @@
     var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="0x00、介绍 format优点 1.不需要理会数据类型的问题，在%方法中%s只能替代字符串类型 2.单个参数可以多次输出，参数顺序可以不相同 3.填充方式十分灵活，对齐方式十分强大 4.官方推荐用的方式，%方式将会在后面的版本被淘汰    1234print(&apos;hello &amp;#123;0&amp;#125;&apos;.format(&apos;world&apos;))// hello world">
+  <meta name="description" content="字符串格式化的艺术">
 <meta name="keywords" content="python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python的format使用">
 <meta property="og:url" content="https://xsoer.github.io/posts/python/python的format使用/index.html">
 <meta property="og:site_name" content="hackfox">
-<meta property="og:description" content="0x00、介绍 format优点 1.不需要理会数据类型的问题，在%方法中%s只能替代字符串类型 2.单个参数可以多次输出，参数顺序可以不相同 3.填充方式十分灵活，对齐方式十分强大 4.官方推荐用的方式，%方式将会在后面的版本被淘汰    1234print(&apos;hello &amp;#123;0&amp;#125;&apos;.format(&apos;world&apos;))// hello world">
+<meta property="og:description" content="字符串格式化的艺术">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-12T06:16:08.295Z">
+<meta property="og:updated_time" content="2020-06-13T02:35:55.997Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python的format使用">
-<meta name="twitter:description" content="0x00、介绍 format优点 1.不需要理会数据类型的问题，在%方法中%s只能替代字符串类型 2.单个参数可以多次输出，参数顺序可以不相同 3.填充方式十分灵活，对齐方式十分强大 4.官方推荐用的方式，%方式将会在后面的版本被淘汰    1234print(&apos;hello &amp;#123;0&amp;#125;&apos;.format(&apos;world&apos;))// hello world">
+<meta name="twitter:description" content="字符串格式化的艺术">
 
 <link rel="canonical" href="https://xsoer.github.io/posts/python/python的format使用/">
 
@@ -259,7 +259,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-12 14:16:08" itemprop="dateModified" datetime="2020-06-12T14:16:08+08:00">2020-06-12</time>
+                <time title="修改时间：2020-06-13 10:35:55" itemprop="dateModified" datetime="2020-06-13T10:35:55+08:00">2020-06-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -284,7 +284,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3k</span>
+              <span>2.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -303,57 +303,51 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="0x00、介绍"><a href="#0x00、介绍" class="headerlink" title="0x00、介绍"></a>0x00、介绍</h3><ul>
-<li>format优点<ul>
+        <center>
+字符串格式化的艺术
+</center>
+
+<a id="more"></a>
+
+<h3 id="0x00、介绍"><a href="#0x00、介绍" class="headerlink" title="0x00、介绍"></a>0x00、介绍</h3><ul>
+<li><p>format优点</p>
+<ul>
 <li>1.不需要理会数据类型的问题，在%方法中%s只能替代字符串类型</li>
 <li>2.单个参数可以多次输出，参数顺序可以不相同</li>
 <li>3.填充方式十分灵活，对齐方式十分强大</li>
-<li>4.官方推荐用的方式，%方式将会在后面的版本被淘汰</li>
-</ul>
+<li>4.官方推荐用的方式，%方式将会在后面的版本被淘汰<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'hello &#123;0&#125;'</span>.format(<span class="string">'world'</span>))</span><br><span class="line"></span><br><span class="line">// hello world</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">print(<span class="string">'hello &#123;0&#125;'</span>.format(<span class="string">'world'</span>))</span><br><span class="line"></span><br><span class="line">// hello world</span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-<ul>
+</li>
 <li><p>format格式</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#format的格式</span></span><br><span class="line">replacement_field ::= <span class="string">"&#123;"</span> [field_name] [<span class="string">"!"</span> conversion] [<span class="string">":"</span> format_spec] <span class="string">"&#125;"</span></span><br><span class="line">field_name ::= arg_name (<span class="string">"."</span> attribute_name | <span class="string">"["</span> element_index <span class="string">"]"</span>)*</span><br><span class="line">arg_name ::= [identifier | integer]</span><br><span class="line">attribute_name ::= identifier</span><br><span class="line">element_index ::= integer | index_string</span><br><span class="line">index_string ::= &lt;any source character <span class="keyword">except</span> <span class="string">"]"</span>&gt; +</span><br><span class="line">conversion ::= <span class="string">"r"</span> | <span class="string">"s"</span> | <span class="string">"a"</span></span><br><span class="line">format_spec ::= &lt;described <span class="keyword">in</span> the next section&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#format的格式</span></span><br><span class="line">replacement_field ::= <span class="string">"&#123;"</span> [field_name] [<span class="string">"!"</span> conversion] [<span class="string">":"</span> format_spec] <span class="string">"&#125;"</span></span><br><span class="line">field_name ::= arg_name (<span class="string">"."</span> attribute_name | <span class="string">"["</span> element_index <span class="string">"]"</span>)*</span><br><span class="line">arg_name ::= [identifier | integer]</span><br><span class="line">attribute_name ::= identifier</span><br><span class="line">element_index ::= integer | index_string</span><br><span class="line">index_string ::= &lt;any source character <span class="keyword">except</span> <span class="string">"]"</span>&gt; +</span><br><span class="line">conversion ::= <span class="string">"r"</span> | <span class="string">"s"</span> | <span class="string">"a"</span></span><br><span class="line">format_spec ::= &lt;described <span class="keyword">in</span> the next section&gt;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>format_spec 的格式</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">format_spec 　　::= 　　[[fill]align][sign][<span class="comment">#][0][width][,][.precision][type]</span></span><br><span class="line">fill 　　　　　::= 　　&lt;any character&gt;</span><br><span class="line">align 　　　　::= 　　<span class="string">"&lt;"</span> | <span class="string">"&gt;"</span> | <span class="string">"="</span> | <span class="string">"^"</span></span><br><span class="line">sign 　　　　 ::= 　　<span class="string">"+"</span> | <span class="string">"-"</span> | <span class="string">" "</span></span><br><span class="line">width 　　　　 ::= 　　 integer</span><br><span class="line">precision 　　　　::= 　　 integer</span><br><span class="line">type 　　　　::= 　　<span class="string">"b"</span> | <span class="string">"c"</span> | <span class="string">"d"</span> | <span class="string">"e"</span> | <span class="string">"E"</span> | <span class="string">"f"</span> | <span class="string">"F"</span> | <span class="string">"g"</span> | <span class="string">"G"</span> | <span class="string">"n"</span> | <span class="string">"o"</span> | <span class="string">"s"</span> | <span class="string">"x"</span> | <span class="string">"X"</span> | <span class="string">"%"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">format_spec 　　::= 　　[[fill]align][sign][<span class="comment">#][0][width][,][.precision][type]</span></span><br><span class="line">fill 　　　　　::= 　　&lt;any character&gt;</span><br><span class="line">align 　　　　::= 　　<span class="string">"&lt;"</span> | <span class="string">"&gt;"</span> | <span class="string">"="</span> | <span class="string">"^"</span></span><br><span class="line">sign 　　　　 ::= 　　<span class="string">"+"</span> | <span class="string">"-"</span> | <span class="string">" "</span></span><br><span class="line">width 　　　　 ::= 　　 integer</span><br><span class="line">precision 　　　　::= 　　 integer</span><br><span class="line">type 　　　　::= 　　<span class="string">"b"</span> | <span class="string">"c"</span> | <span class="string">"d"</span> | <span class="string">"e"</span> | <span class="string">"E"</span> | <span class="string">"f"</span> | <span class="string">"F"</span> | <span class="string">"g"</span> | <span class="string">"G"</span> | <span class="string">"n"</span> | <span class="string">"o"</span> | <span class="string">"s"</span> | <span class="string">"x"</span> | <span class="string">"X"</span> | <span class="string">"%"</span></span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
 <h3 id="0x01、应用"><a href="#0x01、应用" class="headerlink" title="0x01、应用"></a>0x01、应用</h3><h4 id="一、填充"><a href="#一、填充" class="headerlink" title="一、填充"></a>一、填充</h4><ul>
-<li>1.通过位置来填充字符串</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">print(<span class="string">'hello &#123;0&#125; i am &#123;1&#125;'</span>.format(<span class="string">'Kevin'</span>,<span class="string">'Tom'</span>))                  <span class="comment"># hello Kevin i am Tom</span></span><br><span class="line">print(<span class="string">'hello &#123;&#125; i am &#123;&#125;'</span>.format(<span class="string">'Kevin'</span>,<span class="string">'Tom'</span>))                <span class="comment"># hello Kevin i am Tom</span></span><br><span class="line">print(<span class="string">'hello &#123;0&#125; i am &#123;1&#125; . my name is &#123;0&#125;'</span>.format(<span class="string">'Kevin'</span>,<span class="string">'Tom'</span>)) <span class="comment"># hello Kevin i am Tom . my name is Kevin</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>2.通过key来填充</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">print(<span class="string">'hello &#123;name1&#125; i am &#123;name2&#125;'</span>.format(name1=<span class="string">'Kevin'</span>,name2=<span class="string">'Tom'</span>) )    <span class="comment"># hello Kevin i am Tom</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>3.通过下标填充</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">names=[<span class="string">'Kevin'</span>,<span class="string">'Tom'</span>]</span><br><span class="line">print(<span class="string">'hello &#123;names[0]&#125; i am &#123;names[1]&#125;'</span>.format(names=names))                  <span class="comment"># hello Kevin i am Tom</span></span><br><span class="line">print(<span class="string">'hello &#123;0[0]&#125; i am &#123;0[1]&#125;'</span>.format(names))                                <span class="comment"># hello Kevin i am Tom</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>4..通过字典的key    注意访问字典的key，不用引号的</li>
-</ul>
+<li><p>1.通过位置来填充字符串</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'hello &#123;0&#125; i am &#123;1&#125;'</span>.format(<span class="string">'Kevin'</span>,<span class="string">'Tom'</span>))                  <span class="comment"># hello Kevin i am Tom</span></span><br><span class="line">print(<span class="string">'hello &#123;&#125; i am &#123;&#125;'</span>.format(<span class="string">'Kevin'</span>,<span class="string">'Tom'</span>))                <span class="comment"># hello Kevin i am Tom</span></span><br><span class="line">print(<span class="string">'hello &#123;0&#125; i am &#123;1&#125; . my name is &#123;0&#125;'</span>.format(<span class="string">'Kevin'</span>,<span class="string">'Tom'</span>)) <span class="comment"># hello Kevin i am Tom . my name is Kevin</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2.通过key来填充</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'hello &#123;name1&#125; i am &#123;name2&#125;'</span>.format(name1=<span class="string">'Kevin'</span>,name2=<span class="string">'Tom'</span>) )    <span class="comment"># hello Kevin i am Tom</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3.通过下标填充</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">names=[<span class="string">'Kevin'</span>,<span class="string">'Tom'</span>]</span><br><span class="line">print(<span class="string">'hello &#123;names[0]&#125; i am &#123;names[1]&#125;'</span>.format(names=names))                  <span class="comment"># hello Kevin i am Tom</span></span><br><span class="line">print(<span class="string">'hello &#123;0[0]&#125; i am &#123;0[1]&#125;'</span>.format(names))                                <span class="comment"># hello Kevin i am Tom</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>4..通过字典的key    注意访问字典的key，不用引号的</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">names=&#123;<span class="string">'name'</span>:<span class="string">'Kevin'</span>,<span class="string">'name2'</span>:<span class="string">'Tom'</span>&#125;</span><br><span class="line">print(<span class="string">'hello &#123;names[name]&#125; i am &#123;names[name2]&#125;'</span>.format(names=names))    <span class="comment"># hello Kevin i am Tom</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>5.通过对象的属性</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Names</span><span class="params">()</span>:</span></span><br><span class="line">    name1=<span class="string">'Kevin'</span></span><br><span class="line">    name2=<span class="string">'Tom'</span></span><br><span class="line">print(<span class="string">'hello &#123;names.name1&#125; i am &#123;names.name2&#125;'</span>.format(names=Names))                  <span class="comment"># hello Kevin i am Tom</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>6.使用魔法参数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">args=[<span class="string">'lu'</span>]</span><br><span class="line">kwargs = &#123;<span class="string">'name1'</span>: <span class="string">'Kevin'</span>, <span class="string">'name2'</span>: <span class="string">'Tom'</span>&#125;</span><br><span class="line">print(<span class="string">'hello &#123;name1&#125; &#123;&#125; i am &#123;name2&#125;'</span>.format(*args, **kwargs))  <span class="comment"># hello Kevin i am Tom</span></span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>5.通过对象的属性</li>
+</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Names</span><span class="params">()</span>:</span></span><br><span class="line">    name1=<span class="string">'Kevin'</span></span><br><span class="line">    name2=<span class="string">'Tom'</span></span><br><span class="line">print(<span class="string">'hello &#123;names.name1&#125; i am &#123;names.name2&#125;'</span>.format(names=Names))                  <span class="comment"># hello Kevin i am Tom</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>6.使用魔法参数</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">args=[<span class="string">'lu'</span>]</span><br><span class="line">kwargs = &#123;<span class="string">'name1'</span>: <span class="string">'Kevin'</span>, <span class="string">'name2'</span>: <span class="string">'Tom'</span>&#125;</span><br><span class="line">print(<span class="string">'hello &#123;name1&#125; &#123;&#125; i am &#123;name2&#125;'</span>.format(*args, **kwargs))  <span class="comment"># hello Kevin i am Tom</span></span><br></pre></td></tr></table></figure>
-
 <h4 id="二、格式转换"><a href="#二、格式转换" class="headerlink" title="二、格式转换"></a>二、格式转换</h4><ul>
 <li>b、d、o、x分别是二进制、十进制、八进制、十六进制。</li>
 </ul>
@@ -433,7 +427,52 @@
 <td>转换成十六进制</td>
 </tr>
 </tbody></table>
-<h4 id="三、对齐与填充"><a href="#三、对齐与填充" class="headerlink" title="三、对齐与填充"></a>三、对齐与填充</h4><p>|数字|    格式|    输出|    描述|<br>| — | — | — | — | — |<br>|5    |{:0&gt;2}    |05    |数字补零 (填充左边, 宽度为2)|<br>|5    |{:x&lt;4}|5xxx|    数字补x (填充右边, 宽度为4)|<br>|10|{:x^4}|x10x|    数字补x (填充右边, 宽度为4)|<br>|13    |{:10}|13|    右对齐 (默认, 宽度为10)|<br>|13    |{:&lt;10}|13|    左对齐 (宽度为10)|<br>|13    |{:^10}|13|    中间对齐 (宽度为10)|</p>
+<h4 id="三、对齐与填充"><a href="#三、对齐与填充" class="headerlink" title="三、对齐与填充"></a>三、对齐与填充</h4><table>
+<thead>
+<tr>
+<th>数字</th>
+<th>格式</th>
+<th>输出</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>5</td>
+<td>{:0&gt;2}</td>
+<td>05</td>
+<td>数字补零 (填充左边, 宽度为2)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>{:x&lt;4}</td>
+<td>5xxx</td>
+<td>数字补x (填充右边, 宽度为4)</td>
+</tr>
+<tr>
+<td>10</td>
+<td>{:x^4}</td>
+<td>x10x</td>
+<td>数字补x (填充右边, 宽度为4)</td>
+</tr>
+<tr>
+<td>13</td>
+<td>{:10}</td>
+<td>13</td>
+<td>右对齐 (默认, 宽度为10)</td>
+</tr>
+<tr>
+<td>13</td>
+<td>{:&lt;10}</td>
+<td>13</td>
+<td>左对齐 (宽度为10)</td>
+</tr>
+<tr>
+<td>13</td>
+<td>{:^10}</td>
+<td>13</td>
+<td>中间对齐 (宽度为10)</td>
+</tr>
+</tbody></table>
 <h4 id="四、其他"><a href="#四、其他" class="headerlink" title="四、其他"></a>四、其他</h4><ul>
 <li><p>1.转义{和}符号</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"\&#123;\&#123; hello &#123;0&#125; \&#125;\&#125;"</span>.format(<span class="string">'Kevin'</span>))</span><br><span class="line"><span class="comment"># 跟%中%%转义%一样，formate中用两个大括号来转义</span></span><br></pre></td></tr></table></figure>
@@ -592,18 +631,18 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">28</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-count">23</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -664,13 +703,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">114k</span>
+    <span title="站点总字数">117k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:44</span>
+    <span title="站点阅读时长">1:47</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
