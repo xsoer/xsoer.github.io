@@ -22,17 +22,17 @@
     var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="架构、AI、python、rust">
+  <meta name="description" content="闭包Rust中的闭包, 按照对捕获变量的使用方式, 将闭包分为三个类型: Fn, FnMut, FnOnce. 其中Fn类型的闭包, 在闭包内部以共享借用的方式使用环境变量; FnMut类型的闭包, 在闭包内部以独占借用的方式使用环境变量; 而FnOnce类型的闭包, 在闭包内部以所有者的身份使用环境变量. 由此可见, 根据闭包内使用环境变量的方式, 即可判断创建出来的闭包的类型. 注意, 对于C">
 <meta property="og:type" content="website">
 <meta property="og:title" content="rust的基础">
 <meta property="og:url" content="https://xsoer.github.io/man/rust/basic.html">
 <meta property="og:site_name" content="hackfox">
-<meta property="og:description" content="架构、AI、python、rust">
+<meta property="og:description" content="闭包Rust中的闭包, 按照对捕获变量的使用方式, 将闭包分为三个类型: Fn, FnMut, FnOnce. 其中Fn类型的闭包, 在闭包内部以共享借用的方式使用环境变量; FnMut类型的闭包, 在闭包内部以独占借用的方式使用环境变量; 而FnOnce类型的闭包, 在闭包内部以所有者的身份使用环境变量. 由此可见, 根据闭包内使用环境变量的方式, 即可判断创建出来的闭包的类型. 注意, 对于C">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-16T03:25:03.219Z">
+<meta property="og:updated_time" content="2020-06-26T03:16:06.338Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="rust的基础">
-<meta name="twitter:description" content="架构、AI、python、rust">
+<meta name="twitter:description" content="闭包Rust中的闭包, 按照对捕获变量的使用方式, 将闭包分为三个类型: Fn, FnMut, FnOnce. 其中Fn类型的闭包, 在闭包内部以共享借用的方式使用环境变量; FnMut类型的闭包, 在闭包内部以独占借用的方式使用环境变量; 而FnOnce类型的闭包, 在闭包内部以所有者的身份使用环境变量. 由此可见, 根据闭包内使用环境变量的方式, 即可判断创建出来的闭包的类型. 注意, 对于C">
 
 <link rel="canonical" href="https://xsoer.github.io/man/rust/basic">
 
@@ -259,7 +259,12 @@
       
       
       <div class="post-body">
-          
+          <h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>Rust中的闭包, 按照对捕获变量的使用方式, 将闭包分为三个类型: Fn, FnMut, FnOnce. 其中Fn类型的闭包, 在闭包内部以共享借用的方式使用环境变量; FnMut类型的闭包, 在闭包内部以独占借用的方式使用环境变量; 而FnOnce类型的闭包, 在闭包内部以所有者的身份使用环境变量. 由此可见, 根据闭包内使用环境变量的方式, 即可判断创建出来的闭包的类型.</p>
+<p>注意, 对于Copy类型的环境变量, 如果以传值的方式使用, 其默认的闭包类型是Fn, 而非FnOnce, 而对非Copy的环境变量, 其闭包类型只能是FnOnce.</p>
+<p>闭包中环境变量最终的捕获方式 (即, 是借用, 是复制, 还是转移所有权), 还与环境变量本身的语义, 以及闭包是否强制获取环境变量的所有权有关.</p>
+<p>在闭包的管道符前面加上move关键字, 会强制以传值的方式捕获变量. 至于是复制还是移动, 则与环境变量类型的语义有关. 我们知道, 一个类型实现Copy, 即为复制语义. 在作为右值使用时会将值按位复制. 而未实现Copy的类型即为移动语义, 作右值使用时会转移所有权.</p>
+<p>move 闭包，其经常与 thread::spawn 一起使用，因为它允许我们在一个线程中使用另一个线程的数据。可以在参数列表前使用 move 关键字强制闭包获取其使用的环境值的所有权。这个技巧在创建新线程将值的所有权从一个线程移动到另一个线程时最为实用。</p>
+
       </div>
       
       
@@ -328,6 +333,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包"><span class="nav-text">闭包</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

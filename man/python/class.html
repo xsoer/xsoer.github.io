@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="面向对象 继承 多态 封装 对象序列化传输，反序列化执行 判断某个实例是不是属于某个类   1.类本身就是对象    2.global    nonlocal    3._ _ init_ _ 类在实例化时调用该函数    4.继承：isinstance()检查实例类型  issubclass()检查类的关系     可以多重继承    5.私有变量  #1.以 _  _开头     _ del">
+<meta property="og:type" content="website">
+<meta property="og:title" content="python面向对象">
+<meta property="og:url" content="https://xsoer.github.io/man/python/class.html">
+<meta property="og:site_name" content="hackfox">
+<meta property="og:description" content="面向对象 继承 多态 封装 对象序列化传输，反序列化执行 判断某个实例是不是属于某个类   1.类本身就是对象    2.global    nonlocal    3._ _ init_ _ 类在实例化时调用该函数    4.继承：isinstance()检查实例类型  issubclass()检查类的关系     可以多重继承    5.私有变量  #1.以 _  _开头     _ del">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-07-04T14:41:04.007Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python面向对象">
+<meta name="twitter:description" content="面向对象 继承 多态 封装 对象序列化传输，反序列化执行 判断某个实例是不是属于某个类   1.类本身就是对象    2.global    nonlocal    3._ _ init_ _ 类在实例化时调用该函数    4.继承：isinstance()检查实例类型  issubclass()检查类的关系     可以多重继承    5.私有变量  #1.以 _  _开头     _ del">
+
+<link rel="canonical" href="https://xsoer.github.io/man/python/class">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>python面向对象 | hackfox
+</title>
+  
+    <script>
+      function sendPageView() {
+        if (CONFIG.hostname !== location.hostname) return;
+        var uid = localStorage.getItem('uid') || (Math.random() + '.' + Math.random());
+        localStorage.setItem('uid', uid);
+        navigator.sendBeacon('https://www.google-analytics.com/collect', new URLSearchParams({
+          v  : 1,
+          tid: 'UA-114671402-1',
+          cid: uid,
+          t  : 'pageview',
+          dp : encodeURIComponent(location.pathname)
+        }));
+      }
+      document.addEventListener('pjax:complete', sendPageView);
+      sendPageView();
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="stylesheet" href="/css/prism-duotone-dark.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">hackfox</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">专注 慎思 博学</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-man">
+
+    <a href="/man/" rel="section"><i class="fa fa-server fa-fw"></i>手册</a>
+
+  </li>
+        <li class="menu-item menu-item-algorithms">
+
+    <a href="/algorithms/" rel="section"><i class="fa fa-cogs fa-fw"></i>算法</a>
+
+  </li>
+        <li class="menu-item menu-item-interview">
+
+    <a href="/interview/" rel="section"><i class="fa fa-code fa-fw"></i>面试</a>
+
+  </li>
+        <li class="menu-item menu-item-tools">
+
+    <a href="/tools/" rel="section"><i class="fa fa-gavel fa-fw"></i>工具</a>
+
+  </li>
+        <li class="menu-item menu-item-resource">
+
+    <a href="/resource/" rel="section"><i class="fa fa-folder fa-fw"></i>资源</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>读书</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">python面向对象
+</h1>
+
+<div class="post-meta">
+  
+  <ul class="breadcrumb">
+          
+            <li><a href="/man/">MAN</a></li>
+            <li><a href="/man/python/">PYTHON</a></li>
+            <li>CLASS</li>
+          
+  </ul>
+
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+          <h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><ul>
+<li>继承</li>
+<li>多态</li>
+<li>封装</li>
+<li>对象序列化传输，反序列化执行</li>
+<li>判断某个实例是不是属于某个类</li>
+</ul>
+<ul>
+<li>1.类本身就是对象   <ul>
+<li>2.global    nonlocal   </li>
+<li>3._ _ init_ _ 类在实例化时调用该函数   </li>
+<li>4.继承：isinstance()检查实例类型  issubclass()检查类的关系     可以多重继承   </li>
+<li>5.私有变量<br>  #1.以 _  _开头   </li>
+<li><ol start="6">
+<li>_ <em>del</em> _ 析构方法 删除内存</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><h3 id="类的介绍"><a href="#类的介绍" class="headerlink" title="类的介绍"></a>类的介绍</h3><h3 id="类的应用"><a href="#类的应用" class="headerlink" title="类的应用"></a>类的应用</h3><h2 id="类的方法"><a href="#类的方法" class="headerlink" title="类的方法"></a>类的方法</h2><h3 id="魔术方法"><a href="#魔术方法" class="headerlink" title="魔术方法"></a>魔术方法</h3><h3 id="私有方法"><a href="#私有方法" class="headerlink" title="私有方法"></a>私有方法</h3><ul>
+<li><p>Python不像C++、Java、C#等有明确的公共、私有或受保护的关键字来定义成员函数或属性，它使用约定的单下划线“<em>“和”_</em>“双下划线作为函数或属性的前缀来标识。使用单下划线还是双下划线，是有很大的区别的。</p>
+<ul>
+<li><ol>
+<li>单下划线的函数或属性，在类定义中可以调用和访问，类的实例可以直接访问，子类中可以访问；</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>双下划线的函数或属性，在类定义中可以调用和访问，类的实例不可以直接访问，子类不可访问。</li>
+</ol>
+</li>
+<li><p>注意：对于双下划线的函数或属性，Python解释器使用了名字混淆的方法， 将私有的方法”<strong>method”变成了”_classname</strong>method”了，具体看下文示例。</p>
+</li>
+</ul>
+</li>
+<li><p>不要定义Python的混淆类方法名称</p>
+<ul>
+<li><p>Python解释器对于类（ClassName）双下划线的私有方法（<strong>method），会进行名称混淆（Name Mangle），规则为 _ClassName</strong>method。所以不要在类方法中同时存在<strong>method和 _ClassName</strong>method。</p>
+</li>
+<li><p>可以看出 <strong>hide 已经被 _Base</strong>hide方法替换掉了。外部也可以直接通过 Base()._Base__hide()方式调用（但千万别用这种方式实现，比较混乱！）。</p>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_secret</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"Base secret"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__hide</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"Normal __hide"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_Base__hide</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"Special _Base__hide"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">public</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"From public method"</span>)</span><br><span class="line">        self.__hide()</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> dir(Base())</span><br><span class="line">print(<span class="string">"="</span>*<span class="number">80</span>)</span><br><span class="line">Base().public()</span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">[&lt;span style="color:#FF0000;"&gt;'_Base__hide'&lt;/span&gt;, '__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_secret', 'public']</span></span><br><span class="line"><span class="string">================================================================================</span></span><br><span class="line"><span class="string">From public method</span></span><br><span class="line"><span class="string">&lt;span style="color:#FF0000;"&gt;Special _Base__hide&lt;/span&gt; """</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="self、cls、staticmethod，classmethod-区别"><a href="#self、cls、staticmethod，classmethod-区别" class="headerlink" title="self、cls、staticmethod，classmethod 区别"></a>self、cls、staticmethod，classmethod 区别</h3><ul>
+<li><p>类的方法有三种</p>
+<ul>
+<li><p>一是通过def定义的 普通的一般的，需要至少传递一个参数，一般用self，这样的方法必须通过一个类的实例去访问，类似于c++中通过对象去访问；</p>
+</li>
+<li><p>二是在def前面加上@classmethod，这种类方法的一个特点就是可以通过类名去调用，但是也必须传递一个参数，一般用cls表示class，表示可以通过类直接调用；</p>
+</li>
+<li><p>三是在def前面加上@staticmethod，这种类方法是静态的类方法，类似于c++的静态函数，他的一个特点是参数可以为空，同样支持类名和对象两种调用方式；</p>
+</li>
+</ul>
+</li>
+<li><p>三种方法解释</p>
+<ul>
+<li>普通的方法，第一个参数需要是self，它表示一个具体的实例本身。</li>
+<li>如果用了staticmethod，那么就可以无视这个self，而将这个方法当成一个普通的函数使用。如果在@staticmethod中要调用到这个类的一些属性方法，只能直接类名.属性名或类名.方法名。</li>
+<li>而对于classmethod，它的第一个参数不是self，是cls，它表示这个类本身。而@classmethod因为持有cls参数，可以来调用类的属性，类的方法，实例化对象等，避免硬编码。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">(object)</span>:</span></span><br><span class="line">    bar = <span class="number">1</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">'foo'</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">static_foo</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">'static_foo'</span></span><br><span class="line">        <span class="keyword">print</span> A.bar</span><br><span class="line"></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">class_foo</span><span class="params">(cls)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">'class_foo'</span></span><br><span class="line">        <span class="keyword">print</span> cls.bar</span><br><span class="line">        cls().foo()</span><br><span class="line"></span><br><span class="line">A.static_foo()</span><br><span class="line">A.class_foo()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">static_foo</span></span><br><span class="line"><span class="string">1</span></span><br><span class="line"><span class="string">class_foo</span></span><br><span class="line"><span class="string">1</span></span><br><span class="line"><span class="string">foo</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>其实self，cls不是关键字，例如</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></span><br><span class="line">    member = <span class="string">"this is a test."</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Print1</span><span class="params">(cls)</span>:</span></span><br><span class="line">        print(<span class="string">"print 1: "</span>, cls.membe)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Print2</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"print 2: "</span>, self.member)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Print3</span><span class="params">(paraTest)</span>:</span></span><br><span class="line">        print(<span class="string">"print 3: "</span>, paraTest.member)</span><br></pre></td></tr></table></figure>
+      </div>
+      
+      
+      
+    </div>
+    
+  <ul class="breadcrumb">
+          
+            <li><a href="/man/">MAN</a></li>
+            <li><a href="/man/python/">PYTHON</a></li>
+            <li>CLASS</li>
+          
+  </ul>
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象"><span class="nav-text">面向对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类"><span class="nav-text">类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类的介绍"><span class="nav-text">类的介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类的应用"><span class="nav-text">类的应用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类的方法"><span class="nav-text">类的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#魔术方法"><span class="nav-text">魔术方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#私有方法"><span class="nav-text">私有方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#self、cls、staticmethod，classmethod-区别"><span class="nav-text">self、cls、staticmethod，classmethod 区别</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">hackfox</p>
+  <div class="site-description" itemprop="description">架构、AI、python、rust</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xsoer" title="GitHub → https://github.com/xsoer" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:codehackfox@gmail.com" title="E-Mail → mailto:codehackfox@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/5746784/hackfox-code" title="StackOverflow → https://stackoverflow.com/users/5746784/hackfox-code" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://hackfox.vip" title="http://hackfox.vip" rel="noopener" target="_blank">hackfox</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hackfox</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">117k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:47</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+
+    </div>
+</body>
+</html>

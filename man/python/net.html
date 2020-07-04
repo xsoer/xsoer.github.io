@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="网络操作 http请求 socket编程  IO多路复用之epoll1、内核EPOLL模型讲解首先我们来定义流的概念，一个流可以是文件，socket，pipe等可以进行I/O操作的内核对象。不管是文件，还是套接字(socket)，还是管道(pipe)，我们都可以把他们看作流。 之后我们来讨论I/O操作，通过read，我们可以从流中读入数据；通过write，我们可以往流中写入数据。现在假定1种情形，">
+<meta property="og:type" content="website">
+<meta property="og:title" content="python网络操作">
+<meta property="og:url" content="https://xsoer.github.io/man/python/net.html">
+<meta property="og:site_name" content="hackfox">
+<meta property="og:description" content="网络操作 http请求 socket编程  IO多路复用之epoll1、内核EPOLL模型讲解首先我们来定义流的概念，一个流可以是文件，socket，pipe等可以进行I/O操作的内核对象。不管是文件，还是套接字(socket)，还是管道(pipe)，我们都可以把他们看作流。 之后我们来讨论I/O操作，通过read，我们可以从流中读入数据；通过write，我们可以往流中写入数据。现在假定1种情形，">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-07-04T14:39:54.842Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python网络操作">
+<meta name="twitter:description" content="网络操作 http请求 socket编程  IO多路复用之epoll1、内核EPOLL模型讲解首先我们来定义流的概念，一个流可以是文件，socket，pipe等可以进行I/O操作的内核对象。不管是文件，还是套接字(socket)，还是管道(pipe)，我们都可以把他们看作流。 之后我们来讨论I/O操作，通过read，我们可以从流中读入数据；通过write，我们可以往流中写入数据。现在假定1种情形，">
+
+<link rel="canonical" href="https://xsoer.github.io/man/python/net">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>python网络操作 | hackfox
+</title>
+  
+    <script>
+      function sendPageView() {
+        if (CONFIG.hostname !== location.hostname) return;
+        var uid = localStorage.getItem('uid') || (Math.random() + '.' + Math.random());
+        localStorage.setItem('uid', uid);
+        navigator.sendBeacon('https://www.google-analytics.com/collect', new URLSearchParams({
+          v  : 1,
+          tid: 'UA-114671402-1',
+          cid: uid,
+          t  : 'pageview',
+          dp : encodeURIComponent(location.pathname)
+        }));
+      }
+      document.addEventListener('pjax:complete', sendPageView);
+      sendPageView();
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="stylesheet" href="/css/prism-duotone-dark.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">hackfox</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">专注 慎思 博学</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-man">
+
+    <a href="/man/" rel="section"><i class="fa fa-server fa-fw"></i>手册</a>
+
+  </li>
+        <li class="menu-item menu-item-algorithms">
+
+    <a href="/algorithms/" rel="section"><i class="fa fa-cogs fa-fw"></i>算法</a>
+
+  </li>
+        <li class="menu-item menu-item-interview">
+
+    <a href="/interview/" rel="section"><i class="fa fa-code fa-fw"></i>面试</a>
+
+  </li>
+        <li class="menu-item menu-item-tools">
+
+    <a href="/tools/" rel="section"><i class="fa fa-gavel fa-fw"></i>工具</a>
+
+  </li>
+        <li class="menu-item menu-item-resource">
+
+    <a href="/resource/" rel="section"><i class="fa fa-folder fa-fw"></i>资源</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>读书</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">python网络操作
+</h1>
+
+<div class="post-meta">
+  
+  <ul class="breadcrumb">
+          
+            <li><a href="/man/">MAN</a></li>
+            <li><a href="/man/python/">PYTHON</a></li>
+            <li>NET</li>
+          
+  </ul>
+
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+          <h2 id="网络操作"><a href="#网络操作" class="headerlink" title="网络操作"></a>网络操作</h2><ul>
+<li>http请求</li>
+<li>socket编程</li>
+</ul>
+<h2 id="IO多路复用之epoll"><a href="#IO多路复用之epoll" class="headerlink" title="IO多路复用之epoll"></a>IO多路复用之epoll</h2><h4 id="1、内核EPOLL模型讲解"><a href="#1、内核EPOLL模型讲解" class="headerlink" title="1、内核EPOLL模型讲解"></a>1、内核EPOLL模型讲解</h4><p>首先我们来定义流的概念，一个流可以是文件，socket，pipe等可以进行I/O操作的内核对象。不管是文件，还是套接字(socket)，还是管道(pipe)，我们都可以把他们看作流。</p>
+<p>之后我们来讨论I/O操作，通过read，我们可以从流中读入数据；通过write，我们可以往流中写入数据。现在假定1种情形，我们需要从流中读数据，但是流中还没有数据，（典型的例子为，客户端要从socket读数据，但是服务器端还没有把数据传回来），这时候该怎么办？</p>
+<p>阻塞：阻塞是个什么概念呢？比如某个时候你在等快递，但是你还不知道快递什么时候过来，而且你也没有别的事可以干（或者说接下来的事要等快递来了才能做）；那么你可以去睡觉了，因为你知道快递把货送来时一定会给你打电话（假定一定能叫醒你）。</p>
+<p>非阻塞忙轮询：接着上面等快递的例子，如果用忙轮询的方法，那么你需要知道快递员的手机号，然后每分钟给他打个电话：“你到了没？”</p>
+<p>很明显一般人不会用第二种做法，不仅显得无脑，浪费话费不说，还占用了快递员大量的时间。</p>
+<p>大部分程序也不会用第二种做法，因为第一种方法经济而简单，经济是指消耗很少的CPU时间，如果线程睡眠了，就掉出了系统的调度队列，暂时不会去瓜分CPU宝贵的时间片。</p>
+<p>为了了解阻塞是如何进行的，我们来讨论缓冲区，以及内核缓冲区，最终把I/O事件解释清楚。缓冲区的引入是为了减少频繁I/O操作而引起频繁的系统调用（你知道它很慢的），当你操作一个流时，更多的是以缓冲区为单位进行操作，这是相对于用户空间而言。对于内核来说，也<br>需要缓冲区。</p>
+<p>假设有一个管道，进程A为管道的写入方，B为管道的读出方。假设一开始内核缓冲区是空的，B作为读出方，被阻塞着。然后首先A往管道写入，这时候内核缓冲区由空的状态变到非空状态，内核就会产生一个事件告诉B该醒来了，这个事件姑且称之为“缓冲区非空”。但是“缓冲区非空”事件通知B后，B却还没有读出数据；且内核许诺了不能把写入管道中的数据丢掉这个时候，Ａ写入的数据会滞留在内核缓冲区中，如果内核也缓冲区满了，B仍未开始读数据，最终内核缓冲区会被填满，这个时候会产生一个I/O事件，告诉进程A，你该等等（阻塞）了，我们把这个事件定义为“缓冲区满”。假设后来Ｂ终于开始读数据了，于是内核的缓冲区空了出来，这时候内核会告诉A，内核缓冲区有空位了，你可以从长眠中醒来了，继续写数据了，我们把这个事件叫做“缓冲区非满”。也许事件Y1已经通知了A，但是A也没有数据写入了，而Ｂ继续读出数据，知道内核缓冲区空了。这个时候内核就告诉B，你需要阻塞了！，我们把这个时间定为“缓冲区空”。</p>
+<p>这四种情形涵盖了四个I/O事件，内核缓冲区满，内核缓冲区空，内核缓冲区非空，内核缓冲区非满。这四个I/O事件是进行阻塞同步的根本。（如果不能理解“同步”是什么概念，请学习操作系统的锁，信号量，条件变量等任务同步方面的相关知识）。</p>
+<p>然后我们来说说阻塞I/O的缺点。但是阻塞I/O模式下，一个线程只能处理一个流的I/O事件。如果想要同时处理多个流，要么多进程(fork)，要么多线程(pthread_create)，很不幸这两种方法效率都不高。于是再来考虑非阻塞忙轮询的I/O方式，我们发现可以同时处理多个流（把一个流从阻塞模式切换到非阻塞模式再此不予讨论）：</p>
+<p>我们只要不停的把所有流从头到尾问一遍，又从头开始。这样就可以处理多个流了，但这样的做法显然不好，因为如果所有的流都没有数据，那么只会白白浪费CPU。这里要补充一点，阻塞模式下，内核对于I/O事件的处理是阻塞或者唤醒，而非阻塞模式下则把I/O事件交给其他对象（后文介绍的select以及epoll）处理甚至直接忽略。</p>
+<p>为了避免CPU空转，可以引进一个代理（一开始有一位叫做select的代理，后来又有一位叫做poll的代理，不过两者的本质是一样的）。这个代理比较厉害，可以同时观察许多流的I/O事件，在空闲的时候，会把当前线程阻塞掉，当有一个或多个流有I/O事件时，就从阻塞态中醒来，于是我们的程序就会轮询一遍所有的流（于是我们可以把“忙”字去掉了）。</p>
+<p>于是，如果没有I/O事件产生，我们的程序就会阻塞在select处。但是依然有个问题，我们从select那里仅仅知道了，有I/O事件发生了，但却并不知道是那几个流（可能有一个，多个，甚至全部），我们只能无差别轮询所有流，找出能读出数据，或者写入数据的流，对他们进行操作。</p>
+<p>但是使用select，我们有O(n)的无差别轮询复杂度，同时处理的流越多，每一次无差别轮询时间就越长。再次说了这么多，终于能好好解释epoll了。</p>
+<p>epoll可以理解为event poll，不同于忙轮询和无差别轮询，epoll只会把哪个流发生了怎样的I/O事件通知我们。此时我们对这些流的操作都是有意义的（复杂度降低到了O(1)）。</p>
+<p>linux下的多路复用<br>(1)select<br>    select最早于1983年出现在4.2BSD中，它通过一个select()系统调用来监视多个文件描述符的数组，当select()返回后，该数组中就绪的文件描述符便会被内核修改标志位，使得进程可以获得这些文件描述符从而进行后续的读写操作。<br>    select目前几乎在所有的平台上支持，其良好跨平台支持也是它的一个优点，事实上从现在看来，这也是它所剩不多的优点之一。<br>    select的一个缺点在于单个进程能够监视的文件描述符的数量存在最大限制，在Linux上一般为1024，不过可以通过修改宏定义甚至重新编译内核的方式提升这一限制。<br>    另外，select()所维护的存储大量文件描述符的数据结构，随着文件描述符数量的增大，其复制的开销也线性增长。同时，由于网络响应时间的延迟使得大 量TCP连接处于非活跃状态，但调用select()会对所有socket进行一次线性扫描，所以这也浪费了一定的开销。<br>(2)poll<br>    poll在1986年诞生于System V Release 3，它和select在本质上没有多大差别，但是poll没有最大文件描述符数量的限制。<br>    poll和select同样存在一个缺点就是，包含大量文件描述符的数组被整体复制于用户态和内核的地址空间之间，而不论这些文件描述符是否就绪，它的开销随着文件描述符数量的增加而线性增大。<br>    另外，select()和poll()将就绪的文件描述符告诉进程后，如果进程没有对其进行IO操作，那么下次调用select()和poll()的时候 将 再次报告这些文件描述符，所以它们一般不会丢失就绪的消息，这种方式称为水平触发（Level Triggered）。<br>(3)epoll<br>    直到Linux2.6才出现了由内核直接支持的实现方法，那就是epoll，它几乎具备了之前所说的一切优点，被公认为Linux2.6下性能最好的多路I/O就绪通知方法。<br>    epoll可以同时支持水平触发和边缘触发（Edge Triggered，只告诉进程哪些文件描述符刚刚变为就绪状态，它只说一遍，如果我们没有采取行动，那么它将不会再次告知，这种方式称为边缘触发），理论上边缘触发的性能要更高一些，但是代码实现相当复杂。<br>    epoll同样只告知那些就绪的文件描述符，而且当我们调用epoll_wait()获得就绪文件描述符时，返回的不是实际的描述符，而是一个代表就绪描 述符数量的 值，你只需要去epoll指定的一个数组中依次取得相应数量的文件描述符即可，这里也使用了内存映射（mmap）技术，这样便彻底省掉了这些文件描述符在 系统调用时复制的开销。<br>    另一个本质的改进在于epoll采用基于事件的就绪通知方式。在select/poll 中，进程只有在调用一定的方法后，内核才对所有监视的文件描述符进行扫描，而epoll事先通过epoll_ctl()来注册一个文件描述符，一旦基于某 个文件描述符就绪时，内核会采用类似callback的回调机制，迅速激活这个文件描述符，当进程调用epoll_wait()时便得到通知。</p>
+<p>python下的<br>Python中有一个select模块，其中提供了：select、poll、epoll三个方法，分别调用系统的 select，poll，epoll从而实现IO多路复用。<br>    Windows Python：提供： select<br>    Mac Python：提供： select<br>    Linux Python：提供： select、poll、epoll</p>
+<h4 id="2-python中的epoll"><a href="#2-python中的epoll" class="headerlink" title="2. python中的epoll"></a>2. python中的epoll</h4><p>从以上可知，epoll是对select、poll模型的改进，提高了网络编程的性能，广泛应用于大规模并发请求的C/S架构中。<br>1、触发方式：<br>边缘触发/水平触发，只适用于Unix/Linux操作系统</p>
+<p>2、原理图<br><img data-src="evernotecid://44669F3E-2F32-40F7-B5DC-DC9BDFBA5A31/appyinxiangcom/19062149/ENResource/p10811" alt="cf9f373f3bfe59a5cd0c7ef35c562f4b.jpeg"></p>
+<p>3、一般步骤<br>    1. Create an epoll object——创建1个epoll对象<br>    2. Tell the epoll object to monitor specific events on specific sockets——告诉epoll对象，在指定的socket上监听指定的事件<br>    3. Ask the epoll object which sockets may have had the specified event since the last query——询问epoll对象，从上次查询以来，哪些socket发生了哪些指定的事件<br>    4. Perform some action on those sockets——在这些socket上执行一些操作<br>    5. Tell the epoll object to modify the list of sockets and/or events to monitor——告诉epoll对象，修改socket列表和（或）事件，并监控<br>    6. Repeat steps 3 through 5 until finished——重复步骤3-5，直到完成<br>    7. Destroy the epoll object——销毁epoll对象</p>
+<p>4.相关用法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> select 导入select模块</span><br><span class="line"></span><br><span class="line">epoll = select.epoll() 创建一个epoll对象</span><br><span class="line"></span><br><span class="line">epoll.register(文件句柄,事件类型) 注册要监控的文件句柄和事件</span><br><span class="line"></span><br><span class="line">事件类型:</span><br><span class="line"></span><br><span class="line">　　select.EPOLLIN    可读事件</span><br><span class="line"></span><br><span class="line">　　select.EPOLLOUT   可写事件</span><br><span class="line"></span><br><span class="line">　　select.EPOLLERR   错误事件</span><br><span class="line"></span><br><span class="line">　　select.EPOLLHUP   客户端断开事件</span><br><span class="line"></span><br><span class="line">epoll.unregister(文件句柄)   销毁文件句柄</span><br><span class="line"></span><br><span class="line">epoll.poll(timeout)  当文件句柄发生变化，则会以列表的形式主动报告给用户进程,timeout</span><br><span class="line"></span><br><span class="line">                     为超时时间，默认为<span class="number">-1</span>，即一直等待直到文件句柄发生变化，如果指定为<span class="number">1</span></span><br><span class="line"></span><br><span class="line">                     那么epoll每<span class="number">1</span>秒汇报一次当前文件句柄的变化情况，如果无变化则返回空</span><br><span class="line"></span><br><span class="line">epoll.fileno() 返回epoll的控制文件描述符(Return the epoll control file descriptor)</span><br><span class="line"></span><br><span class="line">epoll.modfiy(fineno,event) fineno为文件描述符 event为事件类型  作用是修改文件描述符所对应的事件</span><br><span class="line"></span><br><span class="line">epoll.fromfd(fileno) 从<span class="number">1</span>个指定的文件描述符创建<span class="number">1</span>个epoll对象</span><br><span class="line"></span><br><span class="line">epoll.close()   关闭epoll对象的控制文件描述符</span><br></pre></td></tr></table></figure>
+
+<p>5 实例：客户端发送数据 服务端将接收的数据返回给客户端</p>
+<ul>
+<li><p>服务端代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment">#-*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> select</span><br><span class="line"><span class="keyword">import</span> Queue</span><br><span class="line"></span><br><span class="line"><span class="comment">#创建socket对象</span></span><br><span class="line">serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line"><span class="comment">#设置IP地址复用</span></span><br><span class="line">serversocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, <span class="number">1</span>)</span><br><span class="line"><span class="comment">#ip地址和端口号</span></span><br><span class="line">server_address = (<span class="string">"127.0.0.1"</span>, <span class="number">8888</span>)</span><br><span class="line"><span class="comment">#绑定IP地址</span></span><br><span class="line">serversocket.bind(server_address)</span><br><span class="line"><span class="comment">#监听，并设置最大连接数</span></span><br><span class="line">serversocket.listen(<span class="number">10</span>)</span><br><span class="line"><span class="keyword">print</span>  <span class="string">"服务器启动成功，监听IP："</span> , server_address</span><br><span class="line"><span class="comment">#服务端设置非阻塞</span></span><br><span class="line">serversocket.setblocking(<span class="literal">False</span>)</span><br><span class="line"><span class="comment">#超时时间</span></span><br><span class="line">timeout = <span class="number">10</span></span><br><span class="line"><span class="comment">#创建epoll事件对象，后续要监控的事件添加到其中</span></span><br><span class="line">epoll = select.epoll()</span><br><span class="line"><span class="comment">#注册服务器监听fd到等待读事件集合</span></span><br><span class="line">epoll.register(serversocket.fileno(), select.EPOLLIN)</span><br><span class="line"><span class="comment">#保存连接客户端消息的字典，格式为&#123;&#125;</span></span><br><span class="line">message_queues = &#123;&#125;</span><br><span class="line"><span class="comment">#文件句柄到所对应对象的字典，格式为&#123;句柄：对象&#125;</span></span><br><span class="line">fd_to_socket = &#123;serversocket.fileno():serversocket,&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">  <span class="keyword">print</span> <span class="string">"等待活动连接......"</span></span><br><span class="line">  <span class="comment">#轮询注册的事件集合，返回值为[(文件句柄，对应的事件)，(...),....]</span></span><br><span class="line">  events = epoll.poll(timeout)</span><br><span class="line">  <span class="keyword">if</span> <span class="keyword">not</span> events:</span><br><span class="line">     <span class="keyword">print</span> <span class="string">"epoll超时无活动连接，重新轮询......"</span></span><br><span class="line">     <span class="keyword">continue</span></span><br><span class="line">  <span class="keyword">print</span> <span class="string">"有"</span> , len(events), <span class="string">"个新事件，开始处理......"</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> fd, event <span class="keyword">in</span> events:</span><br><span class="line">     socket = fd_to_socket[fd]</span><br><span class="line">     <span class="comment">#如果活动socket为当前服务器socket，表示有新连接</span></span><br><span class="line">     <span class="keyword">if</span> socket == serversocket:</span><br><span class="line">            connection, address = serversocket.accept()</span><br><span class="line">            <span class="keyword">print</span> <span class="string">"新连接："</span> , address</span><br><span class="line">            <span class="comment">#新连接socket设置为非阻塞</span></span><br><span class="line">            connection.setblocking(<span class="literal">False</span>)</span><br><span class="line">            <span class="comment">#注册新连接fd到待读事件集合</span></span><br><span class="line">            epoll.register(connection.fileno(), select.EPOLLIN)</span><br><span class="line">            <span class="comment">#把新连接的文件句柄以及对象保存到字典</span></span><br><span class="line">            fd_to_socket[connection.fileno()] = connection</span><br><span class="line">            <span class="comment">#以新连接的对象为键值，值存储在队列中，保存每个连接的信息</span></span><br><span class="line">            message_queues[connection]  = Queue.Queue()</span><br><span class="line">     <span class="comment">#关闭事件</span></span><br><span class="line">     <span class="keyword">elif</span> event &amp; select.EPOLLHUP:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'client close'</span></span><br><span class="line">        <span class="comment">#在epoll中注销客户端的文件句柄</span></span><br><span class="line">        epoll.unregister(fd)</span><br><span class="line">        <span class="comment">#关闭客户端的文件句柄</span></span><br><span class="line">        fd_to_socket[fd].close()</span><br><span class="line">        <span class="comment">#在字典中删除与已关闭客户端相关的信息</span></span><br><span class="line">        <span class="keyword">del</span> fd_to_socket[fd]</span><br><span class="line">     <span class="comment">#可读事件</span></span><br><span class="line">     <span class="keyword">elif</span> event &amp; select.EPOLLIN:</span><br><span class="line">        <span class="comment">#接收数据</span></span><br><span class="line">        data = socket.recv(<span class="number">1024</span>)</span><br><span class="line">        <span class="keyword">if</span> data:</span><br><span class="line">           <span class="keyword">print</span> <span class="string">"收到数据："</span> , data , <span class="string">"客户端："</span> , socket.getpeername()</span><br><span class="line">           <span class="comment">#将数据放入对应客户端的字典</span></span><br><span class="line">           message_queues[socket].put(data)</span><br><span class="line">           <span class="comment">#修改读取到消息的连接到等待写事件集合(即对应客户端收到消息后，再将其fd修改并加入写事件集合)</span></span><br><span class="line">           epoll.modify(fd, select.EPOLLOUT)</span><br><span class="line">     <span class="comment">#可写事件</span></span><br><span class="line">     <span class="keyword">elif</span> event &amp; select.EPOLLOUT:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">           <span class="comment">#从字典中获取对应客户端的信息</span></span><br><span class="line">           msg = message_queues[socket].get_nowait()</span><br><span class="line">        <span class="keyword">except</span> Queue.Empty:</span><br><span class="line">           <span class="keyword">print</span> socket.getpeername() , <span class="string">" queue empty"</span></span><br><span class="line">           <span class="comment">#修改文件句柄为读事件</span></span><br><span class="line">           epoll.modify(fd, select.EPOLLIN)</span><br><span class="line">        <span class="keyword">else</span> :</span><br><span class="line">           <span class="keyword">print</span> <span class="string">"发送数据："</span> , data , <span class="string">"客户端："</span> , socket.getpeername()</span><br><span class="line">           <span class="comment">#发送数据</span></span><br><span class="line">           socket.send(msg)</span><br><span class="line"></span><br><span class="line"><span class="comment">#在epoll中注销服务端文件句柄</span></span><br><span class="line">epoll.unregister(serversocket.fileno())</span><br><span class="line"><span class="comment">#关闭epoll</span></span><br><span class="line">epoll.close()</span><br><span class="line"><span class="comment">#关闭服务器socket</span></span><br><span class="line">serversocket.close()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>客户端代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment">#-*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"></span><br><span class="line"><span class="comment">#创建客户端socket对象</span></span><br><span class="line">clientsocket = socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line"><span class="comment">#服务端IP地址和端口号元组</span></span><br><span class="line">server_address = (<span class="string">'127.0.0.1'</span>,<span class="number">8888</span>)</span><br><span class="line"><span class="comment">#客户端连接指定的IP地址和端口号</span></span><br><span class="line">clientsocket.connect(server_address)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="comment">#输入数据</span></span><br><span class="line">    data = raw_input(<span class="string">'please input:'</span>)</span><br><span class="line">    <span class="comment">#客户端发送数据</span></span><br><span class="line">    clientsocket.sendall(data)</span><br><span class="line">    <span class="comment">#客户端接收数据</span></span><br><span class="line">    server_data = clientsocket.recv(<span class="number">1024</span>)</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'客户端收到的数据：'</span>server_data</span><br><span class="line">    <span class="comment">#关闭客户端socket</span></span><br><span class="line">    clientsocket.close()</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      </div>
+      
+      
+      
+    </div>
+    
+  <ul class="breadcrumb">
+          
+            <li><a href="/man/">MAN</a></li>
+            <li><a href="/man/python/">PYTHON</a></li>
+            <li>NET</li>
+          
+  </ul>
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#网络操作"><span class="nav-text">网络操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IO多路复用之epoll"><span class="nav-text">IO多路复用之epoll</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、内核EPOLL模型讲解"><span class="nav-text">1、内核EPOLL模型讲解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-python中的epoll"><span class="nav-text">2. python中的epoll</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">hackfox</p>
+  <div class="site-description" itemprop="description">架构、AI、python、rust</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xsoer" title="GitHub → https://github.com/xsoer" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:codehackfox@gmail.com" title="E-Mail → mailto:codehackfox@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/5746784/hackfox-code" title="StackOverflow → https://stackoverflow.com/users/5746784/hackfox-code" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://hackfox.vip" title="http://hackfox.vip" rel="noopener" target="_blank">hackfox</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hackfox</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">117k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:47</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+
+    </div>
+</body>
+</html>
