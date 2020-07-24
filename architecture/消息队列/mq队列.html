@@ -24,15 +24,16 @@
 
   <meta name="description" content="以Push模型为主，从零开始分析设计一个消息队列时需要考虑到的问题，如RPC、高可用、顺序和重复消息、可靠投递、消费关系解析也会分析以Kafka为代表的pull模型所具备的优点最后是一些高级主题，如用批量&#x2F;异步提高性能、pull模型的系统设计理念、存储子系统的设计、流量控制的设计、公平调度的实现等。其中最后四个方面会放在下篇讲解 业务解耦&#x2F;最终一致性&#x2F;广播&#x2F;错峰流控  解耦是消息队列要解决的最本质">
 <meta property="og:type" content="website">
-<meta property="og:title" content="hackfox">
+<meta property="og:title" content="ma消息队列">
 <meta property="og:url" content="https://xsoer.github.io/architecture/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/mq%E9%98%9F%E5%88%97.html">
 <meta property="og:site_name" content="hackfox">
 <meta property="og:description" content="以Push模型为主，从零开始分析设计一个消息队列时需要考虑到的问题，如RPC、高可用、顺序和重复消息、可靠投递、消费关系解析也会分析以Kafka为代表的pull模型所具备的优点最后是一些高级主题，如用批量&#x2F;异步提高性能、pull模型的系统设计理念、存储子系统的设计、流量控制的设计、公平调度的实现等。其中最后四个方面会放在下篇讲解 业务解耦&#x2F;最终一致性&#x2F;广播&#x2F;错峰流控  解耦是消息队列要解决的最本质">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="evernotecid://44669F3E-2F32-40F7-B5DC-DC9BDFBA5A31/appyinxiangcom/19062149/ENResource/p7909">
-<meta property="article:published_time" content="2020-06-09T03:48:41.280Z">
-<meta property="article:modified_time" content="2020-06-09T03:48:41.278Z">
+<meta property="article:published_time" content="2019-09-08T14:47:24.000Z">
+<meta property="article:modified_time" content="2020-07-24T11:03:50.637Z">
 <meta property="article:author" content="hackfox">
+<meta property="article:tag" content="raft">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="evernotecid://44669F3E-2F32-40F7-B5DC-DC9BDFBA5A31/appyinxiangcom/19062149/ENResource/p7909">
 
@@ -49,7 +50,7 @@
   };
 </script>
 
-  <title> | hackfox
+  <title>ma消息队列 | hackfox
 </title>
   
     <script>
@@ -150,6 +151,11 @@
     <a href="/man/" rel="section"><i class="fa fa-server fa-fw"></i>手册</a>
 
   </li>
+        <li class="menu-item menu-item-architecture">
+
+    <a href="/architecture/" rel="section"><i class="fa fa-server fa-fw"></i>架构</a>
+
+  </li>
         <li class="menu-item menu-item-algorithms">
 
     <a href="/algorithms/" rel="section"><i class="fa fa-cogs fa-fw"></i>算法</a>
@@ -240,7 +246,7 @@
     <div class="post-block" lang="zh-CN">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">
+<h1 class="post-title" itemprop="name headline">ma消息队列
 </h1>
 
 <div class="post-meta">

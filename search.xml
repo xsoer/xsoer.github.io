@@ -25,29 +25,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title></title>
-    <url>/architecture/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1.html</url>
-    <content><![CDATA[<p>架构已重构开始，学习以重构开始，编程就是在重构中不停的实践成长。</p>
-<p>架构涉及到前段、后端、服务器、分布式、数据库等各个方面，当然也要考虑现有的业务场景和资源。最好的架构就是在满足当下的需求时还能很好很快的我实现。</p>
-<p>架构设计技术线路图<br>基础：git、自动发布、单元测试、数据表结构<br>开发：数据表结构、nginx配置、后端web、前端、爬虫<br>中级：设计模式、分布式基础、高并发<br>高级：高可用、高并发、分布式底层、大数据</p>
-<p>重构代码<br>一、单个函数内的逻辑进行优化。</p>
-<ul>
-<li>参数接口设置</li>
-<li>过多的if else判断进行剪枝处理</li>
-<li>过长的代码需要封装和拆分</li>
-<li>重复代码进行子方法或者拆分处理<br>二、多函数归类、封装、复用</li>
-</ul>
-<p>三、多个类封装</p>
-<p>四、以来多个项目优化</p>
-<p>函数重构<br>1.函数的参数</p>
-<ul>
-<li>必需传入的不能设置默认参数，让逻辑自动判断错误；不是必传入的，则设置默认值</li>
-</ul>
-<p>在不停的重构中，形成一定的规范，在后续开发中，直接用规范来开发，便于项目的优质</p>
-<p>以测试驱动编程，那么就要代码结构便于测试，逻辑需要拆分合理。对于web后端来说，需要把</p>
-]]></content>
-  </entry>
-  <entry>
     <title>读书笔记</title>
     <url>/books/index.html</url>
     <content><![CDATA[<h2 id="1-架构"><a href="#1-架构" class="headerlink" title="1.架构"></a>1.架构</h2><ul>
@@ -999,10 +976,9 @@
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title></title>
+    <title>项目规范</title>
     <url>/architecture/%E9%A1%B9%E7%9B%AE%E8%A7%84%E8%8C%83.html</url>
-    <content><![CDATA[<p>[TOC]</p>
-<h2 id="一、前端"><a href="#一、前端" class="headerlink" title="一、前端"></a>一、前端</h2><h4 id="1-vue3"><a href="#1-vue3" class="headerlink" title="1.vue3"></a>1.vue3</h4><ul>
+    <content><![CDATA[<h2 id="一、前端"><a href="#一、前端" class="headerlink" title="一、前端"></a>一、前端</h2><h4 id="1-vue3"><a href="#1-vue3" class="headerlink" title="1.vue3"></a>1.vue3</h4><ul>
 <li><a href="https://cli.vuejs.org/zh/" target="_blank" rel="noopener">vue-cli文档</a></li>
 </ul>
 <p>项目的创建方式</p>
@@ -2676,52 +2652,7 @@
 ]]></content>
   </entry>
   <entry>
-    <title></title>
-    <url>/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/raft.html</url>
-    <content><![CDATA[<p>Raft协议</p>
-<ul>
-<li>每个副本都会处于三种状态之一：Leader、Follower、Candidate。<ul>
-<li>Leader：所有请求的处理者，Leader副本接受client的更新请求，本地处理后再同步至多个其他副本；</li>
-<li>Follower：请求的被动更新者，从Leader接受更新请求，然后写入本地日志文件</li>
-<li>Candidate：如果Follower副本在一段时间内没有收到Leader副本的心跳，则判断Leader可能已经故障，此时启动选主过程，此时副本会变成Candidate状态，直到选主结束。</li>
-</ul>
-</li>
-<li>时间被分为很多连续的随机长度的term，term有唯一的id。每个term一开始就进行选主<ul>
-<li><ol>
-<li>Follower将自己维护的current_term_id加1。</li>
-</ol>
-</li>
-<li><ol start="2">
-<li>然后将自己的状态转成Candidate</li>
-</ol>
-</li>
-<li><ol start="3">
-<li>发送RequestVoteRPC消息(带上current_term_id) 给 其它所有server</li>
-</ol>
-</li>
-</ul>
-</li>
-<li>投票策略：<ul>
-<li>每个节点只会给每个term投一票，具体的是否同意和后续的Safety有关。</li>
-<li>当投票被瓜分后，所有的candidate同时超时，然后有可能进入新一轮的票数被瓜分，为了避免这个问题，Raft采用一种很简单的方法：每个Candidate的election timeout从150ms-300ms之间随机取，那么第一个超时的Candidate就可以发起新一轮的leader election，带着最大的term_id给其它所有server发送RequestVoteRPC消息，从而自己成为leader，然后给他们发送心跳消息以告诉他们自己是主。</li>
-</ul>
-</li>
-<li>Log Replication</li>
-<li>Log Compaction<ul>
-<li>在实际的系统中，不能让日志无限增长，否则系统重启时需要花很长的时间进行回放，从而影响availability。Raft采用对整个系统进行snapshot来处理，snapshot之前的日志都可以丢弃。Snapshot技术在Chubby和ZooKeeper系统中都有采用。</li>
-<li>Raft使用的方案是：每个副本独立的对自己的系统状态进行Snapshot，并且只能对已经提交的日志记录（已经应用到状态机）进行snapshot。</li>
-<li>Snapshot中包含以下内容：<ul>
-<li>日志元数据，最后一条commited log entry的 (log index, last_included_term)。这两个值在Snapshot之后的第一条log entry的AppendEntriesRPC的consistency check的时候会被用上，之前讲过。一旦这个server做完了snapshot，就可以把这条记录的最后一条log index及其之前的所有的log entry都删掉。</li>
-<li>系统状态机：存储系统当前状态（这是怎么生成的呢？）</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
+    <title>ma消息队列</title>
     <url>/architecture/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/mq%E9%98%9F%E5%88%97.html</url>
     <content><![CDATA[<p>以Push模型为主，从零开始分析设计一个消息队列时需要考虑到的问题，如RPC、高可用、顺序和重复消息、可靠投递、消费关系解析<br>也会分析以Kafka为代表的pull模型所具备的优点<br>最后是一些高级主题，如用批量/异步提高性能、pull模型的系统设计理念、存储子系统的设计、流量控制的设计、公平调度的实现等。其中最后四个方面会放在下篇讲解</p>
 <p>业务解耦/最终一致性/广播/错峰流控</p>
@@ -2741,7 +2672,7 @@
 ]]></content>
   </entry>
   <entry>
-    <title></title>
+    <title>微服务</title>
     <url>/architecture/%E5%BE%AE%E6%9C%8D%E5%8A%A1/%E6%96%87%E6%A1%A3.html</url>
     <content><![CDATA[<ul>
 <li><p>特点</p>
@@ -5353,20 +5284,14 @@ Visible text goes here...
 </html>
 Basic Tags
 
-<h1>Largest Heading</h1>
-<h2> . . . </h2>
-<h3> . . . </h3>
-<h4> . . . </h4>
-<h5> . . . </h5>
-<h6>Smallest Heading</h6>
+
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Largest Heading<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span> . . . <span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h3</span>&gt;</span> . . . <span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h4</span>&gt;</span> . . . <span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h5</span>&gt;</span> . . . <span class="tag">&lt;/<span class="name">h5</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h6</span>&gt;</span>Smallest Heading<span class="tag">&lt;/<span class="name">h6</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 
 <p>This is a paragraph.</p>
 
 <p> (line break)</p>
-<hr> (horizontal rule)
-<!-- This is a comment -->
-Formatting
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">hr</span>&gt;</span> (horizontal rule)</span><br><span class="line"><span class="comment">&lt;!-- This is a comment --&gt;</span></span><br><span class="line">Formatting</span><br></pre></td></tr></table></figure>
 
 <p><b>Bold text</b><br><code>Computer code</code><br><em>Emphasized text</em><br><i>Italic text</i><br><kbd>Keyboard input</kbd></p>
 <pre>Preformatted text</pre>
@@ -5381,8 +5306,14 @@ Formatting
 <sub> (subscripted text)
 <sup> (superscripted text)
 Links
+Ordinary link: <a href="http://www.example.com/" target="_blank" rel="noopener">Link-text goes here</a>
+Image-link: <a href="http://www.example.com/" target="_blank" rel="noopener"><img data-src="URL" alt="Alternate Text"></a>
+Mailto link: <a href="mailto:webmaster@example.com">Send e-mail</a>
+Bookmark:
+<a id="tips">Tips Section</a>
+<a href="#tips">Jump to the Tips Section</a>
+Images
 
-<p>Ordinary link: <a href="http://www.example.com/" target="_blank" rel="noopener">Link-text goes here</a><br>Image-link: <a href="http://www.example.com/" target="_blank" rel="noopener"><img data-src="URL" alt="Alternate Text"></a><br>Mailto link: <a href="mailto:webmaster@example.com">Send e-mail</a><br>Bookmark:<br><a id="tips">Tips Section</a><br><a href="#tips">Jump to the Tips Section</a><br>Images</p>
 <img data-src="URL" alt="Alternate Text" height="42" width="42">
 Styles/Sections
 
@@ -5431,26 +5362,7 @@ Iframe
 <iframe src="demo_iframe.htm"></iframe>
 Forms
 
-<form action="demo_form.asp" method="post/get">
-<input type="text" name="email" size="40" maxlength="50">
-<input type="password">
-<input type="checkbox" checked="checked">
-<input type="radio" checked="checked">
-<input type="submit" value="Send">
-<input type="reset">
-<input type="hidden">
-<select>
-<option>Apples</option>
-<option selected="selected">Bananas</option>
-<option>Cherries</option>
-</select>
-<textarea name="comment" rows="60" cols="20"></textarea>
-
-</form>
-Entities
-
-<p>&lt; is the same as &lt;<br>&gt; is the same as &gt;<br>&#169; is the same as ©<br>来源： <a href="http://www.w3schools.com/html/html_quick.asp" target="_blank" rel="noopener">http://www.w3schools.com/html/html_quick.asp</a></p>
-]]></content>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"demo_form.asp"</span> <span class="attr">method</span>=<span class="string">"post/get"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"email"</span> <span class="attr">size</span>=<span class="string">"40"</span> <span class="attr">maxlength</span>=<span class="string">"50"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">checked</span>=<span class="string">"checked"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">checked</span>=<span class="string">"checked"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Send"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"reset"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">option</span>&gt;</span>Apples<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">option</span> <span class="attr">selected</span>=<span class="string">"selected"</span>&gt;</span>Bananas<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">option</span>&gt;</span>Cherries<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">textarea</span> <span class="attr">name</span>=<span class="string">"comment"</span> <span class="attr">rows</span>=<span class="string">"60"</span> <span class="attr">cols</span>=<span class="string">"20"</span>&gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
   </entry>
   <entry>
     <title>title</title>
@@ -7916,7 +7828,7 @@ Entities
 ]]></content>
   </entry>
   <entry>
-    <title></title>
+    <title>负载平衡</title>
     <url>/architecture/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/%E6%96%87%E6%A1%A3.html</url>
     <content><![CDATA[<p>概念</p>
 <ul>
@@ -13394,5 +13306,86 @@ SEPARATOR sep);</code></pre></li>
 <li><a href="https://learnhbase.net/2013/03/02/hbase-shell-commands/" target="_blank" rel="noopener">终端命令总结</a></li>
 </ul>
 ]]></content>
+  </entry>
+  <entry>
+    <title>架构概览</title>
+    <url>/architecture/outline.html</url>
+    <content><![CDATA[<p>架构已重构开始，学习以重构开始，编程就是在重构中不停的实践成长。</p>
+<p>架构涉及到前段、后端、服务器、分布式、数据库等各个方面，当然也要考虑现有的业务场景和资源。最好的架构就是在满足当下的需求时还能很好很快的我实现。</p>
+<p>架构设计技术线路图<br>基础：git、自动发布、单元测试、数据表结构<br>开发：数据表结构、nginx配置、后端web、前端、爬虫<br>中级：设计模式、分布式基础、高并发<br>高级：高可用、高并发、分布式底层、大数据</p>
+<p>重构代码<br>一、单个函数内的逻辑进行优化。</p>
+<ul>
+<li>参数接口设置</li>
+<li>过多的if else判断进行剪枝处理</li>
+<li>过长的代码需要封装和拆分</li>
+<li>重复代码进行子方法或者拆分处理<br>二、多函数归类、封装、复用</li>
+</ul>
+<p>三、多个类封装</p>
+<p>四、以来多个项目优化</p>
+<p>函数重构<br>1.函数的参数</p>
+<ul>
+<li>必需传入的不能设置默认参数，让逻辑自动判断错误；不是必传入的，则设置默认值</li>
+</ul>
+<p>在不停的重构中，形成一定的规范，在后续开发中，直接用规范来开发，便于项目的优质</p>
+<p>以测试驱动编程，那么就要代码结构便于测试，逻辑需要拆分合理。对于web后端来说，需要把</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>架构</title>
+    <url>/architecture/index.html</url>
+    <content><![CDATA[<h1 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h1><ul>
+<li><a href="distribution/raft.html">raft</a></li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>raft协议</title>
+    <url>/architecture/distribution/raft.html</url>
+    <content><![CDATA[<p>Raft协议</p>
+<ul>
+<li>每个副本都会处于三种状态之一：Leader、Follower、Candidate。<ul>
+<li>Leader：所有请求的处理者，Leader副本接受client的更新请求，本地处理后再同步至多个其他副本；</li>
+<li>Follower：请求的被动更新者，从Leader接受更新请求，然后写入本地日志文件</li>
+<li>Candidate：如果Follower副本在一段时间内没有收到Leader副本的心跳，则判断Leader可能已经故障，此时启动选主过程，此时副本会变成Candidate状态，直到选主结束。</li>
+</ul>
+</li>
+<li>时间被分为很多连续的随机长度的term，term有唯一的id。每个term一开始就进行选主<ul>
+<li><ol>
+<li>Follower将自己维护的current_term_id加1。</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>然后将自己的状态转成Candidate</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>发送RequestVoteRPC消息(带上current_term_id) 给 其它所有server</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>投票策略：<ul>
+<li>每个节点只会给每个term投一票，具体的是否同意和后续的Safety有关。</li>
+<li>当投票被瓜分后，所有的candidate同时超时，然后有可能进入新一轮的票数被瓜分，为了避免这个问题，Raft采用一种很简单的方法：每个Candidate的election timeout从150ms-300ms之间随机取，那么第一个超时的Candidate就可以发起新一轮的leader election，带着最大的term_id给其它所有server发送RequestVoteRPC消息，从而自己成为leader，然后给他们发送心跳消息以告诉他们自己是主。</li>
+</ul>
+</li>
+<li>Log Replication</li>
+<li>Log Compaction<ul>
+<li>在实际的系统中，不能让日志无限增长，否则系统重启时需要花很长的时间进行回放，从而影响availability。Raft采用对整个系统进行snapshot来处理，snapshot之前的日志都可以丢弃。Snapshot技术在Chubby和ZooKeeper系统中都有采用。</li>
+<li>Raft使用的方案是：每个副本独立的对自己的系统状态进行Snapshot，并且只能对已经提交的日志记录（已经应用到状态机）进行snapshot。</li>
+<li>Snapshot中包含以下内容：<ul>
+<li>日志元数据，最后一条commited log entry的 (log index, last_included_term)。这两个值在Snapshot之后的第一条log entry的AppendEntriesRPC的consistency check的时候会被用上，之前讲过。一旦这个server做完了snapshot，就可以把这条记录的最后一条log index及其之前的所有的log entry都删掉。</li>
+<li>系统状态机：存储系统当前状态（这是怎么生成的呢？）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/architecture/distribution/index.html</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>
