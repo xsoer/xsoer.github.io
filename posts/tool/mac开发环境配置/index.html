@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 4.2.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -23,19 +23,20 @@
   </script>
 
   <meta name="description" content="工欲善其事，必先利其器">
-<meta name="keywords" content="工具,MAC">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mac开发环境配置">
-<meta property="og:url" content="https://xsoer.github.io/posts/tool/mac开发环境配置/index.html">
+<meta property="og:url" content="https://xsoer.github.io/posts/tool/mac%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="hackfox">
 <meta property="og:description" content="工欲善其事，必先利其器">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-13T02:05:50.890Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-09-05T08:12:25.000Z">
+<meta property="article:modified_time" content="2020-06-13T02:05:50.890Z">
+<meta property="article:author" content="hackfox">
+<meta property="article:tag" content="工具">
+<meta property="article:tag" content="MAC">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mac开发环境配置">
-<meta name="twitter:description" content="工欲善其事，必先利其器">
 
-<link rel="canonical" href="https://xsoer.github.io/posts/tool/mac开发环境配置/">
+<link rel="canonical" href="https://xsoer.github.io/posts/tool/mac%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
 
 
 <script id="page-configurations">
@@ -234,10 +235,10 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/posts/tool/mac开发环境配置/">
+    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/posts/tool/mac%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/undefined/avatar.gif">
       <meta itemprop="name" content="hackfox">
       <meta itemprop="description" content="架构、AI、python、rust">
     </span>
@@ -351,7 +352,7 @@
 <li>Vetur</li>
 <li>YAML</li>
 </ul>
-<h3 id="2-配置"><a href="#2-配置" class="headerlink" title="2.配置"></a>2.配置</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"workbench.activityBar.visible"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"editor.scrollBeyondLastLine"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"files.autoSave"</span>: <span class="string">"onFocusChange"</span>,</span><br><span class="line">    <span class="attr">"workbench.colorTheme"</span>: <span class="string">"Shades of Purple"</span>,</span><br><span class="line">    <span class="attr">"terminal.integrated.cursorStyle"</span>: <span class="string">"line"</span>,</span><br><span class="line">    <span class="attr">"workbench.statusBar.feedback.visible"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"clock.dateFormat"</span>: <span class="string">"yyyy-mm-dd HH:MM:ss"</span>,</span><br><span class="line">    <span class="attr">"extensions.ignoreRecommendations"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"files.exclude"</span>: &#123;</span><br><span class="line">        <span class="attr">"**/__pycache__"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">"**/*.pyc"</span>: <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"breadcrumbs.enabled"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"editor.fontSize"</span>: <span class="number">15</span>,</span><br><span class="line">    <span class="attr">"editor.fontFamily"</span>: <span class="string">"'Source Code Pro',Menlo, Monaco, 'Courier New', monospace"</span>,</span><br><span class="line">    <span class="attr">"terminal.external.osxExec"</span>: <span class="string">"iterm.app"</span>,</span><br><span class="line">    <span class="attr">"terminal.integrated.copyOnSelection"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"terminal.integrated.fontSize"</span>: <span class="number">15</span>,</span><br><span class="line">    <span class="attr">"terminal.integrated.fontFamily"</span>: <span class="string">"'Source Code Pro'"</span>,</span><br><span class="line">    <span class="attr">"terminal.integrated.scrollback"</span>: <span class="number">3000</span>,</span><br><span class="line">    <span class="attr">"terminal.integrated.shell.osx"</span>: <span class="string">"/bin/zsh"</span>,</span><br><span class="line">    <span class="attr">"python.pythonPath"</span>: <span class="string">"~/anaconda3/bin/python"</span>,</span><br><span class="line">    <span class="attr">"python.linting.pylintEnabled"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"leetcode.defaultLanguage"</span>: <span class="string">"python3"</span>,</span><br><span class="line">    <span class="attr">"leetcode.outputFolder"</span>: <span class="string">"leecode"</span>,</span><br><span class="line">    <span class="attr">"leetcode.hideSolved"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"breadcrumbs.symbolSortOrder"</span>: <span class="string">"name"</span>,</span><br><span class="line">    // Theme Setup.</span><br><span class="line">    // "workbench.iconTheme": "vscode-icons",</span><br><span class="line">    "editor.lineHeight": 24.65,</span><br><span class="line">    "editor.letterSpacing": 0.5,</span><br><span class="line">    "editor.fontWeight": "400",</span><br><span class="line">    "editor.fontLigatures": true,</span><br><span class="line">    "editor.cursorStyle": "line",</span><br><span class="line">    // "editor.cursorWidth": 1,</span><br><span class="line">    "editor.cursorBlinking": "solid",</span><br><span class="line">    "editor.renderWhitespace": "all",</span><br><span class="line">    "editor.snippetSuggestions": "top",</span><br><span class="line">    "editor.glyphMargin": true,</span><br><span class="line">    "workbench.editor.enablePreview": false,</span><br><span class="line">    "explorer.confirmDragAndDrop": false,</span><br><span class="line">    "files.trimTrailingWhitespace": true,</span><br><span class="line">    "files.trimFinalNewlines": true,</span><br><span class="line">    // Formatting Optional.</span><br><span class="line">    // "editor.formatOnSave": true,</span><br><span class="line">    "eslint.run": "onType",</span><br><span class="line">    "eslint.autoFixOnSave": true,</span><br><span class="line">    // MacOS Only Settings.</span><br><span class="line">    "workbench.fontAliasing": "auto",</span><br><span class="line">    "terminal.integrated.macOptionIsMeta": true,</span><br><span class="line">    // SOP's highlight matching tag setting.</span><br><span class="line">    "workbench.statusBar.visible": true,</span><br><span class="line">    "python.dataScience.sendSelectionToInteractiveWindow": true,</span><br><span class="line">    "terminal.integrated.rendererType": "dom",</span><br><span class="line">    "git.ignoreLegacyWarning": true,</span><br><span class="line">    "GithubGistExplorer.explorer.gistSortBy": "Last Updated",</span><br><span class="line">    "GithubGistExplorer.explorer.gistAscending": false,</span><br><span class="line">    "GithubGistExplorer.explorer.subscriptionSortBy": "Last Updated",</span><br><span class="line">    "GithubGistExplorer.explorer.subscriptionAscending": false,</span><br><span class="line">    "GithubGistExplorer.github.token": "",</span><br><span class="line">    "GithubGistExplorer.github.username": "",</span><br><span class="line">    "sync.gist": "",</span><br><span class="line">    "window.zoomLevel": 0,</span><br><span class="line">    "go.formatTool": "goimports",</span><br><span class="line">    "go.useLanguageServer": true,</span><br><span class="line">    "http.proxy": "http://127.0.0.1:1087"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-配置"><a href="#2-配置" class="headerlink" title="2.配置"></a>2.配置</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"workbench.activityBar.visible"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"editor.scrollBeyondLastLine"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"files.autoSave"</span>: <span class="string">"onFocusChange"</span>,</span><br><span class="line">    <span class="attr">"workbench.colorTheme"</span>: <span class="string">"Shades of Purple"</span>,</span><br><span class="line">    <span class="attr">"terminal.integrated.cursorStyle"</span>: <span class="string">"line"</span>,</span><br><span class="line">    <span class="attr">"workbench.statusBar.feedback.visible"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"clock.dateFormat"</span>: <span class="string">"yyyy-mm-dd HH:MM:ss"</span>,</span><br><span class="line">    <span class="attr">"extensions.ignoreRecommendations"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"files.exclude"</span>: &#123;</span><br><span class="line">        <span class="attr">"**/__pycache__"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">"**/*.pyc"</span>: <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"breadcrumbs.enabled"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"editor.fontSize"</span>: <span class="number">15</span>,</span><br><span class="line">    <span class="attr">"editor.fontFamily"</span>: <span class="string">"'Source Code Pro',Menlo, Monaco, 'Courier New', monospace"</span>,</span><br><span class="line">    <span class="attr">"terminal.external.osxExec"</span>: <span class="string">"iterm.app"</span>,</span><br><span class="line">    <span class="attr">"terminal.integrated.copyOnSelection"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"terminal.integrated.fontSize"</span>: <span class="number">15</span>,</span><br><span class="line">    <span class="attr">"terminal.integrated.fontFamily"</span>: <span class="string">"'Source Code Pro'"</span>,</span><br><span class="line">    <span class="attr">"terminal.integrated.scrollback"</span>: <span class="number">3000</span>,</span><br><span class="line">    <span class="attr">"terminal.integrated.shell.osx"</span>: <span class="string">"/bin/zsh"</span>,</span><br><span class="line">    <span class="attr">"python.pythonPath"</span>: <span class="string">"~/anaconda3/bin/python"</span>,</span><br><span class="line">    <span class="attr">"python.linting.pylintEnabled"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"leetcode.defaultLanguage"</span>: <span class="string">"python3"</span>,</span><br><span class="line">    <span class="attr">"leetcode.outputFolder"</span>: <span class="string">"leecode"</span>,</span><br><span class="line">    <span class="attr">"leetcode.hideSolved"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"breadcrumbs.symbolSortOrder"</span>: <span class="string">"name"</span>,</span><br><span class="line">    <span class="comment">// Theme Setup.</span></span><br><span class="line">    <span class="comment">// "workbench.iconTheme": "vscode-icons",</span></span><br><span class="line">    <span class="attr">"editor.lineHeight"</span>: <span class="number">24.65</span>,</span><br><span class="line">    <span class="attr">"editor.letterSpacing"</span>: <span class="number">0.5</span>,</span><br><span class="line">    <span class="attr">"editor.fontWeight"</span>: <span class="string">"400"</span>,</span><br><span class="line">    <span class="attr">"editor.fontLigatures"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"editor.cursorStyle"</span>: <span class="string">"line"</span>,</span><br><span class="line">    <span class="comment">// "editor.cursorWidth": 1,</span></span><br><span class="line">    <span class="attr">"editor.cursorBlinking"</span>: <span class="string">"solid"</span>,</span><br><span class="line">    <span class="attr">"editor.renderWhitespace"</span>: <span class="string">"all"</span>,</span><br><span class="line">    <span class="attr">"editor.snippetSuggestions"</span>: <span class="string">"top"</span>,</span><br><span class="line">    <span class="attr">"editor.glyphMargin"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"workbench.editor.enablePreview"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"explorer.confirmDragAndDrop"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"files.trimTrailingWhitespace"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"files.trimFinalNewlines"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">// Formatting Optional.</span></span><br><span class="line">    <span class="comment">// "editor.formatOnSave": true,</span></span><br><span class="line">    <span class="attr">"eslint.run"</span>: <span class="string">"onType"</span>,</span><br><span class="line">    <span class="attr">"eslint.autoFixOnSave"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">// MacOS Only Settings.</span></span><br><span class="line">    <span class="attr">"workbench.fontAliasing"</span>: <span class="string">"auto"</span>,</span><br><span class="line">    <span class="attr">"terminal.integrated.macOptionIsMeta"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">// SOP's highlight matching tag setting.</span></span><br><span class="line">    <span class="attr">"workbench.statusBar.visible"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"python.dataScience.sendSelectionToInteractiveWindow"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"terminal.integrated.rendererType"</span>: <span class="string">"dom"</span>,</span><br><span class="line">    <span class="attr">"git.ignoreLegacyWarning"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"GithubGistExplorer.explorer.gistSortBy"</span>: <span class="string">"Last Updated"</span>,</span><br><span class="line">    <span class="attr">"GithubGistExplorer.explorer.gistAscending"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"GithubGistExplorer.explorer.subscriptionSortBy"</span>: <span class="string">"Last Updated"</span>,</span><br><span class="line">    <span class="attr">"GithubGistExplorer.explorer.subscriptionAscending"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"GithubGistExplorer.github.token"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="attr">"GithubGistExplorer.github.username"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="attr">"sync.gist"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="attr">"window.zoomLevel"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"go.formatTool"</span>: <span class="string">"goimports"</span>,</span><br><span class="line">    <span class="attr">"go.useLanguageServer"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"http.proxy"</span>: <span class="string">"http://127.0.0.1:1087"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="0x02、omyzsh"><a href="#0x02、omyzsh" class="headerlink" title="0x02、omyzsh"></a>0x02、omyzsh</h2><h3 id="1-插件-1"><a href="#1-插件-1" class="headerlink" title="1.插件"></a>1.插件</h3><ul>
 <li>git</li>
@@ -364,7 +365,7 @@
 <h2 id="0x03、tmux"><a href="#0x03、tmux" class="headerlink" title="0x03、tmux"></a>0x03、tmux</h2><h3 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install tmux</span><br></pre></td></tr></table></figure>
 
 <h3 id="2-配置文件-1"><a href="#2-配置文件-1" class="headerlink" title="2.配置文件"></a>2.配置文件</h3><p>具体配置和使用请阅读<a href="/posts/tool/tmux配置">tmux配置</a>译文</p>
-<h2 id="0x04、vim"><a href="#0x04、vim" class="headerlink" title="0x04、vim"></a>0x04、vim</h2><h3 id="1-配置文件"><a href="#1-配置文件" class="headerlink" title="1.配置文件"></a>1.配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">set nocompatible</span><br><span class="line">syntax on</span><br><span class="line">filetype plugin indent on</span><br><span class="line">set ic</span><br><span class="line">set hlsearch</span><br><span class="line">set encoding=utf-8</span><br><span class="line">set fileencodings=utf-8,ucs-bom,GB2312,big5</span><br><span class="line">set cursorline</span><br><span class="line">set autoindent</span><br><span class="line">set smartindent</span><br><span class="line">set scrolloff=4</span><br><span class="line">set showmatch</span><br><span class="line">set nu</span><br><span class="line"></span><br><span class="line">let python_highlight_all=1</span><br><span class="line">au Filetype python set tabstop=4</span><br><span class="line">au Filetype python set softtabstop=4</span><br><span class="line">au Filetype python set shiftwidth=4</span><br><span class="line">au Filetype python set textwidth=79</span><br><span class="line">au Filetype python set expandtab</span><br><span class="line">au Filetype python set autoindent</span><br><span class="line">au Filetype python set fileformat=unix</span><br><span class="line">autocmd Filetype python set foldmethod=indent</span><br><span class="line">autocmd Filetype python set foldlevel=99</span><br></pre></td></tr></table></figure>
+<h2 id="0x04、vim"><a href="#0x04、vim" class="headerlink" title="0x04、vim"></a>0x04、vim</h2><h3 id="1-配置文件"><a href="#1-配置文件" class="headerlink" title="1.配置文件"></a>1.配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">set nocompatible</span><br><span class="line">syntax on</span><br><span class="line">filetype plugin indent on</span><br><span class="line">set ic</span><br><span class="line">set hlsearch</span><br><span class="line">set encoding&#x3D;utf-8</span><br><span class="line">set fileencodings&#x3D;utf-8,ucs-bom,GB2312,big5</span><br><span class="line">set cursorline</span><br><span class="line">set autoindent</span><br><span class="line">set smartindent</span><br><span class="line">set scrolloff&#x3D;4</span><br><span class="line">set showmatch</span><br><span class="line">set nu</span><br><span class="line"></span><br><span class="line">let python_highlight_all&#x3D;1</span><br><span class="line">au Filetype python set tabstop&#x3D;4</span><br><span class="line">au Filetype python set softtabstop&#x3D;4</span><br><span class="line">au Filetype python set shiftwidth&#x3D;4</span><br><span class="line">au Filetype python set textwidth&#x3D;79</span><br><span class="line">au Filetype python set expandtab</span><br><span class="line">au Filetype python set autoindent</span><br><span class="line">au Filetype python set fileformat&#x3D;unix</span><br><span class="line">autocmd Filetype python set foldmethod&#x3D;indent</span><br><span class="line">autocmd Filetype python set foldlevel&#x3D;99</span><br></pre></td></tr></table></figure>
 
 <h2 id="0x05、chrome"><a href="#0x05、chrome" class="headerlink" title="0x05、chrome"></a>0x05、chrome</h2><h3 id="1-插件-2"><a href="#1-插件-2" class="headerlink" title="1.插件"></a>1.插件</h3><ul>
 <li>vimium</li>
@@ -412,7 +413,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://xsoer.github.io/posts/tool/mac开发环境配置/" title="Mac开发环境配置">https://xsoer.github.io/posts/tool/mac开发环境配置/</a>
+    <a href="https://xsoer.github.io/posts/tool/mac%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" title="Mac开发环境配置">https://xsoer.github.io/posts/tool/mac开发环境配置/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -423,7 +424,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/工具/" rel="tag"># 工具</a>
+              <a href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag"># 工具</a>
               <a href="/tags/MAC/" rel="tag"># MAC</a>
           </div>
 
@@ -433,11 +434,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/ai/神经网络类型/" rel="prev" title="神经网络类型">
+    <a href="/posts/ai/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%B1%BB%E5%9E%8B/" rel="prev" title="神经网络类型">
       <i class="fa fa-chevron-left"></i> 神经网络类型
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/tool/tmux配置/" rel="next" title="tmux配置">
+    <a href="/posts/tool/tmux%E9%85%8D%E7%BD%AE/" rel="next" title="tmux配置">
       tmux配置 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -519,7 +520,7 @@
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -531,17 +532,17 @@
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/xsoer" title="GitHub → https://github.com/xsoer" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/xsoer" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xsoer" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
         <a href="mailto:codehackfox@gmail.com" title="E-Mail → mailto:codehackfox@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://stackoverflow.com/users/5746784/hackfox-code" title="StackOverflow → https://stackoverflow.com/users/5746784/hackfox-code" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+        <a href="https://stackoverflow.com/users/5746784/hackfox-code" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;5746784&#x2F;hackfox-code" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
       </span>
   </div>
   <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/undefined/cc-by-nc-sa.svg" alt="Creative Commons"></a>
   </div>
 
 
@@ -551,7 +552,7 @@
     </div>
     <ul class="links-of-blogroll-list">
         <li class="links-of-blogroll-item">
-          <a href="http://hackfox.vip" title="http://hackfox.vip" rel="noopener" target="_blank">hackfox</a>
+          <a href="http://hackfox.vip/" title="http:&#x2F;&#x2F;hackfox.vip" rel="noopener" target="_blank">hackfox</a>
         </li>
     </ul>
   </div>
@@ -585,7 +586,7 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">117k</span>
+    <span title="站点总字数">118k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
@@ -593,7 +594,7 @@
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     <span title="站点阅读时长">1:47</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
         
@@ -637,9 +638,17 @@
   <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/pisces.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
   <script>
 var pjax = new Pjax({
   selectors: [
@@ -707,7 +716,9 @@ window.addEventListener('pjax:success', () => {
 
 
 
-  <script src="/js/local-search.js"></script>
+  
+<script src="/js/local-search.js"></script>
+
 
 
 
@@ -736,7 +747,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo        : 'xsoer.github.io',
       owner       : 'xsoer',
       admin       : ['xsoer'],
-      id          : '1dcba42d6cdac6d0db947dffecc18bdf',
+      id          : '90a4a86e1102216d056b54b413556bd2',
         language: 'zh-CN',
       distractionFreeMode: true
     });

@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Docker文档 作者：codehackfox@gmail.com 时间：2019-03-30 14:16:23   0x00、整体介绍  0x01、镜像  0x02、Dockfile  docker用来制作镜像 必须要from开头   0x03、Docker-compose  docker-compose用来管理多个镜像  分为version、services、networks几部分。其中前两个">
+<meta property="og:type" content="website">
+<meta property="og:title" content="title">
+<meta property="og:url" content="https://xsoer.github.io/man/docker/%E6%96%87%E6%A1%A3.html">
+<meta property="og:site_name" content="hackfox">
+<meta property="og:description" content="Docker文档 作者：codehackfox@gmail.com 时间：2019-03-30 14:16:23   0x00、整体介绍  0x01、镜像  0x02、Dockfile  docker用来制作镜像 必须要from开头   0x03、Docker-compose  docker-compose用来管理多个镜像  分为version、services、networks几部分。其中前两个">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="evernotecid://44669F3E-2F32-40F7-B5DC-DC9BDFBA5A31/appyinxiangcom/19062149/ENResource/p6252">
+<meta property="og:image" content="evernotecid://44669F3E-2F32-40F7-B5DC-DC9BDFBA5A31/appyinxiangcom/19062149/ENResource/p6253">
+<meta property="og:image" content="evernotecid://44669F3E-2F32-40F7-B5DC-DC9BDFBA5A31/appyinxiangcom/19062149/ENResource/p6254">
+<meta property="og:image" content="evernotecid://44669F3E-2F32-40F7-B5DC-DC9BDFBA5A31/appyinxiangcom/19062149/ENResource/p6255">
+<meta property="og:image" content="evernotecid://E62A088B-AD42-4A98-B548-75BFC62A59C2/appyinxiangcom/19062149/ENResource/p7163">
+<meta property="article:published_time" content="2020-06-21T09:28:54.000Z">
+<meta property="article:modified_time" content="2020-07-24T03:13:49.088Z">
+<meta property="article:author" content="hackfox">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="evernotecid://44669F3E-2F32-40F7-B5DC-DC9BDFBA5A31/appyinxiangcom/19062149/ENResource/p6252">
+
+<link rel="canonical" href="https://xsoer.github.io/man/docker/%E6%96%87%E6%A1%A3">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>title | hackfox
+</title>
+  
+    <script>
+      function sendPageView() {
+        if (CONFIG.hostname !== location.hostname) return;
+        var uid = localStorage.getItem('uid') || (Math.random() + '.' + Math.random());
+        localStorage.setItem('uid', uid);
+        navigator.sendBeacon('https://www.google-analytics.com/collect', new URLSearchParams({
+          v  : 1,
+          tid: 'UA-114671402-1',
+          cid: uid,
+          t  : 'pageview',
+          dp : encodeURIComponent(location.pathname)
+        }));
+      }
+      document.addEventListener('pjax:complete', sendPageView);
+      sendPageView();
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="stylesheet" href="/css/prism-duotone-dark.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">hackfox</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">专注 慎思 博学</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-man">
+
+    <a href="/man/" rel="section"><i class="fa fa-server fa-fw"></i>手册</a>
+
+  </li>
+        <li class="menu-item menu-item-algorithms">
+
+    <a href="/algorithms/" rel="section"><i class="fa fa-cogs fa-fw"></i>算法</a>
+
+  </li>
+        <li class="menu-item menu-item-interview">
+
+    <a href="/interview/" rel="section"><i class="fa fa-code fa-fw"></i>面试</a>
+
+  </li>
+        <li class="menu-item menu-item-tools">
+
+    <a href="/tools/" rel="section"><i class="fa fa-gavel fa-fw"></i>工具</a>
+
+  </li>
+        <li class="menu-item menu-item-resource">
+
+    <a href="/resource/" rel="section"><i class="fa fa-folder fa-fw"></i>资源</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>读书</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">title
+</h1>
+
+<div class="post-meta">
+  
+  <ul class="breadcrumb">
+          
+            <li><a href="/man/">MAN</a></li>
+            <li><a href="/man/docker/">DOCKER</a></li>
+            <li>文档</li>
+          
+  </ul>
+
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+          <h1 id="Docker文档"><a href="#Docker文档" class="headerlink" title="Docker文档"></a>Docker文档</h1><ul>
+<li>作者：<a href="mailto:codehackfox@gmail.com">codehackfox@gmail.com</a></li>
+<li>时间：2019-03-30 14:16:23</li>
+</ul>
+<blockquote>
+<h3 id="0x00、整体介绍"><a href="#0x00、整体介绍" class="headerlink" title="0x00、整体介绍"></a>0x00、整体介绍</h3></blockquote>
+<blockquote>
+<h3 id="0x01、镜像"><a href="#0x01、镜像" class="headerlink" title="0x01、镜像"></a>0x01、镜像</h3></blockquote>
+<blockquote>
+<h3 id="0x02、Dockfile"><a href="#0x02、Dockfile" class="headerlink" title="0x02、Dockfile"></a>0x02、Dockfile</h3></blockquote>
+<ul>
+<li>docker用来制作镜像</li>
+<li>必须要from开头</li>
+</ul>
+<blockquote>
+<h3 id="0x03、Docker-compose"><a href="#0x03、Docker-compose" class="headerlink" title="0x03、Docker-compose"></a>0x03、Docker-compose</h3></blockquote>
+<ul>
+<li><p>docker-compose用来管理多个镜像</p>
+</li>
+<li><p>分为version、services、networks几部分。其中前两个是必须要有的。</p>
+</li>
+<li><p>version</p>
+<ul>
+<li>定义版本 3.7</li>
+</ul>
+</li>
+<li><p>services里，可以包含很多的服务，可以定义</p>
+<ul>
+<li><p>build</p>
+</li>
+<li><p>ports</p>
+<ul>
+<li>ports暴露容器端口到主机的任意端口或指定端口</li>
+</ul>
+</li>
+<li><p>exports</p>
+<ul>
+<li>expose暴露容器给link到当前容器的容器</li>
+</ul>
+</li>
+<li><p>image</p>
+</li>
+<li><p>networks</p>
+</li>
+<li><p>voluems</p>
+<ul>
+<li><ol>
+<li>默认情况不使用:rw :ro选项，Mode的值就是空字符串”“。</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>使用:rw选项，Mode的值就是”rw”。</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>使用:ro选项，Mode的值就是”ro”</li>
+</ol>
+</li>
+<li>我们知道docker -v不仅可以挂载映射目录，也可以只挂载映射一个文件。<ul>
+<li><ol>
+<li>如果我们按照1，2设置来挂载目录，宿主主机和docker互相都可以读写同步，如果我们按照1，2设置来挂载文件，这个时候只有docker的写可以同步到宿主主机上面去，宿主主机写不同步到docker。而且一旦宿主主机上写了修改了映射文件，那么docker里面再怎么写都不再同步到宿主主机了。</li>
+</ol>
+</li>
+<li>注意：这里有一个特殊的玩法，假如docker1和docker2都映射了主机上同一个文件到自己的目录，在docker1里面改了文件，docker2内也是同时改变的，就算你在主机上改了文件导致主机和docker1，docker2不再同步了，这个操作还是可以。</li>
+<li><ol start="2">
+<li>如果我们按照3来挂载目录或者挂载文件，这个时候docker内也不能写，宿主主机写了也不同步进去了，相当于创建的时候拷贝一份不可改变的配置进来而已。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>exteral_hosts</p>
+</li>
+<li><p>depends_on</p>
+<ul>
+<li>depends_on 来定义服务之间的依赖关系时会造成下面的影响</li>
+<li>depends_on 不会等到 db 和 redis 容器 ready 再启动，web 容器仅仅等到 redis 和 db 容器启动就开始启动</li>
+</ul>
+</li>
+<li><p>links</p>
+<ul>
+<li>使用 links 来保证每一次都能够连接数据库，而不需要知道具体端口是什么</li>
+</ul>
+</li>
+<li><p>init</p>
+</li>
+<li><p>working_dir</p>
+</li>
+<li><p>command</p>
+</li>
+<li><p>environment</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>举例<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> ports:</span><br><span class="line">   - &quot;80:80&quot;         # 绑定容器的80端口到主机的80端口</span><br><span class="line">   - &quot;9000:8080&quot;     # 绑定容器的8080端口到主机的9000端口</span><br><span class="line">   - &quot;443&quot;           # 绑定容器的443端口到主机的任意端口，容器启动时随机分配绑定的主机端口号</span><br><span class="line"></span><br><span class="line">expose:</span><br><span class="line">  - &quot;3000&quot;</span><br><span class="line">  - &quot;8000&quot;</span><br><span class="line"># 和ports的区别是，expose不会将端口暴露给主机。</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>networks</li>
+</ul>
+<ul>
+<li>链接外部容器的几种方式<ul>
+<li>在同一个docker-compose里写入depends_on或者links，docker会自动解决依赖，并依据service名称来访问即可</li>
+<li>如果不在docker-compose里解决依赖，那就需要公用一个外部网络：external</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>容器技术<ul>
+<li>容器就是将软件打包成标准化单元，以用于开发、交付和部署</li>
+<li>特性<ul>
+<li>容器镜像是轻量的、可执行的独立软件包 ，包含软件运行所需的所有内容：代码、运行时环境、系统工具、系统库和设置。</li>
+<li>容器化软件适用于基于Linux和Windows的应用，在任何环境中都能够始终如一地运行。</li>
+<li>容器赋予了软件独立性，使其免受外在环境差异（例如，开发和预演环境的差异）的影响，从而有助于减少团队间在相同基础设施上运行不同软件时的冲突。</li>
+<li><img data-src="evernotecid://44669F3E-2F32-40F7-B5DC-DC9BDFBA5A31/appyinxiangcom/19062149/ENResource/p6252" alt="25c4c7294b60e95791da993cda05b76a.jpeg"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>docker简介<ul>
+<li>特点<ul>
+<li>作用是虚拟运行</li>
+<li>包含镜像和容器两块</li>
+<li>架构有客户端和服务端</li>
+<li>镜像有层的概念，最多128层</li>
+<li>容器可以进行端口映射，磁盘挂载，添加host</li>
+<li>与传统虚拟技术的区别<ul>
+<li><img data-src="evernotecid://44669F3E-2F32-40F7-B5DC-DC9BDFBA5A31/appyinxiangcom/19062149/ENResource/p6253" alt="e65fcb6a94984509cefac489893ab09b.jpeg"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>docker特性<ul>
+<li>轻量级</li>
+<li>高效的部署和扩容</li>
+<li>更高的资源利用率</li>
+<li>更简单的管理</li>
+</ul>
+</li>
+<li>docker基本架构<ul>
+<li>几部分组成：<ul>
+<li><ol>
+<li>Docker Client 客户端</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>Docker daemon 守护进程</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>Docker Image 镜像</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>Docker Container 容器</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>Docker Registry 仓库</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>客户端和守护进程：<ul>
+<li>Docker是C/S（客户端client-服务器server）架构模式。</li>
+<li>Docker通过客户端连接守护进程，通过命令向守护进程发出请求，守护进程通过一系列的操作返回结果。</li>
+<li>docker客户端可以连接本地或者远程的守护进程。</li>
+<li>docker客户端和服务器通过socket或RESTful API进行通信。</li>
+<li>Docker 容器通过 Docker 镜像来创建，容器与镜像的关系类似于面向对象编程中的对象与类<img data-src="evernotecid://44669F3E-2F32-40F7-B5DC-DC9BDFBA5A31/appyinxiangcom/19062149/ENResource/p6254" alt="c209c9f282cc29a87444b3157cdbdfe7.jpeg"></li>
+</ul>
+</li>
+<li>Docker 镜像(Images)<ul>
+<li>Docker 镜像是用于创建 Docker 容器的模板。</li>
+</ul>
+</li>
+<li>Docker 容器(Container)<ul>
+<li>容器是独立运行的一个或一组应用。</li>
+</ul>
+</li>
+<li>Docker 客户端(Client)<ul>
+<li>Docker 客户端通过命令行或者其他工具使用</li>
+</ul>
+</li>
+<li>Docker APIDocker 主机(Host)<ul>
+<li>一个物理或者虚拟的机器用于执行 Docker 守护进程和容器。</li>
+</ul>
+</li>
+<li>Docker 仓库(Registry)<ul>
+<li>Docker 仓库用来保存镜像，可以理解为代码控制中的代码仓库。</li>
+</ul>
+</li>
+<li>Docker Hub<ul>
+<li>提供了庞大的镜像集合供使用。</li>
+</ul>
+</li>
+<li>Docker MachineDocker<ul>
+<li>Machine是一个简化Docker安装的命令行工具，通过一个简单的命令行即可在相应的平台上安装Docker，比如VirtualBox、 Digital Ocean、Microsoft Azure。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>镜像<ul>
+<li>仓库</li>
+</ul>
+</li>
+<li>容器</li>
+<li>docker网络<ul>
+<li><ul>
+<li>当 Docker daemon 启动时需要做以下操作：</li>
+</ul>
+</li>
+<li>creates the docker0 bridge if not present 如果 docker0 不存在则创建</li>
+<li>searches for an IP address range which doesn’t overlap with an existing route 搜索一个与当前路由不冲突的 ip 段</li>
+<li>picks an IP in the selected range 在确定的范围中选择 ip</li>
+<li>assigns this IP to the docker0 bridge  绑定 ip 到 docker0</li>
+<li><img data-src="evernotecid://44669F3E-2F32-40F7-B5DC-DC9BDFBA5A31/appyinxiangcom/19062149/ENResource/p6255" alt="aa2047f3e08edb95f019c73cce48d564.jpeg"></li>
+<li>4 种网络模式：<ul>
+<li>host 模式，使用 –net=host 指定。</li>
+<li>container 模式，使用 –net=container:NAMEorID 指定。</li>
+<li>none 模式，使用 –net=none 指定。</li>
+<li>bridge 模式，使用 –net=bridge 指定，默认设置。</li>
+</ul>
+</li>
+<li>host 模式<ul>
+<li>如果启动容器的时候使用 host 模式，那么这个容器将不会获得一个独立的 Network Namespace，而是和宿主机共用一个 Network Namespace。容器将不会虚拟出自己的网卡，配置自己的 IP 等，而是使用宿主机的 IP 和端口。</li>
+</ul>
+</li>
+<li>container 模式<ul>
+<li>这个模式指定新创建的容器和已经存在的一个容器共享一个 Network Namespace，而不是和宿主机共享。新创建的容器不会创建自己的网卡，配置自己的 IP，而是和一个指定的容器共享 IP、端口范围等。同样，两个容器除了网络方面，其他的如文件系统、进程列表等还是隔离的。两个容器的进程可以通过 lo 网卡设备通信。</li>
+</ul>
+</li>
+<li>none模式<ul>
+<li>这个模式和前两个不同。在这种模式下，Docker 容器拥有自己的 Network Namespace，但是，并不为 Docker容器进行任何网络配置。也就是说，这个 Docker 容器没有网卡、IP、路由等信息。需要我们自己为 Docker 容器添加网卡、配置 IP 等。</li>
+</ul>
+</li>
+<li>bridge模式<ul>
+<li><img data-src="evernotecid://E62A088B-AD42-4A98-B548-75BFC62A59C2/appyinxiangcom/19062149/ENResource/p7163" alt="56ad5155b0cb39e2e58b74776b38ad07.jpeg"></li>
+</ul>
+</li>
+<li>The Container World | Part 2 Networking</li>
+<li>bridge 模式是 Docker 默认的网络设置，此模式会为每一个容器分配 Network namespace、设置 IP 等，并将一个主机上的 Docker 容器连接到一个虚拟网桥上。当 Docker server 启动时，会在主机上创建一个名为 docker0 的虚拟网桥，此主机上启动的 Docker 容器会连接到这个虚拟网桥上。虚拟网桥的工作方式和物理交换机类似，这样主机上的所有容器就通过交换机连在了一个二层网络中。接下来就要为容器分配 IP 了，Docker 会从 RFC1918 所定义的私有 IP 网段中，选择一个和宿主机不同的IP地址和子网分配给 docker0，连接到 docker0 的容器就从这个子网中选择一个未占用的 IP 使用。如一般 Docker 会使用 172.17.0.0/16 这个网段，并将 172.17.42.1/16 分配给 docker0 网桥（在主机上使用 ifconfig 命令是可以看到 docker0 的，可以认为它是网桥的管理接口，在宿主机上作为一块虚拟网卡使用）</li>
+</ul>
+</li>
+<li>docker常用命令及参数<ul>
+<li>镜像类<ul>
+<li>docker image ls</li>
+<li>docker image rm</li>
+<li>docker image</li>
+<li>docker pull</li>
+</ul>
+</li>
+<li>容器类<ul>
+<li>docker container ls -a</li>
+<li>docker container rm -f</li>
+<li>docker ps</li>
+<li>docker rm</li>
+<li>docker run</li>
+<li>docker start</li>
+<li>docker restart</li>
+<li>docker stop</li>
+</ul>
+</li>
+<li>服务类<ul>
+<li>docker</li>
+</ul>
+</li>
+<li>参数说明<ul>
+<li>-p</li>
+<li>-v</li>
+<li>-i</li>
+<li>-t</li>
+<li>—add-host</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>容器卷</li>
+<li>docker api</li>
+<li>docker 安全</li>
+<li>lib container</li>
+<li>docker集群管理</li>
+<li>docker生态圈</li>
+<li>docker 测试</li>
+<li>应用场景<ul>
+<li>作为云主机使用</li>
+<li>作为服务使用：Web应用服务、持续集成和持续部署</li>
+<li>微服务架构使用</li>
+</ul>
+</li>
+<li>Dockerfile<ul>
+<li>docker build -t tmp .</li>
+<li>创建一个dockerfile文件，进行构建</li>
+</ul>
+</li>
+<li>docker login<ul>
+<li>user是用户名不是邮箱；</li>
+</ul>
+</li>
+<li>docker tag文件<ul>
+<li>重新标记一个镜像出来</li>
+</ul>
+</li>
+<li>情况下提供 Unix Domain Socket 连接</li>
+<li>底层依赖<ul>
+<li>Group</li>
+<li>Chroot</li>
+<li>Namespace</li>
+<li>Runc</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+      
+      
+      
+    </div>
+    
+  <ul class="breadcrumb">
+          
+            <li><a href="/man/">MAN</a></li>
+            <li><a href="/man/docker/">DOCKER</a></li>
+            <li>文档</li>
+          
+  </ul>
+
+    
+    
+    
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker文档"><span class="nav-text">Docker文档</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00、整体介绍"><span class="nav-text">0x00、整体介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01、镜像"><span class="nav-text">0x01、镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02、Dockfile"><span class="nav-text">0x02、Dockfile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x03、Docker-compose"><span class="nav-text">0x03、Docker-compose</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">hackfox</p>
+  <div class="site-description" itemprop="description">架构、AI、python、rust</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xsoer" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xsoer" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:codehackfox@gmail.com" title="E-Mail → mailto:codehackfox@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/5746784/hackfox-code" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;5746784&#x2F;hackfox-code" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/undefined/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://hackfox.vip/" title="http:&#x2F;&#x2F;hackfox.vip" rel="noopener" target="_blank">hackfox</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hackfox</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">118k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:47</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '7c7b02623259a39014a0',
+      clientSecret: '07c01a3277dab0956ad91bad7d24b91a7e773990',
+      repo        : 'xsoer.github.io',
+      owner       : 'xsoer',
+      admin       : ['xsoer'],
+      id          : 'f039d1c8e337bfd70e5fd9a35961e5bc',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+    </div>
+</body>
+</html>

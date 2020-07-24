@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="core文件是什么，有什么用？ core是unix系统的内核。当你的程序出现内存越界的时候，操作系统会中止你的进程，并将当前内存状态倒出到core文件中，以便进一步分析。程序员可以通过core文件来找出问题所在。它记录了程序挂掉时详细的状态描述。  什么是core dump Core的意思是内存, Dump的意思是扔出来, 堆出来。开发和使用Unix程序时, 有时程序莫名其妙的down了, 却没有">
+<meta property="og:type" content="website">
+<meta property="og:title" content="hackfox">
+<meta property="og:url" content="https://xsoer.github.io/interview/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.html">
+<meta property="og:site_name" content="hackfox">
+<meta property="og:description" content="core文件是什么，有什么用？ core是unix系统的内核。当你的程序出现内存越界的时候，操作系统会中止你的进程，并将当前内存状态倒出到core文件中，以便进一步分析。程序员可以通过core文件来找出问题所在。它记录了程序挂掉时详细的状态描述。  什么是core dump Core的意思是内存, Dump的意思是扔出来, 堆出来。开发和使用Unix程序时, 有时程序莫名其妙的down了, 却没有">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-11T06:52:04.849Z">
+<meta property="article:modified_time" content="2020-07-11T06:52:04.849Z">
+<meta property="article:author" content="hackfox">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://xsoer.github.io/interview/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title> | hackfox
+</title>
+  
+    <script>
+      function sendPageView() {
+        if (CONFIG.hostname !== location.hostname) return;
+        var uid = localStorage.getItem('uid') || (Math.random() + '.' + Math.random());
+        localStorage.setItem('uid', uid);
+        navigator.sendBeacon('https://www.google-analytics.com/collect', new URLSearchParams({
+          v  : 1,
+          tid: 'UA-114671402-1',
+          cid: uid,
+          t  : 'pageview',
+          dp : encodeURIComponent(location.pathname)
+        }));
+      }
+      document.addEventListener('pjax:complete', sendPageView);
+      sendPageView();
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="stylesheet" href="/css/prism-duotone-dark.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">hackfox</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">专注 慎思 博学</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-man">
+
+    <a href="/man/" rel="section"><i class="fa fa-server fa-fw"></i>手册</a>
+
+  </li>
+        <li class="menu-item menu-item-algorithms">
+
+    <a href="/algorithms/" rel="section"><i class="fa fa-cogs fa-fw"></i>算法</a>
+
+  </li>
+        <li class="menu-item menu-item-interview">
+
+    <a href="/interview/" rel="section"><i class="fa fa-code fa-fw"></i>面试</a>
+
+  </li>
+        <li class="menu-item menu-item-tools">
+
+    <a href="/tools/" rel="section"><i class="fa fa-gavel fa-fw"></i>工具</a>
+
+  </li>
+        <li class="menu-item menu-item-resource">
+
+    <a href="/resource/" rel="section"><i class="fa fa-folder fa-fw"></i>资源</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>读书</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+  <ul class="breadcrumb">
+          
+            <li><a href="/interview/">INTERVIEW</a></li>
+            <li><a href="/interview/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></li>
+            <li>操作系统</li>
+          
+  </ul>
+
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+          <h3 id="core文件是什么，有什么用？"><a href="#core文件是什么，有什么用？" class="headerlink" title="core文件是什么，有什么用？"></a>core文件是什么，有什么用？</h3><ul>
+<li>core是unix系统的内核。当你的程序出现内存越界的时候，操作系统会中止你的进程，并将当前内存状态倒出到core文件中，以便进一步分析。程序员可以通过core文件来找出问题所在。它记录了程序挂掉时详细的状态描述。</li>
+</ul>
+<h3 id="什么是core-dump"><a href="#什么是core-dump" class="headerlink" title="什么是core dump"></a>什么是core dump</h3><ul>
+<li>Core的意思是内存, Dump的意思是扔出来, 堆出来。开发和使用Unix程序时, 有时程序莫名其妙的down了, 却没有任何的提示(有时候会提示core dumped). 这时候可以查看一下有没有形如core.进程号的文件生成， 这个文件便是操作系统把程序down掉时的内存内容出来生成的，它可以做为调试程序的参考.</li>
+<li>core dump又叫核心转储, 当程序运行过程中发生异常, 程序异常退出时, 由操作系统把程序当前的内存状况存储在一个core文件中, 叫core dump。</li>
+<li>如何使用core文件<ul>
+<li>gdb -c core文件路径 [应用程序的路径]，进去后输入where回车, 就可以显示程序在哪一行当掉的, 哪个函数中.</li>
+</ul>
+</li>
+</ul>
+<h3 id="为什么没有core文件生成呢"><a href="#为什么没有core文件生成呢" class="headerlink" title="为什么没有core文件生成呢?"></a>为什么没有core文件生成呢?</h3><ul>
+<li>core文件的生成跟你当前系统的环境设置有关系, 可以用下面的语句设置一下, 然后再运行程序便成生成core文件.</li>
+<li>ulimit -c unlimited core文件生成的位置一般于运行程序的路径相同, 文件名一般为core.进程号</li>
+</ul>
+<h3 id="不用core文件，程序出了问题产生信号是否知道？"><a href="#不用core文件，程序出了问题产生信号是否知道？" class="headerlink" title="不用core文件，程序出了问题产生信号是否知道？"></a>不用core文件，程序出了问题产生信号是否知道？</h3><ul>
+<li>内核向进程发信号嘛。</li>
+</ul>
+<h3 id="共享内存除了文件映射还有什么方式？二者有什么区别"><a href="#共享内存除了文件映射还有什么方式？二者有什么区别" class="headerlink" title="共享内存除了文件映射还有什么方式？二者有什么区别"></a>共享内存除了文件映射还有什么方式？二者有什么区别</h3><ul>
+<li>共享内存对象映射。</li>
+<li>区别：内存映射文件是由一个文件到一块内存的映射，使应用程序可以通过内存指针对磁盘上的文件进行访问，其过程就如同对加载了文件的内存的访问，因此内存文件映射非常适合于用来管理大文件。</li>
+</ul>
+<h3 id="请解释下列10个shell命令的用途。top、ps、mv、find、df、cat、chmod、chgrp、grep、wc"><a href="#请解释下列10个shell命令的用途。top、ps、mv、find、df、cat、chmod、chgrp、grep、wc" class="headerlink" title="请解释下列10个shell命令的用途。top、ps、mv、find、df、cat、chmod、chgrp、grep、wc"></a>请解释下列10个shell命令的用途。top、ps、mv、find、df、cat、chmod、chgrp、grep、wc</h3><ul>
+<li>top：命令是Linux下常用的性能分析工具，能够实时显示系统中各个进程的资源占用状况，类似于Windows的任务管理器。</li>
+<li>ps：查看进程</li>
+<li>mv：移动或者更改文件</li>
+<li>find：在子目录中搜索匹配的文件</li>
+<li>df：linux中df命令参数功能：检查文件系统的磁盘空间占用情况。</li>
+<li>cat：把一个或多个文件内容显示到标准输出</li>
+<li>chmod：改变文件属性</li>
+<li>chgrp：改变用户分组</li>
+<li>grep：在文件内进行搜索</li>
+<li>wc：命令的功能为统计指定文件中的字节数、字数、行数, 并将统计结果显示输出。</li>
+</ul>
+<h3 id="Linux文件属性有哪些？（共十位）"><a href="#Linux文件属性有哪些？（共十位）" class="headerlink" title="Linux文件属性有哪些？（共十位）"></a>Linux文件属性有哪些？（共十位）</h3><ul>
+<li>-rw-r–r–那个是权限符号，总共是- — — —这几个位。</li>
+<li>第一个短横处是文件类型识别符：-表示普通文件；c表示字符设备（character）；b表示块设备（block）；d表示目录 （directory）；l表示链接文件（link）；后面第一个三个连续的短横是用户权限位（User），第二个三个连续短横是组权限位 （Group），第三个三个续短横是其他权限位（Other）。每个权限位有三个权限，r（读权限），w（写权限），x（执行权限）。如果每个权限位都 有权限存在，那么满权限的情况就是：-rwxrwxrwx；权限为空的情况就是- — — —。</li>
+<li>权限的设定可以用chmod命令，其格式位：chmod ugoa+/-/=rwx filename/directory。例如：</li>
+<li>一个文件aaa具有完全空的权限- — — —。<ul>
+<li>chmod u+rw aaa（给用户权限位设置读写权限，其权限表示为：- rw- — —）</li>
+<li>chmod g+r aaa（给组设置权限为可读，其权限表示为：- — r– —）</li>
+<li>chmod ugo+rw aaa（给用户，组，其它用户或组设置权限为读写，权限表示为：- rw- rw- rw-）</li>
+</ul>
+</li>
+<li>如果aaa具有满权限- rwx rwx rwx。<ul>
+<li>chmod u-x aaa（去掉用户可执行权限，权限表示为：- rw- rwx rwx）</li>
+</ul>
+</li>
+<li>如果要给aaa赋予制定权限- rwx r-x r-x，命令为：<ul>
+<li>chmod u=rwx，go=rx aaa</li>
+</ul>
+</li>
+</ul>
+<h3 id="linux查询命令"><a href="#linux查询命令" class="headerlink" title="linux查询命令"></a>linux查询命令</h3><ul>
+<li>find / -name “文件名”    在目录结构中搜索文件，并执行指定的操作。</li>
+<li>grep</li>
+<li>local 文件名  —他是 ‘find -name’ 的另一种写法，但要比后者快得多，原因在于它不搜索具体目录，而是搜索一个数据库（/var/lib/locatedb），这个数据库中含 有本地所有文件信息。Linux系统自动创建这个数据库，并且每天自动更新一次，所以改命令查不到最变动过的文件。为了避免这种情况，可以在使用locate之前，先使用updatedb命令，手动更新数据库。</li>
+<li>whereis —是定位可执行文件、源代码文件、帮助文件在文件系统中的位置。whereis命令只能用于程序名的搜索，而且只搜索二进制文件（参数-b）、man说明文件（参数-m）和源代码文件（参数-s）。如果省略参数，则返回所有信息。</li>
+<li>which  作用是在PATH变量指定的路径中，搜索某个系统命令的位置，并且返回第一个搜索结果。也就是说，使用which命令，就可以看到某个系统命令是否存在，以及执行的到底是哪一个位置的命令。</li>
+</ul>
+<h3 id="select-poll和epoll的区别"><a href="#select-poll和epoll的区别" class="headerlink" title="select, poll和epoll的区别"></a>select, poll和epoll的区别</h3><ul>
+<li>select<ul>
+<li>select最早于1983年出现在4.2BSD中，它通过一个select()系统调用来监视多个文件描述符的数组，当select()返回后，该数组中就绪的文件描述符便会被内核修改标志位，使得进程可以获得这些文件描述符从而进行后续的读写操作。</li>
+<li>select目前几乎在所有的平台上支持，其良好跨平台支持也是它的一个优点，事实上从现在看来，这也是它所剩不多的优点之一。</li>
+<li>select的一个缺点在于单个进程能够监视的文件描述符的数量存在最大限制，在Linux上一般为1024，不过可以通过修改宏定义甚至重新编译内核的方式提升这一限制。</li>
+<li>另外，select()所维护的存储大量文件描述符的数据结构，随着文件描述符数量的增大，其复制的开销也线性增长。同时，由于网络响应时间的延迟 使得大量TCP连接处于非活跃状态，但调用select()会对所有socket进行一次线性扫描，所以这也浪费了一定的开销。</li>
+</ul>
+</li>
+<li>poll<ul>
+<li>poll在1986年诞生于System V Release 3，它和select在本质上没有多大差别，但是poll没有最大文件描述符数量的限制。</li>
+<li>poll和select同样存在一个缺点就是，包含大量文件描述符的数组被整体复制于用户态和内核的地址空间之间，而不论这些文件描述符是否就绪，它的开销随着文件描述符数量的增加而线性增大。</li>
+<li>另外，select()和poll()将就绪的文件描述符告诉进程后，如果进程没有对其进行IO操作，那么下次调用select()和poll() 的时候将再次报告这些文件描述符，所以它们一般不会丢失就绪的消息，这种方式称为水平触发（Level Triggered）。</li>
+</ul>
+</li>
+<li>epoll<ul>
+<li>直到Linux2.6才出现了由内核直接支持的实现方法，那就是epoll，它几乎具备了之前所说的一切优点，被公认为Linux2.6下性能最好的多路I/O就绪通知方法。</li>
+<li>epoll可以同时支持水平触发和边缘触发（Edge Triggered，只告诉进程哪些文件描述符刚刚变为就绪状态，它只说一遍，如果我们没有采取行动，那么它将不会再次告知，这种方式称为边缘触发），理论上边缘触发的性能要更高一些，但是代码实现相当复杂。</li>
+<li>epoll同样只告知那些就绪的文件描述符，而且当我们调用epoll_wait()获得就绪文件描述符时，返回的不是实际的描述符，而是一个代表 就绪描述符数量的值，你只需要去epoll指定的一个数组中依次取得相应数量的文件描述符即可，这里也使用了内存映射（mmap）技术这样  彻底省掉了 这些文件描述符在系统调用时复制的开销。</li>
+<li>另一个本质的改进在于epoll采用基于事件的就绪通知方式。在select/poll中，进程只有在调用一定的方法后，内核才对所有监视的文件描 述符进行扫描，而epoll事先通过epoll_ctl()来注册一个文件描述符，一旦基于某个文件描述符就绪时，内核会采用类似callbac的回调 机制，迅速激活这个文件描述符，当进程调用epoll_wait()时便得到通知。</li>
+</ul>
+</li>
+</ul>
+<h3 id="待处理"><a href="#待处理" class="headerlink" title="待处理"></a>待处理</h3><ul>
+<li><ol>
+<li>内存的页面置换算法</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>进程调度算法</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>进程间通信方式</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>进程和线程定义，区别和联系</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>进程之间的通信</li>
+</ol>
+</li>
+<li><ol start="6">
+<li>父子进程、孤儿进程</li>
+</ol>
+</li>
+<li><ol start="7">
+<li>fork进程时的操作，</li>
+</ol>
+</li>
+<li><ol start="11">
+<li>硬链接和软连接区别</li>
+</ol>
+</li>
+<li><ol start="12">
+<li>kill用法，某个进程杀不掉的原因（进入内核态，忽略kill信号）</li>
+</ol>
+</li>
+<li><ol start="13">
+<li>linux用过的命令</li>
+</ol>
+</li>
+<li><ol start="14">
+<li>系统管理命令（如查看内存使用、网络情况）</li>
+</ol>
+</li>
+<li><ol start="15">
+<li>管道的使用 |</li>
+</ol>
+</li>
+<li><ol start="16">
+<li>grep的使用，一定要掌握，每次都会问在文件中查找</li>
+</ol>
+</li>
+<li><ol start="17">
+<li>shell脚本</li>
+</ol>
+</li>
+<li><ol start="19">
+<li>awk使用</li>
+</ol>
+</li>
+</ul>
+
+      </div>
+      
+      
+      
+    </div>
+    
+  <ul class="breadcrumb">
+          
+            <li><a href="/interview/">INTERVIEW</a></li>
+            <li><a href="/interview/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></li>
+            <li>操作系统</li>
+          
+  </ul>
+
+    
+    
+    
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#core文件是什么，有什么用？"><span class="nav-text">core文件是什么，有什么用？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是core-dump"><span class="nav-text">什么是core dump</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么没有core文件生成呢"><span class="nav-text">为什么没有core文件生成呢?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不用core文件，程序出了问题产生信号是否知道？"><span class="nav-text">不用core文件，程序出了问题产生信号是否知道？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#共享内存除了文件映射还有什么方式？二者有什么区别"><span class="nav-text">共享内存除了文件映射还有什么方式？二者有什么区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请解释下列10个shell命令的用途。top、ps、mv、find、df、cat、chmod、chgrp、grep、wc"><span class="nav-text">请解释下列10个shell命令的用途。top、ps、mv、find、df、cat、chmod、chgrp、grep、wc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux文件属性有哪些？（共十位）"><span class="nav-text">Linux文件属性有哪些？（共十位）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linux查询命令"><span class="nav-text">linux查询命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#select-poll和epoll的区别"><span class="nav-text">select, poll和epoll的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#待处理"><span class="nav-text">待处理</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">hackfox</p>
+  <div class="site-description" itemprop="description">架构、AI、python、rust</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xsoer" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xsoer" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:codehackfox@gmail.com" title="E-Mail → mailto:codehackfox@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/5746784/hackfox-code" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;5746784&#x2F;hackfox-code" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/undefined/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://hackfox.vip/" title="http:&#x2F;&#x2F;hackfox.vip" rel="noopener" target="_blank">hackfox</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hackfox</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">118k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:47</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '7c7b02623259a39014a0',
+      clientSecret: '07c01a3277dab0956ad91bad7d24b91a7e773990',
+      repo        : 'xsoer.github.io',
+      owner       : 'xsoer',
+      admin       : ['xsoer'],
+      id          : '01cdd90a3a80638d960071047c1fefd6',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+    </div>
+</body>
+</html>

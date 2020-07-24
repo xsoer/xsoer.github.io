@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 4.2.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -23,19 +23,37 @@
   </script>
 
   <meta name="description" content="捻角羚的舞蹈">
-<meta name="keywords" content="kudu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="kudu简介">
-<meta property="og:url" content="https://xsoer.github.io/posts/storage/kudu简介/index.html">
+<meta property="og:url" content="https://xsoer.github.io/posts/storage/kudu%E7%AE%80%E4%BB%8B/index.html">
 <meta property="og:site_name" content="hackfox">
 <meta property="og:description" content="捻角羚的舞蹈">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-13T02:04:49.500Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-hbase-hdfs.png">
+<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-kudu-position.png">
+<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-kudu-gap.png">
+<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-kudu-architecture.png">
+<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-range.png">
+<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-hash.png">
+<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-hash-range.png">
+<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-hash-hash.png">
+<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-hash-range-good-bad.png">
+<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-encoding.png">
+<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-field-encoding.png">
+<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-store-tree.png">
+<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-insert-data.png">
+<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-store-data.png">
+<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-flush.png">
+<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-compation.png">
+<meta property="og:image" content="https://xsoer.github.io/assets/images/2019/07-12-impalaapi.png">
+<meta property="article:published_time" content="2019-07-12T02:13:23.000Z">
+<meta property="article:modified_time" content="2020-06-13T02:04:49.500Z">
+<meta property="article:author" content="hackfox">
+<meta property="article:tag" content="kudu">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kudu简介">
-<meta name="twitter:description" content="捻角羚的舞蹈">
+<meta name="twitter:image" content="https://xsoer.github.io/assets/images/2019/07-12-hbase-hdfs.png">
 
-<link rel="canonical" href="https://xsoer.github.io/posts/storage/kudu简介/">
+<link rel="canonical" href="https://xsoer.github.io/posts/storage/kudu%E7%AE%80%E4%BB%8B/">
 
 
 <script id="page-configurations">
@@ -234,10 +252,10 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/posts/storage/kudu简介/">
+    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/posts/storage/kudu%E7%AE%80%E4%BB%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/undefined/avatar.gif">
       <meta itemprop="name" content="hackfox">
       <meta itemprop="description" content="架构、AI、python、rust">
     </span>
@@ -485,8 +503,7 @@
 </ul>
 </li>
 <li><p>比如建立如下一个表</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> metrics (</span><br><span class="line">    host <span class="keyword">STRING</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    metric <span class="keyword">STRING</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    <span class="built_in">time</span> INT64 <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    <span class="keyword">value</span> <span class="keyword">DOUBLE</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    PRIMARY <span class="keyword">KEY</span> (host, metric, <span class="built_in">time</span>),</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> metrics (</span><br><span class="line">    host <span class="keyword">STRING</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    metric <span class="keyword">STRING</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    <span class="built_in">time</span> INT64 <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    <span class="keyword">value</span> <span class="keyword">DOUBLE</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    PRIMARY <span class="keyword">KEY</span> (host, metric, <span class="built_in">time</span>),</span><br><span class="line">);</span><br></pre></td></tr></table></figure></li>
 <li><p>按照range来分区如下<br><img data-src="/assets/images/2019/07-12-range.png" alt="range"></p>
 </li>
 <li><p>按照hash分区如下<br><img data-src="/assets/images/2019/07-12-hash.png" alt="hash"></p>
@@ -539,7 +556,7 @@
 <h3 id="2-存储数据"><a href="#2-存储数据" class="headerlink" title="2.存储数据"></a>2.存储数据</h3><p><img data-src="/assets/images/2019/07-12-insert-data.png" alt="insert-data"><br><img data-src="/assets/images/2019/07-12-store-data.png" alt="store-data"><br>fluash示例如下<br><img data-src="/assets/images/2019/07-12-flush.png" alt="flush"></p>
 <h3 id="3-compaction"><a href="#3-compaction" class="headerlink" title="3.compaction"></a>3.compaction</h3><p><img data-src="/assets/images/2019/07-12-compation.png" alt="compation"></p>
 <h3 id="4-kudu-api"><a href="#4-kudu-api" class="headerlink" title="4.kudu api"></a>4.kudu api</h3><!-- ![kuduapi](/assets/images/2019/07-12-kuduapi.png) -->
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">```python</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">import</span> kudu</span><br><span class="line"><span class="keyword">from</span> kudu.client <span class="keyword">import</span> Partitioning</span><br><span class="line"></span><br><span class="line"><span class="comment"># Connect to Kudu master server(s).</span></span><br><span class="line">client = kudu.connect(host=<span class="string">'192.168.96.162'</span>, port=<span class="number">7051</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Define a schema for a new table.</span></span><br><span class="line">builder = kudu.schema_builder()</span><br><span class="line">builder.add_column(<span class="string">'key'</span>).type(kudu.int64).nullable(<span class="literal">False</span>).primary_key()</span><br><span class="line">builder.add_column(<span class="string">'ts_val'</span>, type_=kudu.unixtime_micros, nullable=<span class="literal">False</span>, compression=<span class="string">'lz4'</span>)</span><br><span class="line">schema = builder.build()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Define the partitioning schema.</span></span><br><span class="line">partitioning = Partitioning().add_hash_partitions(column_names=[<span class="string">'key'</span>], num_buckets=<span class="number">3</span>).set_range_partition_columns([<span class="string">'year'</span>]).add_range_partition(&#123;<span class="string">'year'</span>:<span class="number">2018</span>&#125;,&#123;<span class="string">'year'</span>:<span class="number">2019</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Delete table if it already exists.</span></span><br><span class="line"><span class="keyword">if</span> client.table_exists(<span class="string">'python-example'</span>):</span><br><span class="line">  client.delete_table(<span class="string">'python-example'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a new table.</span></span><br><span class="line">client.create_table(<span class="string">'python-example'</span>, schema, partitioning)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Open a table.</span></span><br><span class="line">table = client.table(<span class="string">'python-example'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a new session so that we can apply write operations.</span></span><br><span class="line">session = client.new_session()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Insert a row.</span></span><br><span class="line">op = table.new_insert(&#123;<span class="string">'key'</span>: <span class="number">1</span>, <span class="string">'ts_val'</span>: datetime.utcnow()&#125;)</span><br><span class="line">session.apply(op)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Upsert a row.</span></span><br><span class="line">op = table.new_upsert(&#123;<span class="string">'key'</span>: <span class="number">2</span>, <span class="string">'ts_val'</span>: <span class="string">"2016-01-01T00:00:00.000000"</span>&#125;)</span><br><span class="line">session.apply(op)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Update a row.</span></span><br><span class="line">op = table.new_update(&#123;<span class="string">'key'</span>: <span class="number">1</span>, <span class="string">'ts_val'</span>: (<span class="string">"2017-01-01"</span>, <span class="string">"%Y-%m-%d"</span>)&#125;)</span><br><span class="line">session.apply(op)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Delete a row.</span></span><br><span class="line">op = table.new_delete(&#123;<span class="string">'key'</span>: <span class="number">2</span>&#125;)</span><br><span class="line">session.apply(op)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Flush write operations, if failures occur, print them.</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">  session.flush()</span><br><span class="line"><span class="keyword">except</span> kudu.KuduBadStatus:</span><br><span class="line">  print(session.get_pending_errors())</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a scanner and add a predicate.</span></span><br><span class="line">scanner = table.scanner()</span><br><span class="line">scanner.add_predicate(table[<span class="string">'ts_val'</span>] == datetime(<span class="number">2017</span>, <span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Open scanner and print all tuples.</span></span><br><span class="line"><span class="comment"># <span class="doctag">Note:</span> This doesn't scale for large scans</span></span><br><span class="line"><span class="comment"># The expected output: [(1, datetime.datetime(2017, 1, 1, 0, 0, tzinfo=&lt;UTC&gt;))]</span></span><br><span class="line">print(scanner.open().read_all_tuples())</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">```python</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">import</span> kudu</span><br><span class="line"><span class="keyword">from</span> kudu.client <span class="keyword">import</span> Partitioning</span><br><span class="line"></span><br><span class="line"><span class="comment"># Connect to Kudu master server(s).</span></span><br><span class="line">client = kudu.connect(host=<span class="string">'192.168.96.162'</span>, port=<span class="number">7051</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Define a schema for a new table.</span></span><br><span class="line">builder = kudu.schema_builder()</span><br><span class="line">builder.add_column(<span class="string">'key'</span>).type(kudu.int64).nullable(<span class="literal">False</span>).primary_key()</span><br><span class="line">builder.add_column(<span class="string">'ts_val'</span>, type_=kudu.unixtime_micros, nullable=<span class="literal">False</span>, compression=<span class="string">'lz4'</span>)</span><br><span class="line">schema = builder.build()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Define the partitioning schema.</span></span><br><span class="line">partitioning = Partitioning().add_hash_partitions(column_names=[<span class="string">'key'</span>], num_buckets=<span class="number">3</span>).set_range_partition_columns([<span class="string">'year'</span>]).add_range_partition(&#123;<span class="string">'year'</span>:<span class="number">2018</span>&#125;,&#123;<span class="string">'year'</span>:<span class="number">2019</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Delete table if it already exists.</span></span><br><span class="line"><span class="keyword">if</span> client.table_exists(<span class="string">'python-example'</span>):</span><br><span class="line">  client.delete_table(<span class="string">'python-example'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a new table.</span></span><br><span class="line">client.create_table(<span class="string">'python-example'</span>, schema, partitioning)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Open a table.</span></span><br><span class="line">table = client.table(<span class="string">'python-example'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a new session so that we can apply write operations.</span></span><br><span class="line">session = client.new_session()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Insert a row.</span></span><br><span class="line">op = table.new_insert(&#123;<span class="string">'key'</span>: <span class="number">1</span>, <span class="string">'ts_val'</span>: datetime.utcnow()&#125;)</span><br><span class="line">session.apply(op)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Upsert a row.</span></span><br><span class="line">op = table.new_upsert(&#123;<span class="string">'key'</span>: <span class="number">2</span>, <span class="string">'ts_val'</span>: <span class="string">"2016-01-01T00:00:00.000000"</span>&#125;)</span><br><span class="line">session.apply(op)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Update a row.</span></span><br><span class="line">op = table.new_update(&#123;<span class="string">'key'</span>: <span class="number">1</span>, <span class="string">'ts_val'</span>: (<span class="string">"2017-01-01"</span>, <span class="string">"%Y-%m-%d"</span>)&#125;)</span><br><span class="line">session.apply(op)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Delete a row.</span></span><br><span class="line">op = table.new_delete(&#123;<span class="string">'key'</span>: <span class="number">2</span>&#125;)</span><br><span class="line">session.apply(op)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Flush write operations, if failures occur, print them.</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">  session.flush()</span><br><span class="line"><span class="keyword">except</span> kudu.KuduBadStatus:</span><br><span class="line">  print(session.get_pending_errors())</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a scanner and add a predicate.</span></span><br><span class="line">scanner = table.scanner()</span><br><span class="line">scanner.add_predicate(table[<span class="string">'ts_val'</span>] == datetime(<span class="number">2017</span>, <span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Open scanner and print all tuples.</span></span><br><span class="line"><span class="comment"># Note: This doesn't scale for large scans</span></span><br><span class="line"><span class="comment"># The expected output: [(1, datetime.datetime(2017, 1, 1, 0, 0, tzinfo=&lt;UTC&gt;))]</span></span><br><span class="line">print(scanner.open().read_all_tuples())</span><br></pre></td></tr></table></figure>
 
 <h2 id="0x04、impala结合"><a href="#0x04、impala结合" class="headerlink" title="0x04、impala结合"></a>0x04、impala结合</h2><h3 id="1-功能简介"><a href="#1-功能简介" class="headerlink" title="1.功能简介"></a>1.功能简介</h3><ul>
 <li>支持存储<ul>
@@ -676,7 +693,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://xsoer.github.io/posts/storage/kudu简介/" title="kudu简介">https://xsoer.github.io/posts/storage/kudu简介/</a>
+    <a href="https://xsoer.github.io/posts/storage/kudu%E7%AE%80%E4%BB%8B/" title="kudu简介">https://xsoer.github.io/posts/storage/kudu简介/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -696,11 +713,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/storage/impala简介/" rel="prev" title="impala简介">
+    <a href="/posts/storage/impala%E7%AE%80%E4%BB%8B/" rel="prev" title="impala简介">
       <i class="fa fa-chevron-left"></i> impala简介
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/ai/神经网络类型/" rel="next" title="神经网络类型">
+    <a href="/posts/ai/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%B1%BB%E5%9E%8B/" rel="next" title="神经网络类型">
       神经网络类型 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -782,7 +799,7 @@
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -794,17 +811,17 @@
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/xsoer" title="GitHub → https://github.com/xsoer" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/xsoer" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xsoer" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
         <a href="mailto:codehackfox@gmail.com" title="E-Mail → mailto:codehackfox@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://stackoverflow.com/users/5746784/hackfox-code" title="StackOverflow → https://stackoverflow.com/users/5746784/hackfox-code" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+        <a href="https://stackoverflow.com/users/5746784/hackfox-code" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;5746784&#x2F;hackfox-code" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
       </span>
   </div>
   <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/undefined/cc-by-nc-sa.svg" alt="Creative Commons"></a>
   </div>
 
 
@@ -814,7 +831,7 @@
     </div>
     <ul class="links-of-blogroll-list">
         <li class="links-of-blogroll-item">
-          <a href="http://hackfox.vip" title="http://hackfox.vip" rel="noopener" target="_blank">hackfox</a>
+          <a href="http://hackfox.vip/" title="http:&#x2F;&#x2F;hackfox.vip" rel="noopener" target="_blank">hackfox</a>
         </li>
     </ul>
   </div>
@@ -848,7 +865,7 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">117k</span>
+    <span title="站点总字数">118k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
@@ -856,7 +873,7 @@
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     <span title="站点阅读时长">1:47</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
         
@@ -900,9 +917,17 @@
   <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/pisces.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
   <script>
 var pjax = new Pjax({
   selectors: [
@@ -970,7 +995,9 @@ window.addEventListener('pjax:success', () => {
 
 
 
-  <script src="/js/local-search.js"></script>
+  
+<script src="/js/local-search.js"></script>
+
 
 
 
@@ -999,7 +1026,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo        : 'xsoer.github.io',
       owner       : 'xsoer',
       admin       : ['xsoer'],
-      id          : '290eb377a1ddd912037751c345251d83',
+      id          : 'ac3b5b0cd1d836ad7e958ec06c2b8ddf',
         language: 'zh-CN',
       distractionFreeMode: true
     });

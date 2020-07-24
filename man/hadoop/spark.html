@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="基本概念  Application：提交到Spark集群的应用程序，简称App。 Driver：执行应用程序中创建SparkContext的main函数的进程，一般在集群的任何节点向集群提交应用程序，就可以将该节点称做Driver节点。 Cluster manager：即集群管理器，作为Spark集群的“神经中枢”，统筹管理Spark集群的各种资源，包括CPU和内存等，并分配不同服务所需的资源（例">
+<meta property="og:type" content="website">
+<meta property="og:title" content="title">
+<meta property="og:url" content="https://xsoer.github.io/man/hadoop/spark.html">
+<meta property="og:site_name" content="hackfox">
+<meta property="og:description" content="基本概念  Application：提交到Spark集群的应用程序，简称App。 Driver：执行应用程序中创建SparkContext的main函数的进程，一般在集群的任何节点向集群提交应用程序，就可以将该节点称做Driver节点。 Cluster manager：即集群管理器，作为Spark集群的“神经中枢”，统筹管理Spark集群的各种资源，包括CPU和内存等，并分配不同服务所需的资源（例">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-21T09:28:54.000Z">
+<meta property="article:modified_time" content="2020-07-24T03:14:17.858Z">
+<meta property="article:author" content="hackfox">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://xsoer.github.io/man/hadoop/spark">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>title | hackfox
+</title>
+  
+    <script>
+      function sendPageView() {
+        if (CONFIG.hostname !== location.hostname) return;
+        var uid = localStorage.getItem('uid') || (Math.random() + '.' + Math.random());
+        localStorage.setItem('uid', uid);
+        navigator.sendBeacon('https://www.google-analytics.com/collect', new URLSearchParams({
+          v  : 1,
+          tid: 'UA-114671402-1',
+          cid: uid,
+          t  : 'pageview',
+          dp : encodeURIComponent(location.pathname)
+        }));
+      }
+      document.addEventListener('pjax:complete', sendPageView);
+      sendPageView();
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="stylesheet" href="/css/prism-duotone-dark.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">hackfox</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">专注 慎思 博学</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-man">
+
+    <a href="/man/" rel="section"><i class="fa fa-server fa-fw"></i>手册</a>
+
+  </li>
+        <li class="menu-item menu-item-algorithms">
+
+    <a href="/algorithms/" rel="section"><i class="fa fa-cogs fa-fw"></i>算法</a>
+
+  </li>
+        <li class="menu-item menu-item-interview">
+
+    <a href="/interview/" rel="section"><i class="fa fa-code fa-fw"></i>面试</a>
+
+  </li>
+        <li class="menu-item menu-item-tools">
+
+    <a href="/tools/" rel="section"><i class="fa fa-gavel fa-fw"></i>工具</a>
+
+  </li>
+        <li class="menu-item menu-item-resource">
+
+    <a href="/resource/" rel="section"><i class="fa fa-folder fa-fw"></i>资源</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>读书</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">title
+</h1>
+
+<div class="post-meta">
+  
+  <ul class="breadcrumb">
+          
+            <li><a href="/man/">MAN</a></li>
+            <li><a href="/man/hadoop/">HADOOP</a></li>
+            <li>SPARK</li>
+          
+  </ul>
+
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+          <p>基本概念</p>
+<ul>
+<li>Application：提交到Spark集群的应用程序，简称App。</li>
+<li>Driver：执行应用程序中创建SparkContext的main函数的进程，一般在集群的任何节点向集群提交应用程序，就可以将该节点称做Driver节点。</li>
+<li>Cluster manager：即集群管理器，作为Spark集群的“神经中枢”，统筹管理Spark集群的各种资源，包括CPU和内存等，并分配不同服务所需的资源（例如standalone manager即Master、Mesos和Yarn）。</li>
+<li>Master节点：即部署Cluster manager的节点，是一个物理层的概念。</li>
+<li>worker节点：任何在集群中运行应用程序的节点，其接收集群管理器的调度安排，为应用程序分配必需的资源，生成Executor，起到桥梁作用</li>
+<li>Slave节点：即部署Worker的机器节点，每个Slave节点可以有多个Worker进程，是一个物理层的概念。</li>
+<li>Executor：表示应用在Worker节点中进行实际计算的继承，进程会接收切分好的Task任务，并将结果缓存在节点内存和磁盘上</li>
+<li>Task：被分配到各个Executor的单位工作内容，它是Spark中的最小执行单位，一般来说有多少个Paritition（物理层面的概念，即分支可以理解为将数据划分成不同部分并行处理），就会有多少个Task，每个Task只会处理单一分支上的数据。</li>
+<li>Job：由多个Task的并行计算部分，一般Spark中的action操作（如save、collect，下一章会进一步说明），会生成一个Job。</li>
+<li>Stage：是Job的组成单位，一个Job会切分成多个Stage, Stage彼此之间相互依赖顺序执行，而每个Stage是多个Task的集合，类似map和reduce stage。</li>
+</ul>
+<p>RDD存储结构</p>
+<p>DataFream没有flatMap方法.需要转换成RDD<br>    r = df_artist_profile.rdd.map(lambda x: {x[‘id’]:x[‘name’]}).collection() # 返回一个list<br>    print(r[:10]<br>‘PipelinedRDD’ object has no attribute ‘show’只能用take<br>show() is only for spark DataFrame.</p>
+<ul>
+<li>dbtable可以是一个表名，也可以是一个查询语句创建的临时表<ul>
+<li>df_artist_profile = self.ss.read.format(‘jdbc’).options(url=self.mainsite_url,dbtable=”(select id, name from artist_profile) artist_profile”,useSSL=’false’).load()</li>
+<li>df_artist_profile = self.ss.read.format(‘jdbc’).options(url=self.mainsite_url,dbtable=”artist_profile”,useSSL=’false’).load()</li>
+</ul>
+</li>
+</ul>
+<p>spark dataframe派生于RDD类，但是提供了非常强大的数据操作功能。当然主要对类SQL的支持<br>DataFrame 的函数<br>Action 操作<br>1、 collect() ,返回值是一个数组，返回dataframe集合所有的行<br>2、 collectAsList() 返回值是一个java类型的数组，返回dataframe集合所有的行<br>3、 count() 返回一个number类型的，返回dataframe集合的行数<br>4、 describe(cols: String*) 返回一个通过数学计算的类表值(count, mean, stddev, min, and max)，这个可以传多个参数，中间用逗号分隔，如果有字段为空，那么不参与运算，只这对数值类型的字段。例如df.describe(“age”, “height”).show()<br>5、 first() 返回第一行 ，类型是row类型<br>6、 head() 返回第一行 ，类型是row类型<br>7、 head(n:Int)返回n行  ，类型是row 类型<br>8、 show()返回dataframe集合的值 默认是20行，返回类型是unit<br>9、 show(n:Int)返回n行，，返回值类型是unit<br>10、 table(n:Int) 返回n行  ，类型是row 类型</p>
+<p>dataframe的基本操作<br>1、 cache()同步数据的内存<br>2、 columns 返回一个string类型的数组，返回值是所有列的名字<br>3、 dtypes返回一个string类型的二维数组，返回值是所有列的名字以及类型<br>4、 explan()打印执行计划  物理的<br>5、 explain(n:Boolean) 输入值为 false 或者true ，返回值是unit  默认是false ，如果输入true 将会打印 逻辑的和物理的<br>6、 isLocal 返回值是Boolean类型，如果允许模式是local返回true 否则返回false<br>7、 persist(newlevel:StorageLevel) 返回一个dataframe.this.type 输入存储模型类型<br>8、 printSchema() 打印出字段名称和类型 按照树状结构来打印<br>9、 registerTempTable(tablename:String) 返回Unit ，将df的对象只放在一张表里面，这个表随着对象的删除而删除了<br>10、 schema 返回structType 类型，将字段名称和类型按照结构体类型返回<br>11、 toDF()返回一个新的dataframe类型的<br>12、 toDF(colnames：String*)将参数中的几个字段返回一个新的dataframe类型的，<br>13、 unpersist() 返回dataframe.this.type 类型，去除模式中的数据<br>14、 unpersist(blocking:Boolean)返回dataframe.this.type类型 true 和unpersist是一样的作用false 是去除RDD</p>
+<p>集成查询：<br>1、 agg(expers:column<em>) 返回dataframe类型 ，同数学计算求值<br>df.agg(max(“age”), avg(“salary”))<br>df.groupBy().agg(max(“age”), avg(“salary”))<br>2、 agg(exprs: Map[String, String])  返回dataframe类型 ，同数学计算求值 map类型的<br>df.agg(Map(“age” -&gt; “max”, “salary” -&gt; “avg”))<br>df.groupBy().agg(Map(“age” -&gt; “max”, “salary” -&gt; “avg”))<br>3、 agg(aggExpr: (String, String), aggExprs: (String, String)</em>)  返回dataframe类型 ，同数学计算求值<br>df.agg(Map(“age” -&gt; “max”, “salary” -&gt; “avg”))<br>df.groupBy().agg(Map(“age” -&gt; “max”, “salary” -&gt; “avg”))<br>4、 apply(colName: String) 返回column类型，捕获输入进去列的对象<br>5、 as(alias: String) 返回一个新的dataframe类型，就是原来的一个别名<br>6、 col(colName: String)  返回column类型，捕获输入进去列的对象<br>7、 cube(col1: String, cols: String<em>) 返回一个GroupedData类型，根据某些字段来汇总<br>8、 distinct 去重 返回一个dataframe类型<br>9、 drop(col: Column) 删除某列 返回dataframe类型<br>10、 dropDuplicates(colNames: Array[String]) 删除相同的列 返回一个dataframe<br>11、 except(other: DataFrame) 返回一个dataframe，返回在当前集合存在的在其他集合不存在的<br>12、 explode[A, B](inputColumn: String, outputColumn: String)(f: (A) ⇒ TraversableOnce[B])(implicit arg0: scala.reflect.api.JavaUniverse.TypeTag[B]) 返回值是dataframe类型，这个 将一个字段进行更多行的拆分<br>df.explode(“name”,”names”) {name :String=&gt; name.split(“ “)}.show();<br>将name字段根据空格来拆分，拆分的字段放在names里面<br>13、 filter(conditionExpr: String): 刷选部分数据，返回dataframe类型 df.filter(“age&gt;10”).show();  df.filter(df(“age”)&gt;10).show();   df.where(df(“age”)&gt;10).show(); 都可以<br>14、 groupBy(col1: String, cols: String</em>) 根据某写字段来汇总返回groupedate类型   df.groupBy(“age”).agg(Map(“age” -&gt;”count”)).show();df.groupBy(“age”).avg().show();都可以<br>15、 intersect(other: DataFrame) 返回一个dataframe，在2个dataframe都存在的元素<br>16、 join(right: DataFrame, joinExprs: Column, joinType: String)<br>一个是关联的dataframe，第二个关联的条件，第三个关联的类型：inner, outer, left_outer, right_outer, leftsemi<br>df.join(ds,df(“name”)===ds(“name”) and  df(“age”)===ds(“age”),”outer”).show();<br>17、 limit(n: Int) 返回dataframe类型  去n 条数据出来<br>18、 na: DataFrameNaFunctions ，可以调用dataframenafunctions的功能区做过滤 df.na.drop().show(); 删除为空的行<br>19、 orderBy(sortExprs: Column<em>) 做alise排序<br>20、 select(cols:string</em>) dataframe 做字段的刷选 df.select($”colA”, $”colB” + 1)<br>21、 selectExpr(exprs: String<em>) 做字段的刷选 df.selectExpr(“name”,”name as names”,”upper(name)”,”age+1”).show();<br>22、 sort(sortExprs: Column</em>) 排序 df.sort(df(“age”).desc).show(); 默认是asc<br>23、 unionAll(other:Dataframe) 合并 df.unionAll(ds).show();<br>24、 withColumnRenamed(existingName: String, newName: String) 修改列表 df.withColumnRenamed(“name”,”names”).show();<br>25、 withColumn(colName: String, col: Column) 增加一列 df.withColumn(“aa”,df(“name”)).show();</p>
+<p><a href="https://images.168seo.cn/blog/2018-09-07-014124.png" target="_blank" rel="noopener">https://images.168seo.cn/blog/2018-09-07-014124.png</a></p>
+<p>Directed Acyclic Graph，DAG</p>
+<p>在处理一些数据的时候会遇到不想要的前n行，该怎么处理？<br>    使用 rdd 的 zipWithIndex 算子<br>    rdd.zipWithIndex().filter(<em>.</em>2&gt;=n).keys  // n换成对应的第几列即可</p>
+<ul>
+<li>scala中map和foreach的区别<ul>
+<li>map：用于遍历RDD,将函数f应用于每一个元素，返回新的RDD(transformation算子)。</li>
+<li>foreach:用于遍历RDD,将函数f应用于每一个元素，无返回值(action算子)。</li>
+<li>mapPartitions:用于遍历操作RDD中的每一个分区，返回生成一个新的RDD（transformation算子）。</li>
+<li>foreachPartition: 用于遍历操作RDD中的每一个分区。无返回值(action算子)。</li>
+<li>总结：一般使用mapPartitions或者foreachPartition算子比map和foreach更加高效，推荐使用。</li>
+</ul>
+</li>
+<li>pyspark添加行索引<ul>
+<li>df_resou_day = df_resou_day.withColumn(‘index’, monotonically_increasing_id())</li>
+</ul>
+</li>
+<li>pyspark df添加一列默认值<ul>
+<li>community = self.artist_profile.withColumn(‘community_num’, lit(0))</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+      
+      
+      
+    </div>
+    
+  <ul class="breadcrumb">
+          
+            <li><a href="/man/">MAN</a></li>
+            <li><a href="/man/hadoop/">HADOOP</a></li>
+            <li>SPARK</li>
+          
+  </ul>
+
+    
+    
+    
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">hackfox</p>
+  <div class="site-description" itemprop="description">架构、AI、python、rust</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xsoer" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xsoer" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:codehackfox@gmail.com" title="E-Mail → mailto:codehackfox@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/5746784/hackfox-code" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;5746784&#x2F;hackfox-code" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/undefined/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://hackfox.vip/" title="http:&#x2F;&#x2F;hackfox.vip" rel="noopener" target="_blank">hackfox</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hackfox</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">118k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:47</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '7c7b02623259a39014a0',
+      clientSecret: '07c01a3277dab0956ad91bad7d24b91a7e773990',
+      repo        : 'xsoer.github.io',
+      owner       : 'xsoer',
+      admin       : ['xsoer'],
+      id          : '63649a70278d2741f518d8589357a9b5',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+    </div>
+</body>
+</html>

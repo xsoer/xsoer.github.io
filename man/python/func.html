@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 4.2.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -22,17 +22,17 @@
     var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="内置方法 all  判断其内所有值都为真12345678910111213141516all([&apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;d&apos;]) #列表list，元素都不为空或0&amp;gt;&amp;gt;&amp;gt; Trueall([&apos;a&apos;, &apos;b&apos;, &apos;&apos;, &apos;d&apos;]) #列表list，存在一个为空的元素&amp;gt;&amp;gt;&amp;gt; Falseall([0, 1，2, 3]) #列表list，存在一个为0的元素&amp;gt;">
+  <meta name="description" content="内置方法 all  判断其内所有值都为真12345678910111213141516all([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;]) #列表list，元素都不为空或0&gt;&gt;&gt; Trueall([&#39;a&#39;, &#39;b&#39;, &#39;&#39;, &#39;d&#39;]) #列表list，存在一个为空的元素&gt;&gt;&gt; Falseall([0, 1，2, 3]) #列表list，存在一个为0的元素&gt;">
 <meta property="og:type" content="website">
 <meta property="og:title" content="python函数">
 <meta property="og:url" content="https://xsoer.github.io/man/python/func.html">
 <meta property="og:site_name" content="hackfox">
-<meta property="og:description" content="内置方法 all  判断其内所有值都为真12345678910111213141516all([&apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;d&apos;]) #列表list，元素都不为空或0&amp;gt;&amp;gt;&amp;gt; Trueall([&apos;a&apos;, &apos;b&apos;, &apos;&apos;, &apos;d&apos;]) #列表list，存在一个为空的元素&amp;gt;&amp;gt;&amp;gt; Falseall([0, 1，2, 3]) #列表list，存在一个为0的元素&amp;gt;">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-07-04T14:42:32.042Z">
+<meta property="og:description" content="内置方法 all  判断其内所有值都为真12345678910111213141516all([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;]) #列表list，元素都不为空或0&gt;&gt;&gt; Trueall([&#39;a&#39;, &#39;b&#39;, &#39;&#39;, &#39;d&#39;]) #列表list，存在一个为空的元素&gt;&gt;&gt; Falseall([0, 1，2, 3]) #列表list，存在一个为0的元素&gt;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-12-31T10:35:25.000Z">
+<meta property="article:modified_time" content="2020-07-04T14:42:32.042Z">
+<meta property="article:author" content="hackfox">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python函数">
-<meta name="twitter:description" content="内置方法 all  判断其内所有值都为真12345678910111213141516all([&apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;d&apos;]) #列表list，元素都不为空或0&amp;gt;&amp;gt;&amp;gt; Trueall([&apos;a&apos;, &apos;b&apos;, &apos;&apos;, &apos;d&apos;]) #列表list，存在一个为空的元素&amp;gt;&amp;gt;&amp;gt; Falseall([0, 1，2, 3]) #列表list，存在一个为0的元素&amp;gt;">
 
 <link rel="canonical" href="https://xsoer.github.io/man/python/func">
 
@@ -333,7 +333,6 @@
 </li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">divmod(<span class="number">9</span>,<span class="number">2</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>(<span class="number">4</span>, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">divmod(<span class="number">11</span>,<span class="number">3</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>(<span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">divmod(<span class="number">1</span>+<span class="number">2j</span>,<span class="number">1</span>+<span class="number">0.5j</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>((<span class="number">1</span>+<span class="number">0j</span>), <span class="number">1.5j</span>)</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li><p>id函数</p>
 <ul>
@@ -344,8 +343,7 @@
 </li>
 <li><p>int函数</p>
 <ul>
-<li>函数的作用是将一个数字或base类型的字符串转换成整数。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. x 是数字的情况：</span></span><br><span class="line">int(<span class="number">3.14</span>)</span><br><span class="line"><span class="comment"># 3</span></span><br><span class="line">int(<span class="number">2e2</span>) <span class="comment"># 200</span></span><br><span class="line">int(<span class="number">100</span>, <span class="number">2</span>) <span class="comment"># 出错，base 被赋值后函数只接收字符串# 2. x 是字符串的情况：int('23', 16) # 35int('Pythontab', 8) # 出错，Pythontab不是个8进制数# 3. base 可取值范围是 2~36，囊括了所有的英文字母(不区分大小写)，十六进制中F表示15，那么G将在二十进制中表示16，依此类推....Z在三十六进制中表示35int('FZ', 16) # 出错，FZ不能用十六进制表示int('FZ', 36) # 575# 4. 字符串 0x 可以出现在十六进制中，视作十六进制的符号，同理 0b 可以出现在二进制中，除此之外视作数字 0 和字母 xint('0x10', 16) # 16，0x是十六进制的符号int('0x10', 17) # 出错，'0x10'中的 x 被视作英文字母 xint('0x10', 36) # 42804，36进制包含字母 x</span></span><br></pre></td></tr></table></figure>
-</li>
+<li>函数的作用是将一个数字或base类型的字符串转换成整数。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. x 是数字的情况：</span></span><br><span class="line">int(<span class="number">3.14</span>)</span><br><span class="line"><span class="comment"># 3</span></span><br><span class="line">int(<span class="number">2e2</span>) <span class="comment"># 200</span></span><br><span class="line">int(<span class="number">100</span>, <span class="number">2</span>) <span class="comment"># 出错，base 被赋值后函数只接收字符串# 2. x 是字符串的情况：int('23', 16) # 35int('Pythontab', 8) # 出错，Pythontab不是个8进制数# 3. base 可取值范围是 2~36，囊括了所有的英文字母(不区分大小写)，十六进制中F表示15，那么G将在二十进制中表示16，依此类推....Z在三十六进制中表示35int('FZ', 16) # 出错，FZ不能用十六进制表示int('FZ', 36) # 575# 4. 字符串 0x 可以出现在十六进制中，视作十六进制的符号，同理 0b 可以出现在二进制中，除此之外视作数字 0 和字母 xint('0x10', 16) # 16，0x是十六进制的符号int('0x10', 17) # 出错，'0x10'中的 x 被视作英文字母 xint('0x10', 36) # 42804，36进制包含字母 x</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
@@ -413,15 +411,15 @@
 <blockquote>
 <h6 id="type和isinstance两个方法的异同点？"><a href="#type和isinstance两个方法的异同点？" class="headerlink" title="type和isinstance两个方法的异同点？"></a>type和isinstance两个方法的异同点？</h6></blockquote>
 <ul>
-<li><p>1.type() 不会认为子类是一种父类类型，不考虑继承关系。isinstance() 会认为子类是一种父类类型，考虑继承关系。</p>
+<li>1.type() 不会认为子类是一种父类类型，不考虑继承关系。isinstance() 会认为子类是一种父类类型，考虑继承关系。</li>
+<li>2.如果要判断两个类型是否相同推荐使用 isinstance()。</li>
+<li>例如下面<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">2</span></span><br><span class="line">isinstance (a,int) <span class="comment">#True</span></span><br><span class="line">isinstance (a,str) <span class="comment">#False</span></span><br><span class="line">isinstance (a,(str,int,list)) <span class="comment"># 是元组中的一个返回 TrueTrue</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span><span class="params">(A)</span>:</span>   </span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">isinstance(A(), A) <span class="comment"># returns True</span></span><br><span class="line">type(A()) == A <span class="comment"># returns True</span></span><br><span class="line">isinstance(B(), A) <span class="comment"># returns True</span></span><br><span class="line">type(B()) == A <span class="comment"># returns False</span></span><br></pre></td></tr></table></figure>
+
+
 </li>
-<li><p>2.如果要判断两个类型是否相同推荐使用 isinstance()。</p>
-</li>
-<li><p>例如下面</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">2</span></span><br><span class="line">isinstance (a,int) <span class="comment">#True</span></span><br><span class="line">isinstance (a,str) <span class="comment">#False</span></span><br><span class="line">isinstance (a,(str,int,list)) <span class="comment"># 是元组中的一个返回 TrueTrue</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span><span class="params">(A)</span>:</span>   </span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">isinstance(A(), A) <span class="comment"># returns True</span></span><br><span class="line">type(A()) == A <span class="comment"># returns True</span></span><br><span class="line">isinstance(B(), A) <span class="comment"># returns True</span></span><br><span class="line">type(B()) == A <span class="comment"># returns False</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>1.参数赋值：按位置，键值传参，按位置和键值传参</p>
-</li>
+</ul>
+<ul>
+<li>1.参数赋值：按位置，键值传参，按位置和键值传参</li>
 </ul>
 
       </div>
@@ -511,7 +509,7 @@
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -523,17 +521,17 @@
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/xsoer" title="GitHub → https://github.com/xsoer" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/xsoer" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xsoer" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
         <a href="mailto:codehackfox@gmail.com" title="E-Mail → mailto:codehackfox@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://stackoverflow.com/users/5746784/hackfox-code" title="StackOverflow → https://stackoverflow.com/users/5746784/hackfox-code" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+        <a href="https://stackoverflow.com/users/5746784/hackfox-code" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;5746784&#x2F;hackfox-code" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
       </span>
   </div>
   <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/undefined/cc-by-nc-sa.svg" alt="Creative Commons"></a>
   </div>
 
 
@@ -543,7 +541,7 @@
     </div>
     <ul class="links-of-blogroll-list">
         <li class="links-of-blogroll-item">
-          <a href="http://hackfox.vip" title="http://hackfox.vip" rel="noopener" target="_blank">hackfox</a>
+          <a href="http://hackfox.vip/" title="http:&#x2F;&#x2F;hackfox.vip" rel="noopener" target="_blank">hackfox</a>
         </li>
     </ul>
   </div>
@@ -577,7 +575,7 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">117k</span>
+    <span title="站点总字数">118k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
@@ -585,7 +583,7 @@
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     <span title="站点阅读时长">1:47</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
         
@@ -629,9 +627,17 @@
   <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/pisces.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
   <script>
 var pjax = new Pjax({
   selectors: [
@@ -699,7 +705,9 @@ window.addEventListener('pjax:success', () => {
 
 
 
-  <script src="/js/local-search.js"></script>
+  
+<script src="/js/local-search.js"></script>
+
 
 
 

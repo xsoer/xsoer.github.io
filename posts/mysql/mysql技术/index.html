@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 4.2.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -23,19 +23,19 @@
   </script>
 
   <meta name="description" content="mysql的一些概念">
-<meta name="keywords" content="mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql技术">
-<meta property="og:url" content="https://xsoer.github.io/posts/mysql/mysql技术/index.html">
+<meta property="og:url" content="https://xsoer.github.io/posts/mysql/mysql%E6%8A%80%E6%9C%AF/index.html">
 <meta property="og:site_name" content="hackfox">
 <meta property="og:description" content="mysql的一些概念">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-13T02:29:39.383Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2015-10-12T04:23:00.000Z">
+<meta property="article:modified_time" content="2020-06-13T02:29:39.383Z">
+<meta property="article:author" content="hackfox">
+<meta property="article:tag" content="mysql">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mysql技术">
-<meta name="twitter:description" content="mysql的一些概念">
 
-<link rel="canonical" href="https://xsoer.github.io/posts/mysql/mysql技术/">
+<link rel="canonical" href="https://xsoer.github.io/posts/mysql/mysql%E6%8A%80%E6%9C%AF/">
 
 
 <script id="page-configurations">
@@ -234,10 +234,10 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/posts/mysql/mysql技术/">
+    <link itemprop="mainEntityOfPage" href="https://xsoer.github.io/posts/mysql/mysql%E6%8A%80%E6%9C%AF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/undefined/avatar.gif">
       <meta itemprop="name" content="hackfox">
       <meta itemprop="description" content="架构、AI、python、rust">
     </span>
@@ -323,7 +323,6 @@ mysql的一些概念
 <p>2.关系模型：用表来描述数据与数据间的关系<br>3.数据完整性和数据保护<br>4.mysql 1.0诞生于1995年<br>5.mysql以守护进程运行</p>
 <h2 id="0x01、结构体系"><a href="#0x01、结构体系" class="headerlink" title="0x01、结构体系"></a>0x01、结构体系</h2><p>1.连接器<br>进行身份验证、线程重用,连接限制,检查内存,数据缓存；管理用户的连接，线程处理等需要缓存的需求。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show variables like <span class="string">"%connection%"</span>;</span><br></pre></td></tr></table></figure>
-
 <p>2.连接池组件</p>
 <p>3.缓存<br>全局和引擎特定的缓存和缓冲区</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show variables like <span class="string">'%query_cache%'</span>;</span><br></pre></td></tr></table></figure>
@@ -334,11 +333,9 @@ mysql的一些概念
 <p>7.sql接口组件<br>进行DML、DDL,存储过程、视图、触发器等操作和管理；用户通过SQL命令来查询所需结果。</p>
 <p>8.插件式存储引擎</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show engines;</span><br></pre></td></tr></table></figure>
-
 <p>9.解析器<br>查询翻译对象的特权；SQL命令传递到解析器的时候会被解析器验证和解析</p>
 <p>10.优化器<br>访问路径的统计数据</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select @@optimizer_switch;</span><br></pre></td></tr></table></figure>
-
 <p>11.管理服务与工具组件<br>备份和恢复的安全性，复制，集群，管理，配置，迁移和元数据</p>
 <p>12.物理文件</p>
 <ul>
@@ -503,6 +500,7 @@ mysql的一些概念
 <h2 id="0x06、关系型数据库"><a href="#0x06、关系型数据库" class="headerlink" title="0x06、关系型数据库"></a>0x06、关系型数据库</h2><p>1.数据库<br>2.表、元组、类型、主键、外键、码、关系、属性<br>3.范式<br>4.数据抽象：物理层、逻辑层、视图层<br>5.关系运算：选择、投影、并、差、笛卡儿积、交、自然连接、除<br>6.外连接：左外连接、右外连接</p>
 <h2 id="0x07、关键字-SQL"><a href="#0x07、关键字-SQL" class="headerlink" title="0x07、关键字(SQL)"></a>0x07、关键字(SQL)</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span>,<span class="keyword">delete</span>,<span class="keyword">drop</span>,<span class="keyword">select</span>,<span class="keyword">insert</span>,<span class="keyword">update</span>,<span class="keyword">set</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">database</span>,<span class="keyword">table</span>,<span class="keyword">index</span>,<span class="keyword">function</span>,process,<span class="keyword">trigger</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">show</span>,<span class="keyword">status</span>,<span class="keyword">processlist</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">where</span>,<span class="keyword">distinct</span>,<span class="keyword">as</span>,<span class="keyword">with</span>,<span class="keyword">or</span>,<span class="keyword">and</span>,<span class="keyword">like</span>,<span class="keyword">not</span> <span class="keyword">like</span>,<span class="keyword">between</span> <span class="keyword">and</span>,<span class="keyword">order</span> <span class="keyword">by</span>(DESE,ASE),<span class="keyword">group</span> <span class="keyword">by</span>,<span class="keyword">having</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">union</span>,<span class="keyword">union</span> <span class="keyword">all</span>,<span class="keyword">except</span>,<span class="keyword">except</span> <span class="keyword">all</span>,<span class="keyword">unique</span>,<span class="keyword">check</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">in</span>,<span class="keyword">not</span> <span class="keyword">in</span></span><br><span class="line"></span><br><span class="line">primary <span class="keyword">key</span>,<span class="keyword">foreign</span> <span class="keyword">key</span>,<span class="keyword">not</span> <span class="literal">null</span>,<span class="keyword">default</span>,<span class="keyword">auto</span> <span class="keyword">increment</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">grant</span>,<span class="keyword">revoke</span></span><br></pre></td></tr></table></figure>
 
+
 <h2 id="0x08、SQL语句"><a href="#0x08、SQL语句" class="headerlink" title="0x08、SQL语句"></a>0x08、SQL语句</h2><p>1.DDL和DML</p>
 <ul>
 <li>创建操作</li>
@@ -515,7 +513,6 @@ mysql的一些概念
 
 <p>3.DML</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line"><span class="keyword">update</span></span><br><span class="line"><span class="keyword">delete</span></span><br><span class="line"><span class="keyword">insert</span></span><br></pre></td></tr></table></figure>
-
 <p>4.between and:是包含两端的值<br>5.is null,is not null:不能用=或!=号<br>6.unknown:也是一种值，在参与运算时<br>7.嵌套子查询</p>
 <ul>
 <li>in,not in;=some等价于in,但!=some却不等价与not in;any;all</li>
@@ -523,25 +520,18 @@ mysql的一些概念
 </ul>
 <p>8.创建视图</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> view_name <span class="keyword">as</span> &lt;查询表达式&gt;</span><br></pre></td></tr></table></figure>
-
 <p>9.删除操作</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> r [<span class="keyword">where</span> p]</span><br></pre></td></tr></table></figure>
-
 <p>10.插入操作</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> r[(row_name,...)] <span class="keyword">values</span>()</span><br></pre></td></tr></table></figure>
-
 <p>11.更新操作</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> r <span class="keyword">set</span> q <span class="keyword">where</span> p</span><br></pre></td></tr></table></figure>
-
 <p>12.创建新类型</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">type</span> Dollar <span class="keyword">as</span> numberic(<span class="number">12</span>,<span class="number">2</span>) <span class="keyword">final</span></span><br></pre></td></tr></table></figure>
-
 <p>13.完整性约束</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">not null,<span class="keyword">check</span>,<span class="keyword">unique</span></span><br></pre></td></tr></table></figure>
-
 <p>14.参照完整性</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foreign key</span><br></pre></td></tr></table></figure>
-
 <p>15.where中用in比用or效率更快<br>16.在已知返回函数时，添加limit<br>17.在sql语句执行时，进行解析、优化、执行、结果几个步骤<br>18.在做更新是，用id来标记更新，否则会全表扫描<br>19.desc table_name  查看表结构</p>
 <h2 id="0x09、内置函数-聚集函数-：不能组合使用"><a href="#0x09、内置函数-聚集函数-：不能组合使用" class="headerlink" title="0x09、内置函数(聚集函数)：不能组合使用"></a>0x09、内置函数(聚集函数)：不能组合使用</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">max(),min(),count(),avg(),sum()</span><br><span class="line">now(),curdate(),datetime(),timestamp(),curtime(),year()</span><br><span class="line">concat()</span><br></pre></td></tr></table></figure>
 
@@ -655,7 +645,7 @@ mysql的一些概念
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://xsoer.github.io/posts/mysql/mysql技术/" title="mysql技术">https://xsoer.github.io/posts/mysql/mysql技术/</a>
+    <a href="https://xsoer.github.io/posts/mysql/mysql%E6%8A%80%E6%9C%AF/" title="mysql技术">https://xsoer.github.io/posts/mysql/mysql技术/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -675,11 +665,11 @@ mysql的一些概念
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/ops/运维技能/" rel="prev" title="运维技能">
+    <a href="/posts/ops/%E8%BF%90%E7%BB%B4%E6%8A%80%E8%83%BD/" rel="prev" title="运维技能">
       <i class="fa fa-chevron-left"></i> 运维技能
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/mysql/mysql性能优化建议/" rel="next" title="mysql性能优化建议">
+    <a href="/posts/mysql/mysql%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%BB%BA%E8%AE%AE/" rel="next" title="mysql性能优化建议">
       mysql性能优化建议 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -741,7 +731,7 @@ mysql的一些概念
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00、数据库基本概念"><span class="nav-text">0x00、数据库基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01、结构体系"><span class="nav-text">0x01、结构体系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02、系统架构"><span class="nav-text">0x02、系统架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-逻辑模块"><span class="nav-text">1.逻辑模块</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03、安全"><span class="nav-text">0x03、安全</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-网络"><span class="nav-text">1.网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-主机"><span class="nav-text">2.主机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-数据库"><span class="nav-text">3.数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-代码"><span class="nav-text">4.代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-权限"><span class="nav-text">5.权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-访问控制原理"><span class="nav-text">6.访问控制原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-访问授权策略"><span class="nav-text">7.访问授权策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-安全设置注意项"><span class="nav-text">8.安全设置注意项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04、存储管理器"><span class="nav-text">0x04、存储管理器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x05、查询处理器"><span class="nav-text">0x05、查询处理器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x06、关系型数据库"><span class="nav-text">0x06、关系型数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x07、关键字-SQL"><span class="nav-text">0x07、关键字(SQL)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x08、SQL语句"><span class="nav-text">0x08、SQL语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x09、内置函数-聚集函数-：不能组合使用"><span class="nav-text">0x09、内置函数(聚集函数)：不能组合使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x10、基本类型"><span class="nav-text">0x10、基本类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x11、匹配"><span class="nav-text">0x11、匹配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x12、存储过程"><span class="nav-text">0x12、存储过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x13、索引"><span class="nav-text">0x13、索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x14、数据库设计问题"><span class="nav-text">0x14、数据库设计问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x15、数据库设计步骤"><span class="nav-text">0x15、数据库设计步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x16、mysql存储引擎"><span class="nav-text">0x16、mysql存储引擎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x17、事务-锁"><span class="nav-text">0x17、事务/锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x18、备份-复制"><span class="nav-text">0x18、备份/复制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x19、优化建议"><span class="nav-text">0x19、优化建议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x20、information-schema表"><span class="nav-text">0x20、information_schema表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x21、配置参数-show-variables"><span class="nav-text">0x21、配置参数:show variables;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x22、性能指标-show-status"><span class="nav-text">0x22、性能指标:show status;</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00、数据库基本概念"><span class="nav-text">0x00、数据库基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01、结构体系"><span class="nav-text">0x01、结构体系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02、系统架构"><span class="nav-text">0x02、系统架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-逻辑模块"><span class="nav-text">1.逻辑模块</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03、安全"><span class="nav-text">0x03、安全</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-网络"><span class="nav-text">1.网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-主机"><span class="nav-text">2.主机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-数据库"><span class="nav-text">3.数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-代码"><span class="nav-text">4.代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-权限"><span class="nav-text">5.权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-访问控制原理"><span class="nav-text">6.访问控制原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-访问授权策略"><span class="nav-text">7.访问授权策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-安全设置注意项"><span class="nav-text">8.安全设置注意项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04、存储管理器"><span class="nav-text">0x04、存储管理器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x05、查询处理器"><span class="nav-text">0x05、查询处理器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x06、关系型数据库"><span class="nav-text">0x06、关系型数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x07、关键字-SQL"><span class="nav-text">0x07、关键字(SQL)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x08、SQL语句"><span class="nav-text">0x08、SQL语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x09、内置函数-聚集函数-：不能组合使用"><span class="nav-text">0x09、内置函数(聚集函数)：不能组合使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x10、基本类型"><span class="nav-text">0x10、基本类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x11、匹配"><span class="nav-text">0x11、匹配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x12、存储过程"><span class="nav-text">0x12、存储过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x13、索引"><span class="nav-text">0x13、索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x14、数据库设计问题"><span class="nav-text">0x14、数据库设计问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x15、数据库设计步骤"><span class="nav-text">0x15、数据库设计步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x16、mysql存储引擎"><span class="nav-text">0x16、mysql存储引擎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x17、事务-锁"><span class="nav-text">0x17、事务&#x2F;锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x18、备份-复制"><span class="nav-text">0x18、备份&#x2F;复制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x19、优化建议"><span class="nav-text">0x19、优化建议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x20、information-schema表"><span class="nav-text">0x20、information_schema表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x21、配置参数-show-variables"><span class="nav-text">0x21、配置参数:show variables;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x22、性能指标-show-status"><span class="nav-text">0x22、性能指标:show status;</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -761,7 +751,7 @@ mysql的一些概念
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -773,17 +763,17 @@ mysql的一些概念
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/xsoer" title="GitHub → https://github.com/xsoer" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/xsoer" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xsoer" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
         <a href="mailto:codehackfox@gmail.com" title="E-Mail → mailto:codehackfox@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://stackoverflow.com/users/5746784/hackfox-code" title="StackOverflow → https://stackoverflow.com/users/5746784/hackfox-code" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+        <a href="https://stackoverflow.com/users/5746784/hackfox-code" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;5746784&#x2F;hackfox-code" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
       </span>
   </div>
   <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/undefined/cc-by-nc-sa.svg" alt="Creative Commons"></a>
   </div>
 
 
@@ -793,7 +783,7 @@ mysql的一些概念
     </div>
     <ul class="links-of-blogroll-list">
         <li class="links-of-blogroll-item">
-          <a href="http://hackfox.vip" title="http://hackfox.vip" rel="noopener" target="_blank">hackfox</a>
+          <a href="http://hackfox.vip/" title="http:&#x2F;&#x2F;hackfox.vip" rel="noopener" target="_blank">hackfox</a>
         </li>
     </ul>
   </div>
@@ -827,7 +817,7 @@ mysql的一些概念
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">117k</span>
+    <span title="站点总字数">118k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
@@ -835,7 +825,7 @@ mysql的一些概念
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     <span title="站点阅读时长">1:47</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
         
@@ -879,9 +869,17 @@ mysql的一些概念
   <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/pisces.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
   <script>
 var pjax = new Pjax({
   selectors: [
@@ -949,7 +947,9 @@ window.addEventListener('pjax:success', () => {
 
 
 
-  <script src="/js/local-search.js"></script>
+  
+<script src="/js/local-search.js"></script>
+
 
 
 
@@ -978,7 +978,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo        : 'xsoer.github.io',
       owner       : 'xsoer',
       admin       : ['xsoer'],
-      id          : '32a8919b982c7b3fa4a5cc15103446a0',
+      id          : 'b54ea19cab4e2374be700f3765761e01',
         language: 'zh-CN',
       distractionFreeMode: true
     });

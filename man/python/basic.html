@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 4.2.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -22,17 +22,17 @@
     var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="1.语言设计原则 python设计之蝉12345678910111213141516171819202122&amp;gt;&amp;gt;&amp;gt; import thisThe Zen of Python, by Tim PetersBeautiful is better than ugly.Explicit is better than implicit.Simple is better than compl">
+  <meta name="description" content="1.语言设计原则 python设计之蝉12345678910111213141516171819202122&gt;&gt;&gt; import thisThe Zen of Python, by Tim PetersBeautiful is better than ugly.Explicit is better than implicit.Simple is better than compl">
 <meta property="og:type" content="website">
 <meta property="og:title" content="python基础">
 <meta property="og:url" content="https://xsoer.github.io/man/python/basic.html">
 <meta property="og:site_name" content="hackfox">
-<meta property="og:description" content="1.语言设计原则 python设计之蝉12345678910111213141516171819202122&amp;gt;&amp;gt;&amp;gt; import thisThe Zen of Python, by Tim PetersBeautiful is better than ugly.Explicit is better than implicit.Simple is better than compl">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-07-04T14:36:44.649Z">
+<meta property="og:description" content="1.语言设计原则 python设计之蝉12345678910111213141516171819202122&gt;&gt;&gt; import thisThe Zen of Python, by Tim PetersBeautiful is better than ugly.Explicit is better than implicit.Simple is better than compl">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-16T01:01:05.000Z">
+<meta property="article:modified_time" content="2020-07-04T14:36:44.649Z">
+<meta property="article:author" content="hackfox">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python基础">
-<meta name="twitter:description" content="1.语言设计原则 python设计之蝉12345678910111213141516171819202122&amp;gt;&amp;gt;&amp;gt; import thisThe Zen of Python, by Tim PetersBeautiful is better than ugly.Explicit is better than implicit.Simple is better than compl">
 
 <link rel="canonical" href="https://xsoer.github.io/man/python/basic">
 
@@ -319,10 +319,7 @@
 <li>多个变量同时打印</li>
 <li>换行打印，同行打印</li>
 <li>以不同的结尾符打印<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="number">123</span>)</span><br><span class="line"><span class="number">123</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'aaa'</span>)</span><br><span class="line">aaa</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="number">123</span>,<span class="number">456</span>)</span><br><span class="line"><span class="number">123</span> <span class="number">456</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">"abc"</span>,<span class="number">123</span>)</span><br><span class="line">abc <span class="number">123</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="keyword">print</span>)</span><br><span class="line">&lt;built-<span class="keyword">in</span> function <span class="keyword">print</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(dir)</span><br><span class="line">&lt;built-<span class="keyword">in</span> function dir&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(print())</span><br><span class="line"></span><br><span class="line"><span class="literal">None</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(dir())</span><br><span class="line">[<span class="string">'__annotations__'</span>, <span class="string">'__builtins__'</span>, <span class="string">'__doc__'</span>, <span class="string">'__loader__'</span>, <span class="string">'__name__'</span>, <span class="string">'__package__'</span>, <span class="string">'__spec__'</span>]</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h3 id="结构化打印"><a href="#结构化打印" class="headerlink" title="结构化打印"></a>结构化打印</h3><ul>
+<h3 id="结构化打印"><a href="#结构化打印" class="headerlink" title="结构化打印"></a>结构化打印</h3></li>
 <li>把数据按照可读的方式打印出来<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> pprint</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pprint.pprint(&#123;<span class="string">'a'</span>:<span class="number">123</span>,<span class="string">'b'</span>:[<span class="string">'abc'</span>,<span class="string">'def'</span>],<span class="string">'c'</span>:&#123;<span class="string">'x'</span>:<span class="number">456</span>,<span class="string">'y'</span>:<span class="number">789</span>&#125;&#125;,width=<span class="number">30</span>)</span><br><span class="line">&#123;<span class="string">'a'</span>: <span class="number">123</span>,</span><br><span class="line"> <span class="string">'b'</span>: [<span class="string">'abc'</span>, <span class="string">'def'</span>],</span><br><span class="line"> <span class="string">'c'</span>: &#123;<span class="string">'x'</span>: <span class="number">456</span>, <span class="string">'y'</span>: <span class="number">789</span>&#125;&#125;</span><br></pre></td></tr></table></figure>
 
 </li>
@@ -350,11 +347,11 @@
 </ul>
 </li>
 <li>基本类型在进行赋值为同一个值时，其指向的内存是一样的<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a=<span class="number">12345678</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b=<span class="number">87654321</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(a)</span><br><span class="line"><span class="number">4430473104</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(b)</span><br><span class="line"><span class="number">4430473936</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c=a</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(c)</span><br><span class="line"><span class="number">4430473104</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c=<span class="number">87654321</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(c)</span><br><span class="line"><span class="number">4430473808</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(b)</span><br><span class="line"><span class="number">4430473936</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c==b</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c</span><br><span class="line"><span class="number">87654321</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b</span><br><span class="line"><span class="number">87654321</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c=b</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(c)</span><br><span class="line"><span class="number">4430473936</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c=a</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(c)</span><br><span class="line"><span class="number">4430473104</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(a)</span><br><span class="line"><span class="number">4430473104</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c=<span class="number">12345678</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(c)</span><br><span class="line"><span class="number">4430473904</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c==a</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c <span class="keyword">is</span> a</span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c=a</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c==a</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c <span class="keyword">is</span> a</span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a=<span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(a)</span><br><span class="line"><span class="number">4376446368</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b=<span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(b)</span><br><span class="line"><span class="number">4376446368</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b=<span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b</span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(a)</span><br><span class="line"><span class="number">4376446368</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(b)</span><br><span class="line"><span class="number">4376446400</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## 字符串</span></span><br><span class="line"></span><br><span class="line">* 常用操作</span><br><span class="line">```python</span><br><span class="line">site = <span class="string">"www.abc.com"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 把所有字符中的小写字母转换成大写字母</span></span><br><span class="line">print(site.upper())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把所有字符中的大写字母转换成小写字母</span></span><br><span class="line">print(site.lower())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把第一个字母转化为大写字母，其余小写</span></span><br><span class="line">print(site.capitalize())</span><br><span class="line"></span><br><span class="line"><span class="comment">#  把每个单词的第一个字母转化为大写，其余小写</span></span><br><span class="line">print(site.title())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 去除空格</span></span><br><span class="line">print(site.strip())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 截取。开头包含，结尾不包含</span></span><br><span class="line">print(site[<span class="number">5</span>:])</span><br><span class="line">print(site[:<span class="number">-3</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 替换</span></span><br><span class="line">print(site.replace(<span class="string">'w'</span>,<span class="string">''</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切割为数组</span></span><br><span class="line">print(site.split(<span class="string">'.'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 是否包含</span></span><br><span class="line">print(<span class="string">'www'</span> <span class="keyword">in</span> site)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以什么开头</span></span><br><span class="line">print(site.startswith(<span class="string">'www'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以什么结尾</span></span><br><span class="line">print(site.endswith(<span class="string">'com'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 拼接</span></span><br><span class="line">print(site+<span class="string">'/s=aaa'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 长度</span></span><br><span class="line">print(len(site))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 翻转</span></span><br><span class="line">print(site[::<span class="number">-1</span>])</span><br><span class="line">print(site[::<span class="number">100</span>]) <span class="comment"># 不会报错，正常打印</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查找，返回元素位置.未找到返回-1</span></span><br><span class="line">print(site.find(<span class="string">'w'</span>)) <span class="comment"># 0</span></span><br><span class="line">print(site.find(<span class="string">'.'</span>)) <span class="comment"># 3</span></span><br></pre></td></tr></table></figure>
+
 
 </li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a=<span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(a)</span><br><span class="line"><span class="number">4376446368</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b=<span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(b)</span><br><span class="line"><span class="number">4376446368</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b=<span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b</span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(a)</span><br><span class="line"><span class="number">4376446368</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(b)</span><br><span class="line"><span class="number">4376446400</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## 字符串</span></span><br><span class="line"></span><br><span class="line">* 常用操作</span><br><span class="line">```python</span><br><span class="line">site = <span class="string">"www.abc.com"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 把所有字符中的小写字母转换成大写字母</span></span><br><span class="line">print(site.upper())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把所有字符中的大写字母转换成小写字母</span></span><br><span class="line">print(site.lower())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把第一个字母转化为大写字母，其余小写</span></span><br><span class="line">print(site.capitalize())</span><br><span class="line"></span><br><span class="line"><span class="comment">#  把每个单词的第一个字母转化为大写，其余小写</span></span><br><span class="line">print(site.title())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 去除空格</span></span><br><span class="line">print(site.strip())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 截取。开头包含，结尾不包含</span></span><br><span class="line">print(site[<span class="number">5</span>:])</span><br><span class="line">print(site[:<span class="number">-3</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 替换</span></span><br><span class="line">print(site.replace(<span class="string">'w'</span>,<span class="string">''</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切割为数组</span></span><br><span class="line">print(site.split(<span class="string">'.'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 是否包含</span></span><br><span class="line">print(<span class="string">'www'</span> <span class="keyword">in</span> site)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以什么开头</span></span><br><span class="line">print(site.startswith(<span class="string">'www'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以什么结尾</span></span><br><span class="line">print(site.endswith(<span class="string">'com'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 拼接</span></span><br><span class="line">print(site+<span class="string">'/s=aaa'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 长度</span></span><br><span class="line">print(len(site))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 翻转</span></span><br><span class="line">print(site[::<span class="number">-1</span>])</span><br><span class="line">print(site[::<span class="number">100</span>]) <span class="comment"># 不会报错，正常打印</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查找，返回元素位置.未找到返回-1</span></span><br><span class="line">print(site.find(<span class="string">'w'</span>)) <span class="comment"># 0</span></span><br><span class="line">print(site.find(<span class="string">'.'</span>)) <span class="comment"># 3</span></span><br></pre></td></tr></table></figure>
-
 <h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><ul>
 <li>声明<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure>
 
@@ -384,6 +381,7 @@
 <h2 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a>内置函数</h2><ul>
 <li>round<ul>
 <li>保留几位小数<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">round(<span class="number">1.245</span>,<span class="number">2</span>)</span><br><span class="line"><span class="comment"># 1.24</span></span><br></pre></td></tr></table></figure>
+
 
 </li>
 </ul>
@@ -664,7 +662,7 @@
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -676,17 +674,17 @@
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/xsoer" title="GitHub → https://github.com/xsoer" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/xsoer" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xsoer" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
         <a href="mailto:codehackfox@gmail.com" title="E-Mail → mailto:codehackfox@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://stackoverflow.com/users/5746784/hackfox-code" title="StackOverflow → https://stackoverflow.com/users/5746784/hackfox-code" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+        <a href="https://stackoverflow.com/users/5746784/hackfox-code" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;5746784&#x2F;hackfox-code" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
       </span>
   </div>
   <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/undefined/cc-by-nc-sa.svg" alt="Creative Commons"></a>
   </div>
 
 
@@ -696,7 +694,7 @@
     </div>
     <ul class="links-of-blogroll-list">
         <li class="links-of-blogroll-item">
-          <a href="http://hackfox.vip" title="http://hackfox.vip" rel="noopener" target="_blank">hackfox</a>
+          <a href="http://hackfox.vip/" title="http:&#x2F;&#x2F;hackfox.vip" rel="noopener" target="_blank">hackfox</a>
         </li>
     </ul>
   </div>
@@ -730,7 +728,7 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">117k</span>
+    <span title="站点总字数">118k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
@@ -738,7 +736,7 @@
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     <span title="站点阅读时长">1:47</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
         
@@ -782,9 +780,17 @@
   <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/pisces.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
   <script>
 var pjax = new Pjax({
   selectors: [
@@ -852,7 +858,9 @@ window.addEventListener('pjax:success', () => {
 
 
 
-  <script src="/js/local-search.js"></script>
+  
+<script src="/js/local-search.js"></script>
+
 
 
 

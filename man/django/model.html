@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 4.2.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -24,15 +24,17 @@
 
   <meta name="description" content="django model operate 0x02、model model模型  每个一个model都是要继承model.Model类的。 Model类封装了   进行group_by并且做Max聚合，此时用的Max函数是下面引用的  前边的values是要group_by的字段，annotate是需要聚合的字段，后续进行order_by。 没有group_by函数    123456789101">
 <meta property="og:type" content="website">
-<meta property="og:title" content="hackfox">
+<meta property="og:title" content="title">
 <meta property="og:url" content="https://xsoer.github.io/man/django/model.html">
 <meta property="og:site_name" content="hackfox">
 <meta property="og:description" content="django model operate 0x02、model model模型  每个一个model都是要继承model.Model类的。 Model类封装了   进行group_by并且做Max聚合，此时用的Max函数是下面引用的  前边的values是要group_by的字段，annotate是需要聚合的字段，后续进行order_by。 没有group_by函数    123456789101">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-07-02T08:18:46.280Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="evernotecid://44669F3E-2F32-40F7-B5DC-DC9BDFBA5A31/appyinxiangcom/19062149/ENResource/p8508">
+<meta property="article:published_time" content="2020-06-21T09:28:54.000Z">
+<meta property="article:modified_time" content="2020-07-24T03:13:41.419Z">
+<meta property="article:author" content="hackfox">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hackfox">
-<meta name="twitter:description" content="django model operate 0x02、model model模型  每个一个model都是要继承model.Model类的。 Model类封装了   进行group_by并且做Max聚合，此时用的Max函数是下面引用的  前边的values是要group_by的字段，annotate是需要聚合的字段，后续进行order_by。 没有group_by函数    123456789101">
+<meta name="twitter:image" content="evernotecid://44669F3E-2F32-40F7-B5DC-DC9BDFBA5A31/appyinxiangcom/19062149/ENResource/p8508">
 
 <link rel="canonical" href="https://xsoer.github.io/man/django/model">
 
@@ -47,7 +49,7 @@
   };
 </script>
 
-  <title> | hackfox
+  <title>title | hackfox
 </title>
   
     <script>
@@ -238,7 +240,7 @@
     <div class="post-block" lang="zh-CN">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">
+<h1 class="post-title" itemprop="name headline">title
 </h1>
 
 <div class="post-meta">
@@ -277,8 +279,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db.models.aggregates <span class="keyword">import</span> Max</span><br><span class="line"></span><br><span class="line">item = MetaJson.objects.filter(is_deleted=<span class="number">0</span>).values(<span class="string">'project_name'</span>,<span class="string">'item_type'</span>).annotate(max_id=Max(<span class="string">'id'</span>))</span><br><span class="line">model = MetaJson.objects.filter(id__in=[item[<span class="string">'max_id'</span>] <span class="keyword">for</span> item <span class="keyword">in</span> items]).values(<span class="string">"id"</span>,</span><br><span class="line">    <span class="string">'table_id'</span>, <span class="string">'table__name'</span>, <span class="string">'table__db__name'</span>, <span class="string">'table__db__type'</span>, <span class="string">'project_name'</span>).order_by(<span class="string">'-id'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 判断是否为null</span></span><br><span class="line">ResourceModel.objects.filter(parent__isnull=<span class="literal">False</span>).values(<span class="string">''</span>).all()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算数量</span></span><br><span class="line">Book.objects.count()</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime, timedelta</span><br><span class="line">Book.objects.filter(date_published__gte=datetime.now() - timedelta(days=<span class="number">90</span>)).count()</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime, timedelta</span><br><span class="line">Book.objects.exclude(date_published__gte=datetime.now() - timedelta(days=<span class="number">90</span>)).count()</span><br><span class="line"></span><br><span class="line">Book.objects.filter(author__isnull=<span class="literal">True</span>).count()</span><br><span class="line">Book.objects.filter(title__exact=<span class="string">''</span>).count()</span><br><span class="line"></span><br><span class="line">Book.objects.exclude(author__isnull=<span class="literal">True</span>).exclude(title__exact=<span class="string">''</span>).count()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 倒序排列</span></span><br><span class="line">ActivityHelp.objects.values(<span class="string">'user_id'</span>).filter(share_id=share_id).order_by(<span class="string">'-create_time'</span>).get()</span><br><span class="line"></span><br><span class="line"><span class="comment"># limit</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 原生sql</span></span><br><span class="line">Person.objects.raw(<span class="string">'SELECT * FROM myapp_person'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment"># django.db.models.query_utils.InvalidQuery: Raw query must include the primary key</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="2-字段查询"><a href="#2-字段查询" class="headerlink" title="2.字段查询"></a>2.字段查询</h4><p>相当于sql语句中where子句，它可以为filter、exclude和get方法提供参数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">属性名称__比较运算符=值   #是两个下划线</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">属性名称__比较运算符&#x3D;值   #是两个下划线</span><br></pre></td></tr></table></figure>
 <p><img data-src="evernotecid://44669F3E-2F32-40F7-B5DC-DC9BDFBA5A31/appyinxiangcom/19062149/ENResource/p8508" alt="e159615aeedcafe4a55a073a7196afac.png"></p>
 <h4 id="3-字段类型"><a href="#3-字段类型" class="headerlink" title="3.字段类型"></a>3.字段类型</h4><ul>
 <li><p><code>AutoField</code>：一个自动递增的整型字段，添加记录时它会自动增长。你通常不需要直接使用这个字段；如果你不指定主键的话，系统会自动添加一个主键字段到你的model。(参阅自动主键字段)</p>
@@ -287,11 +288,11 @@
 </li>
 <li><p><code>CharField</code>：字符串字段，单行输入，用于较短的字符串，如要保存大量文本, 使用 TextField，CharField有一个必填参数：CharField.max_length：字符的最大长度，django会根据这个参数在数据库层和校验层限制该字段所允许的最大字符数。</p>
 </li>
-<li><p><code>TextField</code>：一个容量很大的文本字段， admin 管理界面用 <textarea>多行编辑框表示该字段数据。</textarea></p>
+<li><p><code>TextField</code>：一个容量很大的文本字段， admin 管理界面用 <textarea>多行编辑框表示该字段数据。</p>
 </li>
 <li><p><code>CommaSeparatedIntegerField</code>：用于存放逗号分隔的整数值。类似 CharField，必须maxlength 参数。</p>
 </li>
-<li><p><code>DateField</code>：日期字段，admin 用一个文本框 <input type="”text”"> 来表示该字段数据(附带一个 JavaScript 日历和一个”Today”快捷按键。有下列额外的可选参数：</p>
+<li><p><code>DateField</code>：日期字段，admin 用一个文本框 <input type=”text”> 来表示该字段数据(附带一个 JavaScript 日历和一个”Today”快捷按键。有下列额外的可选参数：</p>
 <ul>
 <li>auto_now：当对象被保存时,自动将该字段的值设置为当前时间.通常用于表示 “last-modified” 时间戳；</li>
 <li>auto_now_add：当对象首次被创建时,自动将该字段的值设置为当前时间.通常用于表示对象创建时间。</li>
@@ -323,7 +324,7 @@
 </li>
 <li><p><code>IPAddressField</code>：一个字符串形式的 IP 地址， (如 “202.1241.30″)。</p>
 </li>
-<li><p><code>NullBooleanField</code>：类似 BooleanField， 不过允许 NULL 作为其中一个选项。 推荐使用这个字段而不要用 BooleanField 加 null=True 选项。 admin 用一个选择框 <select> (三个可选择的值： “Unknown”， “Yes” 和 “No” ) 来表示这种字段数据。</select></p>
+<li><p><code>NullBooleanField</code>：类似 BooleanField， 不过允许 NULL 作为其中一个选项。 推荐使用这个字段而不要用 BooleanField 加 null=True 选项。 admin 用一个选择框 <select> (三个可选择的值： “Unknown”， “Yes” 和 “No” ) 来表示这种字段数据。</p>
 </li>
 <li><p><code>PhoneNumberField</code>：一个带有合法美国风格电话号码校验的 CharField(格式：XXX-XXX-XXXX)。</p>
 </li>
@@ -460,7 +461,7 @@
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -472,17 +473,17 @@
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/xsoer" title="GitHub → https://github.com/xsoer" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/xsoer" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xsoer" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
         <a href="mailto:codehackfox@gmail.com" title="E-Mail → mailto:codehackfox@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://stackoverflow.com/users/5746784/hackfox-code" title="StackOverflow → https://stackoverflow.com/users/5746784/hackfox-code" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+        <a href="https://stackoverflow.com/users/5746784/hackfox-code" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;5746784&#x2F;hackfox-code" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
       </span>
   </div>
   <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/undefined/cc-by-nc-sa.svg" alt="Creative Commons"></a>
   </div>
 
 
@@ -492,7 +493,7 @@
     </div>
     <ul class="links-of-blogroll-list">
         <li class="links-of-blogroll-item">
-          <a href="http://hackfox.vip" title="http://hackfox.vip" rel="noopener" target="_blank">hackfox</a>
+          <a href="http://hackfox.vip/" title="http:&#x2F;&#x2F;hackfox.vip" rel="noopener" target="_blank">hackfox</a>
         </li>
     </ul>
   </div>
@@ -526,7 +527,7 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">117k</span>
+    <span title="站点总字数">118k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
@@ -534,7 +535,7 @@
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     <span title="站点阅读时长">1:47</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
         
@@ -578,9 +579,17 @@
   <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/pisces.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
   <script>
 var pjax = new Pjax({
   selectors: [
@@ -648,7 +657,9 @@ window.addEventListener('pjax:success', () => {
 
 
 
-  <script src="/js/local-search.js"></script>
+  
+<script src="/js/local-search.js"></script>
+
 
 
 

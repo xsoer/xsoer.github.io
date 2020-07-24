@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 4.2.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -28,11 +28,11 @@
 <meta property="og:url" content="https://xsoer.github.io/man/python/lib.html">
 <meta property="og:site_name" content="hackfox">
 <meta property="og:description" content="random1234567891011import randomrandom.random()random.randrange(0, 101, 2)random.uniform(2.5, 10.0)random.choice()random.shuffle()  常用库网络 requests  web开发 django flask torando gunicorn-Gunicorn ‘Green">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-07-04T14:41:49.206Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-09-08T14:47:41.000Z">
+<meta property="article:modified_time" content="2020-07-04T14:41:49.206Z">
+<meta property="article:author" content="hackfox">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python常用库">
-<meta name="twitter:description" content="random1234567891011import randomrandom.random()random.randrange(0, 101, 2)random.uniform(2.5, 10.0)random.choice()random.shuffle()  常用库网络 requests  web开发 django flask torando gunicorn-Gunicorn ‘Green">
 
 <link rel="canonical" href="https://xsoer.github.io/man/python/lib">
 
@@ -281,17 +281,13 @@
 <li>zipfile</li>
 </ul>
 <h3 id="uuid"><a href="#uuid" class="headerlink" title="uuid"></a>uuid</h3><ul>
-<li><p>几种uuid<br>1、uuid1()——基于时间戳<br>  由MAC地址、当前时间戳、随机数生成。可以保证全球范围内的唯一性，<br>  但MAC的使用同时带来安全性问题，局域网中可以使用IP来代替MAC。<br>2、uuid2()——基于分布式计算环境DCE（Python中没有这个函数）<br>  算法与uuid1相同，不同的是把时间戳的前4位置换为POSIX的UID。<br>  实际中很少用到该方法。<br>3、uuid3()——基于名字的MD5散列值<br>  通过计算名字和命名空间的MD5散列值得到，保证了同一命名空间中不同名字的唯一性，<br>  和不同命名空间的唯一性，但同一命名空间的同一名字生成相同的uuid。<br>4、uuid4()——基于随机数<br>  由伪随机数得到，有一定的重复概率，该概率可以计算出来。<br>5、uuid5()——基于名字的SHA-1散列值<br>  算法与uuid3相同，不同的是使用 Secure Hash Algorithm 1 算法</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> uuid</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># make a UUID based on the host ID and current time</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>uuid.uuid1()</span><br><span class="line">UUID(<span class="string">'a8098c1a-f86e-11da-bd1a-00112444be1e'</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># make a UUID using an MD5 hash of a namespace UUID and a name</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>uuid.uuid3(uuid.NAMESPACE_DNS, <span class="string">'python.org'</span>)</span><br><span class="line">UUID(<span class="string">'6fa459ea-ee8a-3ca4-894e-db77e160355e'</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># make a random UUID</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>uuid.uuid4()</span><br><span class="line">UUID(<span class="string">'16fd2706-8baf-433b-82eb-8c7fada847da'</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># make a UUID using a SHA-1 hash of a namespace UUID and a name</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>uuid.uuid5(uuid.NAMESPACE_DNS, <span class="string">'python.org'</span>)</span><br><span class="line">UUID(<span class="string">'886313e1-3b8a-5372-9b90-0c9aee199e5d'</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># make a UUID from a string of hex digits (braces and hyphens ignored)</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x = uuid.UUID(<span class="string">'&#123;00010203-0405-0607-0809-0a0b0c0d0e0f&#125;'</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># convert a UUID to a string of hex digits in standard form</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>str(x)</span><br><span class="line"><span class="string">'00010203-0405-0607-0809-0a0b0c0d0e0f'</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># get the raw 16 bytes of the UUID</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x.bytes</span><br><span class="line"><span class="string">b'\x00\x01\x02\x03\x04\x05\x06\x07\x08\t\n\x0b\x0c\r\x0e\x0f'</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># make a UUID from a 16-byte string</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>uuid.UUID(bytes=x.bytes)</span><br><span class="line">UUID(<span class="string">'00010203-0405-0607-0809-0a0b0c0d0e0f'</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>uuid.uuid4()</span><br><span class="line"><span class="string">'36a98670-d9bb-458d-8670-da24e545ca64'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 去除-</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>uuid.uuid4().hex</span><br><span class="line"><span class="string">'2b15216124ae4476a96bd7707c9e1a34'</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>uuid的常用只读方法</p>
-<ul>
+<li>几种uuid<br>1、uuid1()——基于时间戳<br>  由MAC地址、当前时间戳、随机数生成。可以保证全球范围内的唯一性，<br>  但MAC的使用同时带来安全性问题，局域网中可以使用IP来代替MAC。<br>2、uuid2()——基于分布式计算环境DCE（Python中没有这个函数）<br>  算法与uuid1相同，不同的是把时间戳的前4位置换为POSIX的UID。<br>  实际中很少用到该方法。<br>3、uuid3()——基于名字的MD5散列值<br>  通过计算名字和命名空间的MD5散列值得到，保证了同一命名空间中不同名字的唯一性，<br>  和不同命名空间的唯一性，但同一命名空间的同一名字生成相同的uuid。<br>4、uuid4()——基于随机数<br>  由伪随机数得到，有一定的重复概率，该概率可以计算出来。<br>5、uuid5()——基于名字的SHA-1散列值<br>  算法与uuid3相同，不同的是使用 Secure Hash Algorithm 1 算法<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> uuid</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># make a UUID based on the host ID and current time</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>uuid.uuid1()</span><br><span class="line">UUID(<span class="string">'a8098c1a-f86e-11da-bd1a-00112444be1e'</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># make a UUID using an MD5 hash of a namespace UUID and a name</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>uuid.uuid3(uuid.NAMESPACE_DNS, <span class="string">'python.org'</span>)</span><br><span class="line">UUID(<span class="string">'6fa459ea-ee8a-3ca4-894e-db77e160355e'</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># make a random UUID</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>uuid.uuid4()</span><br><span class="line">UUID(<span class="string">'16fd2706-8baf-433b-82eb-8c7fada847da'</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># make a UUID using a SHA-1 hash of a namespace UUID and a name</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>uuid.uuid5(uuid.NAMESPACE_DNS, <span class="string">'python.org'</span>)</span><br><span class="line">UUID(<span class="string">'886313e1-3b8a-5372-9b90-0c9aee199e5d'</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># make a UUID from a string of hex digits (braces and hyphens ignored)</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x = uuid.UUID(<span class="string">'&#123;00010203-0405-0607-0809-0a0b0c0d0e0f&#125;'</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># convert a UUID to a string of hex digits in standard form</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>str(x)</span><br><span class="line"><span class="string">'00010203-0405-0607-0809-0a0b0c0d0e0f'</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># get the raw 16 bytes of the UUID</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x.bytes</span><br><span class="line"><span class="string">b'\x00\x01\x02\x03\x04\x05\x06\x07\x08\t\n\x0b\x0c\r\x0e\x0f'</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># make a UUID from a 16-byte string</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>uuid.UUID(bytes=x.bytes)</span><br><span class="line">UUID(<span class="string">'00010203-0405-0607-0809-0a0b0c0d0e0f'</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>uuid.uuid4()</span><br><span class="line"><span class="string">'36a98670-d9bb-458d-8670-da24e545ca64'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 去除-</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>uuid.uuid4().hex</span><br><span class="line"><span class="string">'2b15216124ae4476a96bd7707c9e1a34'</span></span><br></pre></td></tr></table></figure></li>
+<li>uuid的常用只读方法<ul>
 <li>UUID.hex The UUID as a 32-character hexadecimal string</li>
 <li>UUID.int The UUID as a 128-bit integer.</li>
 </ul>
 </li>
-<li><p>生成全局唯一id，可以依据MAC地址、网卡、时间戳、随机数</p>
-</li>
+<li>生成全局唯一id，可以依据MAC地址、网卡、时间戳、随机数</li>
 </ul>
 
       </div>
@@ -382,7 +378,7 @@
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -394,17 +390,17 @@
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/xsoer" title="GitHub → https://github.com/xsoer" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/xsoer" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xsoer" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
         <a href="mailto:codehackfox@gmail.com" title="E-Mail → mailto:codehackfox@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://stackoverflow.com/users/5746784/hackfox-code" title="StackOverflow → https://stackoverflow.com/users/5746784/hackfox-code" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+        <a href="https://stackoverflow.com/users/5746784/hackfox-code" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;5746784&#x2F;hackfox-code" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
       </span>
   </div>
   <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/undefined/cc-by-nc-sa.svg" alt="Creative Commons"></a>
   </div>
 
 
@@ -414,7 +410,7 @@
     </div>
     <ul class="links-of-blogroll-list">
         <li class="links-of-blogroll-item">
-          <a href="http://hackfox.vip" title="http://hackfox.vip" rel="noopener" target="_blank">hackfox</a>
+          <a href="http://hackfox.vip/" title="http:&#x2F;&#x2F;hackfox.vip" rel="noopener" target="_blank">hackfox</a>
         </li>
     </ul>
   </div>
@@ -448,7 +444,7 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">117k</span>
+    <span title="站点总字数">118k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
@@ -456,7 +452,7 @@
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     <span title="站点阅读时长">1:47</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
         
@@ -500,9 +496,17 @@
   <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/pisces.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
   <script>
 var pjax = new Pjax({
   selectors: [
@@ -570,7 +574,9 @@ window.addEventListener('pjax:success', () => {
 
 
 
-  <script src="/js/local-search.js"></script>
+  
+<script src="/js/local-search.js"></script>
+
 
 
 
