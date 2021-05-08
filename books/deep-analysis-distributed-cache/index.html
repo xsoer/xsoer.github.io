@@ -25,20 +25,20 @@
   <meta name="description" content="第1章 缓存为王1.1 什么是缓存？我们平时在编程的时候，接触到的都是虚拟地址而不是真实的物理地址，这是虚拟内存的主要功能之一。假如请求一个页的地址，需要将页的虚拟地址转化为页的物理地址。页表（pagetable）和内存管理单元（MMU）就负责将页的虚拟地址映射到物理地址。页表负责记录哪些是物理页，哪些是虚拟页，以及这些页的页表条目（PTE）。而MMU是一个物理硬件，MMU负责进行虚拟地址到物理地">
 <meta property="og:type" content="website">
 <meta property="og:title" content="《深入分布式缓存:从原理到实践》读书笔记">
-<meta property="og:url" content="https://xsoer.github.io/books/deep-analysis-distributed-cache.html">
+<meta property="og:url" content="https://xsoer.github.io/books/deep-analysis-distributed-cache/index.html">
 <meta property="og:site_name" content="hackfox">
 <meta property="og:description" content="第1章 缓存为王1.1 什么是缓存？我们平时在编程的时候，接触到的都是虚拟地址而不是真实的物理地址，这是虚拟内存的主要功能之一。假如请求一个页的地址，需要将页的虚拟地址转化为页的物理地址。页表（pagetable）和内存管理单元（MMU）就负责将页的虚拟地址映射到物理地址。页表负责记录哪些是物理页，哪些是虚拟页，以及这些页的页表条目（PTE）。而MMU是一个物理硬件，MMU负责进行虚拟地址到物理地">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://xsoer.github.io/books/assets/img/dadc/web-architecture.png">
-<meta property="og:image" content="https://xsoer.github.io/books/assets/img/dadc/mulit_level_cache.png">
-<meta property="og:image" content="https://xsoer.github.io/books/assets/img/dadc/net-service-retry.jpeg">
+<meta property="og:image" content="https://xsoer.github.io/books/deep-analysis-distributed-cache/assets/web-architecture.png">
+<meta property="og:image" content="https://xsoer.github.io/books/deep-analysis-distributed-cache/assets/mulit_level_cache.png">
+<meta property="og:image" content="https://xsoer.github.io/books/deep-analysis-distributed-cache/assets/net-service-retry.jpeg">
 <meta property="article:published_time" content="2020-06-15T06:32:45.000Z">
-<meta property="article:modified_time" content="2020-06-16T03:36:46.945Z">
+<meta property="article:modified_time" content="2020-07-25T06:30:02.488Z">
 <meta property="article:author" content="hackfox">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://xsoer.github.io/books/assets/img/dadc/web-architecture.png">
+<meta name="twitter:image" content="https://xsoer.github.io/books/deep-analysis-distributed-cache/assets/web-architecture.png">
 
-<link rel="canonical" href="https://xsoer.github.io/books/deep-analysis-distributed-cache">
+<link rel="canonical" href="https://xsoer.github.io/books/deep-analysis-distributed-cache/">
 
 
 <script id="page-configurations">
@@ -252,6 +252,12 @@
 
 <div class="post-meta">
   
+  <ul class="breadcrumb">
+          
+            <li><a href="/books/">BOOKS</a></li>
+          <li>DEEP-ANALYSIS-DISTRIBUTED-CACHE</li>
+        
+  </ul>
 
 </div>
 
@@ -289,7 +295,7 @@
 </ul>
 <p>从浏览器到网络，再到应用服务器，甚至到数据库，通过在各个层面应用缓存技术，整个系统的性能将大幅提高</p>
 <p>使用缓存技术，可以降低系统的响应时间，减少网络传输时间和应用延迟时间，进而提高了系统的吞吐量，增加了系统的并发用户数。</p>
-<h3 id="1-3-从网站的架构发展看缓存"><a href="#1-3-从网站的架构发展看缓存" class="headerlink" title="1.3 从网站的架构发展看缓存"></a>1.3 从网站的架构发展看缓存</h3><p><img data-src="assets/img/dadc/web-architecture.png" alt="架构图"></p>
+<h3 id="1-3-从网站的架构发展看缓存"><a href="#1-3-从网站的架构发展看缓存" class="headerlink" title="1.3 从网站的架构发展看缓存"></a>1.3 从网站的架构发展看缓存</h3><p><img data-src="assets/web-architecture.png" alt="架构图"></p>
 <h3 id="1-4-客户端缓存"><a href="#1-4-客户端缓存" class="headerlink" title="1.4 客户端缓存"></a>1.4 客户端缓存</h3><h4 id="1-4-1-页面缓存"><a href="#1-4-1-页面缓存" class="headerlink" title="1.4.1 页面缓存"></a>1.4.1 页面缓存</h4><p>页面缓存有两层含义：一个是页面自身对某些元素或全部元素进行缓存；另一层意思是服务端将静态页面或动态页面的元素进行缓存，然后给客户端使用。</p>
 <p>HTML5中使用本地缓存的方法也很简单，示例代码如下：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">localStorage.setItem()</span><br><span class="line">localStorage.getItem()</span><br></pre></td></tr></table></figure>
@@ -371,7 +377,7 @@
 <blockquote>
 <p>2．多级缓存实例</p>
 </blockquote>
-<p>多级缓存示例<br><img data-src="assets/img/dadc/mulit_level_cache.png" alt="多级缓存"></p>
+<p>多级缓存示例<br><img data-src="assets/mulit_level_cache.png" alt="多级缓存"></p>
 <blockquote>
 <p>3．缓存算法</p>
 </blockquote>
@@ -508,7 +514,7 @@
 <li>应用层：并行程序开发环境、串行应用、并行应用等</li>
 </ul>
 <h4 id="2-2-6-状态特性"><a href="#2-2-6-状态特性" class="headerlink" title="2.2.6 状态特性"></a>2.2.6 状态特性</h4><p>分布式环境中的任何节点（Node）也是无状态的。无状态是指不保存存储状态，则可以随意重启和替代，便于做扩展。</p>
-<h4 id="2-2-7-系统重发与幂等性"><a href="#2-2-7-系统重发与幂等性" class="headerlink" title="2.2.7 系统重发与幂等性"></a>2.2.7 系统重发与幂等性</h4><p>系统重发示例<br><img data-src="assets/img/dadc/net-service-retry.jpeg" alt="系统重发"></p>
+<h4 id="2-2-7-系统重发与幂等性"><a href="#2-2-7-系统重发与幂等性" class="headerlink" title="2.2.7 系统重发与幂等性"></a>2.2.7 系统重发与幂等性</h4><p>系统重发示例<br><img data-src="assets/net-service-retry.jpeg" alt="系统重发"></p>
 <p>所谓幂等性就是调用1次和调用N次要返回一样的结果。<br>比如一次转账动作，A账户转账1000到B账户，由于网络调用超时，客户端client基于上述保障成功率的原因发起了retry，那么最终应该转账1000还是2000呢，客户的意愿是1000。只需要在设计上加上调用订单号就可以规避这个问题，多次重发，调用的订单号一样，则在服务提供方内部只做一次真实转账动作就行了。</p>
 <h4 id="2-2-8-硬件异常"><a href="#2-2-8-硬件异常" class="headerlink" title="2.2.8 硬件异常"></a>2.2.8 硬件异常</h4><blockquote>
 <p>1．服务器宕机</p>
@@ -605,6 +611,12 @@
       
     </div>
     
+  <ul class="breadcrumb">
+          
+            <li><a href="/books/">BOOKS</a></li>
+          <li>DEEP-ANALYSIS-DISTRIBUTED-CACHE</li>
+        
+  </ul>
 
     
     
@@ -680,12 +692,12 @@
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -736,7 +748,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -746,13 +758,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">118k</span>
+    <span title="站点总字数">126k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:47</span>
+    <span title="站点阅读时长">1:54</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
@@ -907,7 +919,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo        : 'xsoer.github.io',
       owner       : 'xsoer',
       admin       : ['xsoer'],
-      id          : '141d87757837f707b3f33f5dba1f41a2',
+      id          : '332fd5d88bed8836743f890277d30be9',
         language: 'zh-CN',
       distractionFreeMode: true
     });
