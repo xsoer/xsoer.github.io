@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 6.0.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -22,15 +22,15 @@
     var CONFIG = {"hostname":"xsoer.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"buttons","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="time: 2020-02-18 09:28:30  数据结构与算法 uuid 有向无环图来管理任务依赖调度 磁盘存储 内存管理 缓存  爬虫业务 定时任务。定时任务的设置 crontab celery 定时器 sleep时长 各种定时任务管理系统。airflow、azkaban等。   需要精确到秒级运行 这个要看秒级精确到程度， 如果是10s内，可以用sleep来运行。 如果大于10s，则可">
+  <meta name="description" content="kudu技术http协议分布式理论  raft协议XpathIo多路复用不隆过滤器mvccpython魔术方法python字符串python字典python遍历python多线程多进程python正则python网络库">
 <meta property="og:type" content="website">
-<meta property="og:title" content="编程时间">
+<meta property="og:title" content="分享">
 <meta property="og:url" content="https://xsoer.github.io/man/cs/%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88.html">
 <meta property="og:site_name" content="hackfox">
-<meta property="og:description" content="time: 2020-02-18 09:28:30  数据结构与算法 uuid 有向无环图来管理任务依赖调度 磁盘存储 内存管理 缓存  爬虫业务 定时任务。定时任务的设置 crontab celery 定时器 sleep时长 各种定时任务管理系统。airflow、azkaban等。   需要精确到秒级运行 这个要看秒级精确到程度， 如果是10s内，可以用sleep来运行。 如果大于10s，则可">
+<meta property="og:description" content="kudu技术http协议分布式理论  raft协议XpathIo多路复用不隆过滤器mvccpython魔术方法python字符串python字典python遍历python多线程多进程python正则python网络库">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-06-21T09:28:54.000Z">
-<meta property="article:modified_time" content="2020-07-24T03:12:42.739Z">
+<meta property="article:modified_time" content="2022-02-21T10:18:48.000Z">
 <meta property="article:author" content="hackfox">
 <meta name="twitter:card" content="summary">
 
@@ -47,7 +47,7 @@
   };
 </script>
 
-  <title>编程时间 | hackfox
+  <title>分享 | hackfox
 </title>
   
     <script>
@@ -243,7 +243,7 @@
     <div class="post-block" lang="zh-CN">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">编程时间
+<h1 class="post-title" itemprop="name headline">分享
 </h1>
 
 <div class="post-meta">
@@ -264,117 +264,8 @@
       
       
       <div class="post-body">
-          <ul>
-<li>time: 2020-02-18 09:28:30</li>
-</ul>
-<h2 id="数据结构与算法"><a href="#数据结构与算法" class="headerlink" title="数据结构与算法"></a>数据结构与算法</h2><ul>
-<li>uuid</li>
-<li>有向无环图来管理任务依赖调度</li>
-<li>磁盘存储</li>
-<li>内存管理</li>
-<li>缓存</li>
-</ul>
-<h2 id="爬虫业务"><a href="#爬虫业务" class="headerlink" title="爬虫业务"></a>爬虫业务</h2><ul>
-<li>定时任务。定时任务的设置<ul>
-<li>crontab</li>
-<li>celery</li>
-<li>定时器</li>
-<li>sleep时长</li>
-<li>各种定时任务管理系统。airflow、azkaban等。</li>
-</ul>
-</li>
-<li>需要精确到秒级运行<ul>
-<li>这个要看秒级精确到程度，<ul>
-<li>如果是10s内，可以用sleep来运行。</li>
-<li>如果大于10s，则可以用定时的方式来实现，不过可能需要找些工具平台来做，因为crontab并不支持任务精确到秒级。比如：<a href="https://github.com/ouqiang/gocron" target="_blank" rel="noopener">gocron</a>,这个管理系统提供精确到秒级。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>sleep做定时运行<ul>
-<li>坏处是下次运行时间不太确定，这个要看任务的执行时间长短，而不是正点运行。</li>
-<li>好处是在较小任务的间隔下，频繁的执行，这个实现起来比较容易。可以忽略少量失败的情况下，而且没有下游时间点要求较严格的情况下，比较友好的实现。</li>
-<li>而且这种实现方式需要任务常驻运行，启动方式有多种</li>
-</ul>
-</li>
-<li>常驻任务管理<ul>
-<li>直接命令执行。这个启动方式是前台执行，如果退出命令，则停止了；只能强制退出terminal，让其在一个终端下以前台的方式来运行。</li>
-<li>nohup来启动。<ul>
-<li>例如：nohup python src/main.py &amp; &gt; nohup.out 。这样进程就会在后台运行</li>
-<li>但如果程序有异常，就会抛出异常，自动退出。</li>
-</ul>
-</li>
-<li>supervisor来启动守护进程管理。<ul>
-<li>有配置文件来统一管理，</li>
-</ul>
-</li>
-<li>docker来管理，失败重启并通知</li>
-</ul>
-</li>
-<li>定时任务的依赖调度管理<ul>
-<li>用有向无环图来管理任务，确定任务执行的顺序、失败操作，多路并发运行，保证可靠性。</li>
-<li>常用的系统有：airflow(python)</li>
-</ul>
-</li>
-<li>html解析<ul>
-<li>xpath。好用、快捷(内置python、用c语言实现)</li>
-<li>bs4库。</li>
-</ul>
-</li>
-<li>爬虫框架<ul>
-<li>scripy</li>
-</ul>
-</li>
-<li>ip代理</li>
-</ul>
-<h2 id="Web服务"><a href="#Web服务" class="headerlink" title="Web服务"></a>Web服务</h2><ul>
-<li>单点登录</li>
-<li>安全规范</li>
-<li>消息通知</li>
-<li>缓存</li>
-<li>高可靠、高并发</li>
-</ul>
-<h2 id="大数据"><a href="#大数据" class="headerlink" title="大数据"></a>大数据</h2><h4 id="数据同步"><a href="#数据同步" class="headerlink" title="数据同步"></a>数据同步</h4><ul>
-<li>mysql2mysql</li>
-<li>mysql2hbase</li>
-<li>mysql2kudu</li>
-</ul>
-<h2 id="NLP相关"><a href="#NLP相关" class="headerlink" title="NLP相关"></a>NLP相关</h2><ul>
-<li>命名实体识别</li>
-<li>图片文字提取</li>
-<li>实体关系挖掘</li>
-<li>文本相似度匹配</li>
-<li>自动摘要</li>
-</ul>
-<h2 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h2><ul>
-<li>什么是微服务，微服务的优缺点，什么场景适用微服务。</li>
-</ul>
-<h2 id="服务发布"><a href="#服务发布" class="headerlink" title="服务发布"></a>服务发布</h2><ul>
-<li>自动部署发布</li>
-</ul>
-<h2 id="服务统计"><a href="#服务统计" class="headerlink" title="服务统计"></a>服务统计</h2><ul>
-<li>日志</li>
-<li>请求量</li>
-<li>PV、UV</li>
-</ul>
-<h2 id="网络请求"><a href="#网络请求" class="headerlink" title="网络请求"></a>网络请求</h2><h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><ul>
-<li>优化sql<ul>
-<li>添加索引</li>
-<li>少用子查询</li>
-</ul>
-</li>
-</ul>
-<h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><ul>
-<li>防止暴力破解登录<ul>
-<li>修改常用登录的端口</li>
-<li>fail2ban软件来监控<ul>
-<li>如果失败了，在设置时长内禁止登录。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="其他细节"><a href="#其他细节" class="headerlink" title="其他细节"></a>其他细节</h2>
+          <p>kudu技术<br>http协议<br>分布式理论<br>  raft协议<br>Xpath<br>Io多路复用<br>不隆过滤器<br>mvcc<br>python魔术方法<br>python字符串<br>python字典<br>python遍历<br>python多线程多进程<br>python正则<br>python网络库</p>
+
       </div>
       
       
@@ -443,7 +334,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构与算法"><span class="nav-text">数据结构与算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#爬虫业务"><span class="nav-text">爬虫业务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web服务"><span class="nav-text">Web服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#大数据"><span class="nav-text">大数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据同步"><span class="nav-text">数据同步</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NLP相关"><span class="nav-text">NLP相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#微服务"><span class="nav-text">微服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务发布"><span class="nav-text">服务发布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务统计"><span class="nav-text">服务统计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络请求"><span class="nav-text">网络请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库"><span class="nav-text">数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器"><span class="nav-text">服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他细节"><span class="nav-text">其他细节</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -519,7 +409,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

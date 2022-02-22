@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 6.0.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -25,16 +25,16 @@
   <meta name="description" content="一、权限登录类 1.授权用户 123456-- 授权用户GRANT ALL PRIVILEGES ON *.* TO &#39;username&#39;@&#39;%&#39; IDENTIFIED BY &#39;password&#39; WITH GRANT OPTION;FLUSH PRIVILEGES;-- 查看某个用户的权限show grants for username;  2.远程连接 1mysql -h192.168.1.1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="mysql常用语句">
-<meta property="og:url" content="https://xsoer.github.io/man/mysql/commands.html">
+<meta property="og:url" content="https://xsoer.github.io/man/mysql/sql.html">
 <meta property="og:site_name" content="hackfox">
 <meta property="og:description" content="一、权限登录类 1.授权用户 123456-- 授权用户GRANT ALL PRIVILEGES ON *.* TO &#39;username&#39;@&#39;%&#39; IDENTIFIED BY &#39;password&#39; WITH GRANT OPTION;FLUSH PRIVILEGES;-- 查看某个用户的权限show grants for username;  2.远程连接 1mysql -h192.168.1.1">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-08-05T10:35:03.519Z">
-<meta property="article:modified_time" content="2020-08-05T10:35:03.499Z">
+<meta property="article:published_time" content="2022-02-22T07:38:58.129Z">
+<meta property="article:modified_time" content="2022-02-22T07:38:58.129Z">
 <meta property="article:author" content="hackfox">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://xsoer.github.io/man/mysql/commands">
+<link rel="canonical" href="https://xsoer.github.io/man/mysql/sql">
 
 
 <script id="page-configurations">
@@ -252,7 +252,7 @@
           
             <li><a href="/man/">MAN</a></li>
             <li><a href="/man/mysql/">MYSQL</a></li>
-            <li>COMMANDS</li>
+            <li>SQL</li>
           
   </ul>
 
@@ -264,7 +264,7 @@
       
       
       <div class="post-body">
-          <h2 id="一、权限登录类"><a href="#一、权限登录类" class="headerlink" title="一、权限登录类"></a>一、权限登录类</h2><ul>
+          <h1 id="一、权限登录类"><a href="#一、权限登录类" class="headerlink" title="一、权限登录类"></a>一、权限登录类</h1><ul>
 <li><p>1.授权用户</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 授权用户</span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> <span class="keyword">PRIVILEGES</span> <span class="keyword">ON</span> *.* <span class="keyword">TO</span> <span class="string">'username'</span>@<span class="string">'%'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'password'</span> <span class="keyword">WITH</span> <span class="keyword">GRANT</span> <span class="keyword">OPTION</span>;</span><br><span class="line"><span class="keyword">FLUSH</span> <span class="keyword">PRIVILEGES</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查看某个用户的权限</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">grants</span> <span class="keyword">for</span> username;</span><br></pre></td></tr></table></figure>
 </li>
@@ -285,10 +285,7 @@
 
 </li>
 </ul>
-<h2 id="二、DDL"><a href="#二、DDL" class="headerlink" title="二、DDL"></a>二、DDL</h2><blockquote>
-<p>数据库</p>
-</blockquote>
-<ul>
+<h1 id="二、DDL"><a href="#二、DDL" class="headerlink" title="二、DDL"></a>二、DDL</h1><h3 id="2-1-数据库"><a href="#2-1-数据库" class="headerlink" title="2.1 数据库"></a>2.1 数据库</h3><ul>
 <li><p>1.建数据库语句</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> db_name <span class="keyword">default</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8mb4 <span class="keyword">collate</span> utf8_general_ci;</span><br></pre></td></tr></table></figure>
 </li>
@@ -316,6 +313,9 @@
 <li><p>6.删除表</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 删除表结构，表结构和数据全部删除</span></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> table_name;</span><br></pre></td></tr></table></figure>
 </li>
+<li><p>清空表数据</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">truncate</span> <span class="keyword">table</span> table_name;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>7.新增字段</p>
 </li>
 <li><p>8.修改字段</p>
@@ -327,27 +327,16 @@
 <li><p>11.删除索引</p>
 </li>
 </ul>
-<h2 id="三、DML"><a href="#三、DML" class="headerlink" title="三、DML"></a>三、DML</h2><ul>
-<li><p>1.查询</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>2.新增</p>
-</li>
-<li><p>3.修改</p>
-</li>
-</ul>
-<ul>
-<li><p>4.删除</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 全部删除数据，不删表结构。不做表优化</span></span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> table_name;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 按条件删除</span></span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> table_name <span class="keyword">where</span> is_deleted = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 按条件限制删除</span></span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> table_name <span class="keyword">where</span> is_deleted = <span class="number">1</span> <span class="keyword">limit</span> <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 删除表数据，并优化表空间</span></span><br><span class="line"><span class="keyword">truncate</span> <span class="keyword">table</span> table_name;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>5.重建引擎</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table table_name engine&#x3D;InnoDB</span><br></pre></td></tr></table></figure>
+<h1 id="三、DML"><a href="#三、DML" class="headerlink" title="三、DML"></a>三、DML</h1><h2 id="3-1-查询"><a href="#3-1-查询" class="headerlink" title="3.1 查询"></a>3.1 查询</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="union"><a href="#union" class="headerlink" title="union"></a>union</h3><p><code>union</code>进行链接两个查询，并返回结果集，但是会去除重复数据<br><code>union all</code>会保留重复数据</p>
+<h2 id="2-新增"><a href="#2-新增" class="headerlink" title="2.新增"></a>2.新增</h2><h2 id="3-修改"><a href="#3-修改" class="headerlink" title="3.修改"></a>3.修改</h2><h2 id="4-删除"><a href="#4-删除" class="headerlink" title="4.删除"></a>4.删除</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 全部删除数据，不删表结构。不做表优化</span></span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> table_name;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 按条件删除</span></span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> table_name <span class="keyword">where</span> is_deleted = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 按条件限制删除</span></span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> table_name <span class="keyword">where</span> is_deleted = <span class="number">1</span> <span class="keyword">limit</span> <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 删除表数据，并优化表空间</span></span><br><span class="line"><span class="keyword">truncate</span> <span class="keyword">table</span> table_name;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-重建引擎"><a href="#5-重建引擎" class="headerlink" title="5.重建引擎"></a>5.重建引擎</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table table_name engine&#x3D;InnoDB</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="四、参数状态"><a href="#四、参数状态" class="headerlink" title="四、参数状态"></a>四、参数状态</h2><ul>
+<h1 id="四、参数状态"><a href="#四、参数状态" class="headerlink" title="四、参数状态"></a>四、参数状态</h1><ul>
 <li><p>1.查看参数</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查看所有参数</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">variables</span>;</span><br><span class="line"><span class="comment">-- 过滤参数</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">variables</span> <span class="keyword">like</span> <span class="string">'%sql%'</span>;</span><br></pre></td></tr></table></figure>
 </li>
@@ -386,10 +375,55 @@
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">CONCAT</span>(table_schema,<span class="string">'.'</span>,table_name) <span class="keyword">AS</span> <span class="string">'Table Name'</span>, <span class="keyword">CONCAT</span>(<span class="keyword">ROUND</span>(table_rows/<span class="number">1000000</span>,<span class="number">4</span>),<span class="string">'M'</span>) <span class="keyword">AS</span> <span class="string">'Number of Rows'</span>, <span class="keyword">CONCAT</span>(<span class="keyword">ROUND</span>(data_length/(<span class="number">1024</span>*<span class="number">1024</span>*<span class="number">1024</span>),<span class="number">4</span>),<span class="string">'G'</span>) <span class="keyword">AS</span> <span class="string">'Data Size'</span>, <span class="keyword">CONCAT</span>(<span class="keyword">ROUND</span>(index_length/(<span class="number">1024</span>*<span class="number">1024</span>*<span class="number">1024</span>),<span class="number">4</span>),<span class="string">'G'</span>) <span class="keyword">AS</span> <span class="string">'Index Size'</span>, <span class="keyword">CONCAT</span>(<span class="keyword">ROUND</span>((data_length+index_length)/(<span class="number">1024</span>*<span class="number">1024</span>*<span class="number">1024</span>),<span class="number">4</span>),<span class="string">'G'</span>) <span class="keyword">AS</span><span class="string">'Total'</span><span class="keyword">FROM</span> information_schema.TABLES <span class="keyword">WHERE</span> table_schema = <span class="string">'mainsite'</span> <span class="keyword">order</span> <span class="keyword">by</span> Total <span class="keyword">desc</span>;</span><br></pre></td></tr></table></figure>
 
-
-
-
-
+<h1 id="五、函数"><a href="#五、函数" class="headerlink" title="五、函数"></a>五、函数</h1><h3 id="5-1-日期时间"><a href="#5-1-日期时间" class="headerlink" title="5.1 日期时间"></a>5.1 日期时间</h3><ul>
+<li>当前日期时间: <code>NOW()</code></li>
+<li>当前日期: <code>CURDATE()</code>, <code>CURRENT_DATE()</code></li>
+<li>当前时间: <code>CURTIME()</code>, <code>CURRENT_TIME()</code></li>
+<li>当前时间戳：<code>UNIX_TIMESTAMP()</code>, <code>CURRENT_TIMESTAMP()</code></li>
+<li>格式化: <code>DATE_FORMAT(NOW(), &quot;%Y-%m-%d %H:%m:%s&quot;)</code></li>
+<li>日期相加: <code>DATE_ADD(CURDATE(), INTERVAL 1 DAY)</code>, <code>ADDDATE(CURDATE(), INTERVAL 1 DAY)</code>, <code>ADDDATE(CURDATE(), 1)</code></li>
+<li>日期相减: <code>DATE_SUB(CURDATE(), INTERVAL 1 DAY)</code>, <code>SUBDATE(CURDATE(), INTERVAL 1 DAY)</code>, <code>SUBDATE(CURDATE(), 1)</code></li>
+<li>日期差值: <code>DATADIFF(DAY, CURDATE(), DATE_ADD(CURDATE(), INTERVAL 1 DAY))</code></li>
+<li>第几周: <code>WEEKOFYEAR(CURDATE())</code></li>
+<li>第几月: <code>MONTH(CURDATE())</code></li>
+<li></li>
+</ul>
+<h3 id="5-2-聚合函数"><a href="#5-2-聚合函数" class="headerlink" title="5.2 聚合函数"></a>5.2 聚合函数</h3><ul>
+<li>平均值: <code>AVG()</code></li>
+<li>求和: <code>SUM()</code></li>
+<li>最大值: <code>MAX()</code></li>
+<li>最小值: <code>MIN()</code></li>
+<li>数量: <code>COUNT()</code></li>
+<li>求余: <code>MOD()</code></li>
+</ul>
+<h3 id="5-3-字符串"><a href="#5-3-字符串" class="headerlink" title="5.3 字符串"></a>5.3 字符串</h3><ul>
+<li>长度: <code>LENGTH(str)</code></li>
+<li>截取: <code>SUBSTR(str, start, length)</code></li>
+<li>替换: <code>REPLACE(str, old, new)</code></li>
+<li>大写: <code>UPPER(str)</code></li>
+<li>小写: <code>LOWER(str)</code></li>
+<li></li>
+</ul>
+<h3 id="5-4-数字"><a href="#5-4-数字" class="headerlink" title="5.4 数字"></a>5.4 数字</h3><ul>
+<li>四舍五入: <code>ROUND(num, length)</code></li>
+<li>向下取整: <code>CEIL(num)</code></li>
+<li>向上取整: <code>FLOOR(num)</code></li>
+<li>绝对值: <code>ABS()</code></li>
+</ul>
+<h3 id="5-4-类型转换"><a href="#5-4-类型转换" class="headerlink" title="5.4 类型转换"></a>5.4 类型转换</h3><ul>
+<li>字符串转数字: <code>CAST(str AS SIGNED)</code></li>
+</ul>
+<h3 id="空值"><a href="#空值" class="headerlink" title="空值"></a>空值</h3><ul>
+<li>判断空值: <code>ISNULL(str)</code></li>
+<li>如果为空: <code>IFNULL(str, default)</code></li>
+<li>如果不为空: <code>IF(str, true, false)</code></li>
+<li>如果返回空: <code>NULLIF</code></li>
+</ul>
+<h3 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h3><ul>
+<li>&amp; AND</li>
+<li>| OR</li>
+<li>XOR</li>
+</ul>
 
       </div>
       
@@ -401,7 +435,7 @@
           
             <li><a href="/man/">MAN</a></li>
             <li><a href="/man/mysql/">MYSQL</a></li>
-            <li>COMMANDS</li>
+            <li>SQL</li>
           
   </ul>
 
@@ -459,7 +493,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、权限登录类"><span class="nav-text">一、权限登录类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、DDL"><span class="nav-text">二、DDL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、DML"><span class="nav-text">三、DML</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、参数状态"><span class="nav-text">四、参数状态</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%9D%83%E9%99%90%E7%99%BB%E5%BD%95%E7%B1%BB"><span class="nav-text">一、权限登录类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81DDL"><span class="nav-text">二、DDL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-text">2.1 数据库</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81DML"><span class="nav-text">三、DML</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-%E6%9F%A5%E8%AF%A2"><span class="nav-text">3.1 查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#union"><span class="nav-text">union</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%96%B0%E5%A2%9E"><span class="nav-text">2.新增</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E4%BF%AE%E6%94%B9"><span class="nav-text">3.修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%88%A0%E9%99%A4"><span class="nav-text">4.删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E9%87%8D%E5%BB%BA%E5%BC%95%E6%93%8E"><span class="nav-text">5.重建引擎</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E6%95%B0%E7%8A%B6%E6%80%81"><span class="nav-text">四、参数状态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%87%BD%E6%95%B0"><span class="nav-text">五、函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4"><span class="nav-text">5.1 日期时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0"><span class="nav-text">5.2 聚合函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-text">5.3 字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-%E6%95%B0%E5%AD%97"><span class="nav-text">5.4 数字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-text">5.4 类型转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A9%BA%E5%80%BC"><span class="nav-text">空值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%8D%E8%BF%90%E7%AE%97"><span class="nav-text">位运算</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -535,7 +569,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -706,7 +740,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo        : 'xsoer.github.io',
       owner       : 'xsoer',
       admin       : ['xsoer'],
-      id          : '0020155da1d0b9e63bdf0def45ba9acd',
+      id          : 'fc358ea0c47c9b54daecefb583a8031c',
         language: 'zh-CN',
       distractionFreeMode: true
     });

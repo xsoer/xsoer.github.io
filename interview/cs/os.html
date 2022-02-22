@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 6.0.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -478,7 +478,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#core文件是什么，有什么用？"><span class="nav-text">core文件是什么，有什么用？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是core-dump"><span class="nav-text">什么是core dump</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么没有core文件生成呢"><span class="nav-text">为什么没有core文件生成呢?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不用core文件，程序出了问题产生信号是否知道？"><span class="nav-text">不用core文件，程序出了问题产生信号是否知道？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#共享内存除了文件映射还有什么方式？二者有什么区别"><span class="nav-text">共享内存除了文件映射还有什么方式？二者有什么区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请解释下列10个shell命令的用途。top、ps、mv、find、df、cat、chmod、chgrp、grep、wc"><span class="nav-text">请解释下列10个shell命令的用途。top、ps、mv、find、df、cat、chmod、chgrp、grep、wc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux文件属性有哪些？（共十位）"><span class="nav-text">Linux文件属性有哪些？（共十位）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linux查询命令"><span class="nav-text">linux查询命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#select-poll和epoll的区别"><span class="nav-text">select, poll和epoll的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#待处理"><span class="nav-text">待处理</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#core%E6%96%87%E4%BB%B6%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%8C%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8%EF%BC%9F"><span class="nav-text">core文件是什么，有什么用？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFcore-dump"><span class="nav-text">什么是core dump</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%B2%A1%E6%9C%89core%E6%96%87%E4%BB%B6%E7%94%9F%E6%88%90%E5%91%A2"><span class="nav-text">为什么没有core文件生成呢?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E7%94%A8core%E6%96%87%E4%BB%B6%EF%BC%8C%E7%A8%8B%E5%BA%8F%E5%87%BA%E4%BA%86%E9%97%AE%E9%A2%98%E4%BA%A7%E7%94%9F%E4%BF%A1%E5%8F%B7%E6%98%AF%E5%90%A6%E7%9F%A5%E9%81%93%EF%BC%9F"><span class="nav-text">不用core文件，程序出了问题产生信号是否知道？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98%E9%99%A4%E4%BA%86%E6%96%87%E4%BB%B6%E6%98%A0%E5%B0%84%E8%BF%98%E6%9C%89%E4%BB%80%E4%B9%88%E6%96%B9%E5%BC%8F%EF%BC%9F%E4%BA%8C%E8%80%85%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="nav-text">共享内存除了文件映射还有什么方式？二者有什么区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%B7%E8%A7%A3%E9%87%8A%E4%B8%8B%E5%88%9710%E4%B8%AAshell%E5%91%BD%E4%BB%A4%E7%9A%84%E7%94%A8%E9%80%94%E3%80%82top%E3%80%81ps%E3%80%81mv%E3%80%81find%E3%80%81df%E3%80%81cat%E3%80%81chmod%E3%80%81chgrp%E3%80%81grep%E3%80%81wc"><span class="nav-text">请解释下列10个shell命令的用途。top、ps、mv、find、df、cat、chmod、chgrp、grep、wc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%EF%BC%88%E5%85%B1%E5%8D%81%E4%BD%8D%EF%BC%89"><span class="nav-text">Linux文件属性有哪些？（共十位）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linux%E6%9F%A5%E8%AF%A2%E5%91%BD%E4%BB%A4"><span class="nav-text">linux查询命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#select-poll%E5%92%8Cepoll%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">select, poll和epoll的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%85%E5%A4%84%E7%90%86"><span class="nav-text">待处理</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -554,7 +554,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
