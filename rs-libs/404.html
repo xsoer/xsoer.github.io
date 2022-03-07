@@ -3,8 +3,8 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Rust Libs Examples</title>
-        <meta name="robots" content="noindex" />
+        <title></title>
+        <base href="/">
 
 
         <!-- Custom HTML head -->
@@ -143,28 +143,8 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="rust-libs-examples"><a class="header" href="#rust-libs-examples">Rust Libs Examples</a></h1>
-<p>Rust相关库的介绍</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="collections"><a class="header" href="#collections">collections</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><div style="break-before: page; page-break-before: always;"></div><div style="break-before: page; page-break-before: always;"></div><div style="break-before: page; page-break-before: always;"></div><h1 id="btreeset"><a class="header" href="#btreeset">BTreeSet</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><div style="break-before: page; page-break-before: always;"></div><div style="break-before: page; page-break-before: always;"></div><div style="break-before: page; page-break-before: always;"></div><h1 id="anyhow"><a class="header" href="#anyhow">anyhow</a></h1>
-<ul>
-<li>错误处理封装的一个库，相当于把 <code>std::error::Error&lt;T&gt;</code>封装了一把，封装了一个 <code>Result&lt;T, anyhow::Error&gt;</code>。</li>
-<li><code>anyhow::Error</code>类型可以处理任何类型的错误。</li>
-</ul>
-<p>基本用法：</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>use anyhow::Result;
-
-fn get_file_info() -&gt; Result&lt;()&gt; {
-    let config = std::fs::read_to_string(&quot;cluster.json&quot;)?;
-    println!(&quot;{}&quot;, config);
-    Ok(())
-}
-<span class="boring">}
-</span></code></pre></pre>
+                        <h1 id="document-not-found-404"><a class="header" href="#document-not-found-404">Document not found (404)</a></h1>
+<p>This URL is invalid, sorry. Please use the navigation bar or search to continue.</p>
 
                     </main>
 
@@ -183,6 +163,20 @@ fn get_file_info() -&gt; Result&lt;()&gt; {
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 
@@ -201,11 +195,6 @@ fn get_file_info() -&gt; Result&lt;()&gt; {
 
         <!-- Custom JS scripts -->
 
-        <script type="text/javascript">
-        window.addEventListener('load', function() {
-            window.setTimeout(window.print, 100);
-        });
-        </script>
 
     </body>
 </html>
