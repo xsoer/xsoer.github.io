@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">1.</strong> Chapter 1</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="mysql/index.html"><strong aria-hidden="true">1.</strong> Mysql</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="mysql/arch.html"><strong aria-hidden="true">1.1.</strong> 架构</a></li><li class="chapter-item expanded "><a href="mysql/data_type.html"><strong aria-hidden="true">1.2.</strong> 数据类型</a></li><li class="chapter-item expanded "><a href="mysql/encode.html"><strong aria-hidden="true">1.3.</strong> 编码</a></li><li class="chapter-item expanded "><a href="mysql/sql.html"><strong aria-hidden="true">1.4.</strong> SQL语法</a></li><li class="chapter-item expanded "><a href="mysql/engine.html"><strong aria-hidden="true">1.5.</strong> 存储引擎</a></li><li class="chapter-item expanded "><a href="mysql/sync.html"><strong aria-hidden="true">1.6.</strong> 主从同步</a></li><li class="chapter-item expanded "><a href="mysql/mysqldump.html"><strong aria-hidden="true">1.7.</strong> mysqldump</a></li><li class="chapter-item expanded "><a href="mysql/interview.html"><strong aria-hidden="true">1.8.</strong> 面试问题</a></li></ol></li><li class="chapter-item expanded "><a href="redis/index.html"><strong aria-hidden="true">2.</strong> Redis</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="redis/data_structure.html"><strong aria-hidden="true">2.1.</strong> 数据结构</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -143,7 +143,1095 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="chapter-1"><a class="header" href="#chapter-1">Chapter 1</a></h1>
+                        <h1 id="mysql"><a class="header" href="#mysql">Mysql</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="架构"><a class="header" href="#架构">架构</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="数据类型"><a class="header" href="#数据类型">数据类型</a></h1>
+<h2 id="字符串"><a class="header" href="#字符串">字符串</a></h2>
+<ul>
+<li>char</li>
+<li>varchar</li>
+<li>text</li>
+</ul>
+<h2 id="数字"><a class="header" href="#数字">数字</a></h2>
+<table><thead><tr><th>类型</th><th>字节长度</th><th>有符号</th><th>无符号</th></tr></thead><tbody>
+<tr><td>tinyint</td><td>1</td><td>-127~128</td><td>0~255</td></tr>
+<tr><td>smallint</td><td>2</td><td>-32768~32767</td><td>0~65535</td></tr>
+<tr><td>mediumint</td><td>3</td><td>-8388608~8388607</td><td>0~16777215</td></tr>
+<tr><td>int</td><td>4</td><td>-2147483648~2147483647</td><td>0~4294967295</td></tr>
+<tr><td>bigint</td><td>8</td><td>-$2^{63}$ ~   $2^{63}$-1</td><td>0~$2^{64}$-1</td></tr>
+</tbody></table>
+<h2 id="二进制"><a class="header" href="#二进制">二进制</a></h2>
+<ul>
+<li>json</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="编码"><a class="header" href="#编码">编码</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sql"><a class="header" href="#sql">SQL</a></h1>
+<h2 id="一权限登录类"><a class="header" href="#一权限登录类">一、权限登录类</a></h2>
+<ul>
+<li>1.授权用户</li>
+</ul>
+<pre><code class="language-sql">-- 授权用户
+GRANT ALL PRIVILEGES ON *.* TO 'username'@'%' IDENTIFIED BY 'password' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+-- 查看某个用户的权限
+show grants for username;
+</code></pre>
+<ul>
+<li>2.远程连接</li>
+</ul>
+<pre><code class="language-sql">mysql -h192.168.1.1 -P3306 -uroot -p
+</code></pre>
+<ul>
+<li>3.导出数据库</li>
+</ul>
+<pre><code class="language-sql">mysqldump -h192.168.1.1-P3306 -uroot -p db_name &gt; db_name.sql
+</code></pre>
+<ul>
+<li>4.导入数据库</li>
+</ul>
+<pre><code class="language-sql">mysql -uroot -p db_name &lt; db_name.sql
+</code></pre>
+<ul>
+<li>5.分析查询</li>
+</ul>
+<pre><code class="language-sql">explain select * from user;
+</code></pre>
+<ul>
+<li>6.查询所有的进程</li>
+</ul>
+<pre><code class="language-sql">show procelist;
+show full procelist;
+</code></pre>
+<h2 id="二ddl"><a class="header" href="#二ddl">二、DDL</a></h2>
+<h3 id="21-数据库"><a class="header" href="#21-数据库">2.1 数据库</a></h3>
+<ul>
+<li>1.建数据库语句</li>
+</ul>
+<pre><code class="language-sql">create database db_name default character set utf8mb4 collate utf8_general_ci;
+</code></pre>
+<ul>
+<li>3.删除数据库</li>
+</ul>
+<pre><code class="language-sql">drop database db_name;
+</code></pre>
+<blockquote>
+<p>表操作</p>
+</blockquote>
+<ul>
+<li>2.创建数据表语句</li>
+</ul>
+<pre><code class="language-sql">CREATE TABLE `user_info` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `user_id` char(32) NOT NULL COMMENT 'id',
+  `user_name` varchar(255) NOT NULL COMMENT '姓名',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后更新时间',
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `idx_user` (`user_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC COMMENT='用户信息表';
+</code></pre>
+<ul>
+<li>3.查看数据表</li>
+</ul>
+<pre><code class="language-sql">-- 查看所有表
+show tables;
+-- 查看建表语句
+show create table table_name;
+-- 查看表字段及描述
+desc table_name;
+</code></pre>
+<ul>
+<li>4.查看字段</li>
+</ul>
+<pre><code class="language-sql">show columns from table_name;
+</code></pre>
+<ul>
+<li>5.查看索引</li>
+</ul>
+<pre><code class="language-sql">show index from table_name;
+</code></pre>
+<ul>
+<li>6.删除表</li>
+</ul>
+<pre><code class="language-sql">-- 删除表结构，表结构和数据全部删除
+drop table table_name;
+</code></pre>
+<ul>
+<li>清空表数据</li>
+</ul>
+<pre><code class="language-sql">truncate table table_name;
+</code></pre>
+<ul>
+<li>7.新增字段</li>
+<li>8.修改字段</li>
+<li>9.删除字段</li>
+<li>10.添加索引</li>
+<li>11.删除索引</li>
+</ul>
+<h2 id="三dml"><a class="header" href="#三dml">三、DML</a></h2>
+<h2 id="31-查询"><a class="header" href="#31-查询">3.1 查询</a></h2>
+<pre><code class="language-sql">
+</code></pre>
+<h3 id="union"><a class="header" href="#union">union</a></h3>
+<p><code>union</code>进行链接两个查询，并返回结果集，但是会去除重复数据
+<code>union all</code>会保留重复数据</p>
+<h2 id="2新增"><a class="header" href="#2新增">2.新增</a></h2>
+<h2 id="3修改"><a class="header" href="#3修改">3.修改</a></h2>
+<h2 id="4删除"><a class="header" href="#4删除">4.删除</a></h2>
+<pre><code class="language-sql">-- 全部删除数据，不删表结构。不做表优化
+delete from table_name;
+
+-- 按条件删除
+delete from table_name where is_deleted = 1;
+
+-- 按条件限制删除
+delete from table_name where is_deleted = 1 limit 100;
+
+-- 删除表数据，并优化表空间
+truncate table table_name;
+</code></pre>
+<h2 id="5重建引擎"><a class="header" href="#5重建引擎">5.重建引擎</a></h2>
+<pre><code>alter table table_name engine=InnoDB
+</code></pre>
+<h2 id="四参数状态"><a class="header" href="#四参数状态">四、参数状态</a></h2>
+<ul>
+<li>1.查看参数</li>
+</ul>
+<pre><code class="language-sql">-- 查看所有参数
+show variables;
+-- 过滤参数
+show variables like '%sql%';
+</code></pre>
+<ul>
+<li>2.查看事件</li>
+</ul>
+<pre><code class="language-sql">show events;
+</code></pre>
+<ul>
+<li>3.查看触发器</li>
+</ul>
+<pre><code class="language-sql">show triggers;
+</code></pre>
+<ul>
+<li>4.查看所有状态</li>
+</ul>
+<pre><code class="language-sql">show status;
+</code></pre>
+<ul>
+<li>5.查看打开表</li>
+</ul>
+<pre><code class="language-sql">show open tables;
+</code></pre>
+<ul>
+<li>6.查看表状态</li>
+</ul>
+<pre><code class="language-sql">-- 在某个db下执行
+-- 可以查看表的存储引擎，表空间，自增主键，创建和更新时间等
+show table status;
+</code></pre>
+<ul>
+<li>7.查看数据库状态</li>
+</ul>
+<pre><code class="language-sql">-- 查看主库
+show master status;
+-- 查看从库
+show slave status;
+</code></pre>
+<ul>
+<li>8.查看函数状态</li>
+</ul>
+<pre><code class="language-sql">show function status;
+</code></pre>
+<ul>
+<li>9.查看插件</li>
+</ul>
+<pre><code class="language-sql">show plugins;
+</code></pre>
+<ul>
+<li>10.查看错误</li>
+</ul>
+<pre><code class="language-sql">show errors;
+</code></pre>
+<ul>
+<li>11.查看存储引擎</li>
+</ul>
+<pre><code class="language-sql">show engines;
+</code></pre>
+<ul>
+<li>12.查询数据存储空间</li>
+</ul>
+<pre><code class="language-sql">SELECT CONCAT(table_schema,'.',table_name) AS 'Table Name', CONCAT(ROUND(table_rows/1000000,4),'M') AS 'Number of Rows', CONCAT(ROUND(data_length/(1024*1024*1024),4),'G') AS 'Data Size', CONCAT(ROUND(index_length/(1024*1024*1024),4),'G') AS 'Index Size', CONCAT(ROUND((data_length+index_length)/(1024*1024*1024),4),'G') AS'Total'FROM information_schema.TABLES WHERE table_schema = 'mainsite' order by Total desc;
+</code></pre>
+<h2 id="五函数"><a class="header" href="#五函数">五、函数</a></h2>
+<h3 id="51-日期时间"><a class="header" href="#51-日期时间">5.1 日期时间</a></h3>
+<ul>
+<li>当前日期时间:<code>NOW()</code></li>
+<li>当前日期:<code>CURDATE()</code>,<code>CURRENT_DATE()</code></li>
+<li>当前时间:<code>CURTIME()</code>,<code>CURRENT_TIME()</code></li>
+<li>当前时间戳：<code>UNIX_TIMESTAMP()</code>,<code>CURRENT_TIMESTAMP()</code></li>
+<li>格式化:<code>DATE_FORMAT(NOW(), &quot;%Y-%m-%d %H:%m:%s&quot;)</code></li>
+<li>日期相加:<code>DATE_ADD(CURDATE(), INTERVAL 1 DAY)</code>,<code>ADDDATE(CURDATE(), INTERVAL 1 DAY)</code>,<code>ADDDATE(CURDATE(), 1)</code></li>
+<li>日期相减:<code>DATE_SUB(CURDATE(), INTERVAL 1 DAY)</code>,<code>SUBDATE(CURDATE(), INTERVAL 1 DAY)</code>,<code>SUBDATE(CURDATE(), 1)</code></li>
+<li>日期差值:<code>DATADIFF(DAY, CURDATE(), DATE_ADD(CURDATE(), INTERVAL 1 DAY))</code></li>
+<li>第几周:<code>WEEKOFYEAR(CURDATE())</code></li>
+<li>第几月:<code>MONTH(CURDATE())</code></li>
+</ul>
+<h3 id="52-聚合函数"><a class="header" href="#52-聚合函数">5.2 聚合函数</a></h3>
+<ul>
+<li>平均值:<code>AVG()</code></li>
+<li>求和:<code>SUM()</code></li>
+<li>最大值:<code>MAX()</code></li>
+<li>最小值:<code>MIN()</code></li>
+<li>数量:<code>COUNT()</code></li>
+<li>求余:<code>MOD()</code></li>
+</ul>
+<h3 id="53-字符串"><a class="header" href="#53-字符串">5.3 字符串</a></h3>
+<ul>
+<li>长度:<code>LENGTH(str)</code></li>
+<li>截取:<code>SUBSTR(str, start, length)</code></li>
+<li>替换:<code>REPLACE(str, old, new)</code></li>
+<li>大写:<code>UPPER(str)</code></li>
+<li>小写:<code>LOWER(str)</code></li>
+</ul>
+<h3 id="54-数字"><a class="header" href="#54-数字">5.4 数字</a></h3>
+<ul>
+<li>四舍五入:<code>ROUND(num, length)</code></li>
+<li>向下取整:<code>CEIL(num)</code></li>
+<li>向上取整:<code>FLOOR(num)</code></li>
+<li>绝对值:<code>ABS()</code></li>
+</ul>
+<h3 id="54-类型转换"><a class="header" href="#54-类型转换">5.4 类型转换</a></h3>
+<ul>
+<li>字符串转数字:<code>CAST(str AS SIGNED)</code></li>
+</ul>
+<h3 id="空值"><a class="header" href="#空值">空值</a></h3>
+<ul>
+<li>判断空值:<code>ISNULL(str)</code></li>
+<li>如果为空:<code>IFNULL(str, default)</code></li>
+<li>如果不为空:<code>IF(str, true, false)</code></li>
+<li>如果返回空:<code>NULLIF</code></li>
+</ul>
+<h3 id="位运算"><a class="header" href="#位运算">位运算</a></h3>
+<ul>
+<li>&amp; AND</li>
+<li>| OR</li>
+<li>^  XOR</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="引擎"><a class="header" href="#引擎">引擎</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="主从同步"><a class="header" href="#主从同步">主从同步</a></h1>
+<ul>
+<li>时间：2019-03-10 18:25:53</li>
+</ul>
+<h2 id="0x00同步步骤"><a class="header" href="#0x00同步步骤">0x00、同步步骤</a></h2>
+<ul>
+<li>1.主库和从库创建同步账户</li>
+</ul>
+<pre><code class="language-bash">mysql&gt; grant replication slave, replication client on *.* to repl@'192.168.1.%' identified by '123456';
+</code></pre>
+<ul>
+<li>2.主库配置/etc/my.cnf</li>
+</ul>
+<pre><code class="language-bash">server-id=130	#保证唯一值
+log-bin=mysql-bin
+binlog_format=mixed
+binlog-do-db=test2
+binlog-ignore-db=mysql
+log-error=/var/lib/mysql/mysql.err
+</code></pre>
+<ul>
+<li>3.重启主库</li>
+<li>4.查看主库状态</li>
+</ul>
+<pre><code class="language-bash">mysql&gt;show master status;
++-------------------------+-----------------+--------------------+-------------------------+
+| File            |	 Position | Binlog_Do_DB | Binlog_Ignore_DB |
++-------------------------+----------------+--------------------+--------------------------+
+| mysql-bin.000002 |      120 |   test2      |   mysql        |
++-------------------------+----------------+---------------------+------------------------+
+1 row in set (0.00 sec)
+</code></pre>
+<ul>
+<li>5.从库配置 /etc/my.cnf</li>
+</ul>
+<pre><code class="language-bash">server-id=131 #保证唯一值
+log-bin=mysql-bin
+binlog_format=mixed
+replicate-do-db=test2
+replicate-ignore-db=mysql
+relay_log=/var/lib/mysql/mysql-relay-bin
+log_slave_updates=1
+read_only=1
+</code></pre>
+<ul>
+<li>6.重启从库</li>
+<li>7.指向主库操作</li>
+</ul>
+<pre><code>mysql&gt; change master to master_host='192.168.1.201',
+master_user='repl',
+master_password='123456',
+master_log_file='mysql-bin.000002',
+master_log_pos=120;
+</code></pre>
+<ul>
+<li>8.开始同步</li>
+</ul>
+<pre><code class="language-bash">mysql&gt;start slave;
+</code></pre>
+<ul>
+<li>9.查看状态</li>
+</ul>
+<pre><code class="language-bash">mysql&gt;show slave status;
+</code></pre>
+<ul>
+<li>10.双向主从的话，把主库按照从库在配置一遍即可</li>
+</ul>
+<h2 id="0x01备注"><a class="header" href="#0x01备注">0x01、备注</a></h2>
+<ul>
+<li>1.两个数据库版本尽量一致，如果不一致，高版本做从库，此时不可双向主从</li>
+<li>2.主库和从库的数据库名必须相同；</li>
+<li>3.主库和从库的复制可以精确到表，但是在需要更改主库或从库的数据结构时需要立刻重启slave；</li>
+<li>4.不能在mysql配置文件里直接写入master的配置信息，需要用change master命令来完成；</li>
+<li>5.指定replicate_do_db必须在my.ini里配置，不能用change master命令来完成；</li>
+<li>6.如果不及时清理，日积月累二进制日志文件可能会把磁盘空间占满，可以在配置文件里加上expire_logs_days=7，只保留最近7天的日志，建议当slave不再使用时，通过reset slave来取消relaylog；</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="mysqldump"><a class="header" href="#mysqldump">mysqldump</a></h1>
+<ul>
+<li>--all-databases , -A
+<ul>
+<li>导出全部数据库。</li>
+<li>
+<pre><code class="language-shell">  mysqldump  -uroot -p --all-databases
+</code></pre>
+</li>
+</ul>
+</li>
+<li>--all-tablespaces  , -Y
+<ul>
+<li>导出全部表空间。</li>
+<li>
+<pre><code class="language-shell">  mysqldump  -uroot -p --all-databases --all-tablespaces
+</code></pre>
+</li>
+</ul>
+</li>
+<li>--no-tablespaces  , -y
+<ul>
+<li>不导出任何表空间信息。</li>
+<li>
+<pre><code class="language-shell">  mysqldump  -uroot -p --all-databases --no-tablespaces
+</code></pre>
+</li>
+</ul>
+</li>
+<li>--add-drop-database
+<ul>
+<li>每个数据库创建之前添加drop数据库语句。</li>
+<li>
+<pre><code class="language-shell">  mysqldump  -uroot -p --all-databases --add-drop-database
+</code></pre>
+</li>
+</ul>
+</li>
+<li>--add-drop-table
+<ul>
+<li>每个数据表创建之前添加drop数据表语句。(默认为打开状态，使用--skip-add-drop-table取消选项)</li>
+<li>
+<pre><code class="language-shell">  mysqldump  -uroot -p --all-databases  (默认添加drop语句)
+  mysqldump  -uroot -p --all-databases –skip-add-drop-table  (取消drop语句)
+</code></pre>
+</li>
+</ul>
+</li>
+<li>--add-locks
+<ul>
+<li>在每个表导出之前增加LOCK TABLES并且之后UNLOCK  TABLE。(默认为打开状态，使用--skip-add-locks取消选项)</li>
+<li>
+<pre><code class="language-shell">  mysqldump  -uroot -p --all-databases  (默认添加LOCK语句)
+  mysqldump  -uroot -p --all-databases –skip-add-locks   (取消LOCK语句)
+</code></pre>
+</li>
+</ul>
+</li>
+<li>--allow-keywords
+<ul>
+<li>允许创建是关键词的列名字。这由表名前缀于每个列名做到。</li>
+<li>
+<pre><code class="language-shell">  mysqldump  -uroot -p --all-databases --allow-keywords
+</code></pre>
+</li>
+</ul>
+</li>
+<li>--apply-slave-statements
+<ul>
+<li>在'CHANGE MASTER'前添加'STOP SLAVE'，并且在导出的最后添加'START SLAVE'。</li>
+<li>mysqldump  -uroot -p --all-databases --apply-slave-statements</li>
+</ul>
+</li>
+<li>--character-sets-dir
+<ul>
+<li>字符集文件的目录</li>
+<li>mysqldump  -uroot -p --all-databases  --character-sets-dir=/usr/local/mysql/share/mysql/charsets</li>
+</ul>
+</li>
+<li>--comments
+<ul>
+<li>附加注释信息。默认为打开，可以用--skip-comments取消</li>
+<li>mysqldump  -uroot -p --all-databases  (默认记录注释)</li>
+<li>mysqldump  -uroot -p --all-databases --skip-comments   (取消注释)</li>
+</ul>
+</li>
+<li>--compatible
+<ul>
+<li>导出的数据将和其它数据库或旧版本的MySQL 相兼容。值可以为ansi、mysql323、mysql40、postgresql、oracle、mssql、db2、maxdb、no_key_options、no_tables_options、no_field_options等，要使用几个值，用逗号将它们隔开。它并不保证能完全兼容，而是尽量兼容。</li>
+<li>mysqldump  -uroot -p --all-databases --compatible=ansi</li>
+</ul>
+</li>
+<li>--compact
+<ul>
+<li>导出更少的输出信息(用于调试)。去掉注释和头尾等结构。可以使用选项：--skip-add-drop-table  --skip-add-locks --skip-comments --skip-disable-keys</li>
+<li>mysqldump  -uroot -p --all-databases --compact</li>
+</ul>
+</li>
+<li>--complete-insert,  -c
+<ul>
+<li>使用完整的insert语句(包含列名称)。这么做能提高插入效率，但是可能会受到max_allowed_packet参数的影响而导致插入失败。</li>
+<li>mysqldump  -uroot -p --all-databases --complete-insert</li>
+</ul>
+</li>
+<li>--compress, -C
+<ul>
+<li>在客户端和服务器之间启用压缩传递所有信息</li>
+<li>mysqldump  -uroot -p --all-databases --compress</li>
+</ul>
+</li>
+<li>--create-options,  -a
+<ul>
+<li>在CREATE TABLE语句中包括所有MySQL特性选项。(默认为打开状态)</li>
+<li>mysqldump  -uroot -p --all-databases</li>
+</ul>
+</li>
+<li>--databases,  -B
+<ul>
+<li>导出几个数据库。参数后面所有名字参量都被看作数据库名。</li>
+<li>mysqldump  -uroot -p --databases test mysql</li>
+<li>--debug</li>
+<li>输出debug信息，用于调试。默认值为：d:t:o,/tmp/mysqldump.trace</li>
+<li>mysqldump  -uroot -p --all-databases --debug</li>
+<li>mysqldump  -uroot -p --all-databases --debug=&quot;d:t:o,/tmp/debug.trace&quot;</li>
+</ul>
+</li>
+<li>--debug-check
+<ul>
+<li>检查内存和打开文件使用说明并退出。</li>
+<li>mysqldump  -uroot -p --all-databases --debug-check</li>
+</ul>
+</li>
+<li>--debug-info
+<ul>
+<li>输出调试信息并退出</li>
+<li>mysqldump  -uroot -p --all-databases --debug-info</li>
+</ul>
+</li>
+<li>--default-character-set
+<ul>
+<li>设置默认字符集，默认值为utf8</li>
+<li>mysqldump  -uroot -p --all-databases --default-character-set=latin1</li>
+</ul>
+</li>
+<li>--delayed-insert
+<ul>
+<li>采用延时插入方式（INSERT DELAYED）导出数据</li>
+<li>mysqldump  -uroot -p --all-databases --delayed-insert</li>
+</ul>
+</li>
+<li>--delete-master-logs
+<ul>
+<li>master备份后删除日志. 这个参数将自动激活--master-data。</li>
+<li>mysqldump  -uroot -p --all-databases --delete-master-logs</li>
+</ul>
+</li>
+<li>--disable-keys
+<ul>
+<li>对于每个表，用/!40000 ALTER TABLE tbl_name DISABLE KEYS */;和/!40000 ALTER TABLE tbl_name ENABLE KEYS */;语句引用INSERT语句。这样可以更快地导入dump出来的文件，因为它是在插入所有行后创建索引的。该选项只适合MyISAM表，默认为打开状态。</li>
+<li>mysqldump  -uroot -p --all-databases</li>
+</ul>
+</li>
+<li>--dump-slave
+<ul>
+<li>该选项将导致主的binlog位置和文件名追加到导出数据的文件中。设置为1时，将会以CHANGE MASTER命令输出到数据文件；设置为2时，在命令前增加说明信息。该选项将会打开--lock-all-tables，除非--single-transaction被指定。该选项会自动关闭--lock-tables选项。默认值为0。</li>
+<li>mysqldump  -uroot -p --all-databases --dump-slave=1</li>
+<li>mysqldump  -uroot -p --all-databases --dump-slave=2</li>
+</ul>
+</li>
+<li>--events, -E
+<ul>
+<li>导出事件。</li>
+<li>mysqldump  -uroot -p --all-databases --events</li>
+</ul>
+</li>
+<li>--extended-insert,  -e
+<ul>
+<li>使用具有多个VALUES列的INSERT语法。这样使导出文件更小，并加速导入时的速度。默认为打开状态，使用--skip-extended-insert取消选项。</li>
+<li>mysqldump  -uroot -p --all-databases</li>
+<li>mysqldump  -uroot -p --all-databases--skip-extended-insert   (取消选项)</li>
+</ul>
+</li>
+<li>--fields-terminated-by
+<ul>
+<li>导出文件中忽略给定字段。与--tab选项一起使用，不能用于--databases和--all-databases选项</li>
+<li>mysqldump  -uroot -p test test --tab=”/home/mysql” --fields-terminated-by=&quot;#&quot;</li>
+</ul>
+</li>
+<li>--fields-enclosed-by
+<ul>
+<li>输出文件中的各个字段用给定字符包裹。与--tab选项一起使用，不能用于--databases和--all-databases选项</li>
+<li>mysqldump  -uroot -p test test --tab=”/home/mysql” --fields-enclosed-by=&quot;#&quot;</li>
+</ul>
+</li>
+<li>--fields-optionally-enclosed-by
+<ul>
+<li>输出文件中的各个字段用给定字符选择性包裹。与--tab选项一起使用，不能用于--databases和--all-databases选项</li>
+<li>mysqldump  -uroot -p test test --tab=”/home/mysql”  --fields-enclosed-by=”#” --fields-optionally-enclosed-by  =”#”</li>
+</ul>
+</li>
+<li>--fields-escaped-by
+<ul>
+<li>输出文件中的各个字段忽略给定字符。与--tab选项一起使用，不能用于--databases和--all-databases选项</li>
+<li>mysqldump  -uroot -p mysql user --tab=”/home/mysql” --fields-escaped-by=”#”</li>
+</ul>
+</li>
+<li>--flush-logs
+<ul>
+<li>开始导出之前刷新日志。</li>
+<li>请注意：假如一次导出多个数据库(使用选项--databases或者--all-databases)，将会逐个数据库刷新日志。除使用--lock-all-tables或者--master-data外。在这种情况下，日志将会被刷新一次，相应的所以表同时被锁定。因此，如果打算同时导出和刷新日志应该使用--lock-all-tables 或者--master-data 和--flush-logs。</li>
+<li>mysqldump  -uroot -p --all-databases --flush-logs</li>
+</ul>
+</li>
+<li>--flush-privileges
+<ul>
+<li>在导出mysql数据库之后，发出一条FLUSH  PRIVILEGES 语句。为了正确恢复，该选项应该用于导出mysql数据库和依赖mysql数据库数据的任何时候。</li>
+<li>mysqldump  -uroot -p --all-databases --flush-privileges</li>
+</ul>
+</li>
+<li>--force
+<ul>
+<li>在导出过程中忽略出现的SQL错误。</li>
+<li>mysqldump  -uroot -p --all-databases --force</li>
+</ul>
+</li>
+<li>--help
+<ul>
+<li>显示帮助信息并退出。</li>
+<li>mysqldump  --help</li>
+</ul>
+</li>
+<li>--hex-blob
+<ul>
+<li>使用十六进制格式导出二进制字符串字段。如果有二进制数据就必须使用该选项。影响到的字段类型有BINARY、VARBINARY、BLOB。</li>
+<li>mysqldump  -uroot -p --all-databases --hex-blob</li>
+</ul>
+</li>
+<li>--host, -h
+<ul>
+<li>需要导出的主机信息</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases</li>
+</ul>
+</li>
+<li>--ignore-table
+<ul>
+<li>不导出指定表。指定忽略多个表时，需要重复多次，每次一个表。每个表必须同时指定数据库和表名。例如：--ignore-table=database.table1 --ignore-table=database.table2 ……</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --ignore-table=mysql.user</li>
+</ul>
+</li>
+<li>--include-master-host-port
+<ul>
+<li>在--dump-slave产生的'CHANGE  MASTER TO..'语句中增加'MASTER_HOST=，MASTER_PORT='</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --include-master-host-port</li>
+</ul>
+</li>
+<li>--insert-ignore
+<ul>
+<li>在插入行时使用INSERT IGNORE语句.</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --insert-ignore</li>
+</ul>
+</li>
+<li>--lines-terminated-by
+<ul>
+<li>输出文件的每行用给定字符串划分。与--tab选项一起使用，不能用于--databases和--all-databases选项。</li>
+<li>mysqldump  -uroot -p --host=localhost test test --tab=”/tmp/mysql”  --lines-terminated-by=”##”</li>
+</ul>
+</li>
+<li>--lock-all-tables,  -x
+<ul>
+<li>提交请求锁定所有数据库中的所有表，以保证数据的一致性。这是一个全局读锁，并且自动关闭--single-transaction 和--lock-tables 选项。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --lock-all-tables</li>
+</ul>
+</li>
+<li>--lock-tables,  -l
+<ul>
+<li>开始导出前，锁定所有表。用READ  LOCAL锁定表以允许MyISAM表并行插入。对于支持事务的表例如InnoDB和BDB，--single-transaction是一个更好的选择，因为它根本不需要锁定表。</li>
+<li>请注意当导出多个数据库时，--lock-tables分别为每个数据库锁定表。因此，该选项不能保证导出文件中的表在数据库之间的逻辑一致性。不同数据库表的导出状态可以完全不同。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --lock-tables</li>
+</ul>
+</li>
+<li>--log-error
+<ul>
+<li>附加警告和错误信息到给定文件</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases  --log-error=/tmp/mysqldump_error_log.err</li>
+</ul>
+</li>
+<li>--master-data
+<ul>
+<li>该选项将binlog的位置和文件名追加到输出文件中。如果为1，将会输出CHANGE MASTER 命令；如果为2，输出的CHANGE  MASTER命令前添加注释信息。该选项将打开--lock-all-tables 选项，除非--single-transaction也被指定（在这种情况下，全局读锁在开始导出时获得很短的时间；其他内容参考下面的--single-transaction选项）。该选项自动关闭--lock-tables选项。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --master-data=1;</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --master-data=2;</li>
+</ul>
+</li>
+<li>--max_allowed_packet
+<ul>
+<li>服务器发送和接受的最大包长度。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --max_allowed_packet=10240</li>
+</ul>
+</li>
+<li>--net_buffer_length
+<ul>
+<li>TCP/IP和socket连接的缓存大小。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --net_buffer_length=1024</li>
+</ul>
+</li>
+<li>--no-autocommit
+<ul>
+<li>使用autocommit/commit 语句包裹表。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --no-autocommit</li>
+</ul>
+</li>
+<li>--no-create-db,  -n
+<ul>
+<li>只导出数据，而不添加CREATE DATABASE 语句。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --no-create-db</li>
+</ul>
+</li>
+<li>--no-create-info,  -t
+<ul>
+<li>只导出数据，而不添加CREATE TABLE 语句。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --no-create-info</li>
+</ul>
+</li>
+<li>--no-data, -d
+<ul>
+<li>不导出任何数据，只导出数据库表结构。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --no-data</li>
+</ul>
+</li>
+<li>--no-set-names,  -N
+<ul>
+<li>等同于--skip-set-charset</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --no-set-names</li>
+</ul>
+</li>
+<li>--opt
+<ul>
+<li>等同于--add-drop-table,  --add-locks, --create-options, --quick, --extended-insert, --lock-tables,  --set-charset, --disable-keys 该选项默认开启,  可以用--skip-opt禁用.</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --opt</li>
+</ul>
+</li>
+<li>--order-by-primary
+<ul>
+<li>如果存在主键，或者第一个唯一键，对每个表的记录进行排序。在导出MyISAM表到InnoDB表时有效，但会使得导出工作花费很长时间。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --order-by-primary</li>
+</ul>
+</li>
+<li>--password, -p
+<ul>
+<li>连接数据库密码</li>
+</ul>
+</li>
+<li>--pipe(windows系统可用)
+<ul>
+<li>使用命名管道连接mysql</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --pipe</li>
+</ul>
+</li>
+<li>--port, -P
+<ul>
+<li>连接数据库端口号</li>
+</ul>
+</li>
+<li>--protocol
+<ul>
+<li>使用的连接协议，包括：tcp, socket, pipe, memory.</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --protocol=tcp</li>
+</ul>
+</li>
+<li>--quick, -q
+<ul>
+<li>不缓冲查询，直接导出到标准输出。默认为打开状态，使用--skip-quick取消该选项。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --skip-quick</li>
+</ul>
+</li>
+<li>--quote-names,-Q
+<ul>
+<li>使用（'）引起表和列名。默认为打开状态，使用--skip-quote-names取消该选项。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --skip-quote-names</li>
+</ul>
+</li>
+<li>--replace
+<ul>
+<li>使用REPLACE INTO 取代INSERT INTO.</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --replace</li>
+</ul>
+</li>
+<li>--result-file,  -r
+<ul>
+<li>直接输出到指定文件中。该选项应该用在使用回车换行对（\r\n）换行的系统上（例如：DOS，Windows）。该选项确保只有一行被使用。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --result-file=/tmp/mysqldump_result_file.txt</li>
+</ul>
+</li>
+<li>--routines, -R
+<ul>
+<li>导出存储过程以及自定义函数。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --routines</li>
+</ul>
+</li>
+<li>--set-charset
+<ul>
+<li>添加'SET NAMES  default_character_set'到输出文件。默认为打开状态，使用--skip-set-charset关闭选项。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --skip-set-charset</li>
+</ul>
+</li>
+<li>--single-transaction
+<ul>
+<li>该选项在导出数据之前提交一个BEGIN SQL语句，BEGIN 不会阻塞任何应用程序且能保证导出时数据库的一致性状态。它只适用于多版本存储引擎，仅InnoDB。本选项和--lock-tables 选项是互斥的，因为LOCK  TABLES 会使任何挂起的事务隐含提交。要想导出大表的话，应结合使用--quick 选项。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --single-transaction</li>
+</ul>
+</li>
+<li>--dump-date
+<ul>
+<li>将导出时间添加到输出文件中。默认为打开状态，使用--skip-dump-date关闭选项。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --skip-dump-date</li>
+</ul>
+</li>
+<li>--skip-opt
+<ul>
+<li>禁用–opt选项.</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --skip-opt</li>
+</ul>
+</li>
+<li>--socket,-S
+<ul>
+<li>指定连接mysql的socket文件位置，默认路径/tmp/mysql.sock</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --socket=/tmp/mysqld.sock</li>
+</ul>
+</li>
+<li>--tab,-T
+<ul>
+<li>为每个表在给定路径创建tab分割的文本文件。注意：仅仅用于mysqldump和mysqld服务器运行在相同机器上。</li>
+<li>mysqldump  -uroot -p --host=localhost test test --tab=&quot;/home/mysql&quot;</li>
+</ul>
+</li>
+<li>--tables
+<ul>
+<li>覆盖--databases (-B)参数，指定需要导出的表名。</li>
+<li>mysqldump  -uroot -p --host=localhost --databases test --tables test</li>
+</ul>
+</li>
+<li>--triggers
+<ul>
+<li>导出触发器。该选项默认启用，用--skip-triggers禁用它。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --triggers</li>
+</ul>
+</li>
+<li>--tz-utc
+<ul>
+<li>在导出顶部设置时区TIME_ZONE='+00:00' ，以保证在不同时区导出的TIMESTAMP 数据或者数据被移动其他时区时的正确性。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --tz-utc</li>
+</ul>
+</li>
+<li>--user, -u
+<ul>
+<li>指定连接的用户名。</li>
+</ul>
+</li>
+<li>--verbose, --v
+<ul>
+<li>输出多种平台信息。</li>
+</ul>
+</li>
+<li>--version, -V
+<ul>
+<li>输出mysqldump版本信息并退出</li>
+</ul>
+</li>
+<li>--where, -w
+<ul>
+<li>只转储给定的WHERE条件选择的记录。请注意如果条件包含命令解释符专用空格或字符，一定要将条件引用起来。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --where=” user=’root’”</li>
+</ul>
+</li>
+<li>--xml, -X
+<ul>
+<li>导出XML格式.</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --xml</li>
+</ul>
+</li>
+<li>--plugin_dir
+<ul>
+<li>客户端插件的目录，用于兼容不同的插件版本。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --plugin_dir=”/usr/local/lib/plugin”</li>
+</ul>
+</li>
+<li>--default_auth
+<ul>
+<li>客户端插件默认使用权限。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --default-auth=”/usr/local/lib/plugin/<PLUGIN>”</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="面试问题"><a class="header" href="#面试问题">面试问题</a></h1>
+<h3 id="待处理问题"><a class="header" href="#待处理问题">待处理问题</a></h3>
+<ul>
+<li>唯一索引和普通索引的区别，索引类别（B+树索引、全文索引、哈希索引），索引的区别</li>
+<li>为什么要用 B+tree 作为 MySql 索引的数据结构</li>
+<li>聚集索引与非聚集索引的区别</li>
+<li>DDL、DML、DCL 分别指什么</li>
+<li>explain 命令</li>
+<li>数据库的几大范式</li>
+<li>说说分库与分表设计，分库与分表带来的分布式困境与对应之策</li>
+<li>什么是自适应哈希索引（AHI）</li>
+<li>limit 20000 加载很慢怎么解决</li>
+<li>常见的几种分布式 ID 的设计方案
+基础部分
+<ul>
+<li>
+<ol>
+<li>事务四大特性（ACID）</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>数据库隔离级别，每个级别会引发什么问题，mysql默认是哪个级别</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li>MYSQL的两种存储引擎区别（事务、锁级别等等），各自的适用场景</li>
+</ol>
+</li>
+<li>
+<ol start="4">
+<li>数据库的优化（从sql语句优化和索引两个部分回答）</li>
+</ol>
+</li>
+<li>
+<ol start="5">
+<li>索引有B+索引和hash索引，各自的区别</li>
+</ol>
+</li>
+<li>
+<ol start="6">
+<li>B+索引数据结构，和B树的区别</li>
+</ol>
+</li>
+<li>
+<ol start="7">
+<li>索引的分类（主键索引、唯一索引），最左前缀原则，哪些情况索引会失效</li>
+</ol>
+</li>
+<li>
+<ol start="8">
+<li>聚集索引和非聚集索引区别。</li>
+</ol>
+</li>
+<li>
+<ol start="9">
+<li>有哪些锁（乐观锁悲观锁），select时怎么加排它锁</li>
+</ol>
+</li>
+<li>
+<ol start="10">
+<li>关系型数据库和非关系型数据库区别</li>
+</ol>
+</li>
+<li>
+<ol start="11">
+<li>了解nosql</li>
+</ol>
+</li>
+<li>
+<ol start="12">
+<li>数据库三范式，根据某个场景设计数据表（可以通过手绘ER图）</li>
+</ol>
+</li>
+<li>
+<ol start="13">
+<li>数据库的主从复制</li>
+</ol>
+</li>
+<li>
+<ol start="14">
+<li>使用explain优化sql和索引</li>
+</ol>
+</li>
+<li>
+<ol start="15">
+<li>long_query怎么解决</li>
+</ol>
+</li>
+<li>
+<ol start="16">
+<li>内连接、外连接、交叉连接、笛卡儿积等
+深入</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>MVCC机制</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>根据具体场景，说明版本控制机制</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li>死锁怎么解决</li>
+</ol>
+</li>
+<li>
+<ol start="4">
+<li>varchar和char的使用场景。</li>
+</ol>
+</li>
+<li>
+<ol start="5">
+<li>mysql并发情况下怎么解决（通过事务、隔离级别、锁）</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="数据库中的事务是什么"><a class="header" href="#数据库中的事务是什么">数据库中的事务是什么?</a></h3>
+<ul>
+<li>事务（transaction）是作为一个单元的一组有序的数据库操作。如果组中的所有操作都成功，则认为事务成功，即使只有一个操作失败，事务也不成功。如果所有操作完成，事务则提交，其修改将作用于所有其他数据库进程。如果一个操作失败，则事务将回滚，该事务所有操作的影响都将取消。</li>
+</ul>
+<h3 id="优化mysql数据库的方法"><a class="header" href="#优化mysql数据库的方法">优化MYSQL数据库的方法?</a></h3>
+<ul>
+<li>选取最适用的字段属性,尽可能减少定义字段长度,尽量把字段设置NOT NULL,例如'省份,性别',最好设置为ENUM</li>
+<li>使用连接（JOIN）来代替子查询</li>
+<li>使用联合(UNION)来代替手动创建的临时表</li>
+<li>建立索引</li>
+</ul>
+<p>varchar快速很多，但是浪费存储空间，所以对存储不大，但在速度上有要求的可以使用char类型，反之可以用varchar类型来实例。</p>
+<h3 id="优化数据库的方法说说-sql-优化之道"><a class="header" href="#优化数据库的方法说说-sql-优化之道">优化数据库的方法。说说 SQL 优化之道</a></h3>
+<ul>
+<li>主机性能</li>
+<li>内存使用性能</li>
+<li>网络传输性能</li>
+<li>SQL语句执行性能</li>
+</ul>
+<h3 id="acid规则"><a class="header" href="#acid规则">ACID规则</a></h3>
+<p>事务在英文中是transaction，和现实世界中的交易很类似，它有如下四个特性：</p>
+<ul>
+<li>1、A (Atomicity) 原子性
+<ul>
+<li>原子性很容易理解，也就是说事务里的所有操作要么全部做完，要么都不做，事务成功的条件是事务里的所有操作都成功，只要有一个操作失败，整个事务就失败，需要回滚。</li>
+<li>比如银行转账，从A账户转100元至B账户，分为两个步骤：1）从A账户取100元；2）存入100元至B账户。这两步要么一起完成，要么一起不完成，如果只完成第一步，第二步失败，钱会莫名其妙少了100元。</li>
+</ul>
+</li>
+<li>2、C (Consistency) 一致性
+<ul>
+<li>一致性也比较容易理解，也就是说数据库要一直处于一致的状态，事务的运行不会改变数据库原本的一致性约束。
+例如现有完整性约束a+b=10，如果一个事务改变了a，那么必须得改变b，使得事务结束后依然满足a+b=10，否则事务失败。</li>
+</ul>
+</li>
+<li>3、I (Isolation) 独立性
+<ul>
+<li>所谓的独立性是指并发的事务之间不会互相影响，如果一个事务要访问的数据正在被另外一个事务修改，只要另外一个事务未提交，它所访问的数据就不受未提交事务的影响。</li>
+<li>比如现在有个交易是从A账户转100元至B账户，在这个交易还未完成的情况下，如果此时B查询自己的账户，是看不到新增加的100元的。</li>
+</ul>
+</li>
+<li>4、D (Durability) 持久性
+<ul>
+<li>持久性是指一旦事务提交后，它所做的修改将会永久的保存在数据库上，即使出现宕机也不会丢失。</li>
+</ul>
+</li>
+</ul>
+<h3 id="mysql存储引擎有哪些有什么区别"><a class="header" href="#mysql存储引擎有哪些有什么区别">Mysql存储引擎有哪些？有什么区别？</a></h3>
+<ul>
+<li>innodb、myisam</li>
+<li>MyISAM：成熟、稳定、易于管理，快速读取。一些功能不支持（事务等），表级锁。</li>
+<li>InnoDB：支持事务、外键等特性、数据行锁定。空间占用大，不支持全文索引等。</li>
+</ul>
+<h3 id="varchar和char有什么区别"><a class="header" href="#varchar和char有什么区别">varchar和char有什么区别</a></h3>
+<ul>
+<li>char 长度是固定的，不管你存储的数据是多少他都会都固定的长度。而varchar则处可变长度但他要在总长度上加1字符，这个用来存储位置。</li>
+<li>char 固定长度，所以在处理速度上要比</li>
+</ul>
+<h3 id="1数据库中的事务是什么事务的隔离级别脏读幻读不可重复读是什么意思"><a class="header" href="#1数据库中的事务是什么事务的隔离级别脏读幻读不可重复读是什么意思">1.数据库中的事务是什么?事务的隔离级别?脏读、幻读、不可重复读是什么意思？</a></h3>
+<ul>
+<li>数据库事务
+<ul>
+<li>将一组相关操作组合为一个要么全部成功要么全部失败的单元</li>
+<li>具有ACID（原子性、一致性、隔离性和持久性）属性
+<ul>
+<li>原子性(Atomicity)：原子性是指事务包含的所有操作要么全部成功，要么全部失败回滚</li>
+<li>一致性(Consistent)：一致性是指事务必须使数据库从一个一致性状态变换到另一个一致性状态，也就是说一个事务执行之前和执行之后都必须于一致性状态</li>
+<li>隔离性(Isolation)：隔离性是当多个用户并发访问数据库时，比如操作同一张表时，数据库为每一个用户开启的事务，不能被其他事务的操作所扰，多个并发事务之间要相互隔离。</li>
+<li>持久性(Duration)：持久性是指一个事务一旦被提交了，那么对数据库中的数据的改变就是永久性的，即便是在数据库系统遇到故障的情况下也不会丢失提交事务的操作。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>事物隔离级别
+<ul>
+<li>Serializable (串行化)：可避免脏读、不可重复读、幻读的发生。</li>
+<li>Repeatable read (可重复读)：可避免脏读、不可重复读的发生。</li>
+<li>Read committed (读已提交)：可避免脏读的发生。</li>
+<li>Read uncommitted (读未提交)：最低级别，任何情况都无法保证。</li>
+</ul>
+</li>
+<li>脏读、幻读、不可重复读
+<ul>
+<li>脏读：脏读是指在一个事务处理过程里读取了另一个未提交的事务中的数据</li>
+<li>不可重复读：不可重复读是指在对于数据库中的某个数据，一个事务范围内多次查询却返回了不同的数据值，这是由于在查询间隔，被另一个事务修改并提交了。</li>
+<li>幻读：是事务非独立执行时发生的一种现象。例如事务T1对一个表中所有的行的某个数据项做了从“1”修改为“2”的操作，这时事务T2又对这个表中插入了一行数据项，而这个数据项的数值还是为“1”并且提交给数据库。而操作事务T1的用户如果再查看刚刚修改的数据，会发现还有一行没有修改，其实这行是从事务T2中添加的，就好像产生幻觉一样，这就是发生了幻读。</li>
+</ul>
+</li>
+<li>备注：
+<ul>
+<li>不可重复读和脏读的区别是，脏读是某一事务读取了另一个事务未提交的脏数据，而不可重复读则是读取了前一事务提交的数据。</li>
+<li>幻读和不可重复读都是读取了另一条已经提交的事务（这点就脏读不同），所不同的是不可重复读查询的都是同一个数据项，而幻读针对的是一批数据整体（比如数据的个数）</li>
+<li>当前事务的隔离级别：select @@tx_isolation;</li>
+</ul>
+</li>
+</ul>
+<h3 id="2优化数据库的方法说说-sql-优化之道"><a class="header" href="#2优化数据库的方法说说-sql-优化之道">2.优化数据库的方法。说说 SQL 优化之道</a></h3>
+<ul>
+<li>主机性能</li>
+<li>内存使用性能</li>
+<li>网络传输性能</li>
+<li>SQL语句执行性能</li>
+</ul>
+<h3 id="3唯一索引和普通索引的区别索引类别b树索引全文索引哈希索引索引的区别"><a class="header" href="#3唯一索引和普通索引的区别索引类别b树索引全文索引哈希索引索引的区别">3.唯一索引和普通索引的区别，索引类别（B+树索引、全文索引、哈希索引），索引的区别</a></h3>
+<h3 id="为什么要用-btree-作为-mysql-索引的数据结构"><a class="header" href="#为什么要用-btree-作为-mysql-索引的数据结构">为什么要用 B+tree 作为 MySql 索引的数据结构</a></h3>
+<h3 id="聚集索引与非聚集索引的区别"><a class="header" href="#聚集索引与非聚集索引的区别">聚集索引与非聚集索引的区别</a></h3>
+<h3 id="mysql存储引擎有哪些有什么区别存储引擎的-innodb-与-myisam区别优缺点使用场景"><a class="header" href="#mysql存储引擎有哪些有什么区别存储引擎的-innodb-与-myisam区别优缺点使用场景">Mysql存储引擎有哪些？有什么区别？存储引擎的 InnoDB 与 MyISAM区别、优缺点、使用场景？</a></h3>
+<h3 id="varchar和char有什么区别-1"><a class="header" href="#varchar和char有什么区别-1">varchar和char有什么区别</a></h3>
+<h3 id="ddldmldcl-分别指什么"><a class="header" href="#ddldmldcl-分别指什么">DDL、DML、DCL 分别指什么</a></h3>
+<h3 id="explain-命令"><a class="header" href="#explain-命令">explain 命令</a></h3>
+<h3 id="数据库的几大范式"><a class="header" href="#数据库的几大范式">数据库的几大范式</a></h3>
+<h3 id="说说分库与分表设计分库与分表带来的分布式困境与对应之策"><a class="header" href="#说说分库与分表设计分库与分表带来的分布式困境与对应之策">说说分库与分表设计，分库与分表带来的分布式困境与对应之策</a></h3>
+<h3 id="什么是自适应哈希索引ahi"><a class="header" href="#什么是自适应哈希索引ahi">什么是自适应哈希索引（AHI）</a></h3>
+<h3 id="limit-20000-加载很慢怎么解决"><a class="header" href="#limit-20000-加载很慢怎么解决">limit 20000 加载很慢怎么解决</a></h3>
+<h3 id="常见的几种分布式-id-的设计方案"><a class="header" href="#常见的几种分布式-id-的设计方案">常见的几种分布式 ID 的设计方案</a></h3>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="redis"><a class="header" href="#redis">Redis</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="数据结构"><a class="header" href="#数据结构">数据结构</a></h1>
 
                     </main>
 
@@ -164,7 +1252,7 @@
 
         <!-- Livereload script (if served using the cli tool) -->
         <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            var socket = new WebSocket("ws://localhost:23827/__livereload");
             socket.onmessage = function (event) {
                 if (event.data === "reload") {
                     socket.close();

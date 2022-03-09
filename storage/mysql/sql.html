@@ -1,0 +1,462 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>SQL语法 - Storage</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../mysql/index.html"><strong aria-hidden="true">1.</strong> Mysql</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mysql/arch.html"><strong aria-hidden="true">1.1.</strong> 架构</a></li><li class="chapter-item expanded "><a href="../mysql/data_type.html"><strong aria-hidden="true">1.2.</strong> 数据类型</a></li><li class="chapter-item expanded "><a href="../mysql/encode.html"><strong aria-hidden="true">1.3.</strong> 编码</a></li><li class="chapter-item expanded "><a href="../mysql/sql.html" class="active"><strong aria-hidden="true">1.4.</strong> SQL语法</a></li><li class="chapter-item expanded "><a href="../mysql/engine.html"><strong aria-hidden="true">1.5.</strong> 存储引擎</a></li><li class="chapter-item expanded "><a href="../mysql/sync.html"><strong aria-hidden="true">1.6.</strong> 主从同步</a></li><li class="chapter-item expanded "><a href="../mysql/mysqldump.html"><strong aria-hidden="true">1.7.</strong> mysqldump</a></li><li class="chapter-item expanded "><a href="../mysql/interview.html"><strong aria-hidden="true">1.8.</strong> 面试问题</a></li></ol></li><li class="chapter-item expanded "><a href="../redis/index.html"><strong aria-hidden="true">2.</strong> Redis</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../redis/data_structure.html"><strong aria-hidden="true">2.1.</strong> 数据结构</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Storage</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="sql"><a class="header" href="#sql">SQL</a></h1>
+<h2 id="一权限登录类"><a class="header" href="#一权限登录类">一、权限登录类</a></h2>
+<ul>
+<li>1.授权用户</li>
+</ul>
+<pre><code class="language-sql">-- 授权用户
+GRANT ALL PRIVILEGES ON *.* TO 'username'@'%' IDENTIFIED BY 'password' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+-- 查看某个用户的权限
+show grants for username;
+</code></pre>
+<ul>
+<li>2.远程连接</li>
+</ul>
+<pre><code class="language-sql">mysql -h192.168.1.1 -P3306 -uroot -p
+</code></pre>
+<ul>
+<li>3.导出数据库</li>
+</ul>
+<pre><code class="language-sql">mysqldump -h192.168.1.1-P3306 -uroot -p db_name &gt; db_name.sql
+</code></pre>
+<ul>
+<li>4.导入数据库</li>
+</ul>
+<pre><code class="language-sql">mysql -uroot -p db_name &lt; db_name.sql
+</code></pre>
+<ul>
+<li>5.分析查询</li>
+</ul>
+<pre><code class="language-sql">explain select * from user;
+</code></pre>
+<ul>
+<li>6.查询所有的进程</li>
+</ul>
+<pre><code class="language-sql">show procelist;
+show full procelist;
+</code></pre>
+<h2 id="二ddl"><a class="header" href="#二ddl">二、DDL</a></h2>
+<h3 id="21-数据库"><a class="header" href="#21-数据库">2.1 数据库</a></h3>
+<ul>
+<li>1.建数据库语句</li>
+</ul>
+<pre><code class="language-sql">create database db_name default character set utf8mb4 collate utf8_general_ci;
+</code></pre>
+<ul>
+<li>3.删除数据库</li>
+</ul>
+<pre><code class="language-sql">drop database db_name;
+</code></pre>
+<blockquote>
+<p>表操作</p>
+</blockquote>
+<ul>
+<li>2.创建数据表语句</li>
+</ul>
+<pre><code class="language-sql">CREATE TABLE `user_info` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `user_id` char(32) NOT NULL COMMENT 'id',
+  `user_name` varchar(255) NOT NULL COMMENT '姓名',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后更新时间',
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `idx_user` (`user_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC COMMENT='用户信息表';
+</code></pre>
+<ul>
+<li>3.查看数据表</li>
+</ul>
+<pre><code class="language-sql">-- 查看所有表
+show tables;
+-- 查看建表语句
+show create table table_name;
+-- 查看表字段及描述
+desc table_name;
+</code></pre>
+<ul>
+<li>4.查看字段</li>
+</ul>
+<pre><code class="language-sql">show columns from table_name;
+</code></pre>
+<ul>
+<li>5.查看索引</li>
+</ul>
+<pre><code class="language-sql">show index from table_name;
+</code></pre>
+<ul>
+<li>6.删除表</li>
+</ul>
+<pre><code class="language-sql">-- 删除表结构，表结构和数据全部删除
+drop table table_name;
+</code></pre>
+<ul>
+<li>清空表数据</li>
+</ul>
+<pre><code class="language-sql">truncate table table_name;
+</code></pre>
+<ul>
+<li>7.新增字段</li>
+<li>8.修改字段</li>
+<li>9.删除字段</li>
+<li>10.添加索引</li>
+<li>11.删除索引</li>
+</ul>
+<h2 id="三dml"><a class="header" href="#三dml">三、DML</a></h2>
+<h2 id="31-查询"><a class="header" href="#31-查询">3.1 查询</a></h2>
+<pre><code class="language-sql">
+</code></pre>
+<h3 id="union"><a class="header" href="#union">union</a></h3>
+<p><code>union</code>进行链接两个查询，并返回结果集，但是会去除重复数据
+<code>union all</code>会保留重复数据</p>
+<h2 id="2新增"><a class="header" href="#2新增">2.新增</a></h2>
+<h2 id="3修改"><a class="header" href="#3修改">3.修改</a></h2>
+<h2 id="4删除"><a class="header" href="#4删除">4.删除</a></h2>
+<pre><code class="language-sql">-- 全部删除数据，不删表结构。不做表优化
+delete from table_name;
+
+-- 按条件删除
+delete from table_name where is_deleted = 1;
+
+-- 按条件限制删除
+delete from table_name where is_deleted = 1 limit 100;
+
+-- 删除表数据，并优化表空间
+truncate table table_name;
+</code></pre>
+<h2 id="5重建引擎"><a class="header" href="#5重建引擎">5.重建引擎</a></h2>
+<pre><code>alter table table_name engine=InnoDB
+</code></pre>
+<h2 id="四参数状态"><a class="header" href="#四参数状态">四、参数状态</a></h2>
+<ul>
+<li>1.查看参数</li>
+</ul>
+<pre><code class="language-sql">-- 查看所有参数
+show variables;
+-- 过滤参数
+show variables like '%sql%';
+</code></pre>
+<ul>
+<li>2.查看事件</li>
+</ul>
+<pre><code class="language-sql">show events;
+</code></pre>
+<ul>
+<li>3.查看触发器</li>
+</ul>
+<pre><code class="language-sql">show triggers;
+</code></pre>
+<ul>
+<li>4.查看所有状态</li>
+</ul>
+<pre><code class="language-sql">show status;
+</code></pre>
+<ul>
+<li>5.查看打开表</li>
+</ul>
+<pre><code class="language-sql">show open tables;
+</code></pre>
+<ul>
+<li>6.查看表状态</li>
+</ul>
+<pre><code class="language-sql">-- 在某个db下执行
+-- 可以查看表的存储引擎，表空间，自增主键，创建和更新时间等
+show table status;
+</code></pre>
+<ul>
+<li>7.查看数据库状态</li>
+</ul>
+<pre><code class="language-sql">-- 查看主库
+show master status;
+-- 查看从库
+show slave status;
+</code></pre>
+<ul>
+<li>8.查看函数状态</li>
+</ul>
+<pre><code class="language-sql">show function status;
+</code></pre>
+<ul>
+<li>9.查看插件</li>
+</ul>
+<pre><code class="language-sql">show plugins;
+</code></pre>
+<ul>
+<li>10.查看错误</li>
+</ul>
+<pre><code class="language-sql">show errors;
+</code></pre>
+<ul>
+<li>11.查看存储引擎</li>
+</ul>
+<pre><code class="language-sql">show engines;
+</code></pre>
+<ul>
+<li>12.查询数据存储空间</li>
+</ul>
+<pre><code class="language-sql">SELECT CONCAT(table_schema,'.',table_name) AS 'Table Name', CONCAT(ROUND(table_rows/1000000,4),'M') AS 'Number of Rows', CONCAT(ROUND(data_length/(1024*1024*1024),4),'G') AS 'Data Size', CONCAT(ROUND(index_length/(1024*1024*1024),4),'G') AS 'Index Size', CONCAT(ROUND((data_length+index_length)/(1024*1024*1024),4),'G') AS'Total'FROM information_schema.TABLES WHERE table_schema = 'mainsite' order by Total desc;
+</code></pre>
+<h2 id="五函数"><a class="header" href="#五函数">五、函数</a></h2>
+<h3 id="51-日期时间"><a class="header" href="#51-日期时间">5.1 日期时间</a></h3>
+<ul>
+<li>当前日期时间:<code>NOW()</code></li>
+<li>当前日期:<code>CURDATE()</code>,<code>CURRENT_DATE()</code></li>
+<li>当前时间:<code>CURTIME()</code>,<code>CURRENT_TIME()</code></li>
+<li>当前时间戳：<code>UNIX_TIMESTAMP()</code>,<code>CURRENT_TIMESTAMP()</code></li>
+<li>格式化:<code>DATE_FORMAT(NOW(), &quot;%Y-%m-%d %H:%m:%s&quot;)</code></li>
+<li>日期相加:<code>DATE_ADD(CURDATE(), INTERVAL 1 DAY)</code>,<code>ADDDATE(CURDATE(), INTERVAL 1 DAY)</code>,<code>ADDDATE(CURDATE(), 1)</code></li>
+<li>日期相减:<code>DATE_SUB(CURDATE(), INTERVAL 1 DAY)</code>,<code>SUBDATE(CURDATE(), INTERVAL 1 DAY)</code>,<code>SUBDATE(CURDATE(), 1)</code></li>
+<li>日期差值:<code>DATADIFF(DAY, CURDATE(), DATE_ADD(CURDATE(), INTERVAL 1 DAY))</code></li>
+<li>第几周:<code>WEEKOFYEAR(CURDATE())</code></li>
+<li>第几月:<code>MONTH(CURDATE())</code></li>
+</ul>
+<h3 id="52-聚合函数"><a class="header" href="#52-聚合函数">5.2 聚合函数</a></h3>
+<ul>
+<li>平均值:<code>AVG()</code></li>
+<li>求和:<code>SUM()</code></li>
+<li>最大值:<code>MAX()</code></li>
+<li>最小值:<code>MIN()</code></li>
+<li>数量:<code>COUNT()</code></li>
+<li>求余:<code>MOD()</code></li>
+</ul>
+<h3 id="53-字符串"><a class="header" href="#53-字符串">5.3 字符串</a></h3>
+<ul>
+<li>长度:<code>LENGTH(str)</code></li>
+<li>截取:<code>SUBSTR(str, start, length)</code></li>
+<li>替换:<code>REPLACE(str, old, new)</code></li>
+<li>大写:<code>UPPER(str)</code></li>
+<li>小写:<code>LOWER(str)</code></li>
+</ul>
+<h3 id="54-数字"><a class="header" href="#54-数字">5.4 数字</a></h3>
+<ul>
+<li>四舍五入:<code>ROUND(num, length)</code></li>
+<li>向下取整:<code>CEIL(num)</code></li>
+<li>向上取整:<code>FLOOR(num)</code></li>
+<li>绝对值:<code>ABS()</code></li>
+</ul>
+<h3 id="54-类型转换"><a class="header" href="#54-类型转换">5.4 类型转换</a></h3>
+<ul>
+<li>字符串转数字:<code>CAST(str AS SIGNED)</code></li>
+</ul>
+<h3 id="空值"><a class="header" href="#空值">空值</a></h3>
+<ul>
+<li>判断空值:<code>ISNULL(str)</code></li>
+<li>如果为空:<code>IFNULL(str, default)</code></li>
+<li>如果不为空:<code>IF(str, true, false)</code></li>
+<li>如果返回空:<code>NULLIF</code></li>
+</ul>
+<h3 id="位运算"><a class="header" href="#位运算">位运算</a></h3>
+<ul>
+<li>&amp; AND</li>
+<li>| OR</li>
+<li>^  XOR</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../mysql/encode.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../mysql/engine.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../mysql/encode.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../mysql/engine.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:23827/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

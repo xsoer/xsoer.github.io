@@ -1,0 +1,706 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>mysqldump - Storage</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../mysql/index.html"><strong aria-hidden="true">1.</strong> Mysql</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mysql/arch.html"><strong aria-hidden="true">1.1.</strong> 架构</a></li><li class="chapter-item expanded "><a href="../mysql/data_type.html"><strong aria-hidden="true">1.2.</strong> 数据类型</a></li><li class="chapter-item expanded "><a href="../mysql/encode.html"><strong aria-hidden="true">1.3.</strong> 编码</a></li><li class="chapter-item expanded "><a href="../mysql/sql.html"><strong aria-hidden="true">1.4.</strong> SQL语法</a></li><li class="chapter-item expanded "><a href="../mysql/engine.html"><strong aria-hidden="true">1.5.</strong> 存储引擎</a></li><li class="chapter-item expanded "><a href="../mysql/sync.html"><strong aria-hidden="true">1.6.</strong> 主从同步</a></li><li class="chapter-item expanded "><a href="../mysql/mysqldump.html" class="active"><strong aria-hidden="true">1.7.</strong> mysqldump</a></li><li class="chapter-item expanded "><a href="../mysql/interview.html"><strong aria-hidden="true">1.8.</strong> 面试问题</a></li></ol></li><li class="chapter-item expanded "><a href="../redis/index.html"><strong aria-hidden="true">2.</strong> Redis</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../redis/data_structure.html"><strong aria-hidden="true">2.1.</strong> 数据结构</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Storage</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="mysqldump"><a class="header" href="#mysqldump">mysqldump</a></h1>
+<ul>
+<li>--all-databases , -A
+<ul>
+<li>导出全部数据库。</li>
+<li>
+<pre><code class="language-shell">  mysqldump  -uroot -p --all-databases
+</code></pre>
+</li>
+</ul>
+</li>
+<li>--all-tablespaces  , -Y
+<ul>
+<li>导出全部表空间。</li>
+<li>
+<pre><code class="language-shell">  mysqldump  -uroot -p --all-databases --all-tablespaces
+</code></pre>
+</li>
+</ul>
+</li>
+<li>--no-tablespaces  , -y
+<ul>
+<li>不导出任何表空间信息。</li>
+<li>
+<pre><code class="language-shell">  mysqldump  -uroot -p --all-databases --no-tablespaces
+</code></pre>
+</li>
+</ul>
+</li>
+<li>--add-drop-database
+<ul>
+<li>每个数据库创建之前添加drop数据库语句。</li>
+<li>
+<pre><code class="language-shell">  mysqldump  -uroot -p --all-databases --add-drop-database
+</code></pre>
+</li>
+</ul>
+</li>
+<li>--add-drop-table
+<ul>
+<li>每个数据表创建之前添加drop数据表语句。(默认为打开状态，使用--skip-add-drop-table取消选项)</li>
+<li>
+<pre><code class="language-shell">  mysqldump  -uroot -p --all-databases  (默认添加drop语句)
+  mysqldump  -uroot -p --all-databases –skip-add-drop-table  (取消drop语句)
+</code></pre>
+</li>
+</ul>
+</li>
+<li>--add-locks
+<ul>
+<li>在每个表导出之前增加LOCK TABLES并且之后UNLOCK  TABLE。(默认为打开状态，使用--skip-add-locks取消选项)</li>
+<li>
+<pre><code class="language-shell">  mysqldump  -uroot -p --all-databases  (默认添加LOCK语句)
+  mysqldump  -uroot -p --all-databases –skip-add-locks   (取消LOCK语句)
+</code></pre>
+</li>
+</ul>
+</li>
+<li>--allow-keywords
+<ul>
+<li>允许创建是关键词的列名字。这由表名前缀于每个列名做到。</li>
+<li>
+<pre><code class="language-shell">  mysqldump  -uroot -p --all-databases --allow-keywords
+</code></pre>
+</li>
+</ul>
+</li>
+<li>--apply-slave-statements
+<ul>
+<li>在'CHANGE MASTER'前添加'STOP SLAVE'，并且在导出的最后添加'START SLAVE'。</li>
+<li>mysqldump  -uroot -p --all-databases --apply-slave-statements</li>
+</ul>
+</li>
+<li>--character-sets-dir
+<ul>
+<li>字符集文件的目录</li>
+<li>mysqldump  -uroot -p --all-databases  --character-sets-dir=/usr/local/mysql/share/mysql/charsets</li>
+</ul>
+</li>
+<li>--comments
+<ul>
+<li>附加注释信息。默认为打开，可以用--skip-comments取消</li>
+<li>mysqldump  -uroot -p --all-databases  (默认记录注释)</li>
+<li>mysqldump  -uroot -p --all-databases --skip-comments   (取消注释)</li>
+</ul>
+</li>
+<li>--compatible
+<ul>
+<li>导出的数据将和其它数据库或旧版本的MySQL 相兼容。值可以为ansi、mysql323、mysql40、postgresql、oracle、mssql、db2、maxdb、no_key_options、no_tables_options、no_field_options等，要使用几个值，用逗号将它们隔开。它并不保证能完全兼容，而是尽量兼容。</li>
+<li>mysqldump  -uroot -p --all-databases --compatible=ansi</li>
+</ul>
+</li>
+<li>--compact
+<ul>
+<li>导出更少的输出信息(用于调试)。去掉注释和头尾等结构。可以使用选项：--skip-add-drop-table  --skip-add-locks --skip-comments --skip-disable-keys</li>
+<li>mysqldump  -uroot -p --all-databases --compact</li>
+</ul>
+</li>
+<li>--complete-insert,  -c
+<ul>
+<li>使用完整的insert语句(包含列名称)。这么做能提高插入效率，但是可能会受到max_allowed_packet参数的影响而导致插入失败。</li>
+<li>mysqldump  -uroot -p --all-databases --complete-insert</li>
+</ul>
+</li>
+<li>--compress, -C
+<ul>
+<li>在客户端和服务器之间启用压缩传递所有信息</li>
+<li>mysqldump  -uroot -p --all-databases --compress</li>
+</ul>
+</li>
+<li>--create-options,  -a
+<ul>
+<li>在CREATE TABLE语句中包括所有MySQL特性选项。(默认为打开状态)</li>
+<li>mysqldump  -uroot -p --all-databases</li>
+</ul>
+</li>
+<li>--databases,  -B
+<ul>
+<li>导出几个数据库。参数后面所有名字参量都被看作数据库名。</li>
+<li>mysqldump  -uroot -p --databases test mysql</li>
+<li>--debug</li>
+<li>输出debug信息，用于调试。默认值为：d:t:o,/tmp/mysqldump.trace</li>
+<li>mysqldump  -uroot -p --all-databases --debug</li>
+<li>mysqldump  -uroot -p --all-databases --debug=&quot;d:t:o,/tmp/debug.trace&quot;</li>
+</ul>
+</li>
+<li>--debug-check
+<ul>
+<li>检查内存和打开文件使用说明并退出。</li>
+<li>mysqldump  -uroot -p --all-databases --debug-check</li>
+</ul>
+</li>
+<li>--debug-info
+<ul>
+<li>输出调试信息并退出</li>
+<li>mysqldump  -uroot -p --all-databases --debug-info</li>
+</ul>
+</li>
+<li>--default-character-set
+<ul>
+<li>设置默认字符集，默认值为utf8</li>
+<li>mysqldump  -uroot -p --all-databases --default-character-set=latin1</li>
+</ul>
+</li>
+<li>--delayed-insert
+<ul>
+<li>采用延时插入方式（INSERT DELAYED）导出数据</li>
+<li>mysqldump  -uroot -p --all-databases --delayed-insert</li>
+</ul>
+</li>
+<li>--delete-master-logs
+<ul>
+<li>master备份后删除日志. 这个参数将自动激活--master-data。</li>
+<li>mysqldump  -uroot -p --all-databases --delete-master-logs</li>
+</ul>
+</li>
+<li>--disable-keys
+<ul>
+<li>对于每个表，用/!40000 ALTER TABLE tbl_name DISABLE KEYS */;和/!40000 ALTER TABLE tbl_name ENABLE KEYS */;语句引用INSERT语句。这样可以更快地导入dump出来的文件，因为它是在插入所有行后创建索引的。该选项只适合MyISAM表，默认为打开状态。</li>
+<li>mysqldump  -uroot -p --all-databases</li>
+</ul>
+</li>
+<li>--dump-slave
+<ul>
+<li>该选项将导致主的binlog位置和文件名追加到导出数据的文件中。设置为1时，将会以CHANGE MASTER命令输出到数据文件；设置为2时，在命令前增加说明信息。该选项将会打开--lock-all-tables，除非--single-transaction被指定。该选项会自动关闭--lock-tables选项。默认值为0。</li>
+<li>mysqldump  -uroot -p --all-databases --dump-slave=1</li>
+<li>mysqldump  -uroot -p --all-databases --dump-slave=2</li>
+</ul>
+</li>
+<li>--events, -E
+<ul>
+<li>导出事件。</li>
+<li>mysqldump  -uroot -p --all-databases --events</li>
+</ul>
+</li>
+<li>--extended-insert,  -e
+<ul>
+<li>使用具有多个VALUES列的INSERT语法。这样使导出文件更小，并加速导入时的速度。默认为打开状态，使用--skip-extended-insert取消选项。</li>
+<li>mysqldump  -uroot -p --all-databases</li>
+<li>mysqldump  -uroot -p --all-databases--skip-extended-insert   (取消选项)</li>
+</ul>
+</li>
+<li>--fields-terminated-by
+<ul>
+<li>导出文件中忽略给定字段。与--tab选项一起使用，不能用于--databases和--all-databases选项</li>
+<li>mysqldump  -uroot -p test test --tab=”/home/mysql” --fields-terminated-by=&quot;#&quot;</li>
+</ul>
+</li>
+<li>--fields-enclosed-by
+<ul>
+<li>输出文件中的各个字段用给定字符包裹。与--tab选项一起使用，不能用于--databases和--all-databases选项</li>
+<li>mysqldump  -uroot -p test test --tab=”/home/mysql” --fields-enclosed-by=&quot;#&quot;</li>
+</ul>
+</li>
+<li>--fields-optionally-enclosed-by
+<ul>
+<li>输出文件中的各个字段用给定字符选择性包裹。与--tab选项一起使用，不能用于--databases和--all-databases选项</li>
+<li>mysqldump  -uroot -p test test --tab=”/home/mysql”  --fields-enclosed-by=”#” --fields-optionally-enclosed-by  =”#”</li>
+</ul>
+</li>
+<li>--fields-escaped-by
+<ul>
+<li>输出文件中的各个字段忽略给定字符。与--tab选项一起使用，不能用于--databases和--all-databases选项</li>
+<li>mysqldump  -uroot -p mysql user --tab=”/home/mysql” --fields-escaped-by=”#”</li>
+</ul>
+</li>
+<li>--flush-logs
+<ul>
+<li>开始导出之前刷新日志。</li>
+<li>请注意：假如一次导出多个数据库(使用选项--databases或者--all-databases)，将会逐个数据库刷新日志。除使用--lock-all-tables或者--master-data外。在这种情况下，日志将会被刷新一次，相应的所以表同时被锁定。因此，如果打算同时导出和刷新日志应该使用--lock-all-tables 或者--master-data 和--flush-logs。</li>
+<li>mysqldump  -uroot -p --all-databases --flush-logs</li>
+</ul>
+</li>
+<li>--flush-privileges
+<ul>
+<li>在导出mysql数据库之后，发出一条FLUSH  PRIVILEGES 语句。为了正确恢复，该选项应该用于导出mysql数据库和依赖mysql数据库数据的任何时候。</li>
+<li>mysqldump  -uroot -p --all-databases --flush-privileges</li>
+</ul>
+</li>
+<li>--force
+<ul>
+<li>在导出过程中忽略出现的SQL错误。</li>
+<li>mysqldump  -uroot -p --all-databases --force</li>
+</ul>
+</li>
+<li>--help
+<ul>
+<li>显示帮助信息并退出。</li>
+<li>mysqldump  --help</li>
+</ul>
+</li>
+<li>--hex-blob
+<ul>
+<li>使用十六进制格式导出二进制字符串字段。如果有二进制数据就必须使用该选项。影响到的字段类型有BINARY、VARBINARY、BLOB。</li>
+<li>mysqldump  -uroot -p --all-databases --hex-blob</li>
+</ul>
+</li>
+<li>--host, -h
+<ul>
+<li>需要导出的主机信息</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases</li>
+</ul>
+</li>
+<li>--ignore-table
+<ul>
+<li>不导出指定表。指定忽略多个表时，需要重复多次，每次一个表。每个表必须同时指定数据库和表名。例如：--ignore-table=database.table1 --ignore-table=database.table2 ……</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --ignore-table=mysql.user</li>
+</ul>
+</li>
+<li>--include-master-host-port
+<ul>
+<li>在--dump-slave产生的'CHANGE  MASTER TO..'语句中增加'MASTER_HOST=，MASTER_PORT='</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --include-master-host-port</li>
+</ul>
+</li>
+<li>--insert-ignore
+<ul>
+<li>在插入行时使用INSERT IGNORE语句.</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --insert-ignore</li>
+</ul>
+</li>
+<li>--lines-terminated-by
+<ul>
+<li>输出文件的每行用给定字符串划分。与--tab选项一起使用，不能用于--databases和--all-databases选项。</li>
+<li>mysqldump  -uroot -p --host=localhost test test --tab=”/tmp/mysql”  --lines-terminated-by=”##”</li>
+</ul>
+</li>
+<li>--lock-all-tables,  -x
+<ul>
+<li>提交请求锁定所有数据库中的所有表，以保证数据的一致性。这是一个全局读锁，并且自动关闭--single-transaction 和--lock-tables 选项。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --lock-all-tables</li>
+</ul>
+</li>
+<li>--lock-tables,  -l
+<ul>
+<li>开始导出前，锁定所有表。用READ  LOCAL锁定表以允许MyISAM表并行插入。对于支持事务的表例如InnoDB和BDB，--single-transaction是一个更好的选择，因为它根本不需要锁定表。</li>
+<li>请注意当导出多个数据库时，--lock-tables分别为每个数据库锁定表。因此，该选项不能保证导出文件中的表在数据库之间的逻辑一致性。不同数据库表的导出状态可以完全不同。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --lock-tables</li>
+</ul>
+</li>
+<li>--log-error
+<ul>
+<li>附加警告和错误信息到给定文件</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases  --log-error=/tmp/mysqldump_error_log.err</li>
+</ul>
+</li>
+<li>--master-data
+<ul>
+<li>该选项将binlog的位置和文件名追加到输出文件中。如果为1，将会输出CHANGE MASTER 命令；如果为2，输出的CHANGE  MASTER命令前添加注释信息。该选项将打开--lock-all-tables 选项，除非--single-transaction也被指定（在这种情况下，全局读锁在开始导出时获得很短的时间；其他内容参考下面的--single-transaction选项）。该选项自动关闭--lock-tables选项。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --master-data=1;</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --master-data=2;</li>
+</ul>
+</li>
+<li>--max_allowed_packet
+<ul>
+<li>服务器发送和接受的最大包长度。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --max_allowed_packet=10240</li>
+</ul>
+</li>
+<li>--net_buffer_length
+<ul>
+<li>TCP/IP和socket连接的缓存大小。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --net_buffer_length=1024</li>
+</ul>
+</li>
+<li>--no-autocommit
+<ul>
+<li>使用autocommit/commit 语句包裹表。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --no-autocommit</li>
+</ul>
+</li>
+<li>--no-create-db,  -n
+<ul>
+<li>只导出数据，而不添加CREATE DATABASE 语句。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --no-create-db</li>
+</ul>
+</li>
+<li>--no-create-info,  -t
+<ul>
+<li>只导出数据，而不添加CREATE TABLE 语句。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --no-create-info</li>
+</ul>
+</li>
+<li>--no-data, -d
+<ul>
+<li>不导出任何数据，只导出数据库表结构。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --no-data</li>
+</ul>
+</li>
+<li>--no-set-names,  -N
+<ul>
+<li>等同于--skip-set-charset</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --no-set-names</li>
+</ul>
+</li>
+<li>--opt
+<ul>
+<li>等同于--add-drop-table,  --add-locks, --create-options, --quick, --extended-insert, --lock-tables,  --set-charset, --disable-keys 该选项默认开启,  可以用--skip-opt禁用.</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --opt</li>
+</ul>
+</li>
+<li>--order-by-primary
+<ul>
+<li>如果存在主键，或者第一个唯一键，对每个表的记录进行排序。在导出MyISAM表到InnoDB表时有效，但会使得导出工作花费很长时间。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --order-by-primary</li>
+</ul>
+</li>
+<li>--password, -p
+<ul>
+<li>连接数据库密码</li>
+</ul>
+</li>
+<li>--pipe(windows系统可用)
+<ul>
+<li>使用命名管道连接mysql</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --pipe</li>
+</ul>
+</li>
+<li>--port, -P
+<ul>
+<li>连接数据库端口号</li>
+</ul>
+</li>
+<li>--protocol
+<ul>
+<li>使用的连接协议，包括：tcp, socket, pipe, memory.</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --protocol=tcp</li>
+</ul>
+</li>
+<li>--quick, -q
+<ul>
+<li>不缓冲查询，直接导出到标准输出。默认为打开状态，使用--skip-quick取消该选项。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --skip-quick</li>
+</ul>
+</li>
+<li>--quote-names,-Q
+<ul>
+<li>使用（'）引起表和列名。默认为打开状态，使用--skip-quote-names取消该选项。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --skip-quote-names</li>
+</ul>
+</li>
+<li>--replace
+<ul>
+<li>使用REPLACE INTO 取代INSERT INTO.</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --replace</li>
+</ul>
+</li>
+<li>--result-file,  -r
+<ul>
+<li>直接输出到指定文件中。该选项应该用在使用回车换行对（\r\n）换行的系统上（例如：DOS，Windows）。该选项确保只有一行被使用。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --result-file=/tmp/mysqldump_result_file.txt</li>
+</ul>
+</li>
+<li>--routines, -R
+<ul>
+<li>导出存储过程以及自定义函数。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --routines</li>
+</ul>
+</li>
+<li>--set-charset
+<ul>
+<li>添加'SET NAMES  default_character_set'到输出文件。默认为打开状态，使用--skip-set-charset关闭选项。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --skip-set-charset</li>
+</ul>
+</li>
+<li>--single-transaction
+<ul>
+<li>该选项在导出数据之前提交一个BEGIN SQL语句，BEGIN 不会阻塞任何应用程序且能保证导出时数据库的一致性状态。它只适用于多版本存储引擎，仅InnoDB。本选项和--lock-tables 选项是互斥的，因为LOCK  TABLES 会使任何挂起的事务隐含提交。要想导出大表的话，应结合使用--quick 选项。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --single-transaction</li>
+</ul>
+</li>
+<li>--dump-date
+<ul>
+<li>将导出时间添加到输出文件中。默认为打开状态，使用--skip-dump-date关闭选项。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --skip-dump-date</li>
+</ul>
+</li>
+<li>--skip-opt
+<ul>
+<li>禁用–opt选项.</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --skip-opt</li>
+</ul>
+</li>
+<li>--socket,-S
+<ul>
+<li>指定连接mysql的socket文件位置，默认路径/tmp/mysql.sock</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --socket=/tmp/mysqld.sock</li>
+</ul>
+</li>
+<li>--tab,-T
+<ul>
+<li>为每个表在给定路径创建tab分割的文本文件。注意：仅仅用于mysqldump和mysqld服务器运行在相同机器上。</li>
+<li>mysqldump  -uroot -p --host=localhost test test --tab=&quot;/home/mysql&quot;</li>
+</ul>
+</li>
+<li>--tables
+<ul>
+<li>覆盖--databases (-B)参数，指定需要导出的表名。</li>
+<li>mysqldump  -uroot -p --host=localhost --databases test --tables test</li>
+</ul>
+</li>
+<li>--triggers
+<ul>
+<li>导出触发器。该选项默认启用，用--skip-triggers禁用它。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --triggers</li>
+</ul>
+</li>
+<li>--tz-utc
+<ul>
+<li>在导出顶部设置时区TIME_ZONE='+00:00' ，以保证在不同时区导出的TIMESTAMP 数据或者数据被移动其他时区时的正确性。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --tz-utc</li>
+</ul>
+</li>
+<li>--user, -u
+<ul>
+<li>指定连接的用户名。</li>
+</ul>
+</li>
+<li>--verbose, --v
+<ul>
+<li>输出多种平台信息。</li>
+</ul>
+</li>
+<li>--version, -V
+<ul>
+<li>输出mysqldump版本信息并退出</li>
+</ul>
+</li>
+<li>--where, -w
+<ul>
+<li>只转储给定的WHERE条件选择的记录。请注意如果条件包含命令解释符专用空格或字符，一定要将条件引用起来。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --where=” user=’root’”</li>
+</ul>
+</li>
+<li>--xml, -X
+<ul>
+<li>导出XML格式.</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --xml</li>
+</ul>
+</li>
+<li>--plugin_dir
+<ul>
+<li>客户端插件的目录，用于兼容不同的插件版本。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --plugin_dir=”/usr/local/lib/plugin”</li>
+</ul>
+</li>
+<li>--default_auth
+<ul>
+<li>客户端插件默认使用权限。</li>
+<li>mysqldump  -uroot -p --host=localhost --all-databases --default-auth=”/usr/local/lib/plugin/<PLUGIN>”</li>
+</ul>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../mysql/sync.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../mysql/interview.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../mysql/sync.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../mysql/interview.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:23827/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
